@@ -82,8 +82,7 @@ class InitProject:
             print(f'{Subject.WARNING} No substitutes found in {self.configuration_file}!')
             return
 
-        for substitution in self.configuration['substitutions']:
-            file = substitution['file']
+        for file in self.configuration['substitutions']:
             try:
                 with open(file) as f:
                     template = Template(f.read())
