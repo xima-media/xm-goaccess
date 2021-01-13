@@ -125,8 +125,9 @@ class InitProject:
             return
         
         git_repo = self.answers['GIT_REPO_URL']
-        print(f'{Subject.INFO} Initialize git repository')
+        print(f'{Subject.INFO} Remove .git-Directory if exists')
         subprocess.call('rm -rf .git', shell=True)
+        print(f'{Subject.INFO} Initialize git repository')
         subprocess.call('git init', shell=True)
         print(f'{Subject.INFO} Set git origin {git_repo}')
         subprocess.call(f'git remote add origin {git_repo}', shell=True)
