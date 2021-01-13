@@ -1,0 +1,34 @@
+{
+  "name": "xima/webs-typo3-deployment",
+  "license": "proprietary",
+  "description": "Deployment tools",
+  "type": "project",
+  "repositories": {
+    "xima-satis": {
+      "type": "composer",
+      "url": "https://satis.xima.de"
+    }
+  },
+  "require": {
+    "sle/phing-typo3-deployer": "^2.4.0",
+    "xima/ci-tools": "^0.4.0",
+    "kmi/db-sync-tool": "^1.8"
+  },
+  "config": {
+    "vendor-dir": "vendor",
+    "bin-dir": "bin",
+    "classmap-authoritative": true,
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "minimum-stability": "stable",
+  "scripts": {
+    "post-install-cmd": [
+      "Sle\\PhingTypo3Deployer\\Composer\\Scripts::postInstall"
+    ],
+    "post-update-cmd": [
+      "Sle\\PhingTypo3Deployer\\Composer\\Scripts::postUpdate"
+    ]
+  }
+}

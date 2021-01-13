@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Executes 'sync.py' in htdocs
+## Usage: dump
+## Example: "ddev dump"
+
+python3 /var/www/html/htdocs/vendor/kmi/db-sync-tool/sync.py -f /var/www/html/deployment/db-sync-tool/dump-local.json

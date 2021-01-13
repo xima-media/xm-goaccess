@@ -1,0 +1,33 @@
+#
+# Questions
+#
+questions:
+  CUSTOMER: 'Name des Kunden (e.g. Deutsches Weininstitut GmbH)'
+  ABBREVIATION: 'Kunden-Kürzel (e.g. dwi)'
+  PROJECT_NAME: 'Projekt-Name (e.g. webs-dwi-typo3-website)'
+  WEBSITE: 'Website URL (e.g. www.deutscheweine.de)'
+  LINK_TECH_DOKU: 'Link zur Technischen Dokumentation (Confluence)'
+  GIT_REPO_URL: 'Git-Repository (e.g. git@git.xima.de:opensource/webs-dwi-typo3-website.git)'
+
+#
+# Substitutions
+#
+substitutions:
+  -
+    info: './README.md wird konfiguriert'
+    file: './README.md'
+  -
+    info: './htdocs/typo3/.env.dev.dist wird konfiguriert'
+    file: './htdocs/typo3/.env.dev.dist'
+  -
+    info: './htdocs/typo3/.env.dist wird konfiguriert'
+    file: './htdocs/typo3/.env.dist'
+  -
+    info: './.ddev/config.yaml wird konfiguriert'
+    file: './.ddev/config.yaml'
+  -
+    info: './.ddev/README.md wird konfiguriert'
+    file: './.ddev/README.md'
+  -
+    info: './sonar-project.properties wird konfiguriert'
+    file: './sonar-project.properties'

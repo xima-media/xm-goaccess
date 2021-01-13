@@ -1,0 +1,43 @@
+#
+# Die folgenden Placeholder innerhalb dieser Datei müssen ersetzt werden:
+# - [IMAGE-NAME]
+#
+
+#-----------------------------------------------------------------------------------------------------------------------
+# DEFAULT-DOCKER-IMAGE
+#-----------------------------------------------------------------------------------------------------------------------
+image: docker-os.artifactory.xima-services.de/[IMAGE-NAME]
+
+#-----------------------------------------------------------------------------------------------------------------------
+# STAGES
+#-----------------------------------------------------------------------------------------------------------------------
+# prepare:      prepares build environment
+# assets:       builds assets
+# build:        builds TYPO3 in docker environment for testing purpose
+# test:         runs tests in docker environment
+# analyse:      analyses code quality
+# manual:       builds user manual
+# backup:       performs backup on environment
+# notify:       sends notification if deployment can starts manually
+# deploy:       deploys application to environment
+
+stages:
+  - prepare
+  - assets
+  - build
+  - test
+  - analyse
+  - manual
+  - backup
+  - notify
+  - deploy
+
+#-----------------------------------------------------------------------------------------------------------------------
+# CONFIGURATION
+#-----------------------------------------------------------------------------------------------------------------------
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  untracked: true
+  paths:
+    - ${BUILD_DIR}

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+## Description: Install and initialize TYPO3 instance
+## Usage: init
+## Example: "ddev init"
+echo
+read -p $'\e[95m[CONFIG]\e[m Initialize TYPO3 instanz? [Y/n] (no):' INIT_TYPO3
+read -p $'\e[95m[CONFIG]\e[m Sync database (prod-to-local)? (This overwrites the whole database!) [Y/n] (no):' SYNC_DB
+read -p $'\e[95m[CONFIG]\e[m Build assets? [Y/n] (no):' INSTALL_ASSETS
+
+if [[ $INIT_TYPO3 =~ ^[Yy]$ ]]
+then
+    echo -e "\033[94m[INFO]\033[m Install TYPO3"
+    cd /var/www/html/htdocs/typo3
+    cp .env.dev.dist .env
+    composer install
+    php bin/typo3cms install:setup --no-interaction --skip-integrity-check
+    echo -e "\033[92m[OK]\033[m TYPO3 installed"
+fi
+
+if [[ $SYNC_DB =~ ^[Yy]$ ]]
+then
+    echo -e "\033[93m[WARNING]\033[m No db sync defined"
+    # todo: Define db-sync
+
+    #echo -e "\033[94m[INFO]\033[m Install deployment tools"
+    #cd /var/www/html/htdocs
+    #composer install
+    #echo -e "\033[94m[INFO]\033[m Sync Prod database into local database"
+    #pip3 install -r /var/www/html/htdocs/vendor/kmi/db-sync-tool/requirements.txt
+    #python3 /var/www/html/htdocs/vendor/kmi/db-sync-tool/sync.py -f /var/www/html/deployment/db-sync-tool/sync-prod-to-local.json
+    #/var/www/html/htdocs/typo3/bin/typo3cms database:updateschema
+    #echo -e "\033[92m[OK]\033[m Deployment tools installed"
+fi
+
+if [[ $INSTALL_ASSETS =~ ^[Yy]$ ]]
+then
+    echo -e "\033[93m[WARNING]\033[m No asset build defined"
+    # todo: Define assets generation
+
+    #echo -e "\033[94m[INFO]\033[m Install assets"
+    #cd /var/www/html/htdocs/
+    #npm ci
+    #npm run staging
+    #echo -e "\033[92m[OK]\033[m Assets installed"
+fi
+echo
+echo -e '\033[92mDone.\033[m'

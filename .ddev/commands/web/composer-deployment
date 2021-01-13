@@ -1,0 +1,31 @@
+#!/bin/bash
+
+## Description: Executes 'composer' commands in 'htdocs'
+## Usage: composer:deployment
+## Example: "ddev composer:deployment [OPTIONS]"
+
+COMMAND=$@
+
+if [[ -n "${COMMAND// /}" ]]; then
+  echo
+  echo -e '\033[94m[INFO]\033[m Run command:\033[93m composer' $COMMAND '-d "htdocs" \033[m'
+  composer $COMMAND -d "htdocs"
+else
+  echo
+  echo -e '\033[94m[INFO]\033[m Install dependencies from lock file'
+  composer install -d "htdocs"
+
+  echo
+  echo -e '\033[94m[INFO]\033[m Check for updates'
+  composer update -d "htdocs" --dry-run
+
+  echo
+  read -p $'\e[93m[CONFIG]\e[m Update composer dependencies? [Y/n] (no):' UPDATE
+  if [[ $UPDATE =~ ^[Yy]$ ]]
+  then
+    echo -e '\033[94m[INFO]\033[m Update dependencies'
+    composer update -d "htdocs"
+  fi
+fi
+echo
+echo -e '\033[92mDone.\033[m'

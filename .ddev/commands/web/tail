@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Show TYPO3 logs of "typo3/var/log/" with tail
+## Usage: tail
+## Example: "ddev tail"
+
+tail -F /var/www/html/htdocs/typo3/var/log/* >> /dev/stderr
