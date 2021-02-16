@@ -252,7 +252,7 @@ deploy:typo3-dev:
       ssh -i /root/.ssh/${SSH_USER_DEV} -t ${SSH_USER_DEV}@${SSH_HOST_DEV}
       "umask 0002
       && cd ${PATH_PROJECT_DIR_DEV}
-      && php ~/composer.phar install --no-dev
+      && composer install --no-dev
       && php bin/phing ci:release"
     # Notification
     - cd ${CI_PROJECT_DIR}/htdocs/
