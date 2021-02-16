@@ -21,6 +21,7 @@
   "require": {
     "php": "7.4.*",
     "helhum/typo3-console": "^6.0.0",
+    "helhum/typo3-crontab": "^0.4.0",
     "helhum/dotenv-connector": "^2.1",
     "typo3/cms-about": "10.4.*",
     "typo3/cms-adminpanel": "10.4.*",
