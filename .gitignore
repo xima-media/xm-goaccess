@@ -1,5 +1,53 @@
-.DS_Store
+#
+# IDE files
+#
 .idea
+
+#
+# OS
+#
+.DS_Store
+
+#
+# Build
+#
+.Build
+
+#
+# Cache files
+#
+.sass-cache/
+
+#
+# Packages
+#
+bin/
+vendor/
+node_modules/
+
+#
+# Layoutbuilder
+#
+/htdocs/layoutbuilder/assets
+
+#
+# Keep
+#
+!.gitkeep
+
+#
+# Misc
+#
 nbproject
 venv
-.Build
+
+#
+# phing-typo3-deployer
+#
+/htdocs/build.env.properties
+/htdocs/build.xml
+/htdocs/bin
+/htdocs/shared
+/htdocs/vendor
+/htdocs/releases
+
