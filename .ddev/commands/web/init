@@ -4,9 +4,9 @@
 ## Usage: init
 ## Example: "ddev init"
 echo
-read -p $'\e[95m[CONFIG]\e[m Initialize TYPO3 instanz? [Y/n] (no):' INIT_TYPO3
-read -p $'\e[95m[CONFIG]\e[m Sync database (prod-to-local)? (This overwrites the whole database!) [Y/n] (no):' SYNC_DB
-read -p $'\e[95m[CONFIG]\e[m Build assets? [Y/n] (no):' INSTALL_ASSETS
+read -p $'\e[95m[CONFIG]\e[m Initialize TYPO3 instanz? (y|N):' INIT_TYPO3
+read -p $'\e[95m[CONFIG]\e[m Sync database (prod-to-local)? (This overwrites the whole database!) (y|N):' SYNC_DB
+read -p $'\e[95m[CONFIG]\e[m Build assets? (y|N):' INSTALL_ASSETS
 
 if [[ $INIT_TYPO3 =~ ^[Yy]$ ]]
 then

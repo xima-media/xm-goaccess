@@ -20,7 +20,7 @@ else
   composer update -d "htdocs/layoutbuilder" --dry-run
 
   echo
-  read -p $'\e[93m[CONFIG]\e[m Update composer dependencies? [Y/n] (no):' UPDATE
+  read -p $'\e[93m[CONFIG]\e[m Update composer dependencies? (y|N):' UPDATE
   if [[ $UPDATE =~ ^[Yy]$ ]]
   then
     echo -e '\033[94m[INFO]\033[m Update dependencies'
