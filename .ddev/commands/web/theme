@@ -1,0 +1,47 @@
+#!/bin/bash
+
+## Description: Run theme commands and build frontend assets for the prototype or the cms {ddev theme, ddev theme build[prototype|layoutbuilder], ddev theme staging[typo3|app], ddev theme $@}
+## Usage: theme
+## Example: "ddev theme"
+
+cd /var/www/html/htdocs/
+echo -e "\033[94m[INFO]\033[m Run command in /var/www/html/htdocs/"
+
+if [ $# -eq 0 ]
+then
+  echo
+  read -p $'\e[95m[CONFIG]\e[m Update npm dependencies? (y|N)' UPDATE_NPM
+
+  if [[ $UPDATE_NPM =~ ^[Yy]$ ]]
+  then
+    echo -e "\033[94m[INFO]\033[m Update npm dependencies"
+    npm ci
+  fi
+
+  # build complete frontend
+  npm run build
+  npm run staging
+
+  echo
+  echo -e '\033[92mDone.\033[m'
+else
+  # npm run build
+  if [[ $@ == "build" || $@ == "prototype" || $@ == "layoutbuilder" ]]
+  then
+    npm run build
+
+  # npm run staging
+  elif [[ $@ == "staging" || $@ == "typo3" || $@ == "app" ]]
+  then
+    npm run staging
+
+  # npm run watch
+  elif [[ $@ == "watch" ]]
+  then
+    npm run watch
+
+  # every npm
+  else
+    $@
+  fi
+fi
