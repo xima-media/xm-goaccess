@@ -14,6 +14,7 @@ then
     cd /var/www/html/htdocs/typo3
     cp .env.dev.dist .env
     composer install
+    echo -e "\033[94m[INFO]\033[m Errors above can be ignored"
     php bin/typo3cms install:setup --no-interaction --skip-integrity-check
     echo -e "\033[92m[OK]\033[m TYPO3 installed"
 fi
