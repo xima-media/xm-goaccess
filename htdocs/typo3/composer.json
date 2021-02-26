@@ -63,6 +63,7 @@
     "typo3/cms-styleguide": "^10.0",
     "typo3/cms-lowlevel": "10.4.*",
     "slowprog/composer-copy-file": "^0.3.3",
+    "thibautselingue/local-php-security-checker-installer": "^1.0",
     "michielroos/typo3scan": "^1.7",
     "ssch/typo3-rector": "^0.5.1"
   },
@@ -78,7 +79,8 @@
       "@typo3-cms-scripts"
     ],
     "post-update-cmd": [
-      "@php bin/security-checker security:check"
+      "@php bin/security-checker security:check",
+      "local-php-security-checker-installer && local-php-security-checker"
     ]
   },
   "extra": {
