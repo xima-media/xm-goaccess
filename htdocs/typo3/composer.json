@@ -57,7 +57,6 @@
     "xima/composer-json-reader": "^1.0"
   },
   "require-dev": {
-    "sensiolabs/security-checker": "^5",
     "typo3/testing-framework": "^6.4",
     "ichhabrecht/filefill": "^3.3",
     "typo3/cms-styleguide": "^10.0",
@@ -79,7 +78,6 @@
       "@typo3-cms-scripts"
     ],
     "post-update-cmd": [
-      "@php bin/security-checker security:check",
       "local-php-security-checker-installer && local-php-security-checker"
     ]
   },
