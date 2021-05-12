@@ -1,10 +1,10 @@
 # TYPO3 CMS 10 LTS - {{CUSTOMER}}
 
-![alt text](http://docker.xima.local:10500/api/project_badges/measure?project={{PROJECT_NAME}}&metric=alert_status)
-![alt text](http://docker.xima.local:10500/api/project_badges/measure?project={{PROJECT_NAME}}&metric=security_rating)
-![alt text](http://docker.xima.local:10500/api/project_badges/measure?project={{PROJECT_NAME}}&metric=reliability_rating)
-![alt text](http://docker.xima.local:10500/api/project_badges/measure?project={{PROJECT_NAME}}&metric=coverage)
-[SonarCube](http://sonarqube.xima.ws/dashboard?id={{PROJECT_NAME}})
+![alt text](https://sonarqube.xima.local/api/project_badges/measure?project={{PROJECT_NAME}}&metric=alert_status)
+![alt text](https://sonarqube.xima.local/api/project_badges/measure?project={{PROJECT_NAME}}&metric=security_rating)
+![alt text](https://sonarqube.xima.local/api/project_badges/measure?project={{PROJECT_NAME}}&metric=reliability_rating)
+![alt text](https://sonarqube.xima.local/api/project_badges/measure?project={{PROJECT_NAME}}&metric=coverage)
+[SonarCube](https://sonarqube.xima.local/dashboard?id={{PROJECT_NAME}})
 
 ## Inhalt
 * [Wozu dient das Projekt?](#intro)
