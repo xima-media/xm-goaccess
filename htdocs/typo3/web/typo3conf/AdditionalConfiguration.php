@@ -19,3 +19,11 @@ if (\TYPO3\CMS\Core\Core\Environment::getContext()->isDevelopment()) {
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_sendmail_command'] = '';
     }
 }
+
+/**
+ * Available Languages
+ */
+$availableLanguages = ['de'];
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lang']['availableLanguages'] = ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lang']['availableLanguages'])
+    ? array_merge($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lang']['availableLanguages'], $availableLanguages)
+    : $availableLanguages;
