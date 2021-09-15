@@ -65,8 +65,8 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   untracked: true
   paths:
-    - ${BUILD_DIR_TYPO3}/vendor
-    - ${LOG_DIR}
+    - ${BUILD_DIR}
+    - ./htdocs/typo3/packages/xm_templates_{{ABBREVIATION}}/Resources/Public
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Anchors
@@ -79,7 +79,8 @@ cache:
   before_script:
     - chmod +x ${CI_PROJECT_DIR}/deployment/gitlab-ci/install-ssh.sh
     - ${CI_PROJECT_DIR}/deployment/gitlab-ci/install-ssh.sh ${SSH_KEY} ${SSH_USER} ${SSH_HOST}
-    - echo "${SSH_HOST} ${HOST_PREVIEW}" >> /etc/hosts
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config'
+    - echo "${SSH_HOST}" >> /etc/hosts
 
 #--------------------------------------------------
 # Pipeline - Prototypen Deployment
@@ -194,7 +195,6 @@ build:assets:
     - /^release-.*$/
     - /^bugfix-.*$/
     - /^feature-.*$/
-    - /^Phase2.*$/
     - dev
     - stage
     - master
@@ -211,7 +211,7 @@ build:assets:
 #
 code:quality:
   stage: analyse
-  allow_failure: false
+  allow_failure: true
   only:
     # Only on default branch, because we have only SonarQube Community Edition.
     - dev
