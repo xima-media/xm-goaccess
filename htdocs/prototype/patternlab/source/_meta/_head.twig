@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="{{ htmlClass }}" lang="de">
+<head>
+  <title>{{ title }}</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Prototyp DKFZ Intranet">
+  <meta name="keywords" content="Keywords">
+  <meta name="author" content="XIMA 2022">
+
+  {# @todo entfernen #}
+{#  <link rel="stylesheet" href="../../css/style.css?{{ cacheBuster }}" media="all" />#}
+{#  <link rel="stylesheet" href="../../css/pattern-scaffolding.css?{{ cacheBuster }}" media="all" />#}
+
+  {# css #}
+  <link rel="stylesheet" href="../../dist/css/app.min.css">
+
+  {# Begin Pattern Lab (Required for Pattern Lab to run properly) #}
+  {{ patternLabHead | raw }}
+  {# End Pattern Lab #}
+
+</head>
+<body class="{{ bodyClass }}">
+

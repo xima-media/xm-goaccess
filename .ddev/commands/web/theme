@@ -1,47 +1,65 @@
 #!/bin/bash
 
-## Description: Run theme commands and build frontend assets for the prototype or the cms {ddev theme, ddev theme build[prototype|layoutbuilder], ddev theme staging[typo3|app], ddev theme $@}
+## Description: Run patternlab commands inside the web container
 ## Usage: theme
-## Example: "ddev theme"
+## Example: "ddev patternlab start, ddev patternlab watch"
 
-cd /var/www/html/htdocs/
-echo -e "\033[94m[INFO]\033[m Run command in /var/www/html/htdocs/"
-
-if [ $# -eq 0 ]
+# start patternLab
+if [[ $@ == "init" ]]
 then
-  echo
-  read -p $'\e[95m[CONFIG]\e[m Update npm dependencies? (y|N)' UPDATE_NPM
+  echo -e '\e[32m ╔═══════════════════════════════════════╗\e[0m'
+  echo -e '\e[32m ║                                       ║\e[0m'
+  echo -e '\e[32m ║     \e[97mPatternLab will be installed.\e[32m     ║\e[0m'
+  echo -e '\e[32m ║                                       ║\e[0m'
+  echo -e '\e[32m ╚═══════════════════════════════════════╝\e[0m'
 
-  if [[ $UPDATE_NPM =~ ^[Yy]$ ]]
-  then
-    echo -e "\033[94m[INFO]\033[m Update npm dependencies"
-    npm ci
-  fi
-
-  # build complete frontend
-  npm run build
-  npm run staging
-
-  echo
-  echo -e '\033[92mDone.\033[m'
+  echo 'Installing frontend dependencies ...'
+  cd /var/www/html/htdocs/prototype/ && npm ci
+  echo 'Installing patternLab dependencies ...'
+  cd /var/www/html/htdocs/prototype/patternlab/ && npm ci
+elif [[ $@ == "start" ]]
+then
+  echo -e '\e[32m ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\e[0m'
+  echo -e '\e[32m ║                                                                                                                                                       ║\e[0m'
+  echo -e '\e[32m ║     \e[97mPrototype is available after the build from https://dkfz-intranet-prototype.ddev.site:3001 or https://dkfz-intranet-prototype.ddev.site:3000.\e[32m     ║\e[0m'
+  echo -e '\e[32m ║                                                                                                                                                       ║\e[0m'
+  echo -e '\e[32m ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\e[0m'
+  cd /var/www/html/htdocs/prototype/patternlab/ && npm run serve
+elif [[ $@ == "build" || $@ == "prototype" ]]
+then
+  echo -e '\e[32m ╔════════════════════════════════════════════╗\e[0m'
+  echo -e '\e[32m ║                                                                                                                                                  ║\e[0m'
+  echo -e '\e[32m ║     \e[97mPrototype is watching.\e[32m     ║\e[0m'
+  echo -e '\e[32m ║                                                                                                                                                  ║\e[0m'
+  echo -e '\e[32m ╚════════════════════════════════════════════╝\e[0m'
+  cd /var/www/html/htdocs/prototype/patternlab/ && npm run serve
+# watching the frontend
+elif [[ $@ == "watch" ]]
+then
+  echo -e '\e[32m ╔═══════════════════════════════════╗\e[0m'
+  echo -e '\e[32m ║                                   ║\e[0m'
+  echo -e '\e[32m ║     \e[97mPrototype is watching ...\e[32m     ║\e[0m'
+  echo -e '\e[32m ║                                   ║\e[0m'
+  echo -e '\e[32m ╚═══════════════════════════════════╝\e[0m'
+  cd /var/www/html/htdocs/prototype/ && npm run watch
+# watching the frontend
+elif [[ $@ == "typo3" || $@ == "app" || $@ == "staging" ]]
+then
+  echo -e '\e[32m ╔═══════════════════════════════════╗\e[0m'
+  echo -e '\e[32m ║                                   ║\e[0m'
+  echo -e '\e[32m ║     \e[97mTYPO3 is building!       \e[32m     ║\e[0m'
+  echo -e '\e[32m ║                                   ║\e[0m'
+  echo -e '\e[32m ╚═══════════════════════════════════╝\e[0m'
+  cd /var/www/html/htdocs/prototype/ && npm run staging
+# every npm in patternLab dir
+elif [[ $@ == "fix" || $@ == "fix-styles" ]]
+then
+  echo -e '\e[32m ╔═══════════════════════════════════╗\e[0m'
+  echo -e '\e[32m ║                                   ║\e[0m'
+  echo -e '\e[32m ║     \e[97mFixing SCSS ...         \e[32m   ║\e[0m'
+  echo -e '\e[32m ║                                   ║\e[0m'
+  echo -e '\e[32m ╚═══════════════════════════════════╝\e[0m'
+  cd /var/www/html/htdocs/prototype/ && npm run fix-styles
 else
-  # npm run build
-  if [[ $@ == "build" || $@ == "prototype" || $@ == "layoutbuilder" ]]
-  then
-    npm run build
-
-  # npm run staging
-  elif [[ $@ == "staging" || $@ == "typo3" || $@ == "app" ]]
-  then
-    npm run staging
-
-  # npm run watch
-  elif [[ $@ == "watch" ]]
-  then
-    npm run watch
-
-  # every npm
-  else
-    $@
-  fi
+   cd /var/www/html/htdocs/prototype/patternlab/ && $@
 fi

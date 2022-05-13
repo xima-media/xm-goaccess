@@ -26,9 +26,12 @@ vendor/
 node_modules/
 
 #
-# Layoutbuilder
+# Prototype
 #
-/htdocs/layoutbuilder/assets
+**/patternlab/public/
+**/patternlab/pattern_exports
+**/patternlab/source/assets
+**/patternlab/dependencyGraph.json
 
 #
 # Keep

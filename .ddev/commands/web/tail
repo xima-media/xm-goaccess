@@ -1,7 +1,8 @@
 #!/bin/bash
 
-## Description: Show TYPO3 logs of "typo3/var/log/" with tail
+## Description: Executes 'tail' command on typo3 log file in htdocs/typo3/web/typo3temp/var/logs
 ## Usage: tail
-## Example: "ddev tail"
-
-tail -F /var/www/html/htdocs/typo3/var/log/* >> /dev/stderr
+## Example: ddev tail
+cd "htdocs/typo3/web/typo3temp/var/logs"
+latest_file=$(find . -not -name "*_deprecations_*" -type f)
+tail $@ $latest_file

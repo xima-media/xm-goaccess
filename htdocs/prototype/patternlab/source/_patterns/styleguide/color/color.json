@@ -1,0 +1,46 @@
+{
+    "colors": [
+        {
+            "title": "Primary",
+            "desc": "SKD Red",
+            "variable": "$color-primary",
+            "class": "background--primary"
+        },
+        {
+            "title": "Secondary",
+            "desc": "n.a.",
+            "variable": "$color-secondary",
+            "class": "background--secondary"
+        },
+        {
+            "title": "White",
+            "desc": "Dirty White",
+            "variable": "$color-white",
+            "class": "background--white"
+        },
+        {
+            "title": "Gray",
+            "desc": "n.a",
+            "variable": "$color-gray",
+            "class": "background--gray"
+        },
+        {
+            "title": "Dark gray",
+            "desc": "Muted Black",
+            "variable": "$color-dark-gray",
+            "class": "background--dark-gray"
+        },
+        {
+            "title": "Black",
+            "desc": "Dirty Black",
+            "variable": "$color-black",
+            "class": "background--black"
+        },
+        {
+            "title": "Gradient",
+            "desc": "Fancy Accent",
+            "variable": "$gradient-primary",
+            "class": "gradient--primary"
+        }
+    ]
+}
