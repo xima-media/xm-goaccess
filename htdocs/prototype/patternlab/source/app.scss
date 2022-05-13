@@ -1,29 +1,26 @@
-////
-////    @tableOfContent
-////      1. Configuration
-////       1.1 Bootstrap functions, mixins, etc
-////       1.2 Custom settings
-////      2. Bootstrap components
-////       2.1 Layout & components
-////       2.2 Helpers
-////       2.3 Utilities
-////
 //
+//    @tableOfContent
+//      1. Configuration
+//       1.1 Bootstrap functions, mixins, etc
+//       1.2 Custom settings
+//      2. Bootstrap components
+//       2.1 Layout & components
+//       2.2 Helpers
+//       2.3 Utilities
 //
-////
-////    @section 1. Configuration
-////
+
+
 //
-//// @section 1.1 Bootstrap functions, mixins, etc
-//@import '~bootstrap/scss/functions';
-//@import '~bootstrap/scss/variables';
-//@import '~bootstrap/scss/mixins';
-//@import '~bootstrap/scss/utilities';
+//    @section 1. Configuration
 //
-//// @section 1.2 Custom settings
-//@import '_patterns/components/app/app--variables--css';
-//@import '_patterns/components/app/app--animations';
-//
+
+// @section 1.1 Bootstrap functions, mixins, etc
+@import '_patterns/components/basic/basic-default-functions-and-variables.scss';
+
+// @section 1.2 Custom settings
+@import '_patterns/components/basic/basic-variables--css';
+//@import '_patterns/components/basic/basic-animations';
+
 // @section 1.3 Styleguide
 //@import '_patterns/styleguide/styleguide';
 //

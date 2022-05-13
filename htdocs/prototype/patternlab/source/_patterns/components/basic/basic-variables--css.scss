@@ -1,0 +1,24 @@
+//
+//    @tableOfContent
+//      1. Basic variables css
+//
+
+
+:root {
+    //
+    //   @section 1. Global
+    //
+
+    // timing
+    --transition-time: #{$transition-time};
+
+
+    //
+    //   @section 2. Colors
+    //
+
+    --color-primary: #{$color-primary};
+    --color-secondary: #{$color-secondary};
+}
+
+// end of basic-variables-css.scss file

@@ -12,7 +12,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './patternlab/source/app.js'
+        // app: './patternlab/source/app.js'
+        app: './patternlab/source/app.ts'
     },
     output: {
         filename: 'js/[name].min.js',
@@ -20,6 +21,11 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.js$/,
                 enforce: 'pre',
@@ -64,6 +70,9 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
         ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
         // new CopyPlugin({

@@ -31,6 +31,8 @@ class Button {
 
     init () {
         app.log('component "button" loaded')
+        console.log(app.transitionTime);
+        console.log(app.color.primary);
     }
 }
 
