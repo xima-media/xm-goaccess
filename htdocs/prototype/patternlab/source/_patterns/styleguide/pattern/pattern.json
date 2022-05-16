@@ -1,12 +1,36 @@
 {
     "patterns": [
         {
+            "title": "Dunkelgrau",
+            "class": "pattern--gray-900"
+        },
+        {
             "title": "DKFZ Blau",
             "class": "pattern--primary"
         },
         {
-            "title": "Dunkelgrau",
-            "class": "pattern--gray-900"
+            "title": "Dunkelblau",
+            "class": "pattern--blue-900"
+        },
+        {
+            "title": "Cyan",
+            "class": "pattern--cyan"
+        },
+        {
+            "title": "Grün",
+            "class": "pattern--green"
+        },
+        {
+            "title": "Hellgrün",
+            "class": "pattern--green-light"
+        },
+        {
+            "title": "Orange",
+            "class": "pattern--orange"
+        },
+        {
+            "title": "Magenta",
+            "class": "pattern--magenta"
         }
     ]
 }
