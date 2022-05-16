@@ -5,6 +5,7 @@
 //      3. Pattern
 //      4. Image color
 //      5. Fonts
+//      6. Texts
 //
 
 
@@ -148,6 +149,39 @@
 
         &__body {
             text-align: center;
+        }
+    }
+}
+
+
+//
+//    @section 6. Texts
+//
+
+.styleguide--texts {
+    .styleguide {
+        //&__sections {  }
+
+        &__section {
+            margin-bottom: 2rem;
+        }
+
+        &__items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+        }
+
+        //&__header {  }
+
+        &__body {
+            padding: 0;
         }
     }
 }
