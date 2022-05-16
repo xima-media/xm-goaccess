@@ -1,0 +1,12 @@
+{
+    "patterns": [
+        {
+            "title": "DKFZ Blau",
+            "class": "pattern--primary"
+        },
+        {
+            "title": "Dunkelgrau",
+            "class": "pattern--gray-900"
+        }
+    ]
+}

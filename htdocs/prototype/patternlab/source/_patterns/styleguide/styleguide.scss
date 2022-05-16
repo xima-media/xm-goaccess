@@ -1,0 +1,222 @@
+//
+//    @tableOfContent
+//      1. Styleguide default
+//      2. Color
+//      3. Pattern
+//      3. Typography
+//      4. Stream
+//      5. Icons
+//
+
+
+//
+//    @section 1. Styleguide
+//
+
+.styleguide {
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+
+    &__title {
+        margin-bottom: 2rem;
+        padding-bottom: .25rem;
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--color-gray-900);
+    }
+
+    //&__header {  }
+
+    &__body {
+        padding: .5rem;
+        text-align: center;
+    }
+
+    &__items {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+
+//
+//    @section 2. Color
+//
+
+.styleguide--color {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 10.625rem);
+            gap: 1.5rem;
+            //align-items: center;
+            //justify-content: center;
+        }
+
+        &__item {
+            //border-radius: $global-border-radius;
+            //box-shadow: 0 10px 20px $color-black-opacity-1;
+        }
+
+        &__header {
+            display: block;
+            height: 6.25rem;
+            //border-radius: $global-border-radius;
+        }
+
+        //&__body {  }
+    }
+}
+
+
+//
+//    @section 3. Pattern
+//
+
+.styleguide--pattern {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 10.625rem);
+            gap: 1.5rem;
+            //align-items: center;
+            //justify-content: center;
+        }
+
+        &__item {
+            //border-radius: $global-border-radius;
+            //box-shadow: 0 10px 20px $color-black-opacity-1;
+        }
+
+        &__header {
+            display: block;
+            height: 6.25rem;
+            //border-radius: $global-border-radius;
+        }
+
+        //&__body {  }
+    }
+}
+
+
+//
+//    @section 3. Typography
+//
+
+//.styleguide--typography {
+//    .styleguide {
+//        &__items {
+//            display: flex;
+//            flex-direction: column;
+//            gap: 2.5rem;
+//            max-width: 45rem;
+//            margin: auto;
+//        }
+//
+//        &__item {
+//            display: grid;
+//            grid-template-columns: 1fr 10rem;
+//            gap: 1.5rem;
+//            align-items: flex-start;
+//            justify-content: center;
+//        }
+//
+//        &__header {
+//            margin: 0;
+//        }
+//
+//        &__body {
+//            margin: 0;
+//            padding: 0;
+//            font-family: 'Baton Turbo', sans-serif;
+//            font-size: 10px;
+//            line-height: 12px;
+//            font-weight: 500;
+//            text-transform: uppercase;
+//            list-style: none;
+//        }
+//    }
+//}
+
+
+//
+//    @section 4. Stream
+//
+
+//.styleguide--stream {
+//    .stream {
+//        &__items {
+//            gap: 0;
+//        }
+//
+//        &__item {
+//            aspect-ratio: 1;
+//            border: 1px solid $color-dirty-black;
+//        }
+//    }
+//}
+
+
+//
+//    @section 5. Icons
+//
+
+//.styleguide--icons {
+//    .styleguide {
+//        &__items {
+//            display: grid;
+//            grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+//            gap: 1.5rem;
+//            align-items: center;
+//            justify-content: center;
+//        }
+//
+//        &__item {
+//            border-radius: $global-border-radius;
+//            box-shadow: 0 10px 20px $color-black-opacity-1;
+//        }
+//
+//        &__header {
+//            padding: 3rem;
+//            text-align: center;
+//        }
+//
+//        &__body {
+//            text-align: center;
+//        }
+//    }
+//}
+
+
+//
+//    @section 6. Button
+//
+
+//.styleguide--button {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    background-color: #ccc;
+//
+//    .styleguide {
+//        &__items {
+//            display: inline-flex;
+//            flex-direction: column;
+//            align-items: center;
+//            justify-content: center;
+//            gap: 1rem;
+//            padding: 1rem;
+//            border: 1px dashed #7b61ff;
+//            border-radius: $global-border-radius;
+//        }
+//    }
+//}
+
+// end of styleguide.scss file

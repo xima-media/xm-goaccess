@@ -3,12 +3,13 @@
 <div class="styleguide styleguide--color">
     <ul class="styleguide__items">
         {% for color in colors %}
-            <li class="styleguide__item">
+            <li class="styleguide__item" title="{{ color.variable }}">
                 <div class="styleguide__header {{ color.class }}"></div>
                 <div class="styleguide__body">
-                    <p><strong>Name</strong> {{ color.title }}</p>
-                    <p><strong>Desc</strong> {{ color.desc }}</p>
-                    <p><strong>Variable</strong> {{ color.variable }}</p>
+                    <p>
+                        <strong class="visually-hidden">Name</strong> {{ color.title }}<br />
+                        <strong class="visually-hidden">Farbe</strong> {{ color.color }}
+                    </p>
                 </div>
             </li>
         {% endfor %}

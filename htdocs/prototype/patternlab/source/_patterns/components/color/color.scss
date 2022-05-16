@@ -1,0 +1,54 @@
+//
+//    @tableOfContent
+//      1. Color
+//      2. Background colors
+//      3. Color pattern
+//
+
+
+//
+//   @section 1. Color
+//
+
+.color {
+    &--primary {
+        color: var(--color-primary);
+    }
+
+    &--gray-900 {
+        color: var(--color-gray-900);
+    }
+}
+
+
+//
+//   @section 2. Background colors
+//
+
+.background {
+    &--primary {
+        background-color: $color-primary;
+    }
+
+    &--gray-900 {
+        background-color: $color-gray-900;
+    }
+}
+
+
+//
+//   @section 3. Color pattern
+//   https://iros.github.io/patternfills/sample_svg.html
+//
+
+.pattern {
+    &--primary {
+        @include background-pattern($color-primary);
+    }
+
+    &--gray-900 {
+        @include background-pattern($color-gray-900);
+    }
+}
+
+// end of color.scss file

@@ -6,10 +6,11 @@
  *       1.1 Global CSS
  *      2. Components
  *       2.1 App
- *       2.2 Icon
- *       2.3 Typography
- *       2.4 Button
- *       2.5 Image
+ *       2.2 Color
+ *       2.3 Icon
+ *       2.4 Typography
+ *       2.5 Button
+ *       2.6 Image
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -27,16 +28,19 @@ import './app.scss'
 /** @section 2.1 Basic */
 import './_patterns/components/basic/basic'
 
-/** @section 2.2 Icon */
+/** @section 2.2 Color */
+import './_patterns/components/color/color'
+
+/** @section 2.3 Icon */
 import './_patterns/components/icon/icon'
 
-/** @section 2.3 Typography */
+/** @section 2.4 Typography */
 import './_patterns/components/typography/typography'
 
-/** @section 2.4 Button */
+/** @section 2.5 Button */
 import './_patterns/components/button/button'
 
-/** @section 2.5 Image */
+/** @section 2.6 Image */
 import './_patterns/components/image/image'
 
 /** @section 2.99 Debug */

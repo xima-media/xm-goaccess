@@ -2,7 +2,7 @@
 //    @tableOfContent
 //      1. Size
 //      2. List reset
-//      3. Fonts
+//      3. Pattern
 //      4. Styled scrollbars
 //      5. Styled slider
 //      6. Hyphens
@@ -31,8 +31,12 @@
 
 
 //
-//    @section 3. Fonts
+//    @section 3. Pattern
 //
+
+@mixin background-pattern($color: $color-primary) {
+    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M9.354,11.354L11.354,9.354L10.646,8.646L8.646,10.646L9.354,11.354ZM0.354,10.354L10.354,0.354L9.646,-0.354L-0.354,9.646L0.354,10.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color};"/></svg>');
+}
 
 
 //
