@@ -1,0 +1,11 @@
+{
+    "headlines": [
+        {
+            "title": "Headline H1",
+            "type": "h1",
+            "font": "TheSerif Bold",
+            "size": "58px",
+            "lineHeight": "70px"
+        }
+    ]
+}

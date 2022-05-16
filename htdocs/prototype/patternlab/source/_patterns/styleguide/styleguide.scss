@@ -3,6 +3,7 @@
 //      1. Styleguide default
 //      2. Color
 //      3. Pattern
+//      4. Image color
 //      3. Typography
 //      4. Stream
 //      5. Icons
@@ -29,7 +30,6 @@
 
     &__body {
         padding: .5rem;
-        text-align: center;
     }
 
     &__items {
@@ -38,7 +38,7 @@
     }
 
     &__item {
-        overflow: hidden;
+        // overflow: hidden;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -56,22 +56,18 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, 10.625rem);
             gap: 1.5rem;
-            //align-items: center;
-            //justify-content: center;
         }
 
-        &__item {
-            //border-radius: $global-border-radius;
-            //box-shadow: 0 10px 20px $color-black-opacity-1;
-        }
+        //&__item {  }
 
         &__header {
             display: block;
             height: 6.25rem;
-            //border-radius: $global-border-radius;
         }
 
-        //&__body {  }
+        &__body {
+            text-align: center;
+        }
     }
 }
 
@@ -86,22 +82,44 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, 10.625rem);
             gap: 1.5rem;
-            //align-items: center;
-            //justify-content: center;
         }
 
-        &__item {
-            //border-radius: $global-border-radius;
-            //box-shadow: 0 10px 20px $color-black-opacity-1;
-        }
+        //&__item {  }
 
         &__header {
             display: block;
             height: 6.25rem;
-            //border-radius: $global-border-radius;
         }
 
-        //&__body {  }
+        &__body {
+            text-align: center;
+        }
+    }
+}
+
+
+//
+//    @section 4. Image color
+//
+
+.styleguide--image-color {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 10.625rem);
+            gap: 1.5rem;
+        }
+
+        //&__item {  }
+
+        &__header {
+            display: block;
+            height: 6.25rem;
+        }
+
+        &__body {
+            text-align: center;
+        }
     }
 }
 

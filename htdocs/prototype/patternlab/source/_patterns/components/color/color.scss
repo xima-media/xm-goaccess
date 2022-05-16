@@ -3,6 +3,7 @@
 //      1. Color
 //      2. Background colors
 //      3. Color pattern
+//      4. Image color
 //
 
 
@@ -48,6 +49,49 @@
 
     &--gray-900 {
         @include background-pattern($color-gray-900);
+    }
+}
+
+
+//
+//   @section 4. Image color
+//
+
+[class*='image-color-'] {
+    position: relative;
+    background-color: var(--color-gray-100);
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        z-index: -1;
+        width: calc(50% + .5rem);
+        height: calc(50% + .5rem);
+    }
+
+    &::before {
+        background-color: $color-white;
+    }
+
+    &::after {
+        opacity: .7;
+    }
+}
+
+.image-color {
+    &--primary {
+        &::after {
+            background-color: var(--color-primary);
+        }
+    }
+
+    &--cyan {
+        &::after {
+            background-color: var(--color-cyan);
+        }
     }
 }
 

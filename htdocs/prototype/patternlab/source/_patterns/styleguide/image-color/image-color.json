@@ -1,0 +1,12 @@
+{
+    "colors": [
+        {
+            "title": "Dunkelblau",
+            "class": "image-color--primary"
+        },
+        {
+            "title": "Cyan",
+            "class": "image-color--cyan"
+        }
+    ]
+}
