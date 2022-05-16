@@ -1,0 +1,109 @@
+//
+//    @tableOfContent
+//      1. Image responsive
+//      2. Picture format
+//
+
+
+//
+//   @section 1. Image responsive
+//
+
+.image--responsive {
+    width: 100%;
+}
+
+
+//
+//   @section 2. Picture format
+//
+
+.picture {
+    //opacity: 0;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    //transform: scale3d(.5, .5, 1);
+    //transition: opacity $transition-time * 2, transform $transition-time * 2;
+
+    //&.--loaded {
+    //    &.--visible {
+    //        opacity: 1;
+    //        transform: scale3d(1, 1, 1);
+    //    }
+    //}
+    //
+    //&--cube {
+    //    &::before {
+    //        content: '';
+    //        display: block;
+    //        padding-top: 100%;
+    //    }
+    //
+    //    .picture__item {
+    //        overflow: hidden;
+    //        position: absolute;
+    //    }
+    //
+    //    &.picture--landscape {
+    //        .picture {
+    //            &__item {
+    //                bottom: 0;
+    //                left: 0;
+    //                width: 100%;
+    //
+    //                @include media-breakpoint-down(lg) {
+    //                    top: 0;
+    //                }
+    //            }
+    //
+    //            &__image {
+    //                @include media-breakpoint-down(lg) {
+    //                    object-fit: cover;
+    //                    height: 100%;
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    &.picture--square {
+    //        .picture__item {
+    //            top: 0;
+    //            left: 0;
+    //            width: 100%;
+    //        }
+    //    }
+    //
+    //    &.picture--portrait {
+    //        .picture {
+    //            &__item {
+    //                display: flex;
+    //                justify-content: center;
+    //                top: 0;
+    //                left: 50%;
+    //                height: 100%;
+    //                transform: translateX(-50%);
+    //
+    //                @include media-breakpoint-down(lg) {
+    //                    right: 0;
+    //                    left: 0;
+    //                    transform: none;
+    //                }
+    //            }
+    //
+    //            &__image {
+    //                width: auto;
+    //                height: 100%;
+    //
+    //                @include media-breakpoint-down(lg) {
+    //                    object-fit: cover;
+    //                    width: 100%;
+    //                    height: auto;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+}
+
+// end of image.scss file

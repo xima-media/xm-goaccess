@@ -1,0 +1,37 @@
+//
+//    @tableOfContent
+//      1. Fonts
+//       1.1 The Serif
+//       1.2 The Sans
+//      2. Headlines
+//
+
+
+//
+//   @section 1. Typography
+//
+
+// @section 1.1 The Serif
+@font-face {
+    font-family: 'The Serif';
+    font-weight: 700;
+    font-style: normal;
+    src: url('./assets/fonts/the-serif/the-serif--bold.woff2') format('woff2');
+}
+
+// @section 1.2 The Sans
+//@font-face {
+//    font-family: 'The Sans';
+//    font-weight: 500;
+//    font-style: normal;
+//    src: url('./assets/fonts/archivo-narrow/archivo-narrow-medium.woff2') format('woff2');
+//}
+
+
+//
+//   @section 2. Headlines
+//
+
+// nothing yet
+
+// end of typography.scss file

@@ -9,7 +9,8 @@
 //
 
 body {
-   background-color: var(--color-secondary);
+    font-family: 'The Serif', serif; // @todo als scss-variable ablegen
+    background-color: var(--color-secondary);
 }
 
 // end of basic.scss file

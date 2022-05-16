@@ -9,37 +9,19 @@ module.exports = merge(common,{
     //     poll: true,
     //     ignored: /node_modules/
     // },
-    // module: {
-    //     rules: [
-    //         {
-    //             test: /\.(woff(2)?|ttf|eot|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
-    //             use: [{
-    //                 loader: 'file-loader',
-    //                 options: {
-    //                     name: '[folder]/[name].[ext]',
-    //                     outputPath: 'fonts/',
-    //                     publicPath: '../../fonts'
-    //                 },
-    //             }],
-    //         },
-    //         // {
-    //         //     test: /\.(png|jpg|gif)$/i,
-    //         //     use: [
-    //         //         {
-    //         //             loader: 'file-loader',
-    //         //             options: {
-    //         //                 name: '[folder]/[name].[ext]',
-    //         //                 outputPath: 'cursor/',
-    //         //                 publicPath: '../../assets/cursor/'
-    //         //             },
-    //         //         },
-    //         //     ],
-    //         // },
-    //     ]
-    // },
+    module: {
+        rules: [
+            {
+                test: /\.(woff(2)?|ttf|eot)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]',
+                }
+            },
+        ]
+    },
     output: {
-        // path: path.resolve(__dirname, 'patternlab/source/assets'),
         path: path.resolve(__dirname, 'patternlab/public/dist'),
-        publicPath: '../../',
+        // publicPath: '../../',
     }
 });

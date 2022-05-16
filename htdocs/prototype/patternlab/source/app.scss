@@ -1,4 +1,4 @@
-//
+///
 //    @tableOfContent
 //      1. Configuration
 //       1.1 Bootstrap functions, mixins, etc
@@ -15,7 +15,7 @@
 //
 
 // @section 1.1 Bootstrap functions, mixins, etc
-@import '_patterns/components/basic/basic-default-functions-and-variables.scss';
+@import '_patterns/components/basic/basic-default-functions-and-variables';
 
 // @section 1.2 Custom settings
 @import '_patterns/components/basic/basic-variables--css';
@@ -72,8 +72,5 @@
 //
 //// 2.3 Utilities
 ////@import '~bootstrap/scss/utilities/api';
-//
-//// end of voices.scss file
-body {
-    opacity: .5;
-}
+
+// end of app.scss file

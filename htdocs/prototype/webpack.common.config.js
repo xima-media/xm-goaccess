@@ -1,10 +1,10 @@
 const path = require('path');
 
 // plugins
-// const StylelintPlugin = require('stylelint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 // const ESLintPlugin = require('eslint-webpack-plugin');
-// const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -12,7 +12,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        // app: './patternlab/source/app.js'
         app: './patternlab/source/app.ts'
     },
     output: {
@@ -75,55 +74,44 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: './patternlab/source/_patterns/components/filter/assets/html', to: 'html/example'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/stream-wrapper/assets/html', to: 'html/example'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/favicon/assets', to: 'image/favicon'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/logo/assets', to: 'image/logo'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/image/assets', to: 'image/examples'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/onscreen-video/assets/video', to: 'video/onscreen'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/onscreen-video/assets/image', to: 'image/onscreen'
-        //         },
-        //         {
-        //             from: './patternlab/source/_patterns/components/onscreen-video/assets/subtitles', to: 'subtitles/onscreen'
-        //         }
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: './patternlab/source/_patterns/components/image/assets', to: 'image/examples'
+                },
+            ],
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css',
         }),
         // new CleanWebpackPlugin(),
-        // new StylelintPlugin({
-        //     files: ['**/*.scss'],
-        //     configFile: '.stylelintrc.yml',
-        //     emitWarning: true
-        // }),
+        new StylelintPlugin({
+            files: ['**/*.scss'],
+            configFile: '.stylelintrc.yml',
+            emitWarning: true,
+            failOnError: false
+        }),
         // new ESLintPlugin({
         //     extensions: ['js']
         // }),
-        // new SVGSpritemapPlugin('./patternlab/source/_patterns/components/icon/assets/**/*.svg', {
-        //     output: {
-        //         filename: 'icon/icon.min.svg'
-        //     },
-        //     sprite: {
-        //         prefix: 'icon-'
-        //     }
-        // }),
+        new SVGSpritemapPlugin('./patternlab/source/_patterns/components/icon/assets/**/*.svg', {
+            output: {
+                filename: 'icon/icon.min.svg'
+            },
+            sprite: {
+                prefix: 'icon-'
+            }
+        }),
     ],
+    performance: {
+        assetFilter: function (assetFilename) {
+            // don't check file size limit of images
+            if (assetFilename.endsWith('.jpg') || assetFilename.endsWith('.png')) {
+                return false
+            }
+            return true
+        },
+    },
     // optimization: {
     //     splitChunks: {
     //         cacheGroups: {
