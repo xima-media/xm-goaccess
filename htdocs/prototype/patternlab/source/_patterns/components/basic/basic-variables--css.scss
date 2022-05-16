@@ -1,6 +1,8 @@
 //
 //    @tableOfContent
 //      1. Basic variables css
+//      2. Colors
+//      3. Typography
 //
 
 
@@ -22,6 +24,14 @@
     --color-cyan: #{$color-cyan};
     --color-gray-100: #{$color-gray-100};
     --color-gray-900: #{$color-gray-900};
+
+
+    //
+    //   @section 3. Typography
+    //
+
+    --font-family-serif: #{$font-family-serif};
+    --font-family-sans-serif: #{$font-family-sans-serif};
 }
 
 // end of basic-variables-css.scss file

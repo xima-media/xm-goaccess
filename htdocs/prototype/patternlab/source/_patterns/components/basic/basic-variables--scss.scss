@@ -20,6 +20,12 @@ $color-gray-900: rgb(17, 17, 17); // #111;
 $color-white: #fff;
 
 // typography
-$font-headline: 'The Serif', sans-serif;
+$font-family-serif: 'The Serif', serif;
+$font-family-sans-serif: 'The Sans', sans-serif;
+
+$h1: (
+    font-size: 58px,
+    line-height: 70px
+);
 
 // end of basic-variables-scss.scss file
