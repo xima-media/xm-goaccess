@@ -1,7 +1,8 @@
 <!-- Component Start: navigation -->
 
 <nav class="navigation navigation--main" aria-label="Hauptnavigation">
-    <ul class="navigation__items fx--first">
+    <button class="navigation__button fx--toggle" type="button" aria-expanded="false" aria-controls="navigation__items--main">|||</button>
+    <ul id="navigation__items--main" class="navigation__items fx--first">
         {% for mainLink in prototype.navigation.main %}
             <li class="navigation__item fx--first">
                 <a class="navigation__link fx--first" href="{{ mainLink.url }}">{{ mainLink.text }}</a>

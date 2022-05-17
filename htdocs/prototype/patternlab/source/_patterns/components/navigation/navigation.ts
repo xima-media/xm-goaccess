@@ -25,12 +25,32 @@ import app from '../basic/basic'
  */
 
 class Navigation {
+    buttonToggleMenuEl
+
     constructor () {
-        this.init()
+        app.log('component "navigation" loaded')
+        this.buttonToggleMenuEl = document.querySelector('.navigation__button.fx--toggle')
+
+        if (this.buttonToggleMenuEl) {
+            // methods
+            this.events()
+        }
     }
 
-    init () {
-        app.log('component "navigation" loaded')
+    events () {
+        const self = this
+
+        // toggle debug menu
+        self.buttonToggleMenuEl.addEventListener('click', () => self.toggleMobileMenu())
+    }
+
+    toggleMobileMenu () {
+        const self = this
+
+        // @todo focus-trap hinzufügen
+        //self.buttonToggleMenuEl @todo togle aria-attributwe
+
+        document.documentElement.classList.toggle('fx--main-menu-open')
     }
 }
 
