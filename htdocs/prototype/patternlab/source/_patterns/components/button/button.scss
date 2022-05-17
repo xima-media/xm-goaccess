@@ -1,6 +1,8 @@
 //
 //    @tableOfContent
 //      1. Button default
+//      2. Button primary
+//      3. Button secondary
 //
 
 
@@ -9,8 +11,56 @@
 //
 
 .button {
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    position: relative;
+    display: inline-block;
+    padding: .375rem 1rem;
+    font-family: $font-family-sans-serif;
+    text-decoration: none;
+    border-radius: 2rem;
+    border: 2px solid transparent;
+
+    &.fx--focus,
+    &:focus {
+        border-color: var(--color-cyan);
+        box-shadow: 0 0 8px var(--color-cyan);
+    }
+}
+
+
+//
+//   @section 2. Button primary
+//
+
+.button--primary {
+    color: var(--color-white);
+    background-color: var(--color-gray-900);
+    border-color: var(--color-gray-900);
+
+    &.fx--hover,
+    &.fx--focus,
+    &:hover,
+    &:focus {
+        color: var(--color-gray-900);
+        background-color: var(--color-white);
+    }
+}
+
+
+//
+//   @section 3. Button secondary
+//
+
+.button--secondary {
+    color: var(--color-gray-900);
+    background-color: var(--color-primary-opacity-10);
+    border-color: var(--color-primary-opacity-10);
+
+    &.fx--hover,
+    &:hover {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
 }
 
 // end of button.scss file

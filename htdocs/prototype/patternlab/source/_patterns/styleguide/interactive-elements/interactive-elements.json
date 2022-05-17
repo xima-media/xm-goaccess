@@ -1,0 +1,33 @@
+{
+    "rows": [
+        {
+            "title": "Standard"
+        },
+        {
+            "title": "Hover",
+            "class": "fx--hover"
+        },
+        {
+            "title": "Fokus",
+            "class": "fx--focus"
+        }
+    ],
+    "elements": [
+        {
+            "title": "Primary Button",
+            "text": "Seite merken",
+            "class": "button button--primary"
+        },
+        {
+            "title": "Primary Button with Icon",
+            "text": "Seite merken",
+            "class": "button button--primary",
+            "icon": "twitter"
+        },
+        {
+            "title": "Profile Tag",
+            "text": "Lorem ipsum",
+            "class": "button button--secondary"
+        }
+    ]
+}

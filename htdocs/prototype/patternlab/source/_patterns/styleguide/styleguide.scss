@@ -8,6 +8,7 @@
 //      6. Texts
 //      7. Color combination - no image
 //      8. Color combination - with image
+//      9. Interactive elements
 //
 
 
@@ -247,6 +248,48 @@
         //&__header {  }
 
         //&__body {  }
+    }
+}
+
+
+//
+//    @section 9. Interactive elements
+//
+
+.styleguide--interactive-elements {
+    .styleguide {
+        &__sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        &__section {
+            &:nth-child(1) {
+                .styleguide {
+                    &__body {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        //&__header {  }
+
+        &__body {
+            opacity: 0;
+        }
     }
 }
 
