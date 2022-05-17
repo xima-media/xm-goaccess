@@ -23,9 +23,9 @@
 //    @section 2. List reset
 //
 
-@mixin list-reset() {
-    margin: 0;
-    padding: 0;
+@mixin list-reset($margin: 0, $padding: 0) {
+    margin: $margin;
+    padding: $padding;
     list-style: none;
 }
 

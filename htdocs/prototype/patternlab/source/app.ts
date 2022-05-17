@@ -11,6 +11,7 @@
  *       2.4 Typography
  *       2.5 Button
  *       2.6 Image
+ *       2.7 Navigation
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -43,8 +44,11 @@ import './_patterns/components/button/button'
 /** @section 2.6 Image */
 import './_patterns/components/image/image'
 
+/** @section 2.7 Navigation */
+import './_patterns/components/navigation/navigation'
+
 /** @section 2.99 Debug */
-// import './_patterns/components/debug/debug'
+import './_patterns/components/debug/debug'
 
 /**
  *     @section 3. Extensions javaScript

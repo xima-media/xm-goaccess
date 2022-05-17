@@ -58,6 +58,20 @@ export default {
             console.log('%c' + this.emoji(emoji) + ' ' + message, 'color: ' + hexColor)
         }
     },
+
+    /**
+     * Get url parameters
+     * @param url string
+     * @param parameter string
+     * @return value string
+     */
+    getUrlParamater (url:string, parameter:string) {
+        const urlSearchParams = new URLSearchParams(url)
+        const params = Object.fromEntries(urlSearchParams.entries())
+        const value = params[parameter]
+
+        return value
+    },
 }
 
 // end of basic.js

@@ -1,0 +1,27 @@
+<!-- Component Start: debug -->
+
+<div class="debug-menu">
+    <button class="debug-menu__button fx--toggle-menu" aria-label="Öffne Debug-Menü">
+        {% include '@components/icon/icon.twig' with { 'icon': 'option' } %}
+    </button>
+    <ul class="debug-menu__menu">
+        {% for page in prototype.pages %}
+            <li class="debug-menu__item">
+                <a class="debug-menu__button" href="{{ page.url }}">{{ page.text }}</a>
+            </li>
+        {% endfor %}
+        <li class="debug-menu__item">
+            <hr>
+        </li>
+        <li class="debug-menu__item">
+            <button type="button" class="debug-menu__button fx--grid">Grid</button>
+        </li>
+        <li class="debug-menu__item">
+            <button type="button" class="debug-menu__button fx--screenshots">Screenshots</button>
+        </li>
+    </ul>
+</div>
+
+<div class="debug-gridlines"></div>
+
+<!-- Components End: debug -->

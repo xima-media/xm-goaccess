@@ -1,0 +1,96 @@
+//
+//    @tableOfContent
+//      1. Debug menu
+//      2. Debug gridlines
+//
+
+
+//
+//   @section 1. Debug menu
+//
+
+.debug-menu {
+    display: none;
+    position: fixed;
+    right: .5rem;
+    bottom: .5rem;
+    z-index: 99;
+
+    .fx--debug & {
+        display: block;
+    }
+
+    &.fx--open {
+        .debug-menu {
+            &__menu {
+                display: block;
+            }
+        }
+    }
+
+    &__button {
+        display: grid;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding: .25rem 1rem;
+        white-space: nowrap;
+        text-decoration: none;
+        color: inherit;
+        background-color: transparent;
+        border: 0;
+
+        &.fx--toggle-menu {
+            @include size(2rem);
+
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--color-primary);
+        }
+    }
+
+    &__menu {
+        @include list-reset($padding: 1rem 0);
+
+        overflow: hidden;
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 100%;
+        background-color: var(--color-white);
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    }
+
+    //&__item {  }
+}
+
+
+//
+//   @section 2. Debug gridlines
+//
+
+.debug-gridlines {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -30px; // hide first line
+    z-index: 50;
+    background-image: linear-gradient(90deg, transparent  30px, rgba(199, 202, 209, .4) 30px, rgba(199, 202, 209, .4) 100%);
+    background-size: 8.33333%;
+    image-rendering: pixelated;
+    pointer-events: none;
+
+    .fx--debug-grid & {
+        display: block;
+    }
+}
+
+// end of debug.scss file

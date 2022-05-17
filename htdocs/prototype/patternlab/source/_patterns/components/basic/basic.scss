@@ -9,7 +9,7 @@
 //
 
 body {
-    font-family: 'The Serif', serif; // @todo als scss-variable ablegen
+    font-family: $font-family-sans-serif;
 }
 
 // end of basic.scss file
