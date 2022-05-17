@@ -1,7 +1,8 @@
 //
 //    @tableOfContent
 //      1. Image responsive
-//      2. Picture format
+//      2. Picture defaults
+//      3. Picture - no image
 //
 
 
@@ -15,95 +16,48 @@
 
 
 //
-//   @section 2. Picture format
+//   @section 2. Picture defaults
 //
 
 .picture {
-    //opacity: 0;
-    overflow: hidden;
+    //overflow: hidden;
     position: relative;
     margin: auto;
-    //transform: scale3d(.5, .5, 1);
-    //transition: opacity $transition-time * 2, transform $transition-time * 2;
+}
 
-    //&.--loaded {
-    //    &.--visible {
-    //        opacity: 1;
-    //        transform: scale3d(1, 1, 1);
-    //    }
-    //}
-    //
-    //&--cube {
-    //    &::before {
-    //        content: '';
-    //        display: block;
-    //        padding-top: 100%;
-    //    }
-    //
-    //    .picture__item {
-    //        overflow: hidden;
-    //        position: absolute;
-    //    }
-    //
-    //    &.picture--landscape {
-    //        .picture {
-    //            &__item {
-    //                bottom: 0;
-    //                left: 0;
-    //                width: 100%;
-    //
-    //                @include media-breakpoint-down(lg) {
-    //                    top: 0;
-    //                }
-    //            }
-    //
-    //            &__image {
-    //                @include media-breakpoint-down(lg) {
-    //                    object-fit: cover;
-    //                    height: 100%;
-    //                }
-    //            }
-    //        }
-    //    }
-    //
-    //    &.picture--square {
-    //        .picture__item {
-    //            top: 0;
-    //            left: 0;
-    //            width: 100%;
-    //        }
-    //    }
-    //
-    //    &.picture--portrait {
-    //        .picture {
-    //            &__item {
-    //                display: flex;
-    //                justify-content: center;
-    //                top: 0;
-    //                left: 50%;
-    //                height: 100%;
-    //                transform: translateX(-50%);
-    //
-    //                @include media-breakpoint-down(lg) {
-    //                    right: 0;
-    //                    left: 0;
-    //                    transform: none;
-    //                }
-    //            }
-    //
-    //            &__image {
-    //                width: auto;
-    //                height: 100%;
-    //
-    //                @include media-breakpoint-down(lg) {
-    //                    object-fit: cover;
-    //                    width: 100%;
-    //                    height: auto;
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
+
+//
+//   @section 3. Picture - no image
+//
+
+.picture--no-image {
+    .picture {
+        &__item {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            margin-left: 1.5rem;
+
+            &::after {
+                content: '';
+                opacity: .3;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: $color-white;
+            }
+        }
+
+        &__pattern {
+            display: block;
+            position: absolute;
+            right: 50%;
+            bottom: -1.5rem;
+            width: calc(50% + 1.5rem);
+            aspect-ratio: 1;
+        }
+    }
 }
 
 // end of image.scss file

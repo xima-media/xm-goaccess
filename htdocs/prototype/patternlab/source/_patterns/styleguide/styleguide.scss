@@ -6,6 +6,7 @@
 //      4. Image color
 //      5. Fonts
 //      6. Texts
+//      7. Color combination - no image
 //
 
 
@@ -166,6 +167,33 @@
             margin-bottom: 2rem;
         }
 
+        &__items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+        }
+
+        //&__header {  }
+
+        &__body {
+            padding: 0;
+        }
+    }
+}
+
+
+//
+//    @section 7. Color combination - no image
+//
+
+.styleguide--color-combination-no-image {
+    .styleguide {
         &__items {
             display: grid;
             grid-template-columns: 1fr 1fr;

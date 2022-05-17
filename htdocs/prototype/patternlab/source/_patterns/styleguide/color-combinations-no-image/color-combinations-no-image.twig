@@ -1,0 +1,28 @@
+<!-- Styleguide Start: color-combination-no-image -->
+
+<div class="styleguide styleguide--color-combination-no-image">
+    <ul class="styleguide__items">
+        {% for color in colors %}
+            <li class="styleguide__item">
+                <div class="styleguide__header">
+                    <div class="hero-headline">
+                        <h1 class="hero-headline__title">Color Test</h1>
+                        <div class="hero-headline__image">
+                            {% include '@components/image/image.twig' with {
+                                color: color.class
+                            } %}
+                        </div>
+                    </div>
+                </div>
+                <div class="styleguide__body visually-hidden">
+                    <p>
+                        <strong>Name</strong> {{ color.title }}<br />
+                        <strong>Farbe</strong> {{ color.color }}
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Styleguide End: color-combination-no-image -->

@@ -4,14 +4,15 @@
 //       1.1 The Serif
 //       1.2 The Sans
 //      2. Headlines
-//      3. Font styles
-//      4. Text styles
-//       4.1 Introtext
-//       4.2 Copy standard
-//       4.3 Copy small
-//       4.4 Copy x small
-//       4.5 Mainnavi
-//       4.6 Link
+//      3. Hero headlines
+//      4. Font styles
+//      5. Text styles
+//       5.1 Introtext
+//       5.2 Copy standard
+//       5.3 Copy small
+//       5.4 Copy x small
+//       5.5 Main navigation
+//       5.6 Link
 //
 
 
@@ -111,7 +112,30 @@ h6 {
 
 
 //
-//   @section 3. Font styles
+//   @section 3. Hero headlines
+//
+
+.hero-headline {
+    display: flex;
+    align-items: center;
+
+    &__title {
+        margin-left: -5rem;
+        position: relative;
+        z-index: 1;
+        flex: 1 1 auto;
+        color: var(--color-blue-900);
+    }
+
+    &__image {
+        order: -1;
+        width: 50%;
+    }
+}
+
+
+//
+//   @section 4. Font styles
 //
 
 .font-family-serif {
@@ -124,11 +148,11 @@ h6 {
 
 
 //
-//   @section 4. Text styles
+//   @section 5. Text styles
 //
 
 
-// @section 4.1 Introtext
+// @section 5.1 Introtext
 @mixin text-intro {
     font-family: var(--font-family-sans-serif);
     font-size: 24px;
@@ -140,7 +164,7 @@ h6 {
     @include text-intro;
 }
 
-// @section 4.2 Copy standard
+// @section 5.2 Copy standard
 @mixin text-copy-standard ($font-weight: false, $letter-spacing: false) {
     font-family: var(--font-family-sans-serif);
     font-size: 18px;
@@ -164,7 +188,7 @@ h6 {
     }
 }
 
-// @section 4.3 Copy small
+// @section 5.3 Copy small
 @mixin text-copy-small ($font-weight: false, $letter-spacing: false) {
     font-family: var(--font-family-sans-serif);
     font-size: 16px;
@@ -188,7 +212,7 @@ h6 {
     }
 }
 
-// @section 4.4 Copy x small
+// @section 5.4 Copy x small
 @mixin text-copy-x-small ($font-weight: false, $letter-spacing: false) {
     font-family: var(--font-family-sans-serif);
     font-size: 14px;
@@ -213,7 +237,7 @@ h6 {
     }
 }
 
-// @section 4.5 Mainnavi
+// @section 5.5 Main navigation
 @mixin text-main-navi {
     font-family: var(--font-family-sans-serif);
     font-size: 18px;
@@ -221,7 +245,7 @@ h6 {
     letter-spacing: .3px;
 }
 
-// @section 4.6 Link
+// @section 5.6 Link
 @mixin link-primary {
     font-family: var(--font-family-sans-serif);
     font-size: 18px;

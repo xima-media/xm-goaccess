@@ -1,0 +1,14 @@
+{
+    "colors": [
+        {
+            "title": "Hellgrün",
+            "color": "#A0B400",
+            "class": "background--green-light"
+        },
+        {
+            "title": "Magenta",
+            "color": "#E5007D",
+            "class": "background--magenta"
+        }
+    ]
+}
