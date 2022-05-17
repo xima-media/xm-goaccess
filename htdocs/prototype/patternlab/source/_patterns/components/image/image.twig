@@ -5,11 +5,12 @@
         {% if src %}
             <img
                 class="picture__image image--responsive"
-                src="{{ src|default('../../dist/image/examples/black-and-white.jpg') }}"
-                {#            {% if title %}data-tooltip="{{ title }}"{% endif %}#}
-                alt="{{ alt }}"
-                {#            {% if lazy == 0 %}{% else %}loading="lazy"{% endif %}#}
+                src="{{ src }}"
+                {% if alt %}{% else %}alt="{{ alt }}"{% endif %}
             >
+            {% if patternColor %}
+                <span class="picture__pattern {{ patternColor }}"></span>
+            {% endif %}
             {#    {% if copyright %}#}
             {#        {% include '@components/copyright/copyright.twig' with {#}
             {#            'text': copyright#}

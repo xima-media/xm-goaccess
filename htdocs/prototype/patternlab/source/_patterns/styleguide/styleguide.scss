@@ -7,6 +7,7 @@
 //      5. Fonts
 //      6. Texts
 //      7. Color combination - no image
+//      8. Color combination - with image
 //
 
 
@@ -24,6 +25,12 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         border-bottom: 1px solid var(--color-gray-900);
+    }
+
+    &__desc {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
     }
 
     //&__header {  }
@@ -211,6 +218,35 @@
         &__body {
             padding: 0;
         }
+    }
+}
+
+
+//
+//    @section 8. Color combination - with image
+//
+
+.styleguide--color-combination-with-image {
+    .styleguide {
+        &__sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        //&__section {  }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        //&__item {  }
+
+        //&__header {  }
+
+        //&__body {  }
     }
 }
 

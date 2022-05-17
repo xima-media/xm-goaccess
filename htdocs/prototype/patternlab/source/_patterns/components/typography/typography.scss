@@ -120,16 +120,22 @@ h6 {
     align-items: center;
 
     &__title {
+        margin-top: 1rem;
+        margin-bottom: 0;
         margin-left: -5rem;
         position: relative;
         z-index: 1;
         flex: 1 1 auto;
-        color: var(--color-blue-900);
     }
 
     &__image {
         order: -1;
+        flex: 0 0 50%;
         width: 50%;
+    }
+
+    &--with-image {
+        align-items: flex-start;
     }
 }
 
@@ -150,7 +156,6 @@ h6 {
 //
 //   @section 5. Text styles
 //
-
 
 // @section 5.1 Introtext
 @mixin text-intro {

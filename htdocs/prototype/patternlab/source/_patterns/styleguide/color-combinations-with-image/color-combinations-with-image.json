@@ -1,0 +1,35 @@
+{
+    "combinations": [
+        {
+            "title": "Grün und Magenta nur für große Texte verwenden:",
+            "colors": [
+                {
+                    "titleColorClass": "color--green",
+                    "patternColorClass": "pattern--green-light"
+                },
+                {
+                    "titleColorClass": "color--magenta",
+                    "patternColorClass": "pattern--magenta"
+                }
+            ]
+        },
+        {
+            "title": "Headlines in DKFZ Blau nur auf hellen Schraffuren:",
+            "colors": [
+                {
+                    "titleColorClass": "color--primary",
+                    "patternColorClass": "pattern--green-light"
+                }
+            ]
+        },
+        {
+            "title": "Headlines in Dunkelblau auf allen Schraffuren anwendbar:",
+            "colors": [
+                {
+                    "titleColorClass": "color--blue-900",
+                    "patternColorClass": "pattern--green"
+                }
+            ]
+        }
+    ]
+}
