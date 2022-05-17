@@ -35,6 +35,50 @@
                     "exampleText": "Hervorhebung im Text"
                 }
             ]
+        },
+        {
+            "styles": [
+                {
+                    "title": "Copy-Small",
+                    "class": "text-copy-small",
+                    "font": "TheSans Plain",
+                    "size": "16px",
+                    "lineHeight": "24px",
+                    "letterSpacing": "0",
+                    "exampleText": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt."
+                },
+                {
+                    "title": "Copy-Small-Bold",
+                    "class": "text-copy-small--bold",
+                    "font": "TheSans Bold",
+                    "size": "16px",
+                    "lineHeight": "24px",
+                    "letterSpacing": "0.6px",
+                    "exampleText": "Hervorhebung im Text"
+                }
+            ]
+        },
+        {
+            "styles": [
+                {
+                    "title": "Copy-X-Small",
+                    "class": "text-copy-x-small",
+                    "font": "TheSans Plain",
+                    "size": "14px",
+                    "lineHeight": "20px",
+                    "letterSpacing": "0.6px",
+                    "exampleText": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+                },
+                {
+                    "title": "Copy-X-Small-Bold",
+                    "class": "text-copy-x-small--bold",
+                    "font": "TheSans Bold",
+                    "size": "14px",
+                    "lineHeight": "20px",
+                    "letterSpacing": "0.6px",
+                    "exampleText": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+                }
+            ]
         }
     ]
 }

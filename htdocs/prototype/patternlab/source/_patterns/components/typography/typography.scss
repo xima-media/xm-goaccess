@@ -8,6 +8,8 @@
 //      4. Text styles
 //       4.1 Introtext
 //       4.2 Copy standard
+//       4.3 Copy small
+//       4.4 Copy x small
 //
 
 
@@ -64,6 +66,47 @@ h1 {
     line-height: map-get($h1, 'line-height');
 }
 
+.h2,
+h2 {
+    font-family: $font-family-serif;
+    font-size: map-get($h2, 'font-size');
+    line-height: map-get($h2, 'line-height');
+}
+
+.h3,
+h3 {
+    font-family: $font-family-serif;
+    font-size: map-get($h3, 'font-size');
+    line-height: map-get($h3, 'line-height');
+}
+
+.h4,
+h4 {
+    font-family: $font-family-serif;
+    font-size: map-get($h4, 'font-size');
+    line-height: map-get($h4, 'line-height');
+}
+
+.h5,
+h5 {
+    font-family: $font-family-serif;
+    font-size: map-get($h5, 'font-size');
+    line-height: map-get($h5, 'line-height');
+}
+
+.h6,
+h6 {
+    font-family: $font-family-serif;
+    font-size: map-get($h6, 'font-size');
+    line-height: map-get($h6, 'line-height');
+}
+
+.font-base {
+    font-family: $font-family-serif;
+    font-size: map-get($font-base, 'font-size');
+    line-height: map-get($font-base, 'line-height');
+}
+
 
 //
 //   @section 3. Font styles
@@ -116,6 +159,55 @@ h1 {
 
     &--bold {
         @include text-copy-standard(700, .3px);
+    }
+}
+
+// @section 4.3 Copy small
+@mixin text-copy-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 16px;
+    line-height: 24px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+
+.text-copy-small {
+    @include text-copy-small;
+
+    &--bold {
+        @include text-copy-small(700, .6px);
+    }
+}
+
+// @section 4.4 Copy x small
+@mixin text-copy-x-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .6px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+
+.text-copy-x-small {
+    @include text-copy-x-small;
+
+    &--bold {
+        @include text-copy-x-small(700, .6px);
     }
 }
 
