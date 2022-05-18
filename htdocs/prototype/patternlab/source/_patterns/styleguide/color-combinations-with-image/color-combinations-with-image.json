@@ -19,6 +19,14 @@
                 {
                     "titleColorClass": "color--primary",
                     "patternColorClass": "pattern--green-light"
+                },
+                {
+                    "titleColorClass": "color--primary",
+                    "patternColorClass": "pattern--orange"
+                },
+                {
+                    "titleColorClass": "color--primary",
+                    "patternColorClass": "pattern--cyan"
                 }
             ]
         },
@@ -28,6 +36,22 @@
                 {
                     "titleColorClass": "color--blue-900",
                     "patternColorClass": "pattern--green"
+                },
+                {
+                    "titleColorClass": "color--blue-900",
+                    "patternColorClass": "pattern--green-light"
+                },
+                {
+                    "titleColorClass": "color--blue-900",
+                    "patternColorClass": "pattern--orange"
+                },
+                {
+                    "titleColorClass": "color--blue-900",
+                    "patternColorClass": "pattern--magenta"
+                },
+                {
+                    "titleColorClass": "color--blue-900",
+                    "patternColorClass": "pattern--cyan"
                 }
             ]
         }
