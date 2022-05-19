@@ -1,6 +1,7 @@
 //
 //    @tableOfContent
 //      1. Basic
+//      2. Startpage layout
 //
 
 
@@ -23,9 +24,12 @@ body {
     // background-color: #b3d4fc;
 }
 
-// @todo nur ein Test
-.foo {
-    //overflow: hidden;
+
+//
+//   @section 2. Startpage layout
+//
+
+.layout {
     // https://stackoverflow.com/questions/55851493/break-out-with-css-grid
     display: grid;
     grid-template-columns:
@@ -38,71 +42,88 @@ body {
     padding-top: 11.25rem; // @todo variable
 
     @include media-breakpoint-up(lg) {
-        gap: 5.625rem;
+        gap: 4rem;
     }
 
-    > div {
-        position: relative;
-        //padding: 1rem;
-        //background-color: var(--color-white);
-        //border: 1px solid #ccc;
-    }
-
-    .normal {
+    &__item {
         grid-column: main;
-    }
+        position: relative;
 
-    .wide {
-        grid-column: full;
-    }
-
-    .has-bg-color {
-        &::after {
-            content: '';
-            position: absolute;
-            top: -7rem;
-            bottom: -7rem;
-            left: 50%;
-            z-index: -1;
-            width: calc(100vw - var(--scrollbar-width)); // @todo minus
-            background-color: yellow;
-            transform: translateX(-50%);
+        &.fx--expanded {
+            grid-column: full;
         }
-    }
 
-    .has-bg-image {
-        //&::before {
-        //    content: '';
-        //    position: absolute;
-        //    top: 0;
-        //    right: 0;
-        //    bottom: 0;
-        //    left: 0;
-        //    background-color: var(--color-white);
-        //}
+        &[class*='background-'] {
+            background-color: transparent;
 
-        &::after {
-            content: '';
-            position: absolute;
-            top: -7rem;
-            bottom: -7rem;
-            left: 50%;
-            z-index: -1;
-            width: calc(100vw - var(--scrollbar-width)); // @todo minus
-            background-image: inherit;
-            transform: translateX(-50%);
-            background-size: cover;
-            background-position: 50% 50%;
+            &::after {
+                content: '';
+                position: absolute;
+                top: -10rem;
+                bottom: -10rem;
+                left: 50%;
+                z-index: -1;
+                width: calc(100vw - var(--scrollbar-width)); // @todo minus
+                transform: translateX(-50%);
+            }
+        }
+
+        &.background--orange {
+            &::after {
+                background-color: var(--color-orange);
+            }
+        }
+
+        &.background--yellow {
+            &::after {
+                background-color: var(--color-yellow);
+            }
+        }
+
+        &.background--cyan {
+            &::after {
+                background-color: var(--color-cyan);
+            }
+        }
+
+        &.background--image {
+            background-size: 0; // hide image
+
+            &::after {
+                background-image: inherit;
+                background-position: 50% 50%;
+                background-size: cover;
+                transform: translateX(-50%);
+            }
         }
     }
 }
 
+// @todo umbennen
+[class*="foo--"] {
+    display: grid;
+    gap: 1rem;
+}
+
+.foo--50-50 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.foo--75-25 {
+    grid-template-columns: 2fr 1fr;
+}
+
+.foo--25-75 {
+    grid-template-columns: 1fr 2fr;
+}
+
+// @todo umbennen
 .bar {
     position: relative;
     z-index: 1;
     padding: 1rem;
     background-color: rgba(255,255,255,.8); // @todo variable
-    backdrop-filter: blur(10px); // @todo variable
+    backdrop-filter: blur(20px); // @todo variable
 }
 
 // end of basic.scss file
