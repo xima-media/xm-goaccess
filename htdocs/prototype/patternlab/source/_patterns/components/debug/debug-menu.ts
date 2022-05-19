@@ -1,5 +1,5 @@
 /**
- *    Debug
+ *    Debug menu
  *
  *    @tableofcontent
  *      1. Dependencies
@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './debug.scss'
+import './debug-menu.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
@@ -24,11 +24,11 @@ import app from '../basic/basic'
  *     @section 2. Class
  */
 
-class Debug {
+class DebugMenu {
     // @todo variablen wegbekommen
     debugEl
     buttonToggleMenuEl
-    buttonGridEl
+    buttonToggleSubMenuEl
 
     constructor () {
         app.log('component "debug" loaded')
@@ -39,30 +39,35 @@ class Debug {
         if (app.debug) {
             document.documentElement.classList.add('fx--debug')
             this.debugEl = document.querySelector('.debug-menu')
-            this.buttonToggleMenuEl = document.querySelector('.debug-menu__button.fx--toggle-menu')
-            this.buttonGridEl = document.querySelector('.debug-menu__button.fx--grid')
+            this.buttonToggleMenuEl = document.querySelector<HTMLButtonElement>('.debug-menu__button.fx--toggle-menu')
+            this.buttonToggleSubMenuEl = document.querySelectorAll<HTMLButtonElement>('.fx--toggle-sub-menu')
 
             // methods
             this.events()
         }
     }
 
+    /**
+     * Events
+     */
     events () {
         const self = this
 
-        // toggle debug menu
-        self.buttonToggleMenuEl.addEventListener('click', () => self.toggleDebugMenu())
+        // toggle: debug menu
+        self.buttonToggleMenuEl.addEventListener('click', () => self.toggleMenuItems(self.buttonToggleMenuEl))
 
-        // toggle grid
-        self.buttonGridEl.addEventListener('click', () => self.toggleGrid())
+        // toggle: submenu item
+        self.buttonToggleSubMenuEl.forEach(buttonEl => (
+            buttonEl.addEventListener('click', () => self.toggleMenuItems(buttonEl))
+        ))
     }
 
-    toggleDebugMenu () {
-        this.debugEl.classList.toggle('fx--open')
-    }
-
-    toggleGrid () {
-        document.documentElement.classList.toggle('fx--debug-grid')
+    /**
+     * Open/close menu items
+     */
+    toggleMenuItems (targetEl: HTMLButtonElement) {
+        // toggle 'open' class
+        targetEl.classList.toggle('fx--open')
     }
 }
 
@@ -70,6 +75,6 @@ class Debug {
  *     @section 3. Export class
  */
 
-export default (new Debug())
+export default (new DebugMenu())
 
-// end of debug.js
+// end of debug-menu.js

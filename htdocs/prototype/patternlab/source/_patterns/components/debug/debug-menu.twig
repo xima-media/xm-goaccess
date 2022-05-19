@@ -1,0 +1,57 @@
+<!-- Component Start: debug-menu -->
+
+<div class="debug-menu">
+    <button class="debug-menu__button fx--toggle-menu" aria-label="Öffne Debug-Menü">
+        {% include '@components/icon/icon.twig' with { 'icon': 'option' } %}
+    </button>
+    <ul class="debug-menu__menu">
+        {% for page in prototype.pages %}
+            <li class="debug-menu__item">
+                <a class="debug-menu__button" href="{{ page.url }}">{{ page.text }}</a>
+            </li>
+        {% endfor %}
+        <li class="debug-menu__divider" aria-hidden="true">
+            <hr>
+        </li>
+        <li class="debug-menu__item">
+            <button type="button" class="debug-menu__button fx--grid">Grid</button>
+        </li>
+        <li class="debug-menu__item">
+            <button class="debug-menu__button fx--toggle-sub-menu" type="button">Screenshots</button>
+            <div class="debug-menu__menu">
+                <ul class="debug-menu__items">
+                    <li class="debug-menu__item">
+                        <div class="debug-menu__field">
+                            <label for="change-screenshot-toggle" class="debug-menu__label">Aktivieren</label>
+                            <input id="change-screenshot-toggle" class="debug-menu__input fx--change-screenshot-visibility" type="checkbox">
+                        </div>
+                    </li>
+                    <li class="debug-menu__item">
+                        <div class="debug-menu__field">
+                            <label for="change-screenshot-opacity" class="debug-menu__label">Transparenz</label>
+                            <input id="change-screenshot-opacity" class="debug-menu__input fx--change-screenshot-opacity" type="range" min="0" max="100" value="50" list="change-screenshot-opacity-list">
+                            <datalist id="change-screenshot-opacity-list">
+                                <option value="50">
+                            </datalist>
+                        </div>
+                    </li>
+                    <li class="debug-menu__item">
+                        <div class="debug-menu__field">
+                            <label for="change-screenshot-position" class="debug-menu__label">Position</label>
+                            <input id="change-screenshot-position" class="debug-menu__input fx--change-screenshot-position" type="range" min="0" max="100" value="0" list="change-screenshot-position-list">
+                            <datalist id="change-screenshot-position-list">
+                                <option value="0">
+                                <option value="25">
+                                <option value="50">
+                                <option value="75">
+                                <option value="100">
+                            </datalist>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- Components End: debug-menu -->

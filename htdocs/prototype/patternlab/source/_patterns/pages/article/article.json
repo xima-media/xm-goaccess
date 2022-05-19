@@ -1,5 +1,8 @@
 {
     "prototype": {
-        "title": "Inhaltsseite"
+        "title": "Inhaltsseite",
+        "debug": {
+            "screenshot": "article--01"
+        }
     }
 }

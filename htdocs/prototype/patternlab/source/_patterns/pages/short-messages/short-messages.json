@@ -1,5 +1,8 @@
 {
     "prototype": {
-        "title": "Kurzmeldungen"
+        "title": "Kurzmeldungen",
+        "debug": {
+            "screenshot": "short-messages--list-view"
+        }
     }
 }

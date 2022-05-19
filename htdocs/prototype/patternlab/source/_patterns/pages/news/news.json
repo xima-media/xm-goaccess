@@ -1,5 +1,8 @@
 {
     "prototype": {
-        "title": "News"
+        "title": "News",
+        "debug": {
+            "screenshot": "news--list-view"
+        }
     }
 }

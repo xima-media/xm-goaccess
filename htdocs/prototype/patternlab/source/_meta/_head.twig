@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="{{ htmlClass }}" lang="de">
+<html class="{{ htmlClass }}" lang="de" {% if prototype.debug.screenshot %}data-debug-screenshot="{{ prototype.debug.screenshot }}"{% endif %}>
 <head>
   <title>{{ prototype.title }} | DKFZ Intranet</title>
   <meta charset="UTF-8">

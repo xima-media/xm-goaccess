@@ -79,6 +79,9 @@ module.exports = {
                 {
                     from: './patternlab/source/_patterns/components/image/assets', to: 'image/examples'
                 },
+                {
+                    from: './patternlab/source/_patterns/components/debug/assets', to: 'image/debug'
+                },
             ],
         }),
         new MiniCssExtractPlugin({

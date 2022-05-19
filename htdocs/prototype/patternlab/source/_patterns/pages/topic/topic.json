@@ -1,5 +1,8 @@
 {
     "prototype": {
-        "title": "Themenseite"
+        "title": "Themenseite",
+        "debug": {
+            "screenshot": "topic"
+        }
     }
 }

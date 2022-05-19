@@ -49,7 +49,9 @@ import './_patterns/components/image/image'
 import './_patterns/components/navigation/navigation'
 
 /** @section 2.99 Debug */
-import './_patterns/components/debug/debug'
+import './_patterns/components/debug/debug-menu'
+import './_patterns/components/debug/debug-gridlines'
+import './_patterns/components/debug/debug-screenshot'
 
 /**
  *     @section 3. Extensions javaScript
