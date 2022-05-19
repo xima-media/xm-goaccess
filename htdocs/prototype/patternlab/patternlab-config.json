@@ -1,7 +1,7 @@
 {
   "cacheBust": true,
   "cleanPublic": true,
-  "defaultPattern": "styleguide",
+  "defaultPattern": "viewall-styleguide-all",
   "defaultShowPatternInfo": false,
   "ishControlsHide": {
     "s": false,

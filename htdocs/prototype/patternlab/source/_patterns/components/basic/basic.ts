@@ -27,6 +27,7 @@ export default {
     lang: document.documentElement.lang,
     // transitionTime: 300, // @todo aus CSS auslesen
     transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
+    scrollbarWidth: window.innerWidth - document.documentElement.clientWidth,
     color: {
         white: getComputedStyle(document.documentElement).getPropertyValue('--color-white'),
         black: getComputedStyle(document.documentElement).getPropertyValue('--color-black'),

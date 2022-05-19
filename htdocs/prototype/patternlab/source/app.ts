@@ -28,6 +28,7 @@ import './app.scss'
  */
 /** @section 2.1 Basic */
 import './_patterns/components/basic/basic'
+import './_patterns/components/basic/basic-init'
 
 /** @section 2.2 Color */
 import './_patterns/components/color/color'

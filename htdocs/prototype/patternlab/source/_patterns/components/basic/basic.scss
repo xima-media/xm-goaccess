@@ -10,11 +10,99 @@
 
 body {
     font-family: $font-family-sans-serif;
+    background-color: $color-gray-100;
 }
 
 .app {
-    max-width: $container-max-widths;
+    position: relative;
+    z-index: 1;
+    max-width: $container-expand-widths + 1rem;
     margin: auto;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    // background-color: #b3d4fc;
+}
+
+// @todo nur ein Test
+.foo {
+    //overflow: hidden;
+    // https://stackoverflow.com/questions/55851493/break-out-with-css-grid
+    display: grid;
+    grid-template-columns:
+        [full-start] minmax(0, 1fr)
+        [main-start] minmax(0, $container-medium-widths)
+        [main-end] minmax(0, 1fr)
+        [full-end];
+    gap: 2rem 0;
+    margin: auto;
+    padding-top: 11.25rem; // @todo variable
+
+    @include media-breakpoint-up(lg) {
+        gap: 5.625rem;
+    }
+
+    > div {
+        position: relative;
+        //padding: 1rem;
+        //background-color: var(--color-white);
+        //border: 1px solid #ccc;
+    }
+
+    .normal {
+        grid-column: main;
+    }
+
+    .wide {
+        grid-column: full;
+    }
+
+    .has-bg-color {
+        &::after {
+            content: '';
+            position: absolute;
+            top: -7rem;
+            bottom: -7rem;
+            left: 50%;
+            z-index: -1;
+            width: calc(100vw - var(--scrollbar-width)); // @todo minus
+            background-color: yellow;
+            transform: translateX(-50%);
+        }
+    }
+
+    .has-bg-image {
+        //&::before {
+        //    content: '';
+        //    position: absolute;
+        //    top: 0;
+        //    right: 0;
+        //    bottom: 0;
+        //    left: 0;
+        //    background-color: var(--color-white);
+        //}
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -7rem;
+            bottom: -7rem;
+            left: 50%;
+            z-index: -1;
+            width: calc(100vw - var(--scrollbar-width)); // @todo minus
+            background-image: inherit;
+            transform: translateX(-50%);
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+    }
+}
+
+.bar {
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
+    background-color: rgba(255,255,255,.8); // @todo variable
+    backdrop-filter: blur(10px); // @todo variable
 }
 
 // end of basic.scss file
