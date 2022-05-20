@@ -53,18 +53,12 @@ body {
             grid-column: full;
         }
 
-        &[class*='background-'] {
+        &.background--expanded {
             background-color: transparent;
 
             &::after {
-                content: '';
-                position: absolute;
                 top: -10rem;
                 bottom: -10rem;
-                left: 50%;
-                z-index: -1;
-                width: calc(100vw - var(--scrollbar-width)); // @todo minus
-                transform: translateX(-50%);
             }
         }
 

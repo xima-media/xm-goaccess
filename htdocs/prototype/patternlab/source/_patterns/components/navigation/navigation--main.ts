@@ -1,5 +1,5 @@
 /**
- *    Navigation
+ *    Main navigation
  *
  *    @tableofcontent
  *      1. Dependencies
@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './navigation.scss'
+import './navigation--main.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
@@ -24,11 +24,11 @@ import app from '../basic/basic'
  *     @section 2. Class
  */
 
-class Navigation {
+class NavigationMain {
     buttonToggleMenuEl
 
     constructor () {
-        app.log('component "navigation" loaded')
+        app.log('component "main navigation" loaded')
         this.buttonToggleMenuEl = document.querySelector('.navigation__button.fx--toggle')
 
         if (this.buttonToggleMenuEl) {
@@ -37,6 +37,9 @@ class Navigation {
         }
     }
 
+    /**
+     * Events
+     */
     events () {
         const self = this
 
@@ -44,8 +47,11 @@ class Navigation {
         self.buttonToggleMenuEl.addEventListener('click', () => self.toggleMobileMenu())
     }
 
+    /**
+     * Toggle mobile menu
+     */
     toggleMobileMenu () {
-        const self = this
+        // const self = this
 
         // @todo focus-trap hinzufügen
         //self.buttonToggleMenuEl @todo togle aria-attributwe
@@ -58,6 +64,6 @@ class Navigation {
  *     @section 3. Export class
  */
 
-export default (new Navigation())
+export default (new NavigationMain())
 
-// end of navigation.js
+// end of navigation--main.js

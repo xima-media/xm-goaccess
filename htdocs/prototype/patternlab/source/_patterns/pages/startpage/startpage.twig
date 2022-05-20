@@ -1,8 +1,10 @@
 <div class="app">
+    {% include '@components/header/header.twig' %}
+
     <h1>Startseite</h1>
 
     <div class="layout">
-        <div class="layout__item background--image" style="background-image: url('https://picsum.photos/id/700/1024/768');"><div class="bar">Normal breiter content</div></div>
+        <div class="layout__item background--image background--expanded" style="background-image: url('https://picsum.photos/id/700/1024/768');"><div class="bar">Normal breiter content</div></div>
         <div class="layout__item fx--expanded">
             <div class="foo--100">
                 <div class="bar">
@@ -37,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="layout__item background--cyan">
+        <div class="layout__item background--cyan background--expanded">
             <div class="foo--100">
                 <div class="bar">
                     <h2>Unser Service für Sie</h2>
@@ -111,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <div class="layout__item background--yellow">
+        <div class="layout__item background--yellow background--expanded">
             <div class="foo--75-25">
                 <div class="bar">
                     <h2>Offene Stellen</h2>
@@ -149,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <div class="layout__item background--image" style="background-image: url('https://picsum.photos/id/800/1024/768');">
+        <div class="layout__item background--image background--expanded" style="background-image: url('https://picsum.photos/id/800/1024/768');">
             <div class="bar">
                 <h2>DKFZ auf Twitter</h2>
                 <p>
@@ -199,7 +201,7 @@
                 </div>
             </div>
         </div>
-        <div class="layout__item background--orange">
+        <div class="layout__item background--orange background--expanded">
             <div class="foo">
                 <div class="bar">
                     <h2>Helmholz Newsroom</h2>

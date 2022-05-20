@@ -73,6 +73,54 @@ export default {
 
         return value
     },
+
+    /**
+     * Check if an element is in viewport
+     * @param checkEl Element
+     * @param targetForCssClassEl Element
+     * @param cssClass string
+     * @param once boolean
+     */
+    inViewport (checkEl:Element, targetForCssClassEl:Element = checkEl, cssClass:string = 'fx--visible', once:boolean = false) {
+        const app = this
+
+        // observe
+        new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    app.log('visible')
+
+                    if (targetForCssClassEl === checkEl) {
+                        entry.target.classList.add(cssClass)
+                    } else {
+                        targetForCssClassEl.classList.add(cssClass)
+                    }
+
+                    // create custom: reset timeout
+                    const event = new Event('viewport:in', { bubbles: true })
+                    entry.target.dispatchEvent(event)
+                } else {
+                    app.log('not visible')
+
+                    if (!once) {
+                        if (targetForCssClassEl === checkEl) {
+                            entry.target.classList.remove(cssClass)
+                        } else {
+                            targetForCssClassEl.classList.remove(cssClass)
+                        }
+                    }
+
+                    // create custom: reset timeout
+                    const event = new Event('viewport:out', { bubbles: true })
+                    entry.target.dispatchEvent(event)
+                }
+            })
+        }, {
+            // root: document,
+            rootMargin: '0px 0px 0px 0px',
+            threshold: 0
+        }).observe(checkEl)
+    },
 }
 
 // end of basic.js

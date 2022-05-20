@@ -1,0 +1,34 @@
+//
+//    @tableOfContent
+//      1. Language switcher
+//
+
+
+//
+//   @section 1. Language switcher
+//
+
+.language-switcher {
+    margin-left: -.5rem; // @todo eventuell eher am header__left
+
+    &__items {
+        @include list-reset;
+
+        display: flex;
+    }
+
+    &__item {
+
+    }
+
+    &__link {
+        display: block;
+        padding: .5rem;
+        font-size: 14px; // @todo variable
+        color: inherit;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+}
+
+// end of language-switcher.scss file

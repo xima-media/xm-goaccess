@@ -5,13 +5,17 @@
  *      1. Default dependencies
  *       1.1 Global CSS
  *      2. Components
- *       2.1 App
+ *       2.1 Basic
  *       2.2 Color
  *       2.3 Icon
  *       2.4 Typography
  *       2.5 Button
  *       2.6 Image
- *       2.7 Navigation
+ *       2.7 Logo
+ *       2.8 Header
+ *       2.9 Main navigation
+ *       2.10 Sub navigation
+ *       2.11 Language switcher
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -45,8 +49,20 @@ import './_patterns/components/button/button'
 /** @section 2.6 Image */
 import './_patterns/components/image/image'
 
-/** @section 2.7 Navigation */
-import './_patterns/components/navigation/navigation'
+/** @section 2.7 Logo */
+import './_patterns/components/logo/logo'
+
+/** @section 2.8 Header */
+import './_patterns/components/header/header'
+
+/** @section 2.9 Main navigation */
+import './_patterns/components/navigation/navigation--main'
+
+/** @section 2.10 Sub navigation */
+import './_patterns/components/navigation/navigation--sub'
+
+/** @section 2.11 Language switcher */
+import './_patterns/components/language-switcher/language-switcher'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

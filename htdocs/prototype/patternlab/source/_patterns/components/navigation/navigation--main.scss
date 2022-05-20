@@ -9,6 +9,23 @@
 //
 
 .navigation--main {
+    position: relative;
+    max-width: $container-medium-widths;
+    margin: auto;
+    background-color: var(--color-white);
+
+    &::after {
+        @include background-pattern($color-primary);
+
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        right: -1rem;
+        left: -1rem;
+        z-index: -1;
+        height: 3rem;
+    }
+
     .navigation {
         &__button {
             @include media-breakpoint-up(xl) {
@@ -97,7 +114,7 @@
             text-decoration: none;
 
             &.fx--first {
-                padding: .5rem 2rem;
+                padding: 1.125rem 2.5rem;
                 font-size: 18px;
 
                 &:hover,
@@ -129,4 +146,4 @@
     }
 }
 
-// end of navigation.scss file
+// end of navigation--main.scss file

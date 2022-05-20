@@ -133,6 +133,20 @@
     }
 }
 
+.background--expanded {
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        z-index: -1;
+        width: calc(100vw - var(--scrollbar-width)); // @todo minus
+        background-color: inherit;
+        transform: translateX(-50%);
+    }
+}
+
 
 //
 //   @section 3. Color pattern

@@ -1,0 +1,22 @@
+<!-- Component Start: header -->
+
+<header class="header background--expanded">
+    <span class="header__sticky-trigger"></span>
+    <div class="header__meta background--expanded">
+        <div class="header__center">
+            {% include '@components/logo/logo.twig' %}
+        </div>
+        <div class="header__left">
+            {% include '@components/language-switcher/language-switcher.twig' %}
+            <a href="#notfall">Notfall</a>
+        </div>
+        <div class="header__right">
+            {% include '@components/navigation/navigation--sub.twig' %}
+        </div>
+    </div>
+    <div class="header__navigation">
+        {% include '@components/navigation/navigation--main.twig' %}
+    </div>
+</header>
+
+<!-- Components End: header -->

@@ -1,0 +1,27 @@
+//
+//    @tableOfContent
+//      1. Sub navigation
+//
+
+
+//
+//   @section 1. Sub navigation
+//
+
+.navigation--sub {
+    .navigation {
+        &__items {
+            @include list-reset;
+
+            display: flex;
+        }
+
+        &__link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+}
+
+// end of navigation--sub.scss file
