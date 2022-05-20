@@ -1,0 +1,24 @@
+//
+//    @tableOfContent
+//      1. Footer
+//
+
+
+//
+//   @section 1. Footer
+//
+
+.footer {
+    padding: 1.5rem 0;
+    color: var(--color-white);
+    background: var(--color-primary);
+
+    .list-inline {
+        a {
+            color: var(--color-white);
+            text-decoration: none;
+        }
+    }
+}
+
+// end of footer.scss file

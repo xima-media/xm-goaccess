@@ -120,4 +120,16 @@ body {
     backdrop-filter: blur(20px); // @todo variable
 }
 
+//
+ul > li {
+    list-style: none;
+}
+
+.list-inline {
+    display: inline-flex;
+
+    li {
+        margin-right: 1rem;
+    }
+}
 // end of basic.scss file

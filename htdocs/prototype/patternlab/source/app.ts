@@ -16,6 +16,7 @@
  *       2.9 Main navigation
  *       2.10 Sub navigation
  *       2.11 Language switcher
+ *       2.12 Footer
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -63,6 +64,9 @@ import './_patterns/components/navigation/navigation--sub'
 
 /** @section 2.11 Language switcher */
 import './_patterns/components/language-switcher/language-switcher'
+
+/** @section 2.12 Footer */
+import './_patterns/components/footer/footer'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
