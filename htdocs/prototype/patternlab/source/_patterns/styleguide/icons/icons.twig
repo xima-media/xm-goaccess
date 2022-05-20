@@ -6,7 +6,7 @@
         {% for icon in icons %}
             <li class="styleguide__item">
                 <div class="styleguide__header">
-                    {% include '@components/icon/icon.twig' with { 'icon': icon.name } %}
+                    {% include '@components/icon/icon.twig' with { icon: icon.name } %}
                 </div>
             </li>
         {% endfor %}

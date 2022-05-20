@@ -26,13 +26,7 @@ import app from '../basic/basic'
 
 class Button {
     constructor () {
-        this.init()
-    }
-
-    init () {
         app.log('component "button" loaded')
-        console.log(app.transitionTime);
-        console.log(app.color.primary);
     }
 }
 

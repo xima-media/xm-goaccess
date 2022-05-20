@@ -27,13 +27,11 @@ import app from '../basic/basic'
 class Header {
     headerEL
     headerStickyTriggerEL
-    // navigationEL
 
     constructor () {
         app.log('component "header" loaded')
         this.headerEL = document.querySelector<HTMLElement>('.header')
         this.headerStickyTriggerEL = this.headerEL.querySelector<HTMLElement>('.header__sticky-trigger')
-        // this.navigationEL = document.querySelector<HTMLElement>('.navigation--main')
 
         // methods
         this.stickyHeader()

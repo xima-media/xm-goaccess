@@ -9,13 +9,16 @@
 //
 
 .footer {
+    position: relative;
+    max-width: $container-default-widths;
+    margin: auto;
     padding: 1.5rem 0;
     color: var(--color-white);
     background: var(--color-primary);
 
     .list-inline {
         a {
-            color: var(--color-white);
+            color: inherit;
             text-decoration: none;
         }
     }

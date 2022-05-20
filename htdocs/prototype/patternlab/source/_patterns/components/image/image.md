@@ -1,10 +1,4 @@
 ---
 title: Image
-state: inreview
+state: incomplete
 ---
-
-### Funktionsweise
-Bilder können verschiedene Ausrichtungen haben, das wird mit verschiedenen CSS-Klassen realisiert.
-
-### Design
-@todo

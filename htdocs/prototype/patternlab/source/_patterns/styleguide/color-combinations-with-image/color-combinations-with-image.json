@@ -5,11 +5,11 @@
             "colors": [
                 {
                     "titleColorClass": "color--green",
-                    "patternColorClass": "pattern--green-light"
+                    "patternColorClass": "green-light"
                 },
                 {
                     "titleColorClass": "color--magenta",
-                    "patternColorClass": "pattern--magenta"
+                    "patternColorClass": "magenta"
                 }
             ]
         },
@@ -18,15 +18,15 @@
             "colors": [
                 {
                     "titleColorClass": "color--primary",
-                    "patternColorClass": "pattern--green-light"
+                    "patternColorClass": "green-light"
                 },
                 {
                     "titleColorClass": "color--primary",
-                    "patternColorClass": "pattern--orange"
+                    "patternColorClass": "orange"
                 },
                 {
                     "titleColorClass": "color--primary",
-                    "patternColorClass": "pattern--cyan"
+                    "patternColorClass": "cyan"
                 }
             ]
         },
@@ -35,23 +35,23 @@
             "colors": [
                 {
                     "titleColorClass": "color--blue-900",
-                    "patternColorClass": "pattern--green"
+                    "patternColorClass": "green"
                 },
                 {
                     "titleColorClass": "color--blue-900",
-                    "patternColorClass": "pattern--green-light"
+                    "patternColorClass": "green-light"
                 },
                 {
                     "titleColorClass": "color--blue-900",
-                    "patternColorClass": "pattern--orange"
+                    "patternColorClass": "orange"
                 },
                 {
                     "titleColorClass": "color--blue-900",
-                    "patternColorClass": "pattern--magenta"
+                    "patternColorClass": "magenta"
                 },
                 {
                     "titleColorClass": "color--blue-900",
-                    "patternColorClass": "pattern--cyan"
+                    "patternColorClass": "cyan"
                 }
             ]
         }

@@ -1,5 +1,5 @@
 /**
- *    Icon
+ *    Quote
  *
  *    @tableofcontent
  *      1. Dependencies
@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './icon.scss'
+import './quote.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
@@ -24,9 +24,9 @@ import app from '../basic/basic'
  *     @section 2. Class
  */
 
-class Icon {
+class Quote {
     constructor () {
-        app.log('component "icon" loaded')
+        app.log('component "quote" loaded')
     }
 }
 
@@ -34,6 +34,6 @@ class Icon {
  *     @section 3. Export class
  */
 
-export default (new Icon())
+export default (new Quote())
 
-// end of icon.js
+// end of quote.js

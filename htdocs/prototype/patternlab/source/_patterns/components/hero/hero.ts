@@ -1,5 +1,5 @@
 /**
- *    Icon
+ *    Hero
  *
  *    @tableofcontent
  *      1. Dependencies
@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './icon.scss'
+import './hero.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
@@ -24,9 +24,9 @@ import app from '../basic/basic'
  *     @section 2. Class
  */
 
-class Icon {
+class Hero {
     constructor () {
-        app.log('component "icon" loaded')
+        app.log('component "hero" loaded')
     }
 }
 
@@ -34,6 +34,6 @@ class Icon {
  *     @section 3. Export class
  */
 
-export default (new Icon())
+export default (new Hero())
 
-// end of icon.js
+// end of hero.js

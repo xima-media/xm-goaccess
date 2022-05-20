@@ -17,6 +17,9 @@
  *       2.10 Sub navigation
  *       2.11 Language switcher
  *       2.12 Footer
+ *       2.13 Copyright
+ *       2.14 Hero
+ *       2.15 Quote
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -67,6 +70,15 @@ import './_patterns/components/language-switcher/language-switcher'
 
 /** @section 2.12 Footer */
 import './_patterns/components/footer/footer'
+
+/** @section 2.13 Copyright */
+import './_patterns/components/copyright/copyright'
+
+/** @section 2.14 Hero */
+import './_patterns/components/hero/hero'
+
+/** @section 2.15 Quote */
+import './_patterns/components/quote/quote'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

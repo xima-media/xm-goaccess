@@ -11,7 +11,9 @@
 
 body {
     font-family: $font-family-sans-serif;
-    background-color: $color-gray-100;
+    font-weight: 200;
+    font-variant-numeric: oldstyle-nums;
+    //background-color: $color-gray-100;
 }
 
 .app {
@@ -21,14 +23,19 @@ body {
     margin: auto;
     padding-right: .5rem;
     padding-left: .5rem;
-    // background-color: #b3d4fc;
 }
 
+// @todo eventuell auslagern
 .main {
     &--default {
         max-width: $container-default-widths;
         margin: auto;
     }
+}
+
+// @todo eventuell auslagern
+.article {
+    padding: 0 7rem;
 }
 
 

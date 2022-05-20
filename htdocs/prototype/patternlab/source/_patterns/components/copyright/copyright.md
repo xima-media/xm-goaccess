@@ -1,4 +1,4 @@
 ---
-title: Typography
+title: Copyright
 state: incomplete
 ---

@@ -1,6 +1,15 @@
 <!-- Component Start: image -->
 
-<figure class="picture {{ src ? 'picture--with-image' : 'picture--no-image' }} {{ round ? 'picture--round' : '' }} {{ icon ? 'picture--as-icon' : '' }}">
+<figure
+    class="
+        picture
+        {{ src ? 'picture--with-image' : 'picture--no-image' }}
+        {{ round ? 'picture--round' : '' }}
+        {{ icon ? 'picture--as-icon' : '' }}
+        {{ caption ? 'picture--with-caption' : '' }}
+        {{ patternColor ? 'picture--with-pattern' : '' }}
+    "
+>
     <div class="picture__item {{ color ? color : '' }}"> {# @todo default hinterlegen #}
         {% if src %}
             <img
@@ -9,17 +18,22 @@
                 {% if alt %}{% else %}alt="{{ alt }}"{% endif %}
             >
             {% if patternColor %}
-                <span class="picture__pattern {{ patternColor }}"></span>
+                <span class="picture__pattern pattern--{{ patternColor }}"></span>
             {% endif %}
-            {#    {% if copyright %}#}
-            {#        {% include '@components/copyright/copyright.twig' with {#}
-            {#            'text': copyright#}
-            {#        } %}#}
-            {#    {% endif %}#}
+            {% if copyright %}
+                {% include '@components/copyright/copyright.twig' with {
+                    'text': copyright
+                } %}
+            {% endif %}
         {% else %}
             <span class="picture__pattern pattern--gray-900"></span>
         {% endif %}
     </div>
+    {% if caption %}
+        <figcaption class="picture__caption">
+            {{ caption }}
+        </figcaption>
+    {% endif %}
 </figure>
 
 <!-- Components End: image -->

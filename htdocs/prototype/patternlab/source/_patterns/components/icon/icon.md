@@ -1,9 +1,4 @@
 ---
 title: Icon
-state: inreview
+state: incomplete
 ---
-
-### Funktionsweise
-@todo
-
-### Design

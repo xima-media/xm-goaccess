@@ -26,13 +26,7 @@ import app from '../basic/basic'
 
 class Color {
     constructor () {
-        this.init()
-    }
-
-    init () {
         app.log('component "color" loaded')
-        console.log(app.transitionTime);
-        console.log(app.color.primary);
     }
 }
 

@@ -22,9 +22,16 @@
 //
 
 .picture {
-    //overflow: hidden;
     position: relative;
     margin: auto;
+
+    &__item {
+        position: relative;
+    }
+
+    &__caption {
+        margin-bottom: 2rem;
+    }
 }
 
 
@@ -68,6 +75,10 @@
 //
 
 .picture--with-image {
+    &.picture--with-pattern {
+        margin-top: 1rem;
+    }
+
     .picture {
         //&__item {
         //    padding: 6rem 1rem 1.5rem 0;
@@ -75,11 +86,15 @@
 
         &__pattern {
             position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 1.5rem;
+            top: -1rem;
+            bottom: 1rem;
+            left: -7rem;
+            right: -7rem;
+            //top: 0;
+            //bottom: 0;
+            //left: 1.5rem;
             z-index: -1;
-            width: 100%;
+            //width: 100%;
         }
     }
 }

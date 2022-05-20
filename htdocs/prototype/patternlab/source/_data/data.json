@@ -17,7 +17,11 @@
             },
             {
                 "url": "link.pages-news",
-                "text": "Newsseite"
+                "text": "News: Listenansicht"
+            },
+            {
+                "url": "link.pages-news--detailpage",
+                "text": "News: Detailseite"
             },
             {
                 "url": "link.pages-employee-profile",
