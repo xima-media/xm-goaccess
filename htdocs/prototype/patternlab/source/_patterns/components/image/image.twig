@@ -1,6 +1,6 @@
 <!-- Component Start: image -->
 
-<figure class="picture {{ src ? 'picture--with-image' : 'picture--no-image' }}">
+<figure class="picture {{ src ? 'picture--with-image' : 'picture--no-image' }} {{ round ? 'picture--round' : '' }} {{ icon ? 'picture--as-icon' : '' }}">
     <div class="picture__item {{ color ? color : '' }}"> {# @todo default hinterlegen #}
         {% if src %}
             <img

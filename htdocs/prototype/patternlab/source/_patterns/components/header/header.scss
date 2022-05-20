@@ -36,13 +36,16 @@
         display: grid;
         align-items: center;
         grid-template-columns: 1fr 1fr 1fr;
-        max-width: $container-medium-widths;
+        max-width: $container-default-widths;
         margin: 0 auto 3.625rem;
         color: var(--color-white);
         background: var(--color-primary);
     }
 
     &__left {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
         order: 1;
         margin-right: auto;
     }
@@ -80,6 +83,18 @@
         .fx--header-not-sticky & {
             opacity: 1;
             transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .language-switcher {
+        &::after {
+            content: '';
+            position: absolute;
+            top: .5rem;
+            right: -.875rem;
+            bottom: .5rem;
+            width: 1px;
+            background-color: var(--color-white);
         }
     }
 }

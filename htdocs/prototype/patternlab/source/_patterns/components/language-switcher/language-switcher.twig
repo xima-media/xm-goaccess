@@ -2,12 +2,11 @@
 
 <div class="language-switcher">
     <ul class="language-switcher__items">
-        <li class="language-switcher__item">
-            <a class="language-switcher__link fx--active" href="#de">De</a>
-        </li>
-        <li class="language-switcher__item">
-            <a class="language-switcher__link" href="#en">En</a>
-        </li>
+        {% for link in prototype.component.languageSwitcher %}
+            <li class="language-switcher__item">
+                <a class="language-switcher__link {{ prototype.lang == link.id ? 'fx--active' : '' }}" href="{{ link.url }}">{{ link.text }}</a>
+            </li>
+        {% endfor %}
     </ul>
 </div>
 

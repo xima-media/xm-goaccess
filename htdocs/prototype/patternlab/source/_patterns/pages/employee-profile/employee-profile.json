@@ -1,6 +1,9 @@
 {
     "prototype": {
         "title": "Mitarbeiterprofil",
+        "navigation": {
+            "activeId": "our-center"
+        },
         "debug": {
             "screenshot": "employee-profile"
         }

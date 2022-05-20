@@ -14,11 +14,14 @@
             @include list-reset;
 
             display: flex;
+            align-items: center;
+            gap: 2.125rem;
         }
 
         &__link {
-            display: block;
-            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
         }
     }

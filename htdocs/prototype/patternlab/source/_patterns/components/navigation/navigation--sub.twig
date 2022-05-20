@@ -3,16 +3,26 @@
 <div class="navigation navigation--sub">
     <ul class="navigation__items">
         <li class="navigation__item">
-            <a class="navigation__link" href="#chat">Chat</a>
+            <a class="navigation__link button button--icon-only" href="#chat" aria-label="Chat öffnen">
+                {% include '@components/icon/icon.twig' with { 'icon': 'option' } %}
+            </a>
         </li>
         <li class="navigation__item">
-            <a class="navigation__link" href="#bookmark">Lesezeichen</a>
+            <a class="navigation__link button button--icon-only" href="#bookmark" aria-label="Lesezeichen anzeigen">
+                {% include '@components/icon/icon.twig' with { 'icon': 'bookmark' } %}
+            </a>
         </li>
         <li class="navigation__item">
-            <a class="navigation__link" href="#user">User</a>
+            <a class="navigation__link button button--icon-only button--white" href="#user">
+                {% include '@components/image/image.twig' with {
+                    src: '../../dist/image/examples/user.jpg'
+                } %}
+            </a>
         </li>
         <li class="navigation__item">
-            <button type="button" class="navigation__link">Suche</button>
+            <button type="button" class="navigation__link button button--icon-only button--white">
+                {% include '@components/icon/icon.twig' with { 'icon': 'search' } %}
+            </button>
         </li>
     </ul>
 </div>

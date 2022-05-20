@@ -10,7 +10,7 @@
 
 .navigation--main {
     position: relative;
-    max-width: $container-medium-widths;
+    max-width: $container-default-widths;
     margin: auto;
     background-color: var(--color-white);
 
@@ -107,6 +107,7 @@
         }
 
         &__link {
+            position: relative;
             display: inline-block;
             font-weight: 200;
             color: inherit;
@@ -117,10 +118,29 @@
                 padding: 1.125rem 2.5rem;
                 font-size: 18px;
 
+                &::after {
+                    content: '';
+                    display: none;
+                    position: absolute;
+                    right: .125rem;
+                    bottom: 0;
+                    left: .125rem;
+                    height: .25rem;
+                    background-color: var(--color-primary);
+                }
+
                 &:hover,
                 &:focus {
                     ~ .navigation__items {
                         display: flex;
+                    }
+                }
+
+                &:hover,
+                &:focus,
+                &.fx--active {
+                    &::after {
+                        display: block;
                     }
                 }
             }

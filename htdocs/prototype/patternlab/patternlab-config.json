@@ -117,6 +117,13 @@
           ]
         },
         {
+          "id": "layouts",
+          "recursive": true,
+          "paths": [
+            "source/_patterns/layouts"
+          ]
+        },
+        {
           "id": "pages",
           "recursive": true,
           "paths": [

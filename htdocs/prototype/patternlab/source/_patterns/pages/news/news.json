@@ -1,6 +1,9 @@
 {
     "prototype": {
         "title": "News",
+        "navigation": {
+            "activeId": "news"
+        },
         "debug": {
             "screenshot": "news--list-view"
         }

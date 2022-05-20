@@ -1,6 +1,9 @@
 {
     "prototype": {
         "title": "Themenseite",
+        "navigation": {
+            "activeId": "our-center"
+        },
         "debug": {
             "screenshot": "topic"
         }

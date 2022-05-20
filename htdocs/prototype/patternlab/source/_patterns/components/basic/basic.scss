@@ -24,6 +24,13 @@ body {
     // background-color: #b3d4fc;
 }
 
+.main {
+    &--default {
+        max-width: $container-default-widths;
+        margin: auto;
+    }
+}
+
 
 //
 //   @section 2. Startpage layout
@@ -34,7 +41,7 @@ body {
     display: grid;
     grid-template-columns:
         [full-start] minmax(0, 1fr)
-        [main-start] minmax(0, $container-medium-widths)
+        [main-start] minmax(0, $container-default-widths)
         [main-end] minmax(0, 1fr)
         [full-end];
     gap: 2rem 0;

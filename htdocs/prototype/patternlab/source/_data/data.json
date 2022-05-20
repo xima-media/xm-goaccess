@@ -1,6 +1,7 @@
 {
     "prototype": {
         "title": "Prototype",
+        "lang": "de",
         "pages": [
             {
                 "url": "link.pages-startpage",
@@ -32,6 +33,7 @@
                 {
                     "url": "#",
                     "text": "Unser Zentrum",
+                    "id": "our-center",
                     "colorClass": "corner--magenta corner--right",
                     "sub": [
                         {
@@ -85,6 +87,7 @@
                 {
                     "url": "#",
                     "text": "Aktuelles",
+                    "id": "news",
                     "colorClass": "corner--orange corner--right",
                     "sub": [
                         {
@@ -146,6 +149,7 @@
                 {
                     "url": "#",
                     "text": "Mein Arbeitsplatz",
+                    "id": "my-workplace",
                     "colorClass": "corner--green-light corner--right",
                     "sub": [
                         {
@@ -287,6 +291,7 @@
                 {
                     "url": "#",
                     "text": "Services",
+                    "id": "services",
                     "colorClass": "corner--yellow corner--right",
                     "sub": [
                         {
@@ -407,6 +412,7 @@
                 },
                 {
                     "url": "#",
+                    "id": "employee-directory",
                     "text": "Mitarbeiterverzeichnis",
                     "icon": "employee",
                     "colorClass": "corner--magenta corner--right"
@@ -445,6 +451,19 @@
                 }
             ]
         },
-        "components": {}
+        "component": {
+            "languageSwitcher": [
+                {
+                    "url": "#en",
+                    "text": "De",
+                    "id": "de"
+                },
+                {
+                    "url": "#en",
+                    "text": "En",
+                    "id": "en"
+                }
+            ]
+        }
     }
 }

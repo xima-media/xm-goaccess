@@ -3,6 +3,8 @@
 //      1. Button default
 //      2. Button primary
 //      3. Button secondary
+//      4. Button white
+//      5. Button with icon only
 //
 
 
@@ -60,6 +62,47 @@
         color: var(--color-white);
         background-color: var(--color-primary);
         border-color: var(--color-primary);
+    }
+}
+
+
+//
+//   @section 4. Button white
+//
+
+.button--white {
+    background-color: var(--color-white);
+
+    .icon {
+        color: var(--color-primary);
+    }
+}
+
+
+//
+//   @section 5. Button with icon only
+//
+
+.button--icon-only {
+    @include size(2.125rem);
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    padding: .375rem;
+    border-width: 0;
+
+    .picture {
+        margin: -.375rem;
+    }
+
+    &.fx--hover,
+    &:hover {
+        opacity: .9;
+        color: var(--color-primary);
+        background-color: var(--color-white);
     }
 }
 

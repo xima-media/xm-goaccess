@@ -1,6 +1,9 @@
 {
     "prototype": {
         "title": "Startseite",
+        "navigation": {
+            "activeId": "our-center"
+        },
         "debug": {
             "screenshot": "startpage"
         }

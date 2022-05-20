@@ -4,6 +4,7 @@
 //      2. Picture defaults
 //      3. Picture - no image
 //      4. Picture - with image
+//      5. Picture - round
 //
 
 
@@ -68,9 +69,9 @@
 
 .picture--with-image {
     .picture {
-        &__item {
-            padding: 6rem 1rem 1.5rem 0;
-        }
+        //&__item {
+        //    padding: 6rem 1rem 1.5rem 0;
+        //}
 
         &__pattern {
             position: absolute;
@@ -81,6 +82,17 @@
             width: 100%;
         }
     }
+}
+
+
+//
+//   @section 5. Picture - round
+//
+
+.picture--round {
+    overflow: hidden;
+    display: block;
+    border-radius: 50%;
 }
 
 // end of image.scss file

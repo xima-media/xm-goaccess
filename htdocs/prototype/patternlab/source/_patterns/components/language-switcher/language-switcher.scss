@@ -9,6 +9,7 @@
 //
 
 .language-switcher {
+    position: relative;
     margin-left: -.5rem; // @todo eventuell eher am header__left
 
     &__items {
@@ -17,9 +18,7 @@
         display: flex;
     }
 
-    &__item {
-
-    }
+    //&__item {  }
 
     &__link {
         display: block;
@@ -28,6 +27,10 @@
         color: inherit;
         text-decoration: none;
         text-transform: uppercase;
+
+        &.fx--active {
+            border-bottom: 1px solid var(--color-white);
+        }
     }
 }
 

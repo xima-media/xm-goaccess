@@ -5,15 +5,15 @@
     <ul id="navigation__items--main" class="navigation__items fx--first">
         {% for mainLink in prototype.navigation.main %}
             <li class="navigation__item fx--first">
-                <a class="navigation__link fx--first" href="{{ mainLink.url }}">{{ mainLink.text }}</a>
+                <a class="navigation__link fx--first {{ mainLink.id == prototype.navigation.activeId ? 'fx--active' : '' }}" href="{{ mainLink.url }}">{{ mainLink.text }}</a>
                 {% if mainLink.sub %}
                     <ul class="navigation__items fx--second {{ mainLink.colorClass }}">
-                        {% set foo = true %} {# @todo umbennen #}
+                        {% set closeSubLinkSection = true %}
                         {% for subLink in mainLink.sub %}
                             {% if subLink.sub %}
-                                {% if not foo %}
+                                {% if not closeSubLinkSection %}
                                     </ul></li>
-                                    {% set foo = true %}
+                                    {% set closeSubLinkSection = true %}
                                 {% endif %}
                                 <li class="navigation__item fx--second">
                                     <a class="navigation__link fx--second" href="{{ subLink.url }}">{{ subLink.text }}</a>
@@ -28,9 +28,9 @@
                                     {% endif %}
                                 </li>
                             {% else %}
-                                {% if foo %}
+                                {% if closeSubLinkSection %}
                                     <li class="navigation__item fx--row"><ul class="navigation__items fx--row">
-                                    {% set foo = false %}
+                                    {% set closeSubLinkSection = false %}
                                 {% endif %}
 
                                 <li class="navigation__item fx--second">
@@ -39,7 +39,7 @@
 
                                 {% if loop.last %}
                                     </ul></li>
-                                    {% set foo = true %}
+                                    {% set closeSubLinkSection = true %}
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
