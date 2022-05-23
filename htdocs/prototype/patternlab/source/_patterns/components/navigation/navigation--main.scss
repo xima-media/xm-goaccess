@@ -10,7 +10,7 @@
 
 .navigation--main {
     position: relative;
-    max-width: $container-default-widths;
+    max-width: $container-default-widths + 2rem;
     margin: auto;
     background-color: var(--color-white);
 

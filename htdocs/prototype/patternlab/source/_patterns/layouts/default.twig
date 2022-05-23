@@ -1,9 +1,5 @@
 <div class="app">
     {% include "@components/header/header.twig" %}
-    <main class="main main--default">
-{#        {% block hero %}{% endblock hero %}#}
-{#        {% block title %}{% endblock title %}#}
-        {% block content %}{% endblock content %}
-    </main>
+    {% block content %}{% endblock content %}
     {% include "@components/footer/footer.twig" %}
 </div>

@@ -1,4 +1,4 @@
 ---
-title: Contact
+title: Related content
 state: incomplete
 ---

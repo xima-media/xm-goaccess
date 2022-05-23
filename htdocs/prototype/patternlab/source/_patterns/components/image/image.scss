@@ -44,7 +44,7 @@
         &__item {
             position: relative;
             aspect-ratio: 16 / 9;
-            margin-left: 1.5rem;
+            //margin-left: 1.5rem;
 
             &::after {
                 content: '';
@@ -62,8 +62,8 @@
             display: block;
             position: absolute;
             right: 50%;
-            bottom: -1.5rem;
-            width: calc(50% + 1.5rem);
+            bottom: -.75rem;
+            width: calc(50% + .75rem);
             aspect-ratio: 1;
         }
     }

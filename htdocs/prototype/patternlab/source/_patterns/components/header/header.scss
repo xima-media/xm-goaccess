@@ -12,6 +12,7 @@
     position: sticky;
     top: -12rem;
     z-index: 99;
+    margin-bottom: 4rem;
     padding-top: 6rem;
     background-color: var(--color-primary);
 
@@ -76,7 +77,6 @@
         position: relative;
         top: 1.875rem;
         margin-top: -1.875rem;
-        margin-bottom: 4rem;
         transform: translate3d(0, 2rem, 0);
         transition: opacity $transition-time * 2, transform $transition-time * 2;
 

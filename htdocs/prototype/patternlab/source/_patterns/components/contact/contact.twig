@@ -1,0 +1,20 @@
+<!-- Component Start: contact -->
+
+<div class="contact">
+    <h4 class="contact__title">{{ title }}</h4>
+    <ul class="contact__items">
+        {% for contact in contacts %}
+            <li class="contact__item">
+                {{ contact.name }}
+            </li>
+            {% for item in contact.items %}
+                <li class="contact__item">
+                    {% include '@components/icon/icon.twig' with {'icon': item.type} %}
+                    <a class="contact__link" href="{{ item.url }}">{{ item.text }}</a>
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Components End: contact -->

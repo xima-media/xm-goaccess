@@ -1,0 +1,123 @@
+//
+//    @tableOfContent
+//      1. Card default
+//      2. Card - image left
+//      3. Card - image right
+//      4. Card - xl
+//
+
+
+//
+//   @section 1. Card default
+//
+
+.card {
+    position: relative;
+    padding: .75rem;
+
+    &__image {
+        margin-bottom: 1.625rem;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        @include h5;
+
+        margin-bottom: 0;
+    }
+
+    &__sub-title {
+        order: -1;
+        margin-bottom: .75rem;
+    }
+
+    &__link {
+        &--hidden {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            font-size: 0;
+
+            &:hover,
+            &:focus {
+                ~ .card__content {
+                    .card__header {
+                        color: var(--color-primary);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//
+//   @section 2. Card - image left
+//
+
+.card--image-left {
+    display: flex;
+    gap: 2.75rem; // @todo variable
+
+    .card {
+        &__image {
+            flex: 0 0 16rem; // @todo variable
+            width: 16rem; // @todo variable
+        }
+    }
+}
+
+
+//
+//   @section 3. Card - image right
+//
+
+.card--image-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2.75rem; // @todo variable
+
+    .card {
+        &__image {
+            order: 1;
+            flex: 0 0 16rem; // @todo variable
+            width: 16rem; // @todo variable
+        }
+    }
+}
+
+
+//
+//   @section 4. Card - xl
+//
+
+.card--xl {
+    &.card--image-left,
+    &.card--image-right {
+        gap: 3.75rem;
+
+        .card {
+            &__image {
+                flex: 0 0 28.625rem; // @todo variable;
+                width: 28.625rem; // @todo variable
+            }
+
+            &__title {
+                @include h3;
+            }
+
+            &__content {
+                max-width: 33.75rem;
+            }
+        }
+    }
+}
+
+// end of card.scss file

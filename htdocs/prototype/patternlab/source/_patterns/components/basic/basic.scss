@@ -13,14 +13,17 @@ body {
     font-family: $font-family-sans-serif;
     font-weight: 200;
     font-variant-numeric: oldstyle-nums;
-    //background-color: $color-gray-100;
+    background-color: transparent; // @todo die bootstrap variable überschreiben
 }
 
 .app {
+    display: flex;
+    flex-direction: column;
     position: relative;
     z-index: 1;
     max-width: $container-expand-widths + 1rem;
-    margin: auto;
+    min-height: 100vh;
+    margin: 0 auto;
     padding-right: .5rem;
     padding-left: .5rem;
 }
@@ -31,11 +34,52 @@ body {
         max-width: $container-default-widths;
         margin: auto;
     }
+
+    &--with-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 20rem;
+        max-width: $container-default-widths + 2rem;
+        margin: auto;
+
+        // @todo umbennen
+        .testblubb {
+            position: relative;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            background-color: var(--color-white);
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: -31.875rem;
+                bottom: 0;
+                left: -11.875rem;
+                z-index: -1;
+                background-color: inherit;
+            }
+        }
+    }
 }
 
 // @todo eventuell auslagern
 .article {
     padding: 0 7rem;
+}
+
+// @todo eventuell auslagern
+.sidebar {
+    background-color: var(--color-primary-opacity-10);
+
+    &__header {
+        padding: 1rem;
+        color: var(--color-white);
+        background-color: var(--color-primary);
+    }
+
+    &__body {
+        padding: 1rem;
+    }
 }
 
 
@@ -134,7 +178,7 @@ body {
     backdrop-filter: blur(20px); // @todo variable
 }
 
-//
+// @todo aufräumen > für footer
 ul > li {
     list-style: none;
 }
@@ -146,4 +190,11 @@ ul > li {
         margin-right: 1rem;
     }
 }
+
+// @todo umbennen bzw so bauen das es generischere funktioniert
+.list-view {
+    padding-right: 4rem;
+    padding-left: 4.25rem;
+}
+
 // end of basic.scss file

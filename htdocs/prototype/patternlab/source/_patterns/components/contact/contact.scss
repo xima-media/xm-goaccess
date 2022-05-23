@@ -1,0 +1,17 @@
+//
+//    @tableOfContent
+//      1. Contact
+//
+
+
+//
+//   @section 1. Contact
+//
+
+.contact {
+    &__items {
+        @include list-reset;
+    }
+}
+
+// end of contact.scss file

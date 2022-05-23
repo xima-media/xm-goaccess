@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="{{ htmlClass }}" lang="{{ prototype.lang }}" {% if prototype.debug.screenshot %}data-debug-screenshot="{{ prototype.debug.screenshot }}"{% endif %}>
+<html class="{{ prototype.html.class }}" lang="{{ prototype.lang }}" {% if prototype.debug.screenshot %}data-debug-screenshot="{{ prototype.debug.screenshot }}"{% endif %}>
 <head>
   <title>{{ prototype.title }} | DKFZ Intranet</title>
   <meta charset="UTF-8">
@@ -21,5 +21,4 @@
   {# End Pattern Lab #}
 
 </head>
-<body class="{{ bodyClass }}">
-{#    <div class="app">#}
+<body class="{{ prototype.body.class }}">

@@ -20,6 +20,11 @@
  *       2.13 Copyright
  *       2.14 Hero
  *       2.15 Quote
+ *       2.16 Card
+ *       2.17 Related content
+ *       2.18 List
+ *       2.19 Contact
+ *       2.20 Employee header
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -79,6 +84,21 @@ import './_patterns/components/hero/hero'
 
 /** @section 2.15 Quote */
 import './_patterns/components/quote/quote'
+
+/** @section 2.16 Card */
+import './_patterns/components/card/card'
+
+/** @section 2.17 Related content */
+import './_patterns/components/related-content/related-content'
+
+/** @section 2.18 List */
+import './_patterns/components/list/list'
+
+/** @section 2.19 Contact */
+import './_patterns/components/contact/contact'
+
+/** @section 2.20 Employee header */
+import './_patterns/components/employee/employee-header'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

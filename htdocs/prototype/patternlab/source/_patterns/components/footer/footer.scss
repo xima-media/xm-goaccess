@@ -11,7 +11,7 @@
 .footer {
     position: relative;
     max-width: $container-default-widths;
-    margin: auto;
+    margin: auto auto 0;
     padding: 1.5rem 0;
     color: var(--color-white);
     background: var(--color-primary);

@@ -8,9 +8,10 @@
         {{ icon ? 'picture--as-icon' : '' }}
         {{ caption ? 'picture--with-caption' : '' }}
         {{ patternColor ? 'picture--with-pattern' : '' }}
+        {{ color ? 'picture--with-color' : '' }}
     "
 >
-    <div class="picture__item {{ color ? color : '' }}"> {# @todo default hinterlegen #}
+    <div class="picture__item {{ src ? 'image-color--' : 'background--' }}{{ color ? color : 'primary' }}">
         {% if src %}
             <img
                 class="picture__image image--responsive"

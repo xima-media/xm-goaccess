@@ -1,0 +1,32 @@
+{% extends "@layouts/default--one-column.twig" %}
+{% block main %}
+    {# hero #}
+    {% embed '@components/hero/hero.twig' with {title: 'News'} %}
+    {% endembed %}
+
+    {# results #}
+    {# @todo so lösen wie bei topic #}
+    <div class="list-view">
+        <ul class="list-view__items">
+            {% for news in prototype.news %}
+                <li class="list-view__item">
+                    {% include '@components/card/card.twig' with {
+                        image: {
+                            src: news.image.src,
+                            color: news.image.color,
+                            position: news.image.position
+                        },
+                        title: news.title,
+                        subTitle: news.subTitle,
+                        text: news.text,
+                        link: {
+                            href: news.link.url
+                        }
+                    } only %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock main %}
+
+

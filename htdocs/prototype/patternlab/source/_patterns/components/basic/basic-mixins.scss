@@ -6,6 +6,7 @@
 //      4. Styled scrollbars
 //      5. Styled slider
 //      6. Hyphens
+//      7. Text styles
 //
 
 
@@ -83,6 +84,53 @@
         hyphens: none;
         word-break: normal;
     }
+}
+
+
+//
+//    @section 7. Headlines
+//
+
+// @section 7.1 H1
+@mixin h1 {
+    font-family: $font-family-serif;
+    font-size: map-get($h1, 'font-size');
+    line-height: map-get($h1, 'line-height');
+}
+
+// @section 7.2 H2
+@mixin h2 {
+    font-family: $font-family-serif;
+    font-size: map-get($h2, 'font-size');
+    line-height: map-get($h2, 'line-height');
+}
+
+// @section 7.3 H3
+@mixin h3 {
+    font-family: $font-family-serif;
+    font-size: map-get($h3, 'font-size');
+    line-height: map-get($h3, 'line-height');
+}
+
+// @section 7.4 H4
+@mixin h4 {
+    font-family: $font-family-serif;
+    font-size: map-get($h4, 'font-size');
+    line-height: map-get($h4, 'line-height');
+}
+
+// @section 7.5 H5
+@mixin h5 {
+    font-family: $font-family-serif;
+    font-size: map-get($h5, 'font-size');
+    line-height: map-get($h5, 'line-height');
+}
+
+// @section 7.6 H6
+@mixin h6 {
+    font-family: $font-family-serif;
+    font-size: map-get($h6, 'font-size');
+    line-height: map-get($h6, 'line-height');
 }
 
 // end of app-mixins.scss file

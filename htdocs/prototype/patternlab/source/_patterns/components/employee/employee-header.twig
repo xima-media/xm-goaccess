@@ -1,0 +1,24 @@
+<!-- Component Start: employee-header -->
+
+<div class="employee-header">
+    <div class="employee-header__body">
+        <h1 class="employee-header__title">{{ title }}</h1>
+        <div class="employee-header__text">
+            {% for text in texts %}
+                <p>{{ text }}</p>
+            {% endfor %}
+        </div>
+        <button type="button" class="button button--primary">
+            {% include '@components/icon/icon.twig' with {icon: 'bookmark-add'} %} {# @todo richtige Icon verwenden #}
+            Mitarbeiter merken
+        </button>
+    </div>
+    <div class="employee-header__image">
+        {% include '@components/image/image.twig' with {
+            src: image.src,
+            color: 'primary'
+        } %}
+    </div>
+</div>
+
+<!-- Components End: employee-header -->

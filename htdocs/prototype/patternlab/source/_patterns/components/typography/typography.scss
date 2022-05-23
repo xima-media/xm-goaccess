@@ -4,6 +4,12 @@
 //       1.1 The Serif
 //       1.2 The Sans
 //      2. Headlines
+//       2.1 H1
+//       2.2 H2
+//       2.3 H3
+//       2.4 H4
+//       2.5 H5
+//       2.6 H6
 //      3. Hero headlines
 //      4. Font styles
 //      5. Text styles
@@ -62,52 +68,40 @@
 //   @section 2. Headlines
 //
 
+// @section 2.1 H1
 .h1,
 h1 {
-    font-family: $font-family-serif;
-    font-size: map-get($h1, 'font-size');
-    line-height: map-get($h1, 'line-height');
+    @include h1;
 }
 
+// @section 2.2 H2
 .h2,
 h2 {
-    font-family: $font-family-serif;
-    font-size: map-get($h2, 'font-size');
-    line-height: map-get($h2, 'line-height');
+    @include h2;
 }
 
+// @section 2.3 H3
 .h3,
 h3 {
-    font-family: $font-family-serif;
-    font-size: map-get($h3, 'font-size');
-    line-height: map-get($h3, 'line-height');
+    @include h3;
 }
 
+// @section 2.4 H4
 .h4,
 h4 {
-    font-family: $font-family-serif;
-    font-size: map-get($h4, 'font-size');
-    line-height: map-get($h4, 'line-height');
+    @include h4;
 }
 
+// @section 2.5 H5
 .h5,
 h5 {
-    font-family: $font-family-serif;
-    font-size: map-get($h5, 'font-size');
-    line-height: map-get($h5, 'line-height');
+    @include h5;
 }
 
+// @section 2.6 H6
 .h6,
 h6 {
-    font-family: $font-family-serif;
-    font-size: map-get($h6, 'font-size');
-    line-height: map-get($h6, 'line-height');
-}
-
-.font-base {
-    font-family: $font-family-serif;
-    font-size: map-get($font-base, 'font-size');
-    line-height: map-get($font-base, 'line-height');
+    @include h6;
 }
 
 
@@ -143,6 +137,12 @@ h6 {
 //
 //   @section 4. Font styles
 //
+
+.font-base {
+    font-family: $font-family-serif;
+    font-size: map-get($font-base, 'font-size');
+    line-height: map-get($font-base, 'line-height');
+}
 
 .font-family-serif {
     font-family: var(--font-family-serif);

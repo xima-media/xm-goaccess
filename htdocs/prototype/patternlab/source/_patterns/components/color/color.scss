@@ -196,15 +196,16 @@
     position: relative;
     background-color: var(--color-gray-100);
 
+    // @todo mixin zusammen mit .picture--no-image ::after erstellen
     &::before,
     &::after {
         content: '';
         position: absolute;
-        top: 50%;
-        right: 50%;
+        bottom: -.75rem;
+        left: -.75rem; // @todo variable
         z-index: -1;
-        width: calc(50% + .5rem);
-        height: calc(50% + .5rem);
+        width: calc(50% + .75rem); // @todo variable
+        aspect-ratio: 1;
     }
 
     &::before {

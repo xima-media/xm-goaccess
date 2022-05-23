@@ -1,0 +1,35 @@
+<!-- Component Start: card -->
+
+<div class="card card--image-{{ image.position|default('top') }} card--{{ size|default('md') }}">
+    {% if link.href and not link.visible %}
+        <a href="{{ link.href }}" class="card__link card__link--hidden" aria-label="{{ title }}">Mehr</a>
+    {% endif %}
+    {% if image.src or image.color %}
+        <div class="card__image">
+            {% include '@components/image/image.twig' with {
+                src: image.src,
+                color: image.color
+            } %}
+        </div>
+    {% endif %}
+    {% if title or text %}
+        <div class="card__content">
+            {% if title %}
+                <div class="card__header">
+                    <h3 class="card__title">{{ title }}</h3>
+                    <p class="card__sub-title">{{ subTitle }}</p>
+                </div>
+            {% endif %}
+            {% if text %}
+                <div class="card__body">
+                    <p>{{ text }}</p>
+                    {% if link.href and link.visible %}
+                        <a href="{{ link.href }}" class="card__link">{{ link.text }}</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<!-- Components End: card -->
