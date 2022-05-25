@@ -129,6 +129,7 @@
     }
 
     &--gray-900 {
+        color: var(--color-white);
         background-color: $color-gray-900;
     }
 }
@@ -184,6 +185,10 @@
 
     &--gray-900 {
         @include background-pattern($color-gray-900);
+    }
+
+    &--white {
+        @include background-pattern($color-white);
     }
 }
 
@@ -269,6 +274,12 @@
     &--purple {
         &::after {
             background-color: var(--color-purple);
+        }
+    }
+
+    &--transparent {
+        &::after {
+            content: none;
         }
     }
 }

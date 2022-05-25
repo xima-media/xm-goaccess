@@ -31,7 +31,7 @@
     font-family: 'The Serif';
     font-weight: 700;
     font-style: normal;
-    src: url('./assets/fonts/the-serif/the-serif--bold.woff2') format('woff2');
+    src: url('../fonts/the-serif--bold.woff2') format('woff2');
 }
 
 // @section 1.2 The Sans
@@ -39,28 +39,28 @@
     font-family: 'The Sans';
     font-weight: 200;
     font-style: normal;
-    src: url('./assets/fonts/the-sans/the-sans--light.woff2') format('woff2');
+    src: url('../fonts/the-sans--light.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'The Sans';
     font-weight: 300;
     font-style: normal;
-    src: url('./assets/fonts/the-sans/the-sans--plain.woff2') format('woff2');
+    src: url('../fonts/the-sans--plain.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'The Sans';
     font-weight: 500;
     font-style: normal;
-    src: url('./assets/fonts/the-sans/the-sans--semi-bold.woff2') format('woff2');
+    src: url('../fonts/the-sans--semi-bold.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'The Sans';
     font-weight: 700;
     font-style: normal;
-    src: url('./assets/fonts/the-sans/the-sans--bold.woff2') format('woff2');
+    src: url('../fonts/the-sans--bold.woff2') format('woff2');
 }
 
 
@@ -139,9 +139,7 @@ h6 {
 //
 
 .font-base {
-    font-family: $font-family-serif;
-    font-size: map-get($font-base, 'font-size');
-    line-height: map-get($font-base, 'line-height');
+    @include font-base;
 }
 
 .font-family-serif {
@@ -158,33 +156,11 @@ h6 {
 //
 
 // @section 5.1 Introtext
-@mixin text-intro {
-    font-family: var(--font-family-sans-serif);
-    font-size: 24px;
-    line-height: 38px;
-    font-weight: 200;
-}
-
 .text-intro {
     @include text-intro;
 }
 
 // @section 5.2 Copy standard
-@mixin text-copy-standard ($font-weight: false, $letter-spacing: false) {
-    font-family: var(--font-family-sans-serif);
-    font-size: 18px;
-    line-height: 30px;
-
-    @if $font-weight {
-        font-weight: $font-weight;
-    }
-
-    @if $letter-spacing {
-        font-weight: $letter-spacing;
-    }
-}
-
-
 .text-copy-standard {
     @include text-copy-standard;
 
@@ -194,21 +170,6 @@ h6 {
 }
 
 // @section 5.3 Copy small
-@mixin text-copy-small ($font-weight: false, $letter-spacing: false) {
-    font-family: var(--font-family-sans-serif);
-    font-size: 16px;
-    line-height: 24px;
-
-    @if $font-weight {
-        font-weight: $font-weight;
-    }
-
-    @if $letter-spacing {
-        font-weight: $letter-spacing;
-    }
-}
-
-
 .text-copy-small {
     @include text-copy-small;
 
@@ -218,53 +179,12 @@ h6 {
 }
 
 // @section 5.4 Copy x small
-@mixin text-copy-x-small ($font-weight: false, $letter-spacing: false) {
-    font-family: var(--font-family-sans-serif);
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: .6px;
-
-    @if $font-weight {
-        font-weight: $font-weight;
-    }
-
-    @if $letter-spacing {
-        font-weight: $letter-spacing;
-    }
-}
-
-
 .text-copy-x-small {
     @include text-copy-x-small;
 
     &--bold {
         @include text-copy-x-small(700, .6px);
     }
-}
-
-// @section 5.5 Main navigation
-@mixin text-main-navi {
-    font-family: var(--font-family-sans-serif);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: .3px;
-}
-
-// @section 5.6 Link
-@mixin link-primary {
-    font-family: var(--font-family-sans-serif);
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-}
-
-@mixin link-secondary {
-    font-family: var(--font-family-sans-serif);
-    font-size: 15px;
-    line-height: 24px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
 }
 
 

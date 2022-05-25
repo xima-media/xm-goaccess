@@ -97,7 +97,8 @@ body {
         [full-end];
     gap: 2rem 0;
     margin: auto;
-    padding-top: 11.25rem; // @todo variable
+    padding-top: 5rem; // @todo variable
+    padding-bottom: 4rem; // @todo variable > selbe Zahl wie gap
 
     @include media-breakpoint-up(lg) {
         gap: 4rem;
@@ -154,7 +155,7 @@ body {
 // @todo umbennen
 [class*="foo--"] {
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .foo--50-50 {
@@ -173,9 +174,58 @@ body {
 .bar {
     position: relative;
     z-index: 1;
-    padding: 1rem;
+    padding: 2.75rem;
     background-color: rgba(255,255,255,.8); // @todo variable
     backdrop-filter: blur(20px); // @todo variable
+
+    &--main-hero {
+        .bar {
+            &__header {  }
+
+            &__footer {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                max-width: $container-default-widths;
+                margin: auto;
+
+                .content-wrapper {
+                    &:last-child {
+                        margin-left: 6.25rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// @todo in eigene Komponente auslagern
+a {
+    color: inherit; // mit bootstrap lösen
+}
+
+$css-icon-size: .75rem;
+.link {
+    &--secondary {
+        @include link-secondary;
+    }
+
+    &--arrow-right {
+        text-decoration: none;
+
+        &::after {
+            @include size($css-icon-size);
+
+            content: '';
+            display: inline-block;
+            margin-left: .5rem;
+            background-image: url('../icon/icon.min.svg#arrow-right-view');
+            background-position: 0 ($css-icon-size * -1);
+            background-repeat: no-repeat;
+            background-size: cover;
+            //filter: invert(1);
+        }
+    }
 }
 
 // @todo aufräumen > für footer

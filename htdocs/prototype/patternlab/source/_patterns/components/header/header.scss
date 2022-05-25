@@ -76,7 +76,7 @@
         opacity: 0;
         position: relative;
         top: 1.875rem;
-        margin-top: -1.875rem;
+        margin-top: -.25rem; //-1.875rem;
         transform: translate3d(0, 2rem, 0);
         transition: opacity $transition-time * 2, transform $transition-time * 2;
 

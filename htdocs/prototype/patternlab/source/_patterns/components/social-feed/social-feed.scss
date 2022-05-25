@@ -1,0 +1,66 @@
+//
+//    @tableOfContent
+//      1. Social feed
+//
+
+
+//
+//   @section 1. Social feed
+//
+
+.social-feed {
+    padding: 3rem;
+    background-color: var(--color-white);
+
+    &__title {
+        @include h5;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        .icon {
+            @include size(2.25rem);
+
+            &--twitter {
+                color: $color-twitter;
+            }
+        }
+    }
+
+    &__content {
+        overflow-y: auto;
+        position: relative;
+        height: 38rem;
+
+        &::after {
+            @include loading;
+
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: -1;
+            margin: -4rem;
+        }
+    }
+
+    // twitter
+    .twitter-timeline {
+        opacity: 0;
+
+        &-rendered {
+            opacity: 1;
+        }
+    }
+
+    // instagram
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// end of social-feed.scss file

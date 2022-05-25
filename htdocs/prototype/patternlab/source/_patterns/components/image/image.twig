@@ -1,5 +1,4 @@
 <!-- Component Start: image -->
-
 <figure
     class="
         picture
@@ -11,19 +10,19 @@
         {{ color ? 'picture--with-color' : '' }}
     "
 >
-    <div class="picture__item {{ src ? 'image-color--' : 'background--' }}{{ color ? color : 'primary' }}">
+    <div class="picture__item {{ src ? 'image-color--' : 'background--' }}{{ color ? color : 'transparent' }}">
         {% if src %}
             <img
                 class="picture__image image--responsive"
                 src="{{ src }}"
                 {% if alt %}{% else %}alt="{{ alt }}"{% endif %}
             >
-            {% if patternColor %}
-                <span class="picture__pattern pattern--{{ patternColor }}"></span>
-            {% endif %}
+{#            {% if patternColor %}#}
+{#                <span class="picture__pattern pattern--{{ patternColor }}"></span>#}
+{#            {% endif %}#}
             {% if copyright %}
                 {% include '@components/copyright/copyright.twig' with {
-                    'text': copyright
+                    text: copyright
                 } %}
             {% endif %}
         {% else %}

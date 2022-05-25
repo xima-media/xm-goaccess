@@ -1,0 +1,14 @@
+<!-- Component Start: social-feed -->
+
+<div class="social-feed">
+    <h2 class="social-feed__title">
+        {% include '@components/icon/icon.twig' with { icon: icon } %}
+        {{ title }}
+    </h2>
+    <div class="social-feed__content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</div>
+
+<!-- Components End: social-feed -->

@@ -7,6 +7,15 @@
 //      5. Styled slider
 //      6. Hyphens
 //      7. Text styles
+//      8. Text styles
+//       8.1 Introtext
+//       8.2 Copy standard
+//       8.3 Copy small
+//       8.4 Copy x small
+//       8.5 Main navigation
+//       8.6 Link
+//       8.7 Font base
+//      9. Loading
 //
 
 
@@ -131,6 +140,118 @@
     font-family: $font-family-serif;
     font-size: map-get($h6, 'font-size');
     line-height: map-get($h6, 'line-height');
+}
+
+
+//
+//    @section 8. Text styles
+//
+
+// @section 8.1 Introtext
+@mixin text-intro {
+    font-family: var(--font-family-sans-serif);
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 200;
+}
+
+// @section 8.2 Copy standard
+@mixin text-copy-standard ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 18px;
+    line-height: 30px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+// @section 8.3 Copy small
+@mixin text-copy-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 16px;
+    line-height: 24px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+// @section 8.4 Copy x small
+@mixin text-copy-x-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .6px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+// @section 8.5 Main navigation
+@mixin text-main-navi {
+    font-family: var(--font-family-sans-serif);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+// @section 8.6 Link
+@mixin link-primary {
+    font-family: var(--font-family-sans-serif);
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+@mixin link-secondary {
+    font-family: var(--font-family-sans-serif);
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+// @section 8.7 Font base
+@mixin font-base {
+    font-family: $font-family-serif;
+    font-size: map-get($font-base, 'font-size');
+    line-height: map-get($font-base, 'line-height');
+}
+
+
+//
+//    @section 9. Loading
+//
+
+// @todo vendor-prefixes
+@mixin loading {
+    @include size(6rem);
+
+    display: block;
+    background: none;
+    //-webkit-clip-path: polygon(50% 50%, 25% 100%, 75% 100%);
+    clip-path: polygon(50% 50%, 25% 100%, 75% 100%);
+    border-radius: 50%;
+    border: 5px solid var(--color-primary);
+    transform: rotate(360deg);
+    will-change: transform;
+    //-webkit-animation: idea 2s linear infinite;
+    animation: idea 2s linear infinite;
 }
 
 // end of app-mixins.scss file

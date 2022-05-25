@@ -36,6 +36,7 @@
     "fix-styles": "npx stylelint ./patternlab/source/_patterns/components/**/*.scss --config .stylelintrc.yml --fix"
   },
   "dependencies": {
-    "bootstrap": "^5.1.3"
+    "bootstrap": "^5.1.3",
+    "swiper": "^8.1.5"
   }
 }

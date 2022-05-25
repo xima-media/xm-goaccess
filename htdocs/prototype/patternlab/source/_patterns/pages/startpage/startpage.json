@@ -4,8 +4,492 @@
         "navigation": {
             "activeId": "our-center"
         },
+        "html": {
+            "class": "background--gray-100"
+        },
         "debug": {
             "screenshot": "startpage"
+        },
+        "moreNews": {
+            "title": "Weitere News",
+            "titleWithPattern": true,
+            "headerSize": "sm",
+            "link": {
+                "url": "#",
+                "text": "Alle News"
+            },
+            "items": [
+                {
+                    "title": "Hilfsaktionen für die Ukraine",
+                    "subTitle": "18. März 2022 | Außerdem",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "src": "../../dist/image/examples/user.jpg",
+                        "color": "yellow"
+                    }
+                },
+                {
+                    "title": "Ugur Sahin baut Abteilung am HI-TRON Mainz auf",
+                    "subTitle": "15. März 2022 | Innenansichten",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "src": "../../dist/image/examples/user.jpg",
+                        "color": "purple"
+                    }
+                }
+            ]
+        },
+        "shortMessages": {
+            "title": "Kurzmeldungen",
+            "titleWithPattern": true,
+            "headerSize": "sm",
+            "link": {
+                "url": "#",
+                "text": "Alle anzeigen"
+            },
+            "items": [
+                {
+                    "title": "Ergebnisse der Wahl zum Wissenschaftlichen Rat",
+                    "subTitle": "16. März 2022",
+                    "type": "short-message",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Neue Brief-Vorlagen und E-Mail-Signaturen",
+                    "subTitle": "08. März 2022",
+                    "type": "short-message",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Beeinträchtigungen durch Bauarbeiten",
+                    "subTitle": "07. März 2022",
+                    "type": "short-message",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Vorlagen für Videokonferenz Hintergründe",
+                    "subTitle": "07. März 2022",
+                    "type": "short-message",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Vorlagen für Videokonferenz Hintergründe",
+                    "subTitle": "07. März 2022",
+                    "type": "short-message",
+                    "link": {
+                        "url": "#"
+                    }
+                }
+            ]
+        },
+        "newJobs": {
+            "title": "Offene Stellen",
+            "titleWithPattern": true,
+            "headerSize": "sm",
+            "link": {
+                "url": "#",
+                "text": "Alle offenen Stellen"
+            },
+            "items": [
+                {
+                    "title": "Qualitätsmanager:in (m/w/d) – Klinische Studien (GCP / DIN EN ISO 14155)",
+                    "tags": ["Teilzeit (50%)", "Heidelberg", "ab 01.05.2022"],
+                    "type": "new-job",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Medizinische:r Informatiker:in (m/w/d)",
+                    "tags": ["Vollzeit", "Heidelberg", "ab 01.05.2022"],
+                    "type": "new-job",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "2 Medizinische Dokumentar:innen (m/w/d)",
+                    "tags": ["Vollzeit", "Heidelberg", "ab 01.05.2022"],
+                    "type": "new-job",
+                    "link": {
+                        "url": "#"
+                    }
+                }
+            ]
+        },
+        "newPages": {
+            "title": "Neue Seiten",
+            "titleWithPattern": true,
+            "headerSize": "sm",
+            "items": [
+                {
+                    "title": "Veranstaltungsplanung und Logistik",
+                    "subTitle": "Arbeitsmittel & Dienste / How To",
+                    "type": "new-page",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Lorem ipsum dolor sit amet",
+                    "subTitle": "Mitarbeiter & Soziales / Lorem ipsum",
+                    "type": "new-page",
+                    "link": {
+                        "url": "#"
+                    }
+                },
+                {
+                    "title": "Lorem ipsum dolor sit amet",
+                    "subTitle": "Mitarbeiter & Soziales / Lorem ipsum",
+                    "type": "new-page",
+                    "link": {
+                        "url": "#"
+                    }
+                }
+            ]
+        },
+        "carousel": {
+            "mainNews": {
+                "items": [
+                    {
+                        "title": "ERC-Förderung für Guoliang Cui",
+                        "subTitle": "22. März 2022 | Wissenschaft",
+                        "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen. Mit den zwei Millionen Euro Fördermitteln will der Immunologe erforschen, wie die Skelettmuskulatur bei chronischen Virusinfekten das Immunsystem unterstützt.",
+                        "type": "main-news",
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "patternColor": "orange",
+                            "position": "left"
+                        },
+                        "link": {
+                            "url": "#",
+                            "text": "mehr erfahren"
+                        }
+                    }
+                ]
+            },
+            "service": {
+                "title": "Unser Service für Sie",
+                "cardsWithPattern": true,
+                "items": [
+                    {
+                        "title": "Speiseplan Casino",
+                        "text": "28. März - 01. April 2022 (KW 13)",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "IT-Service",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Weiterbildungs&shy;kalender",
+                        "text": "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    }
+                ]
+            },
+            "tools": {
+                "title": "Unsere Tools",
+                "cardsWithPattern": true,
+                "items": [
+                    {
+                        "title": "Mitarbeiterportal",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Trainingsportal",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "e.biss",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Rechnungsportal",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Lorem ipsum",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    }
+                ]
+            },
+            "events": {
+                "title": "Veranstaltungen",
+                "titleWithPattern": true,
+                "color": "orange",
+                "cols": 3,
+                "link": {
+                    "url": "#",
+                    "text": "Alle Veranstaltungen"
+                },
+                "items": [
+                    {
+                        "title": "17. März",
+                        "subTitle": "9:00-10:00",
+                        "text": "RNA deamination in immunity and cancer (online PiCR lecture)",
+                        "type": "event",
+                        "link": {
+                            "url": "#"
+                        },
+                        "tags": ["EN", "Zoom online lecture"]
+                    },
+                    {
+                        "title": "19. März",
+                        "subTitle": "9:00-12:00",
+                        "text": "39. Frühjahrssymposium des NCT Heidelberg",
+                        "type": "event",
+                        "link": {
+                            "url": "#"
+                        },
+                        "tags": ["DE", "Online-Seminar"]
+                    },
+                    {
+                        "title": "22. März",
+                        "subTitle": "9:00-9:30",
+                        "text": "3D Special – \"Messenger und Chat Angebote aus der Helmholtz-Gemeinschaft\" Der Datenschutz Dienstag",
+                        "type": "event",
+                        "link": {
+                            "url": "#"
+                        },
+                        "tags": ["DE", "Online"]
+                    },
+                    {
+                        "title": "23. März",
+                        "subTitle": "9:00-10:00",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "event",
+                        "link": {
+                            "url": "#"
+                        },
+                        "tags": ["DE", "Online"]
+                    },
+                    {
+                        "title": "27. März",
+                        "subTitle": "9:00-10:00",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "event",
+                        "link": {
+                            "url": "#"
+                        },
+                        "tags": ["DE", "Online-Seminar"]
+                    }
+                ]
+            },
+            "employee": {
+                "title": "Neue Mitarbeiter",
+                "titleWithPattern": true,
+                "color": "primary",
+                "items": [
+                    {
+                        "title": "Müller, Prof. Dr. Oliver",
+                        "subTitle": "Bakterienlabor",
+                        "text": "F035 – Tumorvirus-spezifische Vakzinierungsstrategien",
+                        "type": "employee",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "primary",
+                            "size": "xs"
+                        }
+                    },
+                    {
+                        "title": "Hengsbach, Daniel",
+                        "subTitle": "Gruppenleitung EK Investitionsgüter / Dienstleistungen",
+                        "text": "M230 – Beschaffung und Materialwirtschaft",
+                        "type": "employee",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "primary",
+                            "size": "xs"
+                        }
+                    },
+                    {
+                        "title": "Scholz, Dr. Daniela",
+                        "subTitle": "Tierlabor",
+                        "text": "W410 – Zentrales Tierlabor",
+                        "type": "employee",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "primary",
+                            "size": "xs"
+                        }
+                    },
+                    {
+                        "title": "Huber, Anna",
+                        "subTitle": "Büro",
+                        "text": "MU01 – DKTK MU LMU zentral",
+                        "type": "employee",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "primary",
+                            "size": "xs"
+                        }
+                    },
+                    {
+                        "title": "Thomas Müller",
+                        "subTitle": "Büro",
+                        "text": "MU01 – DKTK MU LMU zentral",
+                        "type": "employee",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "primary",
+                            "size": "xs"
+                        }
+                    }
+                ]
+            },
+            "congratulations": {
+                "title": "Herzlichen Glückwunsch",
+                "titleWithPattern": true,
+                "cols": 3,
+                "items": [
+                    {
+                        "title": "M.W. Beijerinck Virology Preis für Prof. Ralf Bartenschlager",
+                        "subTitle": "10. Januar 2022",
+                        "type": "congratulation",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "orange",
+                            "size": "xs",
+                            "position": "left"
+                        }
+                    },
+                    {
+                        "title": "Darmkrebs-Präventionspreis 2021 für PD Dr. Michael Hoffmeister und Dr. Prudence Carr",
+                        "subTitle": "10. Januar 2022",
+                        "type": "congratulation",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "color": "magenta",
+                            "size": "xs",
+                            "position": "left"
+                        }
+                    },
+                    {
+                        "title": "Walter-Friedrich-Preis 2020 für Dr. Daniel Paech",
+                        "subTitle": "10. Januar 2022",
+                        "type": "congratulation",
+                        "link": {
+                            "url": "#"
+                        },
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "color": "green-light",
+                            "size": "xs",
+                            "position": "left"
+                        }
+                    }
+                ]
+            },
+            "blackboard": {
+                "title": "Schwarzes Brett",
+                "titleWithPattern": true,
+                "titleWithPatternColor": "white",
+                "link": {
+                    "url": "#",
+                    "text": "Zum schwarzen Brett"
+                },
+                "items": [
+                    {
+                        "title": "Suche 2-Raum-Wohnung in Heidelberg Zentrum",
+                        "text": "13. Februar 2022",
+                        "type": "blackboard",
+                        "link": {
+                            "url": "#"
+                        },
+                        "color": "magenta"
+                    },
+                    {
+                        "title": "Biete City-Bike (2 Jahre alt)",
+                        "text": "13. Februar 2022",
+                        "type": "blackboard",
+                        "link": {
+                            "url": "#"
+                        },
+                        "color": "yellow"
+                    },
+                    {
+                        "title": "Waschmaschine preiswert abzugeben",
+                        "text": "13. Februar 2022",
+                        "type": "blackboard",
+                        "link": {
+                            "url": "#"
+                        },
+                        "color": "primary"
+                    },
+                    {
+                        "title": "Couch zu verschenken",
+                        "text": "13. Februar 2022",
+                        "type": "blackboard",
+                        "link": {
+                            "url": "#"
+                        },
+                        "color": "green-light"
+                    }
+                ]
+            }
         }
     }
 }

@@ -31,10 +31,13 @@ class Header {
     constructor () {
         app.log('component "header" loaded')
         this.headerEL = document.querySelector<HTMLElement>('.header')
-        this.headerStickyTriggerEL = this.headerEL.querySelector<HTMLElement>('.header__sticky-trigger')
 
-        // methods
-        this.stickyHeader()
+        if (this.headerEL) {
+            this.headerStickyTriggerEL = this.headerEL.querySelector<HTMLElement>('.header__sticky-trigger')
+
+            // methods
+            this.stickyHeader()
+        }
     }
 
     /**

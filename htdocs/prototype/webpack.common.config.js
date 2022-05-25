@@ -22,7 +22,14 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                        },
+                    },
+                ],
                 exclude: /node_modules/,
             },
             {
@@ -44,6 +51,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             sourceMap: true,
+                            url: false,
                         },
                     },
                     {
@@ -91,12 +99,12 @@ module.exports = {
             filename: 'css/[name].min.css',
         }),
         // new CleanWebpackPlugin(),
-        new StylelintPlugin({
-            files: ['**/*.scss'],
-            configFile: '.stylelintrc.yml',
-            emitWarning: true,
-            failOnError: false
-        }),
+        // new StylelintPlugin({
+        //     files: ['**/*.scss'],
+        //     configFile: '.stylelintrc.yml',
+        //     emitWarning: true,
+        //     failOnError: false
+        // }),
         // new ESLintPlugin({
         //     extensions: ['js']
         // }),
@@ -105,8 +113,17 @@ module.exports = {
                 filename: 'icon/icon.min.svg'
             },
             sprite: {
-                prefix: 'icon-'
-            }
+                prefix: 'icon-',
+                generate: {
+                    use: true, // generates use tags within the svg to use in css via base 64 data url
+                    view: '-view', // generate view tags within the svg to use in css via fragment identifier url and add -view suffix for fragment id
+                    symbol: true, // generate symbol tags within the svg to use in html via use tag
+                }
+            },
+            styles: {
+                format: 'fragment', // determines which url should be written to the scss sprite map
+                //filename: 'spritesTest.scss',
+            },
         }),
     ],
     performance: {
@@ -118,22 +135,23 @@ module.exports = {
             return true
         },
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             styles: {
-    //                 name: 'styles',
-    //                 type: 'css/mini-extract',
-    //                 // For webpack@4
-    //                 test: /\.css$/,
-    //                 chunks: 'all',
-    //                 enforce: true,
-    //             },
-    //         },
-    //     },
-    //     // minimize: false,
-    //     // minimizer: [
-    //     //     new CssMinimizerPlugin(),
-    //     // ],
-    // },
+    optimization: {
+        // runtimeChunk: true,
+        // splitChunks: {
+        //     cacheGroups: {
+        //         styles: {
+        //             name: 'styles',
+        //             type: 'css/mini-extract',
+        //             // For webpack@4
+        //             test: /\.css$/,
+        //             chunks: 'all',
+        //             enforce: true,
+        //         },
+        //     },
+        // },
+        // minimize: false,
+        // minimizer: [
+        //     new CssMinimizerPlugin(),
+        // ],
+    },
 };

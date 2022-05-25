@@ -25,6 +25,10 @@
  *       2.18 List
  *       2.19 Contact
  *       2.20 Employee header
+ *       2.21 Content wrapper
+ *       2.22 Carousel
+ *       2.23 Social feed
+ *       2.24 Loading
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -99,6 +103,18 @@ import './_patterns/components/contact/contact'
 
 /** @section 2.20 Employee header */
 import './_patterns/components/employee/employee-header'
+
+/** @section 2.21 Content wrapper */
+import './_patterns/components/content-wrapper/content-wrapper'
+
+/** @section 2.22 Carousel */
+import './_patterns/components/carousel/carousel'
+
+/** @section 2.23 Social feed */
+import './_patterns/components/social-feed/social-feed'
+
+/** @section 2.24 Loading */
+import './_patterns/components/loading/loading'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
