@@ -36,7 +36,7 @@
 
         text-decoration: none;
 
-        .icon {
+        [class*='icon-'] {
             @include size(.75rem);
 
             margin-left: .25rem;

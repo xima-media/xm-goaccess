@@ -42,7 +42,7 @@
             }
         }
 
-        .icon {
+        [class*='icon-'] {
             @include size(1rem);
         }
     }

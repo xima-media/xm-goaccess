@@ -187,7 +187,7 @@
         pointer-events: none;
     }
 
-    .icon {
+    [class*='icon-'] {
         @include size(2.75rem);
     }
 }

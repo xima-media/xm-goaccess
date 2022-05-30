@@ -204,7 +204,6 @@ a {
     color: inherit; // mit bootstrap lösen
 }
 
-$css-icon-size: .75rem;
 .link {
     &--secondary {
         @include link-secondary;
@@ -213,6 +212,7 @@ $css-icon-size: .75rem;
     &--arrow-right {
         text-decoration: none;
 
+        // @todo siehe css icon in icon-Komponente
         &::after {
             @include size($css-icon-size);
 

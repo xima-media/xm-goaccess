@@ -12,6 +12,8 @@
     padding: 3rem;
     background-color: var(--color-white);
 
+    --css-icon-size: 2.25rem;
+
     &__title {
         @include h5;
 

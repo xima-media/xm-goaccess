@@ -73,7 +73,7 @@
 .button--white {
     background-color: var(--color-white);
 
-    .icon {
+    [class*='icon-'] {
         color: var(--color-primary);
     }
 }
