@@ -29,6 +29,7 @@
  *       2.22 Carousel
  *       2.23 Social feed
  *       2.24 Loading
+ *       2.25 Tooltip
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -115,6 +116,9 @@ import './_patterns/components/social-feed/social-feed'
 
 /** @section 2.24 Loading */
 import './_patterns/components/loading/loading'
+
+/** @section 2.25 Tooltip */
+import './_patterns/components/tooltip/tooltip'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

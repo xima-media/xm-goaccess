@@ -1,0 +1,31 @@
+//
+//    @tableOfContent
+//      1. Tooltip
+//
+
+
+//
+//   @section 1. Tooltip
+//
+
+[data-tippy-root] {
+    .tippy {
+        &-box {
+            background-color: var(--color-black);
+            border-radius: 6px;
+        }
+
+        &-content {
+            padding: 1.25rem;
+            font-size: 16px;
+            line-height: 24px;
+            text-transform: uppercase;
+        }
+
+        &-arrow {
+            color: var(--color-black);
+        }
+    }
+}
+
+// end of tooltip.scss file
