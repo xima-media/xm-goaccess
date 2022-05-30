@@ -468,6 +468,34 @@
                     "id": "en"
                 }
             ]
-        }
+        },
+        "tabs": [
+            {
+                "title": "Logistik",
+                "item": [
+                    {
+                        "fileName": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "fileType": "pdf",
+                        "fileSize": "106KB"
+                    }
+                ]
+            },
+            {
+                "title": "Catering",
+                 "item": [
+                     {
+                         "fileName": "Bestellformular für Caterings über das DKFZ Casino",
+                         "fileType": "doc",
+                         "fileSize": "106KB"
+                     },
+                     {
+                         "fileName": "Bestellformular für Caterings über das DKFZ Casino",
+                         "fileType": "doc",
+                         "fileSize": "106KB"
+                     }
+                 ]
+
+            }
+        ]
     }
 }

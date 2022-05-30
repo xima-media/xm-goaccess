@@ -30,6 +30,7 @@
  *       2.23 Social feed
  *       2.24 Loading
  *       2.25 Tooltip
+ *       2.26 Tabs
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -120,6 +121,9 @@ import './_patterns/components/loading/loading'
 /** @section 2.25 Tooltip */
 import './_patterns/components/tooltip/tooltip'
 
+/** @section 2.26 Tabs */
+import './_patterns/components/tabs/tabs'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'
@@ -129,6 +133,7 @@ import './_patterns/components/debug/debug-screenshot'
  *     @section 3. Extensions javaScript
  */
 
+import 'bootstrap/js/src/tab'
 // import 'bootstrap/js/src/modal'
 
 // end of app.js file
