@@ -136,6 +136,9 @@ import './_patterns/components/breadcrumb/breadcrumb'
 /** @section 2.29 Pagination */
 import './_patterns/components/pagination/pagination'
 
+/** @section 2.30 Table */
+import './_patterns/components/table/table'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'
