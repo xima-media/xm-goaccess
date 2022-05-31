@@ -540,6 +540,20 @@
                     }
                 ]
             }
+        ],
+        "breadcrumb": [
+            {
+                "title": "Start"
+            },
+            {
+                "title": "Services & Dienste"
+            },
+            {
+                "title": "Service"
+            },
+            {
+                "title": "Organisation von Veranstaltungen"
+            }
         ]
     }
 }

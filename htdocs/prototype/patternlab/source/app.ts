@@ -32,6 +32,7 @@
  *       2.25 Tooltip
  *       2.26 Tabs
  *       2.27 Accordion
+ *       2.28 Breadcrumb
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -127,6 +128,9 @@ import './_patterns/components/tabs/tabs'
 
 /** @section 2.27 Accordion */
 import './_patterns/components/accordion/accordion'
+
+/** @section 2.28 Breadcrumb */
+import './_patterns/components/breadcrumb/breadcrumb'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
