@@ -496,6 +496,50 @@
                  ]
 
             }
+        ],
+        "accordion": [
+            {
+                "title": "Logistik",
+                "item": [
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    }
+                ]
+            },
+            {
+                "title": "Catering",
+                "item": [
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    }
+                ]
+            }
         ]
     }
 }

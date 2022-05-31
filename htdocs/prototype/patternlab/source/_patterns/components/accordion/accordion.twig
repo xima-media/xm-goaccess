@@ -1,0 +1,49 @@
+<!-- Component Start: accordion -->
+
+{% set accordionId = random() %}
+{% set accordionItemId = random() %}
+
+<div class="accordion">
+    {% for accordion in prototype.accordion %}
+    <ol class="accordion__items">
+        <li>
+            <h2 class="accordion__items--title h5">{{ accordion.title }}</h2>
+            <a class="sr-only" href="#" id="{{ id }}">{{ accordion.title }}</a>
+
+            <ol class="accordion__item">
+                {% for accordionItem in accordion.item %}
+                <button class="accordion__btn"
+                        aria-expanded="false"
+                        id="accordionItem{{ accordionId }}"
+                        data-id="{{ id ? id : accordionItemId }}"
+                        aria-controls="accordionSection{{ accordionId }}"
+                        aria-label="Öffnen Sie die Akkordion-Einträge">
+
+                        <li>
+                            <span class="accordion__btn-description h6">
+                                {{ accordionItem.title }}
+                            </span>
+                        </li>
+
+                    <span class="accordion__btn--closed">
+                            {% include '@components/icon/icon.twig' with {'icon': 'plus',  'description': 'Mit diesem Icon kann ein Akkordeon-Eintrag geöffnet werden'} %}
+                    </span>
+                    <span class="accordion__btn--active">
+                            {% include '@components/icon/icon.twig' with {'icon': 'minus', 'description': 'Mit diesem Icon kann ein Akkordeon-Eintrag geschlossen werden'} %}
+                    </span>
+                </button>
+
+                <div class="accordion__panel"
+                     id="accordionSection{{ accordionId }}"
+                     aria-labelledby="accordionItem{{ accordionId }}">
+
+                    {{ accordionItem.text }}
+                </div>
+                {% endfor %}
+            </ol>
+        </li>
+    </ol>
+    {% endfor %}
+</div>
+
+<!-- Components End: accordion -->

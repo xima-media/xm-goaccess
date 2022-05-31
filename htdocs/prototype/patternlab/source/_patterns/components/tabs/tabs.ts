@@ -29,9 +29,9 @@ class Tabs {
     constructor () {
         app.log('component "tabs" loaded')
 
-        var triggerTabList = [].slice.call(document.querySelectorAll('#tab a'))
+        const triggerTabList = [].slice.call(document.querySelectorAll('#tab a'))
         triggerTabList.forEach(function (triggerEl) {
-          var tabTrigger = new bootstrap.Tab(triggerEl)
+          const tabTrigger = new bootstrap.Tab(triggerEl)
 
           triggerEl.addEventListener('click', function (event) {
             event.preventDefault()

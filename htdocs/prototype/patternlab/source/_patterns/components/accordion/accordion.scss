@@ -1,0 +1,99 @@
+//
+//    @tableOfContent
+//      1. Accordion
+//
+
+
+//
+//   @section 1. Accordion
+//
+
+// @todo Font-family TheSans-Regular
+
+.accordion {
+    margin-bottom: 2rem;
+
+    &__items {
+        position: relative;
+        padding-top: 2rem;
+
+        &--title {
+            display: inline;
+        }
+    }
+
+    &__item {
+        border-top: 1px solid var(--color-gray-100);
+
+        &:last-of-type {
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+    }
+
+    &__panel {
+        overflow: hidden;
+        max-height: 0;
+        padding: 0 5px;
+        transition: max-height .3s ease-out;
+
+        p {
+            margin: 0;
+            letter-spacing: .5px;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem 0;
+        text-align: left;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        transition: .4s;
+
+        &--active {
+            display: none;
+        }
+
+        &.active {
+            .accordion__btn--closed {
+                display: none;
+            }
+
+            .accordion__btn--active {
+                display: block;
+            }
+
+            + .accordion__panel {
+                margin-bottom: 2rem;
+            }
+        }
+
+        &:hover {
+            transform: translateX(5px);
+        }
+    }
+
+
+    // numeric List
+    ol {
+        counter-reset: item;
+        padding-left: 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    li:before {
+        content: counters(item, ".") " ";
+        counter-increment: item;
+    }
+}
+
+
+// end of accordion.scss file

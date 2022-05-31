@@ -31,6 +31,7 @@
  *       2.24 Loading
  *       2.25 Tooltip
  *       2.26 Tabs
+ *       2.27 Accordion
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -123,6 +124,9 @@ import './_patterns/components/tooltip/tooltip'
 
 /** @section 2.26 Tabs */
 import './_patterns/components/tabs/tabs'
+
+/** @section 2.27 Accordion */
+import './_patterns/components/accordion/accordion'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
