@@ -23,7 +23,7 @@
         right: 0;
         left: -1rem;
         z-index: -1;
-        height: 11rem; // @todo dynamic height
+        height: 100%;
     }
 
     &--wrapper {
@@ -76,7 +76,7 @@
             right: -1rem;
             left: 0;
             z-index: -1;
-            height: 13rem; // @todo dynamic height
+            height: 100%;
         }
 
         .info-box--wrapper {
