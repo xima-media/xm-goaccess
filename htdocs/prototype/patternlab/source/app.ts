@@ -34,6 +34,8 @@
  *       2.27 Accordion
  *       2.28 Breadcrumb
  *       2.29 Pagination
+ *       2.30 Table
+ *       2.31 Info Box
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -138,6 +140,9 @@ import './_patterns/components/pagination/pagination'
 
 /** @section 2.30 Table */
 import './_patterns/components/table/table'
+
+/** @section 2.31 Info Box */
+import './_patterns/components/info-box/info-box'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
