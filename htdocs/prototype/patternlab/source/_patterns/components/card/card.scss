@@ -85,15 +85,7 @@
         }
 
         &--more {
-            @include link-secondary;
-
-            text-decoration: none;
-
-            [class*='icon-'] {
-                @include size(.75rem);
-
-                margin-left: .25rem;
-            }
+            @include link-secondary-with-arrow;
         }
     }
 
@@ -124,8 +116,11 @@
 //
 
 .card--image-left {
-    flex-direction: row;
     gap: 2.75rem; // @todo variable
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+    }
 
     .card {
         &__image {
@@ -380,7 +375,11 @@
 
 // @todo einsortieren
 .card--main-news {
-    gap: 7.25rem;
+    gap: 2rem;
+
+    @include media-breakpoint-up(md) {
+        gap: 7.25rem;
+    }
 
     .card {
         &__header {
@@ -392,7 +391,10 @@
 
             z-index: 1;
             max-width: 38rem;
-            margin: 3rem 0 2rem -18.75rem;
+
+            @include media-breakpoint-up(md) {
+                margin: 3rem 0 2rem -18.75rem;
+            }
         }
 
         &__sub-title {
@@ -409,10 +411,13 @@
 
         &__image {
             position: relative;
-            flex: 0 0 50%;
-            width: 50%;
             margin-bottom: 0;
             padding: 3rem;
+
+            @include media-breakpoint-up(md) {
+                flex: 0 0 50%;
+                width: 50%;
+            }
 
             &::after {
                 @include background-pattern($color-gray-900);
@@ -438,18 +443,29 @@
 
 // @todo einsortieren
 .card--info {
-    padding: 3rem;
+    padding: 1.5rem;
     background-color: var(--color-white);
+
+    @include media-breakpoint-up(md) {
+        padding: 3rem;
+    }
 
     .card {
         &__content {
             display: flex;
+            flex-direction: column;
             gap: 2rem;
+
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+            }
         }
 
         &__header {
-            flex: 0 0 20rem;
-            width: 20rem;
+            @include media-breakpoint-up(md) {
+                flex: 0 0 20rem;
+                width: 20rem;
+            }
         }
 
         &__text {

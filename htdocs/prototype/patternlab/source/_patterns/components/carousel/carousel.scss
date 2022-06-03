@@ -13,29 +13,35 @@
 // @todo aufräumen
 .carousel {
     position: relative;
-    max-width: $container-expand-widths;
+    width: $container-expand-widths;
+    max-width: calc(100vw - 1rem);
     margin-bottom: 6rem;
 
-    //&__header {
-    //    position: relative;
-    //    display: flex;
-    //    justify-content: space-between;
-    //    align-items: center;
-    //    max-width: $container-default-widths;
-    //    margin: 0 auto .75rem; // 1.5rem;
-    //}
-    //
-    //&__title {
-    //    margin-bottom: .25rem;
-    //}
-    //
-    //&__pattern {
-    //    position: absolute;
-    //    right: 0;
-    //    bottom: 0;
-    //    left: 0;
-    //    height: .5rem;
-    //}
+    .content-wrapper & {
+        max-width: calc(100vw - 3rem);
+    }
+
+    .bar & {
+        @include media-breakpoint-up(md) {
+            max-width: calc(100vw - 7.5rem);
+        }
+
+        @include media-breakpoint-up(lg) {
+            max-width: 100%;
+        }
+    }
+
+    .bar--main-hero & {
+        max-width: calc(100vw - 3.5rem);
+
+        @include media-breakpoint-up(md) {
+            max-width: calc(100vw - 8rem);
+        }
+
+        @include media-breakpoint-up(lg) {
+            max-width: 100%;
+        }
+    }
 
     &__content {
         overflow: hidden;
@@ -171,6 +177,10 @@
     border: 0;
     cursor: pointer;
 
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+
     &.swiper-button-prev {
         right: auto;
         left: 3.375rem;
@@ -249,12 +259,14 @@
     }
 
     .carousel--pagination-right & {
-        flex-direction: column;
-        top: 0;
-        right: 10.375rem;
-        bottom: 0;
-        left: auto;
-        width: auto;
+        @include media-breakpoint-up(md) {
+            flex-direction: column;
+            top: 0;
+            right: 10.375rem;
+            bottom: 0;
+            left: auto;
+            width: auto;
+        }
     }
 }
 

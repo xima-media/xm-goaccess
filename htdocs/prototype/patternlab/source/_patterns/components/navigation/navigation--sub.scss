@@ -15,7 +15,27 @@
 
             display: flex;
             align-items: center;
-            gap: 2.125rem;
+            gap: .5rem;
+
+            @include media-breakpoint-up(md) {
+                gap: 2rem;
+            }
+        }
+
+        &__item {
+            &--open-chat,
+            &--bookmark,
+            &--user {
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+            }
+
+            &--menu-toggle {
+                @include media-breakpoint-up(lg) {
+                    display: none;
+                }
+            }
         }
 
         &__link {

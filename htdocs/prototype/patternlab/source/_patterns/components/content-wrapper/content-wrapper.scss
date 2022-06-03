@@ -31,16 +31,7 @@
     }
 
     &__link {
-        // @todo wiedervendebar machen, siehe auch .card__link
-        @include link-secondary;
-
-        text-decoration: none;
-
-        [class*='icon-'] {
-            @include size(.75rem);
-
-            margin-left: .25rem;
-        }
+        @include link-secondary-with-arrow;
     }
 
     &--sm {

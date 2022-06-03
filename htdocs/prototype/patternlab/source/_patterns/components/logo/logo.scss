@@ -10,11 +10,19 @@
 
 .logo {
     display: block;
-    width: 16.25rem;
-    padding: 1rem;
-    background-color: var(--color-white);
+    width: 12rem;
+    padding: 1rem 1.5rem 1.25rem;
 
-    //&__image {  }
+    @include media-breakpoint-up(md) {
+        width: 16.25rem;
+        background-color: var(--color-white);
+    }
+
+    &__image {
+        @include media-breakpoint-down(md) {
+            filter: brightness(0) invert(1);
+        }
+    }
 }
 
 // end of logo.scss file

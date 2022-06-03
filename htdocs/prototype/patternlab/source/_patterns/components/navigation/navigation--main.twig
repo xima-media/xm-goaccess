@@ -1,11 +1,16 @@
 <!-- Component Start: navigation--main -->
 
 <nav class="navigation navigation--main" aria-label="Hauptnavigation">
-    <button class="navigation__button fx--toggle" type="button" aria-expanded="false" aria-controls="navigation__items--main">|||</button>
+{#    <button class="navigation__button fx--toggle" type="button" aria-expanded="false" aria-controls="navigation__items--main">|||</button>#}
     <ul id="navigation__items--main" class="navigation__items fx--first">
         {% for mainLink in prototype.navigation.main %}
             <li class="navigation__item fx--first">
-                <a class="navigation__link fx--first {{ mainLink.id == prototype.navigation.activeId ? 'fx--active' : '' }}" href="{{ mainLink.url }}">{{ mainLink.text }}</a>
+                <a class="navigation__link fx--first {{ mainLink.id == prototype.navigation.activeId ? 'fx--active' : '' }} {% if mainLink.icon == 'employee' %}color--primary{% endif %}" href="{{ mainLink.url }}">
+                    {% if mainLink.icon %}
+                        {% include '@components/icon/icon.twig' with {icon: 'bookmark'} %}
+                    {% endif %}
+                    {{ mainLink.text }}
+                </a>
                 {% if mainLink.sub %}
                     <ul class="navigation__items fx--second {{ mainLink.colorClass }}">
                         {% set closeSubLinkSection = true %}

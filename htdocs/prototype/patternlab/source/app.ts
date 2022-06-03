@@ -33,6 +33,10 @@
  *       2.26 Tabs
  *       2.27 Accordion
  *       2.28 Breadcrumb
+ *       2.29 Employee finder
+ *       2.30 Employee welcome message
+ *       2.31 Field
+ *       2.32 Quick search
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -131,6 +135,18 @@ import './_patterns/components/accordion/accordion'
 
 /** @section 2.28 Breadcrumb */
 import './_patterns/components/breadcrumb/breadcrumb'
+
+/** @section 2.29 Employee finder */
+import './_patterns/components/employee-finder/employee-finder'
+
+/** @section 2.30 Employee welcome message */
+import './_patterns/components/employee-welcome-message/employee-welcome-message'
+
+/** @section 2.31 Field */
+import './_patterns/components/field/field--text'
+
+/** @section 2.32 Quick search */
+import './_patterns/components/quick-search/quick-search'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

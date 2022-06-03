@@ -14,24 +14,26 @@
     margin: auto;
     background-color: var(--color-white);
 
-    &::after {
-        @include background-pattern($color-primary);
+    @include media-breakpoint-up(lg) {
+        &::after {
+            @include background-pattern($color-primary);
 
-        content: '';
-        position: absolute;
-        bottom: -1rem;
-        right: -1rem;
-        left: -1rem;
-        z-index: -1;
-        height: 3rem;
+            content: '';
+            position: absolute;
+            bottom: -.75rem;
+            right: -.75rem;
+            left: -.75rem;
+            z-index: -1;
+            height: 3rem;
+        }
     }
 
     .navigation {
-        &__button {
-            @include media-breakpoint-up(xl) {
-                display: none;
-            }
-        }
+        //&__button {
+        //    @include media-breakpoint-up(xl) {
+        //        display: none;
+        //    }
+        //}
 
         &__items {
             @include list-reset;
@@ -42,37 +44,29 @@
             &.fx--first {
                 justify-content: center;
 
-                @include media-breakpoint-down(xl) {
-                    display: none;
+                @include media-breakpoint-down(lg) {
                     flex-direction: column;
                     justify-content: flex-start;
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    z-index: 100;
-                    background-color: var(--color-white);
-                    box-shadow: 0 0 30px rgb(0 0 0 / 20%); // @todo variable
-                }
-
-                .fx--main-menu-open & {
-                    display: flex;
                 }
             }
 
             &.fx--second {
                 display: none;
-                gap: 2rem;
-                padding: 1.5rem 3rem;
+                gap: 1rem;
+                padding: 1.5rem;
                 // background-color: var(--color-white);
 
-                @include media-breakpoint-down(xl) {
+                @include media-breakpoint-down(lg) {
                     flex-direction: column;
+                    // max-width: calc(100% - 2rem);
                 }
 
-                @include media-breakpoint-up(xl) {
+                @include media-breakpoint-up(lg) {
+                    gap: 2rem;
                     position: absolute;
                     left: 50%;
+                    padding-right: 3rem;
+                    padding-left: 3rem;
                     box-shadow: 0 0 6px rgb(0 0 0 / 20%);
                     transform: translateX(-50%);
                 }
@@ -108,15 +102,18 @@
 
         &__link {
             position: relative;
-            display: inline-block;
+            display: flex;
+            gap: .5rem;
+            align-items: center;
             font-weight: 200;
-            color: inherit;
             white-space: nowrap;
             text-decoration: none;
 
             &.fx--first {
-                padding: 1.125rem 2.5rem;
-                font-size: 18px;
+                @include text-main-navi;
+
+                height: 100%;
+                padding: 1.375rem 2rem;
 
                 &::after {
                     content: '';

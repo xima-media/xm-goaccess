@@ -21,25 +21,53 @@
     //&__item {  }
 
     &__link {
+        @include size(2rem);
+        @include font-header-meta;
+
         position: relative;
-        display: block;
-        padding: .5rem;
-        font-size: 14px; // @todo variable
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: .25rem;
         color: inherit;
+        text-align: center;
         text-decoration: none;
         text-transform: uppercase;
+        border-radius: 3rem;
 
+        &::after {
+            opacity: 0;
+            content: '';
+            position: absolute;
+            right: .5rem;
+            bottom: .25rem;
+            left: .5rem;
+            height: 1px;
+            background-color: var(--color-white);
+            transform: translate3d(0, .25rem, 0);
+            transition: opacity $transition-time * .5, transform $transition-time * .5;
+        }
+
+        &:hover,
+        &:focus,
         &.fx--active {
+            color: inherit;
+
             &::after {
-                content: '';
-                position: absolute;
-                right: .5rem;
-                bottom: .5rem;
-                left: .5rem;
-                height: 1px;
-                background-color: var(--color-white);
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
             }
         }
+
+        //&.fx--active {
+        //    &:hover,
+        //    &:focus {
+        //        &::after {
+        //            opacity: 0;
+        //            transform: translate3d(0, .25rem, 0);
+        //        }
+        //    }
+        //}
     }
 }
 

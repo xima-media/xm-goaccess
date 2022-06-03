@@ -15,6 +15,7 @@
 //       8.5 Main navigation
 //       8.6 Link
 //       8.7 Font base
+//       8.8 Header meta links / language switcher
 //      9. Loading
 //
 
@@ -103,8 +104,13 @@
 // @section 7.1 H1
 @mixin h1 {
     font-family: $font-family-serif;
-    font-size: map-get($h1, 'font-size');
-    line-height: map-get($h1, 'line-height');
+    font-size: map-get($h3, 'font-size');
+    line-height: map-get($h3, 'line-height');
+
+    @include media-breakpoint-up(md) {
+        font-size: map-get($h1, 'font-size');
+        line-height: map-get($h1, 'line-height');
+    }
 }
 
 // @section 7.2 H2
@@ -124,8 +130,13 @@
 // @section 7.4 H4
 @mixin h4 {
     font-family: $font-family-serif;
-    font-size: map-get($h4, 'font-size');
-    line-height: map-get($h4, 'line-height');
+    font-size: map-get($h5, 'font-size');
+    line-height: map-get($h5, 'line-height');
+
+    @include media-breakpoint-up(md) {
+        font-size: map-get($h4, 'font-size');
+        line-height: map-get($h4, 'line-height');
+    }
 }
 
 // @section 7.5 H5
@@ -205,7 +216,8 @@
 @mixin text-main-navi {
     font-family: var(--font-family-sans-serif);
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
+    line-height: 18px;
     letter-spacing: .3px;
 }
 
@@ -226,11 +238,31 @@
     letter-spacing: 1.2px;
 }
 
+@mixin link-secondary-with-arrow {
+    @include link-secondary;
+
+    text-decoration: none;
+
+    [class*='icon-'] {
+        @include size(.75rem);
+
+        margin-left: .25rem;
+    }
+}
+
 // @section 8.7 Font base
 @mixin font-base {
     font-family: $font-family-serif;
     font-size: map-get($font-base, 'font-size');
     line-height: map-get($font-base, 'line-height');
+}
+// @section 8.8 Header meta links / language switcher
+@mixin font-header-meta {
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 1.2px;
 }
 
 

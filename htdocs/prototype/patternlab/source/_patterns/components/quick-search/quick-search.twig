@@ -1,0 +1,19 @@
+<!-- Component Start: quick-search -->
+
+<div class="quick-search">
+    <button type="button" class="quick-search__button button button--icon-only button--white" aria-label="Volltextsuche öffnen" aria-expanded="false">
+        {% include '@components/icon/icon.twig' with { icon: 'search' } %}
+    </button>
+    <form class="quick-search__form" action="#">
+        {% include '@components/field/field--text.twig' with {
+            label: {
+                text: prototype.component.quickSearch.input.label.text,
+                hidden: prototype.component.quickSearch.input.label.hidden
+            },
+            placeholder: prototype.component.quickSearch.input.placeholder,
+            type: prototype.component.quickSearch.input.type
+        } only %}
+    </form>
+</div>
+
+<!-- Components End: quick-search -->

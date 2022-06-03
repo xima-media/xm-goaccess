@@ -30,50 +30,43 @@ class Carousel {
     constructor () {
         app.log('component "carousel" loaded')
 
-        // @todo noch schön schreiben
-        document.querySelectorAll<HTMLElement>('.carousel').forEach((element) => {
-            const swiper = new Swiper(element.querySelector<HTMLElement>('.swiper'), {
-                // configure Swiper to use modules
-                modules: [Navigation, Pagination],
+        this.initCarousels()
+    }
 
-                // Optional parameter
-                // direction: 'vertical',
+    /**
+     * init carousels
+     */
+    initCarousels () {
+        document.querySelectorAll<HTMLElement>('.carousel').forEach((element) => {
+            const cols = JSON.parse(element.dataset.cols)
+            const swiper = new Swiper(element.querySelector<HTMLElement>('.swiper'), {
+                modules: [Navigation, Pagination],
                 loop: false,
                 slidesPerView: 3,
-                // spaceBetween: 30,
-                // Responsive breakpoints
-                breakpoints: {
-                    // when window width is >= 320px
-                    320: {
-                        slidesPerView: 1,
-                        // spaceBetween: 20
-                    },
-                    // when window width is >= 480px
-                    480: {
-                        slidesPerView: 2,
-                        // spaceBetween: 30
-                    },
-                    // when window width is >= 640px
-                    640: {
-                        slidesPerView: 3,
-                        // spaceBetween: 40
-                    },
-                    1024: {
-                        slidesPerView: parseInt(element.dataset.cols),
-                        // spaceBetween: 40
-                    }
-                },
-
-                // If we need pagination
                 pagination: {
                     el: element.querySelector<HTMLElement>('.swiper-pagination'),
                     clickable: true
                 },
-
-                // Navigation arrows
                 navigation: {
                     nextEl: element.querySelector<HTMLElement>('.swiper-button-next'),
                     prevEl: element.querySelector<HTMLElement>('.swiper-button-prev'),
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: cols.xs,
+                        pagination: {
+                            type: 'fraction'
+                        }
+                    },
+                    480: {
+                        slidesPerView: cols.sm
+                    },
+                    768: {
+                        slidesPerView: cols.md
+                    },
+                    1024: {
+                        slidesPerView: cols.lg
+                    }
                 },
             })
         })

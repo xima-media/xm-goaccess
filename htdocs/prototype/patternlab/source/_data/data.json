@@ -456,6 +456,24 @@
             ]
         },
         "component": {
+            "quickSearch": {
+                "input": {
+                    "label": {
+                        "text": "Suche",
+                        "hidden": true
+                    },
+                    "placeholder": "Platzhaltertext",
+                    "type": "text"
+                }
+            },
+            "employeeFinder": {
+                "input": {
+                    "label": {
+                        "text": "Mitarbeiter finden"
+                    },
+                    "placeholder": "Suchen nach Name, Vorname, Telefon"
+                }
+            },
             "languageSwitcher": [
                 {
                     "url": "#en",
