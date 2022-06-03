@@ -25,15 +25,21 @@ import app from '../basic/basic'
  */
 
 class QuickSearch {
+    quickSearchOpenState
     quickSearchEl
-    quickSearchButtonEl
+    quickSearchInputEl
+    quickSearchButtonToggleEl
 
     constructor () {
         app.log('component "quick search" loaded')
+        this.quickSearchOpenState = false
         this.quickSearchEl = document.querySelector<HTMLElement>('.quick-search')
-        this.quickSearchButtonEl = this.quickSearchEl.querySelector<HTMLButtonElement>('.quick-search__button')
 
-        if (this.quickSearchButtonEl) {
+        // main element existing?
+        if (this.quickSearchEl) {
+            this.quickSearchInputEl = this.quickSearchEl.querySelector<HTMLInputElement>('.field__input')
+            this.quickSearchButtonToggleEl = this.quickSearchEl.querySelector<HTMLButtonElement>('.quick-search__button--toggle')
+
             // methods
             this.events()
         }
@@ -46,7 +52,10 @@ class QuickSearch {
         const self = this
 
         // toggle: quick search
-        self.quickSearchButtonEl.addEventListener('click', () => self.toggleQuickSearch())
+        self.quickSearchButtonToggleEl.addEventListener('click', () => self.toggleQuickSearch())
+
+        // outside click
+        document.addEventListener('mousedown', event => self.clickOutsideQuickSearch(event))
     }
 
     /**
@@ -57,7 +66,33 @@ class QuickSearch {
 
         // toggle 'open' class
         self.quickSearchEl.classList.toggle('fx--open')
+
+        // toggle state
+        self.quickSearchOpenState = !self.quickSearchOpenState
+
+        // focus input element
+        if (self.quickSearchOpenState) {
+            self.quickSearchInputEl.focus()
+        }
+
         // @todo aria-expanden togglen
+    }
+
+    /**
+     * click outside and close the quick search
+     * @param event MouseEvent
+     */
+    clickOutsideQuickSearch (event: MouseEvent) {
+        const self = this
+        const targetParentEl = (<HTMLElement>event.target).closest('.quick-search')
+
+        if (targetParentEl === null) {
+            if (self.quickSearchEl.classList.contains('fx--open')) {
+                self.toggleQuickSearch()
+            }
+        }
+
+        // @todo funktioniert nicht wenn auf carousel gedrückt wird
     }
 }
 

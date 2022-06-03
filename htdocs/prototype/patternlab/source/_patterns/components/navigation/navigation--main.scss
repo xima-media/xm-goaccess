@@ -14,6 +14,12 @@
     margin: auto;
     background-color: var(--color-white);
 
+    @include media-breakpoint-down(lg) {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+    }
+
     @include media-breakpoint-up(lg) {
         &::after {
             @include background-pattern($color-primary);
@@ -52,13 +58,12 @@
 
             &.fx--second {
                 display: none;
-                gap: 1rem;
                 padding: 1.5rem;
-                // background-color: var(--color-white);
 
                 @include media-breakpoint-down(lg) {
+                    grid-area: content;
                     flex-direction: column;
-                    // max-width: calc(100% - 2rem);
+                    background-color: $color-gray-100;
                 }
 
                 @include media-breakpoint-up(lg) {
@@ -74,6 +79,10 @@
 
             &.fx--third {
                 flex-direction: column;
+
+                @include media-breakpoint-down(lg) {
+                    margin-left: 1rem;
+                }
             }
 
             &.fx--row {
@@ -85,11 +94,20 @@
             &.fx--first {
                 position: relative;
 
-                &:hover,
-                &:focus-within {
-                    .navigation__items {
-                        &.fx--second {
-                            display: flex;
+                @include media-breakpoint-down(lg) {
+                    display: grid;
+                    grid-template-areas:
+                        'header'
+                        'content';
+                }
+
+                @include media-breakpoint-up(lg) {
+                    &:hover,
+                    &:focus-within {
+                        .navigation__items {
+                            &.fx--second {
+                                display: flex;
+                            }
                         }
                     }
                 }
@@ -115,6 +133,23 @@
                 height: 100%;
                 padding: 1.375rem 2rem;
 
+                @include media-breakpoint-down(lg) {
+                    grid-area: header;
+                    padding-right: 1rem;
+                    padding-left: 1rem;
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid $color-gray-100;
+                    }
+                }
+
+                @include media-breakpoint-down(lg) {
+                    position: sticky;
+                    top: 0;
+                    background-color: var(--color-white);
+                    z-index: 1;
+                }
+
                 &::after {
                     content: '';
                     display: none;
@@ -126,18 +161,20 @@
                     background-color: var(--color-primary);
                 }
 
-                &:hover,
-                &:focus {
-                    ~ .navigation__items {
-                        display: flex;
+                @include media-breakpoint-up(lg) {
+                    &:hover,
+                    &:focus {
+                        ~ .navigation__items {
+                            display: flex;
+                        }
                     }
-                }
 
-                &:hover,
-                &:focus,
-                &.fx--active {
-                    &::after {
-                        display: block;
+                    &:hover,
+                    &:focus,
+                    &.fx--active {
+                        &::after {
+                            display: block;
+                        }
                     }
                 }
             }
@@ -160,7 +197,37 @@
                 }
             }
         }
+
+        &__button {
+            &--toggle-items {
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                width: 3rem;
+                margin-left: auto;
+                background-color: transparent;
+                border: 1px solid transparent;
+
+                @include media-breakpoint-down(lg) {
+                    grid-area: header;
+                }
+
+                @include media-breakpoint-up(lg) {
+                    display: none;
+                }
+
+                &.fx--active {
+                    ~ .navigation__items {
+                        display: flex;
+                    }
+                }
+            }
+        }
     }
+}
+
+.fx--main-menu-open {
+    overflow: hidden;
 }
 
 // end of navigation--main.scss file

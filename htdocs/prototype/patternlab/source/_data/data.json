@@ -478,12 +478,14 @@
                 {
                     "url": "#en",
                     "text": "De",
-                    "id": "de"
+                    "id": "de",
+                    "tooltip": "Deutsch"
                 },
                 {
                     "url": "#en",
                     "text": "En",
-                    "id": "en"
+                    "id": "en",
+                    "tooltip": "Englisch"
                 }
             ]
         },

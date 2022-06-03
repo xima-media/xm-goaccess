@@ -52,7 +52,7 @@ class Carousel {
                     prevEl: element.querySelector<HTMLElement>('.swiper-button-prev'),
                 },
                 breakpoints: {
-                    320: {
+                    0: {
                         slidesPerView: cols.xs,
                         pagination: {
                             type: 'fraction'

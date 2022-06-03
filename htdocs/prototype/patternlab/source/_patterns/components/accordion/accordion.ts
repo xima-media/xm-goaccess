@@ -56,6 +56,8 @@ class Accordion {
     }
 }
 
+// @todo warum wurde nicht das bootstrap accordion benutzt?
+// @todo auslagern in app
 function findAncestor (el, sel) {
     while ((el = el.parentElement) && !((el.matches || el.matchesSelector).call(el, sel)));
     return el

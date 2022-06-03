@@ -160,6 +160,9 @@ import './_patterns/components/field/field--text'
 /** @section 2.35 Quick search */
 import './_patterns/components/quick-search/quick-search'
 
+/** @section 2.36 Dropdown */
+import './_patterns/components/dropdown/dropdown'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'
@@ -169,7 +172,6 @@ import './_patterns/components/debug/debug-screenshot'
  *     @section 3. Extensions javaScript
  */
 
-import 'bootstrap/js/src/tab'
 // import 'bootstrap/js/src/modal'
 
 // end of app.js file

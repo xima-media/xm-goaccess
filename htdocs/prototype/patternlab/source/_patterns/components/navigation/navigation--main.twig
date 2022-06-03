@@ -12,6 +12,9 @@
                     {{ mainLink.text }}
                 </a>
                 {% if mainLink.sub %}
+                    <button class="navigation__button navigation__button--toggle-items" type="button">
+                        {% include '@components/icon/icon.twig' with {icon: 'arrow-down'} %}
+                    </button>
                     <ul class="navigation__items fx--second {{ mainLink.colorClass }}">
                         {% set closeSubLinkSection = true %}
                         {% for subLink in mainLink.sub %}

@@ -3,29 +3,25 @@
 <div class="navigation navigation--sub">
     <ul class="navigation__items">
         <li class="navigation__item navigation__item--open-chat">
-            <a class="navigation__link button button--icon-only" href="#chat" aria-label="Chat öffnen">
-                {% include '@components/icon/icon.twig' with { icon: 'option' } %}
+            <a class="navigation__link button button--icon-only" href="#message" aria-label="Feedback geben" data-tooltip="Feedback geben">
+                {% include '@components/icon/icon.twig' with { icon: 'message' } %}
             </a>
         </li>
         <li class="navigation__item navigation__item--bookmark">
-            <a class="navigation__link button button--icon-only" href="#bookmark" aria-label="Lesezeichen anzeigen">
+            <a class="navigation__link button button--icon-only" href="#bookmark" aria-label="Lesezeichen anzeigen" data-tooltip="Favoriten aufrufen">
                 {% include '@components/icon/icon.twig' with { icon: 'bookmark' } %}
             </a>
         </li>
         <li class="navigation__item navigation__item--user">
-            <a class="navigation__link button button--icon-only button--white" href="#user">
-                {% include '@components/image/image.twig' with {
-                    src: '../../dist/image/examples/user.jpg'
-                } %}
-            </a>
+            {% include '@components/dropdown/dropdown--user.twig' %}
         </li>
         <li class="navigation__item navigation__item--quick-search">
             {% include '@components/quick-search/quick-search.twig' %}
         </li>
         <li class="navigation__item navigation__item--menu-toggle">
-            {# @todo umbennen #}
             <button class="navigation__link button button--icon-only button--white fx--toggle-main-menu" type="button" aria-expanded="false" aria-controls="navigation__items--main">
-                {% include '@components/icon/icon.twig' with { icon: 'option' } %}
+                {% include '@components/icon/icon.twig' with { icon: 'menu' } %}
+                {% include '@components/icon/icon.twig' with { icon: 'close' } %}
             </button>
         </li>
     </ul>

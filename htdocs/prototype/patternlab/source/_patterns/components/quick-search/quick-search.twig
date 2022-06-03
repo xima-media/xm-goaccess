@@ -1,7 +1,7 @@
 <!-- Component Start: quick-search -->
 
 <div class="quick-search">
-    <button type="button" class="quick-search__button button button--icon-only button--white" aria-label="Volltextsuche öffnen" aria-expanded="false">
+    <button type="button" class="quick-search__button quick-search__button--toggle button button--icon-only button--white" aria-label="Volltextsuche öffnen" aria-expanded="false">
         {% include '@components/icon/icon.twig' with { icon: 'search' } %}
     </button>
     <form class="quick-search__form" action="#">
@@ -13,6 +13,9 @@
             placeholder: prototype.component.quickSearch.input.placeholder,
             type: prototype.component.quickSearch.input.type
         } only %}
+        <button type="button{# submit ii TYPO3 #}" class="quick-search__button quick-search__button--submit button button--icon-only button--white">
+            {% include '@components/icon/icon.twig' with { icon: 'search' } %}
+        </button>
     </form>
 </div>
 

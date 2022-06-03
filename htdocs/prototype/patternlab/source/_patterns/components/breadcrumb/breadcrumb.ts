@@ -25,15 +25,25 @@ import app from '../basic/basic'
  */
 
 class Breadcrumb {
+    breadcrumbLinkEl
+
     constructor () {
         app.log('component "breadcrumb" loaded')
-         this.currentItem()
+        this.breadcrumbLinkEl = document.querySelector<HTMLElement>('.breadcrumb__link')
+
+        if (this.breadcrumbLinkEl) {
+            this.currentItem()
+        }
     }
 
+    /**
+     * mark current icon
+     */
     currentItem () {
-        const breadcrumbLink = document.querySelector('.breadcrumb__link')
+        const self = this
 
-        breadcrumbLink.setAttribute('aria-current', 'location')
+        // @todo Yulia, kann das nicht direkt im HTML gesetzt werden?
+        self.breadcrumbLinkEl.setAttribute('aria-current', 'location')
     }
 }
 

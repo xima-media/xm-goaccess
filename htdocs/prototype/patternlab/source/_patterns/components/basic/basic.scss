@@ -121,26 +121,31 @@ body {
             background-color: transparent;
 
             &::after {
-                top: -10rem;
-                bottom: -10rem;
+                top: -6rem;
+                bottom: -6rem;
+
+                @include media-breakpoint-up(lg) {
+                    top: -9rem;
+                    bottom: -9rem;
+                }
             }
         }
 
         &.background--orange {
             &::after {
-                background-color: var(--color-orange);
+                background-color: rgba($color-orange, .75);
             }
         }
 
         &.background--yellow {
             &::after {
-                background-color: var(--color-yellow);
+                background-color: rgba($color-yellow, .75);
             }
         }
 
         &.background--cyan {
             &::after {
-                background-color: var(--color-cyan);
+                background-color: rgba($color-cyan, .75);
             }
         }
 

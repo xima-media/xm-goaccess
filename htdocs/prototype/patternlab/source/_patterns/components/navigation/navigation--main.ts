@@ -26,10 +26,12 @@ import app from '../basic/basic'
 
 class NavigationMain {
     buttonToggleMenuEl
+    buttonToggleMenuItemsEl
 
     constructor () {
         app.log('component "main navigation" loaded')
-        this.buttonToggleMenuEl = document.querySelector('.fx--toggle-main-menu')
+        this.buttonToggleMenuEl = document.querySelector<HTMLButtonElement>('.fx--toggle-main-menu')
+        this.buttonToggleMenuItemsEl = document.querySelectorAll<HTMLButtonElement>('.navigation__button--toggle-items')
 
         if (this.buttonToggleMenuEl) {
             // methods
@@ -43,8 +45,13 @@ class NavigationMain {
     events () {
         const self = this
 
-        // toggle debug menu
+        // toggle mobile menu
         self.buttonToggleMenuEl.addEventListener('click', () => self.toggleMobileMenu())
+
+        // toggle mobile menu items
+        self.buttonToggleMenuItemsEl.forEach(button => (
+            button.addEventListener('click', () => self.toggleMobileMenuItems(button))
+        ))
     }
 
     /**
@@ -57,6 +64,20 @@ class NavigationMain {
         //self.buttonToggleMenuEl @todo togle aria-attributwe
 
         document.documentElement.classList.toggle('fx--main-menu-open')
+    }
+
+    /**
+     * Toggle mobile menu items
+     * @param button HTMLButtonElement
+     */
+    toggleMobileMenuItems (button: HTMLButtonElement) {
+        //self.buttonToggleMenuEl @todo togle aria-attributwe
+
+        //document.documentElement.classList.toggle('fx--main-menu-open')
+
+        console.log(button)
+
+        button.classList.toggle('fx--active')
     }
 }
 
