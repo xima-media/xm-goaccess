@@ -572,6 +572,27 @@
             {
                 "title": "Organisation von Veranstaltungen"
             }
+        ],
+        "infoBoxLink": [
+            {
+                "title": "Veranstaltungen während der Corona Pandemie",
+                "text": "Aufgrund der Corona Pandemie unterliegt das DKFZ bei Veranstaltungen der jeweils geltenden Corona-Schutzver-ordnung. Beachten Sie bei Ihrer Veranstaltungplanung bitte die aktuellen Corona-Hinweise und Regeln des DKFZ.",
+                "link": [
+                    {
+                        "item": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    },
+                    {
+                        "item": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    }
+                ]
+            }
+        ],
+        "infoBox": [
+            {
+                "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden ",
+                "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden.",
+
+            }
         ]
     }
 }

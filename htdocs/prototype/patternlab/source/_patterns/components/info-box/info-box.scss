@@ -1,0 +1,88 @@
+//
+//    @tableOfContent
+//      1. Info box
+//
+
+
+//
+//   @section 1. Info box
+//
+
+.info-box {
+    position: relative;
+    max-width: $container-default-widths + 2rem;
+    margin: auto;
+    background-color: var(--color-white);
+
+    &::after {
+        @include background-pattern($color-primary);
+
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: -1rem;
+        z-index: -1;
+        height: 100%;
+    }
+
+    &--wrapper {
+        margin-left: 3rem;
+    }
+
+    &--title {
+        margin-bottom: 1rem;
+    }
+
+    &--text {
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 1.5rem;
+    }
+
+    &--link {
+        padding-left: 0;
+
+        .icon {
+            width: 12px;
+            height: 12px;
+            margin-right: .6rem;
+            vertical-align: baseline;
+        }
+
+        li {
+            margin-bottom: .5rem;
+
+            .primary-link {
+                @include link-primary();
+                text-decoration: none;
+            }
+        }
+    }
+
+    &--border {
+        position: relative;
+        max-width: $container-default-widths + 2rem;
+        margin: auto;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-magenta);
+
+        &::after {
+            @include background-pattern($color-magenta);
+
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            right: -1rem;
+            left: 0;
+            z-index: -1;
+            height: 100%;
+        }
+
+        .info-box--wrapper {
+            margin: 1.5rem 2.5rem;
+        }
+    }
+}
+
+// end of info-box.scss file
