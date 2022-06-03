@@ -9,10 +9,14 @@
 //
 
 .social-feed {
-    padding: 3rem;
+    --css-icon-size: 2.25rem;
+
+    padding: 1.5rem;
     background-color: var(--color-white);
 
-    --css-icon-size: 2.25rem;
+    @include media-breakpoint-down(md) {
+        padding: 3rem;
+    }
 
     &__title {
         @include h5;

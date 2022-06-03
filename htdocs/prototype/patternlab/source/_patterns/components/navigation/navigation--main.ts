@@ -29,7 +29,7 @@ class NavigationMain {
 
     constructor () {
         app.log('component "main navigation" loaded')
-        this.buttonToggleMenuEl = document.querySelector('.navigation__button.fx--toggle')
+        this.buttonToggleMenuEl = document.querySelector('.fx--toggle-main-menu')
 
         if (this.buttonToggleMenuEl) {
             // methods

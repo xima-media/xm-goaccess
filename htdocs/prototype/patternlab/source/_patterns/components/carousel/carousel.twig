@@ -7,7 +7,7 @@
         {{ color ? 'carousel--color-' ~ color : '' }}
         {{ pagination ? 'carousel--pagination-' ~ pagination : '' }}
     "
-    data-cols="{{ cols|default(4) }}"
+    data-cols='{"xs": "{{ cols.xs|default(1) }}", "sm": "{{ cols.sm|default(2) }}", "md": "{{ cols.md|default(3) }}", "lg": "{{ cols.lg|default(4) }}"}'
 >
     <div class="carousel__content swiper">
         <div class="carousel__body swiper-wrapper">
