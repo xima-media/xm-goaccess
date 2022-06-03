@@ -2,12 +2,13 @@
 
 /**
  * Extend PhpStorms code completion capabilities by providing a meta file
- *
  * Kudos to Alexander Schnitzler's work, see https://github.com/alexanderschnitzler/phpstorm.meta.php-typo3
+ *
  * @link https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html
  */
 
 namespace PHPSTORM_META {
+
     // Tests
     override(\TYPO3\TestingFramework\Core\BaseTestCase::getAccessibleMock(0), type(0));
     override(\TYPO3\TestingFramework\Core\BaseTestCase::getAccessibleMockForAbstractClass(0), type(0));

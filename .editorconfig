@@ -34,6 +34,7 @@ indent_size = 4
 [*.ts]
 indent_style = space
 indent_size = 2
+
 [*.js]
 indent_style = space
 indent_size = 2
@@ -74,6 +75,7 @@ indent_size = 2
 [*.typoscript]
 indent_style = space
 indent_size = 2
+
 [*.tsconfig]
 indent_style = space
 indent_size = 2

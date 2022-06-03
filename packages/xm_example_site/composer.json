@@ -1,0 +1,24 @@
+{
+	"name": "xima/xm-example-site",
+	"description": "Sitepackage extension",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Maik Schneider",
+			"email": "maik.schneider@xima.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "xm_example_site"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Xima\\XmExampleSite\\": "Classes"
+		}
+	}
+}
