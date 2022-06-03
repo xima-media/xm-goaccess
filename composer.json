@@ -15,7 +15,6 @@
     }
   ],
   "require": {
-    "typo3/cms-adminpanel": "^11.5",
     "typo3/cms-backend": "^11.5",
     "typo3/cms-belog": "^11.5",
     "typo3/cms-beuser": "^11.5",
@@ -45,13 +44,12 @@
     "typo3/cms-viewpage": "^11.5",
     "typo3/cms-composer-installers": "^4.0.x-dev",
     "helhum/dotenv-connector": "^3.0",
-    "helhum/typo3-console": "^5.6",
-    "xima/example-typo3-site": "*@dev"
+    "helhum/typo3-console": "^7.1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
     "friendsofphp/php-cs-fixer": "^3.6.0",
-    "typo3/testing-framework": "dev-main",
+    "typo3/testing-framework": "^6.16",
     "saschaegerer/phpstan-typo3": "^1.1.2"
   },
   "autoload-dev": {
@@ -67,8 +65,9 @@
   },
   "config": {
     "allow-plugins": {
-      "typo3/*": true,
-      "helhum/dotenv-connector": true
+      "helhum/dotenv-connector": true,
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
     }
   },
   "scripts": {
@@ -82,8 +81,11 @@
       "vendor/bin/phpunit -c Build/FunctionalTests.xml"
     ],
     "lint": [
-      "vendor/bin/php-cs-fixer fix Classes",
-      "vendor/bin/phpstan analyse Classes --level=1"
-    ]
+      "vendor/bin/php-cs-fixer --config=Configuration/php-cs-fixer.php fix Classes Configuration Tests",
+      "vendor/bin/phpstan  --generate-baseline=phpstan-baseline.neon --allow-empty-baseline"
+    ],
+    "ci:php:lint": "find *.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+    "ci:php:fixer": "./vendor/bin/php-cs-fixer --config=Configuration/php-cs-fixer.php fix --dry-run -v --show-progress=dots Classes Configuration Tests",
+    "ci:php:stan": "./vendor/bin/phpstan --no-progress"
   }
 }

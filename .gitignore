@@ -1,1 +1,10 @@
 .idea
+
+public/_assets
+public/fileadmin
+public/typo3
+public/typo3temp
+public/index.php
+
+var
+vendor
