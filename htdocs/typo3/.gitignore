@@ -1,9 +1,0 @@
-/var/*
-!/var/labels
-/vendor
-/web/*
-!/web/.htaccess
-!/web/typo3conf
-/web/typo3conf/*
-!/web/typo3conf/AdditionalConfiguration.php
-.env
