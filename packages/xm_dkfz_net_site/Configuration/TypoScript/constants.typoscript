@@ -1,0 +1,25 @@
+// dependencies
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript'
+
+// own
+page {
+  title = DKFZ Intranet
+
+  meta {
+    apple-mobile-web-app-capable =
+    description =
+    author =
+    keywords =
+  }
+}
+
+##############################
+#### FLUID STYLED CONTENT ####
+##############################
+styles {
+  templates {
+    layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/fluid_styled_content/Layouts/
+    partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/fluid_styled_content/Partials/
+    templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/fluid_styled_content/Templates/
+  }
+}

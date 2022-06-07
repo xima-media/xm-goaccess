@@ -1,5 +1,5 @@
 {
-	"name": "xima/xm-example-site",
+	"name": "xima/xm-dkfz-net-site",
 	"description": "Sitepackage extension",
 	"type": "typo3-cms-extension",
 	"authors": [
@@ -13,12 +13,12 @@
 	},
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "xm_example_site"
+			"extension-key": "xm_dkfz_net_site"
 		}
 	},
 	"autoload": {
 		"psr-4": {
-			"Xima\\XmExampleSite\\": "Classes"
+			"Xima\\XmDkfzNetSite\\": "Classes"
 		}
 	}
 }

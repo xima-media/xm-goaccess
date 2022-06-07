@@ -1,5 +1,5 @@
 {
-	"name": "xima/webs-example-typo3",
+	"name": "xima/xm-dkfz-net",
 	"description": "Example TYPO3 project",
 	"authors": [
 		{
@@ -45,7 +45,9 @@
 		"typo3/cms-composer-installers": "^4.0.x-dev",
 		"helhum/dotenv-connector": "^3.0",
 		"helhum/typo3-console": "^7.1",
-		"xima/xm-example-site": "*@dev"
+		"xima/xm-dkfz-net-site": "*@dev",
+		"xima/xm-dkfz-net-prototype": "*@dev",
+		"xima-media/xm-mail-catcher": "^11.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

@@ -1,0 +1,6 @@
+// dependencies
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+
+// own
+@import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/page.typoscript'
+@import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/dev.typoscript'

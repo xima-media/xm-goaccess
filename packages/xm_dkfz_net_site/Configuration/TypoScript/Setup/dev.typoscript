@@ -1,0 +1,13 @@
+[applicationContext matches "/^Development/"]
+  config {
+    debug = 1
+    no_cache = 1
+    compressCss = 0
+    concatenateCss = 0
+    compressJs = 0
+    concatenateJs = 0
+    contentObjectExceptionHandler = 0
+  }
+
+  page.meta.robots = noindex,nofollow
+[global]
