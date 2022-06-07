@@ -1,3 +1,0 @@
-Spezifische-Inhaltselemente/
-*.adoc
-

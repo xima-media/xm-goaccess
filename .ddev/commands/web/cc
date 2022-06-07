@@ -1,8 +1,0 @@
-#!/bin/bash
-
-## Description: Clears application cache
-## Usage: cc
-## Example: "ddev cc"
-
-rm -rf /var/www/html/htdocs/typo3/web/typo3temp
-php /var/www/html/htdocs/typo3/bin/typo3cms cache:flush
