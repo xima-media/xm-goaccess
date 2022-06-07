@@ -40,6 +40,8 @@
  *       2.33 Employee welcome message
  *       2.34 Field
  *       2.35 Quick search
+ *       2.36 Dropdown
+ *       2.37 Anchor navigation
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -146,7 +148,7 @@ import './_patterns/components/pagination/pagination'
 import './_patterns/components/table/table'
 
 /** @section 2.31 Info Box */
-import './_patterns/components/info-box/info-box'
+import './_patterns/components/infobox/infobox'
 
 /** @section 2.32 Employee finder */
 import './_patterns/components/employee-finder/employee-finder'
@@ -162,6 +164,9 @@ import './_patterns/components/quick-search/quick-search'
 
 /** @section 2.36 Dropdown */
 import './_patterns/components/dropdown/dropdown'
+
+/** @section 2.37 Anchor navigation */
+import './_patterns/components/navigation/navigation--anchor'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

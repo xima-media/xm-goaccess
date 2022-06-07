@@ -1,5 +1,5 @@
 /**
- *    Info box
+ *    Infobox
  *
  *    @tableofcontent
  *      1. Dependencies
@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './info-box.scss'
+import './infobox.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
@@ -26,7 +26,7 @@ import app from '../basic/basic'
 
 class InfoBox {
     constructor () {
-        app.log('component "info-box" loaded')
+        app.log('component "infobox" loaded')
     }
 }
 
@@ -36,4 +36,4 @@ class InfoBox {
 
 export default (new InfoBox())
 
-// end of info-box.js
+// end of infobox.js
