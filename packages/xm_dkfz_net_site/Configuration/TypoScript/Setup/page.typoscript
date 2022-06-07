@@ -9,6 +9,11 @@ page {
     templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Templates
   }
 
+  includeCSS {
+    prototype = EXT:xm_dkfz_net_prototype/Resources/Public/css/app.min.css
+  }
+
+  }
   meta {
     viewport = width=device-width, initial-scale=1.0
     robots = index,follow

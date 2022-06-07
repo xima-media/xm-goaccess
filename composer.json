@@ -57,7 +57,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Xima\\WebsExampleTypo3\\Tests\\": "Tests"
+			"Xima\\XmDkfzNet\\Tests\\": "Tests"
 		}
 	},
 	"extra": {

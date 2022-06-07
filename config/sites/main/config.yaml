@@ -1,4 +1,4 @@
-base: 'https://webs-example-typo3.ddev.site/'
+base: 'https://xm-dkfz-net.ddev.site/'
 errorHandling: {  }
 languages:
   -

@@ -7328,7 +7328,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
-                "reference": "ce78f641668a590118e571b222bdd629c1eb8200"
+                "reference": "f1e0d6df3f765a71bfb8c762836eef2a09ac4475"
             },
             "type": "typo3-cms-extension",
             "extra": {
