@@ -1,0 +1,39 @@
+<!-- Component Start: image -->
+<figure
+    class="
+        picture
+        {{ src ? 'picture--with-image' : 'picture--no-image' }}
+        {{ round ? 'picture--round' : '' }}
+        {{ icon ? 'picture--as-icon' : '' }}
+        {{ caption ? 'picture--with-caption' : '' }}
+        {{ patternColor ? 'picture--with-pattern' : '' }}
+        {{ color ? 'picture--with-color' : '' }}
+    "
+>
+    <div class="picture__item {{ src ? 'image-color--' : 'background--' }}{{ color ? color : 'transparent' }}">
+        {% if src %}
+            <img
+                class="picture__image image--responsive"
+                src="{{ src }}"
+                {% if alt %}{% else %}alt="{{ alt }}"{% endif %}
+            >
+{#            {% if patternColor %}#}
+{#                <span class="picture__pattern pattern--{{ patternColor }}"></span>#}
+{#            {% endif %}#}
+            {% if copyright %}
+                {% include '@components/copyright/copyright.twig' with {
+                    text: copyright
+                } %}
+            {% endif %}
+        {% else %}
+            <span class="picture__pattern pattern--gray-900"></span>
+        {% endif %}
+    </div>
+    {% if caption %}
+        <figcaption class="picture__caption">
+            {{ caption }}
+        </figcaption>
+    {% endif %}
+</figure>
+
+<!-- Components End: image -->

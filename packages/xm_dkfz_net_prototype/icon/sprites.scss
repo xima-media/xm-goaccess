@@ -1,0 +1,176 @@
+$sprites: (
+    'arrow-down': "/icon/icon.min.svg#icon-arrow-down-view",
+    'arrow-right': "/icon/icon.min.svg#icon-arrow-right-view",
+    'bookmark-add': "/icon/icon.min.svg#icon-bookmark-add-view",
+    'bookmark-delete': "/icon/icon.min.svg#icon-bookmark-delete-view",
+    'bookmark': "/icon/icon.min.svg#icon-bookmark-view",
+    'chevron-down': "/icon/icon.min.svg#icon-chevron-down-view",
+    'close': "/icon/icon.min.svg#icon-close-view",
+    'copyright': "/icon/icon.min.svg#icon-copyright-view",
+    'download': "/icon/icon.min.svg#icon-download-view",
+    'emergency': "/icon/icon.min.svg#icon-emergency-view",
+    'facebook': "/icon/icon.min.svg#icon-facebook-view",
+    'file': "/icon/icon.min.svg#icon-file-view",
+    'instagram': "/icon/icon.min.svg#icon-instagram-view",
+    'linkedin': "/icon/icon.min.svg#icon-linkedin-view",
+    'mail': "/icon/icon.min.svg#icon-mail-view",
+    'minus': "/icon/icon.min.svg#icon-minus-view",
+    'option': "/icon/icon.min.svg#icon-option-view",
+    'phone': "/icon/icon.min.svg#icon-phone-view",
+    'plus': "/icon/icon.min.svg#icon-plus-view",
+    'printer': "/icon/icon.min.svg#icon-printer-view",
+    'search': "/icon/icon.min.svg#icon-search-view",
+    'twitter': "/icon/icon.min.svg#icon-twitter-view"
+);
+
+$sizes: (
+    'arrow-down': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'arrow-right': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'bookmark-add': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'bookmark-delete': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'bookmark': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'chevron-down': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'close': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'copyright': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'download': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'emergency': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'facebook': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'file': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'instagram': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'linkedin': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'mail': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'minus': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'option': (
+        'width': 20px,
+        'height': 20px
+    ),
+    'phone': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'plus': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'printer': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'search': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'twitter': (
+        'width': 24px,
+        'height': 24px
+    )
+);
+
+$variables: (
+    /* EMPTY */
+);
+
+// https://github.com/waldemarfm/sass-svg-uri/blob/v1.0.0/_svg-uri.scss
+@function sprite-str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if type-of($replace) == 'null' {
+        $replace: '';
+    }
+
+    @if ( $index ) {
+        @return str-slice($string, 1, $index - 1) + $replace + sprite-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function sprite-svg-uri($value) {
+    $output: $value;
+
+    $output: sprite-str-replace($output, '"', "'");
+    $output: sprite-str-replace($output, '<', '%3C');
+    $output: sprite-str-replace($output, '>', '%3E');
+    $output: sprite-str-replace($output, '&', '%26');
+    $output: sprite-str-replace($output, '#', '%23');
+
+    @return $output;
+}
+
+@mixin sprite($name, $user-variables: (), $include-size: false) {
+    $sprite: map-get($sprites, $name);
+
+    // Inject variables
+    $default-variables: map-get($variables, $name);
+    @if type-of($default-variables) == 'map' {
+        @each $key, $value in map-merge($default-variables, $user-variables) {
+            @if ( not map-has-key($default-variables, $key) ) {
+                @warn 'Sprite \'#{$name}\' does not support variable named \'#{$key}\'';
+            }
+
+            $sprite: sprite-str-replace($sprite, '___#{$key}___', sprite-svg-uri(quote(#{$value})));
+        }
+    } @else if type-of($user-variables) == 'map' {
+        @warn 'Sprite \'#{$name}\' does not contain any variables';
+    }
+
+    background: url($sprite) center no-repeat;
+
+    @if $include-size {
+        $size: map-get($sizes, $name);
+        @if $include-size == true {
+            background-size: map-get($size, width) map-get($size, height);
+        } @else if $include-size == 'box' {
+            width: map-get($size, width);
+            height: map-get($size, height);
+        }
+    }
+}

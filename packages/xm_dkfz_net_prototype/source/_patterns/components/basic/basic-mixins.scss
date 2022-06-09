@@ -1,0 +1,289 @@
+//
+//    @tableOfContent
+//      1. Size
+//      2. List reset
+//      3. Pattern
+//      4. Styled scrollbars
+//      5. Styled slider
+//      6. Hyphens
+//      7. Text styles
+//      8. Text styles
+//       8.1 Introtext
+//       8.2 Copy standard
+//       8.3 Copy small
+//       8.4 Copy x small
+//       8.5 Main navigation
+//       8.6 Link
+//       8.7 Font base
+//       8.8 Header meta links / language switcher
+//      9. Loading
+//
+
+
+//
+//    @section 1. Size
+//
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+
+//
+//    @section 2. List reset
+//
+
+@mixin list-reset($margin: 0, $padding: 0) {
+    margin: $margin;
+    padding: $padding;
+    list-style: none;
+}
+
+
+//
+//    @section 3. Pattern
+//
+
+@mixin background-pattern($color: $color-primary) {
+    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M9.354,11.354L11.354,9.354L10.646,8.646L8.646,10.646L9.354,11.354ZM0.354,10.354L10.354,0.354L9.646,-0.354L-0.354,9.646L0.354,10.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color};"/></svg>');
+}
+
+
+//
+//    @section 4. Styled scrollbars
+//
+
+//@mixin styled-scrollbars($size: .25em) {
+//    // firefox
+//    scrollbar-color: var(--color-opacity-black-2) var(--color-opacity-black-1);
+//    scrollbar-width: thin;
+//
+//    // webkit
+//    &::-webkit-scrollbar {
+//        @include size($size, 0);
+//    }
+//
+//    //&::-webkit-scrollbar-track {}
+//
+//    &::-webkit-scrollbar-thumb {
+//        background-color: $color-black-opacity-2;
+//        outline: 0;
+//    }
+//}
+
+
+//
+//    @section 5. Styled slider
+//
+
+// @todo aufräumen
+
+
+//
+//    @section 6. Hyphens
+//
+
+@mixin hyphens($status: true) {
+    @if $status {
+        overflow-wrap: break-word;
+        hyphens: auto;
+        word-wrap: break-word;
+    } @else {
+        overflow-wrap: normal;
+        hyphens: none;
+        word-break: normal;
+    }
+}
+
+
+//
+//    @section 7. Headlines
+//
+
+// @section 7.1 H1
+@mixin h1 {
+    font-family: $font-family-serif;
+    font-size: map-get($h3, 'font-size');
+    line-height: map-get($h3, 'line-height');
+
+    @include media-breakpoint-up(md) {
+        font-size: map-get($h1, 'font-size');
+        line-height: map-get($h1, 'line-height');
+    }
+}
+
+// @section 7.2 H2
+@mixin h2 {
+    font-family: $font-family-serif;
+    font-size: map-get($h2, 'font-size');
+    line-height: map-get($h2, 'line-height');
+}
+
+// @section 7.3 H3
+@mixin h3 {
+    font-family: $font-family-serif;
+    font-size: map-get($h3, 'font-size');
+    line-height: map-get($h3, 'line-height');
+}
+
+// @section 7.4 H4
+@mixin h4 {
+    font-family: $font-family-serif;
+    font-size: map-get($h5, 'font-size');
+    line-height: map-get($h5, 'line-height');
+
+    @include media-breakpoint-up(md) {
+        font-size: map-get($h4, 'font-size');
+        line-height: map-get($h4, 'line-height');
+    }
+}
+
+// @section 7.5 H5
+@mixin h5 {
+    font-family: $font-family-serif;
+    font-size: map-get($h5, 'font-size');
+    line-height: map-get($h5, 'line-height');
+}
+
+// @section 7.6 H6
+@mixin h6 {
+    font-family: $font-family-serif;
+    font-size: map-get($h6, 'font-size');
+    line-height: map-get($h6, 'line-height');
+}
+
+
+//
+//    @section 8. Text styles
+//
+
+// @section 8.1 Introtext
+@mixin text-intro {
+    font-family: var(--font-family-sans-serif);
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 200;
+}
+
+// @section 8.2 Copy standard
+@mixin text-copy-standard ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 18px;
+    line-height: 30px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+// @section 8.3 Copy small
+@mixin text-copy-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 16px;
+    line-height: 24px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+// @section 8.4 Copy x small
+@mixin text-copy-x-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .6px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        font-weight: $letter-spacing;
+    }
+}
+
+// @section 8.5 Main navigation
+@mixin text-main-navi {
+    font-family: var(--font-family-sans-serif);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: .3px;
+}
+
+// @section 8.6 Link
+@mixin link-primary {
+    font-family: var(--font-family-sans-serif);
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+@mixin link-secondary {
+    font-family: var(--font-family-sans-serif);
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+@mixin link-secondary-with-arrow {
+    @include link-secondary;
+
+    text-decoration: none;
+
+    [class*='icon-'] {
+        @include size(.75rem);
+
+        margin-left: .25rem;
+    }
+}
+
+// @section 8.7 Font base
+@mixin font-base {
+    font-family: $font-family-serif;
+    font-size: map-get($font-base, 'font-size');
+    line-height: map-get($font-base, 'line-height');
+}
+// @section 8.8 Header meta links / language switcher
+@mixin font-header-meta {
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 1.2px;
+}
+
+
+//
+//    @section 9. Loading
+//
+
+// @todo vendor-prefixes
+@mixin loading {
+    @include size(6rem);
+
+    display: block;
+    background: none;
+    //-webkit-clip-path: polygon(50% 50%, 25% 100%, 75% 100%);
+    clip-path: polygon(50% 50%, 25% 100%, 75% 100%);
+    border-radius: 50%;
+    border: 5px solid var(--color-primary);
+    transform: rotate(360deg);
+    will-change: transform;
+    //-webkit-animation: idea 2s linear infinite;
+    animation: idea 2s linear infinite;
+}
+
+// end of app-mixins.scss file

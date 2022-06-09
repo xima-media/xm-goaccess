@@ -1,0 +1,174 @@
+{% extends "@layouts/default--one-column.twig" %}
+{% block main %}
+    <article class="article">
+        {# hero #}
+        {% embed '@components/hero/hero.twig' with {
+            title: 'Unternehmer spendet 30 Millionen Euro für 5 wichtige Projekte',
+            subTitle: '„Dies ist der Beginn einer wunderbaren Freundschaft.“',
+            info: '5. März 2022 | Innenansichten'
+        } %}
+            {% block main %}
+                <button class="button button--primary">
+                    {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
+                    Artikel merken
+                </button>
+            {% endblock main %}
+        {% endembed %}
+
+        {# image #}
+        {% include '@components/image/image.twig' with {
+            src: '../../../Images/examples/news-header.jpg',
+            copyright: 'Anton Meier',
+            caption: 'Michael Baumann und Josef Puchta mit dem überaus großzügigen Förderer und Unternehmer Dieter Morszeck bei Unterzeichnung der Verträge.',
+            patternColor: 'cyan'
+        } only %}
+
+        {# main content #}
+        <div>
+            <p>
+                Dieter Morszeck ist durch die Krebserkrankung seiner Schwester nach Heidelberg und zum
+                Deutschen Krebsforschungszentrum gekommen. „Da haben wir uns gleich gut aufgehoben gefühlt.
+                Wir haben uns das Zentrum angesehen und konnten uns überzeugen, dass die For-schung hier
+                sinnvoll und gut ist. Die Stellung des DKFZ in Europa und der Welt hat mich sehr
+                beeindruckt“, so Morszeck bei der Unterzeichnung der Verträge für die einzelnen Projekte.
+                „So ist meine Zuwendung auch als Dank für das Engagement für meine Schwester zu sehen.“
+            </p>
+
+            <p>
+                Die Ursachen und Mechanismen der Krebsentstehung und -ausbreitung zu entschlüsseln und
+                neue Strategien zur Prävention, Früherkennung, Diagnose und Behandlung von Krebs durch
+                innovative Forschung zu entwickeln, gehört zu den Kernaufgaben des DKFZ. Es ist eines
+                der führenden Krebsforschungszentren der Welt.
+            </p>
+            <p>
+                „Für die nächsten Jahre gilt es, das DKFZ in seiner Forschung sowie bei der Entwicklung
+                der personalisierten Präzisionsonkologie weiterhin in der internationalen
+                wissenschaftlichen Spitzengruppe zu positionieren und gleichzeitig dafür Sorge zu tragen,
+                dass die Innovationen der Krebs-forschung bei den Patienten ankommen“, gab Michael Baumann
+                anlässlich der Vertragsunterzeichnung einen Ausblick .
+            </p>
+            <p>
+                „Private Forschungsgelder wie die 30 Millionen Euro der Dieter Morszeck Stiftung helfen uns,
+                innovative Projekte aufzugreifen sowie ein Biorepository-Gebäude zu errichten, die nächste
+                Generation von Forschern und forschenden Ärzten auszubilden und zu fördern, sowie unsere
+                medizinisch relevanten Erkenntnisse gemeinsam in klinische Studien zu überführen“, freut sich
+                Josef Puchta über die finanzielle Unterstützung. Und Dieter Morszeck verspricht: „Das ist
+                nicht das Ende, sondern erst der Anfang einer guten Kooperation.“ Ein Beispiel, das
+                seinesgleichen sucht.
+            </p>
+
+            {# quote #}
+            {% include '@components/quote/quote.twig' with {
+                quote: '„Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.“',
+                cite: 'Dieter Morszeck, Funktion ',
+                patternColor: 'cyan'
+            } only %}
+
+            <h2>Die 5 geförderten Projekte um Überblick</h2>
+
+            <dl>
+                <dt>Die Biologie von Tumoren für die Therapie sichtbar machen</dt>
+                <dd>
+                    Mit Hilfe der Förderung kann das DKFZ eine „Präklinische Trial Unit“ für Bildgebung
+                    und bildgeführte Therapien einrichten. Ausgestattet mit einer Professur, Abteilung
+                    oder Nachwuchsgruppe soll sie die derzeit noch bestehende Lücke am Übergang von der
+                    präklinischen Entwicklung zum ersten Einsatz beim Patienten schließen.
+                </dd>
+                <dt>Die unterschiedliche Biologie von Tumorzellen verstehen</dt>
+                <dd>
+                    Tumorzellen unterscheiden sich sogar innerhalb eines einzigen Tumors. Mit der
+                    Einzelzellanalyse (Single Cell Genomics) erhalten Forscher die Möglichkeit, die
+                    molekulare Vielfalt von Tumorzellen besser zu verstehen. Langfristig können diese
+                    Erkenntnisse dazu beitragen, effektivere Therapien zu entwickeln. Mithilfe der Dieter
+                    Morszeck Stiftung kann am DKFZ eine Professur, Abteilung oder Nachwuchsgruppe in
+                    Verbindung mit einer Laboreinheit für Single Cell Analysen geschaffen werden.
+                </dd>
+                <dt>Clinician Scientists gezielt ausbilden</dt>
+                <dd>
+                    Derzeit mangelt es weltweit in der Krebsmedizin an sogenannten Clinician Scientists,
+                    also Ärzten, die sowohl in der Krebsbehandlung spezialisiert sind, als auch über eine
+                    umfassende wissenschaftliche Ausbildung verfügen. Das DKFZ möchte in den nächsten
+                    Jahren einen entscheidenden Beitrag zur Aus- und Weiterbildung von Nachwuchstalenten
+                    in dieser wichtigen Berufsgruppe leisten. Pro Jahr sollen fünf bis acht Clinician
+                    Scientists in ein Förderprogramm aufgenommen werden, so dass etwa 20 junge Ärztinnen
+                    und Ärzte zeitgleich ausgebildet werden können.
+                </dd>
+                <dt>Die Früherkennung durch neue molekulare Methoden verbessern</dt>
+                <dd>
+                    Je eher Gewebeveränderungen und Krebsvorstufen erkannt werden, desto größer sind die
+                    Heilungschancen für den Patienten. Um den Tumor in einem frühen Stadium lokalisieren zu
+                    können, sollen im Verdachtsfall neue Früherkennungstest bestehende Methoden der ärztlichen
+                    Untersuchung, etwa bildgebende Verfahren und Endoskopie, ergänzen. Die Dieter Morszeck
+                    Stiftung trägt wesentlich zu dieser Weiterentwicklung bei: Sie ermöglicht es, am DKFZ eine
+                    neue Nachwuchsgruppe einzurichten, welche die Krebsfrüherkennung mittels molekularer
+                    Diagnostik in Kombination mit aktuellen Bildgebungsverfahren vorantreibt.
+                </dd>
+                <dt>Gebäude und Infrastruktur für die automatisierte Sammlung von Liquid und Living Biopsies schaffen</dt>
+                <dd>
+                    Ebenso wie Gewebeproben bilden Blut-, Urin- und Stuhlproben (sogenannte Liquid Biopsies)
+                    eine unverzichtbare Grundlage für die Krebsforschung. Hierzu werden sehr große Mengen von
+                    Probengefäßen bei minus 80 Grad Celsius eingelagert. Bislang geschieht dies aufwändig per
+                    Handarbeit, was sich am DKFZ zu einem limitierenden Faktor für die zukünftige
+                    Forschungsleistung entwickelt. Neben den Liquid Biopsies gewinnen zunehmend Living
+                    Biopsies (Proben lebender Zellen) an Bedeutung. Durch den Bau eines Biorepository-Gebäudes,
+                    das mit einer einzigartigen vollautomatischen Liquid Biopsie-Einrichtung sowie einer
+                    semiautomatischen Living Biopsie-Plattform ausgestattet sein wird, schafft die Dieter
+                    Morszeck Stiftung eine für das DKFZ wichtige zentrale Infrastruktur.
+                </dd>
+            </dl>
+
+        </div>
+
+        {# related content #}
+        {% embed '@components/related-content/related-content.twig' with {
+            title: 'Weitere News',
+            link: {
+                url: link['pages-news--list'],
+                text: 'Alle News'
+            }
+        } %}
+            {% block main %}
+                {# card 01 #}
+                {% include '@components/card/card.twig' with {
+                    image: {
+                        src: '../../../Images/examples/news-header.jpg',
+                        color: 'yellow'
+                    },
+                    title: 'Hilfsaktionen für die Ukraine',
+                    subTitle: '18. März 2020 | Außerdem',
+                    link: {
+                        href: '#'
+                    }
+                } only %}
+
+                {# card 02 #}
+                {% include '@components/card/card.twig' with {
+                    image: {
+                        src: '../../../Images/examples/news-header.jpg',
+                        color: 'primary'
+                    },
+                    title: 'fragdiepatienten.de: Service-Tool geht an den Start',
+                    subTitle: '15. März 2020 | Innenansichten',
+                    link: {
+                        href: '#'
+                    }
+                } only %}
+
+                {# card 03 #}
+                {% include '@components/card/card.twig' with {
+                    image: {
+                        src: '../../../Images/examples/news-header.jpg',
+                        color: 'orange'
+                    },
+                    title: 'Bundesforschungsministerin Bettina Stark-Watzinger besucht DKFZ',
+                    subTitle: '15. März 2020 | Innenansichten',
+                    link: {
+                        href: '#'
+                    }
+                } only %}
+            {% endblock main %}
+        {% endembed %}
+    </article>
+{% endblock main %}
+
+

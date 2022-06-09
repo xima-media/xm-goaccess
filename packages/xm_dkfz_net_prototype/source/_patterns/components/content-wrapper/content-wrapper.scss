@@ -1,0 +1,48 @@
+//
+//    @tableOfContent
+//      1. Content wrapper
+//
+
+
+//
+//   @section 1. Content wrapper
+//
+
+.content-wrapper {
+    &__header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: $container-default-widths;
+        margin: 0 auto .75rem; // 1.5rem;
+    }
+
+    &__title {
+        margin-bottom: .25rem;
+    }
+
+    &__pattern {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: .5rem;
+    }
+
+    &__link {
+        @include link-secondary-with-arrow;
+    }
+
+    &--sm {
+        .content-wrapper {
+            &__title {
+                @include h5;
+
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}
+
+// end of content-wrapper.scss file

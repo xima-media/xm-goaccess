@@ -1,0 +1,88 @@
+{
+    "colors": [
+        {
+            "title": "DKFZ Blau",
+            "color": "#0047B9",
+            "variable": "var(--color-primary)",
+            "class": "background--primary"
+        },
+        {
+            "title": "Dunkelgrau",
+            "color": "#111111",
+            "variable": "var(--color-gray-900)",
+            "class": "background--gray-900"
+        },
+        {
+            "title": "DKFZ Grau",
+            "color": "#999999",
+            "variable": "var(--color-gray-700)",
+            "class": "background--gray-700"
+        },
+        {
+            "title": "Dunkelblau",
+            "color": "#00186E",
+            "variable": "var(--color-blue-900)",
+            "class": "background--blue-900"
+        },
+        {
+            "title": "Cyan",
+            "color": "#009EE3",
+            "variable": "var(--color-cyan)",
+            "class": "background--cyan"
+        },
+        {
+            "title": "Grün",
+            "color": "#009933",
+            "variable": "var(--color-green)",
+            "class": "background--green"
+        },
+        {
+            "title": "Hellgrün",
+            "color": "#A0B400",
+            "variable": "var(--color-green-light)",
+            "class": "background--green-light"
+        },
+        {
+            "title": "Gelb",
+            "color": "#FFD600",
+            "variable": "var(--color-yellow)",
+            "class": "background--yellow"
+        },
+        {
+            "title": "Orange",
+            "color": "#FF5C00",
+            "variable": "var(--color-orange)",
+            "class": "background--orange"
+        },
+        {
+            "title": "Magenta",
+            "color": "#E5007D",
+            "variable": "var(--color-magenta)",
+            "class": "background--magenta"
+        },
+        {
+            "title": "Violett",
+            "color": "#774697",
+            "variable": "var(--color-purple)",
+            "class": "background--purple"
+        },
+        {
+            "title": "Hintegründe 10% Blau",
+            "color": "#0047B9",
+            "variable": "var(--color-primary-opacity-10)",
+            "class": "background--primary-opacity-10"
+        },
+        {
+            "title": "Hintergründe",
+            "color": "#EEEEEE",
+            "variable": "var(--color-gray-100)",
+            "class": "background--gray-100"
+        },
+        {
+            "title": "Trennlinien",
+            "color": "#DCDCDC",
+            "variable": "var(--color-gray-200)",
+            "class": "background--gray-200"
+        }
+    ]
+}

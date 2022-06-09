@@ -1,0 +1,579 @@
+{
+    "prototype": {
+        "title": "Prototype",
+        "lang": "de",
+        "pages": [
+            {
+                "url": "link.pages-startpage",
+                "text": "Startseite"
+            },
+            {
+                "url": "link.pages-article",
+                "text": "Inhaltsseite"
+            },
+            {
+                "url": "link.pages-topic",
+                "text": "Themenseite"
+            },
+            {
+                "url": "link.pages-news--list",
+                "text": "News: Listenansicht"
+            },
+            {
+                "url": "link.pages-news--detailpage",
+                "text": "News: Detailseite"
+            },
+            {
+                "url": "link.pages-employee-profile",
+                "text": "Mitarbeiterprofil"
+            },
+            {
+                "url": "link.pages-short-messages",
+                "text": "Kurzmeldungen"
+            }
+        ],
+        "navigation": {
+            "main": [
+                {
+                    "url": "#",
+                    "text": "Unser Zentrum",
+                    "id": "our-center",
+                    "colorClass": "corner--magenta corner--right",
+                    "sub": [
+                        {
+                            "url": "#",
+                            "text": "Organisation & Management"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Wissenschaftliche Einheiten"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Administration & Stabsstellen"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Kooperationen"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Gremien & Vertretungen",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Mitarbeitervertretungen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Wissenschaftlicher Rat"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Internal Review Board"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Tierschutzausschuss"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Chancengleichheit"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Beiräte"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "url": "#",
+                    "text": "Aktuelles",
+                    "id": "news",
+                    "colorClass": "corner--orange corner--right",
+                    "sub": [
+                        {
+                            "url": "#",
+                            "text": "News",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Wissenschaft"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Innenansichten"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Ausgezeichnet"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Kooperationen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Ankündigungen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Sonstiges"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "Kurzmeldungen"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Veranstaltungen"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Speiseplan Casino"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Corona-Info"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Stellenangebote"
+                        },
+                        {
+                            "url": "#",
+                            "text": "Schwarzes Brett"
+                        }
+                    ]
+                },
+                {
+                    "url": "#",
+                    "text": "Mein Arbeitsplatz",
+                    "id": "my-workplace",
+                    "colorClass": "corner--green-light corner--right",
+                    "sub": [
+                        {
+                            "url": "#",
+                            "text": "Organisatorisches",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Mitarbeiterportal"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Personalservice"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Info für neue Mitarbeiter"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Info A-Z"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "Gesundheit",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Betriebsärztlicher Dienst"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Berufsbegleitende Maßnahmen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Mental Health"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Krebsinformationsdienst"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Krebsprävention"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "Weiterbildung & Karriere",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Ausbildung"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Weiterbildung"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Personalentwicklung"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Carrerservice"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Förderprogramme"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "DKFZ Akademie"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "DKFZ Kultur",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Beruf & Familie"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Chancengleichheit"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Compliance"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Netzwerke"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Nachhaltigkeit"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Konflikte"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "Sicherheit",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Sicherheit"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Biologische Sicherheit"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Infos zu Notfällen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Strahlenschutz & Dosimetrie"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "IT-Sicherheit"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "url": "#",
+                    "text": "Services",
+                    "id": "services",
+                    "colorClass": "corner--yellow corner--right",
+                    "sub": [
+                        {
+                            "url": "#",
+                            "text": "IT-Service",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Service Center"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "User Portal"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "WIKI"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "Services & Dienste",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Abfall"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Buchung von Ressourcen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Corporate Design"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Einkauf"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Finanzen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Geräte"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Hausverwaltung"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Recht"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Technik"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Veranstaltungen"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Warenannahme"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Warenlager"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Platzhalter"
+                                }
+                            ]
+                        },
+                        {
+                            "url": "#",
+                            "text": "Wissenschaftliche Dienste",
+                            "sub": [
+                                {
+                                    "url": "#",
+                                    "text": "Core Facilities"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "SNOMED CT@DKFZ"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Drittmittel"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Innovation Management"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "QM Klinischer Forschung"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Clinical Trial Office"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Scientific Computing Infrastructure"
+                                },
+                                {
+                                    "url": "#",
+                                    "text": "Carl Zeiss App. C"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "url": "#",
+                    "id": "employee-directory",
+                    "text": "Mitarbeiterverzeichnis",
+                    "icon": "employee",
+                    "colorClass": "corner--magenta corner--right"
+                }
+            ],
+            "footer": [
+                {
+                    "url": "#",
+                    "text": "Impressum"
+                },
+                {
+                    "url": "#",
+                    "text": "Datenschutz"
+                }
+            ],
+            "social": [
+                {
+                    "url": "#",
+                    "text": "Instagram",
+                    "icon": "instagram"
+                },
+                {
+                    "url": "#",
+                    "text": "Twitter",
+                    "icon": "twitter"
+                },
+                {
+                    "url": "#",
+                    "text": "Facebook",
+                    "icon": "facebook"
+                },
+                {
+                    "url": "#",
+                    "text": "LinkedIn",
+                    "icon": "linkedin"
+                }
+            ]
+        },
+        "component": {
+            "quickSearch": {
+                "input": {
+                    "label": {
+                        "text": "Suche",
+                        "hidden": true
+                    },
+                    "placeholder": "Platzhaltertext",
+                    "type": "text"
+                }
+            },
+            "employeeFinder": {
+                "input": {
+                    "label": {
+                        "text": "Mitarbeiter finden"
+                    },
+                    "placeholder": "Suchen nach Name, Vorname, Telefon"
+                }
+            },
+            "languageSwitcher": [
+                {
+                    "url": "#en",
+                    "text": "De",
+                    "id": "de",
+                    "tooltip": "Deutsch"
+                },
+                {
+                    "url": "#en",
+                    "text": "En",
+                    "id": "en",
+                    "tooltip": "Englisch"
+                }
+            ]
+        },
+        "tabs": [
+            {
+                "title": "Logistik",
+                "item": [
+                    {
+                        "fileName": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "fileType": "pdf",
+                        "fileSize": "106KB"
+                    }
+                ]
+            },
+            {
+                "title": "Catering",
+                 "item": [
+                     {
+                         "fileName": "Bestellformular für Caterings über das DKFZ Casino",
+                         "fileType": "doc",
+                         "fileSize": "106KB"
+                     },
+                     {
+                         "fileName": "Bestellformular für Caterings über das DKFZ Casino",
+                         "fileType": "doc",
+                         "fileSize": "106KB"
+                     }
+                 ]
+
+            }
+        ],
+        "accordion": [
+            {
+                "title": "Logistik",
+                "item": [
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    }
+                ]
+            },
+            {
+                "title": "Catering",
+                "item": [
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    },
+                    {
+                        "title": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                        "text": "Lorem"
+                    }
+                ]
+            }
+        ],
+        "breadcrumb": [
+            {
+                "title": "Start"
+            },
+            {
+                "title": "Services & Dienste"
+            },
+            {
+                "title": "Service"
+            },
+            {
+                "title": "Organisation von Veranstaltungen"
+            }
+        ]
+    }
+}

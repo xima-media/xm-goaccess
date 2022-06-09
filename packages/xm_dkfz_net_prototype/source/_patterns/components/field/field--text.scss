@@ -1,0 +1,31 @@
+//
+//    @tableOfContent
+//      1. Field text
+//
+
+
+//
+//   @section 1. Field text
+//
+
+.field--text {
+    display: flex;
+    flex-direction: column;
+
+    .field {
+        &__label {
+
+        }
+
+        &__input {
+            font-weight: 200;
+
+            &::placeholder {
+                opacity: .5; // firefox
+                color: currentColor;
+            }
+        }
+    }
+}
+
+// end of field--text.scss file

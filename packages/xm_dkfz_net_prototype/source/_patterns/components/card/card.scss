@@ -1,0 +1,477 @@
+//
+//    @tableOfContent
+//      1. Card default
+//      2. Card - image left
+//      3. Card - image right
+//      4. Card - image size
+//      5. Card - xl
+//      6. Card - ratio
+//
+
+
+//
+//   @section 1. Card default
+//
+
+.card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: $container-default-widths + 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding: .75rem;
+    color: var(--color-gray-900);
+
+    &__image {
+        margin-bottom: 1.625rem;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+
+        // @todo für andere Farben noch aufbereiten
+        .carousel--color-orange & {
+            color: var(--color-orange);
+        }
+    }
+
+    &__title {
+        @include h5;
+        @include hyphens;
+
+        margin-bottom: 0;
+    }
+
+    &__sub-title {
+        order: -1;
+        margin-bottom: .25rem;
+    }
+
+    &__link {
+        &--hidden {
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            font-size: 0;
+
+            [class*='icon-'] {
+                @include size(2.375rem);
+
+                padding: .625rem;
+            }
+
+            &:hover,
+            &:focus {
+                ~ .card__content {
+                    .card__header {
+                        color: var(--color-primary);
+                    }
+                }
+
+                [class*='icon-'] {
+                    color: var(--color-white);
+                    background-color: var(--color-gray-900);
+                }
+            }
+        }
+
+        &--more {
+            @include link-secondary-with-arrow;
+        }
+    }
+
+    &__footer {
+        margin-top: auto;
+    }
+
+    &__tags {
+        @include list-reset;
+
+        display: flex;
+    }
+
+    &__tag {
+        &:not(:last-child) {
+            &::after {
+                content: '|';
+                display: inline-block;
+                margin: 0 .75rem;
+            }
+        }
+    }
+}
+
+
+//
+//   @section 2. Card - image left
+//
+
+.card--image-left {
+    gap: 2.75rem; // @todo variable
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+    }
+
+    .card {
+        &__image {
+            flex: 0 0 16rem; // @todo variable
+            width: 16rem; // @todo variable
+        }
+    }
+}
+
+
+//
+//   @section 3. Card - image right
+//
+
+.card--image-right {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 2.75rem; // @todo variable
+
+    .card {
+        &__image {
+            order: 1;
+            flex: 0 0 16rem; // @todo variable
+            width: 16rem; // @todo variable
+        }
+    }
+}
+
+
+//
+//   @section 4. Card - image size
+//
+
+.card--image-size-xs {
+    .card {
+        &__image {
+            flex: 0 0 6rem; // @todo variable
+            width: 6rem; // @todo variable
+        }
+    }
+}
+
+
+//
+//   @section 5. Card - xl
+//
+
+.card--xl {
+    &.card--image-left,
+    &.card--image-right {
+        gap: 3.75rem;
+
+        .card {
+            &__image {
+                flex: 0 0 28.625rem; // @todo variable;
+                width: 28.625rem; // @todo variable
+            }
+
+            &__title {
+                @include h3;
+            }
+
+            &__content {
+                max-width: 33.75rem;
+            }
+        }
+    }
+}
+
+
+//
+//   @section 6. Card - ratio
+//
+
+.card--ratio-square {
+    aspect-ratio: 1;
+}
+
+
+// @todo einsortieren
+.card--service {
+    padding: 1.125rem 2rem 4rem;
+
+    .card {
+        &__title {
+            height: 3.5rem;
+            margin-bottom: .5rem;
+            // @todo line-clamp hinzufügen
+        }
+
+        &__link {
+            &--hidden {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// @todo einsortieren
+.card--event {
+    .card {
+        &__sub-title {
+            order: 0;
+            font-size: 28px; // @todo font-style?
+            line-height: 28px; // @todo font-style?
+        }
+
+        &__title {
+            @include h3;
+        }
+
+        &__text {
+            @include h6;
+        }
+    }
+}
+
+// @todo einsortieren
+.card--employee {
+    .card {
+        &__sub-title {
+            order: 0;
+            margin-bottom: 0;
+        }
+
+        &__title {
+            @include h6;
+
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+// @todo einsortieren
+.card--congratulation {
+    .card {
+        &__sub-title {
+            margin-bottom: .5rem;
+        }
+
+        &__title {
+            @include font-base;
+
+            margin-bottom: 0;
+        }
+    }
+}
+
+// @todo einsortieren
+.card--blackboard {
+    aspect-ratio: 1;
+    padding: 2rem;
+
+    .card {
+        &__content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        &__text {
+            margin-top: auto;
+        }
+
+        &__title {
+            @include h5;
+
+            margin-bottom: 0;
+        }
+    }
+}
+
+// @todo einsortieren
+.card--new-job {
+    margin-top: 1rem;
+    padding-top: .25rem;
+
+    .card {
+        &__title {
+            @include h6;
+        }
+
+        &__link {
+            &--hidden { // @todo > umbennen von --hidden in --overlay
+                opacity: 1;
+                align-items: flex-start;
+                justify-content: flex-start;
+
+                [class*='icon-'] {
+                    border-radius: 50%;
+                    transform: rotate(-45deg);
+                }
+            }
+
+            ~ .card__content,
+            ~ .card__footer {
+                margin-left: 2rem;
+            }
+        }
+    }
+}
+
+// @todo einsortieren
+.card--new-page {
+    margin-top: 1rem;
+    padding-top: .25rem;
+
+    .card {
+        &__title {
+            @include h6;
+        }
+
+        &__sub-title {
+            order: 0;
+            margin-bottom: 0;
+        }
+
+        &__link {
+            &--hidden { // @todo > umbennen von --hidden in --overlay
+                opacity: 1;
+                align-items: flex-start;
+                justify-content: flex-start;
+
+                [class*='icon-'] {
+                    border-radius: 50%;
+                }
+            }
+
+            ~ .card__content,
+            ~ .card__footer {
+                margin-left: 2rem;
+            }
+        }
+    }
+}
+
+// @todo einsortieren
+.card--short-message {
+    padding-right: 0;
+    padding-left: 0;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $color-gray-200;
+    }
+
+    .card {
+        &__title {
+            @include font-base;
+        }
+    }
+}
+
+// @todo einsortieren
+.card--main-news {
+    gap: 2rem;
+
+    @include media-breakpoint-up(md) {
+        gap: 7.25rem;
+    }
+
+    .card {
+        &__header {
+            margin-bottom: 1.5rem;
+        }
+
+        &__title {
+            @include h1;
+
+            z-index: 1;
+            max-width: 38rem;
+
+            @include media-breakpoint-up(md) {
+                margin: 3rem 0 2rem -18.75rem;
+            }
+        }
+
+        &__sub-title {
+            order: 0;
+        }
+
+        &__body {
+            max-width: 23rem;
+        }
+
+        &__text {
+            @include text-copy-standard;
+        }
+
+        &__image {
+            position: relative;
+            margin-bottom: 0;
+            padding: 3rem;
+
+            @include media-breakpoint-up(md) {
+                flex: 0 0 50%;
+                width: 50%;
+            }
+
+            &::after {
+                @include background-pattern($color-gray-900);
+
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 1rem;
+                bottom: 0;
+                left: 1.25rem;
+                z-index: -1;
+            }
+
+            .picture {
+                position: relative;
+                top: 5rem;
+                left: -3.875rem;
+                max-width: 29.5rem;
+            }
+        }
+    }
+}
+
+// @todo einsortieren
+.card--info {
+    padding: 1.5rem;
+    background-color: var(--color-white);
+
+    @include media-breakpoint-up(md) {
+        padding: 3rem;
+    }
+
+    .card {
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+            }
+        }
+
+        &__header {
+            @include media-breakpoint-up(md) {
+                flex: 0 0 20rem;
+                width: 20rem;
+            }
+        }
+
+        &__text {
+            max-width: 40rem;
+        }
+    }
+}
+
+// end of card.scss file

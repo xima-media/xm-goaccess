@@ -1,0 +1,56 @@
+{
+  "name": "dfkz-intranet-frontend",
+  "description": "Prototyp für die Intranetseite des DKFZ.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "XIMA MEDIA GmbH",
+  "devDependencies": {
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "sass-resources-loader": "^2.2.5",
+    "source-map-loader": "^3.0.1",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.8.2",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-selector-bem-pattern": "^2.1.1",
+    "stylelint-webpack-plugin": "^3.2.0",
+    "svg-spritemap-webpack-plugin": "^4.4.0",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "scripts": {
+    "staging": "webpack --config webpack.prod.config.js",
+    "watch": "webpack --stats-children --progress --watch --config webpack.dev.config.js",
+    "fix-styles": "npx stylelint ./patternlab/source/_patterns/components/**/*.scss --config .stylelintrc.yml --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
+    "build:patternlab": "patternlab build --config ./patternlab-config.json",
+    "help": "patternlab --help",
+    "install": "patternlab install --config ./patternlab-config.json",
+    "serve": "patternlab serve --config ./patternlab-config.json",
+    "start": "npm run serve",
+    "version": "patternlab --version",
+    "dev": "node ./node_modules/@pattern-lab/uikit-workshop/build-tools.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "swiper": "^8.1.5",
+    "tippy.js": "^6.3.7",
+    "@pattern-lab/cli": "^5.16.2",
+    "@pattern-lab/core": "^5.16.2",
+    "@pattern-lab/engine-twig-php": "^5.16.2",
+    "@pattern-lab/starterkit-twig-demo": "^5.16.1",
+    "@pattern-lab/uikit-workshop": "^5.16.2"
+  }
+}

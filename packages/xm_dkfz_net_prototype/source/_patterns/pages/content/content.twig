@@ -1,0 +1,27 @@
+{% extends "@layouts/default--one-column.twig" %}
+{% block main %}
+    {# hero #}
+    {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
+        {% block main %}
+            <button class="button button--primary">
+                {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
+                Seite merken
+            </button>
+        {% endblock main %}
+    {% endembed %}
+
+
+    {% for info in prototype.infoBox %}
+        {% include '@components/infobox/infobox.twig' with {
+            color: info.color,
+            border: info.border,
+            title: info.title,
+            text: info.text,
+            links: info.links
+        } only %}
+    {% endfor %}
+
+
+{% endblock main %}
+
+

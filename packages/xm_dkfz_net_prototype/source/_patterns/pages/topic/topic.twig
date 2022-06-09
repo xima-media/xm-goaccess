@@ -1,0 +1,46 @@
+{% extends "@layouts/default--one-column.twig" %}
+{% block main %}
+    {# hero #}
+    {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
+        {% block main %}
+            <button class="button button--primary">
+                {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
+                Seite merken
+            </button>
+        {% endblock main %}
+    {% endembed %}
+
+    {#  #}
+    <div>
+        <h2 class="h5">zuletzt aktualisiert: 12. Dezember 2021</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+            montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+            eu, pretium quis, sem.
+        </p>
+    </div>
+
+    <div>
+        {% for card in prototype.cards %}
+            {% include '@components/card/card.twig' with {
+                size: 'xl',
+                image: {
+                    src: card.image.src,
+                    color: card.image.color,
+                    position: card.image.position,
+                },
+                title: card.title,
+                subTitle: card.subTitle,
+                text: card.text,
+                link: {
+                    href: card.link.url,
+                    text: card.link.text,
+                    visible: card.link.visible
+                }
+            } only %}
+        {% endfor %}
+    </div>
+{% endblock main %}
+
+

@@ -1,0 +1,87 @@
+//
+//    @tableOfContent
+//      1. Debug menu
+//
+
+
+//
+//   @section 1. Debug menu
+//
+
+.debug-menu {
+    display: none;
+    position: fixed;
+    right: .5rem;
+    bottom: .5rem;
+    z-index: 99;
+
+    .fx--debug & {
+        display: block;
+    }
+
+    &__button {
+        display: grid;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding: .25rem 1rem;
+        white-space: nowrap;
+        text-decoration: none;
+        color: inherit;
+        background-color: transparent;
+        border: 0;
+
+        &.fx--toggle-menu {
+            @include size(2rem);
+
+            justify-content: center;
+            background-color: var(--color-white);
+            border-radius: 50%;
+        }
+
+        &.fx--toggle-sub-menu {
+            ~ .debug-menu {
+                &__menu {
+                    right: 100%;
+                    bottom: 0;
+                }
+            }
+        }
+
+        &.fx--open {
+            ~ .debug-menu {
+                &__menu {
+                    display: block;
+                }
+            }
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--color-primary);
+        }
+    }
+
+    &__menu {
+        @include list-reset($padding: 1rem 0);
+
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 100%;
+        background-color: var(--color-white);
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    }
+
+    &__items {
+        @include list-reset($padding: 1rem 0);
+    }
+
+    &__item {
+        position: relative;
+    }
+}
+
+// end of debug.scss file

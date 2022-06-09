@@ -1,0 +1,83 @@
+//
+//    @tableOfContent
+//      1. Tabs
+//
+
+
+//
+//   @section 1. Tabs
+//
+
+.nav {
+    &-tabs {
+        border-bottom: 1px solid var(--color-black);
+        justify-content: space-between;
+    }
+
+    &-item {
+        & > .nav-link {
+            color: var(--color-black);
+            border: none;
+
+            &.active{
+                border-bottom: 2px solid var(--color-black);
+            }
+
+            &:hover,
+            &:focus {
+                color: var(--color-gray-700);
+                border-bottom: 2px solid var(--color-black);
+            }
+        }
+    }
+}
+
+.tab {
+    &-content {
+        background: var(--color-gray-100);
+    }
+
+    &-pane {
+        padding-bottom: 2rem;
+    }
+
+    &-title {
+        padding-top: 2rem;
+    }
+
+    &-item {
+        &__wrapper {
+            border-bottom: 1px solid var(--color-gray-100);
+            background: var(--color-white);
+            padding: 1.2rem;
+        }
+
+        &__title {
+            display: inline-flex;
+
+            .icon {
+                margin-right: 1rem;
+            }
+
+            h6 {
+                font-weight: normal;
+            }
+        }
+
+        &__detail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__type {
+            padding: .5rem;
+            border-radius: 1rem;
+            background: var(--color-gray-100);
+            text-transform: uppercase;
+        }
+    }
+}
+
+
+// end of tabs.scss file

@@ -1,0 +1,44 @@
+//
+//    @tableOfContent
+//      1. Icon default
+//
+
+
+//
+//   @section 1. Icon default
+//
+
+// svg element
+.icon {
+    fill: currentcolor;
+    pointer-events: none;
+}
+
+// css pseudo element
+.icon {
+    &::before {
+        @include size(var(--css-icon-size));
+
+        content: '';
+        display: inline-block;
+        background-color: red;
+        -webkit-mask:url('../icon/icon.min.svg#arrow-right-view') center/cover;
+        //-webkit-mask-position: 0 ($css-icon-size * -1);
+    }
+
+    &--twitter {
+        &::before {
+            background-color: $color-twitter;
+            -webkit-mask-position: 0 var(--css-icon-size);
+        }
+    }
+
+    &--instagram {
+        &::before {
+            background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+            -webkit-mask-position: 0 calc(var(--css-icon-size) * -14);
+        }
+    }
+}
+
+// end of icon.scss file
