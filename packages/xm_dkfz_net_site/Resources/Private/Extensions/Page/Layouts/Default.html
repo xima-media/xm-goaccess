@@ -1,0 +1,613 @@
+<div class="app">
+	<!-- Component Start: header -->
+
+	<header class="header background--expanded">
+		<span class="header__sticky-trigger"></span>
+		<div class="header__meta background--expanded">
+			<div class="header__center">
+				<!-- Component Start: logo -->
+
+				<a class="logo" href="">
+					<f:image src="EXT:xm_dkfz_net_prototype/Resources/Public/Images/logo/logo.svg" class="logo__image" alt="DKFZ Logo" />
+				</a>
+
+				<!-- Components End: logo -->
+			</div>
+			<div class="header__left">
+				<!-- Component Start: language-switcher -->
+
+				<div class="language-switcher">
+					<ul class="language-switcher__items">
+						<li class="language-switcher__item">
+							<a class="language-switcher__link fx--active" href="#en" data-tooltip="Deutsch" aria-expanded="false">De</a>
+						</li>
+						<li class="language-switcher__item">
+							<a class="language-switcher__link " href="#en" data-tooltip="Englisch" aria-expanded="false">En</a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Components End: language-switcher -->
+				<a class="header__link" href="#notfall">
+					<!-- Component Start: icon -->
+
+					<svg class="icon icon--emergency" role="img" width="20" height="20" aria-hidden="true">
+						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-emergency')}"></use>
+					</svg>
+
+					<!-- Components End: icon -->
+					Notfall
+				</a>
+			</div>
+			<div class="header__right">
+				<!-- Component Start: navigation--sub -->
+
+				<div class="navigation navigation--sub">
+					<ul class="navigation__items">
+						<li class="navigation__item navigation__item--open-chat">
+							<a class="navigation__link button button--icon-only" href="#message" aria-label="Feedback geben" data-tooltip="Feedback geben" aria-expanded="false">
+								<!-- Component Start: icon -->
+
+								<svg class="icon icon--message" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-message')}"></use>
+								</svg>
+
+								<!-- Components End: icon -->
+							</a>
+						</li>
+						<li class="navigation__item navigation__item--bookmark">
+							<a class="navigation__link button button--icon-only" href="#bookmark" aria-label="Lesezeichen anzeigen" data-tooltip="Favoriten aufrufen" aria-expanded="false">
+								<!-- Component Start: icon -->
+
+								<svg class="icon icon--bookmark" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-bookmark')}"></use>
+								</svg>
+
+								<!-- Components End: icon -->
+							</a>
+						</li>
+						<li class="navigation__item navigation__item--user">
+							<!-- Component Start: dropdown--user -->
+
+							<div class="dropdown">
+								<button class=" button button--icon-only button--white" id="dropdown-menu-link" data-bs-toggle="dropdown" aria-expanded="false">
+									<!-- Component Start: image -->
+									<figure class="
+        picture
+        picture--with-image
+
+
+
+
+
+    ">
+										<div class="picture__item image-color--transparent">
+											<f:image src="EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg" class="picture__image image--responsive" alt="" />
+										</div>
+									</figure>
+
+									<!-- Components End: image -->
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
+									<li><a class="dropdown-item" href="#">Onboarding Informationen</a></li>
+									<li><a class="dropdown-item" href="#">Profil bearbeiten</a></li>
+									<li><hr class="dropdown-divider"></li>
+									<li><a class="dropdown-item" href="#">Abmelden</a></li>
+								</ul>
+							</div>
+
+							<!-- Components End: dropdown--user -->
+						</li>
+						<li class="navigation__item navigation__item--quick-search">
+							<!-- Component Start: quick-search -->
+
+							<div class="quick-search">
+								<button type="button" class="quick-search__button quick-search__button--toggle button button--icon-only button--white" aria-label="Volltextsuche öffnen" aria-expanded="false">
+									<!-- Component Start: icon -->
+
+									<svg class="icon icon--search" role="img" width="20" height="20" aria-hidden="true">
+										<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-search')}"></use>
+									</svg>
+
+									<!-- Components End: icon -->
+								</button>
+								<form class="quick-search__form" action="#">
+									<!-- Component Start: field--text -->
+
+
+									<div class="field field--text">
+										<label class="field__label visually-hidden" for="field__input--495632666">Suche</label>
+										<input type="text" class="field__input" id="field__input--495632666" placeholder="Platzhaltertext">
+									</div>
+
+									<!-- Components End: field--text -->
+									<button type="button" class="quick-search__button quick-search__button--submit button button--icon-only button--white">
+										<!-- Component Start: icon -->
+
+										<svg class="icon icon--search" role="img" width="20" height="20" aria-hidden="true">
+											<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-search')}"></use>
+										</svg>
+
+										<!-- Components End: icon -->
+									</button>
+								</form>
+							</div>
+
+							<!-- Components End: quick-search -->
+						</li>
+						<li class="navigation__item navigation__item--menu-toggle">
+							<button class="navigation__link button button--icon-only button--white fx--toggle-main-menu" type="button" aria-expanded="false" aria-controls="navigation__items--main">
+								<!-- Component Start: icon -->
+
+								<svg class="icon icon--menu" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-menu')}"></use>
+								</svg>
+
+								<!-- Components End: icon -->
+								<!-- Component Start: icon -->
+
+								<svg class="icon icon--close" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-close')}"></use>
+								</svg>
+
+								<!-- Components End: icon -->
+							</button>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Components End: navigation--sub -->
+			</div>
+		</div>
+		<div class="header__navigation">
+			<!-- Component Start: navigation--main -->
+
+			<nav class="navigation navigation--main" aria-label="Hauptnavigation">
+				<ul id="navigation__items--main" class="navigation__items fx--first">
+					<li class="navigation__item fx--first">
+						<a class="navigation__link fx--first fx--active " href="#">
+							Unser Zentrum
+						</a>
+						<button class="navigation__button navigation__button--toggle-items" type="button">
+							<!-- Component Start: icon -->
+
+							<svg class="icon icon--arrow-down" role="img" width="20" height="20" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow')}-down"></use>
+							</svg>
+
+							<!-- Components End: icon -->
+						</button>
+						<ul class="navigation__items fx--second corner--magenta corner--right">
+							<li class="navigation__item fx--row"><ul class="navigation__items fx--row">
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Organisation &amp; Management</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Wissenschaftliche Einheiten</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Administration &amp; Stabsstellen</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Kooperationen</a>
+								</li>
+
+							</ul></li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Gremien &amp; Vertretungen</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Mitarbeitervertretungen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Wissenschaftlicher Rat</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Internal Review Board</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Tierschutzausschuss</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Chancengleichheit</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Beiräte</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="navigation__item fx--first">
+						<a class="navigation__link fx--first  " href="#">
+							Aktuelles
+						</a>
+						<button class="navigation__button navigation__button--toggle-items" type="button">
+							<!-- Component Start: icon -->
+
+							<svg class="icon icon--arrow-down" role="img" width="20" height="20" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow')}-down"></use>
+							</svg>
+
+							<!-- Components End: icon -->
+						</button>
+						<ul class="navigation__items fx--second corner--orange corner--right">
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">News</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Wissenschaft</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Innenansichten</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Ausgezeichnet</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Kooperationen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Ankündigungen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Sonstiges</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--row"><ul class="navigation__items fx--row">
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Kurzmeldungen</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Veranstaltungen</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Speiseplan Casino</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Corona-Info</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Stellenangebote</a>
+								</li>
+
+
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="#">Schwarzes Brett</a>
+								</li>
+
+							</ul></li>
+						</ul>
+					</li>
+					<li class="navigation__item fx--first">
+						<a class="navigation__link fx--first  " href="#">
+							Mein Arbeitsplatz
+						</a>
+						<button class="navigation__button navigation__button--toggle-items" type="button">
+							<!-- Component Start: icon -->
+
+							<svg class="icon icon--arrow-down" role="img" width="20" height="20" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow')}-down"></use>
+							</svg>
+
+							<!-- Components End: icon -->
+						</button>
+						<ul class="navigation__items fx--second corner--green-light corner--right">
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Organisatorisches</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Mitarbeiterportal</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Personalservice</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Info für neue Mitarbeiter</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Info A-Z</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Gesundheit</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Betriebsärztlicher Dienst</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Berufsbegleitende Maßnahmen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Mental Health</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Krebsinformationsdienst</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Krebsprävention</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Weiterbildung &amp; Karriere</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Ausbildung</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Weiterbildung</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Personalentwicklung</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Carrerservice</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Förderprogramme</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">DKFZ Akademie</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">DKFZ Kultur</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Beruf &amp; Familie</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Chancengleichheit</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Compliance</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Netzwerke</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Nachhaltigkeit</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Konflikte</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Sicherheit</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Sicherheit</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Biologische Sicherheit</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Infos zu Notfällen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Strahlenschutz &amp; Dosimetrie</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">IT-Sicherheit</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="navigation__item fx--first">
+						<a class="navigation__link fx--first  " href="#">
+							Services
+						</a>
+						<button class="navigation__button navigation__button--toggle-items" type="button">
+							<!-- Component Start: icon -->
+
+							<svg class="icon icon--arrow-down" role="img" width="20" height="20" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow')}-down"></use>
+							</svg>
+
+							<!-- Components End: icon -->
+						</button>
+						<ul class="navigation__items fx--second corner--yellow corner--right">
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">IT-Service</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Service Center</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">User Portal</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">WIKI</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Services &amp; Dienste</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Abfall</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Buchung von Ressourcen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Corporate Design</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Einkauf</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Finanzen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Geräte</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Hausverwaltung</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Recht</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Technik</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Veranstaltungen</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Warenannahme</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Warenlager</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Platzhalter</a>
+									</li>
+								</ul>
+							</li>
+							<li class="navigation__item fx--second">
+								<a class="navigation__link fx--second" href="#">Wissenschaftliche Dienste</a>
+								<ul class="navigation__items fx--third">
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Core Facilities</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">SNOMED CT@DKFZ</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Drittmittel</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Innovation Management</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">QM Klinischer Forschung</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Clinical Trial Office</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Scientific Computing Infrastructure</a>
+									</li>
+									<li class="navigation__item fx--third">
+										<a class="navigation__link fx--third" href="#">Carl Zeiss App. C</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="navigation__item fx--first">
+						<a class="navigation__link fx--first  color--primary" href="#">
+							<!-- Component Start: icon -->
+
+							<svg class="icon icon--bookmark" role="img" width="20" height="20" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-bookmark')}"></use>
+							</svg>
+
+							<!-- Components End: icon -->
+							Mitarbeiterverzeichnis
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- Components End: navigation--main -->
+		</div>
+	</header>
+
+	<!-- Components End: header -->
+	<main class="main--one-column">
+		<h1>Inhaltsseite</h1>
+	</main>
+	<!-- Component Start: footer -->
+
+	<footer class="footer background--expanded">
+		<ul class="footer__items">
+			<li class="footer__item">
+				<a class="footer__link footer__link--meta" href="">
+					Impressum
+				</a>
+			</li>
+			<li class="footer__item">
+				<a class="footer__link footer__link--meta" href="">
+					Datenschutz
+				</a>
+			</li>
+		</ul>
+		<ul class="footer__items">
+			<li class="footer__item">
+				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="Instagram" data-tooltip="Instagram" aria-expanded="false">
+					<!-- Component Start: icon -->
+
+					<svg class="icon icon--instagram" role="img" width="20" height="20" aria-hidden="true">
+						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-instagram')}"></use>
+					</svg>
+
+					<!-- Components End: icon -->
+				</a>
+			</li>
+			<li class="footer__item">
+				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="Twitter" data-tooltip="Twitter" aria-expanded="false">
+					<!-- Component Start: icon -->
+
+					<svg class="icon icon--twitter" role="img" width="20" height="20" aria-hidden="true">
+						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-twitter')}"></use>
+					</svg>
+
+					<!-- Components End: icon -->
+				</a>
+			</li>
+			<li class="footer__item">
+				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="Facebook" data-tooltip="Facebook" aria-expanded="false">
+					<!-- Component Start: icon -->
+
+					<svg class="icon icon--facebook" role="img" width="20" height="20" aria-hidden="true">
+						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-facebook')}"></use>
+					</svg>
+
+					<!-- Components End: icon -->
+				</a>
+			</li>
+			<li class="footer__item">
+				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="LinkedIn" data-tooltip="LinkedIn" aria-expanded="false">
+					<!-- Component Start: icon -->
+
+					<svg class="icon icon--linkedin" role="img" width="20" height="20" aria-hidden="true">
+						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-linkedin')}"></use>
+					</svg>
+
+					<!-- Components End: icon -->
+				</a>
+			</li>
+		</ul>
+		<div class="footer__items">
+			<p class="footer__copyright">
+				© Copyright DKFZ <span class="small">2022</span>
+			</p>
+		</div>
+	</footer>
+
+	<!-- Components End: footer -->
+</div>

@@ -10,10 +10,13 @@ page {
   }
 
   includeCSS {
-    prototype = EXT:xm_dkfz_net_prototype/Resources/Public/css/app.min.css
+    prototype = EXT:xm_dkfz_net_prototype/Resources/Public/Css/app.min.css
   }
 
+  includeJS {
+    prototype = EXT:xm_dkfz_net_prototype/Resources/Public/JavaScript/app.min.js
   }
+
   meta {
     viewport = width=device-width, initial-scale=1.0
     robots = index,follow

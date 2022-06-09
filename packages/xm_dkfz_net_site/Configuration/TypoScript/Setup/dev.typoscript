@@ -10,4 +10,7 @@
   }
 
   page.meta.robots = noindex,nofollow
+
+  page.includeCSS.prototype = EXT:xm_dkfz_net_prototype/Resources/Public/Css/app.css
+  page.includeJS.prototype = EXT:xm_dkfz_net_prototype/Resources/Public/JavaScript/app.js
 [global]
