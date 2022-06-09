@@ -1,0 +1,25 @@
+<!-- Component Start: tab--item -->
+
+<h5 class="tab-title h6">
+    {{ title }}
+</h5>
+{% for item in tabItem %}
+<div class="tab-item__wrapper row">
+    <div class="col-md-8 tab-item__title">
+        {% include '@components/icon/icon.twig' with {icon: 'file'} %} <h6> {{ item.fileName }}</h6>
+    </div>
+    <div class="col-md-4 tab-item__detail">
+        <span class="tab-item__type">{{ item.fileType }}</span>
+        <span class="tab-item__size">{{ item.fileSize }}</span>
+        <a href="#" download>{% include '@components/icon/icon.twig' with {icon: 'download'} %}</a>
+        {% include '@components/icon/icon.twig' with {icon: 'bookmark-add'} %} {# @todo funktionality #}
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+<!-- Components End: tab--item -->

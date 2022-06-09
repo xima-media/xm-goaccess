@@ -9,13 +9,19 @@
 //
 
 .navigation--anchor {
+    margin-left: 2.5rem;
+
     @media screen and (max-width: $container-default-widths) {
         background: var(--color-gray-100);
         overflow-x: scroll;
         scroll-behavior: smooth;
+        position: relative;
+        scroll-snap-type: x mandatory;
+        margin-left: 0;
 
         &::-webkit-scrollbar {
             width: 0;
+            height: 0;
         }
 
         /* Track */
@@ -25,22 +31,17 @@
         }
     }
 
-    &-middle {
-        @media screen and (max-width: $container-default-widths) {
-            display: flex;
-            position: relative;
-        }
-    }
-
     &-button {
         display: none;
+
         @media screen and (max-width: $container-default-widths) {
-            display: block;
-            position: absolute;
-            top: 0;
+            display: flex;
+            position: fixed;
+            top: 1.25rem;
             bottom: 0;
             z-index: 1;
             border: none;
+            height: 1.5rem;
 
             &.right {
                 right: 0;
@@ -52,7 +53,7 @@
         }
     }
 
-    &-inner {
+    &--items {
         flex-direction: column;
 
         @media screen and (max-width: $container-default-widths) {
@@ -60,8 +61,8 @@
             flex-direction: row;
             align-items: center;
             flex-wrap: nowrap;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding: 1.25rem;
+            margin-bottom: 0;
             white-space: nowrap;
         }
     }
@@ -69,19 +70,23 @@
     &__item {
         overflow: hidden;
         position: relative;
-        padding: 0 0 30px 35px;
+        padding: 0 0 1.875rem 2rem;
 
         @media screen and (max-width: $container-default-widths) {
-            padding: 0 40px 0 0px;
+            display: inline-flex;
             overflow: visible;
             max-width: 100%;
-            display: inline-flex;
+            padding: 0 2.5rem 0 0;
+
+            &:first-child {
+                margin-left: 2rem;
+            }
         }
 
         &::before {
             content: '';
             position: absolute;
-            left: 6px;
+            left: .375rem;
             top: 0;
             height: 100%;
             border: 1px solid var(--color-gray-900);
@@ -93,20 +98,20 @@
         }
 
         &:first-child::before {
-            top: 12px;
+            top: .75rem;
         }
 
         &:last-child::before {
-            height: 6px;
+            height: .375rem;
         }
 
         &::after {
             content: '';
             position: absolute;
             left: 0;
-            top: 6px;
-            width: 12px;
-            height: 12px;
+            top: .375rem;
+            width: .75rem;
+            height: .75rem;
             background: var(--color-white);
             border: 1px solid var(--color-gray-900);
             border-radius: 50%;
@@ -133,10 +138,9 @@
     &__link {
         @include h6();
         font-family: $font-family-sans-serif;
-        letter-spacing: 0.6px;
+        letter-spacing: .6px;
         text-decoration: none;
     }
-
 }
 
 // end of navigation--sub.scss file

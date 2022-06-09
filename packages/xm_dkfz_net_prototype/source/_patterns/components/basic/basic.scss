@@ -38,6 +38,23 @@ body {
     &--default {
         max-width: $container-default-widths;
         margin: auto;
+
+        &__center {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &--column__two {
+        max-width: $container-default-widths;
+        margin: 2.5rem auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 2.75rem;
+
+        @include media-breakpoint-down(md) {
+            flex-wrap: wrap;
+        }
     }
 
     &--with-sidebar {
@@ -296,6 +313,14 @@ ul > li {
     letter-spacing: .6px;
     color: var(--color-white);
     background-color: var(--color-black);
+}
+
+.column--text {
+    width: 39.375rem;
+
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
 }
 
 // end of basic.scss file

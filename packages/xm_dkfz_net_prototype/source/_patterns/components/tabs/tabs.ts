@@ -19,8 +19,7 @@ import './tabs.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
-// @ts-ignore
-import { default as Tab } from 'bootstrap/js/src/tab'
+import 'bootstrap/js/src/tab'
 
 /**
  *     @section 2. Class
@@ -29,16 +28,6 @@ import { default as Tab } from 'bootstrap/js/src/tab'
 class Tabs {
     constructor () {
         app.log('component "tabs" loaded')
-
-        const triggerTabList = [].slice.call(document.querySelectorAll('#tab a'))
-        triggerTabList.forEach(function (triggerEl: HTMLElement) {
-          const tabTrigger = new Tab(triggerEl)
-
-          triggerEl.addEventListener('click', function (event) {
-            event.preventDefault()
-            tabTrigger.show()
-          })
-        })
     }
 }
 
