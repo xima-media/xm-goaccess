@@ -55,21 +55,21 @@
         "patternSectionSubgroup": "views/partials/patternSectionSubgroup.mustache",
         "viewall": "views/viewall.mustache"
       },
-      "js": "./source/js",
-      "images": "./source/images",
-      "fonts": "./source/fonts",
-      "css": "./source/css"
+		"js" : "./Resources/Public/JavaScript",
+		"images" : "./Resources/Public/Images",
+		"fonts" : "./Resources/Public/Fonts",
+		"css" : "./Resources/Public/Css"
     },
     "public": {
-      "root": "public/",
-      "patterns": "public/patterns/",
-      "data": "public/styleguide/data/",
-      "annotations": "public/annotations/",
-      "styleguide": "public/styleguide/",
-      "js": "public/dist/js",
-      "images": "public/dist/images",
-      "fonts": "public/dist/fonts",
-      "css": "public/dist/css"
+      "root": "./Resources/Public/patternlab/",
+      "patterns": "./Resources/Public/patternlab/patterns/",
+      "data": "./Resources/Public/patternlab/styleguide/data/",
+      "annotations": "./Resources/Public/patternlab/annotations/",
+      "styleguide": "./Resources/Public/patternlab/styleguide/",
+      "js": "./Resources/Public/patternlab/js",
+      "images": "./Resources/Public/patternlab/images",
+      "fonts": "./Resources/Public/patternlab/fonts",
+      "css": "./Resources/Public/patternlab/css"
     }
   },
   "patternExtension": "twig",

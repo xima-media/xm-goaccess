@@ -12,11 +12,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './patternlab/source/app.ts'
+        app: './source/app.ts'
     },
     output: {
-        filename: 'js/[name].min.js',
-        auxiliaryComment: 'Copyright - XIMA media GmbH'
+        filename: './JavaScript/[name].js',
+        auxiliaryComment: 'Copyright - XIMA media GmbH',
+        path: path.resolve(__dirname, 'Resources/Public'),
     },
     module: {
         rules: [
@@ -66,7 +67,7 @@ module.exports = {
                             // Must be true b/c of mixins
                             hoistUseStatements: false,
                             resources: [
-                                path.resolve(__dirname, './patternlab/source/_patterns/components/basic/basic-default-functions-and-variables.scss')
+                                path.resolve(__dirname, './source/_patterns/components/basic/basic-default-functions-and-variables.scss')
                             ],
                         },
                     },
@@ -75,6 +76,13 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: './Fonts/[name][ext]',
+                }
             },
         ],
     },
@@ -85,32 +93,22 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: './patternlab/source/_patterns/components/image/assets', to: 'image/examples'
+                    from: './source/_patterns/components/image/assets', to: './Images/examples'
                 },
                 {
-                    from: './patternlab/source/_patterns/components/logo/assets', to: 'image/logo'
+                    from: './source/_patterns/components/logo/assets', to: './Images/logo'
                 },
                 {
-                    from: './patternlab/source/_patterns/components/debug/assets', to: 'image/debug'
+                    from: './source/_patterns/components/debug/assets', to: './Images/debug'
                 },
             ],
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].min.css',
+            filename: './Css/[name].css',
         }),
-        // new CleanWebpackPlugin(),
-        // new StylelintPlugin({
-        //     files: ['**/*.scss'],
-        //     configFile: '.stylelintrc.yml',
-        //     emitWarning: true,
-        //     failOnError: false
-        // }),
-        // new ESLintPlugin({
-        //     extensions: ['js']
-        // }),
-        new SVGSpritemapPlugin('./patternlab/source/_patterns/components/icon/assets/**/*.svg', {
+        new SVGSpritemapPlugin('./source/_patterns/components/icon/assets/**/*.svg', {
             output: {
-                filename: 'icon/icon.min.svg'
+                filename: './Icon/icon.min.svg'
             },
             sprite: {
                 prefix: 'icon-',
