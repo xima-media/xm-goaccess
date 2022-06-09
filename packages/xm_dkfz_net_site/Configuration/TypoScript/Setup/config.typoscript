@@ -1,0 +1,12 @@
+config {
+  no_cache = 0
+  sendCacheHeaders = 1
+  debug = 0
+  contentObjectExceptionHandler = 1
+  compressJs = 1
+  compressCss = 1
+  concatenateJs = 1
+  concatenateCss = 1
+  htmlTag.attributes.class = background--gray-100
+  htmlTag.attributes.style = --scrollbar-width:17px;
+}
