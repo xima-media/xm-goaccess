@@ -11,6 +11,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
+    watch: true,
+    devtool: 'cheap-source-map',
     entry: {
         app: './source/app.ts'
     },
