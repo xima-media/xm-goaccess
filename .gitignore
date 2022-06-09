@@ -28,29 +28,10 @@ node_modules/
 #
 # Prototype
 #
-**/patternlab/public/
-**/patternlab/pattern_exports
-**/patternlab/source/assets
-**/patternlab/dependencyGraph.json
+Resources/Public
+source/images
 
 #
 # Keep
 #
 !.gitkeep
-
-#
-# Misc
-#
-nbproject
-venv
-
-#
-# phing-typo3-deployer
-#
-/htdocs/build.env.properties
-/htdocs/build.xml
-/htdocs/bin
-/htdocs/shared
-/htdocs/vendor
-/htdocs/releases
-
