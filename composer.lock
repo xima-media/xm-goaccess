@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98cb49616b3a4a81943766ccc5c11fe6",
+    "content-hash": "71062a43411f1d497841f079d0ea1ce2",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -59,6 +59,116 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.7"
             },
             "time": "2022-03-14T02:02:36+00:00"
+        },
+        {
+            "name": "blueways/bw-jsoneditor",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/blueways/bw_jsoneditor.git",
+                "reference": "bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/blueways/bw_jsoneditor/get/bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b.zip",
+                "reference": "bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^8.0 || ^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "typo3/cms-base-distribution": "^9.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": "public",
+                    "extension-key": "bw_jsoneditor"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwJsoneditor\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "m.schneider@blueways.de",
+                    "homepage": "https://www.blueways.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Adds a JSON Form Editor type to the TYPO3 Backend. View and edit JSON data with code formatting and syntax highlighting.",
+            "homepage": "https://blueways.de",
+            "keywords": [
+                "json",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/blueways/bw_jsoneditor/issues",
+                "source": "https://bitbucket.org/blueways/bw_jsoneditor/src/bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b/?at=v1.0.4"
+            },
+            "time": "2022-04-26T04:47:00+00:00"
+        },
+        {
+            "name": "blueways/bw-static-template",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/blueways/bw_static_template.git",
+                "reference": "aa387a7c58dafbaee025a2e1f6d2759ef46ffa89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/blueways/bw_static_template/get/aa387a7c58dafbaee025a2e1f6d2759ef46ffa89.zip",
+                "reference": "aa387a7c58dafbaee025a2e1f6d2759ef46ffa89",
+                "shasum": ""
+            },
+            "require": {
+                "blueways/bw-jsoneditor": "^1.0",
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "typo3/cms-core": "^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "bk2k/bootstrap-package": "12.0.x-dev",
+                "typo3/cms-base-distribution": "^10.0",
+                "typo3/cms-lowlevel": "^10.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": "public",
+                    "extension-key": "bw_static_template"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwStaticTemplate\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "TYPO3 extension that adds a frontend plugin for rendering static fluid templates. Inject JSON and FAL data into the templates.",
+            "homepage": "https://blueways.de",
+            "keywords": [
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/blueways/bw_static_template/issues",
+                "source": "https://bitbucket.org/blueways/bw_static_template/src/aa387a7c58dafbaee025a2e1f6d2759ef46ffa89/?at=v2.0.0"
+            },
+            "time": "2021-10-29T18:08:00+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -1046,16 +1156,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "c94a94f120803a18554c1805ef2e539f8285f9a2"
+                "reference": "83260bb50b8fc753c72d14dc1621a2dac31877ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c94a94f120803a18554c1805ef2e539f8285f9a2",
-                "reference": "c94a94f120803a18554c1805ef2e539f8285f9a2",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/83260bb50b8fc753c72d14dc1621a2dac31877ee",
+                "reference": "83260bb50b8fc753c72d14dc1621a2dac31877ee",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1189,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -1141,7 +1251,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.2.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.3.0"
             },
             "funding": [
                 {
@@ -1157,7 +1267,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-20T21:55:58+00:00"
+            "time": "2022-06-09T08:26:02+00:00"
         },
         {
             "name": "helhum/config-loader",
@@ -1528,6 +1638,57 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.7.5"
             },
             "time": "2021-07-01T14:25:37+00:00"
+        },
+        {
+            "name": "netresearch/jsonmapper",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweiske/jsonmapper.git",
+                "reference": "8bbc021a8edb2e4a7ea2f8ad4fa9ec9dce2fcb8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/8bbc021a8edb2e4a7ea2f8ad4fa9ec9dce2fcb8d",
+                "reference": "8bbc021a8edb2e4a7ea2f8ad4fa9ec9dce2fcb8d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-reflection": "*",
+                "ext-spl": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7.5 || ~8.0 || ~9.0",
+                "squizlabs/php_codesniffer": "~3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonMapper": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@cweiske.de",
+                    "homepage": "http://github.com/cweiske/jsonmapper/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Map nested JSON structures onto PHP classes",
+            "support": {
+                "email": "cweiske@cweiske.de",
+                "issues": "https://github.com/cweiske/jsonmapper/issues",
+                "source": "https://github.com/cweiske/jsonmapper/tree/v4.0.0"
+            },
+            "time": "2020-12-01T19:48:11+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -7323,12 +7484,46 @@
             "time": "2022-05-23T14:21:13+00:00"
         },
         {
+            "name": "xima/xm-dkfz-net-jobs",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./packages/xm_dkfz_net_jobs",
+                "reference": "6c71e2cc86882fea2f8d65cd9689e475cd5e46da"
+            },
+            "require": {
+                "netresearch/jsonmapper": "^4.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "xm_dkfz_net_jobs"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Xima\\XmDkfzNetJobs\\": "Classes"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "maik.schneider@xima.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Imports and display DKFZ job publications",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "xima/xm-dkfz-net-prototype",
             "version": "dev-feature/prototype-package",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
-                "reference": "f1e0d6df3f765a71bfb8c762836eef2a09ac4475"
+                "reference": "99f92d48d54324dcc5b162b532dd9bfcb64a0218"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -7338,7 +7533,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Xima\\XmDkfzNetSite\\": "Classes"
+                    "Xima\\XmDkfzNetPrototype\\": "Classes"
                 }
             },
             "authors": [
@@ -8035,16 +8230,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.7.11",
+            "version": "1.7.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "62fcadcde81b4037e42ad2489119d31c46f00191"
+                "reference": "32f10779d9cd88a9cbd972ec611a4148a3cbbc7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/62fcadcde81b4037e42ad2489119d31c46f00191",
-                "reference": "62fcadcde81b4037e42ad2489119d31c46f00191",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/32f10779d9cd88a9cbd972ec611a4148a3cbbc7e",
+                "reference": "32f10779d9cd88a9cbd972ec611a4148a3cbbc7e",
                 "shasum": ""
             },
             "require": {
@@ -8070,7 +8265,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.7.11"
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.12"
             },
             "funding": [
                 {
@@ -8090,7 +8285,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-07T08:47:03+00:00"
+            "time": "2022-06-09T12:39:36+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8519,12 +8714,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e9efa06fbfa1dc84b9d6475eb7270aec6ee9a841"
+                "reference": "eb3f283cd897fee03bd8c3557e03b5928fcbda34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e9efa06fbfa1dc84b9d6475eb7270aec6ee9a841",
-                "reference": "e9efa06fbfa1dc84b9d6475eb7270aec6ee9a841",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/eb3f283cd897fee03bd8c3557e03b5928fcbda34",
+                "reference": "eb3f283cd897fee03bd8c3557e03b5928fcbda34",
                 "shasum": ""
             },
             "conflict": {
@@ -8701,7 +8896,7 @@
                 "laminas/laminas-http": "<2.14.2",
                 "laravel/fortify": "<1.11.1",
                 "laravel/framework": "<6.20.42|>=7,<7.30.6|>=8,<8.75",
-                "laravel/laravel": "<=5.8.38",
+                "laravel/laravel": "<=9.1.8",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "latte/latte": "<2.10.8",
                 "lavalite/cms": "<=5.8",
@@ -8743,6 +8938,7 @@
                 "nette/application": ">=2,<2.0.19|>=2.1,<2.1.13|>=2.2,<2.2.10|>=2.3,<2.3.14|>=2.4,<2.4.16|>=3,<3.0.6",
                 "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
                 "nilsteampassnet/teampass": "<=2.1.27.36",
+                "noumo/easyii": "<=0.9",
                 "nukeviet/nukeviet": "<4.3.4",
                 "nystudio107/craft-seomatic": "<3.4.12",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
@@ -8785,7 +8981,7 @@
                 "pimcore/data-hub": "<1.2.4",
                 "pimcore/pimcore": "<10.4",
                 "pocketmine/bedrock-protocol": "<8.0.2",
-                "pocketmine/pocketmine-mp": "<4.2.10",
+                "pocketmine/pocketmine-mp": ">= 4.0.0-BETA5, < 4.4.2|<4.2.10",
                 "pressbooks/pressbooks": "<5.18",
                 "prestashop/autoupgrade": ">=4,<4.10.1",
                 "prestashop/contactform": ">1.0.1,<4.3",
@@ -9009,7 +9205,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-06T22:04:51+00:00"
+            "time": "2022-06-08T23:04:00+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -10237,6 +10433,7 @@
         "typo3/cms-composer-installers": 20,
         "xima/xm-dkfz-net-site": 20,
         "xima/xm-dkfz-net-prototype": 20,
+        "xima/xm-dkfz-net-jobs": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
