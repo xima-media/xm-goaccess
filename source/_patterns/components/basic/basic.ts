@@ -23,7 +23,7 @@ export default {
     /**
      * Variables
      */
-    debug: true,
+    debug: false,
     lang: document.documentElement.lang,
     // transitionTime: 300, // @todo aus CSS auslesen
     transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),

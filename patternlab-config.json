@@ -55,10 +55,10 @@
         "patternSectionSubgroup": "views/partials/patternSectionSubgroup.mustache",
         "viewall": "views/viewall.mustache"
       },
-		"js" : "./Resources/Public/JavaScript",
-		"images" : "./Resources/Public/Images",
-		"fonts" : "./Resources/Public/Fonts",
-		"css" : "./Resources/Public/Css"
+      "js": "./Resources/Public/JavaScript",
+      "images": "./Resources/Public/Images",
+      "fonts": "./Resources/Public/Fonts",
+      "css": "./Resources/Public/Css"
     },
     "public": {
       "root": "./Resources/Public/patternlab/",

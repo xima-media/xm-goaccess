@@ -1,17 +1,28 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.config.js');
+const {merge} = require('webpack-merge');
+const devConfig = require('./webpack.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const CopyPlugin = require('copy-webpack-plugin');
+const {mergeWithCustomize, unique} = require("webpack-merge");
 
-module.exports = merge(common, {
-    mode: 'production',
-    output: {
-      filename: 'JavaScript/[name].min.js',
-    },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'Css/[name].min.css',
-      }),
-    ]
-});
+module.exports = mergeWithCustomize(
+    {
+        customizeArray: unique(
+            "plugins",
+            ["MiniCssExtractPlugin"],
+            (plugin) => plugin.constructor && plugin.constructor.name
+        ),
+    })(
+    devConfig,
+    {
+        mode: 'production',
+        devtool: false,
+        watch: false,
+        output: {
+            filename: 'JavaScript/[name].min.js',
+        },
+        plugins: [
+            new MiniCssExtractPlugin({
+                filename: 'Css/[name].min.css',
+            }),
+        ]
+    }
+);

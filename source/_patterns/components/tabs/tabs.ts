@@ -19,7 +19,8 @@ import './tabs.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
-import 'bootstrap/js/src/tab'
+// @ts-ignore
+import { default as Tab } from 'bootstrap/js/src/tab'
 
 /**
  *     @section 2. Class
@@ -29,10 +30,9 @@ class Tabs {
     constructor () {
         app.log('component "tabs" loaded')
 
-        // @todo warnungen/fehler beheben
         const triggerTabList = [].slice.call(document.querySelectorAll('#tab a'))
-        triggerTabList.forEach(function (triggerEl) {
-          const tabTrigger = new bootstrap.Tab(triggerEl)
+        triggerTabList.forEach(function (triggerEl: HTMLElement) {
+          const tabTrigger = new Tab(triggerEl)
 
           triggerEl.addEventListener('click', function (event) {
             event.preventDefault()

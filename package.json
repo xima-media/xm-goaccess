@@ -8,6 +8,7 @@
   },
   "author": "XIMA MEDIA GmbH",
   "devDependencies": {
+    "@types/bootstrap": "^5.1.12",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
@@ -30,8 +31,8 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "staging": "webpack --config webpack.prod.config.js",
-    "watch": "webpack --stats-children --progress --watch --config webpack.dev.config.js",
+    "build": "webpack --config webpack.prod.config.js",
+    "start": "webpack --stats-children --config webpack.config.js",
     "fix-styles": "npx stylelint ./patternlab/source/_patterns/components/**/*.scss --config .stylelintrc.yml --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
@@ -39,18 +40,17 @@
     "help": "patternlab --help",
     "install": "patternlab install --config ./patternlab-config.json",
     "serve": "patternlab serve --config ./patternlab-config.json",
-    "start": "npm run serve",
     "version": "patternlab --version",
     "dev": "node ./node_modules/@pattern-lab/uikit-workshop/build-tools.js"
   },
   "dependencies": {
-    "bootstrap": "^5.1.3",
-    "swiper": "^8.1.5",
-    "tippy.js": "^6.3.7",
     "@pattern-lab/cli": "^5.16.2",
     "@pattern-lab/core": "^5.16.2",
     "@pattern-lab/engine-twig-php": "^5.16.2",
     "@pattern-lab/starterkit-twig-demo": "^5.16.1",
-    "@pattern-lab/uikit-workshop": "^5.16.2"
+    "@pattern-lab/uikit-workshop": "^5.16.2",
+    "bootstrap": "^5.1.3",
+    "swiper": "^8.1.5",
+    "tippy.js": "^6.3.7"
   }
 }
