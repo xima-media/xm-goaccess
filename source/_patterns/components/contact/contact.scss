@@ -9,8 +9,32 @@
 //
 
 .contact {
+    &--background {
+        width: 25rem;
+        background: var(--color-primary-opacity-10);
+        padding: 2.5rem;
+    }
+
     &__items {
         @include list-reset;
+    }
+
+    &__item {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        >.contact__link {
+            padding-left: .5rem;
+            text-decoration: none;
+        }
     }
 }
 

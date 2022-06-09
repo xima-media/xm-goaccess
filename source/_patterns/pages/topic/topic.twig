@@ -1,5 +1,8 @@
 {% extends "@layouts/default--one-column.twig" %}
 {% block main %}
+    {% include '@components/breadcrumb/breadcrumb.twig' with {
+    } %}
+
     {# hero #}
     {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
         {% block main %}
@@ -8,17 +11,30 @@
                 Seite merken
             </button>
         {% endblock main %}
+
     {% endembed %}
 
+    <div class="main--default__center">
+        <button class="button button--primary">
+            {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
+            Seite merken
+        </button>
+    </div>
+
     {#  #}
-    <div>
-        <h2 class="h5">zuletzt aktualisiert: 12. Dezember 2021</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-            montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-            eu, pretium quis, sem.
-        </p>
+    <div class="main--column__two">
+        <div class="column--text">
+            <h2 class="h6">zuletzt aktualisiert: 12. Dezember 2021</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                eu, pretium quis, sem.
+            </p>
+        </div>
+
+        {% include '@components/contact/contact.twig' with { title: 'Kontakt' } %}
+
     </div>
 
     <div>

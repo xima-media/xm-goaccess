@@ -11,9 +11,18 @@
 .infobox {
     position: relative;
     max-width: $container-default-widths + 2rem;
-    margin: auto;
+    //margin: auto;
     margin-bottom: 3.5rem;
-    background-color: var(--color-white);
+
+    &--background {
+        &-white {
+            background-color: var(--color-white);
+        }
+
+        &-gray-100 {
+            background-color: var(--color-gray-100);
+        }
+    }
 
     &::after {
         content: '';

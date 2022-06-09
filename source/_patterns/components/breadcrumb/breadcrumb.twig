@@ -5,7 +5,7 @@
         {% for item in prototype.breadcrumb %}
             {% if loop.last %}
                 <li>
-                    <a class="breadcrumb__link" href="#">{{ item.title }}</a>
+                    <a class="breadcrumb__link" href="#" aria-current="location">{{ item.title }}</a>
                 </li>
             {% else %}
                 <li>{{ item.title }}

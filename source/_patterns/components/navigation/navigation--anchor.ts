@@ -38,21 +38,34 @@ class NavigationAnchor {
 
 
         // if size laptop
-        const rightButtons = Array.from(document.getElementsByClassName('right'));
-        const containers = document.querySelectorAll('.navigation--anchor');
+        const container = document.querySelector('.navigation--anchor');
+        const rightButton = container.querySelector('.right');
+        const leftButton = container.querySelector('.left');
 
-        let index = 0;
-        for (const rightButton of rightButtons) {
-            const container = containers[index];
-            rightButton.addEventListener("click", function () {
+        rightButton.addEventListener("click", () => {
+            if (container.scrollWidth !== container.scrollLeft) {
                 container.scrollLeft += 150;
-            });
-            index++;
-        }
+                leftButton.style.display = 'flex';
 
+                leftButton.addEventListener("click", function () {
+                    container.scrollLeft -= 150;
 
+                    if(container.scrollLeft == 0) {
+                       leftButton.style.display = 'none';
+                    } else {
+                        leftButton.style.display = 'flex';
+                    }
+                });
 
+            } else {
+                // @todo button entfernen
+                rightButton.style.display = 'none';
+            }
+        });
 
+        if(container.scrollLeft == 0) {
+           leftButton.style.display = 'none';
+         }
     }
 }
 

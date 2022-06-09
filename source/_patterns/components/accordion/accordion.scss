@@ -12,86 +12,120 @@
 
 .accordion {
     margin-bottom: 2rem;
+    counter-reset: section;
 
     &__items {
         position: relative;
         padding-top: 2rem;
+        padding-left: 0;
+        list-style-type: none;
 
         &--title {
-            display: inline;
+            display: flex;
+            counter-reset: subsection;
+            margin-bottom: 1.5rem;
+
+            &:before {
+                counter-increment: section;
+                content: counter(section) ". ";
+                padding-right: .5rem;
+            }
         }
     }
 
     &__item {
-        border-top: 1px solid var(--color-gray-100);
+        padding-left: 0;
+        list-style-type: none;
+        //border-top: 1px solid var(--color-gray-100);
 
         &:last-of-type {
             border-bottom: 1px solid var(--color-gray-100);
         }
     }
 
-    &__panel {
-        overflow: hidden;
-        max-height: 0;
-        padding: 0 5px;
-        transition: max-height .3s ease-out;
+    //&__panel {
+    //    overflow: hidden;
+    //    max-height: 0;
+    //    padding: 0 5px;
+    //    transition: max-height .3s ease-out;
+    //
+    //    p {
+    //        margin: 0;
+    //        letter-spacing: .5px;
+    //    }
+    //}
 
-        p {
-            margin: 0;
-            letter-spacing: .5px;
-        }
-    }
+    //&__btn {
+    //    display: flex;
+    //    align-items: center;
+    //    justify-content: space-between;
+    //    width: 100%;
+    //    padding: 1rem 0;
+    //    text-align: left;
+    //    background-color: transparent;
+    //    border: none;
+    //    cursor: pointer;
+    //    outline: none;
+    //    transition: .4s;
+    //
+    //    &--active {
+    //        display: none;
+    //    }
+    //
+    //    &.active {
+    //        .accordion__btn--closed {
+    //            display: none;
+    //        }
+    //
+    //        .accordion__btn--active {
+    //            display: block;
+    //        }
+    //
+    //        + .accordion__panel {
+    //            margin-bottom: 2rem;
+    //        }
+    //    }
+    //
+    //    &:hover {
+    //        transform: translateX(5px);
+    //    }
+    //}
 
-    &__btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 1rem 0;
-        text-align: left;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        transition: .4s;
-
-        &--active {
-            display: none;
-        }
-
-        &.active {
-            .accordion__btn--closed {
-                display: none;
-            }
-
-            .accordion__btn--active {
-                display: block;
-            }
-
-            + .accordion__panel {
-                margin-bottom: 2rem;
-            }
-        }
-
-        &:hover {
-            transform: translateX(5px);
-        }
-    }
-
-
-    // numeric List
-    ol {
-        counter-reset: item;
+    &-button {
         padding-left: 0;
+        border-top: 1px solid var(--color-gray-100);
+
+        &[aria-expanded="true"] {
+            border-bottom: 3px solid var(--color-gray-900);
+        }
+
+        &:not(.collapsed) {
+            color: inherit;
+            background: transparent;
+
+            &::after {
+                background-image: url('../icon/icon.min.svg#minus');
+            }
+        }
+        &::after {
+            //background-image: url('../icon/icon.min.svg#plus');
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+        }
+
+        &:before {
+            counter-increment: subsection;
+            content: counter(section) "." counter(subsection) " ";
+            padding-right: .5rem;
+        }
+
+        &--description {
+            font-family: $font-family-sans-serif;
+        }
     }
 
-    li {
-        display: block;
-    }
-
-    li:before {
-        content: counters(item, ".") " ";
-        counter-increment: item;
+    &-body {
+        padding: 2rem 0;
+        background: var(--color-gray-100);
     }
 }
 
