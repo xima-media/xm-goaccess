@@ -35,6 +35,12 @@ return [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
         ],
+        'xm_dkfz_net_jobs' => [
+            'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
+        ],
+        'xm_mail_catcher' => [
+            'logPath' => '/var/log/mail.log',
+        ],
     ],
     'FE' => [
         'debug' => false,

@@ -1,0 +1,2 @@
+# cat=basic/enable; type=string; label=URL of the job API
+api_url = https://jobs.dkfz.de/jobPublication/list.json?language=de

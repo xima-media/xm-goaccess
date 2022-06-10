@@ -4,22 +4,24 @@ namespace Xima\XmDkfzNetJobs\Utility;
 
 use JsonMapper;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use Xima\XmDkfzNetJobs\Domain\Model\Dto\Job;
 
 class JobLoaderUtility
 {
     protected FrontendInterface $cache;
 
-    protected const API_URL = 'https://jobs.dkfz.de/jobPublication/list.json?language=de';
+    protected ExtensionConfiguration $extensionConfiguration;
 
     /**
      * @var Job[]
      */
     protected array $jobs = [];
 
-    public function __construct(FrontendInterface $cache)
+    public function __construct(FrontendInterface $cache, ExtensionConfiguration $extensionConfiguration)
     {
         $this->cache = $cache;
+        $this->extensionConfiguration = $extensionConfiguration;
     }
 
     public function updateJobs(): bool
@@ -34,12 +36,22 @@ class JobLoaderUtility
         return $this->jobs;
     }
 
+    /**
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     */
     protected function loadJobs($useCache = true): bool
     {
         // download and cache json
         if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
 
-            $jsonJobs = file_get_contents(self::API_URL);
+            $extConf = $this->extensionConfiguration->get('xm_dkfz_net_jobs');
+
+            if (!isset($extConf['api_url']) || !$extConf['api_url']) {
+                return false;
+            }
+
+            $jsonJobs = file_get_contents($extConf['api_url']);
 
             if (!$jsonJobs) {
                 return false;
