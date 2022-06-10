@@ -1,0 +1,2 @@
+@import 'EXT:bw_static_template/Configuration/PageTS/All.txt'
+@import 'EXT:xm_dkfz_net_jobs/Configuration/TSconfig/Page.tsconfig'
