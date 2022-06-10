@@ -8,19 +8,19 @@
 		</header>
 		<body>
 			<trans-unit id="latestJobs.title">
-				<source>Latest Jobs</source>
+				<target>Neuste Jobs</target>
 			</trans-unit>
 			<trans-unit id="latestJobs.description">
-				<source>Displays latest job postings from jobs.dkfz.de</source>
+				<target>Zeigt die Jobinserate von jobs.dkfz.de in einer Listenansicht an</target>
 			</trans-unit>
 			<trans-unit id="latestJobs.headline">
-				<source>Open positions</source>
+				<target>Offene Stellen</target>
 			</trans-unit>
 			<trans-unit id="latestJobs.all">
-				<source>All open positions</source>
+				<target>Alle offenen Stellen</target>
 			</trans-unit>
 			<trans-unit id="latestJobs.more">
-				<source>More</source>
+				<target>Mehr erfahren</target>
 			</trans-unit>
 		</body>
 	</file>

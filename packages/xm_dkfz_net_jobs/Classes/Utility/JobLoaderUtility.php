@@ -37,7 +37,7 @@ class JobLoaderUtility
     protected function loadJobs($useCache = true): bool
     {
         // download and cache json
-        if (!$jsonJobs = $this->cache->get('dkfz') && $useCache) {
+        if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
 
             $jsonJobs = file_get_contents(self::API_URL);
 
