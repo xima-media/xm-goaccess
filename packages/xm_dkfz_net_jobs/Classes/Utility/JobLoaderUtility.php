@@ -22,13 +22,30 @@ class JobLoaderUtility
         $this->cache = $cache;
     }
 
-    public function crawlJobs(): bool
+    public function updateJobs(): bool
     {
-        // download data
-        $jsonJobs = file_get_contents(self::API_URL);
+        return $this->loadJobs(false);
+    }
 
-        if (!$jsonJobs) {
-            return false;
+    public function getJobs(): array
+    {
+        $this->loadJobs();
+
+        return $this->jobs;
+    }
+
+    protected function loadJobs($useCache = true): bool
+    {
+        // download and cache json
+        if (!$jsonJobs = $this->cache->get('dkfz') && $useCache) {
+
+            $jsonJobs = file_get_contents(self::API_URL);
+
+            if (!$jsonJobs) {
+                return false;
+            }
+
+            $this->cache->set('dkfz', $jsonJobs);
         }
 
         // decode string

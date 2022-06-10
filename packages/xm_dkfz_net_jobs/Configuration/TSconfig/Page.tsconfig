@@ -1,0 +1,16 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+  elements {
+    xmdkfznetjobs_latestjobs {
+      iconIdentifier = plugin-job-listing
+      title = LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.title
+      description = LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.description
+      tt_content_defValues {
+        CType = list
+        list_type = xmdkfznetjobs_latestjobs
+      }
+    }
+  }
+
+  show = *
+}
+

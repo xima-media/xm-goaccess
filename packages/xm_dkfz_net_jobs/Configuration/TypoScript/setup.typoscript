@@ -1,0 +1,10 @@
+plugin.tx_xmdkfznetjobs {
+  view {
+    layoutRootPaths.0 = EXT:xm_dkfz_net_jobs/Resources/Private/Layouts
+    layoutRootPaths.10 = {$plugin.tx_xmdkfznetjobs.view.layoutRootPath}
+    templateRootPaths.0 = EXT:xm_dkfz_net_jobs/Resources/Private/Templates
+    templateRootPaths.10 = {$plugin.tx_xmdkfznetjobs.view.templateRootPath}
+    partialRootPaths.0 = EXT:xm_dkfz_net_jobs/Resources/Private/Partials
+    partialRootPaths.10 = {$plugin.tx_xmdkfznetjobs.view.partialRootPath}
+  }
+}
