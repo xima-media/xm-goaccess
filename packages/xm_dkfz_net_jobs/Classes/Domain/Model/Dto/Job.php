@@ -5,20 +5,20 @@ namespace Xima\XmDkfzNetJobs\Domain\Model\Dto;
 class Job
 {
 
-    public int $id;
+    public int $id = 0;
 
-    public string $language;
+    public string $language = '';
 
-    public string $position;
+    public string $position = '';
 
     /**
      * @var \Xima\XmDkfzNetJobs\Domain\Model\Dto\JobImage[]
      */
-    public array $images;
+    public array $images = [];
 
-    public \DateTime $startDate;
+    public ?\DateTime $startDate;
 
-    public string $jobPublicationURL;
+    public string $jobPublicationURL = '';
 
     public ?string $introduction;
 
@@ -27,4 +27,6 @@ class Job
     public ?string $profile;
 
     public ?string $weOffer;
+
+    public ?JobOpening $jobOpening;
 }

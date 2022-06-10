@@ -3,10 +3,10 @@
 	<div class="content-wrapper content-wrapper--title-with-pattern  content-wrapper--sm">
 		<div class="content-wrapper__header">
 			<h2 class="content-wrapper__title h4">
-				{f:translate(key:'EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallanx.xlf:latestJobs.headline')} </h2>
+				{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.headline')} </h2>
 
 			<a class="content-wrapper__link" href="#">
-				{f:translate(key:'EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallanx.xlf:latestJobs.all')}
+				{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.all')}
 				<svg class="icon icon--arrow-right" role="img" width="20" height="20" aria-hidden="true">
 					<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
 				</svg>
@@ -17,28 +17,34 @@
 		</div>
 		<div class="content-wrapper__content">
 			<f:for each="{jobs}" as="job">
-
-				<div class="card card--image-top card--md card--image-size-md card--new-job">
-					<a href="{job.position}" class="card__link card__link--hidden" aria-label="{job.position}">
-						<svg class="icon icon--arrow-right" role="img" width="20" height="20" aria-hidden="true">
-							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-						</svg>
-						{f:translate(key:'EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallanx.xlf:latestJobs.headline')}
-					</a>
-					<div class="card__content">
-						<div class="card__header">
-							<h3 class="card__title">{job.position}</h3>
+				<f:if condition="{job.jobOpening}">
+					<div class="card card--image-top card--md card--image-size-md card--new-job">
+						<a href="{job.jobPublicationURL}" class="card__link card__link--hidden" aria-label="{job.position}">
+							<svg class="icon icon--arrow-right" role="img" width="20" height="20" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+							</svg>
+							{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.headline')}
+						</a>
+						<div class="card__content">
+							<div class="card__header">
+								<h3 class="card__title">{job.position}</h3>
+							</div>
+						</div>
+						<div class="card__footer">
+							<ul class="card__tags">
+								<f:if condition="{job.jobOpening.workingTimes.0.name}">
+									<li class="card__tag">{job.jobOpening.workingTimes.0.name}</li>
+								</f:if>
+								<f:if condition="{job.jobOpening.location}">
+									<li class="card__tag">{job.jobOpening.location}</li>
+								</f:if>
+								<f:if condition="{job.jobOpening.earliestEntryDate}">
+									<li class="card__tag">{job.jobOpening.earliestEntryDate}</li>
+								</f:if>
+							</ul>
 						</div>
 					</div>
-					<div class="card__footer">
-						<ul class="card__tags">
-							<li class="card__tag">Teilzeit (50%)</li>
-							<li class="card__tag">Heidelberg</li>
-							<li class="card__tag">ab 01.05.2022</li>
-						</ul>
-					</div>
-				</div>
-
+				</f:if>
 			</f:for>
 
 		</div>
