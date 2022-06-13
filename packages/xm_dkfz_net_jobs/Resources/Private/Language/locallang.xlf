@@ -13,6 +13,12 @@
 			<trans-unit id="latestJobs.description">
 				<source>Displays latest job postings from jobs.dkfz.de</source>
 			</trans-unit>
+			<trans-unit id="listJobs.title">
+				<source>Job listing</source>
+			</trans-unit>
+			<trans-unit id="listJobs.description">
+				<source>Displays all jobs from jobs.dkfz.de with filter</source>
+			</trans-unit>
 			<trans-unit id="latestJobs.headline">
 				<source>Open positions</source>
 			</trans-unit>
