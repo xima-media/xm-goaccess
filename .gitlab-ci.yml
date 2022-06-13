@@ -1,0 +1,27 @@
+stages:
+  - build
+  - test
+
+build-php:
+  stage: build
+  image: composer:latest
+  cache:
+    paths:
+      - .composer-cache/
+  before_script:
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
+  script:
+      - composer install --ignore-platform-reqs --no-dev --optimize-autoloader --no-ansi --no-interaction --no-progress
+  artifacts:
+    paths:
+      - vendor/
+
+test-php-cs-fixer:
+  stage: test
+  script:
+    - composer run ci:php:fixer
+
+test-php-stan:
+  stage: test
+  script:
+    - composer run ci:php:stan
