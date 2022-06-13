@@ -1,0 +1,14 @@
+{
+  "name": "xm-dkfz-net",
+  "version": "1.0.0",
+  "description": "Asset build for DKFZ Intranet",
+  "scripts": {
+    "postinstall": "cd packages/xm_dkfz_net_prototype && npm install",
+    "start": "cd packages/xm_dkfz_net_prototype && npm run start",
+    "build": "cd packages/xm_dkfz_net_prototype && npm run build",
+    "init": "cd packages/xm_dkfz_net_prototype && npx webpack --no-watch --no-stats",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maik Schneider",
+  "license": "proprietary"
+}

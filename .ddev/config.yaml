@@ -23,6 +23,8 @@ hooks:
     - exec: vendor/bin/typo3cms database:updateschema
     - exec: chmod +x /var/www/html/.ddev/import-database.sh
     - exec: /var/www/html/.ddev/import-database.sh
+    - exec: npm install
+    - exec: npm run init
 
 # Key features of ddev's config.yaml:
 
