@@ -18,12 +18,11 @@
 
 				<div class="language-switcher">
 					<ul class="language-switcher__items">
-						<li class="language-switcher__item">
-							<a class="language-switcher__link fx--active" href="#en" data-tooltip="Deutsch" aria-expanded="false">De</a>
-						</li>
-						<li class="language-switcher__item">
-							<a class="language-switcher__link " href="#en" data-tooltip="Englisch" aria-expanded="false">En</a>
-						</li>
+						<f:for each="{langNav}" as="langItem">
+							<li class="language-switcher__item">
+								<a class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}" href="{langItem.link}" data-tooltip="{langItem.title}" aria-expanded="false">{langItem.twoLetterIsoCode}</a>
+							</li>
+						</f:for>
 					</ul>
 				</div>
 

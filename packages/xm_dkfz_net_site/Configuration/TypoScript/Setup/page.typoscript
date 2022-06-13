@@ -9,11 +9,19 @@ page {
     templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Templates
 
     dataProcessing {
+      # Main navigation
       10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
       10 {
         as = mainNav
         expandAll = 1
         levels = 3
+      }
+
+      # Language navigation
+      20 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+      20 {
+        languages = auto
+        as = langNav
       }
     }
   }
