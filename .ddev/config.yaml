@@ -19,12 +19,12 @@ web_environment: []
 nodejs_version: "16"
 hooks:
   post-start:
-    - exec: composer install
+    - exec: if [ ! -d /var/www/html/vendor ]; then composer install; fi
     - exec: vendor/bin/typo3cms database:updateschema
     - exec: chmod +x /var/www/html/.ddev/import-database.sh
     - exec: /var/www/html/.ddev/import-database.sh
-    - exec: npm install
-    - exec: npm run init
+    - exec: if [ ! -d /var/www/html/packages/xm_dkfz_net_prototype/node_modules ]; then npm install; fi
+    - exec: if [ ! -d /var/www/html/packages/xm_dkfz_net_prototype/Resources/Public ]; then npm run init; fi
 
 # Key features of ddev's config.yaml:
 
@@ -64,7 +64,7 @@ hooks:
 
 # webserver_type: nginx-fpm  # or apache-fpm
 
-# timezone: Europe/Berlin
+timezone: Europe/Berlin
 # This is the timezone used in the containers and by PHP;
 # it can be set to any valid timezone,
 # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
