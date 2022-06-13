@@ -1,5 +1,6 @@
 // dependencies
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:felogin/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
@@ -15,6 +16,8 @@ page {
 
 // PIDs
 pidJobList = 25
+pidLogin = 2
+pidFeUserStorage = 91
 
 ##############################
 #### FLUID STYLED CONTENT ####
@@ -41,5 +44,18 @@ plugin.tx_xmdkfznetjobs {
     pidJobDetail =
     pidJobList = {$pidJobList}
     latestJobCount = 3
+  }
+}
+
+##################
+#### FE_LOGIN ####
+##################
+plugin {
+  tx_felogin_login {
+    view {
+      layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/felogin/Layouts/
+      partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/felogin/Partials/
+      templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/felogin/Templates/
+    }
   }
 }

@@ -1,0 +1,12 @@
+plugin {
+
+  tx_felogin_login {
+    settings {
+      pages = {$pidFeUserStorage}
+      showForgotPassword = 1
+      showPermaLogin = 0
+      redirectMode = referer
+    }
+  }
+
+}
