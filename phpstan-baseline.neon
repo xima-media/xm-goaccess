@@ -1,0 +1,31 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:getJobs\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:loadJobs\\(\\) has parameter \\$useCache with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
+			message: "#^Parameter \\#1 \\$filename of function file_get_contents expects string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of method JsonMapper\\:\\:mapArray\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:\\$jobs \\(array\\<Xima\\\\XmDkfzNetJobs\\\\Domain\\\\Model\\\\Dto\\\\Job\\>\\) does not accept mixed\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php

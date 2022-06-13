@@ -1,0 +1,17 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    parallel:
+        maximumNumberOfProcesses: 5
+
+    level: 9
+
+    bootstrapFiles:
+        - vendor/autoload.php
+
+    paths:
+        - packages/xm_dkfz_net_jobs
+        - packages/xm_dkfz_net_site
+
+    excludePaths:
