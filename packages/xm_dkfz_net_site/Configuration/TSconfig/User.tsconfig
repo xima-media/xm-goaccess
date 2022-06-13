@@ -1,0 +1,5 @@
+[backend.user.isAdmin]
+  options {
+    pageTree.showPageIdWithTitle = 1
+  }
+[GLOBAL]
