@@ -17,6 +17,12 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
 nodejs_version: "16"
+hooks:
+  post-start:
+    - exec: composer install
+    - exec: vendor/bin/typo3cms database:updateschema
+    - exec: chmod +x /var/www/html/.ddev/import-database.sh
+    - exec: /var/www/html/.ddev/import-database.sh
 
 # Key features of ddev's config.yaml:
 
