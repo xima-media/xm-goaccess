@@ -44,8 +44,7 @@ class JobLoaderUtility
     {
         // download and cache json
         if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
-
-            $extConf = $this->extensionConfiguration->get('xm_dkfz_net_jobs');
+            $extConf = (array)$this->extensionConfiguration->get('xm_dkfz_net_jobs');
 
             if (!isset($extConf['api_url']) || !$extConf['api_url']) {
                 return false;
@@ -67,7 +66,9 @@ class JobLoaderUtility
         // map JSON to DTO
         try {
             $this->jobs = $mapper->mapArray(
-                $jsonJobs, array(), Job::class
+                $jsonJobs,
+                [],
+                Job::class
             );
         } catch (\JsonMapper_Exception) {
             return false;
@@ -75,5 +76,4 @@ class JobLoaderUtility
 
         return true;
     }
-
 }

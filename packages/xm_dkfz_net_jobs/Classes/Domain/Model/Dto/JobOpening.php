@@ -4,7 +4,6 @@ namespace Xima\XmDkfzNetJobs\Domain\Model\Dto;
 
 class JobOpening
 {
-
     public int $id;
 
     public string $name;

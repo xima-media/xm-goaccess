@@ -9,7 +9,6 @@ use Xima\XmDkfzNetJobs\Utility\JobLoaderUtility;
 
 class JobController extends ActionController
 {
-
     protected JobLoaderUtility $jobLoaderUtility;
 
     public function __construct(JobLoaderUtility $jobLoaderUtility)

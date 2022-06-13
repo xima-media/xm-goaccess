@@ -9,7 +9,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['xmdkfznetj
     'XmDkfzNetJobs',
     'LatestJobs',
     [
-            Xima\XmDkfzNetJobs\Controller\JobController::class => 'latest'
+            Xima\XmDkfzNetJobs\Controller\JobController::class => 'latest',
     ],
     []
 );
@@ -18,7 +18,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['xmdkfznetj
     'XmDkfzNetJobs',
     'ListJobs',
     [
-        Xima\XmDkfzNetJobs\Controller\JobController::class => 'list'
+        Xima\XmDkfzNetJobs\Controller\JobController::class => 'list',
     ],
     []
 );

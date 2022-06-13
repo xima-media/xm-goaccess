@@ -4,7 +4,6 @@ namespace Xima\XmDkfzNetJobs\Domain\Model\Dto;
 
 class Job
 {
-
     public int $id = 0;
 
     public string $language = '';
