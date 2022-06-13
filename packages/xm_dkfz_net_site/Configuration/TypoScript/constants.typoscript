@@ -13,6 +13,9 @@ page {
   }
 }
 
+// PIDs
+pidJobList = 1
+
 ##############################
 #### FLUID STYLED CONTENT ####
 ##############################
@@ -32,5 +35,10 @@ plugin.tx_xmdkfznetjobs {
     layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Layouts/
     partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Partials/
     templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Templates/
+  }
+
+  settings {
+    pidJobDetail =
+    pidJobList = {$pidJobList}
   }
 }

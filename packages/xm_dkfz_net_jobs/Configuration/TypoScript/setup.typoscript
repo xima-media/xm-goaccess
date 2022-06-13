@@ -7,4 +7,9 @@ plugin.tx_xmdkfznetjobs {
     partialRootPaths.0 = EXT:xm_dkfz_net_jobs/Resources/Private/Partials
     partialRootPaths.10 = {$plugin.tx_xmdkfznetjobs.view.partialRootPath}
   }
+
+  settings {
+    pidJobList = {$plugin.tx_xmdkfznetjobs.settings.pidJobList}
+    pidJobDetail = {$plugin.tx_xmdkfznetjobs.settings.pidJobDetail}
+  }
 }
