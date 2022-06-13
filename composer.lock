@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab476e3161fe665330639da97bee2dda",
+    "content-hash": "9c834a1120ec1da458358b6c62163a9a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1028,6 +1028,87 @@
                 "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.4"
             },
             "time": "2022-02-21T09:13:59+00:00"
+        },
+        {
+            "name": "georgringer/news",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/news.git",
+                "reference": "5bad499405a1760c00affb2e4915015c72c08dd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/5bad499405a1760c00affb2e4915015c72c08dd2",
+                "reference": "5bad499405a1760c00affb2e4915015c72c08dd2",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^10.4 || ^11"
+            },
+            "conflict": {
+                "symfony/finder": "2.7.44 || 2.8.37 || 3.4.7 || 4.0.7"
+            },
+            "replace": {
+                "typo3-ter/news": "self.version"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "typo3/cms-install": "^10.4 || ^11"
+            },
+            "suggest": {
+                "georgringer/numbered-pagination": "Improved pagination API",
+                "reelworx/rx-shariff": "GDPR compliant social sharing"
+            },
+            "default-branch": true,
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "news",
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/public"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\News\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "homepage": "https://ringer.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Versatile news system based on Extbase & Fluid and using the latest technologies provided by TYPO3 CMS.",
+            "homepage": "https://extensions.typo3.org/extension/news",
+            "keywords": [
+                "article",
+                "extension",
+                "news",
+                "typo3"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/georgringer/news/main/en-us/",
+                "issues": "https://github.com/georgringer/news/issues",
+                "source": "https://github.com/georgringer/news"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/GeorgRinger/10",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/georgringer",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-06-13T10:31:59+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7993,11 +8074,11 @@
         },
         {
             "name": "xima/xm-dkfz-net-prototype",
-            "version": "dev-feature/prototype-package",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
-                "reference": "99f92d48d54324dcc5b162b532dd9bfcb64a0218"
+                "reference": "1346983240cb497858d3e8dc799fab4545b468b9"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -8704,16 +8785,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.7.12",
+            "version": "1.7.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "32f10779d9cd88a9cbd972ec611a4148a3cbbc7e"
+                "reference": "86ffc063bfd8f264c9eba568e84b0225a6090d09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/32f10779d9cd88a9cbd972ec611a4148a3cbbc7e",
-                "reference": "32f10779d9cd88a9cbd972ec611a4148a3cbbc7e",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/86ffc063bfd8f264c9eba568e84b0225a6090d09",
+                "reference": "86ffc063bfd8f264c9eba568e84b0225a6090d09",
                 "shasum": ""
             },
             "require": {
@@ -8739,7 +8820,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.7.12"
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.13"
             },
             "funding": [
                 {
@@ -8759,7 +8840,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-09T12:39:36+00:00"
+            "time": "2022-06-13T15:15:39+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -10916,6 +10997,7 @@
         "xima/xm-dkfz-net-prototype": 20,
         "xima/xm-dkfz-net-jobs": 20,
         "sourcebroker/deployer-extended-typo3": 20,
+        "georgringer/news": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

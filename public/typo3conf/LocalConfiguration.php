@@ -1,4 +1,5 @@
 <?php
+
 return [
     'BE' => [
         'debug' => false,
@@ -37,6 +38,26 @@ return [
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
+        ],
+        'news' => [
+            'advancedMediaPreview' => '1',
+            'archiveDate' => 'date',
+            'categoryBeGroupTceFormsRestriction' => '0',
+            'categoryRestriction' => '',
+            'contentElementPreview' => '1',
+            'contentElementRelation' => '1',
+            'dateTimeNotRequired' => '0',
+            'hidePageTreeForAdministrationModule' => '0',
+            'manualSorting' => '0',
+            'mediaPreview' => 'false',
+            'prependAtCopy' => '1',
+            'resourceFolderImporter' => '/news_import',
+            'rteForTeaser' => '0',
+            'showAdministrationModule' => '1',
+            'showImporter' => '0',
+            'slugBehaviour' => 'unique',
+            'storageUidImporter' => '1',
+            'tagPid' => '1',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',

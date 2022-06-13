@@ -56,7 +56,8 @@
 		"xima-media/xm-mail-catcher": "^11.0",
 		"blueways/bw-static-template": "^2.0",
 		"blueways/deployer-recipes": "v2.2.0",
-		"sourcebroker/deployer-extended-typo3": "dev-master as 17.0.0"
+		"sourcebroker/deployer-extended-typo3": "dev-master as 17.0.0",
+		"georgringer/news": "dev-main"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
