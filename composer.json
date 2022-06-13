@@ -12,6 +12,10 @@
 		{
 			"type": "path",
 			"url": "./packages/*"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/Starraider/deployer-extended-typo3"
 		}
 	],
 	"require": {
@@ -49,7 +53,9 @@
 		"xima/xm-dkfz-net-prototype": "*@dev",
 		"xima/xm-dkfz-net-jobs": "*@dev",
 		"xima-media/xm-mail-catcher": "^11.0",
-		"blueways/bw-static-template": "^2.0"
+		"blueways/bw-static-template": "^2.0",
+		"blueways/deployer-recipes": "v2.2.0",
+		"sourcebroker/deployer-extended-typo3": "dev-master as 17.0.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
