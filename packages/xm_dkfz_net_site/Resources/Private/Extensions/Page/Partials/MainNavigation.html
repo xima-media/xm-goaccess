@@ -1,0 +1,84 @@
+<f:variable name="color1">magenta</f:variable>
+<f:variable name="color2">orange</f:variable>
+<f:variable name="color3">green-light</f:variable>
+<f:variable name="color4">yellow</f:variable>
+<f:variable name="color5">primary</f:variable>
+
+<nav class="navigation navigation--main" aria-label="Hauptnavigation">
+	<ul id="navigation__items--main" class="navigation__items fx--first">
+
+		<f:for each="{mainNav}" as="level1Item" iteration="i">
+			<li class="navigation__item fx--first">
+
+				<a class="navigation__link fx--first {f:if(condition:level1Item.active, then:'fx--active')} {f:if(condition:i.isLast, then:'color--primary')}"
+					 href="{level1Item.link}"
+					 title="{level1Item.title}">
+					<f:if condition="{i.isLast}">
+						<svg class="icon icon--bookmark" role="img" width="20" height="20" aria-hidden="true">
+							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-bookmark')}"></use>
+						</svg>
+					</f:if>
+					{level1Item.title}
+				</a>
+
+				<f:if condition="{level1Item.hasSubpages}">
+
+					<button class="navigation__button navigation__button--toggle-items" type="button">
+						<svg class="icon icon--arrow-down" role="img" width="20" height="20" aria-hidden="true">
+							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-down')}"></use>
+						</svg>
+					</button>
+
+					<ul class="navigation__items fx--second corner--{color{i.cycle}} corner--right">
+
+						<f:if condition="{i.cycle} === 1">
+							<f:render section="Level2List" arguments="{level1Item:level1Item}"/>
+						</f:if>
+
+						<f:for each="{level1Item.children}" as="level2Item">
+							<f:if condition="{level2Item.hasSubpages}">
+								<li class="navigation__item fx--second">
+									<a class="navigation__link fx--second" href="{level2Item.link}" title="{level2Item.title}">
+										{level2Item.title}
+									</a>
+									<ul class="navigation__items fx--third">
+										<f:for each="{level2Item.children}" as="level3Item">
+											<li class="navigation__item fx--third">
+												<a class="navigation__link fx--third" href="{level3Item.link}" title="{level3Item.title}">
+													{level3Item.title}
+												</a>
+											</li>
+										</f:for>
+									</ul>
+								</li>
+							</f:if>
+						</f:for>
+
+						<f:if condition="{i.cycle} === 2">
+							<f:render section="Level2List" arguments="{level1Item:level1Item}"/>
+						</f:if>
+
+					</ul>
+				</f:if>
+			</li>
+		</f:for>
+
+	</ul>
+</nav>
+
+
+<f:section name="Level2List">
+	<li class="navigation__item fx--row">
+		<ul class="navigation__items fx--row">
+			<f:for each="{level1Item.children}" as="level2Item">
+				<f:if condition="!{level2Item.hasSubpages}">
+					<li class="navigation__item fx--second">
+						<a class="navigation__link fx--second" href="{level2Item.link}" title="{level2Item.title}">
+							{level2Item.title}
+						</a>
+					</li>
+				</f:if>
+			</f:for>
+		</ul>
+	</li>
+</f:section>
