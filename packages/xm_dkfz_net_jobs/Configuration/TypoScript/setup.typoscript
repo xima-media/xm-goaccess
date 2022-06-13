@@ -11,5 +11,6 @@ plugin.tx_xmdkfznetjobs {
   settings {
     pidJobList = {$plugin.tx_xmdkfznetjobs.settings.pidJobList}
     pidJobDetail = {$plugin.tx_xmdkfznetjobs.settings.pidJobDetail}
+    latestJobCount = {$plugin.tx_xmdkfznetjobs.settings.latestJobCount}
   }
 }

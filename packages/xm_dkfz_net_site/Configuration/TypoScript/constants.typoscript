@@ -40,5 +40,6 @@ plugin.tx_xmdkfznetjobs {
   settings {
     pidJobDetail =
     pidJobList = {$pidJobList}
+    latestJobCount = 3
   }
 }
