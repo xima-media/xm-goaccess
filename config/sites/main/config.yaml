@@ -1,4 +1,4 @@
-base: 'https://xm-dkfz-net.ddev.site/'
+base: '/'
 errorHandling: {  }
 languages:
   -
