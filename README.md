@@ -4,4 +4,9 @@
 
 1. Clone repository
 2. Run `ddev start`
-3. Backend Login: admin:changeme
+3. Done.
+
+# Example data
+
+* Backend user: admin:changeme
+* Frontend user: max@example.com:changeme
