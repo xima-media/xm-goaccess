@@ -29,6 +29,11 @@ class JobLoaderUtility
         return $this->loadJobs(false);
     }
 
+    /**
+     * @return \Xima\XmDkfzNetJobs\Domain\Model\Dto\Job[]
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
+     */
     public function getJobs(): array
     {
         $this->loadJobs();
@@ -40,7 +45,7 @@ class JobLoaderUtility
      * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
      * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
      */
-    protected function loadJobs($useCache = true): bool
+    protected function loadJobs(bool $useCache = true): bool
     {
         // download and cache json
         if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
@@ -50,7 +55,7 @@ class JobLoaderUtility
                 return false;
             }
 
-            $jsonJobs = file_get_contents($extConf['api_url']);
+            $jsonJobs = file_get_contents((string)$extConf['api_url']);
 
             if (!$jsonJobs) {
                 return false;
