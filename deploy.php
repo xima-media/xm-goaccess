@@ -19,6 +19,8 @@ host('staging')
     ->set('branch', 'master')
     ->set('public_urls', ['https://dkfz-typo3-dev.xima.local'])
     ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod')
+    ->set('writable_chmod_mode', '775')
     ->set('bin/composer', '/usr/local/bin/composer')
     ->set('bin/php', '/usr/bin/php')
     ->set('deploy_path', '/var/www/html/dkfz-typo3-dev/typo3-staging');
@@ -26,5 +28,5 @@ host('staging')
 after('deploy:update_code', 'deploy:upload-dist');
 
 task('deploy:upload-dist', function () {
-    upload('packages/xm_dkfz_net_prototype/Resources/Public', '{{release_path}}/xm_dkfz_net_prototype/Resources/Public');
+    upload('packages/xm_dkfz_net_prototype/Resources/Public', '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public');
 });
