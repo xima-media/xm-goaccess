@@ -6,5 +6,7 @@ public/typo3
 public/typo3temp
 public/index.php
 
+Tests/Acceptance/Support/_generated
+
 var
 vendor
