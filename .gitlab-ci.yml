@@ -23,6 +23,7 @@ build-node:
   cache:
     paths:
       - .npm/
+  before_script: []
   script:
     - npm ci --cache .npm --prefer-offline
     - npm run build
