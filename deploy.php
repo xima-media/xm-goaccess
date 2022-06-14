@@ -4,13 +4,16 @@ namespace Deployer;
 
 require_once(__DIR__ . '/vendor/blueways/deployer-recipes/autoload.php');
 
+set('repository', 'git@t3-gitlab-dev.xima.local:dkfz/xm-dkfz-net.git');
+
+
 host('local')
     ->hostname('local')
     ->set('deploy_path', getcwd())
     ->set('public_urls', ['https://xm-dkfz-net.ddev.site']);
 
 host('staging')
-    ->hostname('dkfz-typo3-dev.xima.local')
+    ->hostname('192.168.2.41')
     ->stage('staging')
     ->user('xima')
     ->set('branch', 'master')

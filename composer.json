@@ -88,17 +88,17 @@
 	},
 	"scripts": {
 		"typo3-cms-scripts": [
-			"vendor/bin/typo3cms install:fixfolderstructure"
+			"php vendor/bin/typo3cms install:fixfolderstructure"
 		],
 		"post-autoload-dump": [
 			"@typo3-cms-scripts"
 		],
 		"tests": [
-			"vendor/bin/codecept run acceptance -d -c Tests/codeception.yml"
+			"php vendor/bin/codecept run acceptance -d -c Tests/codeception.yml"
 		],
-		"php:fixer": "vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
-		"php:stan": "vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
-		"ci:php:fixer": "vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots",
-		"ci:php:stan": "vendor/bin/phpstan --no-progress"
+		"php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
+		"php:stan": "php vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
+		"ci:php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots",
+		"ci:php:stan": "php vendor/bin/phpstan --no-progress"
 	}
 }
