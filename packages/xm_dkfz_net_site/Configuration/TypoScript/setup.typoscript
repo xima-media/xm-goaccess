@@ -1,6 +1,6 @@
 // dependencies
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
-@import 'EXT:bw_static_tempalte/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:bw_static_template/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:xm_dkfz_net_jobs/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:felogin/Configuration/TypoScript/setup.typoscript'
 
