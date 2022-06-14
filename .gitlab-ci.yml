@@ -40,3 +40,12 @@ test-php-stan:
   stage: test
   script:
     - composer run ci:php:stan
+
+test-acceptance:
+  stage: test
+  script:
+    - sudo apt-get -qq update && sudo apt-get -qq -y install libnss3-tools
+    - curl -LO https://raw.githubusercontent.com/drud/ddev/master/scripts/install_ddev.sh && bash install_ddev.sh\n
+    - ddev config global --instrumentation-opt-in=false --omit-containers=dba,ddev-ssh-agent
+    - ddev start
+    - ddev exec vendor/bin/codecept run acceptance -d -c Tests/codeception.yml
