@@ -12,7 +12,7 @@ stages:
 build-php:
   stage: build
   script:
-      - composer install --ignore-platform-reqs --no-dev --optimize-autoloader --no-ansi --no-interaction --no-progress
+      - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
   artifacts:
     paths:
       - vendor/
