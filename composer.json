@@ -94,7 +94,7 @@
 			"@typo3-cms-scripts"
 		],
 		"tests": [
-			"vendor/bin/phpunit -c Build/FunctionalTests.xml"
+			"vendor/bin/codecept run acceptance -d -c Tests/codeception.yml"
 		],
 		"php:fixer": "vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
 		"php:stan": "vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
