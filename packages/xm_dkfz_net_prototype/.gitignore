@@ -28,7 +28,7 @@ node_modules/
 #
 # Prototype
 #
-Resources/Public
+Resources/Public/*
 source/images
 
 #
