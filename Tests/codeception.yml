@@ -7,7 +7,7 @@ suites:
       enabled:
         - Asserts
         - WebDriver:
-            url: http://xm-dkfz-net.ddev.local
+            url: http://xm-dkfz-net.ddev.site
             browser: chrome
             host: ddev-xm-dkfz-net-chrome
             wait: 1
@@ -15,7 +15,6 @@ suites:
 extensions:
   enabled:
     - Codeception\Extension\RunFailed
-    - Codeception\Extension\Recorder
 
 paths:
   tests: Acceptance
