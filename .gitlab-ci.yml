@@ -48,8 +48,7 @@ deploy-staging:
   stage: deploy
   needs: [ "build-php" ]
   before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git rsync -y )'
-    - eval $(ssh-agent -s)
+    - apt-get update -y && apt-get install rsync -y
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
@@ -57,5 +56,4 @@ deploy-staging:
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
   script:
-    - which rsync
-    - vendor/bin/dep deploy-fast staging -vvv
+    - vendor/bin/dep deploy-fast staging
