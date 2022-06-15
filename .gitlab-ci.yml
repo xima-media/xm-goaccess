@@ -4,6 +4,13 @@ cache:
     - .composer-cache/
 before_script:
   - composer config -g cache-dir "$(pwd)/.composer-cache"
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
 
 stages:
   - build
@@ -34,15 +41,18 @@ build-node:
 
 test-php-cs-fixer:
   stage: test
+  needs: ["build-php"]
   script:
     - composer run ci:php:fixer
 
 test-php-stan:
   stage: test
+  needs: ["build-php"]
   script:
     - composer run ci:php:stan
 
 deploy-staging:
   stage: deploy
+  needs: ["test-php-cs-fixer", "test-php-stan"]
   script:
     - vendor/bin/dep deploy-fast staging
