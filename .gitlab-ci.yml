@@ -8,6 +8,7 @@ before_script:
 stages:
   - build
   - test
+  - deploy
 
 build-php:
   stage: build
@@ -41,3 +42,7 @@ test-php-stan:
   script:
     - composer run ci:php:stan
 
+deploy-staging:
+  stage: deploy
+  script:
+    - vendor/bin/dep deploy-fast staging
