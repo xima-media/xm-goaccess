@@ -4,14 +4,6 @@ cache:
     - .composer-cache/
 before_script:
   - composer config -g cache-dir "$(pwd)/.composer-cache"
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git rsync -y )'
-  - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - ssh-keyscan dkfz-typo3-dev.xima.local >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-  - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
 
 stages:
   - build
@@ -21,7 +13,7 @@ stages:
 build-php:
   stage: build
   script:
-      - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
+    - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
   artifacts:
     paths:
       - vendor/
@@ -32,7 +24,7 @@ build-node:
   cache:
     paths:
       - .npm/
-  before_script: []
+  before_script: [ ]
   script:
     - npm ci --cache .npm --prefer-offline
     - npm run build
@@ -42,18 +34,28 @@ build-node:
 
 test-php-cs-fixer:
   stage: test
-  needs: ["build-php"]
+  needs: [ "build-php" ]
   script:
     - composer run ci:php:fixer
 
 test-php-stan:
   stage: test
-  needs: ["build-php"]
+  needs: [ "build-php" ]
   script:
     - composer run ci:php:stan
 
 deploy-staging:
   stage: deploy
-  needs: ["build-php", "build-node", "test-php-cs-fixer", "test-php-stan"]
+  needs: [ "build-php", "build-node", "test-php-cs-fixer", "test-php-stan" ]
+  image: ubuntu:latest
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git rsync -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan dkfz-typo3-dev.xima.local >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
   script:
     - vendor/bin/dep deploy-fast staging
