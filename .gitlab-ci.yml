@@ -47,7 +47,6 @@ test-php-stan:
 deploy-staging:
   stage: deploy
   needs: [ "build-php", "build-node", "test-php-cs-fixer", "test-php-stan" ]
-  image: ubuntu:latest
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git rsync -y )'
     - eval $(ssh-agent -s)
