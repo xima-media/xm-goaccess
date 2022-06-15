@@ -1,0 +1,34 @@
+//
+//    @tableOfContent
+//      1. Hero form
+//
+
+
+//
+//   @section 1. Hero form
+//
+
+.hero-form {
+    padding: 1.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    @include media-breakpoint-up(md) {
+        padding: 3rem 5rem;
+    }
+
+    &__title {
+        @include h4;
+
+        margin-bottom: 0;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+}
+
+// end of hero-form.scss file

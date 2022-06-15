@@ -6,9 +6,10 @@
     <label class="field__label {{ label.hidden ? 'visually-hidden' : '' }}" for="field__input--{{ uid }}">{{ label.text }}</label>
     <input
         type="{{ type|default('text') }}"
-        class="field__input"
+        class="field__input {{ autocompleteUrl ? 'autocomplete' : '' }}"
         id="field__input--{{ uid }}"
         placeholder="{{ placeholder }}"
+        {% if autocompleteUrl %}data-autocomplete-url="../../dist/autocomplete/{{ autocompleteUrl }}"{% endif %}
     />
 </div>
 

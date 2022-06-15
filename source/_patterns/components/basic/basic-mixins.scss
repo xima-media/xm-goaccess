@@ -177,7 +177,7 @@
     }
 
     @if $letter-spacing {
-        font-weight: $letter-spacing;
+        letter-spacing: $letter-spacing;
     }
 }
 
@@ -192,7 +192,7 @@
     }
 
     @if $letter-spacing {
-        font-weight: $letter-spacing;
+        letter-spacing: $letter-spacing;
     }
 }
 
@@ -208,7 +208,23 @@
     }
 
     @if $letter-spacing {
-        font-weight: $letter-spacing;
+        letter-spacing: $letter-spacing;
+    }
+}
+
+// @section 8.4 Copy xs small
+@mixin text-copy-xs-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 14px;
+    line-height: 24px;
+    //letter-spacing: .5px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        letter-spacing: $letter-spacing;
     }
 }
 
@@ -248,6 +264,14 @@
 
         margin-left: .25rem;
     }
+}
+
+@mixin link-primary--angle {
+    @include link-primary();
+    .icon {
+        transform: rotate(-45deg);
+    }
+
 }
 
 // @section 8.7 Font base

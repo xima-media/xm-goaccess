@@ -42,6 +42,10 @@
  *       2.35 Quick search
  *       2.36 Dropdown
  *       2.37 Anchor navigation
+ *       2.38 Text
+ *       2.39 Hero form
+ *       2.40 Autocomplete
+ *       2.41 Video player
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -158,6 +162,7 @@ import './_patterns/components/employee-welcome-message/employee-welcome-message
 
 /** @section 2.34 Field */
 import './_patterns/components/field/field--text'
+import './_patterns/components/field/field--select'
 
 /** @section 2.35 Quick search */
 import './_patterns/components/quick-search/quick-search'
@@ -167,6 +172,18 @@ import './_patterns/components/dropdown/dropdown'
 
 /** @section 2.37 Anchor navigation */
 import './_patterns/components/navigation/navigation--anchor'
+
+/** @section 2.38 Text */
+import './_patterns/components/text/text'
+
+/** @section 2.39 Hero form */
+import './_patterns/components/hero-form/hero-form'
+
+/** @section 2.40 Autocomplete */
+import './_patterns/components/autocomplete/autocomplete'
+
+/** @section 2.41 Video player */
+import './_patterns/components/video-player/video-player'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

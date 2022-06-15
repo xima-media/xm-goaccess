@@ -8,6 +8,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -20,6 +21,9 @@ module.exports = {
         filename: './JavaScript/[name].js',
         auxiliaryComment: 'Copyright - XIMA media GmbH',
         path: path.resolve(__dirname, 'Resources/Public'),
+    },
+    experiments: {
+        backCompat: false,
     },
     module: {
         rules: [
@@ -53,10 +57,12 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
+                            importLoaders: 1,
                             sourceMap: true,
                             url: false,
                         },
                     },
+                    'postcss-loader',
                     {
                         loader: 'sass-loader',
                         options: {
@@ -103,6 +109,9 @@ module.exports = {
                 {
                     from: './source/_patterns/components/debug/assets', to: './Images/debug'
                 },
+                {
+                    from: './patternlab/source/_patterns/components/autocomplete/assets', to: 'autocomplete'
+                },
             ],
         }),
         new MiniCssExtractPlugin({
@@ -110,21 +119,31 @@ module.exports = {
         }),
         new SVGSpritemapPlugin('./source/_patterns/components/icon/assets/**/*.svg', {
             output: {
-                filename: './Icon/icon.min.svg'
+                filename: './Icon/icon.min.svg',
+                svg4everybody: true,
+                svgo: true
             },
             sprite: {
                 prefix: 'icon-',
                 generate: {
-                    use: true, // generates use tags within the svg to use in css via base 64 data url
-                    view: '-view', // generate view tags within the svg to use in css via fragment identifier url and add -view suffix for fragment id
-                    symbol: true, // generate symbol tags within the svg to use in html via use tag
+                    title: false
                 }
             },
-            styles: {
-                format: 'fragment', // determines which url should be written to the scss sprite map
-                //filename: 'spritesTest.scss',
-            },
         }),
+        new ReplaceInFileWebpackPlugin([{
+            dir: 'patternlab/public/dist/icon',
+            files: ['icon.min.svg'],
+            rules: [
+                {
+                    search: '<svg xmlns="http://www.w3.org/2000/svg">',
+                    replace: '<svg xmlns="http://www.w3.org/2000/svg"><style>:root>svg{display:none}:root>svg:target{display:block}</style>'
+                },
+                {
+                    search: /symbol/ig,
+                    replace: 'svg'
+                }
+            ]
+        }])
     ],
     performance: {
         assetFilter: function (assetFilename) {
@@ -137,21 +156,21 @@ module.exports = {
     },
     optimization: {
         // runtimeChunk: true,
-        // splitChunks: {
-        //     cacheGroups: {
-        //         styles: {
-        //             name: 'styles',
-        //             type: 'css/mini-extract',
-        //             // For webpack@4
-        //             test: /\.css$/,
-        //             chunks: 'all',
-        //             enforce: true,
-        //         },
-        //     },
-        // },
-        // minimize: false,
-        // minimizer: [
-        //     new CssMinimizerPlugin(),
-        // ],
+    //     // splitChunks: {
+    //     //     cacheGroups: {
+    //     //         styles: {
+    //     //             name: 'styles',
+    //     //             type: 'css/mini-extract',
+    //     //             // For webpack@4
+    //     //             test: /\.css$/,
+    //     //             chunks: 'all',
+    //     //             enforce: true,
+    //     //         },
+    //     //     },
+    //     // },
+        minimize: false,
+    //     // minimizer: [
+    //     //     new CssMinimizerPlugin(),
+    //     // ],
     },
 };

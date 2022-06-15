@@ -1,0 +1,11 @@
+{% extends "@layouts/default.twig" %}
+{% block content %}
+    {# breadcrumb #}
+    {% include '@components/breadcrumb/breadcrumb.twig' %}
+
+    {# hero #}
+    {% embed '@components/hero/hero.twig' with { title: 'Mitarbeiterverzeichnis'} %}{% endembed %}
+
+    {# hero form #}
+    {% include '@components/hero-form/hero-form.twig' %}
+{% endblock content %}

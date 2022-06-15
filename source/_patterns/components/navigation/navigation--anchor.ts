@@ -28,44 +28,87 @@ class NavigationAnchor {
     constructor() {
         app.log('component "anchor navigation" loaded')
 
-        const navigationLink = document.querySelectorAll('.navigation--anchor__item');
+        if (document.querySelectorAll('.navigation__button').length) {
+            this.container = document.querySelector('.navigation__button')
+        }
+        this.buttonEl = this.container.querySelectorAll('.navigation__button')
+        this.buttonScrollPrevEl = this.container.querySelector('.navigation__button.left')
+        this.buttonScrollNextEl = this.container.querySelector('.navigation__button.right')
+        this.containerItemsEl = this.container.querySelector('.navigation__items')
+        this.containerItemEl = this.container.querySelectorAll('.navigation__item')
+        this.scrollWidth = 200
 
-        navigationLink.forEach(link => {
-            link.addEventListener('click', () => {
-            link.classList.toggle("current")
-            })
+        // methods
+        this.events()
+    }
+
+    /**
+     * Events
+     */
+    events () {
+        // variables
+        const self = this
+
+        // buttons
+        self.buttonEl.forEach((button) => button.addEventListener('click', () => self.scrollToTimelineItem(button)))
+
+        // horizontal scrolling
+        self.containerItemEl.forEach((item) => self.activateTimelineItemByScrolling(item))
+    }
+
+    /**
+     * Scrolling
+     */
+    scrollToTimelineItem (buttonEl) {
+        // variables
+        const self = this
+        const scrollPositionX = self.containerItemsEl.scrollLeft
+
+        // scroll direction
+        if (buttonEl.classList.contains('right')) {
+            self.timelineItemWidth = scrollPositionX + self.scrollWidth
+        } else if (buttonEl.classList.contains('left')) {
+            self.timelineItemWidth = scrollPositionX - self.scrollWidth
+        }
+
+        // smooth scrolling
+        self.containerItemsEl.scrollTo({
+            left: self.timelineItemWidth,
+            behavior: 'smooth'
         })
+    }
 
+    /**
+     * Button show/hide
+     */
+    activateTimelineItemByScrolling (item) {
+        // variables
+        const self = this
 
-        // if size laptop
-        const container = document.querySelector('.navigation--anchor');
-        const rightButton = container.querySelector('.right');
-        const leftButton = container.querySelector('.left');
-
-        rightButton.addEventListener("click", () => {
-            if (container.scrollWidth !== container.scrollLeft) {
-                container.scrollLeft += 150;
-                leftButton.style.display = 'flex';
-
-                leftButton.addEventListener("click", function () {
-                    container.scrollLeft -= 150;
-
-                    if(container.scrollLeft == 0) {
-                       leftButton.style.display = 'none';
+        // observe
+        new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // prev button
+                    if (entry.target.previousElementSibling) {
+                        self.buttonScrollPrevEl.removeAttribute('disabled')
                     } else {
-                        leftButton.style.display = 'flex';
+                        self.buttonScrollPrevEl.setAttribute('disabled', 'disabled')
                     }
-                });
 
-            } else {
-                // @todo button entfernen
-                rightButton.style.display = 'none';
-            }
-        });
-
-        if(container.scrollLeft == 0) {
-           leftButton.style.display = 'none';
-         }
+                    // next button
+                    if (entry.target.nextElementSibling) {
+                        self.buttonScrollNextEl.removeAttribute('disabled')
+                    } else {
+                        self.buttonScrollNextEl.setAttribute('disabled', 'disabled')
+                    }
+                }
+            })
+        }, {
+            root: document,
+            rootMargin: '0px 0px 0px 0px',
+            threshold: 1
+        }).observe(item)
     }
 }
 

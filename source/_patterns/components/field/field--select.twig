@@ -1,0 +1,14 @@
+<!-- Component Start: field--select -->
+
+{% set uid = id|default(random()) %}
+
+<div class="field field--select">
+    <label class="field__label {{ label.hidden ? 'visually-hidden' : '' }}" for="field__input--{{ uid }}">{{ label.text }}</label>
+    <select name="{{ name|default('field__input--name-' ~ random()) }}" id="field__input--{{ uid }}" class="field__input">
+        {% for option in options %}
+            <option value="{{ option.value }}">{{ option.text }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<!-- Components End: field--select -->

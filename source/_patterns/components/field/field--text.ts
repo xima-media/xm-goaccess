@@ -25,8 +25,57 @@ import app from '../basic/basic'
  */
 
 class FieldText {
+    fieldEl
+
     constructor () {
         app.log('component "field text" loaded')
+
+        this.fieldEl = document.querySelectorAll<HTMLElement>('.field--text')
+
+        // methods
+        this.events()
+    }
+
+    /**
+     * Events
+     */
+    events () {
+        // variables
+        const self = this
+
+        // event listener
+        self.fieldEl.forEach(fieldEl => {
+            const fieldInputEl = fieldEl.querySelector<HTMLInputElement>('.field__input')
+            fieldInputEl.addEventListener('focus', () => self.focus(fieldEl, fieldInputEl))
+            fieldInputEl.addEventListener('blur', () => self.blur(fieldEl, fieldInputEl))
+        })
+    }
+
+    /**
+     * Focus input
+     */
+    focus (fieldEl:HTMLElement, fieldInputEl: HTMLInputElement) {
+        app.log('Focus', '⌨️')
+
+        // add 'focus' css class
+        fieldEl.classList.add('fx--focus')
+    }
+
+    /**
+     * Blur input
+     */
+    blur (fieldEl:HTMLElement, fieldInputEl: HTMLInputElement) {
+        app.log('Blur', '🎖️')
+
+        // toggle 'filled' css class
+        if (fieldInputEl.value) {
+            fieldEl.classList.add('fx--filled')
+        } else {
+            fieldEl.classList.remove('fx--filled')
+        }
+
+        // remove 'focus' css class
+        fieldEl.classList.remove('fx--focus')
     }
 }
 

@@ -24,6 +24,10 @@
                 "text": "News: Detailseite"
             },
             {
+                "url": "link.pages-employee-directory",
+                "text": "Mitarbeiterverzeichnis"
+            },
+            {
                 "url": "link.pages-employee-profile",
                 "text": "Mitarbeiterprofil"
             },
@@ -453,6 +457,28 @@
                     "text": "LinkedIn",
                     "icon": "linkedin"
                 }
+            ],
+            "anchor": [
+                {
+                    "url": "Kontakt & Ansprechpartner",
+                    "text": "Kontakt & Ansprechpartner"
+                },
+                {
+                    "url": "Aufzählungen & Nummerierungen",
+                    "text": "Aufzählungen & Nummerierungen"
+                },
+                {
+                    "url": "Tabellen",
+                    "text": "Tabellen"
+                },
+                {
+                    "url": "Tabelement",
+                    "text": "Tabelement"
+                },
+                {
+                    "url": "Weiterführende Informationen",
+                    "text": "Weiterführende Informationen"
+                }
             ]
         },
         "component": {
@@ -563,6 +589,7 @@
         ],
         "accordionTabs": [
             {
+                "background": "white",
                 "title": "Die Standard-Bewirtung für Meetings erfolgt über das DKFZ Casino. Nutzen Sie für die Bestellung bitte folgendes Formular:",
                 "item": [
                     {
@@ -606,6 +633,42 @@
                 ]
             }
         ],
+        "contactPerson": [
+            {
+                "title": "Kontakt & Ansprechpartner\n",
+                "subTitle": "Ansprechpartner\n",
+                "image": {
+                    "src": "../../dist/image/examples/user.jpg",
+                    "color": "orange",
+                    "size": "xs"
+                },
+                "name": "Fuchs, Andreas\n",
+                "occupation": "Gruppenleitung EK Investitionsgüter / Dienstleistungen",
+                "department": "M230 – Beschaffung und Materialwirtschaft",
+                "items": [
+                    {
+                        "type": "location-pin",
+                        "url": "#",
+                        "text": "H1.01.023"
+                    },
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651\n"
+                    },
+                    {
+                        "type": "printer",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651\n"
+                    },
+                    {
+                        "type": "mail",
+                        "url": "daniel.hengsbach@dkfz-heidelberg.de",
+                        "text": "daniel.hengsbach@dkfz-heidelberg.de"
+                    }
+                ]
+            }
+        ],
         "moreInformation": {
             "title": "Weiterführende Informationen im DKFZ Wiki",
             "titleWithPattern": false,
@@ -628,6 +691,82 @@
                 "background": "gray-100",
                 "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
                 "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden."
+            }
+        ],
+        "text": [
+            {
+                "title": "Aufzählungen & Nummerierungen",
+                "subTitle": "Aufzählungen",
+                "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. \n",
+                "items": [
+                    {
+                        "textBold": "Hervorhebung",
+                        "text": "- Lorem ipsum dolor sit amet, consectetuer adipiscing elit.Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes"
+                    },
+                    {
+                        "textBold": "Fette Schrift",
+                        "text": "- Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
+                    },
+                    {
+                        "textBold": "Mit Abstand",
+                        "text": "- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes"
+                    }
+                ],
+                "gap": true,
+                "itemsOneRow": [
+                    {
+                        "text": "einfache Aufzählung"
+                    },
+                    {
+                        "text": "ohne Hervorhebung"
+                    },
+                    {
+                        "text": "meist einzeilig"
+                    },
+                    {
+                        "text": "übersichtlich"
+                    }
+                ],
+                "accordionTabs": [
+                    {
+                        "background": "gray-100",
+                        "item": [
+                            {
+                                "fileName": "Formular zur Buchung von Veranstaltungsräumen und Equipment",
+                                "fileType": "pdf",
+                                "fileSize": "106KB"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "linkList": [
+            {
+                "title": "Linkliste",
+                "items": [
+                    {
+                        "icon": "arrow-right",
+                        "link": "#",
+                        "text": "Lorem ipsum dolor"
+                    },
+                    {
+                        "icon": "arrow-right",
+                        "link": "#",
+                        "text": "Aenean commodo ligular"
+                    },
+                    {
+                        "icon": "arrow-right",
+                        "link": "#",
+                        "text": "Cum sociis natoque"
+                    },
+                    {
+                        "icon": "arrow-right",
+                        "link": "#",
+                        "angle": true,
+                        "text": "Donec quam felis"
+                    }
+                ]
             }
         ]
     }

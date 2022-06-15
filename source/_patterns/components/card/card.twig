@@ -15,12 +15,17 @@
             Mehr erfahren
         </a>
     {% endif %}
-    {% if image.src or image.color or image.patternColor %}
+    {% if image.src or image.alt or image.color or image.patternColor or image.copyright or image.caption or image.orientation or image.size %}
         <div class="card__image">
             {% include '@components/image/image.twig' with {
                 src: image.src,
+                alt: image.alt,
                 color: image.color,
-                patternColor: image.patternColor
+                patternColor: image.patternColor,
+                copyright: image.copyright,
+                caption: image.caption,
+                orientation: image.orientation,
+                size: image.size
             } %}
         </div>
     {% endif %}

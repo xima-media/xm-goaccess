@@ -245,6 +245,7 @@ body {
 // @todo in eigene Komponente auslagern
 a {
     color: inherit; // mit bootstrap lösen
+    text-decoration: none;
 }
 
 .link {
@@ -269,6 +270,23 @@ a {
             //filter: invert(1);
         }
     }
+
+    &--primary {
+        @include link-primary;
+        display: block;
+
+        .icon {
+            @include size(.75rem, .75rem);
+        }
+
+        &-angle {
+            @include link-primary--angle;
+        }
+    }
+}
+
+.link--primary + .link--primary {
+    margin-top: 1rem;
 }
 
 // @todo aufräumen > für footer
@@ -320,6 +338,20 @@ ul > li {
 
     @include media-breakpoint-down(md) {
         width: 100%;
+    }
+}
+
+.spacing {
+    &--bottom {
+        margin-bottom: 1.5rem;
+    }
+
+    &--block {
+        margin-bottom: 1rem;
+
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 5rem;
+        }
     }
 }
 

@@ -8,6 +8,7 @@
         {{ caption ? 'picture--with-caption' : '' }}
         {{ patternColor ? 'picture--with-pattern' : '' }}
         {{ color ? 'picture--with-color' : '' }}
+        picture--orientation-{{ size|default('md') }}-{{ orientation }}
     "
 >
     <div class="picture__item {{ src ? 'image-color--' : 'background--' }}{{ color ? color : 'transparent' }}">
@@ -15,11 +16,11 @@
             <img
                 class="picture__image image--responsive"
                 src="{{ src }}"
-                {% if alt %}{% else %}alt="{{ alt }}"{% endif %}
+                {% if alt %}alt="{{ alt }}"{% endif %}
             >
-{#            {% if patternColor %}#}
-{#                <span class="picture__pattern pattern--{{ patternColor }}"></span>#}
-{#            {% endif %}#}
+            {% if patternColor %}
+                <span class="picture__pattern pattern--{{ patternColor }}"></span>
+            {% endif %}
             {% if copyright %}
                 {% include '@components/copyright/copyright.twig' with {
                     text: copyright

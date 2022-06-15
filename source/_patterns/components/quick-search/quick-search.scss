@@ -59,10 +59,13 @@
 
     .field {
         margin: -.25rem 1rem -.25rem -.25rem;
+        padding: 0;
+        border: 0;
 
         &__input {
             height: 100%;
             padding: 0 0 0 .75rem;
+            color: var(--color-black);
             background-color: transparent;
             border-color: transparent;
             border-radius: 3rem;

@@ -1,105 +1,60 @@
 <!-- Component Start: accordion -->
 
 {% set accordionId = random() %}
-{% set accordionItemId = random() %}
 
-<div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
-            </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-            </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-            </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="accordion" id="accordion{{ accordionId }}">
+<div class="accordion">
     {% for accordion in prototype.accordion %}
     <ol class="accordion__items">
         <li>
-            <h2 class="accordion__items--title h5" id="accordionItem{{ accordionItemId }}">{{ accordion.title }}</h2>
-            <a class="sr-only" href="#" id="accordionItem{{ accordionItemId }}">{{ accordion.title }}</a>
-
-            <ol class="accordion__item">
+            <h2 class="accordion__items--title h5">{{ accordion.title }}</h2>
+            <ol id="accordion{{ accordionId }}" class="accordion__item">
                 {% for accordionItem in accordion.item %}
+                    {% set accordionItemId = random() %}
                 <li>
+                    <h3 id="accordionItem{{ accordionItemId }}" class="accordion__items--subtitle">
                     <button class="accordion-button"
                             type="button"
                             aria-expanded="false"
                             data-bs-toggle="collapse"
-                            data-bs-target="#accordionSection{{ accordionId }}"
-                            aria-controls="accordionSection{{ accordionId }}"
-                            aria-label="Öffnen Sie die Akkordion-Einträge">
+                            data-bs-target="#accordionSection{{ accordionItemId }}"
+                            aria-controls="accordionSection{{ accordionItemId }}">
 
                             <span class="accordion-button--description h6">
                                 {{ accordionItem.title }}
                             </span>
                     </button>
+                    </h3>
 
                     <div class="accordion-collapse collapse"
-                         id="accordionSection{{ accordionId }}"
+                         id="accordionSection{{ accordionItemId }}"
                          data-bs-parent="#accordion{{ accordionId }}"
                          aria-labelledby="accordionItem{{ accordionItemId }}">
                         <div class="accordion-body accordion__panel">
-                            <p>
+                            <p class="text-copy-standard spacing--bottom">
                                 {{ accordionItem.text }}
                             </p>
 
-                            {% include '@components/contact/contact.twig' with {title: "Kontakt"} %}
+                            <div class="spacing--bottom">
+                                <h4 class="h5 text-copy-standard--bold">Kontakt</h4>
+                                <p class="text-copy-standard--bold">ITCF (Informationstechnologie Core Facility)</p>
+                                <p class="text-copy-standard">
+                                    <a href="tel:+49 6221-42-4241" class="icon icon--phone">+49 6221-42-4241</a>
+                                </p>
+                                <p class="text-copy-standard">
+                                    <a href="mailto:itservice@dkfz.de" class="icon icon--mail">itservice@dkfz.de</a>
+                                </p>
+                            </div>
 
-
-                            <!-- DKFZ Wiki -->
-                            {% embed '@components/content-wrapper/content-wrapper.twig' with {
-                                title: prototype.moreInformation.title,
-                                headerSize: prototype.moreInformation.headerSize,
-                                pattern: {
-                                    visible: prototype.moreInformation.titleWithPattern
-                                }
-                            } %}
-                            {% block content %}
-                            <!-- cards -->
-                            {% for item in prototype.moreInformation.items %}
-                                {% include '@components/card/card.twig' with {
-                                    title: item.title,
-                                    type: item.type,
-                                    link: {
-                                        href: item.link.url
-                                    },
-                                    text: item.text
-                                } only %}
-                            {% endfor %}
-                            {% endblock content %}
-                            {% endembed %}
-
+                            <div class="spacing--bottom">
+                                <h5 class="text--bold">Weiterführende Informationen im DKFZ Wiki</h5>
+                                <p class="text-copy-standard">
+                                    <a href="#" class="icon icon--arrow-right--tilted link--primary">Informationen zur Durchführung von Videokonferenzen</a>
+                                </p>
+                                <p class="text-copy-standard">
+                                    Falls Sie darüber hinaus eine Lösung für eine umfassende digitale Konferenz-Plattform (inkl. Breakout-Session Räume, Interaktive Poster Presentationen, etc.) benötigen, so senden Sie bitte eine Mail an
+                                    <a href="mailto:events-vorstand@dkfz.de">events-vorstand@dkfz.de</a>. Derzeit testen wir an Pilotprojekten Expertenlösungen von verschiedenen Anbietern.
+                                </p>
+                            </div>
 
                             {% for info in prototype.infoBox %}
                                 {% include '@components/infobox/infobox.twig' with {
@@ -117,14 +72,6 @@
                                     tabItem: tab.item
                                 } only %}
                             {% endfor %}
-
-                            <p>
-                                Für ein Catering über das DKFZ Casino für mehrtägige Konferenzen, Abend- und Veranstaltungen senden Sie bitte eine Nachricht mit Eckdaten und Teilnehmer-Zahlen mind. 12 Wochen vor der Veranstaltung an m.hauschild@dkfz.de.
-                            </p>
-                            <p>
-                                Externe Caterings dürfen bei nicht vorhandener Kapazität des Casinos nach Rücksprache mit Herr Hauschild (m.hausschild@dkfz.de) angefragt und beauftragt werden (in diesem Zusammenhang erhalten Sie dann auch genaue Informationen zum Ablauf der Angebotseinholung).
-                            </p>
-
                         </div>
                     </div>
                 </li>
@@ -135,50 +82,5 @@
     {% endfor %}
 </div>
 
-
-
-
-{#<div class="accordion">#}
-{#    {% for accordion in prototype.accordion %}#}
-{#    <ol class="accordion__items">#}
-{#        <li>#}
-{#            <h2 class="accordion__items--title h5">{{ accordion.title }}</h2>#}
-{#            <a class="sr-only" href="#" id="{{ id }}">{{ accordion.title }}</a>#}
-
-{#            <ol class="accordion__item">#}
-{#                {% for accordionItem in accordion.item %}#}
-{#                <button class="accordion__btn"#}
-{#                        aria-expanded="false"#}
-{#                        id="accordionItem{{ accordionId }}"#}
-{#                        data-id="{{ id ? id : accordionItemId }}"#}
-{#                        aria-controls="accordionSection{{ accordionId }}"#}
-{#                        aria-label="Öffnen Sie die Akkordion-Einträge">#}
-
-{#                        <li>#}
-{#                            <span class="accordion__btn-description h6">#}
-{#                                {{ accordionItem.title }}#}
-{#                            </span>#}
-{#                        </li>#}
-
-{#                    <span class="accordion__btn--closed">#}
-{#                            {% include '@components/icon/icon.twig' with {'icon': 'plus',  'description': 'Mit diesem Icon kann ein Akkordeon-Eintrag geöffnet werden'} %}#}
-{#                    </span>#}
-{#                    <span class="accordion__btn--active">#}
-{#                            {% include '@components/icon/icon.twig' with {'icon': 'minus', 'description': 'Mit diesem Icon kann ein Akkordeon-Eintrag geschlossen werden'} %}#}
-{#                    </span>#}
-{#                </button>#}
-
-{#                <div class="accordion__panel"#}
-{#                     id="accordionSection{{ accordionId }}"#}
-{#                     aria-labelledby="accordionItem{{ accordionId }}">#}
-
-{#                    {{ accordionItem.text }}#}
-{#                </div>#}
-{#                {% endfor %}#}
-{#            </ol>#}
-{#        </li>#}
-{#    </ol>#}
-{#    {% endfor %}#}
-{#</div>#}
 
 <!-- Components End: accordion -->

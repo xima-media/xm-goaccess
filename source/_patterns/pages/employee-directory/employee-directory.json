@@ -1,0 +1,22 @@
+{
+    "prototype": {
+        "title": "Mitarbeiterverzeichnis",
+        "navigation": {
+            "activeId": "our-center"
+        },
+        "debug": {
+            "screenshot": "employee-profile"
+        },
+        "html": {
+            "class": "background--gray-100"
+        },
+        "breadcrumb": [
+            {
+                "title": "Start"
+            },
+            {
+                "title": "Mitarbeiterverzeichnis"
+            }
+        ]
+    }
+}

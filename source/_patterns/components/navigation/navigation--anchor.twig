@@ -1,37 +1,17 @@
 <!-- Component Start: navigation--anchor -->
 
-<nav class="navigation--anchor">
-    <button class="navigation--anchor-button left" aria-label="Zurück">
+<nav class="navigation navigation--anchor" aria-label="Ankernavigation">
+    <button class="navigation__button left" aria-label="Zurück" disabled="disabled">
         {% include '@components/icon/icon.twig' with {'icon': 'chevron-left'} %}
     </button>
-    <ul class="navigation--anchor--items">
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Kontakt & Ansprechpartner">Kontakt & Ansprechpartner</a>
-        </li>
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Aufzählungen & Nummerierungen">Aufzählungen & Nummerierungen</a>
-        </li>
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Tabellen">Tabellen</a>
-        </li>
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Tabelement">Tabelement</a>
-        </li>
-
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Kontakt & Ansprechpartner">Kontakt & Ansprechpartner</a>
-        </li>
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Aufzählungen & Nummerierungen">Aufzählungen & Nummerierungen</a>
-        </li>
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Tabellen">Tabellen</a>
-        </li>
-        <li class="navigation--anchor__item">
-            <a class="navigation--anchor__link" href="#Tabelement">Tabelement</a>
-        </li>
+    <ul class="navigation__items">
+        {% for item in prototype.navigation.anchor %}
+            <li class="navigation__item">
+                <a class="navigation__link" href="#{{ item.url }}">{{ item.text }}</a>
+            </li>
+        {% endfor %}
     </ul>
-    <button class="navigation--anchor-button right" aria-label="Next">
+    <button class="navigation__button right" aria-label="Nächste" disabled="disabled">
         {% include '@components/icon/icon.twig' with {'icon': 'chevron-right'} %}
     </button>
 </nav>
