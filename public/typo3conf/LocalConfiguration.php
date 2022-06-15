@@ -153,6 +153,7 @@ return [
         'sitename' => 'Example TYPO3',
         'systemMaintainers' => [
             1,
+            2,
         ],
     ],
 ];
