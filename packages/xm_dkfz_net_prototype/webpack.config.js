@@ -110,7 +110,7 @@ module.exports = {
                     from: './source/_patterns/components/debug/assets', to: './Images/debug'
                 },
                 {
-                    from: './patternlab/source/_patterns/components/autocomplete/assets', to: 'autocomplete'
+                    from: './source/_patterns/components/autocomplete/assets', to: './Images/autocomplete'
                 },
             ],
         }),
@@ -131,7 +131,7 @@ module.exports = {
             },
         }),
         new ReplaceInFileWebpackPlugin([{
-            dir: 'patternlab/public/dist/icon',
+            dir: 'Resources/Public/Icon',
             files: ['icon.min.svg'],
             rules: [
                 {
