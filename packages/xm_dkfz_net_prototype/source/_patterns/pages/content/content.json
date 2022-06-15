@@ -76,7 +76,7 @@
             "items": [
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-3to2.png",
+                        "src": "../../../Images/examples/horizontal-3to2.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -90,7 +90,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-2to3.png",
+                        "src": "../../../Images/examples/vertical-2to3.png",
                         "alt": "Picture title",
                         "patternColor": "magenta",
                         "size": "md",
@@ -104,7 +104,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-4to3.png",
+                        "src": "../../../Images/examples/horizontal-4to3.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -118,7 +118,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-3to4.png",
+                        "src": "../../../Images/examples/vertical-3to4.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -132,7 +132,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-1to1.png",
+                        "src": "../../../Images/examples/horizontal-1to1.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -146,7 +146,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-3to2.png",
+                        "src": "../../../Images/examples/horizontal-3to2.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "sm",
@@ -160,7 +160,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-2to3.png",
+                        "src": "../../../Images/examples/vertical-2to3.png",
                         "alt": "Picture title",
                         "patternColor": "magenta",
                         "size": "sm",
@@ -174,7 +174,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-3to2.png",
+                        "src": "../../../Images/examples/horizontal-3to2.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -189,7 +189,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-2to3.png",
+                        "src": "../../../Images/examples/vertical-2to3.png",
                         "alt": "Picture title",
                         "patternColor": "magenta",
                         "size": "md",
@@ -206,7 +206,7 @@
         "pictureSize": [
             {
                 "image": {
-                    "src": "../../dist/image/examples/maximal.png",
+                    "src": "../../../Images/examples/maximal.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "md",
@@ -221,7 +221,7 @@
             },
             {
                 "image": {
-                    "src": "../../dist/image/examples/minimal.png",
+                    "src": "../../../Images/examples/minimal.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "sm",
@@ -236,7 +236,7 @@
             },
             {
                 "image": {
-                    "src": "../../dist/image/examples/big.png",
+                    "src": "../../../Images/examples/big.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "lg",
@@ -253,7 +253,7 @@
                 "items": [
                     {
                         "image": {
-                            "src": "../../dist/image/examples/vertical-2to3.png",
+                            "src": "../../../Images/examples/vertical-2to3.png",
                             "alt": "Picture title",
                             "copyright": "copyright",
                             "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
@@ -261,7 +261,7 @@
                     },
                     {
                         "image": {
-                            "src": "../../dist/image/examples/big.png",
+                            "src": "../../../Images/examples/big.png",
                             "alt": "Picture title",
                             "copyright": "copyright",
                             "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
@@ -282,7 +282,7 @@
                         "url": "#"
                     },
                     "image": {
-                        "src": "../../dist/image/examples/user.jpg",
+                        "src": "../../../Images/examples/user.jpg",
                         "color": "orange",
                         "size": "sm"
                     }
@@ -294,7 +294,7 @@
                         "url": "#"
                     },
                     "image": {
-                        "src": "../../dist/image/examples/user.jpg",
+                        "src": "../../../Images/examples/user.jpg",
                         "color": "cyan",
                         "size": "sm"
                     }

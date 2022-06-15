@@ -638,7 +638,7 @@
                 "title": "Kontakt & Ansprechpartner\n",
                 "subTitle": "Ansprechpartner\n",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../Images/examples/user.jpg",
                     "color": "orange",
                     "size": "xs"
                 },
