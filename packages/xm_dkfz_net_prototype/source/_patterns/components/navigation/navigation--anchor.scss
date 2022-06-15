@@ -9,34 +9,16 @@
 //
 
 .navigation--anchor {
-    margin-left: 2.5rem;
+    background: var(--color-gray-100);
 
-    @media screen and (max-width: $container-default-widths) {
-        background: var(--color-gray-100);
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        position: relative;
-        scroll-snap-type: x mandatory;
-        margin-left: 0;
-
-        &::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
-
-        /* Track */
-        &::-webkit-scrollbar-track,
-        &::-webkit-scrollbar-thumb {
-            background: transparent;
-        }
+    @include media-breakpoint-up(lg) {
+        background: transparent;
     }
 
-    &-button {
-        display: none;
-
-        @media screen and (max-width: $container-default-widths) {
+    .navigation {
+        &__button {
             display: flex;
-            position: fixed;
+            position: absolute;
             top: 1.25rem;
             bottom: 0;
             z-index: 1;
@@ -50,13 +32,21 @@
             &.left {
                 left: 0;
             }
+
+            &[disabled=disabled] {
+                display: none;
+            }
+
+
+            @include media-breakpoint-up(lg) {
+                display: none;
+            }
         }
-    }
 
-    &--items {
-        flex-direction: column;
-
-        @media screen and (max-width: $container-default-widths) {
+        &__items {
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -64,15 +54,26 @@
             padding: 1.25rem;
             margin-bottom: 0;
             white-space: nowrap;
+
+            // @todo mixin
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track,
+            &::-webkit-scrollbar-thumb {
+                background: transparent;
+            }
+
+            @include media-breakpoint-up(lg) {
+                flex-direction: column;
+                align-items: start;
+            }
         }
-    }
 
-    &__item {
-        overflow: hidden;
-        position: relative;
-        padding: 0 0 1.875rem 2rem;
-
-        @media screen and (max-width: $container-default-widths) {
+        &__item {
             display: inline-flex;
             overflow: visible;
             max-width: 100%;
@@ -81,65 +82,59 @@
             &:first-child {
                 margin-left: 2rem;
             }
-        }
 
-        &::before {
-            content: '';
-            position: absolute;
-            left: .375rem;
-            top: 0;
-            height: 100%;
-            border: 1px solid var(--color-gray-900);
-            border-width: 0 0 0 1px;
-
-            @media screen and (max-width: $container-default-widths) {
-                display: none;
-            }
-        }
-
-        &:first-child::before {
-            top: .75rem;
-        }
-
-        &:last-child::before {
-            height: .375rem;
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: .375rem;
-            width: .75rem;
-            height: .75rem;
-            background: var(--color-white);
-            border: 1px solid var(--color-gray-900);
-            border-radius: 50%;
-
-            @media screen and (max-width: $container-default-widths) {
-                display: none;
-            }
-        }
-
-        &.current {
-            color: var(--color-primary);
-
-            &::before {
-                border-top-color: var(--color-primary);
-            }
-
+            &::before,
             &::after {
-                border-color: var(--color-primary);
-                background: var(--color-primary);
+                display: none;
+            }
+
+            @include media-breakpoint-up(lg) {
+                overflow: hidden;
+                position: relative;
+                padding: 0 0 1.875rem 2rem;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: .375rem;
+                    top: 0;
+                    display: block;
+                    height: 100%;
+                    border-left: 1px solid var(--color-gray-900);
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: .375rem;
+                    display: block;
+                    width: .75rem;
+                    height: .75rem;
+                    background: var(--color-white);
+                    border: 1px solid var(--color-gray-900);
+                    border-radius: 50%;
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                &:first-child::before {
+                    top: .75rem;
+                }
+
+                &:last-child::before {
+                    height: .375rem;
+                }
             }
         }
-    }
 
-    &__link {
-        @include h6();
-        font-family: $font-family-sans-serif;
-        letter-spacing: .6px;
-        text-decoration: none;
+        &__link {
+            @include text-copy-x-small;
+
+            text-decoration: none;
+        }
     }
 }
 

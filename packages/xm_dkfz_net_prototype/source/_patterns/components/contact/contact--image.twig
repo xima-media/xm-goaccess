@@ -1,0 +1,39 @@
+<!-- Component Start: contact--image -->
+
+<div class="contact-image">
+    {% for contact in prototype.contactPerson %}
+    <h3>{{ contact.title }}</h3>
+    <h4>{{ contact.subTitle }}</h4>
+
+    <div class="contact-image--container">
+        {% include '@components/card/card.twig' with {
+            image: {
+                src: contact.image.src,
+                color: contact.image.color,
+                size: contact.image.size
+            }
+        } only %}
+
+        <div class="contact--information">
+            <div class="contact--information-date">
+                <h6>{{ contact.name }}</h6>
+                <p>
+                    {{ contact.occupation }} <br/>
+                    <span>{{ contact.department }}</span>
+                </p>
+            </div>
+
+            <ul class="contact__items">
+                {% for item in contact.items %}
+                    <li class="contact__item">
+                        {% include '@components/icon/icon.twig' with {icon: item.type} %}
+                        <a class="contact__link" href="{{ item.type == 'mail' ? 'mailto' : 'tel' }}:{{ item.url }}">{{ item.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Components End: contact--image -->

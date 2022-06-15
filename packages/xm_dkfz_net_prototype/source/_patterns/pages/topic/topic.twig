@@ -1,16 +1,15 @@
 {% extends "@layouts/default--one-column.twig" %}
 {% block main %}
-    {% include '@components/breadcrumb/breadcrumb.twig' with {
-    } %}
+    {% include '@components/breadcrumb/breadcrumb.twig' %}
 
     {# hero #}
     {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
-        {% block main %}
+        {% block content %}
             <button class="button button--primary">
                 {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
                 Seite merken
             </button>
-        {% endblock main %}
+        {% endblock content %}
 
     {% endembed %}
 

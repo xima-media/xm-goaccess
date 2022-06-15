@@ -36,6 +36,31 @@
             text-decoration: none;
         }
     }
+
+    // contact width image
+    &-image {
+        &--container {
+            display: flex;
+            margin-left: 1rem;
+
+            > .card {
+                width: auto;
+                margin: 0;
+                padding: .5rem;
+            }
+
+            > .contact--information {
+                margin-top: .25rem;
+                margin-left: 1.5rem;
+
+                >.contact__items {
+                    .contact__item {
+                        margin-bottom: .125rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // end of contact.scss file

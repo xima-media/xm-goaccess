@@ -156,6 +156,29 @@
     backface-visibility: hidden;
 }
 
+.swiper-slide--height {
+    .card {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &__image {
+            margin-bottom: 0;
+        }
+    }
+
+    .picture__item {
+        background: transparent;
+    }
+
+    .image--responsive {
+        max-height: 650px;
+        object-fit: contain;
+    }
+
+
+}
+
 
 //
 //   @section 2. Carousel navigation

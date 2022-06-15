@@ -39,6 +39,7 @@ class Carousel {
     initCarousels () {
         document.querySelectorAll<HTMLElement>('.carousel').forEach((element) => {
             const cols = JSON.parse(element.dataset.cols)
+            const paginationStyle = JSON.parse(element.dataset.paginationStyle)
             const swiper = new Swiper(element.querySelector<HTMLElement>('.swiper'), {
                 modules: [Navigation, Pagination],
                 loop: false,
@@ -55,17 +56,26 @@ class Carousel {
                     0: {
                         slidesPerView: cols.xs,
                         pagination: {
-                            type: 'fraction'
+                            type: paginationStyle.xs
                         }
                     },
                     480: {
-                        slidesPerView: cols.sm
+                        slidesPerView: cols.sm,
+                        pagination: {
+                            type: paginationStyle.sm
+                        }
                     },
                     768: {
-                        slidesPerView: cols.md
+                        slidesPerView: cols.md,
+                        pagination: {
+                            type: paginationStyle.md
+                       }
                     },
                     1024: {
-                        slidesPerView: cols.lg
+                        slidesPerView: cols.lg,
+                        pagination: {
+                             type: paginationStyle.lg
+                        }
                     }
                 },
             })

@@ -5,6 +5,7 @@
 //      3. Picture - no image
 //      4. Picture - with image
 //      5. Picture - round
+//      6. Picture - orientation
 //
 
 
@@ -43,7 +44,8 @@
     .picture {
         &__item {
             position: relative;
-            aspect-ratio: 16 / 9;
+            //aspect-ratio: 16 / 9;
+            aspect-ratio: 1 / 1;
             //margin-left: 1.5rem;
 
             &::after {
@@ -110,4 +112,48 @@
     border-radius: 50%;
 }
 
+//
+//   @section 6. Picture - orientation
+//
+.picture--orientation {
+    &-md {
+        &-square {
+            .picture {
+                &__pattern {
+                    left: -1.875rem;
+                    right: -1.875rem;
+                }
+            }
+        }
+
+        &-rectangle {
+            .picture {
+                &__pattern {
+                    left: -6.5rem;
+                    right: -6.5rem;
+                }
+            }
+        }
+    }
+
+    &-sm {
+        &-square {
+            .picture {
+                &__pattern {
+                    left: -6.25rem;
+                    right: -6.25rem;
+                }
+            }
+        }
+
+        &-rectangle {
+            .picture {
+                &__pattern {
+                    left: -9.375rem;
+                    right: -9.375rem;
+                }
+            }
+        }
+    }
+}
 // end of image.scss file

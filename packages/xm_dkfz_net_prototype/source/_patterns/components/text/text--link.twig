@@ -1,0 +1,13 @@
+<!-- Component Start: text--link -->
+
+<div>
+    <h5>{{ title }}</h5>
+    {% for item in items %}
+        <a class="link--primary {{ item.angle ? 'link--primary-angle' : '' }}" href="{{ item.link }}">
+            {% include '@components/icon/icon.twig' with {icon: item.icon} %}
+            {{ item.text }}
+        </a>
+    {% endfor %}
+</div>
+
+<!-- Components End: text--link -->
