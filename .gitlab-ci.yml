@@ -9,7 +9,7 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+  - ssh-keyscan dkfz-typo3-dev.xima.local >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
 stages:
@@ -53,6 +53,6 @@ test-php-stan:
 
 deploy-staging:
   stage: deploy
-  needs: ["test-php-cs-fixer", "test-php-stan"]
+  needs: ["build-php", "build-node", "test-php-cs-fixer", "test-php-stan"]
   script:
     - vendor/bin/dep deploy-fast staging
