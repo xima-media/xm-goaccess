@@ -136,7 +136,6 @@ before('db:upload', 'override-paths');
 before('db:import', 'override-paths');
 before('db:rmdump', 'override-paths');
 before('deploy:prepare', 'override-paths');
-before('db:import:feature', 'override-paths');
 before('deploy:extend_log', 'db:import:feature');
 
 before('deploy:prepare', 'deploy:prepare:feature');
