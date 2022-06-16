@@ -21,7 +21,6 @@ build-php:
 build-node:
   stage: build
   image: node:latest
-  only: ["master"]
   cache:
     paths:
       - .npm/
