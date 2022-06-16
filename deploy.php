@@ -2,6 +2,7 @@
 
 namespace Deployer;
 
+use SourceBroker\DeployerInstance\Configuration;
 use function PHPUnit\Framework\throwException;
 use Deployer\Exception\GracefulShutdownException;
 
@@ -107,13 +108,27 @@ task('deploy:prepare:feature', function () {
     $dbPassword = run('grep TYPO3_CONF_VARS__DB__Connections__Default__password {{deploy_path}}/shared/.env | cut -d "=" -f2 | cut -c2- | rev | cut -c2- | rev');
     $sqlStatement = 'CREATE DATABASE IF NOT EXISTS ' . $branch;
     run('echo "' . $sqlStatement . '" | mariadb -u ' . $dbUser . ' -h ' . $dbHost . ' --password="' . $dbPassword . '"');
+})->onStage('feature');
+
+task('db:truncate', function () {
+})->onStage('feature');
+
+task('override-paths', function () {
+    $featureRootPath = get('deploy_path');
+    $branch = get('branch');
+
+    // override path & public url
+    set('deploy_path', $featureRootPath . '/' . $branch);
+    set('public_urls', array_map(function ($url) use ($branch) {
+        return $url . '/' . $branch . '/current/public';
+    }, get('public_urls')));
+
+    // set new path to storage
+    set('db_storage_path_local', $featureRootPath . '/' . $branch . '/.dep/database/dumps');
 
 })->onStage('feature');
 
-task('db:prepare', function () {
-
-
-})->onStage('feature');
+before('db:upload', 'override-paths');
+before('db:import', 'override-paths');
 
 before('deploy:prepare', 'deploy:prepare:feature');
-before('db:truncate', 'db:prepare');
