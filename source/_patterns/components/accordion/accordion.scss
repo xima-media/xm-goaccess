@@ -49,7 +49,7 @@
         }
 
         &::after {
-            background-image: url('../icon/icon.min.svg#icon-plus');
+            background-image: url(map-get($sprites, 'plus'));
         }
 
         &:not(.collapsed) {
@@ -57,7 +57,7 @@
             background: transparent;
 
             &::after {
-                background-image: url('../icon/icon.min.svg#icon-minus');
+                background-image: url(map-get($sprites, 'minus'));
             }
         }
 

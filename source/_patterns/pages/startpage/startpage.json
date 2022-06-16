@@ -169,12 +169,8 @@
                         "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen. Mit den zwei Millionen Euro Fördermitteln will der Immunologe erforschen, wie die Skelettmuskulatur bei chronischen Virusinfekten das Immunsystem unterstützt.",
                         "type": "main-news",
                         "image": {
-<<<<<<< HEAD:source/_patterns/pages/startpage/startpage.json
                             "src": "../../../Images/examples/user.jpg",
                             "patternColor": "orange",
-=======
-                            "src": "../../dist/image/examples/user.jpg",
->>>>>>> 70ae562e7b05c577dabc03536ccbd7ed05f6d3da:htdocs/prototype/patternlab/source/_patterns/pages/startpage/startpage.json
                             "position": "left"
                         },
                         "link": {

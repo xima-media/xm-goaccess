@@ -11,6 +11,7 @@
 // sizes
 $container-default-widths: 73.125rem; // 1170px;
 $container-expand-widths: 98.75rem; // 1580px;
+$container-md-widths: 60.625rem; // 960px;
 $css-icon-size: .75rem;
 
 // timing
@@ -42,7 +43,11 @@ $color-black: #000;
 
 $color-twitter: rgb(29, 161, 242); // 1DA1F2
 
-// typography
+// mark (e.g. autocomplete)
+$mark-bg: $color-yellow;
+
+
+    // typography
 $font-family-serif: 'The Serif', serif;
 $font-family-sans-serif: 'The Sans', sans-serif;
 

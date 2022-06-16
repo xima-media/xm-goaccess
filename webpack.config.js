@@ -21,6 +21,7 @@ module.exports = {
         filename: './JavaScript/[name].js',
         auxiliaryComment: 'Copyright - XIMA media GmbH',
         path: path.resolve(__dirname, 'Resources/Public'),
+        publicPath: '../'
     },
     experiments: {
         backCompat: false,
@@ -59,7 +60,9 @@ module.exports = {
                         options: {
                             importLoaders: 1,
                             sourceMap: true,
-                            url: false,
+                            url: {
+                                filter: (url) => !url.includes('.svg')
+                            }
                         },
                     },
                     'postcss-loader',
@@ -75,7 +78,8 @@ module.exports = {
                             // Must be true b/c of mixins
                             hoistUseStatements: false,
                             resources: [
-                                path.resolve(__dirname, './source/_patterns/components/basic/basic-default-functions-and-variables.scss')
+                                path.resolve(__dirname, './source/_patterns/components/basic/basic-default-functions-and-variables.scss'),
+                                path.resolve(__dirname, './source/_patterns/components/icon/_sprite.scss')
                             ],
                         },
                     },
@@ -110,7 +114,7 @@ module.exports = {
                     from: './source/_patterns/components/debug/assets', to: './Images/debug'
                 },
                 {
-                    from: './patternlab/source/_patterns/components/autocomplete/assets', to: 'autocomplete'
+                    from: './source/_patterns/components/autocomplete/assets', to: './Images/autocomplete'
                 },
             ],
         }),
@@ -119,31 +123,40 @@ module.exports = {
         }),
         new SVGSpritemapPlugin('./source/_patterns/components/icon/assets/**/*.svg', {
             output: {
-                filename: './Icon/icon.min.svg',
+                filename: 'Icon/icon.min.svg',
                 svg4everybody: true,
-                svgo: true
+                svgo: true,
+                svg: {
+                    sizes: false
+                }
             },
             sprite: {
                 prefix: 'icon-',
                 generate: {
-                    title: false
+                    title: false,
+                    use: true,
+                    symbol: true,
+                    view: '-fragment',
                 }
             },
+            styles: {
+                filename: path.join(__dirname, './source/_patterns/components/icon/_sprite.scss'),
+                format: 'fragment'
+            }
         }),
-        new ReplaceInFileWebpackPlugin([{
-            dir: 'patternlab/public/dist/icon',
-            files: ['icon.min.svg'],
-            rules: [
-                {
-                    search: '<svg xmlns="http://www.w3.org/2000/svg">',
-                    replace: '<svg xmlns="http://www.w3.org/2000/svg"><style>:root>svg{display:none}:root>svg:target{display:block}</style>'
-                },
-                {
-                    search: /symbol/ig,
-                    replace: 'svg'
-                }
-            ]
-        }])
+        // new ReplaceInFileWebpackPlugin([{
+        //     files: ['Resources/Public/Icon/icon.min.svg'],
+        //     rules: [
+        //         {
+        //             search: '<svg xmlns="http://www.w3.org/2000/svg"><symbol',
+        //             replace: '<svg xmlns="http://www.w3.org/2000/svg"><style>:root>svg{display:none}:root>svg:target{display:block}</style><symbol'
+        //         },
+        //         {
+        //             search: /symbol/ig,
+        //             replace: 'svg'
+        //         }
+        //     ]
+        // }])
     ],
     performance: {
         assetFilter: function (assetFilename) {

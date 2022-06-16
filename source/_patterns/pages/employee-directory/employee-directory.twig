@@ -8,4 +8,44 @@
 
     {# hero form #}
     {% include '@components/hero-form/hero-form.twig' %}
+
+    {# results #}
+    <div class="results">
+        <h2 class="results__title">Es wurden 5 Mitarbeiter gefunden.</h2>
+        <div class="results__items">
+            {% for item in prototype.results %}
+                {% include '@components/card/card.twig' with {
+                    title: item.title,
+                    subTitle: item.subTitle,
+                    text: item.text,
+                    type: item.type,
+                    contact: item.contact,
+                    link: {
+                        href: item.link.url
+                    },
+                    image: {
+                        src: item.image.src,
+                        color: item.image.color
+                    }
+                } only %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {# @todo mit startseite zusammenfassen #}
+    <div class="background--white">
+        {# footer card #}
+        {% include '@components/card/card.twig' with {
+            title: 'Raum- und Gebäudeplan',
+            text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+            link: {
+                href: '#'
+            },
+            image: {
+                src: '../../dist/image/examples/news-header.jpg',
+                color: 'cyan',
+                position: 'left'
+            }
+        } only %}
+    </div>
 {% endblock content %}

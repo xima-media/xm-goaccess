@@ -19,6 +19,7 @@ import './autocomplete.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
+// @ts-ignore
 import Awesomplete from 'awesomplete'
 
 /**
@@ -31,7 +32,7 @@ class Autocomplete {
     constructor () {
         app.log('component "autocomplete" loaded')
 
-        this.autocompleteEl = document.querySelectorAll<HTMLElement>('.autocomplete')
+        this.autocompleteEl = document.querySelectorAll<HTMLInputElement>('.autocomplete')
 
         // methods
         if (this.autocompleteEl) {
@@ -48,29 +49,42 @@ class Autocomplete {
 
         // get every select
         self.autocompleteEl.forEach((autocompleteEl) => {
-            console.log('autocompleteEl')
-            console.log(autocompleteEl)
-
             const autocomplete = new Awesomplete(autocompleteEl)
             const url = autocompleteEl.dataset.autocompleteUrl
-            // const lang = app.lang
 
-
-            autocompleteEl.addEventListener('keyup', () => self.change(autocompleteEl, url))
+            // event: keyup
+            autocompleteEl.addEventListener('keyup', (key) => self.change(autocomplete, autocompleteEl, url, key))
         })
-        //         let $input = $(e).not('[aria-autocomplete]'),
-        //             autocomplete = new Awesomplete($input[0]),
-        //             $form = $input.closest('form'),
-        //             url = $form.data('suggest'),
-        //             lang = $form.find('input[name="L"]').val();
     }
 
     /**
      * Input change
      */
-    change (autocompleteEl, url) {
-        console.log(autocompleteEl)
-        console.log(url)
+    change (autocomplete: any, autocompleteEl: HTMLInputElement, url: string, key: KeyboardEvent) {
+        const whichKey = key.which
+        const completeUrl = app.prototype ? url : url + '&L=' + app.lang + '&tx_solr[queryString]=' + autocompleteEl.value.toLowerCase() + '&tx_solr[callback]'
+
+        // 40 && 38 == up/down key
+        if (whichKey === 40 || whichKey === 38) {
+            app.log('hoch/runter runter');
+        } else {
+            // fetch data
+            fetch(completeUrl)
+                .then(response => {
+                    return response.json()
+                })
+                .then(suggestions => {
+                    // create suggestion list
+                    let list = []
+                    for (let listKey in suggestions) {
+                        list.push(listKey)
+                    }
+
+                    // append list
+                    autocomplete.list = list
+                    autocomplete.evaluate()
+                })
+        }
     }
 }
 

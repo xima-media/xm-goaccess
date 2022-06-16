@@ -9,6 +9,12 @@
 //
 
 .hero-form {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: $container-default-widths + 2rem;
+    margin-right: auto;
+    margin-left: auto;
     padding: 1.5rem;
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -28,6 +34,11 @@
         align-items: center;
         justify-content: center;
         margin-top: 3rem;
+    }
+
+    + .results {
+        margin-top: -10rem;
+        padding-top: 13rem;
     }
 }
 

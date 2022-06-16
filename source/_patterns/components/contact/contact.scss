@@ -10,31 +10,39 @@
 
 .contact {
     &--background {
-        width: 25rem;
+        width: 100%;
         background: var(--color-primary-opacity-10);
-        padding: 2.5rem;
+        padding: 2.5rem 2.5rem 1rem;
+        margin-bottom: 1rem;
+
+        @include media-breakpoint-up(md) {
+            width: 25rem;
+        }
     }
 
     &__items {
         @include list-reset;
+        margin-bottom: 1.5rem;
     }
 
     &__item {
-        margin-bottom: 1rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-
         .icon {
             width: 1rem;
             height: 1rem;
         }
 
-        >.contact__link {
+        .contact__link {
             padding-left: .5rem;
-            text-decoration: none;
         }
+
+        a[href^="mailto:"] {
+            text-decoration: underline;
+        }
+    }
+
+    &--subtitle {
+        @include text-copy-small(700);
+        margin-bottom: .5rem;
     }
 
     // contact width image
@@ -59,6 +67,41 @@
                     }
                 }
             }
+        }
+    }
+
+    // contact width person
+    &--person {
+        &-container {
+            display: flex;
+            .card {
+                margin-left: 0;
+                margin-right: 0;
+                padding-bottom: 0;
+            }
+
+            .contact--information {
+                margin-top: 1.5rem;
+
+                h6 {
+                    font-family: $font-family-sans-serif;
+                    font-weight: 200;
+                }
+            }
+        }
+    }
+
+    // contact right on the picture
+    &--right {
+        @include media-breakpoint-up(md) {
+            position: absolute;
+            top: 20rem;
+            right: 0;
+            z-index: 1;
+        }
+
+        @include media-breakpoint-up(lg) {
+            top: 30rem;
         }
     }
 }

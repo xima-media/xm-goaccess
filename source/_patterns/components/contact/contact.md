@@ -1,6 +1,4 @@
 ---
-title: Copyright
+title: Contact width image
 state: incomplete
 ---
-
-@todo eventuell in employee-contact umbennen
