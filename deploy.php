@@ -4,7 +4,7 @@ namespace Deployer;
 
 require_once(__DIR__ . '/vendor/blueways/deployer-recipes/autoload.php');
 
-set('repository', 'git@t3-gitlab-dev.xima.local:dkfz/xm-dkfz-net.git');
+set('repository', 'git@t3-gitlab-dev.xima.local:dkfz/dkfz-t3-intranet.git');
 
 host('local')
     ->hostname('local')
