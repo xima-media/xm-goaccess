@@ -42,6 +42,7 @@ host('feature')
     ->hostname('192.168.2.41')
     ->stage('feature')
     ->user('xima')
+    ->set('db_source_host', 'staging')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_mode', '0770')
@@ -69,20 +70,15 @@ task('deploy:fix-shared-permissions', function () {
 
 task('deploy:prepare:feature', function () {
 
-    $featureRootPath = get('deploy_path');
-    $branch = get('branch');
-
-    // override path & public url
-    set('deploy_path', $featureRootPath . '/' . $branch);
-    set('public_urls', array_map(function ($url) use ($branch) {
-        return $url . '/' . $branch . '/current/public';
-    }, get('public_urls')));
-
     // abort if feature branch has already been configured
     if (test('[ -f {{deploy_path}}/.dep/releases.extended ]')) {
         return;
     }
 
+    $featureRootPath = get('deploy_path');
+    $branch = get('branch');
+
+    // create shared dir
     run('mkdir -p {{ deploy_path }}');
     run('mkdir -p {{ deploy_path }}/shared');
 
@@ -110,7 +106,16 @@ task('deploy:prepare:feature', function () {
     run('echo "' . $sqlStatement . '" | mariadb -u ' . $dbUser . ' -h ' . $dbHost . ' --password="' . $dbPassword . '"');
 })->onStage('feature');
 
-task('db:truncate', function () {
+task('db:import:feature', function () {
+
+    // abort if feature branch has already been configured
+    if (test('[ -f {{deploy_path}}/.dep/releases.extended ]')) {
+        return;
+    }
+
+    // copy database from source
+    $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
+    run('cd ' . $activePath . ' && {{bin/php}} {{bin/deployer}} db:copy {{ db_source_host }} --options=target:feature');
 })->onStage('feature');
 
 task('override-paths', function () {
@@ -122,20 +127,16 @@ task('override-paths', function () {
     set('public_urls', array_map(function ($url) use ($branch) {
         return $url . '/' . $branch . '/current/public';
     }, get('public_urls')));
+})->onStage('feature');
 
-    //// set new path to storage
-    $dbStoragePathOrig = get('db_storage_path_local');
-    set('db_storage_path_local', function () use ($featureRootPath, $branch, $dbStoragePathOrig) {
-        var_dump('HOSSA');
-        var_dump(get('instance_local_name', 'local'));
-        if (get('hostname') === 'feature') {
-            return $featureRootPath . '/' . $branch . '/.dep/database/dumps';
-        }
-        return $dbStoragePathOrig;
-    });
+task('db:truncate', function () {
 })->onStage('feature');
 
 before('db:upload', 'override-paths');
 before('db:import', 'override-paths');
+before('db:rmdump', 'override-paths');
+before('deploy:prepare', 'override-paths');
+before('db:import:feature', 'override-paths');
+before('deploy:extend_log', 'db:import:feature');
 
 before('deploy:prepare', 'deploy:prepare:feature');
