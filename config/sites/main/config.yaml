@@ -1,4 +1,8 @@
 base: /
+baseVariants:
+  -
+    base: '%env("TYPO3_BASE")%'
+    condition: 'Testing/Staging'
 languages:
   -
     title: Deutsch
