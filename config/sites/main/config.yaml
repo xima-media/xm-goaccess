@@ -2,7 +2,7 @@ base: /
 baseVariants:
   -
     base: '%env("TYPO3_BASE")%'
-    condition: 'Testing/Staging'
+    condition: 'applicationContext == "Testing/Staging"'
 languages:
   -
     title: Deutsch

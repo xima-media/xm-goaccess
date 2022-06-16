@@ -123,14 +123,15 @@ task('override-paths', function () {
         return $url . '/' . $branch . '/current/public';
     }, get('public_urls')));
 
-    // set new path to storage
-    set('db_storage_path_local', function () use ($featureRootPath, $branch) {
+    //// set new path to storage
+    $dbStoragePathOrig = get('db_storage_path_local');
+    set('db_storage_path_local', function () use ($featureRootPath, $branch, $dbStoragePathOrig) {
         var_dump('HOSSA');
         var_dump(get('instance_local_name', 'local'));
-        if (get('argument_stage') === 'feature') {
+        if (get('hostname') === 'feature') {
             return $featureRootPath . '/' . $branch . '/.dep/database/dumps';
         }
-        return $featureRootPath . '/.dep/database/dumps';
+        return $dbStoragePathOrig;
     });
 })->onStage('feature');
 
