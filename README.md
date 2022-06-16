@@ -12,3 +12,5 @@ When starting the project for the first time, an example database is imported th
 
 * Backend user: admin:changeme
 * Frontend user: max@example.com:changeme
+
+## Feature Branch Deployment
