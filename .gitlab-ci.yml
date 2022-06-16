@@ -21,6 +21,7 @@ build-php:
 build-node:
   stage: build
   image: node:latest
+  only: ["master"]
   cache:
     paths:
       - .npm/
@@ -44,7 +45,7 @@ test-php-stan:
   script:
     - composer run ci:php:stan
 
-deploy-staging:
+.deploy-prepare:
   stage: deploy
   needs: [ "build-php", "build-node", "test-php-cs-fixer", "test-php-stan" ]
   before_script:
@@ -56,5 +57,15 @@ deploy-staging:
     - ssh-keyscan dkfz-typo3-dev.xima.local >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
+
+deploy-staging:
+  extends: .deploy-prepare
+  only: ["master"]
   script:
     - vendor/bin/dep deploy-fast staging
+
+deploy-feature:
+  extends: .deploy-prepare
+  only: ["/^DKFZ-.*$/"]
+  script:
+    - vendor/bin/dep deploy-fast feature -o branch=$CI_COMMIT_BRANCH
