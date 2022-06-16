@@ -18,35 +18,35 @@ build-php:
     paths:
       - vendor/
 
-#build-node:
-#  stage: build
-#  image: node:latest
-#  cache:
-#    paths:
-#      - .npm/
-#  before_script: [ ]
-#  script:
-#    - npm ci --cache .npm --prefer-offline
-#    - npm run build
-#  artifacts:
-#    paths:
-#      - packages/xm_dkfz_net_prototype/Resources/Public
-#
-#test-php-cs-fixer:
-#  stage: test
-#  needs: [ "build-php" ]
-#  script:
-#    - composer run ci:php:fixer
-#
-#test-php-stan:
-#  stage: test
-#  needs: [ "build-php" ]
-#  script:
-#    - composer run ci:php:stan
+build-node:
+  stage: build
+  image: node:latest
+  cache:
+    paths:
+      - .npm/
+  before_script: [ ]
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run build
+  artifacts:
+    paths:
+      - packages/xm_dkfz_net_prototype/Resources/Public
+
+test-php-cs-fixer:
+  stage: test
+  needs: [ "build-php" ]
+  script:
+    - composer run ci:php:fixer
+
+test-php-stan:
+  stage: test
+  needs: [ "build-php" ]
+  script:
+    - composer run ci:php:stan
 
 deploy-staging:
   stage: deploy
-  needs: [ "build-php" ]
+  needs: [ "build-php", "build-node", "test-php-cs-fixer", "test-php-stan" ]
   before_script:
     - apk add --quiet rsync
     - eval $(ssh-agent -s)
