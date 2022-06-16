@@ -58,7 +58,7 @@
             right: 0;
             bottom: .75rem;
             background-color: currentColor;
-            mask-image: url('../icon/icon.min.svg#icon-chevron-down');
+            mask-image: url(map-get($sprites, 'chevron-down'));
             mask-position: 50% 50%;
             mask-size: cover;
         }

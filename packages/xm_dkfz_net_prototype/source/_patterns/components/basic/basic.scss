@@ -263,7 +263,7 @@ a {
             content: '';
             display: inline-block;
             margin-left: .5rem;
-            background-image: url('../icon/icon.min.svg#arrow-right-view');
+            background-image: url(map-get($sprites, 'arrow-right'));
             background-position: 0 ($css-icon-size * -1);
             background-repeat: no-repeat;
             background-size: cover;

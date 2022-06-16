@@ -30,6 +30,7 @@ node_modules/
 #
 Resources/Public/*
 source/images
+source/_patterns/components/icon/_sprite.scss
 
 #
 # Keep
