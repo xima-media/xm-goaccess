@@ -2,8 +2,6 @@
 
 namespace Deployer;
 
-use SourceBroker\DeployerInstance\Configuration;
-use function PHPUnit\Framework\throwException;
 use Deployer\Exception\GracefulShutdownException;
 
 require_once(__DIR__ . '/vendor/blueways/deployer-recipes/autoload.php');
