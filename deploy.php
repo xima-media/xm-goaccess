@@ -124,8 +124,14 @@ task('override-paths', function () {
     }, get('public_urls')));
 
     // set new path to storage
-    set('db_storage_path_local', $featureRootPath . '/' . $branch . '/.dep/database/dumps');
-
+    set('db_storage_path_local', function () use ($featureRootPath, $branch) {
+        var_dump('HOSSA');
+        var_dump(get('instance_local_name', 'local'));
+        if (get('argument_stage') === 'feature') {
+            return $featureRootPath . '/' . $branch . '/.dep/database/dumps';
+        }
+        return $featureRootPath . '/.dep/database/dumps';
+    });
 })->onStage('feature');
 
 before('db:upload', 'override-paths');
