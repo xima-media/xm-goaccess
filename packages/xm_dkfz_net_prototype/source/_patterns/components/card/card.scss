@@ -6,6 +6,17 @@
 //      4. Card - image size
 //      5. Card - xl
 //      6. Card - ratio
+//      7. Card - service
+//      8. Card - events
+//      9. Card - employee
+//     10. Card - employee contact
+//     11. Card - congratulation
+//     12. Card - blackboard
+//     13. Card - new job
+//     14. Card - new page
+//     15. Card - short message
+//     16. Card - main news
+//     17. Card - info
 //
 
 
@@ -154,11 +165,31 @@
 //   @section 4. Card - image size
 //
 
+.card--image-size-xxs {
+    .card {
+        &__image {
+            flex: 0 0 3.375rem; // @todo variable
+            width: 3.375rem; // @todo variable
+        }
+    }
+}
+
 .card--image-size-xs {
     .card {
         &__image {
             flex: 0 0 6rem; // @todo variable
             width: 6rem; // @todo variable
+        }
+    }
+}
+
+.card--image-size-sm {
+    .card {
+        &__image {
+            @include media-breakpoint-up(md) {
+                flex: 0 0 22.5rem; // @todo variable
+                width: 22.5rem; // @todo variable
+            }
         }
     }
 }
@@ -200,7 +231,10 @@
 }
 
 
-// @todo einsortieren
+//
+//   @section 7. Card - service
+//
+
 .card--service {
     padding: 1.125rem 2rem 4rem;
 
@@ -219,7 +253,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 8. Card - events
+//
+
 .card--event {
     .card {
         &__sub-title {
@@ -238,7 +276,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 9. Card - employee
+//
+
 .card--employee {
     .card {
         &__sub-title {
@@ -254,7 +296,65 @@
     }
 }
 
-// @todo einsortieren
+.card--employee-contact {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid var(--color-gray-200);
+
+    .card {
+        &__sub-title {
+            //order: 0;
+            //margin-bottom: 0;
+        }
+
+        &__title {
+            @include h6;
+
+            order: -1;
+            margin-bottom: .625rem;
+        }
+
+        &__text {
+            font-weight: 700;
+        }
+
+        &__image {
+            max-width: 5rem;
+            margin-top: -5rem;
+        }
+
+        &__contact {
+            @include list-reset;
+
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+            margin-top: auto;
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            a {
+                position: relative;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+
+//
+//   @section 10. Card - employee contact
+//
+
+
+//
+//   @section 11. Card - congratulation
+//
+
 .card--congratulation {
     .card {
         &__sub-title {
@@ -269,7 +369,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 12. Card - blackboard
+//
+
 .card--blackboard {
     aspect-ratio: 1;
     padding: 2rem;
@@ -293,7 +397,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 13. Card - new job
+//
+
 .card--new-job {
     margin-top: 1rem;
     padding-top: .25rem;
@@ -323,7 +431,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 14. Card - new page
+//
+
 .card--new-page {
     margin-top: 1rem;
     padding-top: .25rem;
@@ -357,7 +469,10 @@
     }
 }
 
-// @todo einsortieren
+//
+//   @section 15. Card - short message
+//
+
 .card--short-message {
     padding-right: 0;
     padding-left: 0;
@@ -373,7 +488,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 16. Card - main news
+//
+
 .card--main-news {
     gap: 2rem;
 
@@ -441,7 +560,11 @@
     }
 }
 
-// @todo einsortieren
+
+//
+//   @section 17. Card - info
+//
+
 .card--info {
     padding: 1.5rem;
     background-color: var(--color-white);

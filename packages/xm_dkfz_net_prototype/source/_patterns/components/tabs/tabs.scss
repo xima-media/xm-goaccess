@@ -45,6 +45,7 @@
 
 .tab {
     &-content {
+        position: relative;
         background: var(--color-gray-100);
     }
 

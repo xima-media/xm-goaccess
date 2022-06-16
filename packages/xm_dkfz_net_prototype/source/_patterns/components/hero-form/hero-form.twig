@@ -12,7 +12,7 @@
                         text: 'Suche nach Name, Vorname, Telefonnummer'
                     },
                     placeholder: 'Suche nach Name, Vorname, Telefonnummer',
-                    autocompleteUrl: 'autocomplete--employee.json'
+                    autocompleteUrl: 'employee--names.json'
                 } only %}
             </div>
             <div class="col-lg-6">
@@ -20,7 +20,8 @@
                     label: {
                         text: 'Suche nach Kompetenz, Thema, Interesse'
                     },
-                    placeholder: 'Suche nach Kompetenz, Thema, Interesse'
+                    placeholder: 'Suche nach Kompetenz, Thema, Interesse',
+                    autocompleteUrl: 'employee--topics.json'
                 } only %}
             </div>
         </div>
@@ -30,7 +31,8 @@
                     label: {
                         text: 'Abteilung'
                     },
-                    placeholder: 'Abteilung'
+                    placeholder: 'Abteilung',
+                    autocompleteUrl: 'employee--departments.json'
                 } only %}
             </div>
             <div class="col-lg-4">
@@ -38,7 +40,8 @@
                     label: {
                         text: 'Funktion'
                     },
-                    placeholder: 'Funktion'
+                    placeholder: 'Funktion',
+                    autocompleteUrl: 'employee--functions.json'
                 } only %}
             </div>
             <div class="col-lg-4">
@@ -56,11 +59,15 @@
                         },
                         {
                             value: '2',
-                            text: 'Gremium 2'
+                            text: 'Kuratorium'
                         },
                         {
                             value: '3',
-                            text: 'Gremium 3'
+                            text: 'Wissenschaftliches Komitee'
+                        },
+                        {
+                            value: '4',
+                            text: 'Wissenschaftlicher Rat'
                         }
                     ],
                     placeholder: 'Funktion'

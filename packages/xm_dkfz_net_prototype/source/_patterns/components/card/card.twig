@@ -54,6 +54,24 @@
             {% endif %}
         </div>
     {% endif %}
+    {% if contact %}
+        <ul class="card__contact">
+            {% for item in contact %}
+                <li class="card__item">
+                    {% if item.icon %}
+                        {% include '@components/icon/icon.twig' with {icon: item.icon, size: 'sm'} %}
+                    {% endif %}
+                    {% if item.url %}
+                        <a href="{{ item.url }}">
+                            {{ item.text }}
+                        </a>
+                    {% else %}
+                        {{ item.text }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     {% if tags %}
         <div class="card__footer">
             <ul class="card__tags">

@@ -355,4 +355,37 @@ ul > li {
     }
 }
 
+// @todo verschieben
+.results {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: var(--color-white);
+
+    &__title,
+    &__items {
+        width: 100%;
+        max-width: $container-default-widths;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &__title {
+        @include h6;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
 // end of basic.scss file

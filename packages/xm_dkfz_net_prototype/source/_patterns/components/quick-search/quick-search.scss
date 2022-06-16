@@ -10,11 +10,13 @@
 
 .quick-search {
     position: relative;
+    z-index: 10;
 
     &__button {
         &--toggle {
             position: relative;
             z-index: 1;
+            flex: 0 0 auto;
         }
 
         &--submit {
@@ -63,6 +65,7 @@
         border: 0;
 
         &__input {
+            min-width: 10rem;
             height: 100%;
             padding: 0 0 0 .75rem;
             color: var(--color-black);

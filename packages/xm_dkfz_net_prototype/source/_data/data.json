@@ -1,6 +1,9 @@
 {
     "prototype": {
         "title": "Prototype",
+        "body": {
+            "class": "prototype"
+        },
         "lang": "de",
         "pages": [
             {
@@ -495,7 +498,7 @@
             "employeeFinder": {
                 "input": {
                     "label": {
-                        "text": "Mitarbeiter finden"
+                        "text": "Suchen nach Name, Vorname, Telefon"
                     },
                     "placeholder": "Suchen nach Name, Vorname, Telefon"
                 }
@@ -647,7 +650,7 @@
                 "department": "M230 – Beschaffung und Materialwirtschaft",
                 "items": [
                     {
-                        "type": "location-pin",
+                        "type": "location",
                         "url": "#",
                         "text": "H1.01.023"
                     },

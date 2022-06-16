@@ -25,6 +25,7 @@ export default {
      */
     debug: false,
     lang: document.documentElement.lang,
+    prototype: document.body.classList.contains('prototype'),
     // transitionTime: 300, // @todo aus CSS auslesen
     transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
     scrollbarWidth: window.innerWidth - document.documentElement.clientWidth,

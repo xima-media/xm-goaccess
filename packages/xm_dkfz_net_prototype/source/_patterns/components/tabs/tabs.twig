@@ -11,26 +11,13 @@
         <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Weiterführende Informationen</button>
     </li>
 </ul>
-<div class="tab-content">
+<div class="tab-content background--expanded">
     <div class="tab-pane fade show active" id="doc" role="tabpanel" aria-labelledby="doc-tab">
         {% for tab in prototype.tabs %}
-        <h5 class="tab-title h6">
-            {{ tab.title }}
-        </h5>
-            {% for tabItem in tab.item %}
-                <div class="tab-item__wrapper row">
-                    <div class="col-md-8 tab-item__title">
-                        {% include '@components/icon/icon.twig' with {icon: 'file'} %} <h6> {{ tabItem.fileName }}</h6>
-                    </div>
-                    <div class="col-md-4 tab-item__detail">
-                        <span class="tab-item__type">{{ tabItem.fileType }}</span>
-                        <span class="tab-item__size">{{ tabItem.fileSize }}</span>
-                        <a href="#" download>{% include '@components/icon/icon.twig' with {icon: 'download'} %}</a>
-                        {% include '@components/icon/icon.twig' with {icon: 'bookmark-add'} %}  @todo funktionality
-                    </div>
-                </div>
-
-            {% endfor %}
+            {% include '@components/tabs/tab--item.twig' with {
+                title: tab.title,
+                tabItem: tab.item
+            } only %}
         {% endfor %}
     </div>
     <div class="tab-pane fade" id="access" role="tabpanel" aria-labelledby="access-tab">

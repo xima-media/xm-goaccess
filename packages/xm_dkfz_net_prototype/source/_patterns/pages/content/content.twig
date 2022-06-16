@@ -10,8 +10,133 @@
         {% endblock content %}
     {% endembed %}
 
+<div class="layout">
+    <div class="layout__item head-area--picture">
+        {# Kopfbereich mit bild#}
+        <div class="pattern-left">
+            {% for item in prototype.pictureHead %}
+                {% include '@components/card/card.twig' with {
+                    image: {
+                        src: item.image.src,
+                        alt: item.image.alt,
+                        position: item.image.position,
+                        orientation: item.image.orientation,
+                        size: item.image.size,
+                        patternColor: item.image.patternColor,
+                        copyright: item.image.copyright,
+                        caption: item.image.caption
+                    }
+                } only %}
+            {% endfor %}
+        </div>
 
-    <div class="spacing--block">
+        <div class="content-wrapper--md">
+            <h2 class="h6 text-copy-small">zuletzt aktualisiert: 12. Dezember 2021</h2>
+            <p class="text-intro">
+                Jede Abteilung des DKFZ, die eine Veranstaltung ausrichtet, stellt ihr eigenes Organisations-team auf, das für die
+                Koordination und Durchführung der Veranstaltung verantwortlich ist. Über eine zentrale Stelle für Veranstaltungsmanagement verfügt
+                das DKFZ nicht. Bitte orientieren Sie bei der Veranstaltungsplanung am unten vorgestellten Leitfaden.
+                Darüber hinaus finden Sie hier Informationen über unsere verbindlich einzuhaltende Richtlinien.
+            </p>
+            <p class="text-copy-standard">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                eu, pretium quis, sem.
+            </p>
+        </div>
+
+        {# Kontact #}
+        <div class="contact--right">
+            {% for item in prototype.contacts %}
+                {% include '@components/contact/contact.twig' with {
+                    background: item.background,
+                    title: item.title,
+                    subTitle: item.subTitle,
+                    items: item.items,
+                    subTitleImage: item.subTitleImage,
+                    name: item.name,
+                    image: {
+                        src: item.image.src,
+                        alt: item.image.alt,
+                        size: item.image.size,
+                        color: item.image.color
+                    }
+                } only %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="layout__item">
+        {# Kopfbereich ohne bild#}
+        <div class="row">
+            <div class="col-md-7 offset-md-1">
+                <h2 class="h6 text-copy-small">zuletzt aktualisiert: 12. Dezember 2021</h2>
+                <p class="text-intro">
+                    Jede Abteilung des DKFZ, die eine Veranstaltung ausrichtet, stellt ihr eigenes Organisations-team auf, das für die
+                    Koordination und Durchführung der Veranstaltung verantwortlich ist. Über eine zentrale Stelle für Veranstaltungsmanagement verfügt
+                    das DKFZ nicht. Bitte orientieren Sie bei der Veranstaltungsplanung am unten vorgestellten Leitfaden.
+                    Darüber hinaus finden Sie hier Informationen über unsere verbindlich einzuhaltende Richtlinien.
+                </p>
+            </div>
+            <div class="col-md-4">
+                {# Kontact #}
+                <div class="background--primary-opacity-10">
+                    {% for item in prototype.contacts %}
+                        {% include '@components/contact/contact.twig' with {
+                            background: item.background,
+                            title: item.title,
+                            subTitle: item.subTitle,
+                            items: item.items,
+                            subTitleImage: item.subTitleImage,
+                            name: item.name,
+                            image: {
+                                src: item.image.src,
+                                alt: item.image.alt,
+                                size: item.image.size,
+                                color: item.image.color
+                            }
+                        } only %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper--md">
+            <p class="text-copy-standard">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                eu, pretium quis, sem.
+            </p>
+        </div>
+    </div>
+
+    <div class="layout__item">
+        <div class="row">
+            <div class="offset-md-1">
+                {# Ansprechpartner #}
+                {% for item in prototype.contactPerson %}
+                    {% include '@components/contact/contact--image.twig' with {
+                        title: item.title,
+                        subTitle: item.subTitle,
+                        name: item.name,
+                        image: {
+                            src: item.image.src,
+                            alt: item.image.alt,
+                            size: item.image.size,
+                            color: item.image.color
+                        },
+                        occupation: item.occupation,
+                        department: item.department,
+                        items: item.items
+                    } only %}
+                {% endfor %}
+                {% include '@components/contact/contact--image.twig' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="layout__item content-wrapper--md">
         {# Infobox #}
         {% for info in prototype.infoBox %}
             {% include '@components/infobox/infobox.twig' with {
@@ -24,13 +149,8 @@
         {% endfor %}
     </div>
 
-    <div class="spacing--block">
-        {# Ansprechpartner #}
-        {% include '@components/contact/contact--image.twig' %}
-    </div>
-
-    <div class="spacing--block">
-    {#Bild-Text-Elemente#}
+    <div class="layout__item">
+        {# Bild-Text-Elemente #}
     {% embed '@components/content-wrapper/content-wrapper.twig' with {
         title: prototype.pictureText.title,
         titleSize: prototype.pictureText.titleSize,
@@ -84,7 +204,7 @@
     {% endfor %}
     </div>
 
-    <div class="spacing--block">
+    <div class="layout__item">
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: prototype.carousel.pictureText.title
         } %}
@@ -126,8 +246,8 @@
         {% endembed %}
     </div>
 
-    <div class="spacing--block">
-        {# video player #}
+    <div class="layout__item">
+        {#  video player #}
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: "Video",
             titleSize: prototype.pictureText.titleSize,
@@ -139,17 +259,17 @@
         {% endembed %}
     </div>
 
-    <div class="spacing--block">
+    <div class="layout__item content-wrapper--md">
         {# Formatierungsmöglichkeiten #}
         {% include '@components/text/text.twig' %}
     </div>
 
-    <div class="spacing--block">
+    <div class="layout__item content-wrapper--md">
         {# Tabelle #}
         {% include '@components/table/table.twig' %}
     </div>
 
-    <div class="spacing--block">
+    <div class="layout__item">
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: "Leitfaden für Veranstaltungsorganisatoren",
             titleSize: prototype.pictureText.titleSize,
@@ -162,19 +282,18 @@
         {% endembed %}
     </div>
 
-    <div class="spacing--block">
+    <div class="layout__item">
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: "Tabelement",
             titleSize: prototype.pictureText.titleSize,
 
         } %}
         {% block content %}
-            {# Tabelement #}
+        {# Tabelement #}
             {% include '@components/tabs/tabs.twig' %}
         {% endblock content %}
         {% endembed %}
     </div>
-
 
     <div class="layout__item fx--expanded">
         <div class="foo--100">
@@ -209,7 +328,7 @@
         </div>
     </div>
 
-
+</div>
 {% endblock main %}
 
 

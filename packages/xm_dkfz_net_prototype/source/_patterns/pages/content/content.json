@@ -311,6 +311,86 @@
                     }
                 }
             ]
-        }
+        },
+        "pictureHead": [
+            {
+                "image": {
+                    "src": "../../dist/image/examples/big.png",
+                    "alt": "Picture title",
+                    "patternColor": "primary",
+                    "size": "xl",
+                    "orientation": "square",
+                    "copyright": "Uwe Anspach",
+                    "caption": "Bildunterschrift zum Bild – Bildformat fix, Bild ist optional"
+                }
+            }
+        ],
+        "contacts": [
+            {
+                "background": "primary-opacity-10",
+                "title": "Kontakt",
+                "subTitle": "Event-Vorstand",
+                "items": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "mail",
+                        "url": "betriebsarzt@dkfz-heidelberg.de",
+                        "text": "betriebsarzt@dkfz-heidelberg.de"
+                    }
+                ],
+                "subTitleImage": "Ansprechpartner",
+                "name": "Fuchs, Andreas",
+                "image": {
+                    "src": "../../dist/image/examples/user.jpg",
+                    "color": "orange",
+                    "size": "xxs"
+                }
+            }
+        ],
+        "contactPerson": [
+            {
+                "title": "Kontakt & Ansprechpartner",
+                "subTitle": "Ansprechpartner",
+                "image": {
+                    "src": "../../dist/image/examples/user.jpg",
+                    "color": "orange",
+                    "size": "xs"
+                },
+                "name": "Fuchs, Andreas",
+                "occupation": "Gruppenleitung EK Investitionsgüter / Dienstleistungen",
+                "department": "M230 – Beschaffung und Materialwirtschaft",
+                "items": [
+                    {
+                        "type": "location-pin",
+                        "url": "#",
+                        "text": "H1.01.023"
+                    },
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651\n"
+                    },
+                    {
+                        "type": "printer",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651\n"
+                    },
+                    {
+                        "type": "mail",
+                        "url": "daniel.hengsbach@dkfz-heidelberg.de",
+                        "text": "daniel.hengsbach@dkfz-heidelberg.de"
+                    }
+                ]
+            }
+        ]
     }
 }

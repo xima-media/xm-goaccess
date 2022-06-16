@@ -28,9 +28,11 @@
 
     &__item {
         position: relative;
+        z-index: 1;
     }
 
     &__caption {
+        margin-top: .625rem;
         margin-bottom: 2rem;
     }
 }
@@ -154,6 +156,13 @@
                 }
             }
         }
+    }
+}
+
+.pattern-left {
+    .picture__pattern {
+        left: -1rem;
+        right: 0;
     }
 }
 // end of image.scss file
