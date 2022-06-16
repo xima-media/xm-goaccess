@@ -54,7 +54,7 @@
 		"xima/xm-dkfz-net-prototype": "*@dev",
 		"xima/xm-dkfz-net-jobs": "*@dev",
 		"xima-media/xm-mail-catcher": "^11.0",
-		"blueways/deployer-recipes": "v2.2.0",
+		"blueways/deployer-recipes": "dev-feature/fb-deployment",
 		"sourcebroker/deployer-extended-typo3": "dev-master as 17.0.0",
 		"georgringer/news": "dev-main"
 	},
