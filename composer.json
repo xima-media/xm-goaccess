@@ -16,6 +16,10 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/Starraider/deployer-extended-typo3"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/maikschneider/deployer-extended-database"
 		}
 	],
 	"require": {
@@ -56,7 +60,8 @@
 		"xima-media/xm-mail-catcher": "^11.0",
 		"blueways/deployer-recipes": "dev-feature/fb-deployment",
 		"sourcebroker/deployer-extended-typo3": "dev-master as 17.0.0",
-		"georgringer/news": "dev-main"
+		"georgringer/news": "dev-main",
+		"sourcebroker/deployer-extended-database": "dev-fix/use-php-executable as 13.0.2"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

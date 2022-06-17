@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c27eb14b8f5058e8d3faf9a1ad992948",
+    "content-hash": "da62c96a4fcc6685c5cb1b0d73cd38fa",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -66,15 +66,16 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "a41580768a026204e09bb634fbb3035cd736eaa8"
+                "reference": "3e67181e9a47a04a3ef535129b1b550bddb5f622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/a41580768a026204e09bb634fbb3035cd736eaa8.zip",
-                "reference": "a41580768a026204e09bb634fbb3035cd736eaa8",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/3e67181e9a47a04a3ef535129b1b550bddb5f622.zip",
+                "reference": "3e67181e9a47a04a3ef535129b1b550bddb5f622",
                 "shasum": ""
             },
             "require": {
+                "sourcebroker/deployer-extended-database": "dev-fix/use-php-executable as 13.0.2",
                 "sourcebroker/deployer-extended-typo3": "17.0.0",
                 "spooner/deployer-information": "1.3.0"
             },
@@ -101,9 +102,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/a41580768a026204e09bb634fbb3035cd736eaa8/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/3e67181e9a47a04a3ef535129b1b550bddb5f622/?at=feature/fb-deployment"
             },
-            "time": "2022-06-17T06:08:09+00:00"
+            "time": "2022-06-17T06:40:43+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -2525,16 +2526,16 @@
         },
         {
             "name": "sourcebroker/deployer-extended-database",
-            "version": "13.0.2",
+            "version": "dev-fix/use-php-executable",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sourcebroker/deployer-extended-database.git",
-                "reference": "4e00c488881115348c286c38f9ef14850c48fe31"
+                "url": "https://github.com/maikschneider/deployer-extended-database.git",
+                "reference": "b8411c939aeaeb671e1b7808fea66ca5ac5ddf65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sourcebroker/deployer-extended-database/zipball/4e00c488881115348c286c38f9ef14850c48fe31",
-                "reference": "4e00c488881115348c286c38f9ef14850c48fe31",
+                "url": "https://api.github.com/repos/maikschneider/deployer-extended-database/zipball/b8411c939aeaeb671e1b7808fea66ca5ac5ddf65",
+                "reference": "b8411c939aeaeb671e1b7808fea66ca5ac5ddf65",
                 "shasum": ""
             },
             "require": {
@@ -2549,7 +2550,6 @@
                     "SourceBroker\\DeployerExtendedDatabase\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2567,10 +2567,9 @@
                 "synchronization"
             ],
             "support": {
-                "issues": "https://github.com/sourcebroker/deployer-extended-database/issues",
-                "source": "https://github.com/sourcebroker/deployer-extended-database/tree/13.0.2"
+                "source": "https://github.com/maikschneider/deployer-extended-database/tree/fix/use-php-executable"
             },
-            "time": "2022-01-08T10:03:54+00:00"
+            "time": "2022-06-17T06:35:04+00:00"
         },
         {
             "name": "sourcebroker/deployer-extended-media",
@@ -11608,6 +11607,12 @@
     ],
     "aliases": [
         {
+            "package": "sourcebroker/deployer-extended-database",
+            "version": "dev-fix/use-php-executable",
+            "alias": "13.0.2",
+            "alias_normalized": "13.0.2.0"
+        },
+        {
             "package": "sourcebroker/deployer-extended-typo3",
             "version": "9999999-dev",
             "alias": "17.0.0",
@@ -11623,6 +11628,7 @@
         "blueways/deployer-recipes": 20,
         "sourcebroker/deployer-extended-typo3": 20,
         "georgringer/news": 20,
+        "sourcebroker/deployer-extended-database": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },
