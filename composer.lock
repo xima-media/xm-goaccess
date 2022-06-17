@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "79f64b1674b2831cecabb7171cb72ff4584744aa"
+                "reference": "98f350e2495fa5e039137cc13e73e1b4e7d7b729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/79f64b1674b2831cecabb7171cb72ff4584744aa.zip",
-                "reference": "79f64b1674b2831cecabb7171cb72ff4584744aa",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/98f350e2495fa5e039137cc13e73e1b4e7d7b729.zip",
+                "reference": "98f350e2495fa5e039137cc13e73e1b4e7d7b729",
                 "shasum": ""
             },
             "require": {
@@ -101,9 +101,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/79f64b1674b2831cecabb7171cb72ff4584744aa/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/98f350e2495fa5e039137cc13e73e1b4e7d7b729/?at=feature/fb-deployment"
             },
-            "time": "2022-06-16T19:07:36+00:00"
+            "time": "2022-06-17T05:29:46+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -9738,12 +9738,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "63cab080a023a4a2ecc61edf778d11ce69b07cfe"
+                "reference": "e41020d0325a3626b93f07435eba3e198482e01a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/63cab080a023a4a2ecc61edf778d11ce69b07cfe",
-                "reference": "63cab080a023a4a2ecc61edf778d11ce69b07cfe",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e41020d0325a3626b93f07435eba3e198482e01a",
+                "reference": "e41020d0325a3626b93f07435eba3e198482e01a",
                 "shasum": ""
             },
             "conflict": {
@@ -9821,7 +9821,7 @@
                 "doctrine/mongodb-odm": ">=1,<1.0.2",
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
-                "dolibarr/dolibarr": "= 12.0.5|<16|>= 3.3.beta1, < 13.0.2",
+                "dolibarr/dolibarr": "<16|= 12.0.5|>= 3.3.beta1, < 13.0.2",
                 "dompdf/dompdf": "<1.2.1",
                 "drupal/core": ">=7,<7.88|>=8,<9.2.13|>=9.3,<9.3.6",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
@@ -10231,7 +10231,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-15T17:06:07+00:00"
+            "time": "2022-06-17T01:34:49+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
