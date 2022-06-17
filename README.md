@@ -1,5 +1,11 @@
 # DKFZ Intranet TYPO3
 
+This is the main repository for the DKFZ TYPO3 project.
+
+* Repository: [Gitlab](https://t3-gitlab-dev.xima.local/dkfz/dkfz-t3-intranet/)
+* Staging-Instance: [stage.dkfz-typo3-dev.xima.local](https://stage.dkfz-typo3-dev.xima.local/)
+* Feature-Branches: [fbd.dkfz-typo3-dev.xima.local](https://fbd.dkfz-typo3-dev.xima.local/)
+
 ## Local setup
 
 1. Clone repository
@@ -10,8 +16,12 @@
 
 When starting the project for the first time, an example database is imported that includes a page structure, some content elements and users.
 
-* Backend user: admin:changeme
-* Frontend user: max@example.com:changeme
+* Backend user:
+  * Username: admin
+  * Password: changeme
+* Frontend user:
+  * Username: max@example.com
+  * Password: changeme
 
 ## Project structure
 
@@ -59,5 +69,4 @@ When starting the project for the first time, an example database is imported th
   * ```dep db:pull staging``` → Download database
   * ```dep media:pull staging``` → Download fileadmin & co.
 
-## Feature Branch Deployment
 
