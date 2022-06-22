@@ -29,10 +29,10 @@ return [
         'backend' => [
             'backendFavicon' => '',
             'backendLogo' => '',
-            'loginBackgroundImage' => '',
+            'loginBackgroundImage' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/backend_login_bg.jpeg',
             'loginFootnote' => '',
-            'loginHighlightColor' => '',
-            'loginLogo' => '',
+            'loginHighlightColor' => '#0047b9',
+            'loginLogo' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/backend_login_logo.svg',
             'loginLogoAlt' => '',
         ],
         'extensionmanager' => [
