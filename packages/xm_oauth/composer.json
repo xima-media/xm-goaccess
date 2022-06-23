@@ -1,0 +1,26 @@
+{
+	"name": "xima/xm-oauth",
+	"description": "OAuth authentication for TYPO3",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Maik Schneider",
+			"email": "maik.schneider@xima.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"socialconnect/auth": "^3.0",
+		"m4tthumphrey/php-gitlab-api": "^11.8.0"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "xm_oauth"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Xima\\XmOauth\\": "Classes"
+		}
+	}
+}
