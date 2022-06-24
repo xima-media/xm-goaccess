@@ -12,7 +12,7 @@
 // svg element
 .icon {
     fill: currentcolor;
-    pointer-events: none;
+    //pointer-events: none;
 }
 
 // css pseudo element
@@ -26,6 +26,7 @@
         mask-position: center;
         mask-size: cover;
         vertical-align: middle;
+        margin-right: 5px;
     }
 
     &--arrow-right {

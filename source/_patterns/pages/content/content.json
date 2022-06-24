@@ -2,7 +2,57 @@
     "prototype": {
         "title": "Betriebsärztlicher Dienst",
         "navigation": {
-            "activeId": "our-center"
+            "activeId": "our-center",
+            "anchor": [
+                {
+                    "url": "Kopfbereich mit Bild",
+                    "text": "Kopfbereich mit Bild"
+                },
+                {
+                    "url": "Kopfbereich ohne Bild",
+                    "text": "Kopfbereich ohne Bild"
+                },
+                {
+                    "url": "Kontakt & Ansprechpartner",
+                    "text": "Kontakt & Ansprechpartner"
+                },
+                {
+                    "url": "Infobox",
+                    "text": "Infobox"
+                },
+                {
+                    "url": "Bild-Text-Elemente",
+                    "text": "Bild-Text-Elemente"
+                },
+                {
+                    "url": "Bilder Slider",
+                    "text": "Bilder Slider"
+                },
+                {
+                    "url": "Video",
+                    "text": "Video"
+                },
+                {
+                    "url": "Text",
+                    "text": "Aufzählungen & Nummerierungen"
+                },
+                {
+                    "url": "Tabellen",
+                    "text": "Tabellen"
+                },
+                {
+                    "url": "Akkordeon",
+                    "text": "Akkordeon"
+                },
+                {
+                    "url": "Tabelement",
+                    "text": "Tabelement"
+                },
+                {
+                    "url": "Weiterführende Informationen",
+                    "text": "Weiterführende Informationen"
+                }
+            ]
         },
         "debug": {
             "screenshot": "topic"
@@ -73,6 +123,7 @@
         "pictureText": {
             "title": "Bild-Text-Elemente",
             "titleSize": "h3",
+            "positionDistance": "left",
             "items": [
                 {
                     "image": {
@@ -250,6 +301,8 @@
         "carousel": {
             "pictureText": {
                 "title": "Bilder Slider",
+                "titleSize": "h3",
+                "positionDistance": "left",
                 "items": [
                     {
                         "image": {
@@ -348,7 +401,10 @@
                     }
                 ],
                 "subTitleImage": "Ansprechpartner",
-                "name": "Fuchs, Andreas",
+                "link": {
+                    "url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+                    "text": "Fuchs, Andreas"
+                },
                 "image": {
                     "src": "../../dist/image/examples/user.jpg",
                     "color": "orange",
@@ -365,12 +421,15 @@
                     "color": "orange",
                     "size": "xs"
                 },
-                "name": "Fuchs, Andreas",
+                "link": {
+                    "url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+                    "text": "Fuchs, Andreas"
+                },
                 "occupation": "Gruppenleitung EK Investitionsgüter / Dienstleistungen",
                 "department": "M230 – Beschaffung und Materialwirtschaft",
                 "items": [
                     {
-                        "type": "location-pin",
+                        "type": "location",
                         "url": "#",
                         "text": "H1.01.023"
                     },

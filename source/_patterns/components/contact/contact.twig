@@ -30,8 +30,10 @@
                 } only %}
 
                 <div class="contact--information">
-                    {% if name %}
-                        <h6>{{ name }}</h6>
+                    {% if link %}
+                        <h6>
+                            <a href="{{ link.url }}">{{ link.text }}</a>
+                        </h6>
                     {% endif %}
                 </div>
             </div>

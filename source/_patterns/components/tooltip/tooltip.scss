@@ -12,12 +12,12 @@
     .tippy {
         &-box {
             background-color: var(--color-black);
-            border-radius: .375rem;
+            border-radius: .125rem;
         }
 
         &-content {
-            padding: .625rem 1.25rem;
-            @include text-copy-small;
+            padding: .375rem;
+            @include text-copy-xxs-small(200,.8px);
         }
 
         &-arrow {

@@ -179,45 +179,22 @@ body {
     }
 }
 
-// @todo umbennen
-[class*="foo--"] {
-    display: grid;
-    gap: 2rem;
-}
+// @todo umbennen und wahrscheinlich auslagern
+.content-box {
+    @include background-blur;
 
-.foo--50-50 {
-    @include media-breakpoint-up(lg) {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-.foo--75-25 {
-    @include media-breakpoint-up(lg) {
-        grid-template-columns: 2fr 1fr;
-    }
-}
-
-.foo--25-75 {
-    @include media-breakpoint-up(lg) {
-        grid-template-columns: 1fr 2fr;
-    }
-}
-
-// @todo umbennen
-.bar {
     position: relative;
     z-index: 1;
+    height: 100%;
     padding: .75rem;
-    background-color: rgba(255,255,255,.8); // @todo variable
-    backdrop-filter: blur(20px); // @todo variable
 
     @include media-breakpoint-up(md) {
         padding: 2.75rem;
     }
 
     &--main-hero {
-        .bar {
-            &__header {  }
+        .content-box {
+            // &__header {  }
 
             &__footer {
                 display: grid;
@@ -246,6 +223,17 @@ body {
 a {
     color: inherit; // mit bootstrap lösen
     text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    // todo für TYPO3 muss das noch individuell angepasst werden. zum Beispiel in dem man dann auf die url der Seite mapped
+    &:not([href="#"]):not([href*="rendered.html"]) {
+        .icon--arrow-right {
+            transform: rotate(-45deg);
+        }
+    }
 }
 
 .link {
@@ -282,17 +270,17 @@ a {
         &-angle {
             @include link-primary--angle;
         }
+
+        + .link--primary {
+            margin-top: 1rem;
+        }
     }
 }
 
-.link--primary + .link--primary {
-    margin-top: 1rem;
-}
-
 // @todo aufräumen > für footer
-ul > li {
-    list-style: none;
-}
+//ul > li {
+//    list-style: none;
+//}
 
 .list-inline {
     display: inline-flex;
@@ -355,7 +343,7 @@ ul > li {
     }
 }
 
-// @todo verschieben
+// @todo verschieben > eigene Kompontente
 .results {
     padding-top: 3rem;
     padding-bottom: 3rem;

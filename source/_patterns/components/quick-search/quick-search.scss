@@ -26,6 +26,8 @@
     }
 
     &__form {
+        @include background-blur($color-white);
+
         opacity: 0;
         display: flex;
         align-items: stretch;
@@ -34,8 +36,6 @@
         right: 0;
         bottom: 0;
         padding: 0 ;
-        background: var(--color-white);
-        backdrop-filter: blur(20px); // @todo mixin/variable
         border-radius: 3rem;
         box-shadow: 0 0 0 .25rem var(--color-white);
         transform: scale3d(0, 1, 1) translate3d(-1.5rem, 0, 0);

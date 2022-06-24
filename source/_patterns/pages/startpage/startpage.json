@@ -26,7 +26,7 @@
                         "url": "#"
                     },
                     "image": {
-                        "src": "../../../Images/examples/user.jpg",
+                        "src": "../../dist/image/examples/user.jpg",
                         "color": "yellow"
                     }
                 },
@@ -37,7 +37,7 @@
                         "url": "#"
                     },
                     "image": {
-                        "src": "../../../Images/examples/user.jpg",
+                        "src": "../../dist/image/examples/user.jpg",
                         "color": "purple"
                     }
                 }
@@ -99,7 +99,7 @@
             "titleWithPattern": true,
             "headerSize": "sm",
             "link": {
-                "url": "#",
+                "url": "https://getbootstrap.com/",
                 "text": "Alle offenen Stellen"
             },
             "items": [
@@ -108,7 +108,7 @@
                     "tags": ["Teilzeit (50%)", "Heidelberg", "ab 01.05.2022"],
                     "type": "new-job",
                     "link": {
-                        "url": "#"
+                        "url": "https://getbootstrap.com/"
                     }
                 },
                 {
@@ -116,7 +116,7 @@
                     "tags": ["Vollzeit", "Heidelberg", "ab 01.05.2022"],
                     "type": "new-job",
                     "link": {
-                        "url": "#"
+                        "url": "link.pages-article"
                     }
                 },
                 {
@@ -169,9 +169,39 @@
                         "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen. Mit den zwei Millionen Euro Fördermitteln will der Immunologe erforschen, wie die Skelettmuskulatur bei chronischen Virusinfekten das Immunsystem unterstützt.",
                         "type": "main-news",
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
-                            "patternColor": "orange",
-                            "position": "left"
+                            "src": "../../dist/image/examples/user.jpg",
+                            "position": "left",
+                            "patternColor": "magenta"
+                        },
+                        "link": {
+                            "url": "#",
+                            "text": "mehr erfahren"
+                        }
+                    },
+                    {
+                        "title": "ERC-Förderung für Guoliang Cui",
+                        "subTitle": "22. März 2022 | Wissenschaft",
+                        "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen. Mit den zwei Millionen Euro Fördermitteln will der Immunologe erforschen, wie die Skelettmuskulatur bei chronischen Virusinfekten das Immunsystem unterstützt.",
+                        "type": "main-news",
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "position": "left",
+                            "patternColor": "primary"
+                        },
+                        "link": {
+                            "url": "#",
+                            "text": "mehr erfahren"
+                        }
+                    },
+                    {
+                        "title": "ERC-Förderung für Guoliang Cui",
+                        "subTitle": "22. März 2022 | Wissenschaft",
+                        "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen. Mit den zwei Millionen Euro Fördermitteln will der Immunologe erforschen, wie die Skelettmuskulatur bei chronischen Virusinfekten das Immunsystem unterstützt.",
+                        "type": "main-news",
+                        "image": {
+                            "src": "../../dist/image/examples/user.jpg",
+                            "position": "left",
+                            "patternColor": "yellow"
                         },
                         "link": {
                             "url": "#",
@@ -214,6 +244,46 @@
                 "title": "Unsere Tools",
                 "cardsWithPattern": true,
                 "items": [
+                    {
+                        "title": "Mitarbeiterportal",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Trainingsportal",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "e.biss",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Rechnungsportal",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
+                    {
+                        "title": "Lorem ipsum",
+                        "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                        "type": "service",
+                        "link": {
+                            "url": "#"
+                        }
+                    },
                     {
                         "title": "Mitarbeiterportal",
                         "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
@@ -332,7 +402,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "primary",
                             "size": "xs"
                         }
@@ -346,7 +416,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "primary",
                             "size": "xs"
                         }
@@ -360,7 +430,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "primary",
                             "size": "xs"
                         }
@@ -374,7 +444,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "primary",
                             "size": "xs"
                         }
@@ -388,7 +458,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "primary",
                             "size": "xs"
                         }
@@ -408,7 +478,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "orange",
                             "size": "xs",
                             "position": "left"
@@ -435,7 +505,7 @@
                             "url": "#"
                         },
                         "image": {
-                            "src": "../../../Images/examples/user.jpg",
+                            "src": "../../dist/image/examples/user.jpg",
                             "color": "green-light",
                             "size": "xs",
                             "position": "left"

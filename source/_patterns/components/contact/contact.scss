@@ -41,15 +41,26 @@
     }
 
     &--subtitle {
-        @include text-copy-small(700);
         margin-bottom: .5rem;
+    }
+
+    &--information {
+        a {
+            &:hover {
+                color: var(--color-gray-900);
+                text-decoration: underline;
+            }
+        }
     }
 
     // contact width image
     &-image {
+        .contact--title {
+            margin-bottom: 1.5rem;
+        }
+
         &--container {
             display: flex;
-            margin-left: 1rem;
 
             > .card {
                 width: auto;
@@ -72,6 +83,10 @@
 
     // contact width person
     &--person {
+        > .contact--subtitle {
+            @include text-copy-small(700);
+        }
+
         &-container {
             display: flex;
             .card {

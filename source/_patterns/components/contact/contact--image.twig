@@ -18,9 +18,11 @@
         } only %}
 
         <div class="contact--information">
-            <div class="contact--information-date">
-                {% if name %}
-                    <h6>{{ name }}</h6>
+            <div class="contact--information-data">
+                {% if link %}
+                    <h6>
+                        <a href="{{ link.url }}">{{ link.text }}</a>
+                    </h6>
                 {% endif %}
                 <p>
                     {% if occupation %}{{ occupation }} <br/>{% endif %}

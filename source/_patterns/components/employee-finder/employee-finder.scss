@@ -9,10 +9,10 @@
 //
 
 .employee-finder {
+    @include background-blur($color-primary);
+
     padding: 2.125rem 3rem 3.25rem 3rem;
     color: var(--color-white);
-    background-color: rgba($color-primary, .8);
-    backdrop-filter: blur(20px); // @todo variable
 
     @include media-breakpoint-up(md) {
         position: absolute;

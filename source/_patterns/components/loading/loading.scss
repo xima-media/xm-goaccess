@@ -12,7 +12,7 @@
     @include loading;
 }
 
-@keyframes idea {
+@keyframes loading {
     0% {
         clip-path: polygon(50% 50%, 0% 100%, 0% 100%);
     }

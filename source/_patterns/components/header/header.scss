@@ -21,6 +21,8 @@
 
     // mobile background
     &::before {
+        @include background-blur($color-black, .5);
+
         opacity: 0;
         content: '';
         position: fixed;
@@ -29,8 +31,6 @@
         bottom: 0;
         left: 0;
         z-index: -1;
-        background-color: rgba(0, 0, 0, .5); // @todo
-        backdrop-filter: blur(20px); // @todo
         pointer-events: none;
         transition: opacity $transition-time * .5 $transition-time;
 

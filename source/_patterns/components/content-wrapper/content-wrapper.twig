@@ -3,7 +3,7 @@
 <div class="content-wrapper {{ pattern.visible ? 'content-wrapper--title-with-pattern' : '' }}  {{ headerSize ? 'content-wrapper--' ~ headerSize : '' }}">
     {% if title %}
         <div class="content-wrapper__header">
-            <h2 class="content-wrapper__title {{ titleSize|default('h4') }}">{{ title }}</h2>
+            <h2 class="content-wrapper__title-{{ positionDistance }} {{ titleSize|default('h4') }}">{{ title }}</h2>
             {% if link.url %}
                 <a class="content-wrapper__link" href="{{ link.url }}">
                     {{ link.text }}

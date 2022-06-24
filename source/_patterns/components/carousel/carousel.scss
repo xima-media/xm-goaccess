@@ -3,6 +3,7 @@
 //      1. Carousel default
 //      2. Carousel navigation
 //      3. Carousel pagination
+//      4. Carousel - cards with pattern
 //
 
 
@@ -21,7 +22,7 @@
         max-width: calc(100vw - 3rem);
     }
 
-    .bar & {
+    .content-box & {
         @include media-breakpoint-up(md) {
             max-width: calc(100vw - 7.5rem);
         }
@@ -31,7 +32,7 @@
         }
     }
 
-    .bar--main-hero & {
+    .content-box--main-hero & {
         max-width: calc(100vw - 3.5rem);
 
         @include media-breakpoint-up(md) {
@@ -51,37 +52,6 @@
         margin-right: auto;
         margin-left: auto;
         z-index: 1;
-
-        // background pattern
-        .carousel--cards-with-pattern & {
-            &::before,
-            &::after {
-                @include background-pattern($color-gray-900);
-
-                content: '';
-                position: absolute;
-                z-index: -1;
-                width: 11.75rem;
-                aspect-ratio: 1;
-            }
-
-            &::before {
-                top: .25rem;
-                left: .25rem;
-            }
-
-            &::after {
-                right: .25rem;
-                bottom: .25rem;
-            }
-
-            .card {
-                height: 100%;
-                //background-color: var(--color-white);
-                background-color: rgba(255,255,255,.8); // @todo variable
-                backdrop-filter: blur(20px); // @todo variable
-            }
-        }
     }
 
     &__body {
@@ -225,6 +195,23 @@
     }
 }
 
+.background--expanded {
+    .carousel__button {
+        &.swiper-button-prev {
+            @include media-breakpoint-up(lg) {
+                left: -13.125rem;
+            }
+
+        }
+
+        &.swiper-button-next {
+            @include media-breakpoint-up(lg) {
+                right: -13.125rem;
+            }
+        }
+    }
+}
+
 
 //
 //   @section 3. Carousel pagination
@@ -256,6 +243,7 @@
     .swiper-pagination-bullet {
         @include size(.5rem);
 
+        opacity: .5;
         display: inline-block;
         background-color: var(--color-black);
         border-radius: 50%;
@@ -271,12 +259,21 @@
         }
 
         &-active {
+            opacity: 1;
             background-color: transparent !important; // be strong
-            box-shadow: 0 0 0 .25rem var(--color-black);
+            box-shadow: 0 0 0 .25rem currentColor; //var(--color-black);
 
             // @todo für andere Farben noch aufbereiten
+            .carousel--color-primary & {
+                box-shadow: 0 0 0 .25rem var(--color-primary);
+            }
+
             .carousel--color-orange & {
                 box-shadow: 0 0 0 .25rem var(--color-orange);
+            }
+
+            .carousel--color-cyan & {
+                box-shadow: 0 0 0 .25rem var(--color-cyan);
             }
         }
     }
@@ -289,6 +286,57 @@
             bottom: 0;
             left: auto;
             width: auto;
+        }
+    }
+}
+
+
+//
+//   @section 4. Carousel - cards with pattern
+//
+
+// background pattern
+.carousel--cards-with-pattern {
+    .carousel {
+        &__content {
+            &::before,
+            &::after {
+                @include background-pattern($color-gray-900);
+
+                content: '';
+                position: absolute;
+                z-index: -1;
+                width: 11.75rem;
+                aspect-ratio: 1;
+            }
+
+            &::before {
+                top: .25rem;
+                left: .25rem;
+            }
+
+            &::after {
+                right: .25rem;
+                bottom: .25rem;
+            }
+
+            .card {
+                @include background-blur;
+
+                height: 100%;
+            }
+        }
+    }
+
+    &[data-count='1'],
+    &[data-count='2'],
+    &[data-count='3'] {
+        .carousel {
+            &__content {
+                &::after {
+                    content: none;
+                }
+            }
         }
     }
 }

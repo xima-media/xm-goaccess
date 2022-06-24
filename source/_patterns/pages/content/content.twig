@@ -10,8 +10,10 @@
         {% endblock content %}
     {% endembed %}
 
+    {% include '@components/navigation/navigation--anchor.twig' %}
+
 <div class="layout">
-    <div class="layout__item head-area--picture">
+    <div class="layout__item head-area--picture" id="Kopfbereich mit Bild">
         {# Kopfbereich mit bild#}
         <div class="pattern-left">
             {% for item in prototype.pictureHead %}
@@ -55,7 +57,10 @@
                     subTitle: item.subTitle,
                     items: item.items,
                     subTitleImage: item.subTitleImage,
-                    name: item.name,
+                    link: {
+                        url: item.link.url,
+                        text: item.link.text
+                    },
                     image: {
                         src: item.image.src,
                         alt: item.image.alt,
@@ -67,7 +72,7 @@
         </div>
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Kopfbereich ohne Bild">
         {# Kopfbereich ohne bild#}
         <div class="row">
             <div class="col-md-7 offset-md-1">
@@ -111,7 +116,7 @@
         </div>
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Kontakt & Ansprechpartner">
         <div class="row">
             <div class="offset-md-1">
                 {# Ansprechpartner #}
@@ -119,7 +124,10 @@
                     {% include '@components/contact/contact--image.twig' with {
                         title: item.title,
                         subTitle: item.subTitle,
-                        name: item.name,
+                        link: {
+                            url: item.link.url,
+                            text: item.link.text
+                        },
                         image: {
                             src: item.image.src,
                             alt: item.image.alt,
@@ -136,7 +144,7 @@
         </div>
     </div>
 
-    <div class="layout__item content-wrapper--md">
+    <div class="layout__item content-wrapper--md" id="Infobox">
         {# Infobox #}
         {% for info in prototype.infoBox %}
             {% include '@components/infobox/infobox.twig' with {
@@ -149,11 +157,12 @@
         {% endfor %}
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Bild-Text-Elemente">
         {# Bild-Text-Elemente #}
     {% embed '@components/content-wrapper/content-wrapper.twig' with {
         title: prototype.pictureText.title,
         titleSize: prototype.pictureText.titleSize,
+        positionDistance: prototype.pictureText.positionDistance,
 
     } %}
          {% block content %}
@@ -204,12 +213,15 @@
     {% endfor %}
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Bilder Slider">
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
-            title: prototype.carousel.pictureText.title
+            title: prototype.carousel.pictureText.title,
+            titleSize: prototype.pictureText.titleSize,
+            positionDistance: prototype.pictureText.positionDistance,
         } %}
             {% block content %}
                 <!-- carousel -->
+                <div class="background--expanded">
                 {% embed '@components/carousel/carousel.twig' with {
                     cols: {
                         xs: 1,
@@ -217,11 +229,13 @@
                         md: 1,
                         lg: 1
                     },
-                    paginationStyle: {
-                        xs: 'fraction',
-                        sm: 'fraction',
-                        md: 'fraction',
-                        lg: 'fraction',
+                    pagination: {
+                        style: {
+                            xs: 'fraction',
+                            sm: 'fraction',
+                            md: 'fraction',
+                            lg: 'fraction',
+                        }
                     }
                 } %}
                     {% block content %}
@@ -242,16 +256,17 @@
                         {% endfor %}
                     {% endblock content %}
                 {% endembed %}
+                </div>
             {% endblock content %}
         {% endembed %}
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Video">
         {#  video player #}
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: "Video",
             titleSize: prototype.pictureText.titleSize,
-
+            positionDistance: "left"
         } %}
             {% block content %}
                 {% include '@components/video-player/video-player.twig' %}
@@ -259,17 +274,28 @@
         {% endembed %}
     </div>
 
-    <div class="layout__item content-wrapper--md">
+    <div class="layout__item content-wrapper--md" id="Text">
         {# Formatierungsmöglichkeiten #}
         {% include '@components/text/text.twig' %}
     </div>
 
-    <div class="layout__item content-wrapper--md">
-        {# Tabelle #}
-        {% include '@components/table/table.twig' %}
+    <div class="layout__item" id="Tabellen">
+        {# Tabellen #}
+
+        {% embed '@components/content-wrapper/content-wrapper.twig' with {
+            title: "Tabellen",
+            titleSize: prototype.pictureText.titleSize,
+            positionDistance: "left"
+        } %}
+            {% block content %}
+                <div class="content-wrapper--md">
+                {% include '@components/table/table.twig' %}
+                </div>
+            {% endblock content %}
+        {% endembed %}
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Akkordeon">
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: "Leitfaden für Veranstaltungsorganisatoren",
             titleSize: prototype.pictureText.titleSize,
@@ -282,11 +308,11 @@
         {% endembed %}
     </div>
 
-    <div class="layout__item">
+    <div class="layout__item" id="Tabelement">
         {% embed '@components/content-wrapper/content-wrapper.twig' with {
             title: "Tabelement",
             titleSize: prototype.pictureText.titleSize,
-
+            positionDistance: "left"
         } %}
         {% block content %}
         {# Tabelement #}
@@ -295,39 +321,36 @@
         {% endembed %}
     </div>
 
-    <div class="layout__item fx--expanded">
-        <div class="foo--100">
-            <div class="bar">
-                <!-- Folgende Themen könnten Sie auch interessieren -->
-                {% embed '@components/content-wrapper/content-wrapper.twig' with {
-                    title: prototype.topics.title,
-                    pattern: {
-                        visible: prototype.topics.titleWithPattern
-                    }
-                } %}
-                    {% block content %}
-                        <div class="content-wrapper__horizontal">
-                        {% for item in prototype.topics.items %}
-                            {% include '@components/card/card.twig' with {
-                                title: item.title,
-                                subTitle: item.subTitle,
-                                link: {
-                                    href: item.link.url
-                                },
-                                image: {
-                                    src: item.image.src,
-                                    color: item.image.color,
-                                    size: item.image.size
-                                }
-                            } only %}
-                        {% endfor %}
-                        </div>
-                    {% endblock content %}
-                {% endembed %}
-            </div>
+    <div class="layout__item fx--expanded" id="Weiterführende Informationen">
+        <div class="content-box">
+            <!-- Folgende Themen könnten Sie auch interessieren -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.topics.title,
+                pattern: {
+                    visible: prototype.topics.titleWithPattern
+                }
+            } %}
+                {% block content %}
+                    <div class="content-wrapper__horizontal">
+                    {% for item in prototype.topics.items %}
+                        {% include '@components/card/card.twig' with {
+                            title: item.title,
+                            subTitle: item.subTitle,
+                            link: {
+                                href: item.link.url
+                            },
+                            image: {
+                                src: item.image.src,
+                                color: item.image.color,
+                                size: item.image.size
+                            }
+                        } only %}
+                    {% endfor %}
+                    </div>
+                {% endblock content %}
+            {% endembed %}
         </div>
     </div>
-
 </div>
 {% endblock main %}
 

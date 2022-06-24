@@ -31,16 +31,17 @@
         background-color: var(--color-gray-900);
         border: 0;
         border-radius: 50%;
+        cursor: auto !important;
 
         //&:hover,
         //&:focus,
-        &.fx--active {
-            ~ .copyright {
-                &__content {
-                    display: flex;
-                }
-            }
-        }
+        //&.fx--active {
+        //    ~ .copyright {
+        //        &__content {
+        //            display: flex;
+        //        }
+        //    }
+        //}
 
         [class*='icon-'] {
             @include size(1rem);
@@ -48,7 +49,7 @@
     }
 
     &__content {
-        display: none;
+        //display: none;
         align-items: flex-end;
         justify-content: flex-end;
         position: absolute;
