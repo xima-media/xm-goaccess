@@ -1,0 +1,11 @@
+{
+    "prototype": {
+        "title": "Inhaltsseite",
+        "navigation": {
+            "activeId": "our-center"
+        },
+        "debug": {
+            "screenshot": "article--01"
+        }
+    }
+}

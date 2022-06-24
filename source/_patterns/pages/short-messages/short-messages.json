@@ -1,0 +1,11 @@
+{
+    "prototype": {
+        "title": "Kurzmeldungen",
+        "navigation": {
+            "activeId": "news"
+        },
+        "debug": {
+            "screenshot": "short-messages--list-view"
+        }
+    }
+}

@@ -1,0 +1,352 @@
+//
+//    @tableOfContent
+//      1. Color
+//      2. Background colors
+//      3. Color pattern
+//      4. Image color
+//      5. Corner colors
+//
+
+
+//
+//   @section 1. Color
+//
+
+.color {
+    &--primary {
+        color: var(--color-primary);
+    }
+
+    &--primary-opacity-10 {
+        color: var(--color-primary-opacity-10);
+    }
+
+    &--blue-900 {
+        color: var(--color-blue-900);
+    }
+
+    &--cyan {
+        color: var(--color-cyan);
+    }
+
+    &--green {
+        color: var(--color-green);
+    }
+
+    &--green-light {
+        color: var(--color-green-light);
+    }
+
+    &--yellow {
+        color: var(--color-yellow);
+    }
+
+    &--orange {
+        color: var(--color-orange);
+    }
+
+    &--magenta {
+        color: var(--color-magenta);
+    }
+
+    &--purple {
+        color: var(--color-purple);
+    }
+
+    &--gray-100 {
+        color: var(--color-gray-100);
+    }
+
+    &--gray-200 {
+        color: var(--color-gray-200);
+    }
+
+    &--gray-700 {
+        color: var(--color-gray-700);
+    }
+
+    &--gray-900 {
+        color: var(--color-gray-900);
+    }
+}
+
+
+//
+//   @section 2. Background colors
+//
+
+.background {
+    &--primary {
+        background-color: $color-primary;
+    }
+
+    &--primary-opacity-10 {
+        background-color: $color-primary-opacity-10;
+    }
+
+    &--blue-900 {
+        background-color: $color-blue-900;
+    }
+
+    &--cyan {
+        background-color: $color-cyan;
+    }
+
+    &--green {
+        background-color: $color-green;
+    }
+
+    &--green-light {
+        background-color: $color-green-light;
+    }
+
+    &--yellow {
+        background-color: $color-yellow;
+    }
+
+    &--orange {
+        background-color: $color-orange;
+    }
+
+    &--magenta {
+        background-color: $color-magenta;
+    }
+
+    &--purple {
+        background-color: $color-purple;
+    }
+
+    &--gray-100 {
+        background-color: $color-gray-100;
+    }
+
+    &--gray-200 {
+        background-color: $color-gray-200;
+    }
+
+    &--gray-700 {
+        background-color: $color-gray-700;
+    }
+
+    &--gray-900 {
+        color: var(--color-white);
+        background-color: $color-gray-900;
+    }
+
+    &--white {
+        background-color: $color-white;
+    }
+}
+
+.background--expanded {
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        z-index: -1;
+        width: calc(100vw - var(--scrollbar-width)); // @todo minus
+        background-color: inherit;
+        transform: translateX(-50%);
+    }
+}
+
+
+//
+//   @section 3. Color pattern
+//   https://iros.github.io/patternfills/sample_svg.html
+//
+
+.pattern {
+    &--primary {
+        @include background-pattern($color-primary);
+    }
+
+    &--blue-900 {
+        @include background-pattern($color-blue-900);
+    }
+
+    &--cyan {
+        @include background-pattern($color-cyan);
+    }
+
+    &--green {
+        @include background-pattern($color-green);
+    }
+
+    &--green-light {
+        @include background-pattern($color-green-light);
+    }
+
+    &--orange {
+        @include background-pattern($color-orange);
+    }
+
+    &--magenta {
+        @include background-pattern($color-magenta);
+    }
+
+    &--gray-900 {
+        @include background-pattern($color-gray-900);
+    }
+
+    &--white {
+        @include background-pattern($color-white);
+    }
+}
+
+
+//
+//   @section 4. Image color
+//
+
+[class*='image-color-'] {
+    position: relative;
+    background-color: var(--color-gray-100);
+
+    // @todo mixin zusammen mit .picture--no-image ::after erstellen
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -.375rem; // @todo variable
+        left: -.375rem; // @todo variable
+        z-index: -1;
+        width: calc(50% + .375rem); // @todo variable
+        aspect-ratio: 1;
+    }
+
+    &::before {
+        background-color: $color-white;
+    }
+
+    &::after {
+        opacity: .7;
+    }
+}
+
+.image-color {
+    &--primary {
+        &::after {
+            background-color: var(--color-primary);
+        }
+    }
+
+    &--blue-900 {
+        &::after {
+            background-color: var(--color-blue-900);
+        }
+    }
+
+    &--cyan {
+        &::after {
+            background-color: var(--color-cyan);
+        }
+    }
+
+    &--green {
+        &::after {
+            background-color: var(--color-green);
+        }
+    }
+
+    &--green-light {
+        &::after {
+            background-color: var(--color-green-light);
+        }
+    }
+
+    &--yellow {
+        &::after {
+            background-color: var(--color-yellow);
+        }
+    }
+
+    &--orange {
+        &::after {
+            background-color: var(--color-orange);
+        }
+    }
+
+    &--magenta {
+        &::after {
+            background-color: var(--color-magenta);
+        }
+    }
+
+    &--purple {
+        &::after {
+            background-color: var(--color-purple);
+        }
+    }
+
+    &--transparent {
+        &::after {
+            content: none;
+        }
+    }
+}
+
+
+//
+//   @section 5. Corner colors
+//
+
+[class*="corner-"] {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-white);
+    }
+
+    &::before {
+        z-index: -1;
+    }
+
+    &::after {
+        z-index: -2;
+        transform: translate3d(-1rem, 1rem, 0);
+    }
+}
+
+.corner {
+    &--magenta {
+        &::after {
+            background-color: $color-magenta;
+        }
+    }
+
+    &--orange {
+        &::after {
+            background-color: $color-orange;
+        }
+    }
+
+    &--green-light {
+        &::after {
+            background-color: $color-green-light;
+        }
+    }
+
+    &--yellow {
+        &::after {
+            background-color: $color-yellow;
+        }
+    }
+
+    &--right {
+        &::after {
+            transform: translate3d(1rem, 1rem, 0);
+        }
+    }
+}
+
+// end of color.scss file

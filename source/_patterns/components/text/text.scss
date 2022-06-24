@@ -1,0 +1,45 @@
+//
+//    @tableOfContent
+//      1. Text
+//
+
+
+//
+//   @section 1. Text
+//
+
+.text {
+    &--title {
+        margin-bottom: 2.5rem;
+    }
+
+    .list {
+        &-dot {
+            list-style: disc;
+            @include text-copy-standard(false, .6px);
+        }
+
+        &-number {
+            @include text-copy-standard;
+        }
+    }
+
+    &--items {
+        padding-left: 3.375rem;
+    }
+
+    &--gap {
+        .text {
+            &__item {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+
+    &--bold {
+        font-weight: 700;
+    }
+}
+
+
+// end of text.scss file

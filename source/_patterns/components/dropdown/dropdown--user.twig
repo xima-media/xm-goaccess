@@ -1,0 +1,17 @@
+<!-- Component Start: dropdown--user -->
+
+<div class="dropdown">
+    <button class="{# dropdown-toggle #} button button--icon-only button--white" id="dropdown-menu-link" data-bs-toggle="dropdown" aria-expanded="false">
+        {% include '@components/image/image.twig' with {
+            src: '../../../Images/examples/user.jpg'
+        } %}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
+        <li><a class="dropdown-item" href="#">Onboarding Informationen</a></li>
+        <li><a class="dropdown-item" href="#">Profil bearbeiten</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Abmelden</a></li>
+    </ul>
+</div>
+
+<!-- Components End: dropdown--user -->

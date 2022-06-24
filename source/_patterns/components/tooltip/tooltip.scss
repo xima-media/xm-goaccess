@@ -1,0 +1,29 @@
+//
+//    @tableOfContent
+//      1. Tooltip
+//
+
+
+//
+//   @section 1. Tooltip
+//
+
+[data-tippy-root] {
+    .tippy {
+        &-box {
+            background-color: var(--color-black);
+            border-radius: .375rem;
+        }
+
+        &-content {
+            padding: .625rem 1.25rem;
+            @include text-copy-small;
+        }
+
+        &-arrow {
+            color: var(--color-black);
+        }
+    }
+}
+
+// end of tooltip.scss file

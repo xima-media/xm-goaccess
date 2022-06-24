@@ -1,0 +1,42 @@
+<!-- Component Start: contact -->
+
+<div class="contact contact--background">
+    <h4 class="contact--title">{{ title }}</h4>
+    <ul class="contact__items">
+        <li class="contact__item contact--subtitle">
+            {{ subTitle }}
+        </li>
+        {% for item in items %}
+            <li class="contact__item">
+                {% include '@components/icon/icon.twig' with {icon: item.type} %}
+                <a class="contact__link" href="{{ item.type == 'mail' ? 'mailto' : 'tel' }}:{{ item.url }}">{{ item.text }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if image %}
+        <div class="contact--person">
+            {% if subTitleImage %}
+                <h4 class="contact--subtitle">{{ subTitleImage }}</h4>
+            {% endif %}
+
+            <div class="contact--person-container">
+                {% include '@components/card/card.twig' with {
+                    image: {
+                        src: image.src,
+                        color: image.color,
+                        size: image.size
+                    }
+                } only %}
+
+                <div class="contact--information">
+                    {% if name %}
+                        <h6>{{ name }}</h6>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Components End: contact -->

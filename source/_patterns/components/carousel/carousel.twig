@@ -1,0 +1,28 @@
+<!-- Component Start: carousel -->
+
+<div
+    class="
+        carousel
+        {{ cardsWithPattern ? 'carousel--cards-with-pattern' : '' }}
+        {{ color ? 'carousel--color-' ~ color : '' }}
+        {{ pagination ? 'carousel--pagination-' ~ pagination : '' }}
+    "
+    data-cols='{"xs": "{{ cols.xs|default(1) }}", "sm": "{{ cols.sm|default(2) }}", "md": "{{ cols.md|default(3) }}", "lg": "{{ cols.lg|default(4) }}"}'
+    data-pagination-style='{"xs": "{{ paginationStyle.xs|default('fraction') }}", "sm": "{{ paginationStyle.sm|default('bullet') }}", "md": "{{ paginationStyle.md|default('bullet') }}", "lg": "{{ paginationStyle.lg|default('bullet') }}"}'
+>
+    <div class="carousel__content swiper">
+        <div class="carousel__body swiper-wrapper">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+    {# @todo pagination wird nicht a11y konform ausgespielt, obwohl in demo korrekt!? #}
+    <div class="carousel__pagination swiper-pagination"></div>
+    <button class="carousel__button swiper-button-prev" aria-label="Zurück">
+        {% include '@components/icon/icon.twig' with {icon: 'chevron-left'} %}
+    </button>
+    <button class="carousel__button swiper-button-next" aria-label="Vor">
+        {% include '@components/icon/icon.twig' with {icon: 'chevron-right'} %}
+    </button>
+</div>
+
+<!-- Components End: carousel -->

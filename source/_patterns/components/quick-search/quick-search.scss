@@ -1,0 +1,79 @@
+//
+//    @tableOfContent
+//      1. Quick search
+//
+
+
+//
+//   @section 1. Quick search
+//
+
+.quick-search {
+    position: relative;
+    z-index: 10;
+
+    &__button {
+        &--toggle {
+            position: relative;
+            z-index: 1;
+            flex: 0 0 auto;
+        }
+
+        &--submit {
+            // mobile fix
+            color: var(--color-primary) !important; // be strong
+        }
+    }
+
+    &__form {
+        opacity: 0;
+        display: flex;
+        align-items: stretch;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0 ;
+        background: var(--color-white);
+        backdrop-filter: blur(20px); // @todo mixin/variable
+        border-radius: 3rem;
+        box-shadow: 0 0 0 .25rem var(--color-white);
+        transform: scale3d(0, 1, 1) translate3d(-1.5rem, 0, 0);
+        transform-origin: 100% 50%;
+    }
+
+    &.fx--open {
+        .quick-search {
+            &__form {
+                opacity: 1;
+                transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+                transition: opacity $transition-time, transform $transition-time; // cubic-bezier(.8, -.5, .2, 1.4);
+            }
+
+            &__button {
+                &--toggle {
+                    transition: z-index 0s $transition-time;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+    .field {
+        margin: -.25rem 1rem -.25rem -.25rem;
+        padding: 0;
+        border: 0;
+
+        &__input {
+            min-width: 10rem;
+            height: 100%;
+            padding: 0 0 0 .75rem;
+            color: var(--color-black);
+            background-color: transparent;
+            border-color: transparent;
+            border-radius: 3rem;
+        }
+    }
+}
+
+// end of quick-search.scss file
