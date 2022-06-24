@@ -1,4 +1,0 @@
----
-title: Accordion
-state: incomplete
----
