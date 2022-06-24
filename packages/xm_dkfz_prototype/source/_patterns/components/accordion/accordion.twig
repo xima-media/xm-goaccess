@@ -12,7 +12,7 @@
                     {% set accordionItemId = random() %}
                 <li>
                     <h3 id="accordionItem{{ accordionItemId }}" class="accordion__items--subtitle">
-                    <button class="accordion-button"
+                    <button class="accordion-button collapsed"
                             type="button"
                             aria-expanded="false"
                             data-bs-toggle="collapse"
@@ -29,7 +29,7 @@
                          id="accordionSection{{ accordionItemId }}"
                          data-bs-parent="#accordion{{ accordionId }}"
                          aria-labelledby="accordionItem{{ accordionItemId }}">
-                        <div class="accordion-body accordion__panel">
+                        <div class="accordion-body accordion__panel background--expanded">
                             <p class="text-copy-standard spacing--bottom">
                                 {{ accordionItem.text }}
                             </p>

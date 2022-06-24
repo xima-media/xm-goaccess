@@ -1,7 +1,7 @@
 /**
  *    Anchor navigation
  *
- *    @tableofcontent
+ *    @tableOfContent
  *      1. Dependencies
  *       1.1 Import css
  *       1.2 Import js
@@ -25,18 +25,74 @@ import app from '../basic/basic'
  */
 
 class NavigationAnchor {
+    timelineItemWidth: number;
+    get scrollWidth(): number {
+        return this._scrollWidth;
+    }
+
+    set scrollWidth(value: number) {
+        this._scrollWidth = value;
+    }
+    private _scrollWidth: number;
+    get containerItemEl(): NodeListOf<HTMLElement> {
+        return this._containerItemEl;
+    }
+
+    set containerItemEl(value: NodeListOf<HTMLElement>) {
+        this._containerItemEl = value;
+    }
+    private _containerItemEl: NodeListOf<HTMLElement>;
+    get containerItemsEl(): HTMLElement {
+        return this._containerItemsEl;
+    }
+
+    set containerItemsEl(value: HTMLElement) {
+        this._containerItemsEl = value;
+    }
+    private _containerItemsEl: HTMLElement;
+    get buttonScrollNextEl(): HTMLButtonElement {
+        return this._buttonScrollNextEl;
+    }
+
+    set buttonScrollNextEl(value: HTMLButtonElement) {
+        this._buttonScrollNextEl = value;
+    }
+    private _buttonScrollNextEl: HTMLButtonElement;
+    get buttonScrollPrevEl(): HTMLButtonElement {
+        return this._buttonScrollPrevEl;
+    }
+
+    set buttonScrollPrevEl(value: HTMLButtonElement) {
+        this._buttonScrollPrevEl = value;
+    }
+    private _buttonScrollPrevEl: HTMLButtonElement;
+    get buttonEl(): NodeListOf<HTMLButtonElement> {
+        return this._buttonEl;
+    }
+
+    set buttonEl(value: NodeListOf<HTMLButtonElement>) {
+        this._buttonEl = value;
+    }
+    private _buttonEl: NodeListOf<HTMLButtonElement>;
+    get container(): HTMLElement {
+        return this._container;
+    }
+
+    set container(value: HTMLElement) {
+        this._container = value;
+    }
+    private _container: HTMLElement;
     constructor() {
         app.log('component "anchor navigation" loaded')
 
-        if (document.querySelectorAll('.navigation__button').length) {
-            this.container = document.querySelector('.navigation__button')
-        }
-        this.buttonEl = this.container.querySelectorAll('.navigation__button')
-        this.buttonScrollPrevEl = this.container.querySelector('.navigation__button.left')
-        this.buttonScrollNextEl = this.container.querySelector('.navigation__button.right')
-        this.containerItemsEl = this.container.querySelector('.navigation__items')
-        this.containerItemEl = this.container.querySelectorAll('.navigation__item')
-        this.scrollWidth = 200
+
+        this._container = document.querySelector<HTMLElement>('.navigation--anchor')
+        this._buttonEl = this._container.querySelectorAll<HTMLButtonElement>('.navigation__button')
+        this._buttonScrollPrevEl = this._container.querySelector<HTMLButtonElement>('.navigation__button.left')
+        this._buttonScrollNextEl = this._container.querySelector<HTMLButtonElement>('.navigation__button.right')
+        this._containerItemsEl = this._container.querySelector<HTMLElement>('.navigation__items')
+        this._containerItemEl = this._container.querySelectorAll<HTMLElement>('.navigation__item')
+        this._scrollWidth = 200
 
         // methods
         this.events()
@@ -50,29 +106,29 @@ class NavigationAnchor {
         const self = this
 
         // buttons
-        self.buttonEl.forEach((button) => button.addEventListener('click', () => self.scrollToTimelineItem(button)))
+        self._buttonEl.forEach((button) => button.addEventListener('click', () => self.scrollToTimelineItem({buttonEl: button})))
 
         // horizontal scrolling
-        self.containerItemEl.forEach((item) => self.activateTimelineItemByScrolling(item))
+        self._containerItemEl.forEach((item) => self.activateTimelineItemByScrolling({item: item}))
     }
 
     /**
      * Scrolling
      */
-    scrollToTimelineItem (buttonEl) {
+    scrollToTimelineItem ({buttonEl}: { buttonEl: any }) {
         // variables
         const self = this
-        const scrollPositionX = self.containerItemsEl.scrollLeft
+        const scrollPositionX = self._containerItemsEl.scrollLeft
 
         // scroll direction
         if (buttonEl.classList.contains('right')) {
-            self.timelineItemWidth = scrollPositionX + self.scrollWidth
+            self.timelineItemWidth = scrollPositionX + self._scrollWidth
         } else if (buttonEl.classList.contains('left')) {
-            self.timelineItemWidth = scrollPositionX - self.scrollWidth
+            self.timelineItemWidth = scrollPositionX - self._scrollWidth
         }
 
         // smooth scrolling
-        self.containerItemsEl.scrollTo({
+        self._containerItemsEl.scrollTo({
             left: self.timelineItemWidth,
             behavior: 'smooth'
         })
@@ -81,7 +137,7 @@ class NavigationAnchor {
     /**
      * Button show/hide
      */
-    activateTimelineItemByScrolling (item) {
+    activateTimelineItemByScrolling ({item}: { item: any }) {
         // variables
         const self = this
 
@@ -91,16 +147,16 @@ class NavigationAnchor {
                 if (entry.isIntersecting) {
                     // prev button
                     if (entry.target.previousElementSibling) {
-                        self.buttonScrollPrevEl.removeAttribute('disabled')
+                        self._buttonScrollPrevEl.removeAttribute('disabled')
                     } else {
-                        self.buttonScrollPrevEl.setAttribute('disabled', 'disabled')
+                        self._buttonScrollPrevEl.setAttribute('disabled', 'disabled')
                     }
 
                     // next button
                     if (entry.target.nextElementSibling) {
-                        self.buttonScrollNextEl.removeAttribute('disabled')
+                        self._buttonScrollNextEl.removeAttribute('disabled')
                     } else {
-                        self.buttonScrollNextEl.setAttribute('disabled', 'disabled')
+                        self._buttonScrollNextEl.setAttribute('disabled', 'disabled')
                     }
                 }
             })

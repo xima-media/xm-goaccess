@@ -1,6 +1,6 @@
 <!-- Component Start: tabs -->
 
-<ul class="nav nav-tabs" id="tab" role="tablist">
+<ul class="nav nav-tabs nav-fill" id="tab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" id="doc-tab" data-bs-toggle="tab" data-bs-target="#doc" type="button" role="tab" aria-controls="home" aria-selected="true">Dokumente & Formulare</button>
     </li>
@@ -23,13 +23,25 @@
     <div class="tab-pane fade" id="access" role="tabpanel" aria-labelledby="access-tab">
         {% for tab in prototype.tabs %}
             {% include '@components/tabs/tab--item.twig' with {
-                title: tab.title,
                 tabItem: tab.item
             } only %}
         {% endfor %}
-        tab2
     </div>
-    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">tab3</div>
+    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+        <div class="spacing--bottom">
+            <h5 class="text--bold">Weiterführende Informationen im DKFZ Wiki</h5>
+            <p class="text-copy-standard">
+                <a href="#" class="icon icon--arrow-right--tilted link--primary">Informationen zur Durchführung von Videokonferenzen</a>
+            </p>
+            <p class="text-copy-standard">
+                <a href="#" class="icon icon--arrow-right link--primary">Informationen zur Durchführung von Videokonferenzen</a>
+            </p>
+            <p class="text-copy-standard">
+                Falls Sie darüber hinaus eine Lösung für eine umfassende digitale Konferenz-Plattform (inkl. Breakout-Session Räume, Interaktive Poster Presentationen, etc.) benötigen, so senden Sie bitte eine Mail an
+                <a href="mailto:events-vorstand@dkfz.de">events-vorstand@dkfz.de</a>. Derzeit testen wir an Pilotprojekten Expertenlösungen von verschiedenen Anbietern.
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Components End: tabs -->

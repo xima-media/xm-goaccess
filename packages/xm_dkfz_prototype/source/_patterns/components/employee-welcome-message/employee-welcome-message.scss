@@ -9,6 +9,8 @@
 //
 
 .employee-welcome-message {
+    @include background-blur;
+
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -16,8 +18,6 @@
     margin-top: -1.5rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
-    background: rgba($color-white, .8); // @todo variable/mixin
-    backdrop-filter: blur(20px); // @todo variable/mixin
 
     @include media-breakpoint-up(md) {
         flex-direction: row;

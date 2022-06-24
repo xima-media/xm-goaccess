@@ -131,6 +131,7 @@
 
     &__items {
         padding-left: 0;
+        list-style: none;
 
         .icon {
             width: .75rem;
@@ -156,7 +157,7 @@
         &::after {
             top: 1rem;
             right: -1rem;
-            left: 0;
+            left: 2rem;
         }
 
         > .infobox--wrapper {

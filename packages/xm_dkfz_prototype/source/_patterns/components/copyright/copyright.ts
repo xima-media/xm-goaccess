@@ -32,7 +32,7 @@ class Copyright {
         this.copyrightButtonEL = document.querySelectorAll<HTMLElement>('.copyright__button')
 
         // methods
-        this.events()
+        // this.events()
     }
 
     /**

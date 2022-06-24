@@ -124,6 +124,7 @@
                 &__pattern {
                     left: -1.875rem;
                     right: -1.875rem;
+                    bottom: 1.5rem;
                 }
             }
         }
@@ -162,7 +163,8 @@
 .pattern-left {
     .picture__pattern {
         left: -1rem;
-        right: 0;
+        right: 1.5rem;
+        bottom: 1.5rem;
     }
 }
 // end of image.scss file

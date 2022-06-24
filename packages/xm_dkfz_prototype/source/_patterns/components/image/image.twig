@@ -10,6 +10,8 @@
         {{ color ? 'picture--with-color' : '' }}
         picture--orientation-{{ size|default('md') }}-{{ orientation }}
     "
+    data-color="{{ color|default('transparent') }}"
+    data-pattern-color="{{ patternColor|default('transparent') }}"
 >
     <div class="picture__item {{ src ? 'image-color--' : 'background--' }}{{ color ? color : 'transparent' }}">
         {% if src %}

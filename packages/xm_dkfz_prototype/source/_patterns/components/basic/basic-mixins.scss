@@ -17,6 +17,7 @@
 //       8.7 Font base
 //       8.8 Header meta links / language switcher
 //      9. Loading
+//      10. Blur background
 //
 
 
@@ -46,7 +47,8 @@
 //
 
 @mixin background-pattern($color: $color-primary) {
-    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M9.354,11.354L11.354,9.354L10.646,8.646L8.646,10.646L9.354,11.354ZM0.354,10.354L10.354,0.354L9.646,-0.354L-0.354,9.646L0.354,10.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color};"/></svg>');
+    //background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M9.354,11.354L11.354,9.354L10.646,8.646L8.646,10.646L9.354,11.354ZM0.354,10.354L10.354,0.354L9.646,-0.354L-0.354,9.646L0.354,10.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color};"/></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color};"/></svg>');
 }
 
 
@@ -228,6 +230,21 @@
     }
 }
 
+// @section 8.4 Copy xxs small
+@mixin text-copy-xxs-small ($font-weight: false, $letter-spacing: false) {
+    font-family: var(--font-family-sans-serif);
+    font-size: 12px;
+    line-height: 14px;
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $letter-spacing {
+        letter-spacing: $letter-spacing;
+    }
+}
+
 // @section 8.5 Main navigation
 @mixin text-main-navi {
     font-family: var(--font-family-sans-serif);
@@ -244,6 +261,11 @@
     line-height: 26px;
     font-weight: 700;
     letter-spacing: 1.2px;
+
+    &:hover {
+        color: var(--color-gray-900);
+        text-decoration: underline;
+    }
 }
 
 @mixin link-secondary {
@@ -257,6 +279,7 @@
 @mixin link-secondary-with-arrow {
     @include link-secondary;
 
+    position: relative;
     text-decoration: none;
 
     [class*='icon-'] {
@@ -264,10 +287,37 @@
 
         margin-left: .25rem;
     }
+
+    &::after {
+        content: '';
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background-color: currentColor;
+        transform: translate3d(0, .25rem, 0);
+        transition: opacity $transition-time * .5, transform $transition-time * .5;
+    }
+
+    &:hover,
+    &:focus {
+        color: inherit;
+
+        &::after {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
 }
 
+// @todo hier nochmal schauen ob das nötig ist!
+// @todo Pfeile sollen nur gedreht werden wenn es sich um einen externen Link handelt
+// @todo siehe dazu basic.scss >>> suche nach '&:not([href="#"]):not([href*="rendered.html"])'
 @mixin link-primary--angle {
-    @include link-primary();
+    @include link-primary;
+
     .icon {
         transform: rotate(-45deg);
     }
@@ -294,20 +344,30 @@
 //    @section 9. Loading
 //
 
-// @todo vendor-prefixes
 @mixin loading {
     @include size(6rem);
 
     display: block;
     background: none;
-    //-webkit-clip-path: polygon(50% 50%, 25% 100%, 75% 100%);
     clip-path: polygon(50% 50%, 25% 100%, 75% 100%);
     border-radius: 50%;
     border: 5px solid var(--color-primary);
     transform: rotate(360deg);
     will-change: transform;
-    //-webkit-animation: idea 2s linear infinite;
-    animation: idea 2s linear infinite;
+    animation: loading 2s linear infinite;
+}
+
+//
+//    @section 10. Blur background
+//
+
+@mixin background-blur($background-color: $color-white, $alpha: .8) {
+    background-color: $background-color;
+
+    @supports (backdrop-filter: none) {
+        background-color: rgba($background-color, $alpha);
+        backdrop-filter: blur(20px); // @todo variable
+    }
 }
 
 // end of app-mixins.scss file
