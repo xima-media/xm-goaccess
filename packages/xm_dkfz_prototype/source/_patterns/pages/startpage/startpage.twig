@@ -1,0 +1,471 @@
+{% extends "@layouts/default--one-column.twig" %}
+{% block main %}
+<!--    <h1>Startseite</h1>--> {# @todo unsichtbare überschrift #}
+
+    <div class="layout">
+        <div class="layout__item background--image background--expanded" style="background-image: url('../../../Images/examples/hero-startpage.jpg');">
+            {% include '@components/employee-welcome-message/employee-welcome-message.twig' %}
+            {% include '@components/employee-finder/employee-finder.twig' %}
+        </div>
+        <div class="layout__item fx--expanded">
+            <div class="foo--100">
+                <div class="bar bar--main-hero">
+                    <div class="bar__header">
+                        <!-- main news: carousel -->
+                        {% embed '@components/carousel/carousel.twig' with {
+                            pagination: 'right',
+                            cols: {
+                                xs: 1,
+                                sm: 1,
+                                md: 1,
+                                lg: 1
+                            }
+                        } %}
+                            {% block content %}
+                                {% for item in prototype.carousel.service.items %}
+                                    <div class="swiper-slide">
+                                        <!-- cards -->
+                                        {% for item in prototype.carousel.mainNews.items %}
+                                            {% include '@components/card/card.twig' with {
+                                                title: item.title,
+                                                subTitle: item.subTitle,
+                                                text: item.text,
+                                                type: item.type,
+                                                link: {
+                                                    href: item.link.url,
+                                                    text: item.link.text
+                                                },
+                                                image: {
+                                                    src: item.image.src,
+                                                    position: item.image.position,
+                                                    patternColor: item.image.patternColor
+                                                }
+                                            } only %}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            {% endblock content %}
+                        {% endembed %}
+                    </div>
+
+                    <div class="bar__footer">
+                        <!-- more news -->
+                        {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                            title: prototype.moreNews.title,
+                            headerSize: prototype.moreNews.headerSize,
+                            pattern: {
+                                visible: prototype.moreNews.titleWithPattern
+                            },
+                            link: {
+                                url: prototype.moreNews.link.url,
+                                text: prototype.moreNews.link.text
+                            }
+                        } %}
+                            {% block content %}
+                                <!-- carousel -->
+                                {% embed '@components/carousel/carousel.twig' with {
+                                    cols: {
+                                        xs: 1,
+                                        sm: 1,
+                                        md: 2,
+                                        lg: 2
+                                    }
+                                } %}
+                                    {% block content %}
+                                        <!-- cards -->
+                                        {% for item in prototype.moreNews.items %}
+                                            {% include '@components/card/card.twig' with {
+                                                title: item.title,
+                                                subTitle: item.subTitle,
+                                                text: item.text,
+                                                type: item.type,
+                                                link: {
+                                                    href: item.link.url
+                                                },
+                                                image: {
+                                                    src: item.image.src,
+                                                    color: item.image.color
+                                                }
+                                            } only %}
+                                        {% endfor %}
+                                    {% endblock content %}
+                                {% endembed %}
+                            {% endblock content %}
+                        {% endembed %}
+
+                        <!-- short messages -->
+                        {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                            title: prototype.shortMessages.title,
+                            headerSize: prototype.shortMessages.headerSize,
+                            pattern: {
+                                visible: prototype.shortMessages.titleWithPattern
+                            },
+                            link: {
+                                url: prototype.shortMessages.link.url,
+                                text: prototype.shortMessages.link.text
+                            }
+                        } %}
+                            {% block content %}
+                                <!-- cards -->
+                                {% for item in prototype.shortMessages.items %}
+                                    {% include '@components/card/card.twig' with {
+                                        title: item.title,
+                                        subTitle: item.subTitle,
+                                        type: item.type,
+                                        link: {
+                                            href: item.link.url
+                                        },
+                                    } only %}
+                                {% endfor %}
+                            {% endblock content %}
+                        {% endembed %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout__item fx--expanded background--cyan background--expanded">
+            <div class="foo--100">
+                <!-- service -->
+                {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                    title: prototype.carousel.service.title,
+                    link: {
+                        url: prototype.carousel.service.link.url,
+                        text: prototype.carousel.service.link.text
+                    }
+                } %}
+                    {% block content %}
+                        <!-- carousel -->
+                        {% embed '@components/carousel/carousel.twig' with {
+                            cardsWithPattern: prototype.carousel.service.cardsWithPattern
+                        } %}
+                            {% block content %}
+                                <!-- cards -->
+                                {% for item in prototype.carousel.service.items %}
+                                    <div class="swiper-slide">
+                                        {% include '@components/card/card.twig' with {
+                                            title: item.title,
+                                            text: item.text,
+                                            type: item.type,
+                                            link: {
+                                                href: item.link.url
+                                            }
+                                        } only %}
+                                    </div>
+                                {% endfor %}
+                            {% endblock content %}
+                        {% endembed %}
+                    {% endblock content %}
+                {% endembed %}
+
+                <!-- tools -->
+                {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                    title: prototype.carousel.tools.title,
+                    link: {
+                        url: prototype.carousel.tools.link.url,
+                        text: prototype.carousel.tools.link.text
+                    }
+                } %}
+                    {% block content %}
+                        <!-- carousel -->
+                        {% embed '@components/carousel/carousel.twig' with {
+                            cardsWithPattern: prototype.carousel.tools.cardsWithPattern
+                        } %}
+                            {% block content %}
+                                <!-- cards -->
+                                {% for item in prototype.carousel.tools.items %}
+                                    <div class="swiper-slide">
+                                        {% include '@components/card/card.twig' with {
+                                            title: item.title,
+                                            text: item.text,
+                                            type: item.type,
+                                            link: {
+                                                href: item.link.url
+                                            }
+                                        } only %}
+                                    </div>
+                                {% endfor %}
+                            {% endblock content %}
+                        {% endembed %}
+                    {% endblock content %}
+                {% endembed %}
+            </div>
+        </div>
+        <div class="layout__item fx--expanded">
+            <div class="foo--100">
+                <div class="bar">
+                    <!-- events -->
+                    {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                        title: prototype.carousel.events.title,
+                        pattern: {
+                            visible: prototype.carousel.events.titleWithPattern
+                        },
+                        link: {
+                            url: prototype.carousel.events.link.url,
+                            text: prototype.carousel.events.link.text
+                        }
+                    } %}
+                        {% block content %}
+                            <!-- carousel -->
+                            {% embed '@components/carousel/carousel.twig' with {
+                                color: prototype.carousel.events.color,
+                                cols: {
+                                    xs: 1,
+                                    sm: 2,
+                                    md: 3,
+                                    lg: 4
+                                }
+                            } %}
+                                {% block content %}
+                                    <!-- cards -->
+                                    {% for item in prototype.carousel.events.items %}
+                                        <div class="swiper-slide">
+                                            {% include '@components/card/card.twig' with {
+                                                title: item.title,
+                                                subTitle: item.subTitle,
+                                                text: item.text,
+                                                type: item.type,
+                                                link: {
+                                                    href: item.link.url
+                                                },
+                                                tags: item.tags
+                                            } only %}
+                                        </div>
+                                    {% endfor %}
+                                {% endblock content %}
+                            {% endembed %}
+                        {% endblock content %}
+                    {% endembed %}
+                </div>
+            </div>
+        </div>
+        <div class="layout__item fx--expanded">
+            <div class="foo--100">
+                <div class="bar">
+                    <!-- new employee -->
+                    {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                        title: prototype.carousel.employee.title,
+                        pattern: {
+                            visible: prototype.carousel.employee.titleWithPattern
+                        },
+                        link: {
+                            url: prototype.carousel.employee.link.url,
+                            text: prototype.carousel.employee.link.text
+                        }
+                    } %}
+                        {% block content %}
+                            <!-- carousel -->
+                            {% embed '@components/carousel/carousel.twig' %}
+                                {% block content %}
+                                    <!-- cards -->
+                                    {% for item in prototype.carousel.employee.items %}
+                                        <div class="swiper-slide">
+                                            {% include '@components/card/card.twig' with {
+                                                title: item.title,
+                                                subTitle: item.subTitle,
+                                                text: item.text,
+                                                type: item.type,
+                                                link: {
+                                                    href: item.link.url
+                                                },
+                                                image: {
+                                                    src: item.image.src,
+                                                    color: item.image.color,
+                                                    size: item.image.size
+                                                }
+                                            } only %}
+                                        </div>
+                                    {% endfor %}
+                                {% endblock content %}
+                            {% endembed %}
+                        {% endblock content %}
+                    {% endembed %}
+
+                    <!-- congratulations -->
+                    {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                        title: prototype.carousel.congratulations.title,
+                        pattern: {
+                            visible: prototype.carousel.congratulations.titleWithPattern
+                        },
+                        link: {
+                            url: prototype.carousel.congratulations.link.url,
+                            text: prototype.carousel.congratulations.link.text
+                        }
+                    } %}
+                        {% block content %}
+                            <!-- carousel -->
+                            {% embed '@components/carousel/carousel.twig' with {
+                                cols: {
+                                    xs: 1,
+                                    sm: 2,
+                                    md: 3,
+                                    lg: 3
+                                }
+                            } %}
+                                {% block content %}
+                                    <!-- cards -->
+                                    {% for item in prototype.carousel.congratulations.items %}
+                                        <div class="swiper-slide">
+                                            {% include '@components/card/card.twig' with {
+                                                title: item.title,
+                                                subTitle: item.subTitle,
+                                                type: item.type,
+                                                link: {
+                                                    href: item.link.url
+                                                },
+                                                image: {
+                                                    src: item.image.src,
+                                                    position: item.image.position,
+                                                    color: item.image.color,
+                                                    size: item.image.size
+                                                }
+                                            } only %}
+                                        </div>
+                                    {% endfor %}
+                                {% endblock content %}
+                            {% endembed %}
+                        {% endblock content %}
+                    {% endembed %}
+                </div>
+            </div>
+        </div>
+        <div class="layout__item background--yellow background--expanded">
+            <div class="foo--75-25">
+                <div class="bar">
+                    <!-- new jobs -->
+                    {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                        title: prototype.newJobs.title,
+                        headerSize: prototype.newJobs.headerSize,
+                        pattern: {
+                            visible: prototype.newJobs.titleWithPattern
+                        },
+                        link: {
+                            url: prototype.newJobs.link.url,
+                            text: prototype.newJobs.link.text
+                        }
+                    } %}
+                        {% block content %}
+                            <!-- cards -->
+                            {% for item in prototype.newJobs.items %}
+                                {% include '@components/card/card.twig' with {
+                                    title: item.title,
+                                    type: item.type,
+                                    link: {
+                                        href: item.link.url
+                                    },
+                                    tags: item.tags
+                                } only %}
+                            {% endfor %}
+                        {% endblock content %}
+                    {% endembed %}
+                </div>
+                <div class="bar">
+                    <!-- new pages -->
+                    {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                        title: prototype.newPages.title,
+                        headerSize: prototype.newPages.headerSize,
+                        pattern: {
+                            visible: prototype.newPages.titleWithPattern
+                        },
+                        link: {
+                            url: prototype.newPages.link.url,
+                            text: prototype.newPages.link.text
+                        }
+                    } %}
+                        {% block content %}
+                            <!-- cards -->
+                            {% for item in prototype.newPages.items %}
+                                {% include '@components/card/card.twig' with {
+                                    title: item.title,
+                                    subTitle: item.subTitle,
+                                    type: item.type,
+                                    link: {
+                                        href: item.link.url
+                                    },
+                                } only %}
+                            {% endfor %}
+                        {% endblock content %}
+                    {% endembed %}
+                </div>
+            </div>
+        </div>
+        <div class="layout__item fx--expanded background--image background--expanded background--gray-900" style="background-image: url('../../../Images/examples/blackboard.jpg');">
+            <div class="foo--100">
+                <!-- blackboard -->
+                {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                    title: prototype.carousel.blackboard.title,
+                    pattern: {
+                        visible: prototype.carousel.blackboard.titleWithPattern,
+                        color: prototype.carousel.blackboard.titleWithPatternColor
+                    },
+                    link: {
+                        url: prototype.carousel.blackboard.link.url,
+                        text: prototype.carousel.blackboard.link.text
+                    }
+                } %}
+                    {% block content %}
+                        <!-- carousel -->
+                        {% embed '@components/carousel/carousel.twig' %}
+                            {% block content %}
+                                <!-- cards -->
+                                {% for item in prototype.carousel.blackboard.items %}
+                                    <div class="swiper-slide">
+                                        {% include '@components/card/card.twig' with {
+                                            title: item.title,
+                                            text: item.text,
+                                            color: item.color,
+                                            type: item.type,
+                                            link: {
+                                                href: item.link.url
+                                            },
+                                            image: {
+                                                color: item.image.color
+                                            }
+                                        } only %}
+                                    </div>
+                                {% endfor %}
+                            {% endblock content %}
+                        {% endembed %}
+                    {% endblock content %}
+                {% endembed %}
+            </div>
+        </div>
+        <div class="layout__item">
+            <div class="foo--50-50">
+                <!-- social feed: twitter -->
+                {% embed '@components/social-feed/social-feed.twig' with {
+                    title: 'DKFZ auf Twitter',
+                    icon: 'twitter'
+                } %}
+                    {% block content %}
+                        <a class="twitter-timeline" href="https://twitter.com/DKFZ?ref_src=twsrc%5Etfw">Tweets by DKFZ</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {% endblock content %}
+                {% endembed %}
+
+                <!-- social feed: instagram -->
+                {% embed '@components/social-feed/social-feed.twig' with {
+                    title: 'DKFZ auf Instagram',
+                    icon: 'instagram'
+                } %}
+                    {% block content %}
+                        <iframe src="https://www.instagram.com/dkfzheidelberg/?hl=en" frameborder="0"></iframe>
+                    {% endblock content %}
+                {% endembed %}
+            </div>
+        </div>
+        <div class="layout__item background--orange background--expanded">
+            <div class="foo">
+                    {% include '@components/card/card.twig' with {
+                        title: 'Helmholz Newsroom',
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, illum iure. Assumenda at, dignissimos eligendi nihil odit qui! Animi aperiam consequuntur eveniet exercitationem molestiae officia omnis ratione tempora vitae. Beatae?',
+                        type: 'info',
+                        link: {
+                            href: '#',
+                            text: 'Zum Helmholtz Newsroom'
+                        },
+                    } only %}
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+

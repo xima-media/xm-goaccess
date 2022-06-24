@@ -1,0 +1,55 @@
+//
+//    @tableOfContent
+//      1. Pagination
+//
+
+
+//
+//   @section 1. Pagination
+//
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .page {
+        &-item {
+            margin-right: .5rem;
+            margin-left: .5rem;
+        }
+
+        &-link {
+            text-decoration: none;
+
+            &.active,
+            &:hover {
+                color: var(--color-gray-900);
+                border-bottom: 2px solid var(--color-gray-900);
+            }
+
+            &--previous,
+            &--next {
+                padding: 5px 10px;
+                &:hover {
+                    color: var(--color-white);
+                    background: var(--color-gray-900);
+                    border-radius: 50%;
+
+                    .icon {
+                        fill: var(--color-white);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// end of pagination.scss file

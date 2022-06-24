@@ -1,0 +1,154 @@
+{
+    "prototype": {
+        "title": "Mitarbeiterprofil",
+        "navigation": {
+            "activeId": "our-center"
+        },
+        "debug": {
+            "screenshot": "employee-profile"
+        },
+        "html": {
+            "class": "background--gray-100"
+        },
+        "tags": {
+            "skills": [
+                {
+                    "text": "Lorem ipsum"
+                },
+                {
+                    "text": "English"
+                },
+                {
+                    "text": "Aenean commodo"
+                },
+                {
+                    "text": "Lorem ipsum"
+                },
+                {
+                    "text": "Lorem ipsum dolor si"
+                },
+                {
+                    "text": "Aenean commodo"
+                }
+            ],
+            "technical": [
+                {
+                    "text": "Lorem ipsum"
+                },
+                {
+                    "text": "English"
+                },
+                {
+                    "text": "Aenean commodo"
+                },
+                {
+                    "text": "Lorem ipsum"
+                },
+                {
+                    "text": "Lorem ipsum dolor si"
+                }
+            ],
+            "hobby": [
+                {
+                    "text": "Klassische Musik"
+                },
+                {
+                    "text": "Yoga"
+                },
+                {
+                    "text": "Kochen"
+                }
+            ]
+        },
+        "contact": {
+            "main": [
+                {
+                    "name": "Ammon, Lisa",
+                    "items": [
+                        {
+                            "text": "+486221-42-4783 – Büro",
+                            "type": "phone",
+                            "url": "tel:486221424783"
+                        },
+                        {
+                            "text": "+49 6221-42-4784 – Labor",
+                            "type": "phone",
+                            "url": "tel:486221424784"
+                        },
+                        {
+                            "text": "+49 6221-42-4789 – Labor",
+                            "type": "phone",
+                            "url": "tel:486221424789"
+                        },
+                        {
+                            "text": "+49 6221-42-2729",
+                            "type": "printer",
+                            "url": "tel:496221422729"
+                        },
+                        {
+                            "text": "daniel.hengsbach@dkfz-heidelberg.de",
+                            "type": "mail",
+                            "url": "mailto:daniel.hengsbach@dkfz-heidelberg.de"
+                        }
+                    ]
+                }
+            ],
+            "department": {
+                "director": [
+                    {
+                        "name": "Prof. Dr. K. Reifenberg",
+                        "items": [
+                            {
+                                "text": "+49 6221-42-4784",
+                                "type": "phone",
+                                "url": "tel:496221424784"
+                            },
+                            {
+                                "text": "+49 6221-42-2729",
+                                "type": "printer",
+                                "url": "tel:496221422729"
+                            }
+                        ]
+                    }
+                ],
+                "secretary": [
+                    {
+                        "name": "Schulz, Manuela",
+                        "items": [
+                            {
+                                "text": "+49 6221-42-4784",
+                                "type": "phone",
+                                "url": "tel:496221424784"
+                            },
+                            {
+                                "text": "+49 6221-42-2729",
+                                "type": "printer",
+                                "url": "tel:496221424784"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Wolf, Nadine",
+                        "items": [
+                            {
+                                "text": "+49 6221-42-4784",
+                                "type": "phone",
+                                "url": "tel:496221424784"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Scholten, Sabine",
+                        "items": [
+                            {
+                                "text": "+49 6221-42-4784",
+                                "type": "phone",
+                                "url": "tel:496221424784"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

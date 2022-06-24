@@ -1,0 +1,61 @@
+<!-- Component Start: navigation--main -->
+
+<nav class="navigation navigation--main" aria-label="Hauptnavigation">
+{#    <button class="navigation__button fx--toggle" type="button" aria-expanded="false" aria-controls="navigation__items--main">|||</button>#}
+    <ul id="navigation__items--main" class="navigation__items fx--first">
+        {% for mainLink in prototype.navigation.main %}
+            <li class="navigation__item fx--first">
+                <a class="navigation__link fx--first {{ mainLink.id == prototype.navigation.activeId ? 'fx--active' : '' }} {% if mainLink.icon == 'employee' %}color--primary{% endif %}" href="{{ mainLink.url }}">
+                    {% if mainLink.icon %}
+                        {% include '@components/icon/icon.twig' with {icon: 'bookmark'} %}
+                    {% endif %}
+                    {{ mainLink.text }}
+                </a>
+                {% if mainLink.sub %}
+                    <button class="navigation__button navigation__button--toggle-items" type="button">
+                        {% include '@components/icon/icon.twig' with {icon: 'arrow-down'} %}
+                    </button>
+                    <ul class="navigation__items fx--second {{ mainLink.colorClass }}">
+                        {% set closeSubLinkSection = true %}
+                        {% for subLink in mainLink.sub %}
+                            {% if subLink.sub %}
+                                {% if not closeSubLinkSection %}
+                                    </ul></li>
+                                    {% set closeSubLinkSection = true %}
+                                {% endif %}
+                                <li class="navigation__item fx--second">
+                                    <a class="navigation__link fx--second" href="{{ subLink.url }}">{{ subLink.text }}</a>
+                                    {% if subLink.sub %}
+                                        <ul class="navigation__items fx--third">
+                                            {% for subSubLink in subLink.sub %}
+                                                <li class="navigation__item fx--third">
+                                                    <a class="navigation__link fx--third" href="{{ subSubLink.url }}">{{ subSubLink.text }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% else %}
+                                {% if closeSubLinkSection %}
+                                    <li class="navigation__item fx--row"><ul class="navigation__items fx--row">
+                                    {% set closeSubLinkSection = false %}
+                                {% endif %}
+
+                                <li class="navigation__item fx--second">
+                                    <a class="navigation__link fx--second" href="{{ subLink.url }}">{{ subLink.text }}</a>
+                                </li>
+
+                                {% if loop.last %}
+                                    </ul></li>
+                                    {% set closeSubLinkSection = true %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+<!-- Components End: navigation--main -->

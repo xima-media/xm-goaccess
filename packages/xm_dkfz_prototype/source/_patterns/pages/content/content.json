@@ -1,0 +1,396 @@
+{
+    "prototype": {
+        "title": "Betriebsärztlicher Dienst",
+        "navigation": {
+            "activeId": "our-center"
+        },
+        "debug": {
+            "screenshot": "topic"
+        },
+        "infoBox": [
+            {
+                "color": "magenta",
+                "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
+                "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden."
+            },
+            {
+                "color": "cyan",
+                "border": false,
+                "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
+                "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden.",
+                "links": [
+                    {
+                        "url": "#",
+                        "text": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    },
+                    {
+                        "url": "#",
+                        "text": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    }
+                ]
+            },
+            {
+                "color": "orange",
+                "border": false,
+                "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
+                "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden.",
+                "links": [
+                    {
+                        "url": "#",
+                        "text": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    }
+                ]
+            },
+            {
+                "color": "primary",
+                "border": true,
+                "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
+                "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden.",
+                "links": [
+                    {
+                        "url": "#",
+                        "text": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    },
+                    {
+                        "url": "#",
+                        "text": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    }
+                ]
+            },
+            {
+                "color": "green",
+                "border": true,
+                "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
+                "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden.",
+                "links": [
+                    {
+                        "url": "#",
+                        "text": "Hinweise zu Veranstaltungen während der Corona Pandemie"
+                    }
+                ]
+            }
+        ],
+        "pictureText": {
+            "title": "Bild-Text-Elemente",
+            "titleSize": "h3",
+            "items": [
+                {
+                    "image": {
+                        "src": "../../../Images/examples/horizontal-3to2.png",
+                        "alt": "Picture title",
+                        "patternColor": "primary",
+                        "size": "md",
+                        "orientation": "square",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "imagePosition": "left",
+                    "title": "Bildformat 3:2 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/vertical-2to3.png",
+                        "alt": "Picture title",
+                        "patternColor": "magenta",
+                        "size": "md",
+                        "orientation": "rectangle",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "imagePosition": "left",
+                    "title": "Bildformat 2:3 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/horizontal-4to3.png",
+                        "alt": "Picture title",
+                        "patternColor": "primary",
+                        "size": "md",
+                        "orientation": "square",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "imagePosition": "left",
+                    "title": "Bildformat 4:3 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/vertical-3to4.png",
+                        "alt": "Picture title",
+                        "patternColor": "primary",
+                        "size": "md",
+                        "position": "left",
+                        "orientation": "rectangle",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "title": "Bildformat 3:4 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/horizontal-1to1.png",
+                        "alt": "Picture title",
+                        "patternColor": "primary",
+                        "size": "md",
+                        "position": "left",
+                        "orientation": "square",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "title": "Bildformat 1:1 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/horizontal-3to2.png",
+                        "alt": "Picture title",
+                        "patternColor": "primary",
+                        "size": "sm",
+                        "position": "left",
+                        "orientation": "square",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "title": "Bildformat 3:2 kleiner Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/vertical-2to3.png",
+                        "alt": "Picture title",
+                        "patternColor": "magenta",
+                        "size": "sm",
+                        "position": "left",
+                        "orientation": "rectangle",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "title": "Bildformat 2:3 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/horizontal-3to2.png",
+                        "alt": "Picture title",
+                        "patternColor": "primary",
+                        "size": "md",
+                        "position": "right",
+                        "orientation": "square",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "imagePosition": "right",
+                    "title": "Bildformat 3:2 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                },
+                {
+                    "image": {
+                        "src": "../../../Images/examples/vertical-2to3.png",
+                        "alt": "Picture title",
+                        "patternColor": "magenta",
+                        "size": "md",
+                        "orientation": "rectangle",
+                        "copyright": "copyright",
+                        "caption": "Bildunterschrift zum Bild "
+                    },
+                    "imagePosition": "right",
+                    "title": "Bildformat 2:3 Lorem ipsum dolor sit amet – consectetuer adipiscing elit",
+                    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+                }
+            ]
+        },
+        "pictureSize": [
+            {
+                "image": {
+                    "src": "../../../Images/examples/maximal.png",
+                    "alt": "Picture title",
+                    "patternColor": "primary",
+                    "size": "md",
+                    "orientation": "square",
+                    "copyright": "copyright",
+                    "caption": "Maximale Bildgröße (440 x 440px)"
+                },
+                "type": "picture-text",
+                "imagePosition": "left",
+                "title": "Maximale Bildgröße",
+                "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. \n\nAliquam lorem ante, dapibus in,  viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. \n\nAliquam lorem ante, dapibus in,  viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. \n"
+            },
+            {
+                "image": {
+                    "src": "../../../Images/examples/minimal.png",
+                    "alt": "Picture title",
+                    "patternColor": "primary",
+                    "size": "sm",
+                    "orientation": "square",
+                    "copyright": "copyright",
+                    "caption": "Minimale Bildgröße (200 x 200px)\n"
+                },
+                "type": "picture-text",
+                "imagePosition": "left",
+                "title": "Minimale Bildgröße, Text nicht umfließend",
+                "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Aliquam lorem ante, dapibus in,  viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue."
+            },
+            {
+                "image": {
+                    "src": "../../../Images/examples/big.png",
+                    "alt": "Picture title",
+                    "patternColor": "primary",
+                    "size": "lg",
+                    "orientation": "square",
+                    "copyright": "copyright",
+                    "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
+                },
+                "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "
+            }
+        ],
+        "carousel": {
+            "pictureText": {
+                "title": "Bilder Slider",
+                "items": [
+                    {
+                        "image": {
+                            "src": "../../../Images/examples/vertical-2to3.png",
+                            "alt": "Picture title",
+                            "copyright": "copyright",
+                            "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
+                        }
+                    },
+                    {
+                        "image": {
+                            "src": "../../../Images/examples/big.png",
+                            "alt": "Picture title",
+                            "copyright": "copyright",
+                            "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
+                        }
+                    }
+                ]
+            }
+        },
+        "topics": {
+            "title": "Folgende Themen könnten Sie auch interessieren",
+            "titleWithPattern": true,
+            "color": "primary",
+            "items": [
+                {
+                    "title": "Corporate Design Richtlinien",
+                    "subTitle": "Serviceangebote",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "src": "../../../Images/examples/user.jpg",
+                        "color": "orange",
+                        "size": "sm"
+                    }
+                },
+                {
+                    "title": "Buchung von Ressourcen",
+                    "subTitle": "Serviceangebote",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "src": "../../../Images/examples/user.jpg",
+                        "color": "cyan",
+                        "size": "sm"
+                    }
+                },
+                {
+                    "title": "Zutrittsregelungen",
+                    "subTitle": "Mitarbeiter & Soziales",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "color": "green-light",
+                        "size": "sm"
+                    }
+                }
+            ]
+        },
+        "pictureHead": [
+            {
+                "image": {
+                    "src": "../../dist/image/examples/big.png",
+                    "alt": "Picture title",
+                    "patternColor": "primary",
+                    "size": "xl",
+                    "orientation": "square",
+                    "copyright": "Uwe Anspach",
+                    "caption": "Bildunterschrift zum Bild – Bildformat fix, Bild ist optional"
+                }
+            }
+        ],
+        "contacts": [
+            {
+                "background": "primary-opacity-10",
+                "title": "Kontakt",
+                "subTitle": "Event-Vorstand",
+                "items": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "mail",
+                        "url": "betriebsarzt@dkfz-heidelberg.de",
+                        "text": "betriebsarzt@dkfz-heidelberg.de"
+                    }
+                ],
+                "subTitleImage": "Ansprechpartner",
+                "name": "Fuchs, Andreas",
+                "image": {
+                    "src": "../../dist/image/examples/user.jpg",
+                    "color": "orange",
+                    "size": "xxs"
+                }
+            }
+        ],
+        "contactPerson": [
+            {
+                "title": "Kontakt & Ansprechpartner",
+                "subTitle": "Ansprechpartner",
+                "image": {
+                    "src": "../../dist/image/examples/user.jpg",
+                    "color": "orange",
+                    "size": "xs"
+                },
+                "name": "Fuchs, Andreas",
+                "occupation": "Gruppenleitung EK Investitionsgüter / Dienstleistungen",
+                "department": "M230 – Beschaffung und Materialwirtschaft",
+                "items": [
+                    {
+                        "type": "location-pin",
+                        "url": "#",
+                        "text": "H1.01.023"
+                    },
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651\n"
+                    },
+                    {
+                        "type": "printer",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651\n"
+                    },
+                    {
+                        "type": "mail",
+                        "url": "daniel.hengsbach@dkfz-heidelberg.de",
+                        "text": "daniel.hengsbach@dkfz-heidelberg.de"
+                    }
+                ]
+            }
+        ]
+    }
+}

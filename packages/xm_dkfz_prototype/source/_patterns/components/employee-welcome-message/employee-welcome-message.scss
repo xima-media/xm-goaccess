@@ -1,0 +1,61 @@
+//
+//    @tableOfContent
+//      1. Employee welcome message
+//
+
+
+//
+//   @section 1. Employee welcome message
+//
+
+.employee-welcome-message {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 56.5rem;
+    margin-top: -1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: rgba($color-white, .8); // @todo variable/mixin
+    backdrop-filter: blur(20px); // @todo variable/mixin
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+        margin-top: -4.75rem;
+        margin-bottom: -1.5rem;
+        padding: 2.25rem 2rem 1.875rem 3rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+        margin-left: -1rem;
+    }
+
+    &__header {
+        @include media-breakpoint-up(md) {
+            flex: 0 0 20rem; // @todo variabe mit card teilen
+            width: 20rem; // @todo variabe mit card teilen
+        }
+    }
+
+    &__title {
+        @include h4;
+
+        margin-bottom: -.25rem;
+    }
+
+    &__sub-title {
+        margin-bottom: .7rem;
+        font-size: 20px; // @todo style-variable?
+        line-height: 38px; // @todo style-variable?
+    }
+
+    &__link {
+        @include link-secondary-with-arrow;
+    }
+
+    &__body {
+        margin-top: .375rem;
+    }
+}
+
+// end of employee-welcome-message.scss file

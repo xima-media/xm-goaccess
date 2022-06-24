@@ -1,0 +1,36 @@
+<!-- Styleguide Start: color-combination-with-image -->
+
+<div class="styleguide styleguide--color-combination-with-image">
+    <div class="styleguide__sections">
+        {% for combination in combinations %}
+            <div class="styleguide__section">
+                <h2 class="styleguide__desc">{{ combination.title }}</h2>
+                <ul class="styleguide__items">
+                    {% for color in combination.colors %}
+                        <li class="styleguide__item">
+                            <div class="styleguide__header">
+                                <div class="hero-headline hero-headline--with-image">
+                                    <h1 class="hero-headline__title {{ color.titleColorClass }}">Color Test</h1>
+                                    <div class="hero-headline__image">
+                                        {% include '@components/image/image.twig' with {
+                                            src: '../../../Images/examples/human-guoliang.png',
+                                            patternColor: color.patternColorClass
+                                        } only %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="styleguide__body visually-hidden">
+                                <p>
+                                    <span>Titelfarbe:</span> {{ color.titleColorVariable }}
+                                    <span>Patternfarbe:</span> {{ color.patternColorClass }}
+                                </p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Styleguide End: color-combination-with-image -->

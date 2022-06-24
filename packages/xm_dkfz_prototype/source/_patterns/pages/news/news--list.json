@@ -1,0 +1,102 @@
+{
+    "prototype": {
+        "title": "News",
+        "navigation": {
+            "activeId": "news"
+        },
+        "debug": {
+            "screenshot": "news--list"
+        },
+        "news": [
+            {
+                "title": "ERC-Förderung für Guoliang Cui",
+                "subTitle": "22. März 2022 | Wissenschaft",
+                "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen.",
+                "image": {
+                    "src": "../../../Images/examples/news-header.jpg",
+                    "color": "cyan",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            },
+            {
+                "title": "Hilfsaktionen für die Ukraine",
+                "subTitle": "18. März 2022 | Außerdem",
+                "text": "Sie möchten helfen oder auf Hilfsaktionen zugunsten der Ukraine aufmerksam machen? Hier finden Sie eine Liste, in die Sie Hilfsaktionen eintragen bzw. solche finden, die Sie unterstützen können.",
+                "image": {
+                    "src": "../../../Images/examples/news-header.jpg",
+                    "color": "yellow",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            },
+            {
+                "title": "Ugur Sahin baut Abteilung am HI-TRON Mainz auf",
+                "subTitle": "15. März 2022 | Innenansichten",
+                "text": "Der Immunologe, Krebsforscher und Unternehmer Ugur Sahin baut am Helmholtz-Institut „HI-TRON Mainz“ eine wissenschaftliche Abteilung für mRNA-basierte Krebs-Immunthera-pie auf. Die bestechende Idee hinter dem Konzept der mRNA-basierten Krebs-Immunthera-pien: Mit Boten RNA-Molekülen (mRNA) bringt man den Körper dazu, selbst Tumorproteine zu produzieren, die das Immunsystem dazu anregen, den Krebs zu bekämpfen. Ugur Sahin ist einer der weltweit wichtigsten Pioniere auf diesem Forschungsgebiet.",
+                "image": {
+                    "src": "../../../Images/examples/news-header.jpg",
+                    "color": "purple",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            },
+            {
+                "title": "Bundesforschungsministerin Bettina Stark-Watzinger besucht DKFZ",
+                "subTitle": "16. März 2022 | Innenansichten",
+                "text": "Bei Ihrem Besuch im DKFZ hat Bundesforschungsministerin Bettina Stark-Watzinger die Allianz für Patientenbeteiligung in der Krebsforschung in Deutschland verkündet. Damit stehen im vierten Jahr der Nationalen Dekade gegen Krebs die Patientinnen und Patienten im Mittelpunkt. Viel stärker als bisher sollen sie künftig eingebunden werden und sich aktiv in die Forschung einbringen können – von der Formulierung von Fragestellungen bis hin zur Verwertung der Ergebnisse. Damit soll die Krebsforschung besser auf ihre Bedürfnisse aus-gerichtet werden.",
+                "image": {
+                    "src": "../../../Images/examples/news-header.jpg",
+                    "color": "orange",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            },
+            {
+                "title": "Darmkrebsrisiko steigt mit jedem übergewichtigen Lebensjahr",
+                "subTitle": "14. März 2022 | Wissenschaft",
+                "text": "Zahlreiche Krebsarten treten bei übergewichtigen Menschen häufiger auf als bei Normal-gewichtigen. Dazu zählen unter anderem Brustkrebs, Krebs der Gebärmutter, der Niere oder der Speiseröhre – und auch Darmkrebs. Die Anzahl an Lebensjahren, in denen ein Mensch Übergewicht auf die Waage bringt, hat höhere Aussagekraft für das Darmkrebsrisiko als eine einmalige Messung des Körpergewichts. Im Vergleich zu Menschen, die ihr Leben lang Normalgewicht gehalten haben, erkranken dauerhaft Übergewichtige sogar bis zu zweieinhalbmal häufiger an Darmkrebs. Damit kommt der Vermeidung des Übergewichts eine noch wichtigere Rolle in der Krebsprävention zu als bislang angenommen. Diese Ergebnisse veröffentlichten Prof. Hermann Brenner und seine Kolleg:innen.",
+                "image": {
+                    "src": "../../../Images/examples/news-header.jpg",
+                    "color": "green",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            },
+            {
+                "title": "Evakuierung aus der Ukraine – KiTZ nimmt krebskranke Kinder auf",
+                "subTitle": "9. März 2022 | Kooperationen",
+                "text": "Man geht davon aus, dass wahrscheinlich etwa 1000 ukrainische kinderonkologische Patienten einen Therapieplatz in Europa benötigen. Das St. Jude Children’s Research Hospital hat die länderübergreifende Koordination übernommen, damit die krebskranken Kinder so schnell wie ",
+                "image": {
+                    "color": "yellow",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            },
+            {
+                "title": "Darmkrebs-Präventionspreis 2022 für Rafael Cardoso und Hermann Brenner ",
+                "subTitle": "3. März 2022 | Ausgezeichnet",
+                "text": "Die Preisträger des Darmkrebs-Präventionspreises, der jährlich für eine herausragende wissenschaftliche Arbeit im Bereich der Darmkrebsvorsorge und -früherkennung vergeben wird, stehen fest: Für die Arbeit \"Colorectal cancer screening and progress in cancer control in European ",
+                "image": {
+                    "color": "cyan",
+                    "position": "left"
+                },
+                "link": {
+                    "url": "#"
+                }
+            }
+        ]
+    }
+}
