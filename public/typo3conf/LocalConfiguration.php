@@ -9,6 +9,7 @@ return [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+        'cookieSameSite' => 'lax',
     ],
     'DB' => [
         'Connections' => [
@@ -38,6 +39,10 @@ return [
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
+        ],
+        'oauth2' => [
+            'enableBackendLogin' => true,
+            'overrideUser' => true,
         ],
         'news' => [
             'advancedMediaPreview' => '1',
@@ -71,6 +76,7 @@ return [
         ],
     ],
     'FE' => [
+        'cookieSameSite' => 'lax',
         'debug' => false,
         'disableNoCacheParameter' => true,
         'passwordHashing' => [
@@ -98,6 +104,13 @@ return [
                             ],
                         ],
                     ],
+                ],
+            ],
+        ],
+        'writerConfiguration' => [
+            \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
+                \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
+                    'logFile' => \TYPO3\CMS\Core\Core\Environment::getVarPath() . '/log/typo3_debug.log',
                 ],
             ],
         ],
