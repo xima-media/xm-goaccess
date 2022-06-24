@@ -368,7 +368,7 @@
         "pictureHead": [
             {
                 "image": {
-                    "src": "../../dist/image/examples/big.png",
+                    "src": "../../../Images/examples/big.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "xl",
@@ -406,7 +406,7 @@
                     "text": "Fuchs, Andreas"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "orange",
                     "size": "xxs"
                 }
@@ -417,7 +417,7 @@
                 "title": "Kontakt & Ansprechpartner",
                 "subTitle": "Ansprechpartner",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "orange",
                     "size": "xs"
                 },
