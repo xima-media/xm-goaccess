@@ -63,7 +63,8 @@
 		"georgringer/news": "dev-main",
 		"sourcebroker/deployer-extended-database": "dev-fix/use-php-executable as 13.0.2",
 		"mfc/oauth2": "*@dev",
-		"ext-pdo": "*"
+		"ext-pdo": "*",
+		"m4tthumphrey/php-gitlab-api":"10.4.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
@@ -82,6 +83,11 @@
 		}
 	},
 	"extra": {
+		"patches": {
+			"m4tthumphrey/php-gitlab-api": [
+				"patches/m4tthumphrey-php-gitlab-api-src-client-php.patch"
+			]
+		},
 		"helhum/dotenv-connector": {
 			"env-file": ".env",
 			"adapter": "Helhum\\DotEnvConnector\\Adapter\\SymfonyDotEnv"

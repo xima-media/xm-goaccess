@@ -1,0 +1,11 @@
+--- /dev/null
++++ ../src/Client.php
+@@ -100,7 +100,7 @@
+      */
+     public function __construct(Builder $httpClientBuilder = null)
+     {
+-        $this->httpClientBuilder = $builder = $httpClientBuilder ?? new Builder();
++        $this->httpClientBuilder = $builder = $httpClientBuilder ?? new Builder(new \GuzzleHttp\Client(['verify' => false]));
+         $this->responseHistory = new History();
+ 
+         $builder->addPlugin(new GitlabExceptionThrower());
