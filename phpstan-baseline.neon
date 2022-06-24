@@ -206,6 +206,21 @@ parameters:
 			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
 
 		-
+			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:processLoginData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
+
+		-
+			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:processLoginData\\(\\) has parameter \\$loginData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
+
+		-
+			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:processLoginData\\(\\) has parameter \\$passwordTransmissionStrategy with no type specified\\.$#"
+			count: 1
+			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
+
+		-
 			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:sendOAuthRedirect\\(\\) should return string but return statement is missing\\.$#"
 			count: 1
 			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
