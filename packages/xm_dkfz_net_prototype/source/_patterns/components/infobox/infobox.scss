@@ -1,0 +1,169 @@
+//
+//    @tableOfContent
+//      1. Infobox
+//
+
+
+//
+//   @section 1. Infobox
+//
+
+.infobox {
+    position: relative;
+    max-width: $container-default-widths + 2rem;
+    //margin: auto;
+    margin-bottom: 3.5rem;
+
+    &--background {
+        &-white {
+            background-color: var(--color-white);
+        }
+
+        &-gray-100 {
+            background-color: var(--color-gray-100);
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: -1rem;
+        z-index: -1;
+        height: 100%;
+    }
+
+    &--color {
+        &-primary {
+            border-color: $color-primary;
+
+            &::after {
+                @include background-pattern($color-primary);
+            }
+        }
+
+        &-secondary {
+            border-color: $color-secondary;
+
+            &::after {
+                @include background-pattern($color-secondary);
+            }
+        }
+
+        &-cyan {
+            border-color: $color-cyan;
+
+            &::after {
+                @include background-pattern($color-cyan);
+            }
+        }
+
+        &-blue-900 {
+            border-color:$color-blue-900;
+
+            &::after {
+                @include background-pattern($color-blue-900);
+            }
+        }
+
+        &-green {
+            border-color: $color-green;
+
+            &::after {
+                @include background-pattern($color-green);
+            }
+        }
+
+        &-green-light {
+            border-color: $color-green-light;
+
+            &::after {
+                @include background-pattern($color-green-light);
+            }
+        }
+
+        &-yellow {
+            border-color: $color-yellow;
+
+            &::after {
+                @include background-pattern($color-yellow);
+            }
+        }
+
+        &-orange {
+            border-color: $color-orange;
+
+            &::after {
+                @include background-pattern($color-orange);
+            }
+        }
+
+        &-magenta {
+            border-color: $color-magenta;
+
+            &::after {
+                @include background-pattern($color-magenta);
+            }
+        }
+
+        &-purple {
+            border-color: $color-purple;
+
+            &::after {
+                @include background-pattern($color-purple);
+            }
+        }
+    }
+
+    &--wrapper {
+        margin-left: 3rem;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__text {
+        @include text-copy-standard;
+        margin-bottom: 1.5rem;
+    }
+
+    &__items {
+        padding-left: 0;
+        list-style: none;
+
+        .icon {
+            width: .75rem;
+            height: .75rem;
+            margin-right: .625rem;
+            vertical-align: baseline;
+        }
+
+        >.infobox__item {
+            margin-bottom: .5rem;
+
+            .primary-link {
+                @include link-primary();
+                text-decoration: none;
+            }
+        }
+    }
+
+    &--with-border {
+        border-width: 1px;
+        border-style: solid;
+
+        &::after {
+            top: 1rem;
+            right: -1rem;
+            left: 2rem;
+        }
+
+        > .infobox--wrapper {
+            margin: 1.5rem 2.5rem;
+        }
+    }
+}
+
+// end of infobox.scss file

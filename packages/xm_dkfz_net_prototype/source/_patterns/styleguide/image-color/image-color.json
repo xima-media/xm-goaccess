@@ -1,0 +1,40 @@
+{
+    "colors": [
+        {
+            "title": "Dunkelblau",
+            "class": "image-color--blue-900"
+        },
+        {
+            "title": "DKFZ Blau",
+            "class": "image-color--primary"
+        },
+        {
+            "title": "Cyan",
+            "class": "image-color--cyan"
+        },
+        {
+            "title": "Grün",
+            "class": "image-color--green"
+        },
+        {
+            "title": "Hellgrün",
+            "class": "image-color--green-light"
+        },
+        {
+            "title": "Gelb",
+            "class": "image-color--yellow"
+        },
+        {
+            "title": "Orange",
+            "class": "image-color--orange"
+        },
+        {
+            "title": "Magenta",
+            "class": "image-color--magenta"
+        },
+        {
+            "title": "Violett",
+            "class": "image-color--purple"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+<!-- Styleguide Start: pattern -->
+
+<div class="styleguide styleguide--pattern">
+    <ul class="styleguide__items">
+        {% for pattern in patterns %}
+            <li class="styleguide__item" title="{{ pattern.variable }}">
+                <div class="styleguide__header {{ pattern.class }}"></div>
+                <div class="styleguide__body">
+                    <p>
+                        <strong class="visually-hidden">Name</strong> {{ pattern.title }}<br />
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Styleguide End: pattern -->

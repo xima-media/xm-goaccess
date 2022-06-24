@@ -1,0 +1,72 @@
+//
+//    @tableOfContent
+//      1. Copyright
+//
+
+
+//
+//   @section 1. Copyright
+//
+
+.copyright {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    color: var(--color-white);
+
+    &__button {
+        @include size(2rem);
+
+        display: inline-grid;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        padding: 0;
+        color: inherit;
+        background-color: var(--color-gray-900);
+        border: 0;
+        border-radius: 50%;
+        cursor: auto !important;
+
+        //&:hover,
+        //&:focus,
+        //&.fx--active {
+        //    ~ .copyright {
+        //        &__content {
+        //            display: flex;
+        //        }
+        //    }
+        //}
+
+        [class*='icon-'] {
+            @include size(1rem);
+        }
+    }
+
+    &__content {
+        //display: none;
+        align-items: flex-end;
+        justify-content: flex-end;
+        position: absolute;
+        top: -.5rem;
+        bottom: -.5rem;
+        left: -1rem;
+        z-index: 1;
+    }
+
+    &__text {
+        display: flex;
+        align-items: center;
+        min-height: 100%;
+        margin: 0;
+        padding: .5rem 1rem .5rem 3rem;
+        background-color: var(--color-gray-900);
+    }
+}
+
+// end of copyright.scss file

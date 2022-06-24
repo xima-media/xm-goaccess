@@ -1,0 +1,29 @@
+//
+//    @tableOfContent
+//      1. loading
+//
+
+
+//
+//   @section 1. Loading
+//
+
+.loading {
+    @include loading;
+}
+
+@keyframes loading {
+    0% {
+        clip-path: polygon(50% 50%, 0% 100%, 0% 100%);
+    }
+    33% {
+        clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+    }
+    100% {
+        clip-path: polygon(50% 50%, 0% 100%, 0% 100%);
+        border-color: var(--color-blue-900);
+        transform: none;
+    }
+}
+
+// end of loading.scss file

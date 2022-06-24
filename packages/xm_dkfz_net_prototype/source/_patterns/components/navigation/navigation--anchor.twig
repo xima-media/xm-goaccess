@@ -1,0 +1,19 @@
+<!-- Component Start: navigation--anchor -->
+
+<nav class="navigation navigation--anchor background--expanded" aria-label="Ankernavigation">
+    <button class="navigation__button left" aria-label="Zurück" disabled="disabled">
+        {% include '@components/icon/icon.twig' with {'icon': 'chevron-left'} %}
+    </button>
+    <ul class="navigation__items">
+        {% for item in prototype.navigation.anchor %}
+            <li class="navigation__item">
+                <a class="navigation__link" href="#{{ item.url }}">{{ item.text }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <button class="navigation__button right" aria-label="Nächste" disabled="disabled">
+        {% include '@components/icon/icon.twig' with {'icon': 'chevron-right'} %}
+    </button>
+</nav>
+
+<!-- Components End: navigation--anchor -->

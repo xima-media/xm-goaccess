@@ -1,0 +1,18 @@
+<!-- Styleguide Start: image-color -->
+
+<div class="styleguide styleguide--image-color">
+    <ul class="styleguide__items">
+        {% for color in colors %}
+            <li class="styleguide__item" title="{{ color.variable }}">
+                <div class="styleguide__header {{ color.class }}"></div>
+                <div class="styleguide__body">
+                    <p>
+                        <strong class="visually-hidden">Name</strong> {{ color.title }}<br />
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Styleguide End: image-color -->

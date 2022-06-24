@@ -1,0 +1,18 @@
+<!-- Component Start: employee-finder -->
+
+<div class="employee-finder">
+    <h2 class="employee-finder__title">Mitarbeiter finden</h2>
+    <form class="employee-finder__form" action="#">
+        {% include '@components/field/field--text.twig' with {
+            label: {
+                text: prototype.component.employeeFinder.input.label.text
+            },
+            placeholder: prototype.component.employeeFinder.input.placeholder
+        } only %}
+        <button class="employee-finder__button" type="button" {# typo3 >>> type="submit" #} aria-label="Suche starten">
+            {% include '@components/icon/icon.twig' with {icon: 'search'} only %}
+        </button>
+    </form>
+</div>
+
+<!-- Components End: employee-finder -->

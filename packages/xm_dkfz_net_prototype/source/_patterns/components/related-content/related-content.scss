@@ -1,0 +1,40 @@
+//
+//    @tableOfContent
+//      1. Related content
+//
+
+
+//
+//   @section 1. Related content
+//
+
+.related-content {
+    margin-right: -7rem; // @todo variable
+    margin-bottom: 5rem;
+    margin-left: -7rem; // @todo variable
+
+    &__header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-right: -1rem;
+    }
+
+    &__pattern {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: .5rem;
+    }
+}
+
+// end of related-content.scss file

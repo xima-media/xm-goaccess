@@ -1,0 +1,86 @@
+<!-- Component Start: accordion -->
+
+{% set accordionId = random() %}
+
+<div class="accordion">
+    {% for accordion in prototype.accordion %}
+    <ol class="accordion__items">
+        <li>
+            <h2 class="accordion__items--title h5">{{ accordion.title }}</h2>
+            <ol id="accordion{{ accordionId }}" class="accordion__item">
+                {% for accordionItem in accordion.item %}
+                    {% set accordionItemId = random() %}
+                <li>
+                    <h3 id="accordionItem{{ accordionItemId }}" class="accordion__items--subtitle">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            aria-expanded="false"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#accordionSection{{ accordionItemId }}"
+                            aria-controls="accordionSection{{ accordionItemId }}">
+
+                            <span class="accordion-button--description h6">
+                                {{ accordionItem.title }}
+                            </span>
+                    </button>
+                    </h3>
+
+                    <div class="accordion-collapse collapse"
+                         id="accordionSection{{ accordionItemId }}"
+                         data-bs-parent="#accordion{{ accordionId }}"
+                         aria-labelledby="accordionItem{{ accordionItemId }}">
+                        <div class="accordion-body accordion__panel background--expanded">
+                            <p class="text-copy-standard spacing--bottom">
+                                {{ accordionItem.text }}
+                            </p>
+
+                            <div class="spacing--bottom">
+                                <h4 class="h5 text-copy-standard--bold">Kontakt</h4>
+                                <p class="text-copy-standard--bold">ITCF (Informationstechnologie Core Facility)</p>
+                                <p class="text-copy-standard">
+                                    <a href="tel:+49 6221-42-4241" class="icon icon--phone">+49 6221-42-4241</a>
+                                </p>
+                                <p class="text-copy-standard">
+                                    <a href="mailto:itservice@dkfz.de" class="icon icon--mail">itservice@dkfz.de</a>
+                                </p>
+                            </div>
+
+                            <div class="spacing--bottom">
+                                <h5 class="text--bold">Weiterführende Informationen im DKFZ Wiki</h5>
+                                <p class="text-copy-standard">
+                                    <a href="#" class="icon icon--arrow-right--tilted link--primary">Informationen zur Durchführung von Videokonferenzen</a>
+                                </p>
+                                <p class="text-copy-standard">
+                                    Falls Sie darüber hinaus eine Lösung für eine umfassende digitale Konferenz-Plattform (inkl. Breakout-Session Räume, Interaktive Poster Presentationen, etc.) benötigen, so senden Sie bitte eine Mail an
+                                    <a href="mailto:events-vorstand@dkfz.de">events-vorstand@dkfz.de</a>. Derzeit testen wir an Pilotprojekten Expertenlösungen von verschiedenen Anbietern.
+                                </p>
+                            </div>
+
+                            {% for info in prototype.infoBox %}
+                                {% include '@components/infobox/infobox.twig' with {
+                                    color: info.color,
+                                    background: info.background,
+                                    title: info.title,
+                                    text: info.text,
+                                    links: info.links
+                                } only %}
+                            {% endfor %}
+
+                            {% for tab in prototype.accordionTabs %}
+                                {% include '@components/tabs/tab--item.twig' with {
+                                    title: tab.title,
+                                    tabItem: tab.item
+                                } only %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </li>
+    </ol>
+    {% endfor %}
+</div>
+
+
+<!-- Components End: accordion -->

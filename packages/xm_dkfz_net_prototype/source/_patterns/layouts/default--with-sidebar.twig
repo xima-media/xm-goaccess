@@ -1,0 +1,16 @@
+{% extends "@layouts/default.twig" %}
+{% block content %}
+    <main class="main main--with-sidebar">
+        <div class="content">
+            {% block main %}{% endblock main %}
+        </div>
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                {% block sidebarHeader %}{% endblock sidebarHeader %}
+            </div>
+            <div class="sidebar__body">
+                {% block sidebarBody %}{% endblock sidebarBody %}
+            </div>
+        </aside>
+    </main>
+{% endblock content %}

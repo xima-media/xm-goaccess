@@ -1,0 +1,215 @@
+//
+//    @tableOfContent
+//      1. Icon default
+//      2. Icon sizes
+//
+
+
+//
+//   @section 1. Icon default
+//
+
+// svg element
+.icon {
+    fill: currentcolor;
+    //pointer-events: none;
+}
+
+// css pseudo element
+.icon {
+    &::before {
+        @include size(var(--css-icon-size));
+
+        content: '';
+        display: inline-block;
+        background-color: var(--color-black);
+        mask-position: center;
+        mask-size: cover;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    &--arrow-right {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-arrow-right');
+        }
+    }
+
+    &--arrow-right--tilted {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-arrow-right');
+            transform: rotate(-45deg);
+        }
+    }
+
+    &--arrow-left {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-arrow-left');
+        }
+    }
+
+    &--arrow-down {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-arrow-down');
+        }
+    }
+
+    &--bookmark {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-bookmark');
+        }
+    }
+
+    &--bookmark-add {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-bookmark-add');
+        }
+    }
+
+    &--bookmark-delete {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-bookmark-delete');
+        }
+    }
+
+    &--chevron-down {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-chevron-down');
+        }
+    }
+
+    &--chevron-left {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-chevron-left');
+        }
+    }
+
+    &--chevron-right {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-chevron-right');
+        }
+    }
+
+    &--close {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-close');
+        }
+    }
+
+    &--copyright {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-copyright');
+        }
+    }
+
+    &--download {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-download');
+        }
+    }
+
+    &--emergency {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-emergency');
+        }
+    }
+
+    &--facebook {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-facebook');
+        }
+    }
+
+    &--file {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-file');
+        }
+    }
+
+    &--instagram {
+        &::before {
+            background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+            mask-image: url('../icon/icon.min.svg#icon-instagram');
+        }
+    }
+
+    &--linkedin {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-linkedin');
+        }
+    }
+
+    &--mail {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-mail');
+        }
+    }
+
+    &--menu {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-menu');
+        }
+    }
+
+    &--message {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-message');
+        }
+    }
+
+    &--minus {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-minus');
+        }
+    }
+
+    &--option {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-option');
+        }
+    }
+
+    &--phone {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-phone');
+        }
+    }
+
+    &--plus {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-plus');
+        }
+    }
+
+    &--printer {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-printer');
+        }
+    }
+
+    &--search {
+        &::before {
+            mask-image: url('../icon/icon.min.svg#icon-search');
+        }
+    }
+
+    &--twitter {
+        &::before {
+            background-color: $color-twitter;
+            mask-image: url('../icon/icon.min.svg#icon-twitter');
+        }
+    }
+}
+
+
+//
+//   @section 2. Icon size
+//
+
+.icon--size {
+    &-sm {
+        @include size(1rem);
+    }
+}
+
+// end of icon.scss file
