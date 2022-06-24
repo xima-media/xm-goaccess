@@ -1918,11 +1918,11 @@
         },
         {
             "name": "mfc/oauth2",
-            "version": "dev-latest",
+            "version": "dev-DKFZ-004-OAuth",
             "dist": {
                 "type": "path",
                 "url": "./packages/oauth2",
-                "reference": "3ace223d2adab44137e2927312155dab7b45e387"
+                "reference": "fc5a250b55a442c90ab0f2b88d3992bfcd834b3c"
             },
             "require": {
                 "league/oauth2-client": "^2.6",
