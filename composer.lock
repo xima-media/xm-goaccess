@@ -1918,7 +1918,7 @@
         },
         {
             "name": "mfc/oauth2",
-            "version": "dev-DKFZ-004-OAuth",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/oauth2",
@@ -8904,7 +8904,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-DKFZ-004-OAuth",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -8938,7 +8938,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-prototype",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
@@ -8969,7 +8969,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-DKFZ-004-OAuth",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
