@@ -1,0 +1,8 @@
+# cat=OAuth2//0; type=boolean; label=Enable GitLab login
+gitlabLoginEnabled = 0
+
+# cat=OAuth2//1; type=string; label=AppId of the GitLab OAuth application
+gitlabAppId =
+
+# cat=OAuth2//2; type=string; label=App secret of the GitLab OAuth application
+gitlabAppSecret =

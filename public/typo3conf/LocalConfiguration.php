@@ -44,6 +44,11 @@ return [
             'enableBackendLogin' => true,
             'overrideUser' => true,
         ],
+        'xm_dkfz_net_site' => [
+            'gitlabLoginEnabled' => 0,
+            'gitlabAppId' => '',
+            'gitlabAppSecret' => '',
+        ],
         'news' => [
             'advancedMediaPreview' => '1',
             'archiveDate' => 'date',
