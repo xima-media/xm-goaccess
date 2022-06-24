@@ -172,6 +172,6 @@ class NavigationAnchor {
  *     @section 3. Export class
  */
 
-export default (new NavigationAnchor())
+//export default (new NavigationAnchor())
 
 // end of navigation--anchor.js
