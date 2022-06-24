@@ -1,0 +1,54 @@
+{
+  "name": "mfc/oauth2",
+  "type": "typo3-cms-extension",
+  "description": "Generic OAuth2 authentication and authorization for TYPO3 CMS",
+  "homepage": "https://www.marketing-factory.de",
+  "authors": [
+    {
+      "name": "Christian Hellmund",
+      "role": "Developer"
+    },
+    {
+      "name": "Simon Schmidt",
+      "role": "Developer"
+    },
+    {
+      "name": "Christian Spoo",
+      "role": "Developer"
+    },
+    {
+      "name": "Karoline Steinfatt",
+      "role": "Maintainer"
+    }
+  ],
+  "license": [
+    "MIT"
+  ],
+  "keywords": [
+    "TYPO3 CMS",
+    "OAuth"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Mfc\\OAuth2\\": "Classes/"
+    }
+  },
+  "require": {
+    "php": "^7.4||^8.0",
+    "league/oauth2-client": "^2.6",
+    "m4tthumphrey/php-gitlab-api": "^10.4",
+    "omines/oauth2-gitlab": "^3.4",
+    "php-http/guzzle7-adapter": "^1.0",
+    "psr/http-factory": "^1.0",
+    "typo3/cms-core": "^11.1.1",
+    "typo3/cms-beuser": "^11.1.1"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-latest": "3.x-dev"
+    },
+    "typo3/cms": {
+      "extension-key": "oauth2"
+    }
+  }
+}
