@@ -1,0 +1,316 @@
+//
+//    @tableOfContent
+//      1. Styleguide default
+//      2. Color
+//      3. Pattern
+//      4. Image color
+//      5. Fonts
+//      6. Texts
+//      7. Color combination - no image
+//      8. Color combination - with image
+//      9. Interactive elements
+//      10. Icons
+//
+
+
+//
+//    @section 1. Styleguide
+//
+
+.styleguide {
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+
+    &__title {
+        margin-bottom: 2rem;
+        padding-bottom: .25rem;
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--color-gray-900);
+    }
+
+    &__desc {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    //&__header {  }
+
+    &__body {
+        padding: .5rem;
+    }
+
+    &__items {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        // overflow: hidden;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+
+//
+//    @section 2. Color
+//
+
+.styleguide--color {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 10.625rem);
+            gap: 1.5rem;
+        }
+
+        //&__item {  }
+
+        &__header {
+            display: block;
+            height: 6.25rem;
+        }
+
+        &__body {
+            text-align: center;
+        }
+    }
+}
+
+
+//
+//    @section 3. Pattern
+//
+
+.styleguide--pattern {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 10.625rem);
+            gap: 1.5rem;
+        }
+
+        //&__item {  }
+
+        &__header {
+            display: block;
+            height: 6.25rem;
+        }
+
+        &__body {
+            text-align: center;
+        }
+    }
+}
+
+
+//
+//    @section 4. Image color
+//
+
+.styleguide--image-color {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 10.625rem);
+            gap: 1.5rem;
+        }
+
+        //&__item {  }
+
+        &__header {
+            display: block;
+            height: 6.25rem;
+        }
+
+        &__body {
+            text-align: center;
+        }
+    }
+}
+
+
+//
+//    @section 5. Fonts
+//
+
+.styleguide--fonts {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 16.875rem);
+            gap: 1.5rem;
+        }
+
+        &__item {
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        &__header {
+            display: block;
+            padding: 1rem;
+            font-size: 120px;
+            text-align: center;
+        }
+
+        &__body {
+            text-align: center;
+        }
+    }
+}
+
+
+//
+//    @section 6. Texts
+//
+
+.styleguide--texts {
+    .styleguide {
+        //&__sections {  }
+
+        &__section {
+            margin-bottom: 2rem;
+        }
+
+        &__items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+        }
+
+        //&__header {  }
+
+        &__body {
+            padding: 0;
+        }
+    }
+}
+
+
+//
+//    @section 7. Color combination - no image
+//
+
+.styleguide--color-combination-no-image {
+    .styleguide {
+        &__items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+        }
+
+        //&__header {  }
+
+        &__body {
+            padding: 0;
+        }
+    }
+}
+
+
+//
+//    @section 8. Color combination - with image
+//
+
+.styleguide--color-combination-with-image {
+    .styleguide {
+        &__sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        //&__section {  }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        //&__item {  }
+
+        //&__header {  }
+
+        //&__body {  }
+    }
+}
+
+
+//
+//    @section 9. Interactive elements
+//
+
+.styleguide--interactive-elements {
+    .styleguide {
+        &__sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        &__section {
+            &:nth-child(1) {
+                .styleguide {
+                    &__body {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        //&__header {  }
+
+        &__body {
+            opacity: 0;
+        }
+    }
+}
+
+//
+//    @section 10. Icons
+//
+
+.styleguide--icons {
+    .styleguide {
+        &__items {
+            display: inline-flex;
+            flex-wrap: wrap;
+        }
+
+        &__header {
+            padding: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+// end of styleguide.scss file

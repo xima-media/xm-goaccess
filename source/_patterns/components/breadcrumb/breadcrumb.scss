@@ -1,0 +1,41 @@
+//
+//    @tableOfContent
+//      1. Breadcrumb
+//
+
+
+//
+//   @section 1. Breadcrumb
+//
+
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
+    &__wrapper {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    li {
+        &:not(:last-child) {
+            padding-right: 5px;
+        }
+
+        .icon {
+            width: 10px;
+            height: 10px;
+            margin-left: 5px;
+        }
+
+        a {
+            opacity: .8;
+            text-decoration: none;
+        }
+    }
+}
+
+// end of breadcrumb.scss file

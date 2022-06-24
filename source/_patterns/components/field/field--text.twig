@@ -1,0 +1,16 @@
+<!-- Component Start: field--text -->
+
+{% set uid = id|default(random()) %}
+
+<div class="field field--text">
+    <label class="field__label {{ label.hidden ? 'visually-hidden' : '' }}" for="field__input--{{ uid }}">{{ label.text }}</label>
+    <input
+        type="{{ type|default('text') }}"
+        class="field__input {{ autocompleteUrl ? 'autocomplete' : '' }}"
+        id="field__input--{{ uid }}"
+        placeholder="{{ placeholder }}"
+        {% if autocompleteUrl %}data-autocomplete-url="../../../Images/autocomplete/{{ autocompleteUrl }}"{% endif %}
+    />
+</div>
+
+<!-- Components End: field--text -->

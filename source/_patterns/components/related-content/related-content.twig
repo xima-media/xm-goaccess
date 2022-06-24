@@ -1,0 +1,14 @@
+<!-- Component Start: related-content -->
+
+<div class="related-content">
+    <div class="related-content__header">
+        <h2 class="related-content__title h4">{{ title }}</h2>
+        <a class="related-content__link" href="{{ link.url }}">{{ link.text }}</a>
+        <span class="related-content__pattern pattern--cyan"></span>
+    </div>
+    <div class="related-content__content">
+        {% block content %}{% endblock content %}
+    </div>
+</div>
+
+<!-- Components End: related-content -->

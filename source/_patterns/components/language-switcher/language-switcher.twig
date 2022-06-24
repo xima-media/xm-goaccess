@@ -1,0 +1,13 @@
+<!-- Component Start: language-switcher -->
+
+<div class="language-switcher">
+    <ul class="language-switcher__items">
+        {% for link in prototype.component.languageSwitcher %}
+            <li class="language-switcher__item">
+                <a class="language-switcher__link {{ prototype.lang == link.id ? 'fx--active' : '' }}" href="{{ link.url }}" data-tooltip="{{ link.tooltip }}">{{ link.text }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Components End: language-switcher -->

@@ -1,0 +1,226 @@
+//
+//    @tableOfContent
+//      1. Content wrapper
+//
+
+
+//
+//   @section 1. Content wrapper
+//
+
+.content-wrapper {
+    &__header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: $container-default-widths;
+        margin: 0 auto .75rem; // 1.5rem;
+        padding-bottom: .375rem;
+    }
+
+    &__title {
+        margin-bottom: .25rem;
+
+        &-left {
+            @include media-breakpoint-up(lg) {
+                margin-left: 6rem;
+            }
+        }
+    }
+
+    &__pattern {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: .5rem;
+    }
+
+    &__link {
+        @include link-secondary-with-arrow;
+    }
+
+    &--sm {
+        .content-wrapper {
+            &__title {
+                @include h5;
+
+                margin-bottom: .5rem;
+            }
+        }
+    }
+
+    &--md {
+        max-width: $container-md-widths;
+        margin: auto;
+    }
+
+    &__horizontal {
+        display: flex;
+        flex-direction: column;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            max-width: $container-default-widths;
+            margin: 1.875rem auto .75rem;
+        }
+    }
+
+    &__picture {
+        //max-width: $container-default-widths;
+        max-width: 69.125rem;
+        margin: auto;
+
+        &-position {
+            &-left {
+                .picture {
+                    float: left;
+                    clear: both;
+
+                    &--orientation {
+                        &-md {
+                            &-square {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0  27.5rem;
+                                    width: 27.5rem;
+                                    margin-right: 4.8rem;
+                                }
+                            }
+
+                            &-rectangle {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 18.125rem;
+                                    width: 18.125rem;
+                                    margin-left: 4rem;
+                                    margin-right: 10rem;
+                                }
+                            }
+                        }
+
+                        &-sm {
+                            &-square {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 18.75rem;
+                                    width: 18.75rem;
+                                    margin-left: 4rem;
+                                    margin-right: 10rem;
+                                }
+                            }
+
+                            &-rectangle {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 12.5rem;
+                                    width: 12.5rem;
+                                    margin-left: 7rem;
+                                    margin-right: 13rem;
+                                }
+                            }
+                        }
+
+                    }
+
+                    &__caption {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .--content {
+                    max-width: $container-md-widths;
+                    margin-left: auto;
+                    margin-bottom: 4rem;
+                }
+            }
+
+            &-right {
+                .picture {
+                    float: right;
+                    clear: both;
+
+                    &--orientation {
+                        &-md {
+                            &-square {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 27.5rem;
+                                    width: 27.5rem;
+                                    margin-left: 4.8rem;
+                                }
+                            }
+
+                            &-rectangle {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 18.125rem;
+                                    width: 18.125rem;
+                                    margin-right: 4rem;
+                                    margin-left: 10rem;
+                                }
+                            }
+                        }
+
+                        &-sm {
+                            &-square {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 18.75rem;
+                                    width: 18.75rem;
+                                    margin-right: 4rem;
+                                    margin-left: 10rem;
+                                }
+                            }
+
+                            &-rectangle {
+                                width: 100%;
+
+                                @include media-breakpoint-up(md) {
+                                    flex: 0 0 12.5rem;
+                                    width: 12.5rem;
+                                    margin-right: 7rem;
+                                    margin-left: 13rem;
+                                }
+                            }
+                        }
+                    }
+
+                    &__caption {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .--content {
+                    max-width: $container-md-widths;
+                    margin-right: auto;
+                    margin-bottom: 4rem;
+                }
+            }
+        }
+
+        .--title {
+            @include h4;
+            margin: 1rem 0;
+        }
+
+        .--text {
+            @include text-copy-standard();
+        }
+    }
+}
+
+.head-area {
+    &--picture {
+        position: relative;
+    }
+}
+// end of content-wrapper.scss file

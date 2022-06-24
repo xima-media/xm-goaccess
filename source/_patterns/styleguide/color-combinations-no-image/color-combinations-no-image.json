@@ -1,0 +1,35 @@
+{
+    "colors": [
+        {
+            "title": "Hellgrün",
+            "color": "#A0B400",
+            "class": "background--green-light"
+        },
+        {
+            "title": "Cyan",
+            "color": "#009EE3",
+            "class": "background--cyan"
+        },
+        {
+            "title": "Magenta",
+            "color": "#E5007D",
+            "class": "background--magenta"
+        },
+        {
+            "title": "Orange",
+            "color": "#FF5C00",
+            "class": "background--orange"
+        },
+        {
+            "title": "Gelb",
+            "color": "#FFD600",
+            "class": "background--yellow"
+        },
+        {
+            "title": "Gelb",
+            "titleColorClass": "color--primary",
+            "color": "#FFD600",
+            "class": "background--yellow"
+        }
+    ]
+}

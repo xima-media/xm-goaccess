@@ -1,0 +1,87 @@
+<!-- Component Start: hero-form -->
+
+<form action="#" class="hero-form">
+    <div class="hero-form__header">
+        <h2 class="hero-form__title">Mitarbeiter suchen</h2>
+    </div>
+    <div class="hero-form__content">
+        <div class="row">
+            <div class="col-lg-6">
+                {% include '@components/field/field--text.twig' with {
+                    label: {
+                        text: 'Suche nach Name, Vorname, Telefonnummer'
+                    },
+                    placeholder: 'Suche nach Name, Vorname, Telefonnummer',
+                    autocompleteUrl: 'employee--names.json'
+                } only %}
+            </div>
+            <div class="col-lg-6">
+                {% include '@components/field/field--text.twig' with {
+                    label: {
+                        text: 'Suche nach Kompetenz, Thema, Interesse'
+                    },
+                    placeholder: 'Suche nach Kompetenz, Thema, Interesse',
+                    autocompleteUrl: 'employee--topics.json'
+                } only %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                {% include '@components/field/field--text.twig' with {
+                    label: {
+                        text: 'Abteilung'
+                    },
+                    placeholder: 'Abteilung',
+                    autocompleteUrl: 'employee--departments.json'
+                } only %}
+            </div>
+            <div class="col-lg-4">
+                {% include '@components/field/field--text.twig' with {
+                    label: {
+                        text: 'Funktion'
+                    },
+                    placeholder: 'Funktion',
+                    autocompleteUrl: 'employee--functions.json'
+                } only %}
+            </div>
+            <div class="col-lg-4">
+                {% include '@components/field/field--select.twig' with {
+                    label: {
+                        text: 'Gremium'
+                    },
+                    options: [
+                        {
+                            text: 'Gremium'
+                        },
+                        {
+                            value: '1',
+                            text: 'Personalrat'
+                        },
+                        {
+                            value: '2',
+                            text: 'Kuratorium'
+                        },
+                        {
+                            value: '3',
+                            text: 'Wissenschaftliches Komitee'
+                        },
+                        {
+                            value: '4',
+                            text: 'Wissenschaftlicher Rat'
+                        }
+                    ],
+                    placeholder: 'Funktion'
+                } only %}
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-form__footer">
+        <button type="submit" class="button button--white">
+            {% include '@components/icon/icon.twig' with { icon: 'search' } %}
+            Suchen
+        </button>
+    </div>
+</form>
+
+<!-- Components End: hero-form -->

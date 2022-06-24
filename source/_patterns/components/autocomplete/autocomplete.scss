@@ -1,0 +1,48 @@
+//
+//    @tableOfContent
+//      1. Autocomplete
+//
+
+
+//
+//   @section 1. Autocomplete
+//
+
+//.autocomplete {  }
+
+// https://github.com/bassjobsen/typeahead.js-bootstrap4-css
+.awesomplete {
+    [hidden] {
+        display: none;
+    }
+
+    > ul {
+        @include list-reset;
+
+        position: absolute;
+        z-index: 2;
+        min-width: 100%;
+        color: var(--color-black);
+        background-color: var(--color-white);
+        border: 1px solid var(--color-gray-200);
+
+        &:empty {
+            display: none;
+        }
+
+        li {
+            padding: .5rem;
+            cursor: pointer;
+
+            &[aria-selected="true"] {
+                font-weight: 700;
+            }
+
+            &:hover {
+                background-color: var(--color-gray-100);
+            }
+        }
+    }
+}
+
+// end of autocomplete.scss file
