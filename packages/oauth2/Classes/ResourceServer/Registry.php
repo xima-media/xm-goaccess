@@ -10,7 +10,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * Class ResourceServerRegistry
  *
  * @author  Fabian Bettag <hi@chee.codes>
- * @package Mfc\OAuth2\ResourceServer
  */
 class Registry
 {
@@ -36,9 +35,12 @@ class Registry
         string $className,
         array $options
     ): void {
-        if ( !is_subclass_of($className, ResourceServerInterface::class)) {
-            $message = sprintf('"%s" does not implement "%s" and is therefor invalid', $className,
-                ResourceServerInterface::class);
+        if (!is_subclass_of($className, ResourceServerInterface::class)) {
+            $message = sprintf(
+                '"%s" does not implement "%s" and is therefor invalid',
+                $className,
+                ResourceServerInterface::class
+            );
             throw new InvalidResourceServerException($message, 1558815163);
         }
 
@@ -63,7 +65,7 @@ class Registry
      */
     public static function getResourceServerInstance(string $identifier): AbstractResourceServer
     {
-        if ( !array_key_exists($identifier, self::$registry)) {
+        if (!array_key_exists($identifier, self::$registry)) {
             $message = sprintf('"%s" has not been registered as a ResourceServer', $identifier);
             throw new NotRegisteredException($message, 1558815703);
         }

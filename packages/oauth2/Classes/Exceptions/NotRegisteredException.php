@@ -10,5 +10,4 @@ namespace Mfc\OAuth2\Exceptions;
 
 class NotRegisteredException extends \Exception
 {
-
 }

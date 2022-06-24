@@ -1,8 +1,8 @@
 <?php
+
 defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(function () {
-
     $ll = 'LLL:EXT:oauth2/Resources/Private/Language/locallang.xlf:';
 
     $columns = [
@@ -23,8 +23,6 @@ call_user_func(function () {
         ],
     ];
 
-
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('be_groups', $columns);
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('be_groups', 'gitlabGroup');
-
 });

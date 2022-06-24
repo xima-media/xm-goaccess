@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Mfc\OAuth2\ResourceServer;
@@ -7,7 +8,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class AbstractResourceServer
- * @package Mfc\OAuth2\ResourceServer
  * @author Christian Spoo <cs@marketing-factory.de>
  */
 abstract class AbstractResourceServer implements ResourceServerInterface

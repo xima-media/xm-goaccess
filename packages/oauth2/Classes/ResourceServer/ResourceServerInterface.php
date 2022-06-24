@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Mfc\OAuth2\ResourceServer;
@@ -8,7 +9,6 @@ use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 /**
  * Interface ResourceServerInterface
- * @package Mfc\OAuth2\ResourceServer
  * @author Christian Spoo <cs@marketing-factory.de>
  */
 interface ResourceServerInterface
