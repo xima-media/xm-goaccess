@@ -12,7 +12,7 @@ defined('TYPO3_MODE') || die();
     [
         'title' => 'OAuth Authentication',
         'description' => 'OAuth authentication service for backend users',
-        'subtype' => 'getUserBE,authUserBE',
+        'subtype' => 'getUserBE,authUserBE,processLoginDataBE',
         'available' => true,
         'priority' => 75,
         'quality' => 50,
