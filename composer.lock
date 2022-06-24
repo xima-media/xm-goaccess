@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "132c1b522ee22d5af15c86ca09832048",
+    "content-hash": "cc521e2cfa0ee5e601fc6b47a72d2335",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1922,7 +1922,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/oauth2",
-                "reference": "f48b024cd812203c4cd2aeda6e204b0638365cf2"
+                "reference": "3ace223d2adab44137e2927312155dab7b45e387"
             },
             "require": {
                 "league/oauth2-client": "^2.6",
