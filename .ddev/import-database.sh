@@ -7,4 +7,5 @@ then
   echo 'loading db'
   ./vendor/bin/dep db:decompress --options=dumpcode:dkfzStarterDb
   ./vendor/bin/dep db:import --options=dumpcode:dkfzStarterDb
+  ./vendor/bin/dep db:compress --options=dumpcode:dkfzStarterDb
 fi
