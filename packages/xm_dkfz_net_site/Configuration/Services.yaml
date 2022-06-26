@@ -11,4 +11,9 @@ services:
   Xima\XmDkfzNetSite\EventListener\BackendUserLookup:
     tags:
       - name: event.listener
-        identifier: 'oauthUserRegistration'
+        identifier: 'oauthBeUserRegistration'
+
+  Xima\XmDkfzNetSite\EventListener\FrontendUserLookup:
+    tags:
+      - name: event.listener
+        identifier: 'oauthFeUserRegistration'

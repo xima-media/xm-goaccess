@@ -4,8 +4,9 @@ namespace Xima\XmDkfzNetSite\EventListener;
 
 use Psr\Log\LoggerInterface;
 use Waldhacker\Oauth2Client\Events\BackendUserLookupEvent;
+use Waldhacker\Oauth2Client\Events\FrontendUserLookupEvent;
 
-class BackendUserLookup
+class FrontendUserLookup
 {
     private LoggerInterface $logger;
 
@@ -14,9 +15,9 @@ class BackendUserLookup
         $this->logger = $logger;
     }
 
-    public function __invoke(BackendUserLookupEvent $event): void
+    public function __invoke(FrontendUserLookupEvent $event): void
     {
-        $this->logger->debug('BE User Lookup: ' . $event->getRemoteUser()->getId());
+        $this->logger->debug('FE User Lookup: ' . $event->getRemoteUser()->getId());
 
         if ($event->getTypo3User() !== null) {
             return;
