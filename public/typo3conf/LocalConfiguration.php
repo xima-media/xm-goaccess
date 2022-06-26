@@ -40,14 +40,27 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
-        'oauth2' => [
-            'enableBackendLogin' => true,
-            'overrideUser' => true,
-        ],
-        'xm_dkfz_net_site' => [
-            'gitlabLoginEnabled' => 0,
-            'gitlabAppId' => '',
-            'gitlabAppSecret' => '',
+        'oauth2_client' => [
+            'providers' => [
+                'gitlab' => [
+                    'label' => 'Gitlab',
+                    'iconIdentifier' => 'oauth2-gitlab',
+                    'description' => 'Login with Gitlab',
+                    'scopes' => [
+                        \Waldhacker\Oauth2Client\Service\Oauth2ProviderManager::SCOPE_BACKEND,
+                        \Waldhacker\Oauth2Client\Service\Oauth2ProviderManager::SCOPE_FRONTEND,
+                    ],
+                    'options' => [
+                        'clientId' => '',
+                        'clientSecret' => '',
+                        'urlAuthorize' => 'https://t3-gitlab-dev.xima.local/oauth/authorize',
+                        'urlAccessToken' => 'https://t3-gitlab-dev.xima.local/oauth/token',
+                        'urlResourceOwnerDetails' => 'https://t3-gitlab-dev.xima.local/api/v4/user',
+                        'scopes' => ['openid', 'read_user'],
+                        'scopeSeparator' => ' ',
+                    ],
+                ],
+            ],
         ],
         'news' => [
             'advancedMediaPreview' => '1',

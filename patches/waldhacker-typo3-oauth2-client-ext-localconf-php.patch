@@ -1,0 +1,11 @@
+--- /dev/null
++++ ../ext_localconf.php
+@@ -14,7 +14,7 @@
+         [
+             'title' => 'OAuth2 Authentication',
+             'description' => 'OAuth2 authentication for backend users',
+-            'subtype' => 'getUserBE,authUserBE',
++            'subtype' => 'getUserBE,authUserBE,processLoginDataBE',
+             'available' => true,
+             'priority' => 75,
+             'quality' => 50,
