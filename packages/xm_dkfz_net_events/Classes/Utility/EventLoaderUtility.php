@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionClass;
 use Symfony\Component\DomCrawler\Crawler;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use Xima\XmDkfzNetEvents\Domain\Model\Dto\Event;
 
 class EventLoaderUtility
@@ -15,6 +16,13 @@ class EventLoaderUtility
      */
     protected array $events = [];
 
+    protected FrontendInterface $cache;
+
+    public function __construct(FrontendInterface $cache)
+    {
+        $this->cache = $cache;
+    }
+
     public function getEvents(string $url): array
     {
         $this->loadEvents($url);
@@ -22,10 +30,15 @@ class EventLoaderUtility
         return $this->events;
     }
 
-    public function loadEvents(string $url): void
+    public function loadEvents(string $url, bool $useCache = true): void
     {
-        // check cache
-        $this->requestRssEvents($url);
+        $cacheIdentifier = md5($url);
+        $this->events = $useCache && $this->cache->has($cacheIdentifier) ? $this->cache->get($cacheIdentifier) : [];
+
+        if (empty($this->events)) {
+            $this->requestRssEvents($url);
+            $this->cache->set($cacheIdentifier, $this->events);
+        }
     }
 
     public function requestRssEvents(string $url): void
