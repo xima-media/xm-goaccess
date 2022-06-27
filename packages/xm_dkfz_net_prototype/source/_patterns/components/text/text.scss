@@ -13,19 +13,37 @@
         margin-bottom: 2.5rem;
     }
 
+    &--subTitle {
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        @include text-copy-standard;
+    }
+
+
     .list {
         &-dot {
             list-style: disc;
             @include text-copy-standard(false, .6px);
+            margin-left: .375rem;
         }
 
         &-number {
             @include text-copy-standard;
+            &:before {
+                content: "";
+                padding-right: 1.25rem;
+            }
+
+            > ul {
+                margin-left: 1.25rem;
+            }
         }
     }
 
     &--items {
-        padding-left: 3.375rem;
+        padding-left: 4rem;
     }
 
     &--gap {

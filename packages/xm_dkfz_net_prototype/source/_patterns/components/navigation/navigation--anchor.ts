@@ -85,17 +85,20 @@ class NavigationAnchor {
     constructor() {
         app.log('component "anchor navigation" loaded')
 
+        // only if element on the page
+        if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
 
-        this._container = document.querySelector<HTMLElement>('.navigation--anchor')
-        this._buttonEl = this._container.querySelectorAll<HTMLButtonElement>('.navigation__button')
-        this._buttonScrollPrevEl = this._container.querySelector<HTMLButtonElement>('.navigation__button.left')
-        this._buttonScrollNextEl = this._container.querySelector<HTMLButtonElement>('.navigation__button.right')
-        this._containerItemsEl = this._container.querySelector<HTMLElement>('.navigation__items')
-        this._containerItemEl = this._container.querySelectorAll<HTMLElement>('.navigation__item')
-        this._scrollWidth = 200
+            this._container = document.querySelector<HTMLElement>('.navigation--anchor')
+            this._buttonEl = this._container.querySelectorAll<HTMLButtonElement>('.navigation__button')
+            this._buttonScrollPrevEl = this._container.querySelector<HTMLButtonElement>('.navigation__button.left')
+            this._buttonScrollNextEl = this._container.querySelector<HTMLButtonElement>('.navigation__button.right')
+            this._containerItemsEl = this._container.querySelector<HTMLElement>('.navigation__items')
+            this._containerItemEl = this._container.querySelectorAll<HTMLElement>('.navigation__item')
+            this._scrollWidth = 200
 
-        // methods
-        this.events()
+            // methods
+            this.events()
+        }
     }
 
     /**

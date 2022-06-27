@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z" product-name="xm_dkfz_net_jobs">
+		<header>
+			<generator>XLIFF Editor</generator>
+			<authorName>Maik Schneider</authorName>
+			<authorEmail>maik.schneider@xima.de</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="latestEvents.title">
+				<source>Latest Events</source>
+			</trans-unit>
+			<trans-unit id="latestEvents.description">
+				<source>Displays latest events from RSS feed</source>
+			</trans-unit>
+			<trans-unit id="listEvents.title">
+				<source>Event listing</source>
+			</trans-unit>
+			<trans-unit id="listEvents.description">
+				<source>Displays all events from RSS feed</source>
+			</trans-unit>
+			<trans-unit id="latestEvents.all">
+				<source>All events</source>
+			</trans-unit>
+			<trans-unit id="latestEvents.more">
+				<source>More</source>
+			</trans-unit>
+			<trans-unit id="settings.url">
+				<source>URL of the RSS feed</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

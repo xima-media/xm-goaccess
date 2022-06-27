@@ -1,0 +1,45 @@
+<?xml version="1.2" encoding="UTF-8" ?>
+<xliff version="1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z" product-name="xm_dkfz_net_site">
+		<header>
+			<generator>XLIFF Editor</generator>
+			<authorName>Maik Schneider</authorName>
+			<authorEmail>maik.schneider@xima.de</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="tt_content.header_layout.0">
+				<source><![CDATA[Default <h2>]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.header_layout.1">
+				<source><![CDATA[Headline 1 <h1>]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.header_layout.2">
+				<source><![CDATA[Headline 2 <h2>]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.header_layout.3">
+				<source><![CDATA[Headline 3 <h3>]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.header_layout.4">
+				<source><![CDATA[Headline 4 <h4>]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.header_layout.5">
+				<source><![CDATA[Headline 5 <h5>]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.frame_class.cyan">
+				<source>Cyan Background</source>
+			</trans-unit>
+			<trans-unit id="tt_content.frame_class.yellow">
+				<source>Yellow Background</source>
+			</trans-unit>
+			<trans-unit id="tt_content.frame_class.orange">
+				<source>Orange Background</source>
+			</trans-unit>
+			<trans-unit id="tt_content.layout.1">
+				<source>Wide</source>
+			</trans-unit>
+			<trans-unit id="tt_content.layout.2">
+				<source>Full width</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

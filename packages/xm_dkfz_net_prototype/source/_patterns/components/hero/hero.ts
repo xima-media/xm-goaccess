@@ -27,7 +27,20 @@ import app from '../basic/basic'
 class Hero {
     constructor () {
         app.log('component "hero" loaded')
+
+        this.init();
     }
+
+    init() {
+        // max number of images
+        const maxImages = 9
+        let numRand = Math.floor(Math.random()*maxImages)
+        // render the random background image
+        if (document.querySelectorAll<HTMLElement>('.background--image-hero').length) {
+            document.querySelector<HTMLElement>('.background--image-hero').style.cssText = `background-image:url("../../../Images/examples/hero-startpage-${numRand}.jpg")`
+        }
+    }
+
 }
 
 /**

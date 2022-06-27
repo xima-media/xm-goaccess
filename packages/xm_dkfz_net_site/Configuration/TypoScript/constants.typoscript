@@ -1,6 +1,7 @@
 // dependencies
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:felogin/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:xm_dkfz_net_events/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
@@ -34,16 +35,19 @@ styles {
 #### DKFZ Jobs ####
 ###################
 plugin.tx_xmdkfznetjobs {
-  view {
-    layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Layouts/
-    partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Partials/
-    templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Templates/
-  }
-
   settings {
     pidJobDetail =
     pidJobList = {$pidJobList}
     latestJobCount = 3
+  }
+}
+
+#####################
+#### DKFZ Events ####
+#####################
+plugin.tx_xmdkfznetevents {
+  settings {
+    latestEventCount = 9
   }
 }
 

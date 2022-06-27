@@ -13,6 +13,12 @@
 			<trans-unit id="latestJobs.description">
 				<target>Zeigt die Jobinserate von jobs.dkfz.de in einer Listenansicht an</target>
 			</trans-unit>
+			<trans-unit id="listJobs.title">
+				<source>Alle Jobs</source>
+			</trans-unit>
+			<trans-unit id="listJobs.description">
+				<source>Zeigt alle Stellenangebote von jobs.dkfz.de mit Filtern an</source>
+			</trans-unit>
 			<trans-unit id="latestJobs.headline">
 				<target>Offene Stellen</target>
 			</trans-unit>
