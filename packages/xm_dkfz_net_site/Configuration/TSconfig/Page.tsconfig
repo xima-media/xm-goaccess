@@ -24,9 +24,9 @@ TCEFORM {
     frame_class {
       removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
       addItems {
-        cyan = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_frame_class.cyan
-        yellow = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_frame_class.yellow
-        orange = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_frame_class.orange
+        cyan = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.frame_class.cyan
+        yellow = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.frame_class.yellow
+        orange = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.frame_class.orange
       }
     }
 
