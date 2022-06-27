@@ -18,5 +18,8 @@
 		"psr-4": {
 			"Xima\\XmDkfzNetEvents\\": "Classes"
 		}
+	},
+	"require": {
+		"symfony/dom-crawler": "^6.2.x-dev"
 	}
 }

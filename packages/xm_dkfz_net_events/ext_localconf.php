@@ -13,3 +13,12 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['xmdkfznete
     ],
     []
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'XmDkfzNetEvents',
+    'ListEvents',
+    [
+        Xima\XmDkfzNetEvents\Controller\EventController::class => 'list',
+    ],
+    []
+);

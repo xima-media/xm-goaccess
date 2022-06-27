@@ -1,0 +1,14 @@
+plugin.tx_xmdkfznetevents {
+  view {
+    layoutRootPaths.0 = EXT:xm_dkfz_net_events/Resources/Private/Layouts
+    layoutRootPaths.10 = {$plugin.tx_xmdkfznetevents.view.layoutRootPath}
+    templateRootPaths.0 = EXT:xm_dkfz_net_events/Resources/Private/Templates
+    templateRootPaths.10 = {$plugin.tx_xmdkfznetevents.view.templateRootPath}
+    partialRootPaths.0 = EXT:xm_dkfz_net_events/Resources/Private/Partials
+    partialRootPaths.10 = {$plugin.tx_xmdkfznetevents.view.partialRootPath}
+  }
+
+  settings {
+    latestEventCount = {$plugin.tx_xmdkfznetevents.settings.latestEventCount}
+  }
+}

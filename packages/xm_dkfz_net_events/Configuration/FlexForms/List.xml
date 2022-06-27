@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>sheetTitle</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.url>
+						<TCEforms>
+							<label>LLL:EXT:xm_dkfz_net_events/Resources/Private/Language/locallang.xlf:settings.url</label>
+							<config>
+								<type>input</type>
+								<eval>trim,required</eval>
+							</config>
+						</TCEforms>
+					</settings.url>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

@@ -25,6 +25,9 @@
 			<trans-unit id="latestEvents.more">
 				<source>More</source>
 			</trans-unit>
+			<trans-unit id="settings.url">
+				<source>URL of the RSS feed</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
