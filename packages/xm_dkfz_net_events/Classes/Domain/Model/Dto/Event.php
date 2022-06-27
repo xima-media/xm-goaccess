@@ -18,7 +18,7 @@ class Event
 
     public ?\DateTime $eventDate = null;
 
-    public string $eventTimeString = '';
+    public string $eventTime = '';
 
     public string $eventLanguage = '';
 
