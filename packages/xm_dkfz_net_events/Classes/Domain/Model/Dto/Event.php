@@ -2,9 +2,7 @@
 
 namespace Xima\XmDkfzNetEvents\Domain\Model\Dto;
 
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-
-class Event extends AbstractEntity
+class Event
 {
     public string $title = '';
 
@@ -24,7 +22,7 @@ class Event extends AbstractEntity
 
     public string $eventLanguage = '';
 
-    public \DateTime $pubDate;
+    public ?\DateTime $pubDate = null;
 
     public string $language = '';
 }

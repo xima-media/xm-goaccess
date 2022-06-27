@@ -4,6 +4,9 @@ namespace Xima\XmDkfzNetEvents\Utility;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use ReflectionClass;
+use ReflectionProperty;
+use Symfony\Component\DomCrawler\Crawler;
 use Xima\XmDkfzNetEvents\Domain\Model\Dto\Event;
 
 class EventLoaderUtility
@@ -45,6 +48,40 @@ class EventLoaderUtility
             return;
         }
 
-        $crawler = new Crawler($dom);
+        $crawler = new Crawler($xml);
+
+        $this->events = $crawler->filter('item')->each(function (Crawler $parentCrawler) {
+            return self::convertItemToEvent($parentCrawler);
+        });
+    }
+
+    public static function convertItemToEvent(Crawler $crawler): Event
+    {
+        $event = new Event();
+        $eventReflection = new ReflectionClass(Event::class);
+
+        $children = $crawler->filter('item')->children();
+
+        foreach ($children as $key => $node) {
+            $xmlPropertyName = $node->tagName;
+
+            if (!$eventReflection->hasProperty($xmlPropertyName)) {
+                continue;
+            }
+
+            if ($eventReflection->getProperty($xmlPropertyName)->getType()->getName() === 'string') {
+                $event->$xmlPropertyName = $node->nodeValue;
+                continue;
+            }
+
+            if ($eventReflection->getProperty($xmlPropertyName)->getType()->getName() === 'DateTime') {
+                try {
+                    $event->$xmlPropertyName = new \DateTime($node->nodeValue);
+                } catch (\Exception) {
+                }
+            }
+        }
+
+        return $event;
     }
 }

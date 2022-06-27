@@ -20,6 +20,6 @@
 		}
 	},
 	"require": {
-		"symfony/dom-crawler": "^6.2.x-dev"
+		"symfony/dom-crawler": "^6.1.0"
 	}
 }
