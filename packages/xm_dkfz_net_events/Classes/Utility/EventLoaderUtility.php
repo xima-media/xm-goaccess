@@ -34,6 +34,7 @@ class EventLoaderUtility
         $client = new Client();
 
         try {
+            $url = str_starts_with($url, '/') ? 'https://' . $_SERVER['SERVER_NAME'] . $url : $url;
             $response = $client->request('GET', $url);
             $xml = $response->getBody()->getContents();
         } catch (GuzzleException $e) {

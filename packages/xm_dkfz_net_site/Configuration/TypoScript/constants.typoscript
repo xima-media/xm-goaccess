@@ -47,6 +47,15 @@ plugin.tx_xmdkfznetjobs {
   }
 }
 
+#####################
+#### DKFZ Events ####
+#####################
+plugin.tx_xmdkfznetjobs {
+  settings {
+    latestEventCount = 8
+  }
+}
+
 ##################
 #### FE_LOGIN ####
 ##################

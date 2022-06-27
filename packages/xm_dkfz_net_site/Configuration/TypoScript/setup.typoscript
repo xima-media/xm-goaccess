@@ -1,6 +1,7 @@
 // dependencies
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:xm_dkfz_net_jobs/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:xm_dkfz_net_events/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:felogin/Configuration/TypoScript/setup.typoscript'
 
 // own

@@ -18,7 +18,7 @@ class EventController extends ActionController
 
     public function latestAction(): ResponseInterface
     {
-        $events = $this->eventLoaderUtility->getEvents('');
+        $events = $this->eventLoaderUtility->getEvents((string)$this->settings['url']);
 
         if ($this->settings['latestEventCount'] && MathUtility::canBeInterpretedAsInteger($this->settings['latestEventCount'])) {
             $events = array_slice($events, 0, (int)$this->settings['latestEventCount']);
