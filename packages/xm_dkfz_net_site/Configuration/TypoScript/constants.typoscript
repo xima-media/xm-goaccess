@@ -35,12 +35,6 @@ styles {
 #### DKFZ Jobs ####
 ###################
 plugin.tx_xmdkfznetjobs {
-  view {
-    layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Layouts/
-    partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Partials/
-    templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xm_dkfz_net_jobs/Templates/
-  }
-
   settings {
     pidJobDetail =
     pidJobList = {$pidJobList}
