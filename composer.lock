@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08bd8bc1071eff390e959525041e28c8",
+    "content-hash": "ae2097c878b9761c9d06e7b8c4c8fdbf",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1917,69 +1917,6 @@
             "time": "2021-07-01T14:25:37+00:00"
         },
         {
-            "name": "mfc/oauth2",
-            "version": "dev-waldhacker-oauth",
-            "dist": {
-                "type": "path",
-                "url": "./packages/oauth2",
-                "reference": "fc5a250b55a442c90ab0f2b88d3992bfcd834b3c"
-            },
-            "require": {
-                "league/oauth2-client": "^2.6",
-                "m4tthumphrey/php-gitlab-api": "^10.4",
-                "omines/oauth2-gitlab": "^3.4",
-                "php": "^7.4||^8.0",
-                "php-http/guzzle7-adapter": "^1.0",
-                "psr/http-factory": "^1.0",
-                "typo3/cms-beuser": "^11.1.1",
-                "typo3/cms-core": "^11.1.1"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-latest": "3.x-dev"
-                },
-                "typo3/cms": {
-                    "extension-key": "oauth2"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Mfc\\OAuth2\\": "Classes/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Hellmund",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Simon Schmidt",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Christian Spoo",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Karoline Steinfatt",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Generic OAuth2 authentication and authorization for TYPO3 CMS",
-            "homepage": "https://www.marketing-factory.de",
-            "keywords": [
-                "OAuth",
-                "TYPO3 CMS"
-            ],
-            "transport-options": {
-                "relative": true
-            }
-        },
-        {
             "name": "netresearch/jsonmapper",
             "version": "v4.0.0",
             "source": {
@@ -2085,73 +2022,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.14.0"
             },
             "time": "2022-05-31T20:59:12+00:00"
-        },
-        {
-            "name": "omines/oauth2-gitlab",
-            "version": "3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/omines/oauth2-gitlab.git",
-                "reference": "0c37361c54fae71a85350c445bda1834db5859af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/omines/oauth2-gitlab/zipball/0c37361c54fae71a85350c445bda1834db5859af",
-                "reference": "0c37361c54fae71a85350c445bda1834db5859af",
-                "shasum": ""
-            },
-            "require": {
-                "league/oauth2-client": "^2.4.1",
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "guzzlehttp/psr7": "^1.6",
-                "http-interop/http-factory-guzzle": "^1.0",
-                "m4tthumphrey/php-gitlab-api": "^10.0|^11.0",
-                "mockery/mockery": "^1.0",
-                "php-http/guzzle7-adapter": "^0.1",
-                "phpunit/phpunit": "^8.0|^9.0"
-            },
-            "suggest": {
-                "m4tthumphrey/php-gitlab-api": "For further API usage using the acquired OAuth2 token"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Omines\\OAuth2\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Niels Keurentjes",
-                    "email": "niels.keurentjes@omines.com",
-                    "homepage": "https://www.omines.nl/"
-                }
-            ],
-            "description": "GitLab OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
-            "keywords": [
-                "authorisation",
-                "authorization",
-                "client",
-                "gitlab",
-                "oauth",
-                "oauth2"
-            ],
-            "support": {
-                "issues": "https://github.com/omines/oauth2-gitlab/issues",
-                "source": "https://github.com/omines/oauth2-gitlab/tree/3.4.0"
-            },
-            "time": "2021-02-08T12:15:55+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2403,68 +2273,6 @@
                 "source": "https://github.com/php-http/discovery/tree/1.14.2"
             },
             "time": "2022-05-25T07:26:05+00:00"
-        },
-        {
-            "name": "php-http/guzzle7-adapter",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-http/guzzle7-adapter.git",
-                "reference": "fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-http/guzzle7-adapter/zipball/fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01",
-                "reference": "fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^7.0",
-                "php": "^7.2 | ^8.0",
-                "php-http/httplug": "^2.0",
-                "psr/http-client": "^1.0"
-            },
-            "provide": {
-                "php-http/async-client-implementation": "1.0",
-                "php-http/client-implementation": "1.0",
-                "psr/http-client-implementation": "1.0"
-            },
-            "require-dev": {
-                "php-http/client-integration-tests": "^3.0",
-                "phpunit/phpunit": "^8.0|^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Http\\Adapter\\Guzzle7\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
-                }
-            ],
-            "description": "Guzzle 7 HTTP Adapter",
-            "homepage": "http://httplug.io",
-            "keywords": [
-                "Guzzle",
-                "http"
-            ],
-            "support": {
-                "issues": "https://github.com/php-http/guzzle7-adapter/issues",
-                "source": "https://github.com/php-http/guzzle7-adapter/tree/1.0.0"
-            },
-            "time": "2021-03-09T07:35:15+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -12890,7 +12698,6 @@
         "sourcebroker/deployer-extended-typo3": 20,
         "georgringer/news": 20,
         "sourcebroker/deployer-extended-database": 20,
-        "mfc/oauth2": 20,
         "xima/xm-dkfz-net-events": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
