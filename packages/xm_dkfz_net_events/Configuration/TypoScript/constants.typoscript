@@ -1,0 +1,11 @@
+plugin.tx_xmdkfznetevents {
+  view {
+    layoutRootPath =
+    templateRootPath =
+    partialRootPath =
+  }
+
+  settings {
+    latestEventCount =
+  }
+}

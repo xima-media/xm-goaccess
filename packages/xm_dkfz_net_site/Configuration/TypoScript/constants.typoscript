@@ -1,6 +1,7 @@
 // dependencies
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:felogin/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:xm_dkfz_net_events/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
@@ -50,9 +51,9 @@ plugin.tx_xmdkfznetjobs {
 #####################
 #### DKFZ Events ####
 #####################
-plugin.tx_xmdkfznetjobs {
+plugin.tx_xmdkfznetevents {
   settings {
-    latestEventCount = 8
+    latestEventCount = 9
   }
 }
 
