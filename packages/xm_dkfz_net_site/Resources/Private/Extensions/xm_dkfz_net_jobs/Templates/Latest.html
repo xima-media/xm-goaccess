@@ -1,22 +1,6 @@
 <div class="bar">
 
 	<div class="content-wrapper content-wrapper--title-with-pattern  content-wrapper--sm">
-		<div class="content-wrapper__header">
-			<h2 class="content-wrapper__title h4">
-				{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.headline')} </h2>
-
-			<f:if condition="{settings.pidJobList}">
-				<f:link.typolink class="content-wrapper__link" parameter="{settings.pidJobList}">
-					{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.all')}
-					<svg class="icon icon--arrow-right" role="img" width="20" height="20" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-					</svg>
-				</f:link.typolink>
-			</f:if>
-
-			<span class="content-wrapper__pattern pattern--gray-900"></span>
-
-		</div>
 		<div class="content-wrapper__content">
 			<f:for each="{jobs}" as="job">
 				<f:if condition="{job.jobOpening}">
