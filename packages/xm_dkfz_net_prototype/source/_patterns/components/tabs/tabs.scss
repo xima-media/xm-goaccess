@@ -60,8 +60,7 @@
             width: 100%;
             border-bottom: 1px solid var(--color-gray-100);
             padding: .625rem;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
+            margin: 1rem auto 1.5rem;
 
             @include media-breakpoint-up(lg) {
                 padding: 1.2rem;
@@ -85,6 +84,11 @@
                         background: var(--color-white);
                     }
                 }
+            }
+
+            &--active {
+                z-index: 1;
+                box-shadow: 0 24px 32px 0 var(--color-black);
             }
         }
 

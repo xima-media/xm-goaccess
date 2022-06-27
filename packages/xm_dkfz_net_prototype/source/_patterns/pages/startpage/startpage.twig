@@ -3,7 +3,7 @@
 <!--    <h1>Startseite</h1>--> {# @todo unsichtbare überschrift #}
 
     <div class="layout">
-        <div class="layout__item background--image background--expanded" style="background-image: url('../../../Images/examples/hero-startpage.jpg');">
+        <div class="layout__item background--image background--image-hero background--expanded">
             {% include '@components/employee-welcome-message/employee-welcome-message.twig' %}
             {% include '@components/employee-finder/employee-finder.twig' %}
         </div>
@@ -386,7 +386,7 @@
                 </div>
             </div>
         </div>
-        <div class="layout__item fx--expanded background--image background--expanded background--gray-900" style="background-image: url('../../../Images/examples/blackboard.jpg');">
+        <div class="layout__item fx--expanded background--image background--expanded background--gray-900" style="background-image: url('../../dist/image/examples/blackboard.jpg');">
             <!-- blackboard -->
             {% embed '@components/content-wrapper/content-wrapper.twig' with {
                 title: prototype.carousel.blackboard.title,
