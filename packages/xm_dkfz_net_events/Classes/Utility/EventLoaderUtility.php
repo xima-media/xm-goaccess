@@ -5,7 +5,6 @@ namespace Xima\XmDkfzNetEvents\Utility;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionClass;
-use ReflectionProperty;
 use Symfony\Component\DomCrawler\Crawler;
 use Xima\XmDkfzNetEvents\Domain\Model\Dto\Event;
 
