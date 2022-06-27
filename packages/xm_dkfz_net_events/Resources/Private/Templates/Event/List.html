@@ -23,8 +23,8 @@
 						</a>
 						<div class="card__content">
 							<div class="card__header">
-								<h3 class="card__title">{event.eventDate->f:format.date(format: 'd. M')}</h3>
-								<p class="card__sub-title">{event.eventTime}</p>
+								<h3 class="card__title">{event.eventdate->f:format.date(format: 'd. M')}</h3>
+								<p class="card__sub-title">{event.eventtime}</p>
 							</div>
 							<div class="card__body">
 								<div class="card__text">
@@ -34,7 +34,7 @@
 						</div>
 						<div class="card__footer">
 							<ul class="card__tags">
-								<li class="card__tag">{event.eventLanguage}</li>
+								<li class="card__tag">{event.eventlanguage}</li>
 								<li class="card__tag">{event.description}</li>
 							</ul>
 						</div>

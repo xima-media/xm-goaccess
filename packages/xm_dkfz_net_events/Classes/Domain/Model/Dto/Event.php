@@ -16,13 +16,13 @@ class Event
 
     public string $guid = '';
 
-    public ?\DateTime $eventDate = null;
+    public ?\DateTime $eventdate = null;
 
-    public string $eventTime = '';
+    public string $eventtime = '';
 
-    public string $eventLanguage = '';
+    public string $eventlanguage = '';
 
-    public ?\DateTime $pubDate = null;
+    public ?\DateTime $pubdate = null;
 
     public string $language = '';
 }

@@ -63,7 +63,7 @@ class EventLoaderUtility
         $children = $crawler->filter('item')->children();
 
         foreach ($children as $key => $node) {
-            $xmlPropertyName = $node->tagName;
+            $xmlPropertyName = strtolower($node->tagName);
 
             if (!$eventReflection->hasProperty($xmlPropertyName)) {
                 continue;
