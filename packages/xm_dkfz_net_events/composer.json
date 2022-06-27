@@ -20,6 +20,7 @@
 		}
 	},
 	"require": {
-		"symfony/dom-crawler": "^6.1.0"
+		"symfony/dom-crawler": "^6.1.0",
+		"symfony/css-selector": "^6.1.0"
 	}
 }

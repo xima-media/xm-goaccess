@@ -30,7 +30,7 @@ class EventLoaderUtility
 
     public function requestRssEvents(string $url): void
     {
-        $client = new Client();
+        $client = new Client(['verify' => false]);
 
         try {
             $url = str_starts_with($url, '/') ? 'https://' . $_SERVER['SERVER_NAME'] . $url : $url;
