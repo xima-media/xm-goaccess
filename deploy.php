@@ -19,6 +19,7 @@ host('staging')
     ->set('public_urls', ['https://stage.dkfz-typo3-dev.xima.local'])
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
+    ->set('writable_chmod_recursive', false)
     ->set('writable_chmod_mode', '0770')
     ->set('deploy_path', '/var/www/html/stage.dkfz-typo3-dev.xima.local');
 
@@ -30,6 +31,7 @@ host('feature')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_mode', '0770')
+    ->set('writable_chmod_recursive', false)
     ->set('public_urls', ['https://fbd.dkfz-typo3-dev.xima.local'])
     ->set('deploy_path', '/var/www/html/fbd.dkfz-typo3-dev.xima.local');
 
