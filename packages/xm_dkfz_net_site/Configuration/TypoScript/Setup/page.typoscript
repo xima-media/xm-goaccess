@@ -107,3 +107,8 @@ page {
   }
 
 }
+
+[page["uid"] == {$pidLogin}]
+  page.10.templateName = Login
+[end]
+

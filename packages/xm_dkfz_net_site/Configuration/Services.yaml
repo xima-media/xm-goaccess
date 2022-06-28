@@ -17,3 +17,16 @@ services:
     tags:
       - name: event.listener
         identifier: 'oauthFeUserRegistration'
+
+  querybuilder.beUsers:
+    class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
+    factory:
+      - '@TYPO3\CMS\Core\Database\ConnectionPool'
+      - 'getQueryBuilderForTable'
+    arguments:
+      - 'be_users'
+
+  Xima\XmDkfzNetSite\UserFactory\BackendUserFactory:
+    public: true
+    arguments:
+      - '@querybuilder.beUsers'

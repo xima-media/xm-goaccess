@@ -50,6 +50,7 @@ return [
                         \Waldhacker\Oauth2Client\Service\Oauth2ProviderManager::SCOPE_BACKEND,
                         \Waldhacker\Oauth2Client\Service\Oauth2ProviderManager::SCOPE_FRONTEND,
                     ],
+                    'test' => 'fef',
                     'options' => [
                         'clientId' => '',
                         'clientSecret' => '',
