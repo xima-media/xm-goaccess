@@ -65,7 +65,8 @@
 		"mfc/oauth2": "*@dev",
 		"ext-pdo": "*",
 		"m4tthumphrey/php-gitlab-api":"10.4.0",
-		"xima/xm-dkfz-net-events": "*@dev"
+		"xima/xm-dkfz-net-events": "*@dev",
+		"typo3/cms-filemetadata": "^11.5"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

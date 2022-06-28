@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1603b2736c0fea3bc3fca5f0e6badede",
+    "content-hash": "f99a8ea766218e7bff7daa95950c431b",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7563,6 +7563,56 @@
                 }
             ],
             "description": "Listing of files in the directory",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2022-06-15T07:33:04+00:00"
+        },
+        {
+            "name": "typo3/cms-filemetadata",
+            "version": "v11.5.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/filemetadata.git",
+                "reference": "8c1ef5be7a123a0f3b5d1d7783f63332dbf0bd66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/filemetadata/zipball/8c1ef5be7a123a0f3b5d1d7783f63332dbf0bd66",
+                "reference": "8c1ef5be7a123a0f3b5d1d7783f63332dbf0bd66",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "11.5.12"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.5.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "filemetadata"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add advanced metadata to File.",
             "homepage": "https://typo3.org",
             "support": {
                 "chat": "https://typo3.org/help",
