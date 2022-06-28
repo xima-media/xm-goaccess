@@ -13,6 +13,6 @@ parameters:
     paths:
         - packages/xm_dkfz_net_jobs
         - packages/xm_dkfz_net_site
-        - packages/oauth2
+        - packages/xm_dkfz_net_events
 
     excludePaths:

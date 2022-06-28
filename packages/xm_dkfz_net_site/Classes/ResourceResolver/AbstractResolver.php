@@ -73,5 +73,4 @@ abstract class AbstractResolver
     abstract public function getIntendedUsername(): ?string;
 
     abstract public function getIntendedEmail(): ?string;
-
 }

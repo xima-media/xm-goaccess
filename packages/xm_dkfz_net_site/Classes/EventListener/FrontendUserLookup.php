@@ -3,7 +3,6 @@
 namespace Xima\XmDkfzNetSite\EventListener;
 
 use Psr\Log\LoggerInterface;
-use Waldhacker\Oauth2Client\Events\BackendUserLookupEvent;
 use Waldhacker\Oauth2Client\Events\FrontendUserLookupEvent;
 
 class FrontendUserLookup
