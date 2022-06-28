@@ -2,13 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\ResourceResolver;
 
-use League\OAuth2\Client\Provider\GenericProvider;
-use League\OAuth2\Client\Provider\GenericResourceOwner;
-use League\OAuth2\Client\Token\AccessToken;
-
 class GitlabResolver extends AbstractResolver
 {
-
     public function getIntendedUsername(): ?string
     {
         return $this->resourceOwner->toArray()['username'] ?? null;
