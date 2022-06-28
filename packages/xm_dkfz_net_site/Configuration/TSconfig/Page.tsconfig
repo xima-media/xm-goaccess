@@ -36,10 +36,16 @@ TCEFORM {
       altLabels.2 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.2
     }
 
+    assets {
+      config {
+        maxitems = 1
+      }
+    }
+
     imagewidth.disabled = 1
     imageheight.disabled = 1
     imageborder.disabled = 1
     imagecols.disabled = 1
-    imageorient.removeItems = 1, 2, 9, 10, 17, 18
+    imageorient.removeItems = 1, 2, 8, 9, 10
   }
 }
