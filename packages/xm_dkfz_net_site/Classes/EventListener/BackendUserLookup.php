@@ -36,6 +36,10 @@ class BackendUserLookup
         $this->backendUserFactory->setResolver($resolver);
 
         $this->typo3User = $this->backendUserFactory->registerRemoteUser();
+
+        if ($this->typo3User) {
+            $event->setTypo3User($this->typo3User);
+        }
     }
 
     public function getTypo3User(): ?array

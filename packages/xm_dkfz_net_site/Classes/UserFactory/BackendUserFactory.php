@@ -2,26 +2,19 @@
 
 namespace Xima\XmDkfzNetSite\UserFactory;
 
+use Doctrine\DBAL\Driver\Exception;
 use JetBrains\PhpStorm\ArrayShape;
-use TYPO3\CMS\Core\Authentication\CommandLineUserAuthentication;
-use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
-use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Waldhacker\Oauth2Client\Repository\BackendUserRepository;
+use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2BeUserProviderConfigurationRestriction;
 use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
 
 class BackendUserFactory
 {
-    private const OAUTH2_BE_CONFIG_TABLE = 'tx_oauth2_beuser_provider_configuration';
-
-    protected DataHandler $dataHandler;
-
     protected AbstractResolver $resolver;
-
-    protected BackendUserRepository $backendUserRepository;
 
     /**
      * @param \Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver $resolver
@@ -31,39 +24,24 @@ class BackendUserFactory
         $this->resolver = $resolver;
     }
 
-    protected QueryBuilder $queryBuilder;
-
-    /**
-     * @param \TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder
-     */
-    public function __construct(QueryBuilder $queryBuilder, BackendUserRepository $backendUserRepository, DataHandler $dataHandler)
-    {
-        $queryBuilder->getRestrictions()
-            ->removeAll()
-            ->add(new DeletedRestriction());
-
-        $this->queryBuilder = $queryBuilder;
-        $this->backendUserRepository = $backendUserRepository;
-        $this->dataHandler = $dataHandler;
-    }
-
-    protected function findUserByUsernameOrEmail()
+    protected function findUserByUsernameOrEmail(): ?array
     {
         $constraints = [];
         $username = $this->resolver->getIntendedUsername();
         $email = $this->resolver->getIntendedEmail();
+        $qb = $this->getQueryBuilder();
 
         if ($username) {
-            $constraints[] = $this->queryBuilder->expr()->eq(
+            $constraints[] = $qb->expr()->eq(
                 'username',
-                $this->queryBuilder->createNamedParameter($username, \PDO::PARAM_STR)
+                $qb->createNamedParameter($username, \PDO::PARAM_STR)
             );
         }
 
         if ($email) {
-            $constraints[] = $this->queryBuilder->expr()->eq(
+            $constraints[] = $qb->expr()->eq(
                 'email',
-                $this->queryBuilder->createNamedParameter($email, \PDO::PARAM_STR)
+                $qb->createNamedParameter($email, \PDO::PARAM_STR)
             );
         }
 
@@ -71,82 +49,100 @@ class BackendUserFactory
             return null;
         }
 
-        return $this->queryBuilder
+        $user = $qb
             ->select('*')
             ->from('be_users')
-            ->where($this->queryBuilder->expr()->orX(...$constraints))
+            ->where($qb->expr()->orX(...$constraints))
             ->execute()
-            ->fetch();
+            ->fetchAssociative();
+
+        return $user ?: null;
     }
 
     public function registerRemoteUser(): ?array
     {
         // find or create
-        $userRecord = $this->findUserByUsernameOrEmail() ?? $this->createBasicBackendUser();
+        $userRecord = $this->findUserByUsernameOrEmail();
+        if (!is_array($userRecord)) {
+            $userRecord = $this->createBasicBackendUser();
+        }
 
         // update
         $this->resolver->updateBackendUser($userRecord);
 
+        // test for username
         if (!$userRecord['username']) {
             return null;
         }
 
+        // test for persistence
         if (!isset($userRecord['uid'])) {
             $userRecord = $this->persistAndRetrieveUser($userRecord);
         }
 
-        // TODO: test user
-
-        $this->persistIdentityForUser($userRecord);
-
-
+        try {
+            if ($this->persistIdentityForUser($userRecord)) {
+                return $userRecord;
+            }
+        } catch (Exception $e) {
+        }
 
         return null;
     }
 
-    public function connectGitlabToBeUser(): void
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function persistIdentityForUser($userRecord): bool
     {
-    }
-
-    public function persistIdentityForUser($userRecord)
-    {
-        \TYPO3\CMS\Core\Core\Bootstrap::initializeBackendUser(CommandLineUserAuthentication::class);
-
-        $data = [
-            'be_users' => [
-                $userRecord['uid'] => [
-                    'tx_oauth2_client_configs' => 'NEW12345',
-                ],
-            ],
-            self::OAUTH2_BE_CONFIG_TABLE => [
-                'NEW12345' => [
-
-                ],
-            ],
-        ];
-
-        $identity = $this->queryBuilder->insert(self::OAUTH2_BE_CONFIG_TABLE)
+        // create identity
+        $qb = $this->getQueryBuilder('tx_oauth2_beuser_provider_configuration');
+        $qb->insert('tx_oauth2_beuser_provider_configuration')
             ->values([
                 'identifier' => $this->resolver->getResourceOwner()->getId(),
                 'provider' => $this->resolver->getProviderId(),
+                'crdate' => time(),
+                'tstamp' => time(),
+                'cruser_id' => (int)$userRecord['uid'],
+                'parentid' => (int)$userRecord['uid'],
             ])
-            ->execute()
-            ->fetchFirstColumn();
+            ->execute();
 
-        $this->dataHandler->start($data, []);
-        $this->dataHandler->process_datamap();
+        // get newly created identity
+        $qb = $this->getQueryBuilder('tx_oauth2_beuser_provider_configuration');
+        $qb->getRestrictions()->removeByType(Oauth2BeUserProviderConfigurationRestriction::class);
+        $identityCount = $qb->count('uid')
+            ->from('tx_oauth2_beuser_provider_configuration')
+            ->where($qb->expr()->eq('parentid', (int)$userRecord['uid']))
+            ->executeQuery()
+            ->fetchOne();
 
-        if (!empty($this->dataHandler->errorLog)) {
-
-            $err = $this->dataHandler->errorLog;
+        if (!$identityCount > 0) {
+            return false;
         }
+
+        // update backend user
+        $qb = $this->getQueryBuilder();
+        $qb->update('be_users')
+            ->where(
+                $qb->expr()->eq('uid', (int)$userRecord['uid'])
+            )
+            ->set('tx_oauth2_client_configs', (int)$identityCount)
+            ->executeStatement();
+
+        return true;
     }
 
-    public function persistAndRetrieveUser($userRecord)
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function persistAndRetrieveUser($userRecord): ?array
     {
         $password = $userRecord['password'];
 
-        $user = $this->queryBuilder->insert('be_users')
+        $user = $this->getQueryBuilder()->insert('be_users')
             ->values($userRecord)
             ->execute();
 
@@ -154,11 +150,19 @@ class BackendUserFactory
             return null;
         }
 
-        return $this->queryBuilder->select('*')->from('be_users')->where(
-            $this->queryBuilder->expr()->eq('password', $password)
-        )->execute()->fetchFirstColumn();
+        $qb = $this->getQueryBuilder();
+        return $qb->select('*')
+            ->from('be_users')
+            ->where(
+                $qb->expr()->eq('password', $qb->createNamedParameter($password, \PDO::PARAM_STR))
+            )
+            ->execute()
+            ->fetchAssociative();
     }
 
+    /**
+     * @throws \TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException
+     */
     #[ArrayShape([
         'username' => 'string',
         'realName' => 'string',
@@ -184,5 +188,13 @@ class BackendUserFactory
             'realName' => '',
             'username' => '',
         ];
+    }
+
+    protected function getQueryBuilder($tableName = 'be_users'): QueryBuilder
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);
+        $qb->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+
+        return $qb;
     }
 }
