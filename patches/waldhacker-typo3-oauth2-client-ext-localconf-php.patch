@@ -9,3 +9,12 @@
              'available' => true,
              'priority' => 75,
              'quality' => 50,
+@@ -31,7 +31,7 @@
+         [
+             'title' => 'OAuth2 Authentication',
+             'description' => 'OAuth2 authentication for frontend users',
+-            'subtype' => 'getUserFE,authUserFE',
++            'subtype' => 'getUserFE,authUserFE,processLoginDataFE',
+             'available' => true,
+             'priority' => 75,
+             'quality' => 50,
