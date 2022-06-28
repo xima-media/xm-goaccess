@@ -1,6 +1,7 @@
 <?xml version="1.2" encoding="UTF-8" ?>
 <xliff version="1.2">
-	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z" product-name="xm_dkfz_net_site">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z"
+		  product-name="xm_dkfz_net_site">
 		<header>
 			<generator>XLIFF Editor</generator>
 			<authorName>Maik Schneider</authorName>
@@ -39,6 +40,36 @@
 			</trans-unit>
 			<trans-unit id="tt_content.layout.2">
 				<target>Volle Breite</target>
+			</trans-unit>
+			<trans-unit id="pages.color" space="preserve">
+				<target>Farbe</target>
+			</trans-unit>
+			<trans-unit id="pages.color.description" space="preserve">
+				<target>Schmuckfarbe für die Inhaltselemente der Seite. Wird per Zufall ausgewählt, falls leer.</target>
+			</trans-unit>
+			<trans-unit id="pages.color.primary" space="preserve">
+				<target>DKFZ Blau</target>
+			</trans-unit>
+			<trans-unit id="pages.color.blue-900" space="preserve">
+				<target>Dunkelblau</target>
+			</trans-unit>
+			<trans-unit id="pages.color.cyan" space="preserve">
+				<target>Cyan</target>
+			</trans-unit>
+			<trans-unit id="pages.color.green" space="preserve">
+				<target>Grün</target>
+			</trans-unit>
+			<trans-unit id="pages.color.green-light" space="preserve">
+				<target>Hellgrün</target>
+			</trans-unit>
+			<trans-unit id="pages.color.orange" space="preserve">
+				<target>Orange</target>
+			</trans-unit>
+			<trans-unit id="pages.color.magenta" space="preserve">
+				<target>Magenta</target>
+			</trans-unit>
+			<trans-unit id="pages.color.gray-500" space="preserve">
+				<target>Dunkelgrau</target>
 			</trans-unit>
 		</body>
 	</file>

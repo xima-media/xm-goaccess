@@ -27,3 +27,7 @@ if ($extConf['gitlabLoginEnabled']) {
         ]
     );
 }
+
+// Register DataHandler Hook
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['xm_dkfz_net_site'] =
+    \Xima\XmDkfzNetSite\Hook\DataHandlerHook::class;

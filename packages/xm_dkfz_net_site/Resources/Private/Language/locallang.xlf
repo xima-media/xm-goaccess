@@ -40,6 +40,36 @@
 			<trans-unit id="tt_content.layout.2">
 				<source>Full width</source>
 			</trans-unit>
+			<trans-unit id="pages.color" space="preserve">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="pages.color.description" space="preserve">
+				<source>Spot color for the content elements of the page. Randomly selected if empty.</source>
+			</trans-unit>
+			<trans-unit id="pages.color.primary" space="preserve">
+				<source>DKFZ Blue</source>
+			</trans-unit>
+			<trans-unit id="pages.color.blue-900" space="preserve">
+				<source>Dark blue</source>
+			</trans-unit>
+			<trans-unit id="pages.color.cyan" space="preserve">
+				<source>Cyan</source>
+			</trans-unit>
+			<trans-unit id="pages.color.green" space="preserve">
+				<source>Green</source>
+			</trans-unit>
+			<trans-unit id="pages.color.green-light" space="preserve">
+				<source>Light green</source>
+			</trans-unit>
+			<trans-unit id="pages.color.orange" space="preserve">
+				<source>Orange</source>
+			</trans-unit>
+			<trans-unit id="pages.color.magenta" space="preserve">
+				<source>Magenta</source>
+			</trans-unit>
+			<trans-unit id="pages.color.gray-500" space="preserve">
+				<source>Dark gray</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
