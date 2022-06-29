@@ -105,9 +105,7 @@
 	},
 	"scripts": {
 		"typo3-cms-scripts": [
-			"php vendor/bin/typo3cms database:updateschema",
-			"php vendor/bin/typo3cms install:fixfolderstructure",
-			"php vendor/bin/typo3cms cache:flush"
+			"php vendor/bin/typo3cms install:fixfolderstructure"
 		],
 		"post-autoload-dump": [
 			"@typo3-cms-scripts"
