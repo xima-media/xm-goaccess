@@ -1,8 +1,7 @@
 <f:layout name="Default"/>
 
 <f:section name="Main">
-
-	<div class="layout">
+	<div class="layout color--{f:if(condition: data.tx_xmdkfznetsite_color, then: data.tx_xmdkfznetsite_color, else: 'primary')}">
 		<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '0'}"/>
 	</div>
 </f:section>
