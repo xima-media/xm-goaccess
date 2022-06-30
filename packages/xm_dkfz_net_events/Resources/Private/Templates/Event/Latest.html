@@ -10,7 +10,7 @@
 				<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 					<div class="card card--image-top card--md card--image-size-md card--event">
 
-						<a href="{event.link}" class="card__link card__link--hidden" aria-label="17. März">
+						<a href="{event.link}" class="card__link card__link--hidden" aria-label="{event.eventdate->f:format.date(format: 'd. M')}" title="{event.title}">
 
 							<svg class="icon icon--arrow-right icon--size-md"
 								 role="img"
