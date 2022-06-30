@@ -70,6 +70,15 @@
 			<trans-unit id="pages.color.gray-500" space="preserve">
 				<source>Dark gray</source>
 			</trans-unit>
+			<trans-unit id="container.accordion">
+				<source>Accordion</source>
+			</trans-unit>
+			<trans-unit id="container.accordion.description">
+				<source>Accordion element that contains multiple accordion items</source>
+			</trans-unit>
+			<trans-unit id="container.accordion.items">
+				<source>Accordion items</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -66,7 +66,8 @@
 		"ext-pdo": "*",
 		"m4tthumphrey/php-gitlab-api":"10.4.0",
 		"xima/xm-dkfz-net-events": "*@dev",
-		"typo3/cms-filemetadata": "^11.5"
+		"typo3/cms-filemetadata": "^11.5",
+		"b13/container": "^1.6.1"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

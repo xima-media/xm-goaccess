@@ -1,0 +1,11 @@
+tt_content.container-accordion < lib.contentElement
+tt_content.container-accordion {
+  templateName = Accordion
+  templateRootPaths {
+    10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates
+  }
+
+  dataProcessing {
+    100 = B13\Container\DataProcessing\ContainerProcessor
+  }
+}
