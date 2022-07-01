@@ -2,4 +2,9 @@ tt_content {
 
   video =< tt_content.textmedia
 
+  infobox =< lib.contentElement
+  infobox {
+    templateName = Infobox
+  }
+
 }
