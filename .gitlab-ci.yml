@@ -59,12 +59,20 @@ test-php-stan:
 
 deploy-staging:
   extends: .deploy-prepare
-  only: ["master"]
+  only:
+    refs:
+      - "master"
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
     - vendor/bin/dep deploy-fast staging
 
 deploy-feature:
   extends: .deploy-prepare
-  only: ["/^DKFZ-.*$/"]
+  only:
+    refs:
+      - "/^DKFZ-.*$/"
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
     - vendor/bin/dep deploy-fast feature -o branch=$CI_COMMIT_BRANCH
