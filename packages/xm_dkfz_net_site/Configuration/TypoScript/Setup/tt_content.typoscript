@@ -1,0 +1,5 @@
+tt_content {
+
+  video =< tt_content.textmedia
+
+}

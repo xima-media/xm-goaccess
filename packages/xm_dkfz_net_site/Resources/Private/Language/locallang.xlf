@@ -70,6 +70,9 @@
 			<trans-unit id="pages.color.gray-500" space="preserve">
 				<source>Dark gray</source>
 			</trans-unit>
+			<trans-unit id="tt_content.video.description" space="preserve">
+				<source>Display videos from YouTube or Vimeo</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

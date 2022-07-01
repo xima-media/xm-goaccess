@@ -59,3 +59,20 @@ TCEFORM {
     rowDescription.disabled = 1
   }
 }
+
+mod.wizards.newContentElement.wizardItems {
+  common {
+    elements {
+      tt_content_video {
+        iconIdentifier = content-video
+        title = Video
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.video.description
+        tt_content_defValues {
+          CType = video
+        }
+      }
+    }
+
+    show := addToList(tt_content_video)
+  }
+}
