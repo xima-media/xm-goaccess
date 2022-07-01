@@ -21,6 +21,8 @@ TCEFORM {
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
     }
 
+    header_link.textmedia.disabled
+
     frame_class {
       removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
       addItems {

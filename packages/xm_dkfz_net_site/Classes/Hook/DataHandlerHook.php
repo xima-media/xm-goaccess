@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Xima\XmDkfzNetSite\Hook;
 
@@ -22,7 +24,6 @@ class DataHandlerHook
      * @param string $table
      * @param int $id
      * @param DataHandler $parentObj
-     * @return void
      */
     public function processDatamap_preProcessFieldArray(
         array &$incomingFieldArray,

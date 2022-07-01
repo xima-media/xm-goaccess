@@ -61,6 +61,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DataHandlerHook\\:\\:processDatamap_preProcessFieldArray\\(\\) has parameter \\$incomingFieldArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
@@ -79,6 +84,21 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\GitlabResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getRandomColor\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:\\$colors type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
 
 		-
 			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
