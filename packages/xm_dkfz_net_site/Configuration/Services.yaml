@@ -1,0 +1,32 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Xima\XmDkfzNetSite\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  Xima\XmDkfzNetSite\EventListener\BackendUserLookup:
+    tags:
+      - name: event.listener
+        identifier: 'oauthBeUserRegistration'
+
+  Xima\XmDkfzNetSite\EventListener\FrontendUserLookup:
+    tags:
+      - name: event.listener
+        identifier: 'oauthFeUserRegistration'
+
+  querybuilder.beUsers:
+    class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
+    factory:
+      - '@TYPO3\CMS\Core\Database\ConnectionPool'
+      - 'getQueryBuilderForTable'
+    arguments:
+      - 'be_users'
+
+  Xima\XmDkfzNetSite\UserFactory\BackendUserFactory:
+    public: true
+    arguments:
+      - '@querybuilder.beUsers'

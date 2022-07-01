@@ -1,0 +1,15 @@
+--- /dev/null
++++ ../Classes/Authentication/BackendAuthenticationService.php
+@@ -208,4 +208,12 @@
+         }
+         return $request;
+     }
++
++    public function processLoginData(array &$loginData, $passwordTransmissionStrategy)
++    {
++        $loginData['uname'] = $loginData['uname'] ?? '';
++        $loginData['uident'] = $loginData['uident'] ?? '';
++
++        return true;
++    }
+ }
