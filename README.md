@@ -19,7 +19,7 @@ There a currently two Gitlab installations where you can checkout the source cod
 * [XIMA-Intern](https://t3-gitlab-dev.xima.local)
 * [DKFZ-Intern](https://t3-gitlab-dev.xima.local/dkfz/xm-dkfz-net)
 
-To connect to the DKFZ-Repository via SSH, you need to adjust you SSH configuration (`~/.ssh/config`), since it does not use the default port 22:
+To connect to the DKFZ-Repository via SSH, you need to adjust your SSH configuration (`~/.ssh/config`), since it does not use the default port 22:
 
 ```
 Host git.dkfz.de
@@ -42,7 +42,7 @@ When starting the project for the first time, an example database is imported th
 
 ## 3.1 TYPO3 Styleguide
 
-
+* [https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten](https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten)
 
 
 ## 4. Project structure
