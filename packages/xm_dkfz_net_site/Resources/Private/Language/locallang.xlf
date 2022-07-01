@@ -76,16 +76,7 @@
 			<trans-unit id="container.accordion.description">
 				<source>Accordion element that contains multiple accordion items</source>
 			</trans-unit>
-			<trans-unit id="container.accordion.items">
-				<source>Accordion items</source>
-			</trans-unit>
-			<trans-unit id="container.accordion-item">
-				<source>Accordion Item</source>
-			</trans-unit>
-			<trans-unit id="container.accordion-item.description">
-				<source>Accordion item that can contain various content elements</source>
-			</trans-unit>
-			<trans-unit id="container.accordion-item.content">
+			<trans-unit id="container.accordion.content">
 				<source>Content</source>
 			</trans-unit>
 		</body>

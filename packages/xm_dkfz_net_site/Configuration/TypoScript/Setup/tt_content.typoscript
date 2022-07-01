@@ -9,15 +9,3 @@ tt_content.container-accordion {
     100 = B13\Container\DataProcessing\ContainerProcessor
   }
 }
-
-tt_content.container-accordion-item < lib.contentElement
-tt_content.container-accordion-item {
-  templateName = AccordionItem
-  templateRootPaths {
-    10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates
-  }
-
-  dataProcessing {
-    100 = B13\Container\DataProcessing\ContainerProcessor
-  }
-}

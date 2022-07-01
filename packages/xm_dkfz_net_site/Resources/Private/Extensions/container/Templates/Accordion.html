@@ -1,1 +1,42 @@
-Hello
+<f:layout name="Default"/>
+
+<f:section name="Header"></f:section>
+
+<f:section name="Main">
+
+	<f:if condition="{data.header2}">
+		<h2 class="accordion__items--title h5">{data.header2}</h2>
+	</f:if>
+
+
+	<div class="accordion__item">
+		<f:if condition="{data.header}">
+			<h3 class="accordion__items--subtitle" id="accordion{data.uid}">
+				<button class="accordion-button collapsed"
+						type="button"
+						aria-expanded="false"
+						data-bs-toggle="collapse"
+						data-bs-target="#accordionItem{data.uid}"
+						aria-controls="accordionItem{data.uid}">
+
+					<span class="accordion-button--description h6">
+						{data.header}
+					</span>
+				</button>
+			</h3>
+		</f:if>
+		<div class="accordion-collapse collapse"
+			 id="accordionItem{data.uid}"
+			 data-bs-parent="#accordion{data.uid}"
+			 aria-labelledby="accordion{data.uid}">
+			<div class="accordion-body accordion__panel background--expanded">
+
+				<f:for each="{children_100}" as="accordionItem">
+					<f:format.raw>{accordionItem.renderedContent}</f:format.raw>
+				</f:for>
+			</div>
+		</div>
+	</div>
+
+
+</f:section>
