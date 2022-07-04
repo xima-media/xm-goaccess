@@ -17,6 +17,7 @@
         ]
     )
     )->setIcon('content-accordion')
+    ->setBackendTemplate('EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates/Accordion-Preview.html')
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [

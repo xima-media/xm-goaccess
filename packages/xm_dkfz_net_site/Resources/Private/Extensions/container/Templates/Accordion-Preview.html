@@ -1,0 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:container="http://typo3.org/ns/B13/Container/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<f:if condition="{tx_xmdkfznetsite_accordion_group}">
+	<p>{tx_xmdkfznetsite_accordion_group}</p>
+</f:if>
+<f:if condition="{tx_xmdkfznetsite_accordion_title}">
+	<p style="background-color: #eaeaea; padding: 3px 5px; margin: 0;">
+		<strong>{tx_xmdkfznetsite_accordion_title}</strong></p>
+</f:if>
+<f:format.raw>{tx_container_grid}</f:format.raw>
+
+</html>
