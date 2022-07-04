@@ -164,3 +164,8 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:registerRemoteUser\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_accordion.php
