@@ -17,7 +17,7 @@ This is the main repository for the DKFZ TYPO3 project.
 There a currently two Gitlab installations where you can checkout the source code:
 
 * [XIMA-Intern](https://t3-gitlab-dev.xima.local)
-* [DKFZ-Intern](https://t3-gitlab-dev.xima.local/dkfz/xm-dkfz-net)
+* [DKFZ-Intern](https://git.dkfz.de/dkfz/dkfz-t3-intranet.git)
 
 To connect to the DKFZ-Repository via SSH, you need to adjust your SSH configuration (`~/.ssh/config`), since it does not use the default port 22:
 
