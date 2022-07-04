@@ -3,6 +3,13 @@ baseVariants:
   -
     base: '%env("TYPO3_BASE")%'
     condition: 'applicationContext == "Testing/Staging"'
+  -
+    base: 'https://xm-dkfz-net.ddev.site/'
+    condition: 'getenv("DDEV_PROJECT") == "xm-dkfz-net"'
+  -
+    base: 'https://stage.dkfz-typo3-dev.xima.local/'
+    condition: 'applicationContext == "Production/Staging"'
+enabled_oauth2_providers: gitlab
 languages:
   -
     title: Deutsch
@@ -32,6 +39,8 @@ languages:
     fallbacks: '0'
     flag: en-us-gb
     languageId: 1
+oauth2_callback_slug: login
+oauth2_storage_pid: 91
 rootPageId: 1
 routes:
   -

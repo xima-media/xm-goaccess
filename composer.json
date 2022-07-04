@@ -62,9 +62,9 @@
 		"sourcebroker/deployer-extended-typo3": "dev-master as 17.0.0",
 		"georgringer/news": "dev-main",
 		"sourcebroker/deployer-extended-database": "dev-fix/use-php-executable as 13.0.2",
-		"mfc/oauth2": "*@dev",
+		"m4tthumphrey/php-gitlab-api": "10.4.0",
+		"waldhacker/typo3-oauth2-client": "^2.0.0",
 		"ext-pdo": "*",
-		"m4tthumphrey/php-gitlab-api":"10.4.0",
 		"xima/xm-dkfz-net-events": "*@dev",
 		"typo3/cms-filemetadata": "^11.5",
 		"b13/container": "^1.6.1"
@@ -87,6 +87,11 @@
 	},
 	"extra": {
 		"patches": {
+			"waldhacker/typo3-oauth2-client": [
+				"patches/waldhacker-typo3-oauth2-client-ext-localconf-php.patch",
+				"patches/waldhacker-typo3-oauth2-client-classes-authentication-frontendauthenticationservice-php.patch",
+				"patches/waldhacker-typo3-oauth2-client-classes-authentication-backendauthenticationservice-php.patch"
+			],
 			"m4tthumphrey/php-gitlab-api": [
 				"patches/m4tthumphrey-php-gitlab-api-src-client-php.patch"
 			]

@@ -1,284 +1,29 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Constant TYPO3_version not found\\.$#"
+			message: "#^Access to an undefined property DOMNode\\:\\:\\$tagName\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
+
+		-
+			message: "#^Cannot call method getName\\(\\) on ReflectionType\\|null\\.$#"
 			count: 2
-			path: packages/oauth2/Classes/LoginProvider/OAuth2LoginProvider.php
+			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
-			message: "#^Method Mfc\\\\OAuth2\\\\LoginProvider\\\\OAuth2LoginProvider\\:\\:render\\(\\) has no return type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetEvents\\\\Utility\\\\EventLoaderUtility\\:\\:getEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/oauth2/Classes/LoginProvider/OAuth2LoginProvider.php
+			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getDefaultHashInstance\\(\\)\\.$#"
+			message: "#^Parameter \\#1 \\$datetime of class DateTime constructor expects string, string\\|null given\\.$#"
 			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
+			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			message: "#^Property Xima\\\\XmDkfzNetEvents\\\\Utility\\\\EventLoaderUtility\\:\\:\\$events \\(array\\<Xima\\\\XmDkfzNetEvents\\\\Domain\\\\Model\\\\Dto\\\\Event\\>\\) does not accept mixed\\.$#"
 			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot access offset 'access_level' on mixed\\.$#"
-			count: 2
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot access offset 'group_access' on mixed\\.$#"
-			count: 2
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot access offset 'permissions' on mixed\\.$#"
-			count: 4
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot access offset 'project_access' on mixed\\.$#"
-			count: 2
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot access offset 'shared_with_groups' on mixed\\.$#"
-			count: 2
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Cannot cast League\\\\OAuth2\\\\Client\\\\Provider\\\\ResourceOwnerInterface to string\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:__construct\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:getUserGroupsForAccessLevel\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:getUserGroupsForUser\\(\\) has parameter \\$defaultUserGroups with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:updateUserRecord\\(\\) has parameter \\$authentificationInformation with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:updateUserRecord\\(\\) has parameter \\$currentRecord with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:updateUserRecord\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:\\$gitlabDefaultGroups type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\ResourceServer\\\\GitLab\\:\\:\\$gitlabProjectPermissions type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/GitLab.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\Registry\\:\\:addServer\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/Registry.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\Registry\\:\\:getAvailableResourceServers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/Registry.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\Registry\\:\\:normalizeOptionsArray\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/Registry.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\Registry\\:\\:normalizeOptionsArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/Registry.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\ResourceServer\\\\Registry\\:\\:\\$registry type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/Registry.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\ResourceServerInterface\\:\\:updateUserRecord\\(\\) has parameter \\$authentificationInformation with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/ResourceServerInterface.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\ResourceServerInterface\\:\\:updateUserRecord\\(\\) has parameter \\$currentRecord with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/ResourceServerInterface.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\ResourceServer\\\\ResourceServerInterface\\:\\:updateUserRecord\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/ResourceServer/ResourceServerInterface.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getDefaultHashInstance\\(\\)\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 2
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Cannot call method fetch\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:authUser\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:authUser\\(\\) has parameter \\$userRecord with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:fetchUserRecord\\(\\) has parameter \\$dbUserSetup with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:findOrCreateUserByResourceOwner\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:getUser\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:initAuth\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:initAuth\\(\\) has parameter \\$authenticationInformation with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:initAuth\\(\\) has parameter \\$loginData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:initAuth\\(\\) has parameter \\$subType with no type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:initializeOAuthProvider\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:isOAuthRedirectRequest\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:processLoginData\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:processLoginData\\(\\) has parameter \\$loginData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:processLoginData\\(\\) has parameter \\$passwordTransmissionStrategy with no type specified\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:sendOAuthRedirect\\(\\) should return string but return statement is missing\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Parameter \\#1 \\$oauthProvider of method Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:initializeOAuthProvider\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Parameter \\#1 \\$token of method League\\\\OAuth2\\\\Client\\\\Provider\\\\AbstractProvider\\:\\:getResourceOwner\\(\\) expects League\\\\OAuth2\\\\Client\\\\Token\\\\AccessToken, League\\\\OAuth2\\\\Client\\\\Token\\\\AccessToken\\|null given\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:\\$authenticationInformation type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:\\$currentAccessToken \\(League\\\\OAuth2\\\\Client\\\\Token\\\\AccessToken\\|null\\) does not accept League\\\\OAuth2\\\\Client\\\\Token\\\\AccessTokenInterface\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:\\$dbUser type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:\\$extensionConfig \\(array\\) does not accept mixed\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:\\$extensionConfig type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Property Mfc\\\\OAuth2\\\\Services\\\\OAuth2LoginService\\:\\:\\$loginData type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Ternary operator condition is always true\\.$#"
-			count: 1
-			path: packages/oauth2/Classes/Services/OAuth2LoginService.php
-
-		-
-			message: "#^Variable \\$_EXTKEY might not be defined\\.$#"
-			count: 1
-			path: packages/oauth2/ext_emconf.php
-
-		-
-			message: "#^Variable \\$extensionConfig might not be defined\\.$#"
-			count: 1
-			path: packages/oauth2/ext_localconf.php
+			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
@@ -299,3 +44,123 @@ parameters:
 			message: "#^Property Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:\\$jobs \\(array\\<Xima\\\\XmDkfzNetJobs\\\\Domain\\\\Model\\\\Dto\\\\Job\\>\\) does not accept mixed\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:createResolver\\(\\) should return Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver but returns object\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:getTypo3User\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DataHandlerHook\\:\\:processDatamap_preProcessFieldArray\\(\\) has parameter \\$incomingFieldArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\GitlabResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\GitlabResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getRandomColor\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:\\$colors type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+
+		-
+			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getDefaultHashInstance\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:createBasicBackendUser\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:findUserByUsernameOrEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:getQueryBuilder\\(\\) has parameter \\$tableName with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistAndRetrieveUser\\(\\) has parameter \\$userRecord with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistAndRetrieveUser\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistAndRetrieveUser\\(\\) should return array\\|null but returns array\\<string, mixed\\>\\|false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistIdentityForUser\\(\\) has parameter \\$userRecord with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:registerRemoteUser\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php

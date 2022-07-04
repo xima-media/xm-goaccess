@@ -71,6 +71,21 @@
 			<trans-unit id="pages.color.gray-500" space="preserve">
 				<target>Dunkelgrau</target>
 			</trans-unit>
+			<trans-unit id="container.accordion">
+				<source>Akkordion</source>
+			</trans-unit>
+			<trans-unit id="container.accordion.description">
+				<source>Kann mehrere Content-Elemente beinhalten, die zusammengeklappt werden können</source>
+			</trans-unit>
+			<trans-unit id="container.accordion.content">
+				<source>Inhalt</source>
+			</trans-unit>
+			<trans-unit id="tt_content.video.description" space="preserve">
+				<target>Zeigt Video von YouTube oder Vimeo an</target>
+			</trans-unit>
+			<trans-unit id="tt_content.infobox.description" space="preserve">
+				<target>Zeigt eine hervorgehobene Nachricht in einer Box oder Rahmen an</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -6,13 +6,30 @@ This is the main repository for the DKFZ TYPO3 project.
 * Staging-Instance: [stage.dkfz-typo3-dev.xima.local](https://stage.dkfz-typo3-dev.xima.local/)
 * Feature-Branches: [fbd.dkfz-typo3-dev.xima.local](https://fbd.dkfz-typo3-dev.xima.local/)
 
-## Local setup
+## 1. Local setup
 
-1. Clone repository
+1. Clone repository (see 2. Git-Server)
 2. Run `ddev start`
 3. Done.
 
-## Example data
+## 2. Git-Server
+
+There a currently two Gitlab installations where you can checkout the source code:
+
+* [XIMA-Intern](https://t3-gitlab-dev.xima.local)
+* [DKFZ-Intern](https://t3-gitlab-dev.xima.local/dkfz/xm-dkfz-net)
+
+To connect to the DKFZ-Repository via SSH, you need to adjust your SSH configuration (`~/.ssh/config`), since it does not use the default port 22:
+
+```
+Host git.dkfz.de
+HostName git.dkfz.de
+User git
+Port 22022
+IdentityFile ~/.ssh/id_rsa
+```
+
+## 3. Database
 
 When starting the project for the first time, an example database is imported that includes a page structure, some content elements and users.
 
@@ -23,7 +40,12 @@ When starting the project for the first time, an example database is imported th
   * Username: max@example.com
   * Password: changeme
 
-## Project structure
+## 3.1 TYPO3 Styleguide
+
+* [https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten](https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten)
+
+
+## 4. Project structure
 
 ```
 ├── Tests
@@ -56,7 +78,7 @@ When starting the project for the first time, an example database is imported th
 └── package.json
 ```
 
-## Commands
+## 5. Commands
 
 * `ddev` commands:
   * ```ddev ...```
@@ -69,4 +91,8 @@ When starting the project for the first time, an example database is imported th
   * ```dep db:pull staging``` → Download database
   * ```dep media:pull staging``` → Download fileadmin & co.
 
+To add the `dep` alias, add this to your `~/.bashrc`:
 
+```
+alias dep="ddev exec vendor/bin/dep"
+```

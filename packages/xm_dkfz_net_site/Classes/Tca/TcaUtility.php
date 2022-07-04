@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Xima\XmDkfzNetSite\Tca;
 
@@ -30,7 +32,7 @@ class TcaUtility
 
         foreach (self::$colors as $color) {
             $items[] = [
-                $ll . $color, $color
+                $ll . $color, $color,
             ];
         }
 

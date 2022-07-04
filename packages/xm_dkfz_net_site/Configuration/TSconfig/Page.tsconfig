@@ -3,8 +3,8 @@
 
 TCEFORM {
   tt_content {
-    CType.removeItems = textpic, text, image, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div
-
+    CType.removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div
+    
     header_position.disabled = 1
     date.disabled = 1
     space_before_class.disabled = 1
@@ -19,7 +19,15 @@ TCEFORM {
       altLabels.3 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.3
       altLabels.4 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.4
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
+
+      types.infobox.disabled = 1
     }
+
+    header_link.disabled = 1
+    header_link.types.plugin.disabled = 0
+
+    subheader.disabled = 1
+    subheader.types.plugin.disabled = 0
 
     frame_class {
       removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
@@ -28,6 +36,9 @@ TCEFORM {
         yellow = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.frame_class.yellow
         orange = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.frame_class.orange
       }
+
+      types.infobox.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,cyan,yellow,orange
+      types.infobox.addItems.box = Box
     }
 
     layout {
@@ -46,6 +57,37 @@ TCEFORM {
     imageheight.disabled = 1
     imageborder.disabled = 1
     imagecols.disabled = 1
+
+    imageorient.disabled = 1
+    imageorient.types.textmedia.disabled = 0
     imageorient.removeItems = 1, 2, 8, 9, 10
+    image_zoom.disabled = 1
+    rowDescription.disabled = 1
+  }
+}
+
+mod.wizards.newContentElement.wizardItems {
+  common {
+    elements {
+      tt_content_video {
+        iconIdentifier = content-video
+        title = Video
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.video.description
+        tt_content_defValues {
+          CType = video
+        }
+      }
+
+      tt_content_infobox {
+        iconIdentifier = content-info
+        title = Infobox
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.infobox.description
+        tt_content_defValues {
+          CType = infobox
+        }
+      }
+    }
+
+    show := addToList(tt_content_video,tt_content_infobox)
   }
 }
