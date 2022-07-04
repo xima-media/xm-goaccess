@@ -1,13 +1,19 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 	  xmlns:container="http://typo3.org/ns/B13/Container/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
+
+<f:asset.css identifier="dkfz" href="EXT:xm_dkfz_net_site/Resources/Public/Css/Backend.css"/>
+<f:asset.script identifier="dkfz" src="EXT:xm_dkfz_net_site/Resources/Public/JavaScript/Backend.js"/>
+
 <f:if condition="{tx_xmdkfznetsite_accordion_group}">
 	<p>{tx_xmdkfznetsite_accordion_group}</p>
 </f:if>
 <f:if condition="{tx_xmdkfznetsite_accordion_title}">
-	<p style="background-color: #eaeaea; padding: 3px 5px; margin: 0;">
-		<strong>{tx_xmdkfznetsite_accordion_title}</strong></p>
+	<a class="container-accordion-title" href="#">
+		<core:icon identifier="actions-chevron-up" size="small"/>
+		{tx_xmdkfznetsite_accordion_title}
+	</a>
 </f:if>
-<f:format.raw>{tx_container_grid}</f:format.raw>
+
 
 </html>
