@@ -66,6 +66,26 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
 
 		-
+			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:render\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:setTemplatePathAndFilename\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DrawHeaderHook\\:\\:addPageInfos\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php

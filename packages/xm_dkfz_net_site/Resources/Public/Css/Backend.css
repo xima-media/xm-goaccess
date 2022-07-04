@@ -17,7 +17,7 @@
 .container-accordion-title + .t3-grid-container {
 	max-height: 0;
 	overflow: hidden;
-	margin:0;
+	margin: 0;
 	transition: max-height 0.3s ease;
 }
 
@@ -27,4 +27,42 @@
 
 .container-accordion-title.container-accordion--open + .t3-grid-container {
 	max-height: none;
+}
+
+.color-stripe {
+	height: 10px;
+	background-image: linear-gradient(45deg, var(--color, #0047b9) 10%, transparent 10%, transparent 50%, var(--color, #0047b9) 50%, var(--color, #0047b9) 60%, transparent 60%, transparent 100%);
+	background-size: 7.07px 7.07px;
+}
+
+.color-stripe + .color-stripe {
+	display: none;
+}
+
+.color--green {
+	--color: #093;
+}
+
+.color--magenta {
+	--color: #e5007d;
+}
+
+.color--cyan {
+	--color: #009ee3;
+}
+
+.color--gray-500 {
+	--color: #999;
+}
+
+.color--blue-900 {
+	--color: #00186e;
+}
+
+.color--orange {
+	--color: #ff5c00;
+}
+
+.color--green-light {
+	--color: #a0b400;
 }

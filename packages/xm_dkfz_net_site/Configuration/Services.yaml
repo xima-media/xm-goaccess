@@ -30,3 +30,6 @@ services:
     public: true
     arguments:
       - '@querybuilder.beUsers'
+
+  Xima\XmDkfzNetSite\Hook\DrawHeaderHook:
+    public: true
