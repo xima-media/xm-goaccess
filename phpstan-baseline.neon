@@ -67,6 +67,11 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
 
