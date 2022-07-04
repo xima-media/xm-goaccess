@@ -1,30 +1,26 @@
 <f:layout name="Default"/>
 
-<f:section name="Header"></f:section>
-
 <f:section name="Main">
 
-	<f:if condition="{data.header2}">
-		<h2 class="accordion__items--title h5">{data.header2}</h2>
+	<f:if condition="{data.tx_xmdkfznetsite_accordion_group}">
+		<h2 class="accordion__items--title h5">{data.tx_xmdkfznetsite_accordion_group}</h2>
 	</f:if>
 
 
 	<div class="accordion__item">
-		<f:if condition="{data.header}">
-			<h3 class="accordion__items--subtitle" id="accordion{data.uid}">
-				<button class="accordion-button collapsed"
-						type="button"
-						aria-expanded="false"
-						data-bs-toggle="collapse"
-						data-bs-target="#accordionItem{data.uid}"
-						aria-controls="accordionItem{data.uid}">
+		<h3 class="accordion__items--subtitle" id="accordion{data.uid}">
+			<button class="accordion-button collapsed"
+					type="button"
+					aria-expanded="false"
+					data-bs-toggle="collapse"
+					data-bs-target="#accordionItem{data.uid}"
+					aria-controls="accordionItem{data.uid}">
 
-					<span class="accordion-button--description h6">
-						{data.header}
-					</span>
-				</button>
-			</h3>
-		</f:if>
+				<span class="accordion-button--description h6">
+					{data.tx_xmdkfznetsite_accordion_title}
+				</span>
+			</button>
+		</h3>
 		<div class="accordion-collapse collapse"
 			 id="accordionItem{data.uid}"
 			 data-bs-parent="#accordion{data.uid}"

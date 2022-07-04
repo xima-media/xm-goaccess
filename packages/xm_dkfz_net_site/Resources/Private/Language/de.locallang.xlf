@@ -80,13 +80,19 @@
 			<trans-unit id="container.accordion.content">
 				<target>Inhalt</target>
 			</trans-unit>
-			<trans-unit id="container.accordion.header.description">
+			<trans-unit id="container.accordion.palette">
+				<target>Akkordion-Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="container.accordion.title">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="container.accordion.title.description">
 				<target>Die klickbare Überschrift, die dieses Akkordion-Element öffnet</target>
 			</trans-unit>
-			<trans-unit id="container.accordion.subheader">
+			<trans-unit id="container.accordion.group">
 				<target>Abschnitt-Überschrift</target>
 			</trans-unit>
-			<trans-unit id="container.accordion.subheader.description">
+			<trans-unit id="container.accordion.group.description">
 				<target>Eine Überschrift, die die Akkordion-Elemente zu einer neuen Gruppe abgrenzt</target>
 			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">

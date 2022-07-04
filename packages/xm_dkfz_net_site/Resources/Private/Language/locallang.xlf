@@ -79,13 +79,19 @@
 			<trans-unit id="container.accordion.content">
 				<source>Content</source>
 			</trans-unit>
-			<trans-unit id="container.accordion.header.description">
+			<trans-unit id="container.accordion.palette">
+				<source>Accordion settings</source>
+			</trans-unit>
+			<trans-unit id="container.accordion.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="container.accordion.title.description">
 				<source>The clickable headline that will open this accordion element</source>
 			</trans-unit>
-			<trans-unit id="container.accordion.subheader">
+			<trans-unit id="container.accordion.group">
 				<source>Section headline</source>
 			</trans-unit>
-			<trans-unit id="container.accordion.subheader.description">
+			<trans-unit id="container.accordion.group.description">
 				<source>A headline that separates the accordion elements into a new section</source>
 			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
