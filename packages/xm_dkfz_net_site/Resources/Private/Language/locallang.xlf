@@ -100,6 +100,12 @@
 			<trans-unit id="tt_content.infobox.description" space="preserve">
 				<source>Displays a highlighted message with border or inside a box</source>
 			</trans-unit>
+			<trans-unit id="pages.palettes.teaser" space="preserve">
+				<source>Teaser settings</source>
+			</trans-unit>
+			<trans-unit id="pages.contacts" space="preserve">
+				<source>Contact persons</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

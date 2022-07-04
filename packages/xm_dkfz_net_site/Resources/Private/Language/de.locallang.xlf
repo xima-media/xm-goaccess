@@ -101,6 +101,12 @@
 			<trans-unit id="tt_content.infobox.description" space="preserve">
 				<target>Zeigt eine hervorgehobene Nachricht in einer Box oder Rahmen an</target>
 			</trans-unit>
+			<trans-unit id="pages.palettes.teaser" space="preserve">
+				<source>Teaser-Einstellungen</source>
+			</trans-unit>
+			<trans-unit id="pages.contacts" space="preserve">
+				<source>Kontaktpersonen</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

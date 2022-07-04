@@ -1,5 +1,6 @@
 CREATE TABLE pages (
 	tx_xmdkfznetsite_color varchar(64) NOT NULL default '',
+	tx_xmdkfznetsite_contacts varchar(255) NOT NULL default '',
 );
 
 CREATE TABLE tt_content (

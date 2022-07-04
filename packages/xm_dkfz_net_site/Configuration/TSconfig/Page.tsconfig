@@ -64,6 +64,37 @@ TCEFORM {
     image_zoom.disabled = 1
     rowDescription.disabled = 1
   }
+
+  pages {
+    subtitle.disabled = 1
+    seo_title.disabled = 1
+    canonical_link.disabled = 1
+    sitemap_changefreq.disabled = 1
+    sitemap_priority.disabled = 1
+    og_title.disabled = 1
+    og_description.disabled = 1
+    og_image.disabled = 1
+    twitter_title.disabled = 1
+    twitter_description.disabled = 1
+    twitter_image.disabled = 1
+    twitter_card.disabled = 1
+    abstract.disabled = 1
+    keywords.disabled = 1
+    author.disabled = 1
+    author_email.disabled = 1
+    layout.disabled = 1
+    backend_layout.disabled = 1
+    backend_layout_next_level.disabled = 1
+    newUntil.disabled = 1
+    content_from_pid.disabled = 1
+    cache_timeout.disabled = 1
+    cache_tags.disabled = 1
+    target.disabled = 1
+    tsconfig_includes.disabled = 1
+    TSconfig.disabled = 1
+    l18n_cfg.disabled = 1
+    rowDescription.disabled = 1
+  }
 }
 
 mod.wizards.newContentElement.wizardItems {
