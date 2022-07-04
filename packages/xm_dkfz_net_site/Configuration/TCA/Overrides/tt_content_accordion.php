@@ -16,7 +16,7 @@
             ],
         ]
     )
-    )->setIcon('EXT:xm_dkfz_net_site/Resources/Public/Images/icon-container-accordion.svg')
+    )->setIcon('content-accordion')
 );
 
 $GLOBALS['TCA']['tt_content']['types']['container-accordion']['showitem'] = '
@@ -41,11 +41,11 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides'
     'header_layout' => [
         'config' => [
             'type' => 'passthrough',
-        ]
+        ],
     ],
     'header_link' => [
         'config' => [
             'type' => 'passthrough',
-        ]
+        ],
     ],
 ];
