@@ -21,6 +21,7 @@ TCEFORM {
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
 
       types.infobox.disabled = 1
+      types.container-accordion.disabled = 1
     }
 
     header_link.disabled = 1
@@ -28,6 +29,7 @@ TCEFORM {
 
     subheader.disabled = 1
     subheader.types.plugin.disabled = 0
+    subheader.types.container-accordion.disabled = 0
 
     frame_class {
       removeItems = ruler-before,ruler-after,indent,indent-left,indent-right

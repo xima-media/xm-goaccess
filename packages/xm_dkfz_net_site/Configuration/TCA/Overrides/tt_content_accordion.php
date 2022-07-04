@@ -38,14 +38,14 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['showitem'] = '
     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
 ';
 $GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides'] = [
-    'header_layout' => [
+    'header' => [
+        'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.header.description',
         'config' => [
-            'type' => 'passthrough',
+            'eval' => 'trim,required',
         ],
     ],
-    'header_link' => [
-        'config' => [
-            'type' => 'passthrough',
-        ],
+    'subheader' => [
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.subheader',
+        'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.subheader.description',
     ],
 ];

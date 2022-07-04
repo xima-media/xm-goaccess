@@ -72,13 +72,22 @@
 				<target>Dunkelgrau</target>
 			</trans-unit>
 			<trans-unit id="container.accordion">
-				<source>Akkordion</source>
+				<target>Akkordion</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.description">
-				<source>Kann mehrere Content-Elemente beinhalten, die zusammengeklappt werden können</source>
+				<target>Kann mehrere Content-Elemente beinhalten, die zusammengeklappt werden können</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.content">
-				<source>Inhalt</source>
+				<target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="container.accordion.header.description">
+				<target>Die klickbare Überschrift, die dieses Akkordion-Element öffnet</target>
+			</trans-unit>
+			<trans-unit id="container.accordion.subheader">
+				<target>Abschnitt-Überschrift</target>
+			</trans-unit>
+			<trans-unit id="container.accordion.subheader.description">
+				<target>Eine Überschrift, die die Akkordion-Elemente zu einer neuen Gruppe abgrenzt</target>
 			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
 				<target>Zeigt Video von YouTube oder Vimeo an</target>
