@@ -106,6 +106,39 @@
 			<trans-unit id="pages.contacts" space="preserve">
 				<source>Contact persons</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item" space="preserve">
+				<source>Content Item</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type" space="preserve">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
+				<source>Teaser item</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.title" space="preserve">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.text" space="preserve">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.link" space="preserve">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.image" space="preserve">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.color" space="preserve">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.overrides" space="preserve">
+				<source>Has overrides</source>
+			</trans-unit>
+			<trans-unit id="tt_content_teaser.items" space="preserve">
+				<source>Teaser items</source>
+			</trans-unit>
+			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
+				<source>Page overrides</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
