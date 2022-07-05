@@ -1,8 +1,8 @@
 <?php
+
 defined('TYPO3_MODE') or die();
 
 if (TYPO3_MODE === 'BE') {
-
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         'XmDkfzNetPrototype',
         'help',
@@ -17,5 +17,4 @@ if (TYPO3_MODE === 'BE') {
             'labels' => 'LLL:EXT:xm_dkfz_net_prototype/Resources/Private/Language/locallang.xlf',
         ]
     );
-
 }
