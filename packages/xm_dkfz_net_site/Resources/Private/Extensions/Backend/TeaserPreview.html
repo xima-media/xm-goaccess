@@ -4,7 +4,7 @@
 			<f:if condition="{item.files}">
 
 				<f:for each="{item.files}" as="file">
-					<span class="color-border">
+					<span class="color-border color--{item.color}">
 						<f:image image="{file}" maxWidth="80"/>
 					</span>
 				</f:for>

@@ -109,6 +109,7 @@ class TeaserPreviewRenderer extends TextmediaPreviewRenderer
 
         $item['title'] = $item['title'] ?: $page['title'];
         $item['text'] = $item['text'] ?: $page['description'];
+        $item['color'] = $item['color'] ?: $page['tx_xmdkfznetsite_color'];
 
         if (!$item['image'] && $page['media']) {
             $item['files'] = $this->fileRepository->findByRelation('pages', 'media', (int)$pageUid);
