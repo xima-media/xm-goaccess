@@ -4,6 +4,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item',
         'label' => 'title',
+        'label_alt' => 'link',
         'delete' => 'deleted',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -18,6 +19,7 @@ return [
         'typeicon_classes' => [
             'default' => 'content-extension',
             'teaser-item' => 'content-card',
+            'link' => 'content-thumbtack',
         ],
     ],
     'interface' => [
@@ -30,11 +32,14 @@ return [
         'teaser-item' => [
             'showitem' => 'record_type, link, --linebreak--, overrides, --palette--;;teaser-override',
         ],
+        'link' => [
+            'showitem' => 'record_type, link',
+        ],
     ],
     'palettes' => [
         'teaser-override' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
-            'showitem' => 'title,color,--linebreak--,text,--linebreak--,image',
+            'showitem' => 'title,color,--linebreak--,text,--linebreak--,image,--linebreak--,tt_content_items',
         ],
     ],
     'columns' => [
@@ -47,6 +52,10 @@ return [
                     [
                         'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
                         'teaser-item',
+                    ],
+                    [
+                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link',
+                        'link',
                     ],
                 ],
             ],
@@ -188,6 +197,26 @@ return [
                     [
                         0 => '',
                         1 => '',
+                    ],
+                ],
+            ],
+        ],
+        'tt_content_items' => [
+            'label' => 'ITEMS',
+            'config' => [
+                'foreign_field' => 'foreign_uid',
+                'foreign_sortby' => 'sorting',
+                'foreign_table' => 'tt_content_item',
+                'foreign_table_field' => 'foreign_table',
+                'type' => 'inline',
+                'minitems' => 0,
+                'appearance' => [
+                    'collapseAll' => true,
+                    'expandSingle' => true,
+                    'useSortable' => true,
+                    'enabledControls' => [
+                        'dragdrop' => true,
+                        'info' => false,
                     ],
                 ],
             ],

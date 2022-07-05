@@ -54,6 +54,20 @@ $GLOBALS['TCA']['tt_content']['types']['teaser'] = [
                                 ],
                             ],
                         ],
+                        'tt_content_items' => [
+                            'label' => 'Links',
+                            'config' => [
+                                'overrideChildTca' => [
+                                    'columns' => [
+                                        'record_type' => [
+                                            'config' => [
+                                                'default' => 'link',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                 ],
             ],

@@ -115,6 +115,9 @@
 			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
 				<source>Teaser item</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.link" space="preserve">
+				<source>Link</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<source>Title</source>
 			</trans-unit>

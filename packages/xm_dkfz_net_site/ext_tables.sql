@@ -30,6 +30,7 @@ create table tt_content_item (
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
 	overrides        int(11) unsigned default '0' not null,
+	tt_content_items int(11) unsigned default '0' not null,
 
 	primary key (uid),
 	KEY              parent (pid),
