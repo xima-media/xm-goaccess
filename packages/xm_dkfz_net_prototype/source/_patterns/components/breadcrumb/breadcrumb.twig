@@ -5,10 +5,11 @@
         {% for item in prototype.breadcrumb %}
             {% if loop.last %}
                 <li>
-                    <a class="breadcrumb__link" href="#" aria-current="location">{{ item.title }}</a>
+                    {{ item.title }}
                 </li>
             {% else %}
-                <li>{{ item.title }}
+                <li>
+                    <a class="breadcrumb__link" href="{{ item.url }}" aria-current="location">{{ item.title }}</a>
                     {% include '@components/icon/icon.twig' with {icon: 'chevron-right'} %}
                 </li>
             {% endif %}

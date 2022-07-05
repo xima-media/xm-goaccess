@@ -1,7 +1,11 @@
 <!-- Component Start: contact -->
 
-<div class="contact contact--background">
-    <h4 class="contact--title">{{ title }}</h4>
+{#<div class="contact contact--background {{ background ? 'contact--background-' ~ background : '' }}">#}
+<div class="contact {{ background ? 'contact--background-' ~ background : '' }}">
+    <h5 class="contact--title">{{ title }}</h5>
+    {% if room %}
+        <p>{{ room }}</p>
+    {% endif %}
     <ul class="contact__items">
         <li class="contact__item contact--subtitle">
             {{ subTitle }}
@@ -17,7 +21,7 @@
     {% if image %}
         <div class="contact--person">
             {% if subTitleImage %}
-                <h4 class="contact--subtitle">{{ subTitleImage }}</h4>
+                <h5 class="contact--subtitle">{{ subTitleImage }}</h5>
             {% endif %}
 
             <div class="contact--person-container">
@@ -31,9 +35,18 @@
 
                 <div class="contact--information">
                     {% if link %}
-                        <h6>
-                            <a href="{{ link.url }}">{{ link.text }}</a>
-                        </h6>
+                        <a href="{{ link.url }}">{{ link.text }}</a>
+                    {% endif %}
+
+                    {% if contactData %}
+                        <ul class="contact__items">
+                            {% for item in contactData %}
+                                <li class="contact__item">
+                                    {% include '@components/icon/icon.twig' with {icon: item.type} %}
+                                    <a class="contact__link" href="{{ item.type == 'mail' ? 'mailto' : 'tel' }}:{{ item.url }}">{{ item.text }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     {% endif %}
                 </div>
             </div>

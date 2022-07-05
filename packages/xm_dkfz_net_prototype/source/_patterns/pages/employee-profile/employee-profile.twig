@@ -1,5 +1,6 @@
 {% extends "@layouts/default--with-sidebar.twig" %}
 {% block main %}
+<<<<<<< HEAD:source/_patterns/pages/employee-profile/employee-profile.twig
     {% include '@components/employee/employee-header.twig' with {
         title: 'Ammon, Lisa',
         texts: ['Barriere B', 'W410 – Zentrales Tierlabor'],
@@ -26,38 +27,130 @@
             title: 'Meine Kompetenzen:',
             items: prototype.tags.skills
         } only %}
+=======
+    <div class="layout">
+        <div class="layout__item">
+            {% include '@components/employee/employee-header.twig' with {
+                title: 'Ammon, Lisa',
+                texts: ['Gruppenleitung EK Investitions-güter / Dienstleistungen', 'W410 – Zentrales Tierlabor'],
+                image: {
+                    src: '../../dist/image/examples/user.jpg'
+                }
+            } only %}
+        </div>
+>>>>>>> 51d7806c84da219a4b6ff18e43a50da7ac82e82e:htdocs/prototype/patternlab/source/_patterns/pages/employee-profile/employee-profile.twig
 
-        {% include '@components/list/list.twig' with {
-            title: 'Fachliche Themen, die mich interessieren:',
-            items: prototype.tags.technical
-        } only %}
+        <div class="layout__item">
+            <div class="content--info"> {# @todo Klasse umbennen #}
+                <div class="layout__item">
+                    {% for item in prototype.employeeInfo %}
+                        {% include '@components/employee/employee-info.twig' with {
+                            title: item.title,
+                            text: item.text,
+                            icon: item.icon
+                        }%}
+                    {% endfor %}
+                </div>
 
-        {% include '@components/list/list.twig' with {
-            title: 'Meine Hobbys:',
-            items: prototype.tags.hobby
-        } only %}
+                <div class="layout__item spacing--bottom">
+                    <h2 class="h4">Über mich</h2>
+                    <p class="text-copy-standard">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                        mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                        massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
+                        enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+                        mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+                        vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
+                        ac, enim.
+                    </p>
+                </div>
+
+
+                <div class="layout__item spacing--bottom">
+                    {% include '@components/tag/tag.twig' with {
+                        title: 'Meine Kompetenzen:',
+                        items: prototype.tags.skills
+                    } only %}
+                </div>
+
+                <div class="layout__item spacing--bottom">
+                    {% include '@components/tag/tag.twig' with {
+                        title: 'Fachliche Themen, die mich interessieren:',
+                        items: prototype.tags.technical
+                    } only %}
+                </div>
+
+                <div class="layout__item spacing--bottom">
+                {% include '@components/tag/tag.twig' with {
+                    title: 'Meine Hobbys:',
+                    items: prototype.tags.hobby
+                } only %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock main %}
 
 {% block sidebarHeader %}
-    <h3>Kontakt</h3>
-    {% include '@components/contact/contact.twig' with {
-        title: 'Mitarbeiterin',
-        contacts: prototype.contact.main
-    } only %}
+    {% for item in prototype.contacts %}
+        {% include '@components/contact/contact.twig' with {
+            title: item.title,
+            items: item.items
+        } only %}
+    {% endfor %}
 {% endblock sidebarHeader %}
 {% block sidebarBody %}
-    <h3>Kontakt Abteilung</h3>
-    <p>W410 – Zentrales Tierlabor</p>
+    <div class="sidebar__body--wrapper">
+        {#  Leitung#}
+        {% for item in prototype.contacts %}
+            {% include '@components/contact/contact.twig' with {
+                title: "Kontakt Abteilung",
+                room: item.room,
+                subTitle: "Leitung",
+                link: {
+                    url: item.link.url,
+                    text: item.link.text
+                },
+                image: {
+                    src: item.image.src,
+                    alt: item.image.alt,
+                    size: item.image.size,
+                    color: item.image.color
+                },
+                contactData: item.contactData
+            } only %}
+        {% endfor %}
+        {#  Sekretariat #}
+        {% for item in prototype.contactsEmployee %}
+            {% include '@components/contact/contact.twig' with {
+                subTitle: item.subTitle,
+                link: {
+                    url: item.link.url,
+                    text: item.link.text
+                },
+                image: {
+                    src: item.image.src,
+                    alt: item.image.alt,
+                    size: item.image.size,
+                    color: item.image.color
+                },
+                contactData: item.contactData
+            } only %}
+        {% endfor %}
+    </div>
 
-    {% include '@components/contact/contact.twig' with {
-        title: 'Leitung',
-        contacts: prototype.contact.department.director
-    } only %}
+    <div class="sidebar__footer">
+        {# Infobox #}
+        {% for info in prototype.infoBoxSidebar %}
+            {% include '@components/infobox/infobox.twig' with {
+                color: info.color,
+                border: info.border,
+                listTitle: info.listTitle,
+                listItems: info.listItems
+            } only %}
+        {% endfor %}
+    </div>
 
-    {% include '@components/contact/contact.twig' with {
-        title: 'Sekretariat',
-        contacts: prototype.contact.department.secretary
-    } only %}
 {% endblock sidebarBody %}
 

@@ -199,6 +199,13 @@
             mask-image: url('../icon/icon.min.svg#icon-twitter');
         }
     }
+
+    &--delete-bin {
+        &::before {
+            margin-right: 0;
+            mask-image: url('../icon/icon.min.svg#icon-delete-bin');
+        }
+    }
 }
 
 

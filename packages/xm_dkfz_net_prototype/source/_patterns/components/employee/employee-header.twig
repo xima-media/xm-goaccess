@@ -2,14 +2,14 @@
 
 <div class="employee-header">
     <div class="employee-header__body">
-        <h1 class="employee-header__title">{{ title }}</h1>
+        <h1 class="employee-header__title h3">{{ title }}</h1>
         <div class="employee-header__text">
             {% for text in texts %}
                 <p>{{ text }}</p>
             {% endfor %}
         </div>
-        <button type="button" class="button button--primary">
-            {% include '@components/icon/icon.twig' with {icon: 'bookmark-add'} %} {# @todo richtige Icon verwenden #}
+        <button type="button" class="button button--primary" data-bookmark-entity="employee" data-bookmark-added="false" data-bookmark-id="1">
+            {% include '@components/icon/icon.twig' with {icon: 'person-add'} %} {# @todo richtige Icon verwenden #}
             Mitarbeiter merken
         </button>
     </div>

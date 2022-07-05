@@ -11,12 +11,26 @@
 .contact {
     &--background {
         width: 100%;
-        background: var(--color-primary-opacity-10);
-        padding: 2.5rem 2.5rem 1rem;
         margin-bottom: 1rem;
+
+        &-primary-opacity-10 {
+            background: var(--color-primary-opacity-10);
+            padding: 2.5rem 2.5rem 1rem;
+        }
 
         @include media-breakpoint-up(md) {
             width: 25rem;
+        }
+
+        [class*='image-color-'] {
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -.375rem; // @todo variable
+                left: -.375rem; // @todo variable
+                width: calc(50% + .375rem); // @todo variable
+            }
         }
     }
 
@@ -42,6 +56,8 @@
 
     &--subtitle {
         margin-bottom: .5rem;
+        @include text-copy-small(700);
+        font-family: var(--font-family-serif);
     }
 
     &--information {
@@ -85,6 +101,7 @@
     &--person {
         > .contact--subtitle {
             @include text-copy-small(700);
+            font-family: var(--font-family-serif);
         }
 
         &-container {
@@ -93,10 +110,12 @@
                 margin-left: 0;
                 margin-right: 0;
                 padding-bottom: 0;
+                padding-top: 0;
+                padding-left: 0.375rem;
             }
 
             .contact--information {
-                margin-top: 1.5rem;
+                margin-top: 1rem;
 
                 h6 {
                     font-family: $font-family-sans-serif;
@@ -116,7 +135,7 @@
         }
 
         @include media-breakpoint-up(lg) {
-            top: 30rem;
+            top: 31rem;
         }
     }
 }

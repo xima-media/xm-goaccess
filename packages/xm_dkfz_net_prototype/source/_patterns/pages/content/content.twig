@@ -1,10 +1,11 @@
 {% extends "@layouts/default--one-column.twig" %}
 {% block main %}
+    {% include '@components/breadcrumb/breadcrumb.twig' %}
+
     {# hero #}
     {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
         {% block content %}
-            <button class="button button--primary">
-                {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
+            <button class="button button--primary icon icon--bookmark-add button--bookmark-add" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="2">
                 Seite merken
             </button>
         {% endblock content %}
@@ -41,10 +42,10 @@
                 Darüber hinaus finden Sie hier Informationen über unsere verbindlich einzuhaltende Richtlinien.
             </p>
             <p class="text-copy-standard">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                eu, pretium quis, sem.
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                pede mollis pretium.
             </p>
         </div>
 
@@ -94,7 +95,10 @@
                             subTitle: item.subTitle,
                             items: item.items,
                             subTitleImage: item.subTitleImage,
-                            name: item.name,
+                            link: {
+                                url: item.link.url,
+                                text: item.link.text
+                            },
                             image: {
                                 src: item.image.src,
                                 alt: item.image.alt,
@@ -322,20 +326,20 @@
     </div>
 
     <div class="layout__item fx--expanded" id="Weiterführende Informationen">
-        <div class="content-box">
-            <!-- Folgende Themen könnten Sie auch interessieren -->
-            {% embed '@components/content-wrapper/content-wrapper.twig' with {
-                title: prototype.topics.title,
-                pattern: {
-                    visible: prototype.topics.titleWithPattern
-                }
-            } %}
-                {% block content %}
-                    <div class="content-wrapper__horizontal">
+        <!-- Folgende Themen könnten Sie auch interessieren -->
+        {% embed '@components/content-wrapper/content-wrapper.twig' with {
+            title: prototype.topics.title,
+            pattern: {
+                visible: prototype.topics.titleWithPattern
+            }
+        } %}
+            {% block content %}
+                <div class="content-wrapper__horizontal">
                     {% for item in prototype.topics.items %}
                         {% include '@components/card/card.twig' with {
                             title: item.title,
                             subTitle: item.subTitle,
+                            type: item.type,
                             link: {
                                 href: item.link.url
                             },
@@ -346,10 +350,9 @@
                             }
                         } only %}
                     {% endfor %}
-                    </div>
-                {% endblock content %}
-            {% endembed %}
-        </div>
+                </div>
+            {% endblock content %}
+        {% endembed %}
     </div>
 </div>
 {% endblock main %}

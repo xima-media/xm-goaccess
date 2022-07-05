@@ -22,6 +22,21 @@
                 {% endfor %}
             </ul>
         {% endif %}
+
+        {# Mitarbeiterprofil #}
+        {% if listItems %}
+             <ul class="list--vertical">
+                 <h5>{{ listTitle }}</h5>
+                {% for link in listItems %}
+                    <li>
+                        <p>
+                            {{ link.subtitle }} <br/>
+                            <span>{{ link.text }}</span>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 </div>
 

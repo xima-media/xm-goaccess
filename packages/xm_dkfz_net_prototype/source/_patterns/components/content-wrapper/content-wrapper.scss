@@ -57,11 +57,8 @@
     }
 
     &__horizontal {
-        display: flex;
-        flex-direction: column;
-
-        @include media-breakpoint-up(md) {
-            flex-direction: row;
+        @include media-breakpoint-up(lg) {
+            display: flex;
             max-width: $container-default-widths;
             margin: 1.875rem auto .75rem;
         }

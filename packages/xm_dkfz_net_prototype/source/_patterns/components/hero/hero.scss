@@ -16,9 +16,35 @@
     padding: 2rem 0 5rem;
     text-align: center;
 
-    + .hero-form {
-        margin-top: -3rem;
+    @include media-breakpoint-up(xxl) {
+        padding-bottom: 1rem;
     }
+
+    + .hero-form {
+        //margin-top: -3rem;
+    }
+
+    &__title {
+        + .button {
+            margin-top: 1.5rem;
+
+            @include media-breakpoint-up(xl) {
+                margin-bottom: -1.5rem;
+            }
+        }
+    }
+}
+
+.background--image-hero {
+    &.layout__item {
+        &.background--expanded {
+            &::after {
+                bottom: -21rem;
+            }
+        }
+    }
+
+    background-image: url('../../dist/image/examples/hero-startpage-0.webp');
 }
 
 // end of hero.scss file
