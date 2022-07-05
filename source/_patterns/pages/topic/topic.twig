@@ -3,28 +3,20 @@
     {% include '@components/breadcrumb/breadcrumb.twig' %}
 
     {# hero #}
-    {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
+    {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst Topic'} %}
         {% block content %}
-            <button class="button button--primary">
-                {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
+            <button class="button button--primary icon icon--bookmark-add button--bookmark-add" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="3">
                 Seite merken
             </button>
         {% endblock content %}
-
     {% endembed %}
 
-    <div class="main--default__center">
-        <button class="button button--primary">
-            {% include '@components/icon/icon.twig' with { icon: 'bookmark-add' } %}
-            Seite merken
-        </button>
-    </div>
-
-    {#  #}
-    <div class="main--column__two">
-        <div class="column--text">
-            <h2 class="h6">zuletzt aktualisiert: 12. Dezember 2021</h2>
-            <p>
+<div class="layout">
+    {# Text with Contact #}
+    <div class="layout__item--two">
+        <div class="text--column">
+            <h2 class="h6 text-copy-small">zuletzt aktualisiert: 12. Dezember 2021</h2>
+            <p class="text-intro">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
                 eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
                 montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
@@ -32,11 +24,30 @@
             </p>
         </div>
 
-        {% include '@components/contact/contact.twig' with { title: 'Kontakt' } %}
-
+        {% for item in prototype.contacts %}
+            {% include '@components/contact/contact.twig' with {
+                background: item.background,
+                title: item.title,
+                subTitle: item.subTitle,
+                items: item.items
+            } %}
+        {% endfor %}
     </div>
 
-    <div>
+    {# Text without Contact #}
+    <div class="layout__item">
+        <div class="text--column">
+            <h2 class="h6 text-copy-small">zuletzt aktualisiert: 12. Dezember 2021</h2>
+            <p class="text-intro">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                eu, pretium quis, sem.
+            </p>
+        </div>
+    </div>
+
+    <div class="layout__item">
         {% for card in prototype.cards %}
             {% include '@components/card/card.twig' with {
                 size: 'xl',
@@ -56,6 +67,7 @@
             } only %}
         {% endfor %}
     </div>
+</div>
 {% endblock main %}
 
 

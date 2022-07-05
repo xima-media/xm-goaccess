@@ -140,12 +140,14 @@
             align-items: center;
             width: 44px;
             height: 44px;
-            border-radius: 50%;
+            border: none;
+            background: transparent;
 
             &:hover {
                 cursor: pointer;
                 color: var(--color-white);
                 background: var(--color-gray-900);
+                border-radius: 50%;
             }
         }
     }

@@ -18,6 +18,7 @@
         left: 2rem;
         bottom: 5rem;
         background: transparent;
+        overflow: hidden;
     }
 
     .navigation {
@@ -50,7 +51,7 @@
         }
 
         &__items {
-            overflow-x: scroll;
+            //overflow-x: scroll;
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
             display: flex;
@@ -61,6 +62,7 @@
             padding: 1.25rem;
             margin-bottom: 0;
             white-space: nowrap;
+            overflow: auto;
 
             // @todo mixin
             &::-webkit-scrollbar {

@@ -338,7 +338,8 @@
                         "src": "../../../Images/examples/user.jpg",
                         "color": "orange",
                         "size": "sm"
-                    }
+                    },
+                    "type": "more-theme"
                 },
                 {
                     "title": "Buchung von Ressourcen",
@@ -350,7 +351,8 @@
                         "src": "../../../Images/examples/user.jpg",
                         "color": "cyan",
                         "size": "sm"
-                    }
+                    },
+                    "type": "more-theme"
                 },
                 {
                     "title": "Zutrittsregelungen",
@@ -361,14 +363,15 @@
                     "image": {
                         "color": "green-light",
                         "size": "sm"
-                    }
+                    },
+                    "type": "more-theme"
                 }
             ]
         },
         "pictureHead": [
             {
                 "image": {
-                    "src": "../../dist/image/examples/big.png",
+                    "src": "../../../Images/examples/big.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "xl",
@@ -406,7 +409,7 @@
                     "text": "Fuchs, Andreas"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "orange",
                     "size": "xxs"
                 }
@@ -417,7 +420,7 @@
                 "title": "Kontakt & Ansprechpartner",
                 "subTitle": "Ansprechpartner",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "orange",
                     "size": "xs"
                 },

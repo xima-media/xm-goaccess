@@ -13,7 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
 
     &__wrapper {
         margin-top: 1rem;
@@ -21,20 +20,42 @@
     }
 
     li {
+        font-size: 14px;
+        line-height: 18px;
+        list-style: none;
+
         &:not(:last-child) {
-            padding-right: 5px;
+            padding-right: .625rem;
+        }
+
+        &:last-child {
+            color: var(--color-gray-500);
         }
 
         .icon {
-            width: 10px;
-            height: 10px;
-            margin-left: 5px;
+            width: 7px;
+            height: 7px;
+            margin-left: .625rem;
         }
 
-        a {
-            opacity: .8;
+        .breadcrumb__link {
             text-decoration: none;
+
+            &:hover {
+                color: var(--color-gray-900);
+                text-decoration: underline;
+            }
         }
+    }
+
+    &--bookmark {
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        padding-left: 1rem;
+        color: var(--color-gray-500);
+
+        @include  text-copy-x-small()
     }
 }
 

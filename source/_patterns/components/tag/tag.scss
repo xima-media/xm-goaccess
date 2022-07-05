@@ -1,0 +1,50 @@
+//
+//    @tableOfContent
+//      1. List
+//      2. Tag
+//
+
+
+//
+//   @section 1. List
+//
+
+.list {
+    @include list-reset;
+
+    &--inline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+
+        li {
+            margin-top: 1rem;
+        }
+    }
+
+    &--vertical {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-right: 4rem;
+
+        p {
+            @include text-copy-small(700, .6);
+        }
+
+        span {
+            @include text-copy-small(200);
+        }
+    }
+}
+
+//
+//   @section 2. Tag
+//
+
+.tags {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+// end of tag.scss file

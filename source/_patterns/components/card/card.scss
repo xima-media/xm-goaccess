@@ -84,7 +84,7 @@
             &:focus {
                 ~ .card__content {
                     .card__header {
-                        color: var(--color-primary);
+                        color: var(--color-gray-900);
                     }
                 }
 
@@ -170,6 +170,19 @@
         &__image {
             flex: 0 0 3.375rem; // @todo variable
             width: 3.375rem; // @todo variable
+        }
+    }
+
+    [class*='image-color-'] {
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -.5rem; // @todo variable
+            left: -.5rem; // @todo variable
+            z-index: -1;
+            width: calc(50% + .5rem); // @todo variable
+            aspect-ratio: 1;
         }
     }
 }
@@ -699,6 +712,57 @@
                 left: -9.375rem;
                 right: -9.375rem;
             }
+        }
+    }
+}
+
+.head-area {
+    &--picture {
+        position: relative;
+
+        .picture__caption {
+            @include media-breakpoint-up(lg) {
+                margin-left: 5.5rem;
+                margin-right: .5rem;
+            }
+        }
+    }
+}
+
+// card more theme
+.card--more-theme {
+    &:hover {
+        text-decoration: underline;
+    }
+
+    & > .card {
+        &__image {
+            @include media-breakpoint-up(md) {
+                flex: 0 0 16rem;
+                width: 22.5rem;
+                margin-bottom: 0;
+            }
+
+            .picture__image,
+            .picture--no-image .picture__item{
+                object-fit: cover;
+                aspect-ratio: 179 / 119; // width:358, height:238
+            }
+
+            [class*='image-color-'] {
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -.875rem; // @todo variable
+                    left: -.875rem; // @todo variable
+                    width: calc(50% + .875rem); // @todo variable
+                }
+            }
+        }
+
+        &__sub-title {
+            margin-bottom: 0;
         }
     }
 }

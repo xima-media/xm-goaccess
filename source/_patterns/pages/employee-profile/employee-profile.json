@@ -149,6 +149,153 @@
                     }
                 ]
             }
-        }
+        },
+        "employeeInfo": [
+            {
+                "title": "Standort",
+                "text": "Heidelberg",
+                "icon": "map"
+            },
+            {
+                "title": "Raum",
+                "text": "H1.01.023",
+                "icon": "location"
+            },
+            {
+                "title": "Im DKFZ seit",
+                "text": "01.04.2017",
+                "icon": "calendar"
+            }
+        ],
+        "contacts": [
+            {
+                "background": false,
+                "title": "Kontakt",
+                "room": "W410 – Zentrales Tierlabor",
+                "subTitle": "Event-Vorstand",
+                "items": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "printer",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "mail",
+                        "url": "daniel.hengsbach@dkfz-heidelberg.de",
+                        "text": "daniel.hengsbach@dkfz-heidelberg.de"
+                    }
+                ],
+                "subTitleImage": "Ansprechpartner",
+                "link": {
+                    "url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+                    "text": "Fuchs, Andreas"
+                },
+                "image": {
+                    "src": "../../dist/image/examples/user.jpg",
+                    "color": "primary",
+                    "size": "xxs"
+                },
+                "contactData": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "printer",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    }
+                ]
+            }
+        ],
+        "contactsEmployee": [
+            {
+                "subTitle": "Sekretariat",
+                "link": {
+                    "url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+                    "text": "Fuchs, Andreas"
+                },
+                "image": {
+                    "src": "../../dist/image/examples/dummy.png",
+                    "color": "primary",
+                    "size": "xxs"
+                },
+                "contactData": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    },
+                    {
+                        "type": "printer",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    }
+                ]
+            },
+            {
+                "link": {
+                    "url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+                    "text": "Wolf, Nadine"
+                },
+                "image": {
+                    "src": "../../dist/image/examples/dummy.png",
+                    "color": "primary",
+                    "size": "xxs"
+                },
+                "contactData": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    }
+                ]
+            },
+            {
+                "link": {
+                    "url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+                    "text": "Scholten, Sabine"
+                },
+                "image": {
+                    "src": "../../dist/image/examples/dummy.png",
+                    "color": "primary",
+                    "size": "xxs"
+                },
+                "contactData": [
+                    {
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651"
+                    }
+                ]
+            }
+        ],
+        "infoBoxSidebar": [
+            {
+                "color": "primary",
+                "border": true,
+                "listTitle": "Gremium",
+                "listItems": [
+                    {
+                        "subtitle": "Mitglied im:",
+                        "text": "Personalrat"
+                    },
+                    {
+                        "subtitle": "Zuständigkeiten:",
+                        "text": "Arbeitsschutz/ Bau, LOGA, IDM, Tierlabor, Abteilungswechsel, BGM, Bewerbermanagement, Fortbildungs-EDV"
+                    },
+                    {
+                        "subtitle": "Vertreter:",
+                        "text": "Mustermann, Maxi"
+                    }
+                ]
+            }
+        ]
     }
 }

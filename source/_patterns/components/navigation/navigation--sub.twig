@@ -8,11 +8,12 @@
             </a>
         </li>
         <li class="navigation__item navigation__item--bookmark">
-            <a class="navigation__link button button--icon-only" href="#bookmark" aria-label="Lesezeichen anzeigen" data-tooltip="Favoriten aufrufen">
+            <button class="navigation__link button button--icon-only" aria-label="Merkliste anzeigen" data-tooltip="Merkliste anzeigen">
                 {% include '@components/icon/icon.twig' with { icon: 'bookmark' } %}
-            </a>
+            </button>
+            {% include '@components/bookmarks/bookmarks.twig'%}
         </li>
-        <li class="navigation__item navigation__item--user">
+        <li class="navigation__item navigation__item--user" aria-label="Benutzerprofil" data-tooltip="Benutzerprofil">
             {% include '@components/dropdown/dropdown--user.twig' %}
         </li>
         <li class="navigation__item navigation__item--quick-search">

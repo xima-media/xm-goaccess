@@ -1,0 +1,192 @@
+<!-- Module Start: bookmarks -->
+
+{#
+    Variables
+#}
+{% set bookmarkInputId = random() %}
+{% set bookmarkRemoveId = random() %}
+
+{#
+    Markup
+#}
+
+
+<div class="bookmarks__sidebar d-none" id="bookmarkResultsContainer">
+    <div class="bookmarks__sidebar-header">
+        <div class="bookmarks__sidebar-header-title">
+            <h2 class="h3">
+                Meine Merkliste
+            </h2>
+        </div>
+        <button id="bookmarksClose" class="bookmarks__sidebar-close" aria-label="Schließen Sie den Bookmarks">
+            {% include '@components/icon/icon.twig' with {'icon': 'close'} %}
+        </button>
+    </div>
+
+    <div class="bookmarks__sidebar-list-wrapper">
+        {% for bookmarkItem in prototype.bookmark %}
+
+            {#  Merkliste leer #}
+            {% for empty in bookmarkItem.emptyList %}
+                <div class="bookmarks__sidebar-list--empty">
+                    <h3 class="h5">{{ empty.title }}</h3>
+                    <p class="text-copy-small">
+                        {{ empty.text }}
+                    </p>
+                </div>
+            {% endfor %}
+
+            {# Mitarbeiter in Merkliste #}
+            {% for employlee in bookmarkItem.employees %}
+                <h3 class="h5">{{ employlee.title }}</h3>
+                <ul class="bookmarks__sidebar-list">
+                    {% for item in employlee.items %}
+                        <li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+                            <div class="contact--wrapper">
+                                {% include '@components/contact/contact--image.twig' with {
+                                    link: {
+                                        url: item.link.url,
+                                        text: item.link.text
+                                    },
+                                    image: {
+                                        src: item.image.src,
+                                        alt: item.image.alt,
+                                        size: item.image.size,
+                                        color: item.image.color
+                                    },
+                                    occupation: item.occupation,
+                                    department: item.department
+                                } only %}
+                                <button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+                                    {% include '@components/icon/icon.twig' with { icon: 'delete-bin' } %}
+                                </button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    <button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+                </ul>
+            {% endfor %}
+
+            {# Seiten in Merkliste #}
+            {% for page in bookmarkItem.page %}
+                <h3 class="h5">{{ page.title }}</h3>
+                <ul class="bookmarks__sidebar-list">
+                    {% for item in page.items %}
+                        <li class="bookmarks__sidebar-items bookmarks__sidebar-list-item bookmarks__sidebar-list-item--site">
+                            <div class="bookmarks__sidebar-list-item__data">
+                                <h4 class="h6 icon icon--arrow-right">
+                                    <a class="bookmarks__sidebar-list-item__data-link" href="{{ item.url }}">{{ item.title }}</a>
+                                </h4>
+                                <button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+                                    {% include '@components/icon/icon.twig' with { icon: 'delete-bin' } %}
+                                </button>
+                            </div>
+                            <div class="bookmarks__sidebar-list-item__data-footer">
+                                <nav class="breadcrumb__wrapper" aria-label="Brotkrumen-Navigation">
+                                    <ul class="breadcrumb breadcrumb--bookmark">
+                                        {% for breadcrumb in item.breadcrumb %}
+                                            {% if loop.last %}
+                                                <li>
+                                                    <a class="breadcrumb__link" href="#" aria-current="location">{{ breadcrumb.title }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li>{{ breadcrumb.title }}
+                                                    {% include '@components/icon/icon.twig' with {icon: 'chevron-right'} %}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    <button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+                </ul>
+            {% endfor %}
+
+            {# Dokumenten in Merkliste #}
+            {% for file in bookmarkItem.file %}
+                <h3 class="h5">{{ file.title }}</h3>
+                <ul class="bookmarks__sidebar-list">
+                    {% for item in file.items %}
+                        <li class="bookmarks__sidebar-items row tab-item__wrapper tab-item__wrapper--background-{{ item.background }}">
+                            <h6 class="col-md-8 tab-item__title">
+                                {{ item.fileName }}
+                            </h6>
+                            <div class="col-md-4 tab-item__detail">
+                                <span class="tab-item__type">{{ item.fileType }}</span>
+                                <a class="tab-item__link tab-item__link--download" type="button" aria-label="Herunterladen" data-tooltip="Herunterladen" download>
+                                    {% include '@components/icon/icon.twig' with { icon: 'download' } %}
+                                </a>
+                                <button class="tab-item__link" id="{{ tabId }}"  aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="file" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+                                    {% include '@components/icon/icon.twig' with { icon: 'delete-bin' } %}
+                                </button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    <button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+                </ul>
+            {% endfor %}
+
+            {# News in Merkliste #}
+            {% for news in bookmarkItem.news %}
+                <h3 class="h5">{{ news.title }}</h3>
+                <ul class="bookmarks__sidebar-list">
+                    {% for news in news.items %}
+                        <li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+                            <ul class="list-view__items">
+                                <li class="list-view__item">
+                                    {% include '@components/card/card.twig' with {
+                                        image: {
+                                            src: news.image.src,
+                                            color: news.image.color,
+                                            position: news.image.position
+                                        },
+                                        title: news.title,
+                                        subTitle: news.subTitle,
+                                        text: news.text,
+                                        link: {
+                                            href: news.link.url
+                                        }
+                                    } only %}
+                                    <button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="news" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+                                        {% include '@components/icon/icon.twig' with { icon: 'delete-bin' } %}
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    {% endfor %}
+                    <button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+
+                </ul>
+            {% endfor %}
+
+            {# Kurzmeldungen in Merkliste #}
+            {% for message in bookmarkItem.shortMessages %}
+                <h3 class="h5">{{ message.title }}</h3>
+                <ul class="bookmarks__sidebar-list">
+                    {% for item in message.items %}
+                        <li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+                            {% include '@components/card/card.twig' with {
+                                title: item.title,
+                                subTitle: item.subTitle,
+                                type: item.type,
+                                link: {
+                                    href: item.link.url
+                                }
+                            } only %}
+                            <button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="message" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+                                {% include '@components/icon/icon.twig' with { icon: 'delete-bin' } %}
+                            </button>
+                        </li>
+                    {% endfor %}
+                    <button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+                </ul>
+            {% endfor %}
+
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- Module End: bookmarks -->

@@ -30,13 +30,14 @@ class Tooltip {
     constructor () {
         app.log('component "tooltip" loaded')
 
-        document.querySelectorAll('[data-tooltip]').forEach((tooltip) => {
+        document.querySelectorAll<HTMLElement>('[data-tooltip]').forEach((tooltip) => {
         const placement = tooltip.dataset.tooltipPlacement ? tooltip.dataset.tooltipPlacement : 'bottom'
         const content = tooltip.dataset.tooltip
         let showOnCreate = tooltip.dataset.tooltipShowOnCreate ? tooltip.dataset.tooltipShowOnCreate : false
 
         // init tooltip
-        tippy(tooltip, {
+        // @ts-ignore
+            tippy(tooltip, {
             interactive: true,
             trigger: 'mouseenter focus',
             placement: placement,
@@ -58,7 +59,6 @@ class Tooltip {
             }
         })
         })
-
     }
 }
 

@@ -24,7 +24,7 @@
                 "subTitle": "Gruppenleitung EK Investitionsgüter / Dienstleistungen",
                 "text": "M230 – Beschaffung und Material-wirtschaft",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "primary"
                 },
                 "link": {
@@ -58,7 +58,7 @@
                 "subTitle": "Büro",
                 "text": "MU01 – DKTK MU LMU zentral",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "primary"
                 },
                 "link": {
@@ -87,7 +87,7 @@
                 "subTitle": "Büro",
                 "text": "M210 – Personalabteilung",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "orange"
                 },
                 "link": {
@@ -121,7 +121,7 @@
                 "subTitle": "Tierlabor",
                 "text": "W410 – Zentrales Tierlabor",
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images/examples/user.jpg",
                     "color": "yellow"
                 },
                 "link": {

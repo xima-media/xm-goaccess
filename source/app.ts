@@ -22,7 +22,7 @@
  *       2.15 Quote
  *       2.16 Card
  *       2.17 Related content
- *       2.18 List
+ *       2.18 Tag
  *       2.19 Contact
  *       2.20 Employee header
  *       2.21 Content wrapper
@@ -46,6 +46,8 @@
  *       2.39 Hero form
  *       2.40 Autocomplete
  *       2.41 Video player
+ *       2.42 Bookmarks
+ *       2.43 Employee info
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -112,8 +114,8 @@ import './_patterns/components/card/card'
 /** @section 2.17 Related content */
 import './_patterns/components/related-content/related-content'
 
-/** @section 2.18 List */
-import './_patterns/components/list/list'
+/** @section 2.18 Tag */
+import './_patterns/components/tag/tag'
 
 /** @section 2.19 Contact */
 import './_patterns/components/contact/contact'
@@ -184,6 +186,12 @@ import './_patterns/components/autocomplete/autocomplete'
 
 /** @section 2.41 Video player */
 import './_patterns/components/video-player/video-player'
+
+/** @section 2.42 Bookmarks */
+import './_patterns/components/bookmarks/bookmarks'
+
+/** @section 2.43 Employee info */
+import './_patterns/components/employee/employee-info'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

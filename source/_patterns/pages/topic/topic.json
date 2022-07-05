@@ -23,20 +23,20 @@
         ],
         "contacts": [
             {
-                "background": true,
-                "name": "Betriebsarzt Heidelberg\n",
+                "background": "primary-opacity-10",
+                "title": "Kontakt",
+                "subTitle": "Betriebsarzt Heidelberg",
                 "items": [
                     {
                         "type": "phone",
                         "url": "+49 6221-42-2651",
-                        "text": "+49 6221-42-2651\n"
+                        "text": "+49 6221-42-2651"
                     },
                     {
                         "type": "mail",
                         "url": "betriebsarzt@dkfz-heidelberg.de",
-                        "text": "betriebsarzt@dkfz-heidelberg.de\n"
+                        "text": "betriebsarzt@dkfz-heidelberg.de"
                     }
-
                 ]
             }
         ],
