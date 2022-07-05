@@ -1,0 +1,42 @@
+<f:layout name="Default"/>
+
+<f:section name="Main">
+	<f:for each="{children}" as="teaser" iteration="i">
+		<div class="card card--image-left card--xl card--image-size-md color--{teaser.data.color}">
+			<div class="card__image">
+
+				<f:for each="{teaser.files}" as="file">
+				<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
+						data-pattern-color="transparent">
+					<div class="picture__item image-color--green-light">
+						<f:image image="{file}" maxWidth="458" />
+					</div>
+				</figure>
+				</f:for>
+
+			</div>
+			<div class="card__content">
+				<div class="card__header">
+					<h3 class="card__title">{teaser.data.title}</h3>
+				</div>
+				<div class="card__body">
+					<div class="card__text">
+						<p>{teaser.data.text}</p>
+					</div>
+
+					<f:for each="{teaser.links}" as="link">
+						<f:link.typolink parameter="{link.data.link}"/>
+						<svg class="icon icon--arrow-right icon--size-xl"
+							 role="img"
+							 width="20"
+							 height="20"
+							 aria-hidden="true">
+							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+						</svg>
+						<br/>
+					</f:for>
+				</div>
+			</div>
+		</div>
+	</f:for>
+</f:section>

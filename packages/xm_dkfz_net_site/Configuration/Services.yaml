@@ -36,3 +36,6 @@ services:
 
   Xima\XmDkfzNetSite\Preview\TeaserPreviewRenderer:
     public: true
+
+  Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
+    public: true
