@@ -37,6 +37,11 @@
 	margin: 1.5rem 0;
 }
 
+.content-teaser-placeholder-image {
+	aspect-ratio: 3/2;
+	background-color: var(--color, #0047b9);
+}
+
 .color-stripe {
 	height: 10px;
 	background-image: linear-gradient(45deg, var(--color, #0047b9) 10%, transparent 10%, transparent 50%, var(--color, #0047b9) 50%, var(--color, #0047b9) 60%, transparent 60%, transparent 100%);

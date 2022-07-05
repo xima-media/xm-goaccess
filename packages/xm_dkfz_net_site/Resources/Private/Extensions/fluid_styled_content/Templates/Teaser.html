@@ -2,17 +2,30 @@
 
 <f:section name="Main">
 	<f:for each="{children}" as="teaser" iteration="i">
-		<div class="card card--image-left card--xl card--image-size-md color--{teaser.data.color}">
+		<div class="card card--image-{f:if(condition: i.isOdd, then: 'left', else: 'right')} card--xl card--image-size-md color--{teaser.data.color}">
 			<div class="card__image">
 
-				<f:for each="{teaser.files}" as="file">
-				<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
-						data-pattern-color="transparent">
-					<div class="picture__item image-color--green-light">
-						<f:image image="{file}" maxWidth="458" />
-					</div>
-				</figure>
-				</f:for>
+				<f:if condition="{teaser.files}">
+					<f:then>
+						<f:for each="{teaser.files}" as="file">
+							<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
+									data-pattern-color="transparent">
+								<div class="picture__item image-color--green-light">
+									<f:image image="{file}" maxWidth="458"/>
+								</div>
+							</figure>
+						</f:for>
+					</f:then>
+					<f:else>
+						<figure class="picture picture--no-image picture--with-color picture--orientation-md-"
+								data-color="yellow"
+								data-pattern-color="transparent">
+							<div class="picture__item background--yellow">
+								<span class="picture__pattern pattern--gray-900"></span>
+							</div>
+						</figure>
+					</f:else>
+				</f:if>
 
 			</div>
 			<div class="card__content">
