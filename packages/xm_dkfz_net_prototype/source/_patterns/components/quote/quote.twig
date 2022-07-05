@@ -1,11 +1,11 @@
 <!-- Component Start: quote -->
 
 <figure class="quote">
-    <blockquote class="quote__content">
+    <blockquote class="quote__content h5">
         {{ quote }}
     </blockquote>
     <figcaption class="quote__caption">
-        <cite class="quote__cite">{{ cite }}</cite>
+        <cite class="quote__cite">{{ name }} <span>{{ cite }}</span></cite>
     </figcaption>
     <span class="quote__pattern pattern--{{ patternColor|default('primary') }}"></span>
 </figure>

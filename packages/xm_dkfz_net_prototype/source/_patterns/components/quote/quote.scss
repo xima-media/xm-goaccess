@@ -10,19 +10,44 @@
 
 .quote {
     position: relative;
-    margin: 2rem 0 3rem;
-    padding: 1rem;
+    margin: 5.5rem 0;
+    padding: 2rem 6rem;
+    text-align: center;
     background-color: var(--color-white);
-
-    //&__content {  }
 
     &__pattern {
         position: absolute;
-        top: -1rem;
+        top: -2rem;
         right: -7rem; // @todo variable, siehe image
-        bottom: -1rem;
+        bottom: -2rem;
         left: -7rem; // @todo variable, siehe image
         z-index: -1;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 0;
+
+        &:before {
+            position: absolute;
+            content: open-quote;
+            font-size: 17rem;
+            margin-top: -3rem;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-cyan);
+            opacity: .2;
+            z-index: -1;
+        }
+    }
+
+    &__cite {
+        font-style: normal;
+        @include text-copy-standard(700, .3);
+
+        span {
+            @include text-copy-standard(200, .3);
+        }
     }
 }
 

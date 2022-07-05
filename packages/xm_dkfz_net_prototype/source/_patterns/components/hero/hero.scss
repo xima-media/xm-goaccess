@@ -18,6 +18,8 @@
 
     @include media-breakpoint-up(xxl) {
         padding-bottom: 1rem;
+        max-width: $container-default-widths - 6rem;
+        margin: auto;
     }
 
     + .hero-form {
@@ -31,6 +33,20 @@
             @include media-breakpoint-up(xl) {
                 margin-bottom: -1.5rem;
             }
+        }
+    }
+
+    &__sub-title {
+        font-family: var(--font-family-sans-serif);
+        font-weight: 200;
+        font-size: 36px;
+        line-height: 50px;
+        letter-spacing: -0.3px;
+    }
+
+    &__info {
+        + .button {
+            margin: 2rem auto;
         }
     }
 }

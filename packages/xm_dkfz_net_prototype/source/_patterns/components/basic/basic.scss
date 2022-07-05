@@ -84,7 +84,29 @@ body {
 
 // @todo eventuell auslagern
 .article {
-    padding: 0 7rem;
+    padding: 0 2rem;
+
+    @include media-breakpoint-up(lg) {
+        padding: 0 19rem;
+    }
+
+    dl {
+        margin: 2.5rem auto;
+
+        dt {
+            @include h4;
+        }
+
+        dd {
+            @include text-copy-standard;
+            margin-bottom: 3rem;
+        }
+    }
+
+    + .content-wrapper {
+        margin-top: 5rem;
+        margin-bottom: 6.5rem;
+    }
 }
 
 // @todo eventuell auslagern

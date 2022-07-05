@@ -6,6 +6,55 @@
         },
         "debug": {
             "screenshot": "news--detailpage--02"
+        },
+        "topics": {
+            "title": "Weitere News",
+            "titleWithPattern": true,
+            "color": "primary",
+            "link": {
+                "url": "#",
+                "text": "Alle News"
+            },
+            "items": [
+                {
+                    "title": "Hilfsaktionen für die Ukraine",
+                    "subTitle": "18. März 2020 | Außerdem",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "src": "../../dist/image/examples/news-header.jpg",
+                        "color": "yellow",
+                        "size": "sm"
+                    },
+                    "type": "more-theme"
+                },
+                {
+                    "title": "fragdiepatienten.de: Service-Tool geht an den Start",
+                    "subTitle": "15. März 2020 | Innenansichten",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "src": "../../dist/image/examples/news-header.jpg",
+                        "color": "primary",
+                        "size": "sm"
+                    },
+                    "type": "more-theme"
+                },
+                {
+                    "title": "Bundesforschungsministerin Bettina Stark-Watzinger besucht DKFZ",
+                    "subTitle": "15. März 2020 | Innenansichten",
+                    "link": {
+                        "url": "#"
+                    },
+                    "image": {
+                        "color": "green-light",
+                        "size": "sm"
+                    },
+                    "type": "more-theme"
+                }
+            ]
         }
     }
 }
