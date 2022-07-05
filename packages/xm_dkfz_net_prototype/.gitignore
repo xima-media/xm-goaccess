@@ -29,6 +29,7 @@ node_modules/
 # Prototype
 #
 Resources/Public/*
+!Resources/Public/Images/module.svg
 source/images
 source/_patterns/components/icon/_sprite.scss
 
