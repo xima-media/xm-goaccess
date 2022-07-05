@@ -4,7 +4,6 @@ namespace Xima\XmDkfzNetSite\Preview;
 
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
@@ -13,7 +12,6 @@ use TYPO3\CMS\Frontend\Preview\TextmediaPreviewRenderer;
 
 class TeaserPreviewRenderer extends TextmediaPreviewRenderer
 {
-
     protected FileRepository $fileRepository;
 
     public function __construct(FileRepository $fileRepository)
@@ -115,5 +113,4 @@ class TeaserPreviewRenderer extends TextmediaPreviewRenderer
             $item['files'] = $this->fileRepository->findByRelation('pages', 'media', (int)$pageUid);
         }
     }
-
 }

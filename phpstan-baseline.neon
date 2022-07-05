@@ -46,6 +46,31 @@ parameters:
 			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
 
 		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) has parameter \\$contentObjectConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) has parameter \\$processedData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) has parameter \\$processorConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:createResolver\\(\\) should return Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver but returns object\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
@@ -59,6 +84,11 @@ parameters:
 			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Form\\\\Element\\\\OverrideToggleElement\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Form/Element/OverrideToggleElement.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DataHandlerHook\\:\\:processDatamap_preProcessFieldArray\\(\\) has parameter \\$incomingFieldArray with no value type specified in iterable type array\\.$#"
@@ -89,6 +119,46 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DrawHeaderHook\\:\\:addPageInfos\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:render\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:setTemplatePathAndFilename\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:fillChildFromLink\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:fillChildFromLink\\(\\) has parameter \\$item with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:resolveChildLinkItems\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:resolveChildLinkItems\\(\\) has parameter \\$item with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
