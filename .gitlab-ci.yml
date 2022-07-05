@@ -28,6 +28,7 @@ build-node:
   script:
     - npm ci --cache .npm --prefer-offline
     - npm run build
+    - npm run build:patternlab
   artifacts:
     paths:
       - packages/xm_dkfz_net_prototype/Resources/Public
