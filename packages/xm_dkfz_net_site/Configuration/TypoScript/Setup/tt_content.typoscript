@@ -1,3 +1,9 @@
+lib.contentElement {
+  partialRootPaths {
+    5 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials
+  }
+}
+
 tt_content {
 
   video =< tt_content.textmedia
@@ -51,6 +57,12 @@ tt_content {
 
     dataProcessing {
       100 = B13\Container\DataProcessing\ContainerProcessor
+    }
+  }
+
+  textmedia {
+    dataProcessing {
+      20 >
     }
   }
 
