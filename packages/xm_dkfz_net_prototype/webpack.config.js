@@ -123,40 +123,30 @@ module.exports = {
         }),
         new SVGSpritemapPlugin('./source/_patterns/components/icon/assets/**/*.svg', {
             output: {
-                filename: 'Icon/icon.min.svg',
+                filename: 'icon/icon.min.svg',
                 svg4everybody: true,
-                svgo: true,
-                svg: {
-                    sizes: false
-                }
+                svgo: true
             },
             sprite: {
                 prefix: 'icon-',
                 generate: {
-                    title: false,
-                    use: true,
-                    symbol: true,
-                    view: '-fragment',
+                    title: false
                 }
             },
-            styles: {
-                filename: path.join(__dirname, './source/_patterns/components/icon/_sprite.scss'),
-                format: 'fragment'
-            }
         }),
-        // new ReplaceInFileWebpackPlugin([{
-        //     files: ['Resources/Public/Icon/icon.min.svg'],
-        //     rules: [
-        //         {
-        //             search: '<svg xmlns="http://www.w3.org/2000/svg"><symbol',
-        //             replace: '<svg xmlns="http://www.w3.org/2000/svg"><style>:root>svg{display:none}:root>svg:target{display:block}</style><symbol'
-        //         },
-        //         {
-        //             search: /symbol/ig,
-        //             replace: 'svg'
-        //         }
-        //     ]
-        // }])
+        new ReplaceInFileWebpackPlugin([{
+            files: ['Resources/Public/Icon/icon.min.svg'],
+            rules: [
+                {
+                    search: '<svg xmlns="http://www.w3.org/2000/svg"><symbol',
+                    replace: '<svg xmlns="http://www.w3.org/2000/svg"><style>:root>svg{display:none}:root>svg:target{display:block}</style><symbol'
+                },
+                {
+                    search: /symbol/ig,
+                    replace: 'svg'
+                }
+            ]
+        }])
     ],
     performance: {
         assetFilter: function (assetFilename) {
