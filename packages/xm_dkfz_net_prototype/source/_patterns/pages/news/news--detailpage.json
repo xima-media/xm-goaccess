@@ -23,7 +23,7 @@
                         "url": "#"
                     },
                     "image": {
-                        "src": "../../dist/image/examples/news-header.jpg",
+                        "src": "../../../Images//examples/news-header.jpg",
                         "color": "yellow",
                         "size": "sm"
                     },
@@ -36,7 +36,7 @@
                         "url": "#"
                     },
                     "image": {
-                        "src": "../../dist/image/examples/news-header.jpg",
+                        "src": "../../../Images//examples/news-header.jpg",
                         "color": "primary",
                         "size": "sm"
                     },

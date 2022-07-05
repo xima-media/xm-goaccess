@@ -1,45 +1,16 @@
 {% extends "@layouts/default--with-sidebar.twig" %}
 {% block main %}
-<<<<<<< HEAD:source/_patterns/pages/employee-profile/employee-profile.twig
-    {% include '@components/employee/employee-header.twig' with {
-        title: 'Ammon, Lisa',
-        texts: ['Barriere B', 'W410 – Zentrales Tierlabor'],
-        image: {
-            src: '../../../Images/examples/user.jpg'
-        }
-    } only %}
 
-    <div class="testblubb"> {# @todo Klasse umbennen #}
-        <h2>Über mich</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-            mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
-            massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-            enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-            mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-            vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-            ac, enim.
-        </p>
-
-        {# @todo eventuell besser als tag-Komponente #}
-        {% include '@components/list/list.twig' with {
-            title: 'Meine Kompetenzen:',
-            items: prototype.tags.skills
-        } only %}
-=======
     <div class="layout">
         <div class="layout__item">
             {% include '@components/employee/employee-header.twig' with {
                 title: 'Ammon, Lisa',
                 texts: ['Gruppenleitung EK Investitions-güter / Dienstleistungen', 'W410 – Zentrales Tierlabor'],
                 image: {
-                    src: '../../dist/image/examples/user.jpg'
+                    src: '../../../Images//examples/user.jpg'
                 }
             } only %}
         </div>
->>>>>>> 51d7806c84da219a4b6ff18e43a50da7ac82e82e:htdocs/prototype/patternlab/source/_patterns/pages/employee-profile/employee-profile.twig
-
         <div class="layout__item">
             <div class="content--info"> {# @todo Klasse umbennen #}
                 <div class="layout__item">

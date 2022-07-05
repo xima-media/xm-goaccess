@@ -196,7 +196,7 @@
                     "text": "Fuchs, Andreas"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images//examples/user.jpg",
                     "color": "primary",
                     "size": "xxs"
                 },
@@ -222,7 +222,7 @@
                     "text": "Fuchs, Andreas"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/dummy.png",
+                    "src": "../../../Images//examples/dummy.png",
                     "color": "primary",
                     "size": "xxs"
                 },
@@ -245,7 +245,7 @@
                     "text": "Wolf, Nadine"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/dummy.png",
+                    "src": "../../../Images//examples/dummy.png",
                     "color": "primary",
                     "size": "xxs"
                 },
@@ -263,7 +263,7 @@
                     "text": "Scholten, Sabine"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/dummy.png",
+                    "src": "../../../Images//examples/dummy.png",
                     "color": "primary",
                     "size": "xxs"
                 },

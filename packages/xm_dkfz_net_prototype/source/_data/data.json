@@ -654,7 +654,7 @@
                     "text": "Fuchs, Andreas"
                 },
                 "image": {
-                    "src": "../../dist/image/examples/user.jpg",
+                    "src": "../../../Images//examples/user.jpg",
                     "color": "orange",
                     "size": "xxs"
                 }
@@ -858,7 +858,7 @@
             "items": [
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-3to2.png",
+                        "src": "../../../Images//examples/horizontal-3to2.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -872,7 +872,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-2to3.png",
+                        "src": "../../../Images//examples/vertical-2to3.png",
                         "alt": "Picture title",
                         "patternColor": "magenta",
                         "size": "md",
@@ -886,7 +886,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-4to3.png",
+                        "src": "../../../Images//examples/horizontal-4to3.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -900,7 +900,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-3to4.png",
+                        "src": "../../../Images//examples/vertical-3to4.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -914,7 +914,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-1to1.png",
+                        "src": "../../../Images//examples/horizontal-1to1.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -928,7 +928,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-3to2.png",
+                        "src": "../../../Images//examples/horizontal-3to2.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "sm",
@@ -942,7 +942,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-2to3.png",
+                        "src": "../../../Images//examples/vertical-2to3.png",
                         "alt": "Picture title",
                         "patternColor": "magenta",
                         "size": "sm",
@@ -956,7 +956,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/horizontal-3to2.png",
+                        "src": "../../../Images//examples/horizontal-3to2.png",
                         "alt": "Picture title",
                         "patternColor": "primary",
                         "size": "md",
@@ -971,7 +971,7 @@
                 },
                 {
                     "image": {
-                        "src": "../../dist/image/examples/vertical-2to3.png",
+                        "src": "../../../Images//examples/vertical-2to3.png",
                         "alt": "Picture title",
                         "patternColor": "magenta",
                         "size": "md",
@@ -988,7 +988,7 @@
         "pictureSize": [
             {
                 "image": {
-                    "src": "../../dist/image/examples/maximal.png",
+                    "src": "../../../Images//examples/maximal.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "md",
@@ -1003,7 +1003,7 @@
             },
             {
                 "image": {
-                    "src": "../../dist/image/examples/minimal.png",
+                    "src": "../../../Images//examples/minimal.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "sm",
@@ -1018,7 +1018,7 @@
             },
             {
                 "image": {
-                    "src": "../../dist/image/examples/big.png",
+                    "src": "../../../Images//examples/big.png",
                     "alt": "Picture title",
                     "patternColor": "primary",
                     "size": "lg",
@@ -1037,7 +1037,7 @@
                 "items": [
                     {
                         "image": {
-                            "src": "../../dist/image/examples/vertical-2to3.png",
+                            "src": "../../../Images//examples/vertical-2to3.png",
                             "alt": "Picture title",
                             "copyright": "copyright",
                             "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
@@ -1045,7 +1045,7 @@
                     },
                     {
                         "image": {
-                            "src": "../../dist/image/examples/big.png",
+                            "src": "../../../Images//examples/big.png",
                             "alt": "Picture title",
                             "copyright": "copyright",
                             "caption": "Bildunterschrift zum Bild oben lorem ipsum dolor sit amet"
@@ -1142,7 +1142,7 @@
                         "items": [
                             {
                                 "image": {
-                                    "src": "../../dist/image/examples/user.jpg",
+                                    "src": "../../../Images//examples/user.jpg",
                                     "alt": "Fuchs, Andreas",
                                     "color": "primary",
                                     "size": "xxs"
@@ -1156,7 +1156,7 @@
                             },
                             {
                                 "image": {
-                                    "src": "../../dist/image/examples/user.jpg",
+                                    "src": "../../../Images//examples/user.jpg",
                                     "alt": "Fuchs, Andreas",
                                     "color": "primary",
                                     "size": "xxs"
@@ -1170,7 +1170,7 @@
                             },
                             {
                                 "image": {
-                                    "src": "../../dist/image/examples/user.jpg",
+                                    "src": "../../../Images//examples/user.jpg",
                                     "alt": "Fuchs, Andreas",
                                     "color": "primary",
                                     "size": "xxs"
@@ -1184,7 +1184,7 @@
                             },
                             {
                                 "image": {
-                                    "src": "../../dist/image/examples/user.jpg",
+                                    "src": "../../../Images//examples/user.jpg",
                                     "alt": "Fuchs, Andreas",
                                     "color": "primary",
                                     "size": "xxs"
@@ -1198,7 +1198,7 @@
                             },
                             {
                                 "image": {
-                                    "src": "../../dist/image/examples/user.jpg",
+                                    "src": "../../../Images//examples/user.jpg",
                                     "alt": "Fuchs, Andreas",
                                     "color": "primary",
                                     "size": "xxs"
@@ -1212,7 +1212,7 @@
                             },
                             {
                                 "image": {
-                                    "src": "../../dist/image/examples/user.jpg",
+                                    "src": "../../../Images//examples/user.jpg",
                                     "alt": "Fuchs, Andreas",
                                     "color": "primary",
                                     "size": "xxs"
@@ -1236,7 +1236,7 @@
                                 "subTitle": "22. März 2022 | Wissenschaft",
                                 "text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen.",
                                 "image": {
-                                    "src": "../../dist/image/examples/news-header.jpg",
+                                    "src": "../../../Images//examples/news-header.jpg",
                                     "color": "cyan",
                                     "position": "left"
                                 },
@@ -1249,7 +1249,7 @@
                                 "subTitle": "18. März 2022 | Außerdem",
                                 "text": "Sie möchten helfen oder auf Hilfsaktionen zugunsten der Ukraine aufmerksam machen? Hier finden Sie eine Liste, in die Sie Hilfsaktionen eintragen bzw. solche finden, die Sie unterstützen können.",
                                 "image": {
-                                    "src": "../../dist/image/examples/news-header.jpg",
+                                    "src": "../../../Images//examples/news-header.jpg",
                                     "color": "yellow",
                                     "position": "left"
                                 },
@@ -1262,7 +1262,7 @@
                                 "subTitle": "15. März 2022 | Innenansichten",
                                 "text": "Der Immunologe, Krebsforscher und Unternehmer Ugur Sahin baut am Helmholtz-Institut „HI-TRON Mainz“ eine wissenschaftliche Abteilung für mRNA-basierte Krebs-Immunthera-pie auf. Die bestechende Idee hinter dem Konzept der mRNA-basierten Krebs-Immunthera-pien: Mit Boten RNA-Molekülen (mRNA) bringt man den Körper dazu, selbst Tumorproteine zu produzieren, die das Immunsystem dazu anregen, den Krebs zu bekämpfen. Ugur Sahin ist einer der weltweit wichtigsten Pioniere auf diesem Forschungsgebiet.",
                                 "image": {
-                                    "src": "../../dist/image/examples/news-header.jpg",
+                                    "src": "../../../Images//examples/news-header.jpg",
                                     "color": "purple",
                                     "position": "left"
                                 },
@@ -1275,7 +1275,7 @@
                                 "subTitle": "16. März 2022 | Innenansichten",
                                 "text": "Bei Ihrem Besuch im DKFZ hat Bundesforschungsministerin Bettina Stark-Watzinger die Allianz für Patientenbeteiligung in der Krebsforschung in Deutschland verkündet. Damit stehen im vierten Jahr der Nationalen Dekade gegen Krebs die Patientinnen und Patienten im Mittelpunkt. Viel stärker als bisher sollen sie künftig eingebunden werden und sich aktiv in die Forschung einbringen können – von der Formulierung von Fragestellungen bis hin zur Verwertung der Ergebnisse. Damit soll die Krebsforschung besser auf ihre Bedürfnisse aus-gerichtet werden.",
                                 "image": {
-                                    "src": "../../dist/image/examples/news-header.jpg",
+                                    "src": "../../../Images//examples/news-header.jpg",
                                     "color": "orange",
                                     "position": "left"
                                 },
@@ -1288,7 +1288,7 @@
                                 "subTitle": "14. März 2022 | Wissenschaft",
                                 "text": "Zahlreiche Krebsarten treten bei übergewichtigen Menschen häufiger auf als bei Normal-gewichtigen. Dazu zählen unter anderem Brustkrebs, Krebs der Gebärmutter, der Niere oder der Speiseröhre – und auch Darmkrebs. Die Anzahl an Lebensjahren, in denen ein Mensch Übergewicht auf die Waage bringt, hat höhere Aussagekraft für das Darmkrebsrisiko als eine einmalige Messung des Körpergewichts. Im Vergleich zu Menschen, die ihr Leben lang Normalgewicht gehalten haben, erkranken dauerhaft Übergewichtige sogar bis zu zweieinhalbmal häufiger an Darmkrebs. Damit kommt der Vermeidung des Übergewichts eine noch wichtigere Rolle in der Krebsprävention zu als bislang angenommen. Diese Ergebnisse veröffentlichten Prof. Hermann Brenner und seine Kolleg:innen.",
                                 "image": {
-                                    "src": "../../dist/image/examples/news-header.jpg",
+                                    "src": "../../../Images//examples/news-header.jpg",
                                     "color": "green",
                                     "position": "left"
                                 },
