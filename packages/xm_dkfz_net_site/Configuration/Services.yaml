@@ -33,3 +33,6 @@ services:
 
   Xima\XmDkfzNetSite\Hook\DrawHeaderHook:
     public: true
+
+  Xima\XmDkfzNetSite\Preview\TeaserPreviewRenderer:
+    public: true

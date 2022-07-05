@@ -74,3 +74,6 @@ $GLOBALS['TCA']['tt_content']['types']['teaser'] = [
         ],
     ],
 ];
+
+// Register custom Preview
+$GLOBALS['TCA']['tt_content']['types']['teaser']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\TeaserPreviewRenderer::class;
