@@ -10,3 +10,9 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['proc
 
 // Register DrawHeader Hook
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/db_layout.php']['drawHeaderHook'][] = \Xima\XmDkfzNetSite\Hook\DrawHeaderHook::class . '->addPageInfos';
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1657005026] = [
+    'nodeName' => 'overrideToggle',
+    'priority' => 40,
+    'class' => \Xima\XmDkfzNetSite\Form\Element\OverrideToggleElement::class,
+];

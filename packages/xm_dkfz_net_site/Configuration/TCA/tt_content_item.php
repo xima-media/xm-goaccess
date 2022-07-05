@@ -183,7 +183,7 @@ return [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides',
             'config' => [
                 'type' => 'check',
-                'renderType' => 'checkboxToggle',
+                'renderType' => 'overrideToggle',
                 'items' => [
                     [
                         0 => '',
