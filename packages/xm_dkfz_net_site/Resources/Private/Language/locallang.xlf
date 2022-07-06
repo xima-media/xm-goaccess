@@ -40,6 +40,15 @@
 			<trans-unit id="tt_content.layout.2">
 				<source>Full width</source>
 			</trans-unit>
+			<trans-unit id="tt_content.color">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="tt_content.color.description">
+				<source>Custom color for this content element. Default: Color of the page is used.</source>
+			</trans-unit>
+			<trans-unit id="tt_content.color.0">
+				<source>Take over from page</source>
+			</trans-unit>
 			<trans-unit id="pages.color" space="preserve">
 				<source>Color</source>
 			</trans-unit>

@@ -32,6 +32,15 @@
 			<trans-unit id="tt_content.frame_class.yellow">
 				<target>Gelb Hintergrund</target>
 			</trans-unit>
+			<trans-unit id="tt_content.color">
+				<target>Farbe</target>
+			</trans-unit>
+			<trans-unit id="tt_content.color.description">
+				<target>Individuelle Farbe für dieses Inhaltselement. Standard: Farbe der Seite wird verwendet.</target>
+			</trans-unit>
+			<trans-unit id="tt_content.color.0">
+				<target>Von Seite übernehmen</target>
+			</trans-unit>
 			<trans-unit id="tt_content.frame_class.orange">
 				<target>Orange Hintergrund</target>
 			</trans-unit>
