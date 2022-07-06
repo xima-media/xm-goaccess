@@ -123,7 +123,7 @@ module.exports = {
         }),
         new SVGSpritemapPlugin('./source/_patterns/components/icon/assets/**/*.svg', {
             output: {
-                filename: 'icon/icon.min.svg',
+                filename: 'Icon/icon.min.svg',
                 svg4everybody: true,
                 svgo: true
             },
