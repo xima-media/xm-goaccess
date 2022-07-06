@@ -39,8 +39,26 @@ class GitlabResolver extends AbstractResolver
         }
     }
 
-    public function updateFrontendUser(array &$beUser): void
+    public function updateFrontendUser(array &$feUser): void
     {
-        // TODO: Implement updateFrontendUser() method.
+        $remoteUser = $this->getResourceOwner()->toArray();
+
+        if (!$feUser['username'] && $remoteUser['username']) {
+            $feUser['username'] = $remoteUser['username'];
+        }
+
+        if ($remoteUser['email']) {
+            $feUser['email'] = $remoteUser['email'];
+        }
+
+        if ($remoteUser['state'] === 'active') {
+            $feUser['disable'] =  0;
+        }
+
+        if (!$feUser['name']) {
+            $feUser['name'] = $remoteUser['name'];
+        }
+
+        // @TODO: usergroups
     }
 }

@@ -73,6 +73,13 @@
             <f:form.submit value="{f:translate(key: 'login')}" name="submit"/>
         </div>
 
+		<f:for each="{oauth2Providers}" as="provider">
+			<core:icon identifier="{provider.iconIdentifier}" size="large" />
+			<button type="submit" name="oauth2-provider" value="{provider.identifier}">
+				Login with {provider.label}
+			</button>
+		</f:for><f:debug>{_all}</f:debug>
+
         <div class="felogin-hidden">
             <f:form.hidden name="logintype" value="login"/>
             <f:form.hidden name="pid" value="{storagePid}"/>

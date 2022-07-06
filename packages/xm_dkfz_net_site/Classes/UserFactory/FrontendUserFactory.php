@@ -10,9 +10,10 @@ use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2BeUserProviderConfigurationRestriction;
+use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2FeUserProviderConfigurationRestriction;
 use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
 
-class BackendUserFactory
+class FrontendUserFactory
 {
     protected AbstractResolver $resolver;
 
@@ -29,7 +30,7 @@ class BackendUserFactory
         $constraints = [];
         $username = $this->resolver->getIntendedUsername();
         $email = $this->resolver->getIntendedEmail();
-        $qb = $this->getQueryBuilder();
+        $qb = $this->getQueryBuilder('fe_users');
 
         if ($username) {
             $constraints[] = $qb->expr()->eq(
@@ -51,7 +52,7 @@ class BackendUserFactory
 
         $user = $qb
             ->select('*')
-            ->from('be_users')
+            ->from('fe_users')
             ->where($qb->expr()->orX(...$constraints))
             ->execute()
             ->fetchAssociative();
@@ -59,16 +60,16 @@ class BackendUserFactory
         return $user ?: null;
     }
 
-    public function registerRemoteUser(): ?array
+    public function registerRemoteUser(int $targetPid): ?array
     {
         // find or create
         $userRecord = $this->findUserByUsernameOrEmail();
         if (!is_array($userRecord)) {
-            $userRecord = $this->createBasicBackendUser();
+            $userRecord = $this->createBasicFrontendUser($targetPid);
         }
 
         // update
-        $this->resolver->updateBackendUser($userRecord);
+        $this->resolver->updateFrontendUser($userRecord);
 
         // test for username
         if (!$userRecord['username']) {
@@ -97,8 +98,8 @@ class BackendUserFactory
     public function persistIdentityForUser($userRecord): bool
     {
         // create identity
-        $qb = $this->getQueryBuilder('tx_oauth2_beuser_provider_configuration');
-        $qb->insert('tx_oauth2_beuser_provider_configuration')
+        $qb = $this->getQueryBuilder('tx_oauth2_feuser_provider_configuration');
+        $qb->insert('tx_oauth2_feuser_provider_configuration')
             ->values([
                 'identifier' => $this->resolver->getResourceOwner()->getId(),
                 'provider' => $this->resolver->getProviderId(),
@@ -110,10 +111,11 @@ class BackendUserFactory
             ->execute();
 
         // get newly created identity
-        $qb = $this->getQueryBuilder('tx_oauth2_beuser_provider_configuration');
+        $qb = $this->getQueryBuilder('tx_oauth2_feuser_provider_configuration');
         $qb->getRestrictions()->removeByType(Oauth2BeUserProviderConfigurationRestriction::class);
+        $qb->getRestrictions()->removeByType(Oauth2FeUserProviderConfigurationRestriction::class);
         $identityCount = $qb->count('uid')
-            ->from('tx_oauth2_beuser_provider_configuration')
+            ->from('tx_oauth2_feuser_provider_configuration')
             ->where($qb->expr()->eq('parentid', (int)$userRecord['uid']))
             ->executeQuery()
             ->fetchOne();
@@ -122,9 +124,9 @@ class BackendUserFactory
             return false;
         }
 
-        // update backend user
-        $qb = $this->getQueryBuilder();
-        $qb->update('be_users')
+        // update frontend user
+        $qb = $this->getQueryBuilder('fe_users');
+        $qb->update('fe_users')
             ->where(
                 $qb->expr()->eq('uid', (int)$userRecord['uid'])
             )
@@ -142,7 +144,7 @@ class BackendUserFactory
     {
         $password = $userRecord['password'];
 
-        $user = $this->getQueryBuilder()->insert('be_users')
+        $user = $this->getQueryBuilder('fe_users')->insert('fe_users')
             ->values($userRecord)
             ->execute();
 
@@ -150,9 +152,9 @@ class BackendUserFactory
             return null;
         }
 
-        $qb = $this->getQueryBuilder();
+        $qb = $this->getQueryBuilder('fe_users');
         return $qb->select('*')
-            ->from('be_users')
+            ->from('fe_users')
             ->where(
                 $qb->expr()->eq('password', $qb->createNamedParameter($password, \PDO::PARAM_STR))
             )
@@ -164,6 +166,7 @@ class BackendUserFactory
      * @throws \TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException
      */
     #[ArrayShape([
+        'pid' => 'int',
         'username' => 'string',
         'realName' => 'string',
         'disable' => 'int',
@@ -173,19 +176,19 @@ class BackendUserFactory
         'starttime' => 'int',
         'endtime' => 'int',
         'password' => 'string',
-    ])] public function createBasicBackendUser(): array
+    ])] public function createBasicFrontendUser(int $targetPid): array
     {
-        $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('BE');
+        $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
 
         return [
+            'pid' => $targetPid,
             'crdate' => time(),
             'tstamp' => time(),
-            'admin' => 0,
             'disable' => 1,
             'starttime' => 0,
             'endtime' => 0,
             'password' => $saltingInstance->getHashedPassword(md5(uniqid())),
-            'realName' => '',
+            'name' => '',
             'username' => '',
         ];
     }
