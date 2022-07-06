@@ -43,6 +43,9 @@
 
 				<div class="navigation navigation--sub">
 					<ul class="navigation__items">
+
+						<f:security.ifAuthenticated>
+
 						<li class="navigation__item navigation__item--open-chat">
 							<a class="navigation__link button button--icon-only" href="#message" aria-label="Feedback geben" data-tooltip="Feedback geben" aria-expanded="false">
 								<!-- Component Start: icon -->
@@ -88,15 +91,19 @@
 									<!-- Components End: image -->
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
-									<li><a class="dropdown-item" href="#">Onboarding Informationen</a></li>
-									<li><a class="dropdown-item" href="#">Profil bearbeiten</a></li>
-									<li><hr class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="#">Abmelden</a></li>
+									<f:comment>
+										<li><a class="dropdown-item" href="#">Onboarding Informationen</a></li>
+										<li><a class="dropdown-item" href="#">Profil bearbeiten</a></li>
+										<li><hr class="dropdown-divider"></li>
+									</f:comment>
+									<li><f:link.page pageUid="{pidLogin}" class="dropdown-item" additionalParams="{logintype:'logout'}">Abmelden</f:link.page></li>
 								</ul>
 							</div>
 
 							<!-- Components End: dropdown--user -->
 						</li>
+						</f:security.ifAuthenticated>
+
 						<li class="navigation__item navigation__item--quick-search">
 							<!-- Component Start: quick-search -->
 

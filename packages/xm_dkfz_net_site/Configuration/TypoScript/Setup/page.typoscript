@@ -8,6 +8,11 @@ page {
     partialRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Partials
     templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Templates
 
+    variables {
+      pidLogin = TEXT
+      pidLogin.value = {$pidLogin}
+    }
+
     dataProcessing {
       # Main navigation
       10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
@@ -108,6 +113,7 @@ page {
 
 }
 
+# [!frontend.user.isLoggedIn]
 [page["uid"] == {$pidLogin}]
   page.10.templateName = Login
 [end]

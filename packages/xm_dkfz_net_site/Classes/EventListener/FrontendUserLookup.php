@@ -6,7 +6,6 @@ use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Waldhacker\Oauth2Client\Events\BackendUserLookupEvent;
 use Waldhacker\Oauth2Client\Events\FrontendUserLookupEvent;
 use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
 use Xima\XmDkfzNetSite\ResourceResolver\GitlabResolver;
