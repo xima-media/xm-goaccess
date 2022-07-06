@@ -5,7 +5,7 @@
 	- title (e.g. from data.header)
 	- imagePosition: top, left, right (default: top)
 	- size: sm, md, lg (default: md)
-	- color (if overridden from page)
+	- patternColor (if overridden from page)
 	- type: <empty>, picture-text
 	- linkUri
 	- image (FileInterface)
@@ -29,7 +29,7 @@
 	</f:if>
 	<f:if condition="{image}">
 		<div class="card__image">
-			<f:render partial="Image" arguments="{image: image, color: color, size: size}" />
+			<f:render partial="Image" arguments="{image: image, patternColor: patternColor, size: size}" />
 		</div>
 	</f:if>
 	<div class="card__content">

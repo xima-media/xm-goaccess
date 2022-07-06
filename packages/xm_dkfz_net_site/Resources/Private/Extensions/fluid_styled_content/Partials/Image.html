@@ -2,6 +2,16 @@
 	  xmlns:dkfz="http://typo3.org/ns/Xima/XmDkfzNetSite/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
 
+<f:comment><!--
+	Arguments:
+	- image (FileInterface)
+	- round (bool)
+	- icon (bool)
+	- size: sm, md, lg (default: md)
+	- color (if overridden from page and only if needed in the calling element!)
+	- patternColor (if overridden from page and only if needed in the calling element!)
+--></f:comment>
+
 <f:variable name="orientation" value="square" />
 <f:if condition="{image}">
 	<f:variable name="cropInfo"><dkfz:format.json.decode>{image.properties.crop}</dkfz:format.json.decode></f:variable>
@@ -21,7 +31,7 @@
         picture--orientation-{f:if(condition: size, then: size, else: 'md')}-{orientation}
     "
 	data-color="{f:if(condition: color, then: color, else: 'transparent')}"
-	data-pattern-color="{f:if(condition: color, then: color, else: 'transparent')}"
+	data-pattern-color="{f:if(condition: patternColor, then: patternColor, else: 'transparent')}"
 >
 	<div class="picture__item {f:if(condition: image, then: 'image-color--', else: 'background--')}{f:if(condition: color, then: color, else: 'transparent')}">
 		<f:if condition="{image}">
@@ -34,7 +44,7 @@
 						<f:image image="{image}" maxWidth="440" maxHeight="440" class="picture__image image--responsive" />
 					</f:else>
 				</f:if>
-				<span class="picture__pattern pattern--{f:if(condition: color, then: color, else: 'primary')}"></span>
+				<span class="picture__pattern pattern--{f:if(condition: patternColor, then: patternColor, else: 'primary')}"></span>
 				<f:if condition="{image.properties.copyright}">
 					<f:render partial="Copyright" arguments="{text: image.properties.copyright}" />
 				</f:if>
