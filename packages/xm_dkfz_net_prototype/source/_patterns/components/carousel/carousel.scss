@@ -301,7 +301,7 @@
         &__content {
             &::before,
             &::after {
-                @include background-pattern($color-gray-900);
+                @include background-pattern();
 
                 content: '';
                 position: absolute;

@@ -1,6 +1,9 @@
 {
     "prototype": {
         "title": "Betriebsärztlicher Dienst",
+		"layout": {
+			"class": "color-accent--green"
+		},
         "navigation": {
             "activeId": "our-center",
             "anchor": [

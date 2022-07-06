@@ -75,7 +75,7 @@
                 width: 1rem;
             }
 
-            &--with-border {
+            &.color__border {
                 &:after {
                     left: 100%;
                 }
@@ -87,88 +87,7 @@
                     right: 0;
                     left: 2rem;
                     height: 1rem;
-                }
-
-                &.infobox--color {
-                    &-primary {
-                        border-color: $color-primary;
-
-                        &::before {
-                            @include background-pattern($color-primary);
-                        }
-                    }
-
-                    &-secondary {
-                        border-color: $color-secondary;
-
-                        &::before {
-                            @include background-pattern($color-secondary);
-                        }
-                    }
-
-                    &-cyan {
-                        border-color: $color-cyan;
-
-                        &::before {
-                            @include background-pattern($color-cyan);
-                        }
-                    }
-
-                    &-blue-900 {
-                        border-color:$color-blue-900;
-
-                        &::before {
-                            @include background-pattern($color-blue-900);
-                        }
-                    }
-
-                    &-green {
-                        border-color: $color-green;
-
-                        &::before {
-                            @include background-pattern($color-green);
-                        }
-                    }
-
-                    &-green-light {
-                        border-color: $color-green-light;
-
-                        &::before {
-                            @include background-pattern($color-green-light);
-                        }
-                    }
-
-                    &-yellow {
-                        border-color: $color-yellow;
-
-                        &::before {
-                            @include background-pattern($color-yellow);
-                        }
-                    }
-
-                    &-orange {
-                        border-color: $color-orange;
-
-                        &::before {
-                            @include background-pattern($color-orange);
-                        }
-                    }
-
-                    &-magenta {
-                        border-color: $color-magenta;
-
-                        &::before {
-                            @include background-pattern($color-magenta);
-                        }
-                    }
-
-                    &-purple {
-                        border-color: $color-purple;
-
-                        &::before {
-                            @include background-pattern($color-purple);
-                        }
-                    }
+                    background-image: var(--pattern-url);
                 }
             }
         }

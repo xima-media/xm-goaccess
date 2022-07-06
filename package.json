@@ -8,7 +8,9 @@
     "build": "cd packages/xm_dkfz_net_prototype && npm run build",
     "build:patternlab": "cd packages/xm_dkfz_net_prototype && npm run build:patternlab",
     "init": "cd packages/xm_dkfz_net_prototype && npm run init",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix-styles": "cd packages/xm_dkfz_net_prototype && npm run fix-styles",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "cd packages/xm_dkfz_net_prototype && npm run serve"
   },
   "author": "Maik Schneider",
   "license": "proprietary"

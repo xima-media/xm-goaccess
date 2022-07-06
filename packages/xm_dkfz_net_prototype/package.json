@@ -38,7 +38,7 @@
     "build": "webpack --config webpack.prod.config.js",
     "start": "webpack --stats-children --config webpack.config.js",
     "init": "webpack --stats-children --config webpack.config.js --no-watch",
-    "fix-styles": "npx stylelint ./patternlab/source/_patterns/components/**/*.scss --config .stylelintrc.yml --fix",
+    "fix-styles": "npx stylelint ./source/_patterns/components/**/*.scss --config .stylelintrc.yml --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:uikit": "cross-env-shell PL_CONFIG_PATH='${INIT_CWD}/.patternlabrc.js' npm run build --prefix node_modules/@pattern-lab/uikit-workshop -- --patternlabrc '$PL_CONFIG_PATH'",
     "build:patternlab": "patternlab build --config ./patternlab-config.json",

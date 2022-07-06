@@ -21,7 +21,7 @@
                 {% if alt %}alt="{{ alt }}"{% endif %}
             >
             {% if patternColor %}
-                <span class="picture__pattern pattern--{{ patternColor }}"></span>
+                <span class="picture__pattern pattern color-accent--{{ patternColor }}"></span>
             {% endif %}
             {% if copyright %}
                 {% include '@components/copyright/copyright.twig' with {
@@ -29,7 +29,7 @@
                 } %}
             {% endif %}
         {% else %}
-            <span class="picture__pattern pattern--gray-900"></span>
+            <span class="picture__pattern pattern color-accent--gray-900"></span>
         {% endif %}
     </div>
     {% if caption %}
