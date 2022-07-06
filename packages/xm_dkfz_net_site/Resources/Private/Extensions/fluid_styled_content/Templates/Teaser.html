@@ -10,7 +10,15 @@
 						<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
 								data-pattern-color="transparent">
 							<div class="picture__item image-color--green-light">
-								<f:image image="{file}" maxWidth="458"/>
+								<picture>
+									<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'webp')}"
+											type="image/webp">
+									<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
+											type="image/jpeg">
+									<img src="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
+										 alt="{file.originalResource.alternative}"
+										 loading="lazy"/>
+								</picture>
 							</div>
 						</figure>
 					</f:for>
@@ -41,10 +49,7 @@
 
 					<f:for each="{teaser.links}" as="link">
 						<f:link.typolink class="card__link card__link--more" parameter="{link.data.link}"/>
-						<svg class="icon icon--arrow-right icon--size-xl"
-							 width="12"
-							 height="12"
-							 aria-hidden="true">
+						<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
 							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
 						</svg>
 						<br/>

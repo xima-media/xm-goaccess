@@ -1,7 +1,7 @@
 <?php
-
 return [
     'BE' => [
+        'cookieSameSite' => 'lax',
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$QlV4RDFVeldOQ01RZElTMg$hb2jOB04prE4zCBrKBJA6DTXYzrN9Jkh39J6UizIztM',
@@ -9,7 +9,6 @@ return [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
-        'cookieSameSite' => 'lax',
     ],
     'DB' => [
         'Connections' => [
@@ -40,29 +39,6 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
-        'oauth2_client' => [
-            'providers' => [
-                'gitlab' => [
-                    'label' => 'Gitlab',
-                    'iconIdentifier' => 'oauth2-gitlab',
-                    'description' => 'Login with Gitlab',
-                    'scopes' => [
-                        \Waldhacker\Oauth2Client\Service\Oauth2ProviderManager::SCOPE_BACKEND,
-                        \Waldhacker\Oauth2Client\Service\Oauth2ProviderManager::SCOPE_FRONTEND,
-                    ],
-                    'test' => 'fef',
-                    'options' => [
-                        'clientId' => '',
-                        'clientSecret' => '',
-                        'urlAuthorize' => 'https://t3-gitlab-dev.xima.local/oauth/authorize',
-                        'urlAccessToken' => 'https://t3-gitlab-dev.xima.local/oauth/token',
-                        'urlResourceOwnerDetails' => 'https://t3-gitlab-dev.xima.local/api/v4/user',
-                        'scopes' => ['openid', 'read_user'],
-                        'scopeSeparator' => ' ',
-                    ],
-                ],
-            ],
-        ],
         'news' => [
             'advancedMediaPreview' => '1',
             'archiveDate' => 'date',
@@ -83,15 +59,38 @@ return [
             'storageUidImporter' => '1',
             'tagPid' => '1',
         ],
+        'oauth2_client' => [
+            'providers' => [
+                'gitlab' => [
+                    'description' => 'Login with Gitlab',
+                    'iconIdentifier' => 'oauth2-gitlab',
+                    'label' => 'Gitlab',
+                    'options' => [
+                        'clientId' => '937dec2c36217253918ad7bc80003222d6a6bae97920afcff1990cf0f9b04994',
+                        'clientSecret' => '4a53040fbf5d503feb29339e441797fa51aa217f815b4176f4bfa23cbb5497eb',
+                        'scopeSeparator' => ' ',
+                        'scopes' => [
+                            'openid',
+                            'read_user',
+                        ],
+                        'urlAccessToken' => 'https://t3-gitlab-dev.xima.local/oauth/token',
+                        'urlAuthorize' => 'https://t3-gitlab-dev.xima.local/oauth/authorize',
+                        'urlResourceOwnerDetails' => 'https://t3-gitlab-dev.xima.local/api/v4/user',
+                    ],
+                    'scopes' => [
+                        'backend',
+                        'frontend',
+                    ],
+                    'test' => 'fef',
+                ],
+            ],
+        ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
         ],
         'xm_dkfz_net_jobs' => [
             'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
-        ],
-        'xm_mail_catcher' => [
-            'logPath' => '/var/log/mail.log',
         ],
     ],
     'FE' => [
@@ -104,6 +103,7 @@ return [
         ],
     ],
     'GFX' => [
+        'imagefile_ext' => 'gif,png,jpeg,jpg,webp',
         'processor' => 'GraphicsMagick',
         'processor_allowTemporaryMasksAsPng' => false,
         'processor_colorspace' => 'RGB',
@@ -127,9 +127,9 @@ return [
             ],
         ],
         'writerConfiguration' => [
-            \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
-                \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
-                    'logFile' => \TYPO3\CMS\Core\Core\Environment::getVarPath() . '/log/typo3_debug.log',
+            'debug' => [
+                'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
+                    'logFile' => '/var/www/html/var/log/typo3_debug.log',
                 ],
             ],
         ],
