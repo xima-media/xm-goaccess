@@ -142,6 +142,10 @@
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
 				<source>Page overrides</source>
 			</trans-unit>
+
+			<trans-unit id="linktext.readMore">
+				<source>Read more</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -102,10 +102,14 @@
 				<target>Zeigt eine hervorgehobene Nachricht in einer Box oder Rahmen an</target>
 			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
-				<source>Teaser-Einstellungen</source>
+				<target>Teaser-Einstellungen</target>
 			</trans-unit>
 			<trans-unit id="pages.contacts" space="preserve">
-				<source>Kontaktpersonen</source>
+				<target>Kontaktpersonen</target>
+			</trans-unit>
+
+			<trans-unit id="linktext.readMore">
+				<target>Mehr erfahren</target>
 			</trans-unit>
 		</body>
 	</file>

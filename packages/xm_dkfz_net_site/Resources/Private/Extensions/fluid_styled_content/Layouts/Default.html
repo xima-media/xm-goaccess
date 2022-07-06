@@ -3,7 +3,7 @@
 	<f:then>
 		<div id="c{data.uid}"
 			 class="layout__item frame {f:if(condition: '{data.layout} >= 1', then: 'fx--expanded')} {f:if(condition: '{data.layout} == 2', then: 'background--expanded')} background--{data.frame_class} frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
-			<div class="content-box">
+			<div class="content-wrapper">
 				<f:if condition="{data._LOCALIZED_UID}">
 					<a id="c{data._LOCALIZED_UID}"></a>
 				</f:if>
@@ -13,7 +13,7 @@
 				<f:render section="Header" optional="true">
 					<f:render partial="Header/All" arguments="{_all}"/>
 				</f:render>
-				<div class="content-wrapper">
+				<div class="content-wrapper_content">
 					<f:render section="Main" optional="true"/>
 				</div>
 				<f:render section="Footer" optional="true">
