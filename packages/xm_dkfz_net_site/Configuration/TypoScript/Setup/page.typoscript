@@ -28,6 +28,15 @@ page {
         languages = auto
         as = langNav
       }
+
+      # Breadcrumb navigation
+      30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      30 {
+        special = rootline
+        special.range = 0|-1
+        includeNotInMenu = 1
+        as = breadNav
+      }
     }
   }
 
