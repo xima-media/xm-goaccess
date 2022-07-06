@@ -41,6 +41,29 @@ $GLOBALS['TCA']['tt_content']['types']['teaser'] = [
                                 'default' => 'teaser-item',
                             ],
                         ],
+                        'image' => [
+                            'config' => [
+                                'overrideChildTca' => [
+                                    'columns' => [
+                                        'crop' => [
+                                            'config' => [
+                                                'cropVariants' => [
+                                                    'default' => [
+                                                        'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.crop_variant.default',
+                                                        'allowedAspectRatios' => [
+                                                            '3:2' => [
+                                                                'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.3_2',
+                                                                'value' => 3 / 2,
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                         'link' => [
                             'config' => [
                                 'eval' => 'required',
