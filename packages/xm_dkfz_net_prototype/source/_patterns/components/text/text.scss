@@ -21,27 +21,6 @@
         @include text-copy-standard;
     }
 
-
-    .list {
-        &-dot {
-            list-style: disc;
-            @include text-copy-standard(false, .6px);
-            margin-left: .375rem;
-        }
-
-        &-number {
-            @include text-copy-standard;
-            &:before {
-                content: "";
-                padding-right: 1.25rem;
-            }
-
-            > ul {
-                margin-left: 1.25rem;
-            }
-        }
-    }
-
     &--items {
         padding-left: 4rem;
     }
@@ -75,6 +54,26 @@
 
         .text-copy-small {
             font-weight: 200;
+        }
+    }
+}
+
+.list {
+    &-dot {
+        list-style: disc;
+        @include text-copy-standard(false, .6px);
+        margin-left: .375rem;
+    }
+
+    &-number {
+        @include text-copy-standard;
+        &:before {
+            content: "";
+            padding-right: 1.25rem;
+        }
+
+        > ul {
+            margin-left: 1.25rem;
         }
     }
 }
