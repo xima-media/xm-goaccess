@@ -66,7 +66,6 @@ $GLOBALS['TCA']['tt_content']['types']['teaser'] = [
                         ],
                         'link' => [
                             'config' => [
-                                'eval' => 'required',
                                 'fieldControl' => [
                                     'linkPopup' => [
                                         'options' => [
