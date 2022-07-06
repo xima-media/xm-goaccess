@@ -181,6 +181,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) has parameter \\$itemToPrepend with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
@@ -259,6 +264,11 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:registerRemoteUser\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
 
 		-
 			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
