@@ -167,4 +167,42 @@
         bottom: 2.5rem;
     }
 }
+
+//
+//   @section 4. Image color
+//
+
+[class*='image-color-'] {
+    position: relative;
+    background-color: var(--color-gray-100);
+
+    // @todo mixin zusammen mit .picture--no-image ::after erstellen
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -.375rem; // @todo variable
+        left: -.375rem; // @todo variable
+        z-index: -1;
+        width: calc(50% + .375rem); // @todo variable
+        aspect-ratio: 1;
+    }
+
+    &::before {
+        background-color: $color-white;
+    }
+
+    &::after {
+        opacity: .7;
+        background-color: var(--color-accent);
+    }
+}
+
+.image-color--transparent {
+    &::before,
+    &::after {
+        content: none;
+    }
+}
+
 // end of image.scss file

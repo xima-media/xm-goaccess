@@ -7,6 +7,9 @@
 //      5. Corner colors
 //
 
+.color__border {
+    border-color: var(--color-accent);
+}
 
 //
 //   @section 1. Color
@@ -69,7 +72,6 @@
         color: var(--color-gray-900);
     }
 }
-
 
 //
 //   @section 2. Background colors
@@ -159,138 +161,7 @@
 //
 
 .pattern {
-    &--primary {
-        @include background-pattern($color-primary);
-    }
-
-    &--blue-900 {
-        @include background-pattern($color-blue-900);
-    }
-
-    &--cyan {
-        @include background-pattern($color-cyan);
-    }
-
-    &--green {
-        @include background-pattern($color-green);
-    }
-
-    &--green-light {
-        @include background-pattern($color-green-light);
-    }
-
-    &--orange {
-        @include background-pattern($color-orange);
-    }
-
-    &--yellow {
-        @include background-pattern($color-yellow);
-    }
-
-    &--magenta {
-        @include background-pattern($color-magenta);
-    }
-
-    &--gray-900 {
-        @include background-pattern($color-gray-900);
-    }
-
-    &--white {
-        @include background-pattern($color-white);
-    }
-}
-
-
-//
-//   @section 4. Image color
-//
-
-[class*='image-color-'] {
-    position: relative;
-    background-color: var(--color-gray-100);
-
-    // @todo mixin zusammen mit .picture--no-image ::after erstellen
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -.625rem; // @todo variable
-        left: -.625rem; // @todo variable
-        z-index: -1;
-        width: calc(50% + .625rem); // @todo variable
-        aspect-ratio: 1;
-    }
-
-    &::before {
-        background-color: $color-white;
-    }
-
-    &::after {
-        opacity: .7;
-    }
-}
-
-.image-color {
-    &--primary {
-        &::after {
-            background-color: var(--color-primary);
-        }
-    }
-
-    &--blue-900 {
-        &::after {
-            background-color: var(--color-blue-900);
-        }
-    }
-
-    &--cyan {
-        &::after {
-            background-color: var(--color-cyan);
-        }
-    }
-
-    &--green {
-        &::after {
-            background-color: var(--color-green);
-        }
-    }
-
-    &--green-light {
-        &::after {
-            background-color: var(--color-green-light);
-        }
-    }
-
-    &--yellow {
-        &::after {
-            background-color: var(--color-yellow);
-        }
-    }
-
-    &--orange {
-        &::after {
-            background-color: var(--color-orange);
-        }
-    }
-
-    &--magenta {
-        &::after {
-            background-color: var(--color-magenta);
-        }
-    }
-
-    &--purple {
-        &::after {
-            background-color: var(--color-purple);
-        }
-    }
-
-    &--transparent {
-        &::before,
-        &::after {
-            content: none;
-        }
-    }
+    background-image: var(--pattern-url);
 }
 
 

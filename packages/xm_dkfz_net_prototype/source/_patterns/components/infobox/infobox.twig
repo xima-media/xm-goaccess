@@ -1,9 +1,9 @@
 <!-- Component Start: infobox -->
 
 <div class="infobox
-            infobox--color-{{ color|default('primary') }}
+            color-{{ color|default('primary') }}
             infobox--background-{{ background|default('white') }}
-            {{ border ? 'infobox--with-border' : '' }}
+            {{ border ? 'color__border' : '' }}
     ">
     <div class="infobox--wrapper">
         {% if title %}
