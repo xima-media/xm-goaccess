@@ -7,6 +7,7 @@ create table tt_content (
 	tx_xmdkfznetsite_accordion_title varchar(255) not null default '',
 	tx_xmdkfznetsite_accordion_group varchar(255) not null default '',
 	tt_content_items                 int(11) unsigned default '0' not null,
+	color                            varchar(64)  not null default '',
 );
 
 create table tt_content_item (

@@ -21,7 +21,29 @@ $tempFields = [
             ],
         ],
     ],
+    'color' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.color',
+        'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.color.description',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField(
+                true,
+                ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.color.0', '']
+            ),
+            'default' => '',
+        ],
+    ],
 ];
 
 // Add all fields to tt_content
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempFields);
+
+// Add color to appearance tab
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'color',
+    '',
+    'after:layout'
+);

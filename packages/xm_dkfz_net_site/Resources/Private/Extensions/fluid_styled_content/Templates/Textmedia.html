@@ -38,7 +38,7 @@
 		<div
 			class="content-wrapper__picture-position-{position}">
 			<f:render partial="Image"
-					  arguments="{image: files.0, position: position, type: 'picture-text'}" />
+					  arguments="{image: files.0, position: position, patternColor: data.color, type: 'picture-text'}" />
 			<div class="content-wrapper__picture --content">
 				<f:format.html>{data.bodytext}</f:format.html>
 			</div>
@@ -47,26 +47,13 @@
 </f:section>
 
 <f:section name="imageBesideText">
-	<f:comment><!--
-	Arguments:
-	- title (e.g. from data.header)
-	- imagePosition: top, left, right (default: top)
-	- size: sm, md, lg (default: md)
-	- color (if overridden from page)
-	- type: <empty>, picture-text
-	- linkUri
-	- image (FileInterface)
-	- bodytext
-	- contact
---></f:comment>
 	<f:variable name="size" value="md" />
 	<f:variable name="type" value="picture-text" />
 	<f:if condition="{data.imageorient} == 0">
 		<f:variable name="size" value="lg" />
 		<f:variable name="type" value="" />
 	</f:if>
-	<f:comment><!--ToDo: Add color field for overwriting page color--></f:comment>
 	<f:render partial="Card"
-			  arguments="{title: data.header, imagePosition: position, size: size, color: data.color,
+			  arguments="{title: data.header, imagePosition: position, size: size, patternColor: data.color,
 			  type: type, image: files.0, bodytext: data.bodytext}"/>
 </f:section>
