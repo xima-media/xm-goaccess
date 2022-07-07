@@ -105,12 +105,8 @@
             }
 
             h6 {
-                font-weight: normal;
+                @include text-copy-small(200);
                 margin-bottom: 0;
-
-                @include media-breakpoint-down(md) {
-                    @include text-copy-small();
-                }
             }
         }
 

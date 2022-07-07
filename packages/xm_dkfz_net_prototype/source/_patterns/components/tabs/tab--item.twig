@@ -10,10 +10,10 @@
 <div class="tab-item__wrapper
     tab-item__wrapper--background-{{ background|default('white') }}
     row">
-    <div class="col-md-9 tab-item__title">
+    <div class="col-md-8 tab-item__title">
         {% include '@components/icon/icon.twig' with {icon: 'file'} %} <h6> {{ item.fileName }}</h6>
     </div>
-    <div class="col-md-3 tab-item__detail">
+    <div class="col-md-4 tab-item__detail">
         <span class="tab-item__type">{{ item.fileType }}</span>
         <span class="tab-item__size">{{ item.fileSize }}</span>
         <a class="tab-item__link tab-item__link--download" type="button" aria-label="Herunterladen" data-tooltip="Herunterladen" download>

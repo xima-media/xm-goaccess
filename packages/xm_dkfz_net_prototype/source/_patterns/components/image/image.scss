@@ -181,10 +181,10 @@
     &::after {
         content: '';
         position: absolute;
-        bottom: -.375rem; // @todo variable
-        left: -.375rem; // @todo variable
+        bottom: -.875rem; // @todo variable 0.375
+        left: -.875rem; // @todo variable
         z-index: -1;
-        width: calc(50% + .375rem); // @todo variable
+        width: calc(50% + .875rem); // @todo variable
         aspect-ratio: 1;
     }
 

@@ -20,7 +20,12 @@ body {
     font-family: $font-family-sans-serif;
     font-weight: 200;
     font-variant-numeric: oldstyle-nums;
-    background-color: transparent; // @todo die bootstrap variable überschreiben
+    //background-color: transparent; // @todo die bootstrap variable überschreiben
+    background-color: var(--color-gray-100); // @todo die bootstrap variable überschreiben
+
+     .layout {
+        background-color: var(--color-accent);
+    }
 }
 
 .app {
@@ -198,9 +203,18 @@ body {
         gap: 4rem;
     }
 
+    + .layout__item {
+        padding-top: 6rem;
+        padding-bottom: 5rem;
+    }
+
     &__item {
         grid-column: main;
         position: relative;
+
+        + .footer {
+            margin-top: 5rem;
+        }
 
         &.fx--expanded {
             grid-column: full;
@@ -215,7 +229,8 @@ body {
 
                 @include media-breakpoint-up(lg) {
                     top: -9rem;
-                    bottom: -9rem;
+                    bottom: -5rem;
+                    //bottom: -9rem;
                 }
             }
         }
@@ -466,12 +481,6 @@ ul > li {
 
 .d-none {
     display: none !important;
-}
-
-// background for startpage
-
-#pages-startpage {
-    background: var(--color-gray-100);
 }
 
 // end of basic.scss file

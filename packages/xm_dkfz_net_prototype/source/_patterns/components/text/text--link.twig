@@ -1,12 +1,23 @@
 <!-- Component Start: text--link -->
 
-<div>
+<div class="list">
+    {% if title %}
     <h5>{{ title }}</h5>
+    {% endif %}
+
     {% for item in items %}
         <a class="link--primary {{ item.angle ? 'link--primary-angle' : '' }}" href="{{ item.link }}">
             {% include '@components/icon/icon.twig' with {icon: item.icon} %}
             {{ item.text }}
         </a>
+
+        {% if item.tags %}
+        <ul class="list__tags">
+            {% for tag in item.tags %}
+            <li class="list__tag">{{ tag }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     {% endfor %}
 </div>
 
