@@ -76,6 +76,28 @@
             margin-left: 1.25rem;
         }
     }
+
+    &__tags {
+        @include list-reset;
+
+        display: flex;
+        margin-left: 1rem;
+        margin-bottom: 1.75rem;
+    }
+
+    &__tag {
+        &:not(:last-child) {
+            &::after {
+                content: '|';
+                display: inline-block;
+                margin: 0 .75rem;
+            }
+        }
+    }
+
+    .link--primary + .link--primary {
+        margin-top: .75rem;
+    }
 }
 
 

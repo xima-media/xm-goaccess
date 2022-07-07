@@ -32,7 +32,7 @@
     {% if title or text %}
         <div class="card__content">
             {% if title %}
-                <div class="card__header">
+                <div class="card__header {{ direction ? 'card--' ~ direction : '' }}">
                     <h3 class="card__title">{{ title }}</h3>
                     {% if subTitle %}
                         <p class="card__sub-title">{{ subTitle }}</p>

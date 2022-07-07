@@ -41,10 +41,22 @@
     &__header {
         display: flex;
         flex-direction: column;
+        color: var(--color-accent);
 
         // @todo für andere Farben noch aufbereiten
         .carousel--color-orange & {
             color: var(--color-orange);
+        }
+    }
+
+    &--list {
+        flex-direction: row;
+        align-items: flex-end;
+
+        .card__title {
+            margin-right: .5rem;
+            font-size: 30px !important;
+            line-height: 36px !important;
         }
     }
 
@@ -75,7 +87,7 @@
             font-size: 0;
 
             [class*='icon-'] {
-                @include size(2.375rem);
+                @include size(2rem);
 
                 padding: .625rem;
             }
@@ -215,6 +227,17 @@
             @include media-breakpoint-up(md) {
                 flex: 0 0 22.5rem; // @todo variable
                 width: 22.5rem; // @todo variable
+            }
+        }
+    }
+}
+
+.card--image-size-md {
+    .card {
+        &__image {
+            @include media-breakpoint-up(md) {
+                flex: 0 0 auto; // @todo variable
+                width: 100%; // @todo variable
             }
         }
     }
@@ -405,13 +428,15 @@
 //
 
 .card--blackboard {
-    aspect-ratio: 1;
+    //aspect-ratio: 1;
+    aspect-ratio: 257/230;
     padding: 2rem;
 
     .card {
         &__content {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             height: 100%;
         }
 
@@ -749,13 +774,11 @@
     }
 
     & > .card {
-        &__image {
-            @include media-breakpoint-up(md) {
-                flex: 0 0 16rem;
-                width: 22.5rem;
-                margin-bottom: 0;
-            }
+        &:not(:last-child) {
+            padding-right: 1rem;
+        }
 
+        &__image {
             .picture__image,
             .picture--no-image .picture__item{
                 object-fit: cover;

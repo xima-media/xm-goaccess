@@ -1,4 +1,276 @@
 {% extends "@layouts/default--one-column.twig" %}
 {% block main %}
-    <h1>Inhaltsseite</h1>
-{% endblock main%}
+
+    {% include '@components/breadcrumb/breadcrumb.twig' %}
+
+    {# hero #}
+    {% embed '@components/hero/hero.twig' with {
+        title: 'Aktuelles'
+    } %}
+    {% endembed %}
+
+    <div class="layout {{ prototype.layout.class }}">
+        <div class="layout__item">
+            {# related content #}
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.topics.title,
+                pattern: {
+                    visible: prototype.topics.titleWithPattern
+                },
+                link: {
+                    url: prototype.topics.link.url,
+                    text: prototype.topics.link.text
+                }
+            } %}
+                {% block content %}
+                    <div class="content-wrapper__horizontal {{ prototype.layout.color }}">
+                        {% for item in prototype.topics.items %}
+                            {% include '@components/card/card.twig' with {
+                                title: item.title,
+                                subTitle: item.subTitle,
+                                type: item.type,
+                                link: {
+                                    href: item.link.url
+                                },
+                                image: {
+                                    src: item.image.src,
+                                    color: item.image.color,
+                                    size: item.image.size
+                                }
+                            } only %}
+                        {% endfor %}
+                    </div>
+                {% endblock content %}
+            {% endembed %}
+        </div>
+        <div class="layout__item">
+            <!-- short messages -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.shortMessages.title,
+                headerSize: prototype.shortMessages.headerSize,
+                pattern: {
+                    visible: prototype.shortMessages.titleWithPattern
+                },
+                link: {
+                    url: prototype.shortMessages.link.url,
+                    text: prototype.shortMessages.link.text
+                }
+            } %}
+            {% block content %}
+            <div class="layout__item--two">
+                <h3>Kurzmeldung</h3>
+
+                <div class="{{ prototype.layout.color }}">
+                    <!-- cards -->
+                    {% for item in prototype.shortMessages.items %}
+                        {% include '@components/card/card.twig' with {
+                            title: item.title,
+                            subTitle: item.subTitle,
+                            type: item.type,
+                            link: {
+                                href: item.link.url
+                            },
+                        } only %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endblock content %}
+            {% endembed %}
+        </div>
+
+        <div class="layout__item">
+            <!-- events -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.events.title,
+                pattern: {
+                    visible: prototype.events.titleWithPattern
+                },
+                link: {
+                    url: prototype.events.link.url,
+                    text: prototype.events.link.text
+                }
+            } %}
+            {% block content %}
+            <div class="layout__item--two">
+                <h3>Veranstaltungen</h3>
+
+                <div class="color-accent--orange">
+                    <!-- cards -->
+                    {% for item in prototype.events.items %}
+                        {% include '@components/card/card.twig' with {
+                            direction: item.direction,
+                            title: item.title,
+                            subTitle: item.subTitle,
+                            text: item.text,
+                            type: item.type,
+                            link: {
+                                href: item.link.url
+                            },
+                            tags: item.tags
+                        } only %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endblock content %}
+            {% endembed %}
+        </div>
+
+        <div class="layout__item">
+            <!-- education -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.events.title,
+                pattern: {
+                    visible: prototype.education.titleWithPattern
+                },
+                link: {
+                    url: prototype.education.link.url,
+                    text: prototype.education.link.text
+                }
+            } %}
+            {% block content %}
+            <div class="layout__item--two">
+                <h3>Aus- und Weiter-bildung</h3>
+
+                <div class="color-accent--green">
+                    <!-- cards -->
+                    {% for item in prototype.education.items %}
+                        {% include '@components/card/card.twig' with {
+                            direction: item.direction,
+                            title: item.title,
+                            subTitle: item.subTitle,
+                            text: item.text,
+                            type: item.type,
+                            link: {
+                                href: item.link.url
+                            },
+                            tags: item.tags
+                        } only %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endblock content %}
+            {% endembed %}
+        </div>
+
+        <div class="layout__item">
+            <!-- Speiseplan Casino -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.info.title,
+                pattern: {
+                    visible: prototype.info.titleWithPattern
+                }
+            } %}
+                {% block content %}
+                    <div class="layout__item--two">
+                        <h3>Speiseplan Casino</h3>
+
+                        <div class="color-accent--{{ prototype.color }}">
+                            {% for tab in prototype.accordionTabs %}
+                                {% include '@components/tabs/tab--item.twig' with {
+                                    background: tab.background,
+                                    tabItem: tab.item
+                                } only %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endblock content %}
+            {% endembed %}
+        </div>
+
+        <div class="layout__item">
+            <!-- corona info -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.info.title,
+                pattern: {
+                    visible: prototype.info.titleWithPattern
+                }
+            } %}
+                {% block content %}
+                    <div class="layout__item--two">
+                        <h3>Corona-Info</h3>
+
+                        <div class="color-accent--{{ prototype.color }}">
+                            <!-- info -->
+                            {% for list in prototype.linkListInfo %}
+                                {% include '@components/text/text--link.twig' with {
+                                    items: list.items
+                                } only %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endblock content %}
+            {% endembed %}
+        </div>
+
+        <div class="layout__item">
+            <!-- new jobs -->
+            {% embed '@components/content-wrapper/content-wrapper.twig' with {
+                title: prototype.newJobs.title,
+                headerSize: prototype.newJobs.headerSize,
+                pattern: {
+                    visible: prototype.newJobs.titleWithPattern
+                },
+                link: {
+                    url: prototype.newJobs.link.url,
+                    text: prototype.newJobs.link.text
+                }
+            } %}
+                {% block content %}
+                    <div class="layout__item--two">
+                        <h3>Stellenangebote</h3>
+
+                        <div class="color-accent--{{ prototype.color }}">
+                            <!-- list -->
+                            {% for list in prototype.newJobsT %}
+                                {% include '@components/text/text--link.twig' with {
+                                    items: list.items
+                                } only %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endblock content %}
+            {% endembed %}
+        </div>
+
+    </div>
+
+    <div class="layout__item fx--expanded background--image background--expanded background--gray-900" style="background-image: url('../../../Images/examples/blackboard.jpg');">
+        <!-- blackboard -->
+        {% embed '@components/content-wrapper/content-wrapper.twig' with {
+            title: prototype.blackboard.title,
+            pattern: {
+                visible: prototype.blackboard.titleWithPattern,
+                color: prototype.blackboard.titleWithPatternColor
+            },
+            link: {
+                url: prototype.blackboard.link.url,
+                text: prototype.blackboard.link.text
+            }
+        } %}
+            {% block content %}
+                <!-- carousel -->
+                {% embed '@components/carousel/carousel.twig' %}
+                    {% block content %}
+                        <!-- cards -->
+                        {% for item in prototype.blackboard.items %}
+                            <div class="swiper-slide">
+                                {% include '@components/card/card.twig' with {
+                                    title: item.title,
+                                    text: item.text,
+                                    color: item.color,
+                                    type: item.type,
+                                    link: {
+                                        href: item.link.url
+                                    },
+                                    image: {
+                                        color: item.image.color
+                                    }
+                                } only %}
+                            </div>
+                        {% endfor %}
+                    {% endblock content %}
+                {% endembed %}
+            {% endblock content %}
+        {% endembed %}
+    </div>
+{% endblock main %}
