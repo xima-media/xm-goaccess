@@ -74,3 +74,10 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
     '',
     'after:title'
 );
+
+$GLOBALS['TCA']['pages']['columns']['module']['config']['items'][] = [
+    0 => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:categories',
+    1 => 'sc',
+    2 => 'folder-contains-categories',
+];
+$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes']['contains-sc'] = 'folder-contains-categories';

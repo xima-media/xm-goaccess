@@ -160,6 +160,9 @@
 			<trans-unit id="page.bookmark">
 				<source>Bookmark page</source>
 			</trans-unit>
+			<trans-unit id="categories">
+				<source>Categories</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
