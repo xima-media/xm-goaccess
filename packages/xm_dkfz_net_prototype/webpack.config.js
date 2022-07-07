@@ -125,7 +125,10 @@ module.exports = {
             output: {
                 filename: 'Icon/icon.min.svg',
                 svg4everybody: true,
-                svgo: true
+                svgo: true,
+                svg: {
+                    sizes: false
+                }
             },
             sprite: {
                 prefix: 'icon-',
@@ -133,6 +136,10 @@ module.exports = {
                     title: false
                 }
             },
+            styles: {
+                filename: path.join(__dirname, './source/_patterns/components/icon/_sprite.scss'),
+                format: 'fragment'
+            }
         }),
         new ReplaceInFileWebpackPlugin([{
             files: ['Resources/Public/Icon/icon.min.svg'],
