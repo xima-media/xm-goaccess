@@ -61,23 +61,30 @@
     }
 
     @include media-breakpoint-up(md) {
-        --background-image: var(--background-image-md);
+        --background-image: var(--background-image-jpg-md);
         .img-webp & {
             --background-image: var(--background-image-webp-md);
         }
     }
 
     @include media-breakpoint-up(lg) {
-        --background-image: var(--background-image-lg);
+        --background-image: var(--background-image-jpg-lg);
         .img-webp & {
             --background-image: var(--background-image-webp-md);
         }
     }
 
     @include media-breakpoint-up(xl) {
-        --background-image: var(--background-image-xl);
+        --background-image: var(--background-image-jpg-xl);
         .img-webp & {
             --background-image: var(--background-image-webp-xl);
+        }
+    }
+
+    @include media-breakpoint-up(xxl) {
+        --background-image: var(--background-image-jpg-xxl);
+        .img-webp & {
+            --background-image: var(--background-image-webp-xxl);
         }
     }
 
