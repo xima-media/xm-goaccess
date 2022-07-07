@@ -1,7 +1,7 @@
 <?xml version="1.2" encoding="UTF-8" ?>
 <xliff version="1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z"
-		  product-name="xm_dkfz_net_site">
+	product-name="xm_dkfz_net_site">
 		<header>
 			<generator>XLIFF Editor</generator>
 			<authorName>Maik Schneider</authorName>
@@ -127,6 +127,15 @@
 			</trans-unit>
 			<trans-unit id="categories">
 				<target>Kategorien</target>
+			</trans-unit>
+			<trans-unit id="anchorNav.label">
+				<target>Ankernavigation</target>
+			</trans-unit>
+			<trans-unit id="button.back">
+				<target>Zurück</target>
+			</trans-unit>
+			<trans-unit id="button.next">
+				<target>Nächste</target>
 			</trans-unit>
 		</body>
 	</file>

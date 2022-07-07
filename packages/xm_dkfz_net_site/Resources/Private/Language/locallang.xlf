@@ -163,6 +163,15 @@
 			<trans-unit id="categories">
 				<source>Categories</source>
 			</trans-unit>
+			<trans-unit id="anchorNav.label">
+				<source>Anchor navigation</source>
+			</trans-unit>
+			<trans-unit id="button.back">
+				<source>Back</source>
+			</trans-unit>
+			<trans-unit id="button.next">
+				<source>Next</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
