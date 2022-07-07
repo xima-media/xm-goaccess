@@ -176,7 +176,7 @@ return [
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
         ],
-        'sitename' => 'Example TYPO3',
+        'sitename' => 'DKFZ Intranet',
         'systemLocale' => 'de_DE.UTF-8',
         'systemMaintainers' => [
             1,
