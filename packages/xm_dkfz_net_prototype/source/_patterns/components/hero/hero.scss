@@ -51,7 +51,36 @@
     }
 }
 
+
 .background--image-hero {
+    --background-image: var(--background-image-jpg);
+    background-image: var(--background-image);
+
+    .img-webp & {
+        --background-image: var(--background-image-webp);
+    }
+
+    @include media-breakpoint-up(md) {
+        --background-image: var(--background-image-md);
+        .img-webp & {
+            --background-image: var(--background-image-webp-md);
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        --background-image: var(--background-image-lg);
+        .img-webp & {
+            --background-image: var(--background-image-webp-md);
+        }
+    }
+
+    @include media-breakpoint-up(xl) {
+        --background-image: var(--background-image-xl);
+        .img-webp & {
+            --background-image: var(--background-image-webp-xl);
+        }
+    }
+
     &.layout__item {
         &.background--expanded {
             &::after {

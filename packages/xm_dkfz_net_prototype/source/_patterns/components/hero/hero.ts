@@ -25,21 +25,49 @@ import app from '../basic/basic'
  */
 
 class Hero {
-    constructor () {
-        app.log('component "hero" loaded')
 
-        this.init();
+  protected elements: NodeListOf<HTMLElement>;
+
+  constructor() {
+    app.log('component "hero" loaded')
+
+    this.init()
+  }
+
+  init() {
+
+    this.elements = document.querySelectorAll<HTMLElement>('.background--image-hero')
+
+    this.elements.forEach((element) => {
+      this.setRandomImageForElement(element);
+    });
+  }
+
+  setRandomImageForElement(element: HTMLElement) {
+
+    const imageCount = element.style.length / 8;
+    const randomNr = Math.floor(Math.random() * imageCount);
+
+    // 0 = onload, do nothing
+    if (randomNr === 0) {
+      return;
     }
 
-    init() {
-        // max number of images
-        const maxImages = 13
-        let numRand = Math.floor(Math.random()*maxImages)
-        // render the random background image
-        if (document.querySelectorAll<HTMLElement>('.background--image-hero').length) {
-            document.querySelector<HTMLElement>('.background--image-hero').style.cssText = `background-image:url("../../../Images//examples/hero-startpage-${numRand}.webp")`
-        }
+    // rename css variable
+    for (let i = 0; i < element.style.length; i++) {
+
+      // find variables with random, e.g. --img-2-jpg
+      if (element.style[i].indexOf('-' + randomNr + '-') < 0) {
+        continue;
+      }
+
+      // remove random to override default
+      const cssName = element.style[i].replace('-' + randomNr + '-', '-');
+      const cssValue = element.style.getPropertyValue(element.style[i]);
+      element.style.setProperty(cssName, cssValue);
     }
+
+  }
 
 }
 
