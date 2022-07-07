@@ -45,7 +45,7 @@ page {
         table = tt_content
         pidInList.data = page:uid
         as = anchorNavElements
-        where = {#sectionIndex} = 1 AND {#header} <> ''
+        where = {#sectionIndex} = 1 AND {#header} <> '' AND {#colPos} = 0
         orderBy = sorting
       }
 
