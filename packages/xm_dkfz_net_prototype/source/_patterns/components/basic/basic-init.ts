@@ -41,9 +41,8 @@ class Basic {
 
     detectWebpImageSupport () {
         const hasSupport = document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
-        if (hasSupport) {
-          document.documentElement.classList.add('img-webp');
-        }
+        const cssClass = hasSupport ? 'img-webp' : 'no-webp';
+        document.documentElement.classList.add(cssClass);
     }
 }
 
