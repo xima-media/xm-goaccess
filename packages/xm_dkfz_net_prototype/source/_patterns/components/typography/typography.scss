@@ -32,7 +32,8 @@
     font-weight: 700;
     font-style: normal;
     src: url('assets/fonts/the-serif/the-serif--bold-subset.woff2') format('woff2');
-    unicode-range: U+22,U+25-3F,U+41-5F,U+61-7D;
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D;
+    font-display: swap;
 }
 
 // @section 1.2 The Sans
@@ -41,7 +42,8 @@
     font-weight: 200;
     font-style: normal;
     src: url('assets/fonts/the-sans/the-sans--light-subset.woff2') format('woff2');
-    unicode-range: U+22,U+25-3F,U+41-5F,U+61-7D;
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D;
+    font-display: swap;
 }
 
 @font-face {
@@ -49,7 +51,8 @@
     font-weight: 300;
     font-style: normal;
     src: url('assets/fonts/the-sans/the-sans--plain-subset.woff2') format('woff2');
-    unicode-range: U+22,U+25-3F,U+41-5F,U+61-7D;
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D;
+    font-display: swap;
 }
 
 @font-face {
@@ -57,7 +60,8 @@
     font-weight: 500;
     font-style: normal;
     src: url('assets/fonts/the-sans/the-sans--semi-bold-subset.woff2') format('woff2');
-    unicode-range: U+22,U+25-3F,U+41-5F,U+61-7D;
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D;
+    font-display: swap;
 }
 
 @font-face {
@@ -65,7 +69,8 @@
     font-weight: 700;
     font-style: normal;
     src: url('assets/fonts/the-sans/the-sans--bold-subset.woff2') format('woff2');
-    unicode-range: U+22,U+25-3F,U+41-5F,U+61-7D;
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D;
+    font-display: swap;
 }
 
 
