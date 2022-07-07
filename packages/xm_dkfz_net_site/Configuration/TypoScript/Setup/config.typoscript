@@ -7,6 +7,7 @@ config {
   compressCss = 1
   concatenateJs = 1
   concatenateCss = 1
+  admPanel = 1
 
   htmlTag.attributes.class = background--gray-100
   htmlTag.attributes.style = --scrollbar-width:17px;

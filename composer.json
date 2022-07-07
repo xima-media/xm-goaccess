@@ -51,6 +51,7 @@
 		"typo3/cms-tstemplate": "^11.5",
 		"typo3/cms-viewpage": "^11.5",
 		"typo3/cms-composer-installers": "^4.0.x-dev",
+		"typo3/cms-adminpanel": "^11.5",
 		"helhum/dotenv-connector": "^3.0",
 		"helhum/typo3-console": "^7.1",
 		"xima/xm-dkfz-net-site": "*@dev",
