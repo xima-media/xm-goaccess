@@ -2,7 +2,6 @@
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:xm_dkfz_net_jobs/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:xm_dkfz_net_events/Configuration/TypoScript/setup.typoscript'
-@import 'EXT:felogin/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:oauth2_client/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:news/Configuration/TypoScript/setup.typoscript'
 
