@@ -116,9 +116,14 @@
 			<trans-unit id="pages.contacts" space="preserve">
 				<target>Kontaktpersonen</target>
 			</trans-unit>
-
 			<trans-unit id="linktext.readMore">
 				<target>Mehr erfahren</target>
+			</trans-unit>
+			<trans-unit id="page.lastEdit">
+				<target>zuletzt aktualisiert</target>
+			</trans-unit>
+			<trans-unit id="page.bookmark">
+				<target>Seite merken</target>
 			</trans-unit>
 		</body>
 	</file>

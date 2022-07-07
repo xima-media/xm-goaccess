@@ -151,9 +151,14 @@
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
 				<source>Page overrides</source>
 			</trans-unit>
-
 			<trans-unit id="linktext.readMore">
 				<source>Read more</source>
+			</trans-unit>
+			<trans-unit id="page.lastEdit">
+				<source>Last edit</source>
+			</trans-unit>
+			<trans-unit id="page.bookmark">
+				<source>Bookmark page</source>
 			</trans-unit>
 		</body>
 	</file>

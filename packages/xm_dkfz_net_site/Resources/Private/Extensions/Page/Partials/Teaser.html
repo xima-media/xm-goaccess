@@ -60,7 +60,7 @@
 </f:if>
 
 <f:section name="TeaserText">
-	<h2 class="h6 text-copy-small">{f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'d.
+	<h2 class="h6 text-copy-small"><f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.lastEdit" />: {f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'d.
 		F o\')}', else:'{data.SYS_LASTCHANGED->f:format.date(format:\'d. F o\')}')}</h2>
 	<f:if condition="{data.description}">
 		<p class="text-intro">{data.description}</p>
