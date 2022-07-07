@@ -39,9 +39,19 @@ page {
         as = breadNav
       }
 
-      # Page image
-      40 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      # Anchor navigation elements
+      40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
       40 {
+        table = tt_content
+        pidInList.data = page:uid
+        as = anchorNavElements
+        where = {#sectionIndex} = 1 AND {#header} <> ''
+        orderBy = sorting
+      }
+
+      # Page image
+      50 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      50 {
         references.fieldName = media
       }
     }

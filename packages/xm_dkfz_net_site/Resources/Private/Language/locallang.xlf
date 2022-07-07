@@ -160,6 +160,15 @@
 			<trans-unit id="page.bookmark">
 				<source>Bookmark page</source>
 			</trans-unit>
+			<trans-unit id="anchorNav.label">
+				<source>Anchor navigation</source>
+			</trans-unit>
+			<trans-unit id="button.back">
+				<source>Back</source>
+			</trans-unit>
+			<trans-unit id="button.next">
+				<source>Next</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

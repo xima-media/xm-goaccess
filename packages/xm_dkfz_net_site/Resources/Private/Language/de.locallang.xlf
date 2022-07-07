@@ -125,6 +125,15 @@
 			<trans-unit id="page.bookmark">
 				<target>Seite merken</target>
 			</trans-unit>
+			<trans-unit id="anchorNav.label">
+				<target>Ankernavigation</target>
+			</trans-unit>
+			<trans-unit id="button.back">
+				<target>Zurück</target>
+			</trans-unit>
+			<trans-unit id="button.next">
+				<target>Nächste</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
