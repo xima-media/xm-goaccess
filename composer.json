@@ -50,7 +50,6 @@
 		"typo3/cms-setup": "^11.5",
 		"typo3/cms-tstemplate": "^11.5",
 		"typo3/cms-viewpage": "^11.5",
-		"typo3/cms-felogin": "^11.5",
 		"typo3/cms-composer-installers": "^4.0.x-dev",
 		"helhum/dotenv-connector": "^3.0",
 		"helhum/typo3-console": "^7.1",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55a074dd390d613860d8ccd701429e77",
+    "content-hash": "7dbd39453ed88ae1f74a17e1f114f798",
     "packages": [
         {
             "name": "b13/container",
@@ -1055,12 +1055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "25f9e8dc46cf9e27ff2d76bb994a299376621f50"
+                "reference": "5f613b13aab793bd071d32509c0569190dd33c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/25f9e8dc46cf9e27ff2d76bb994a299376621f50",
-                "reference": "25f9e8dc46cf9e27ff2d76bb994a299376621f50",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/5f613b13aab793bd071d32509c0569190dd33c1b",
+                "reference": "5f613b13aab793bd071d32509c0569190dd33c1b",
                 "shasum": ""
             },
             "require": {
@@ -1129,7 +1129,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-04T19:34:42+00:00"
+            "time": "2022-07-07T05:24:27+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7327,64 +7327,6 @@
             "time": "2022-06-15T07:33:04+00:00"
         },
         {
-            "name": "typo3/cms-felogin",
-            "version": "v11.5.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/felogin.git",
-                "reference": "19c5e59000c574240f13ec679d1f0fd869da916b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/felogin/zipball/19c5e59000c574240f13ec679d1f0fd869da916b",
-                "reference": "19c5e59000c574240f13ec679d1f0fd869da916b",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "11.5.12"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "11.5.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "felogin"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\FrontendLogin\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A template-based plugin to log in Website Users in the Frontend",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org/c/typo3/cms-felogin/11.5/en-us",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2022-06-15T07:33:04+00:00"
-        },
-        {
             "name": "typo3/cms-filelist",
             "version": "v11.5.12",
             "source": {
@@ -10793,16 +10735,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.6",
+            "version": "v0.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "3f5b5f8aaa979fbd0d1783173f4c82ad529fe621"
+                "reference": "77fc7270031fbc28f9a7bea31385da5c4855cb7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/3f5b5f8aaa979fbd0d1783173f4c82ad529fe621",
-                "reference": "3f5b5f8aaa979fbd0d1783173f4c82ad529fe621",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/77fc7270031fbc28f9a7bea31385da5c4855cb7a",
+                "reference": "77fc7270031fbc28f9a7bea31385da5c4855cb7a",
                 "shasum": ""
             },
             "require": {
@@ -10863,9 +10805,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.6"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.7"
             },
-            "time": "2022-07-03T16:40:23+00:00"
+            "time": "2022-07-07T13:49:11+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -10873,12 +10815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "7a8c86df136ffe6bd7bc4655d15629a87e5bd022"
+                "reference": "bc4d989050885c9c2138e0da74519efaad597076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7a8c86df136ffe6bd7bc4655d15629a87e5bd022",
-                "reference": "7a8c86df136ffe6bd7bc4655d15629a87e5bd022",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bc4d989050885c9c2138e0da74519efaad597076",
+                "reference": "bc4d989050885c9c2138e0da74519efaad597076",
                 "shasum": ""
             },
             "conflict": {
@@ -10957,7 +10899,7 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
                 "dolibarr/dolibarr": "<16|= 12.0.5|>= 3.3.beta1, < 13.0.2",
-                "dompdf/dompdf": "<1.2.1",
+                "dompdf/dompdf": "<2",
                 "drupal/core": ">=7,<7.88|>=8,<9.2.13|>=9.3,<9.3.6",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
                 "dweeves/magmi": "<=0.7.24",
@@ -11010,7 +10952,7 @@
                 "fuel/core": "<1.8.1",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
-                "getgrav/grav": "<1.7.33",
+                "getgrav/grav": "<1.7.34",
                 "getkirby/cms": "<3.5.8",
                 "getkirby/panel": "<2.5.14",
                 "gilacms/gila": "<=1.11.4",
@@ -11371,7 +11313,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-29T23:04:12+00:00"
+            "time": "2022-07-06T08:13:54+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
