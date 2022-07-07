@@ -31,6 +31,17 @@ $GLOBALS['TCA']['pages']['palettes']['robots2'] = [
 
 $GLOBALS['TCA']['pages']['columns']['description']['config']['cols'] = 60;
 $GLOBALS['TCA']['pages']['columns']['description']['config']['rows'] = 10;
+$GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants'] = [
+    'default' => [
+        'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.crop_variant.default',
+        'allowedAspectRatios' => [
+            '3:2' => [
+                'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.3_2',
+                'value' => 3 / 2,
+            ],
+        ],
+    ],
+];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', [
     'tx_xmdkfznetsite_color' => [
