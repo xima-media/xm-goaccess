@@ -42,8 +42,8 @@ When starting the project for the first time, an example database is imported th
 
 ## 3.1 TYPO3 Styleguide
 
+* [https://stage.dkfz-typo3-dev.xima.local/styleguide/themenseite](https://stage.dkfz-typo3-dev.xima.local/styleguide/themenseite)
 * [https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten](https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten)
-
 
 ## 4. Project structure
 
@@ -96,3 +96,13 @@ To add the `dep` alias, add this to your `~/.bashrc`:
 ```
 alias dep="ddev exec vendor/bin/dep"
 ```
+
+## 6. Tests
+
+The pipelines are configured to run tests before deploying to staging.
+
+* phpstan
+* phpfixer
+* Codeception (currently disabled in pipeline)
+
+To run the tests locally, run `ddev composer run php:stan` and `ddev composer run php:fixer`.
