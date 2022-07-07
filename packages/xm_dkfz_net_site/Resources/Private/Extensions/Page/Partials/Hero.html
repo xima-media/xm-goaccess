@@ -1,4 +1,4 @@
-<f:if condition="{files} || {data.description}">
+<f:if condition="({files} || {data.description}) && !{data.is_siteroot}">
 
 	<div class="hero">
 		<h1 class="hero__title">{data.title}</h1>
