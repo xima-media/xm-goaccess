@@ -151,7 +151,7 @@ module.exports = {
     performance: {
         assetFilter: function (assetFilename) {
             // don't check file size limit of images
-            if (assetFilename.endsWith('.jpg') || assetFilename.endsWith('.png')) {
+            if (assetFilename.endsWith('.jpg') || assetFilename.endsWith('.png') || assetFilename.endsWith('.webp')) {
                 return false
             }
             return true

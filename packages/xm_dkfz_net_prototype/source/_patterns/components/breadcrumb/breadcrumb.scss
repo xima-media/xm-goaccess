@@ -51,7 +51,7 @@
 
     &--bookmark {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
         padding-left: 1rem;
         color: var(--color-gray-500);

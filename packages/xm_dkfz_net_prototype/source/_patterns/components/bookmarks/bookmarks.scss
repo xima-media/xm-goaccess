@@ -115,7 +115,7 @@
                 // contact
                 >.contact--wrapper {
                     display: flex;
-                    align-items: start;
+                    align-items: flex-start;
                     justify-content: space-between;
                     width: 100%;
 
@@ -133,7 +133,7 @@
 
                     .list-view__item {
                         display: flex;
-                        align-items: start;
+                        align-items: flex-start;
 
                         >.card--image-left {
                             gap: 1.25rem;
