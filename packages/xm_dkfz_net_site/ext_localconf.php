@@ -17,3 +17,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1657005026] = [
     'priority' => 40,
     'class' => \Xima\XmDkfzNetSite\Form\Element\OverrideToggleElement::class,
 ];
+
+// Register RTE Presets
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetDefault.yaml';
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['extended'] = 'EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetExtended.yaml';
