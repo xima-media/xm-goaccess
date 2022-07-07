@@ -98,9 +98,14 @@ class DebugScreenshot {
      * Activate screenshot as background
      */
     screenshotVisibility (visible:boolean) {
+
+        if (!document.documentElement.dataset.debugScreenshot) {
+            return;
+        }
+
         // variables
         const self = this
-        const backgroundImage = `url(//${window.location.host}/dist/image/debug/screenshots/${document.documentElement.dataset.debugScreenshot}.png)`
+        const backgroundImage = `url(../../../Images/debug/screenshots/${document.documentElement.dataset.debugScreenshot}.png)`
 
         // check if width and height is defined
         if (visible) {
