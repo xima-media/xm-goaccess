@@ -21,6 +21,8 @@ page {
 pidJobList = 25
 pidLogin = 2
 pidFeUserStorage = 91
+pidNewsDetail = 102
+pidUserDetail = 103
 
 ##############################
 #### FLUID STYLED CONTENT ####
