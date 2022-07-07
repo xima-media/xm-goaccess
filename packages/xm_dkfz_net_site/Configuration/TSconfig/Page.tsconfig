@@ -94,6 +94,8 @@ TCEFORM {
     TSconfig.disabled = 1
     l18n_cfg.disabled = 1
     rowDescription.disabled = 1
+
+    media.config.maxitems = 1
   }
 }
 
@@ -122,3 +124,7 @@ mod.wizards.newContentElement.wizardItems {
     show := addToList(tt_content_video,tt_content_infobox)
   }
 }
+
+[page["is_siteroot"] == 1]
+  TCEFORM.pages.media.config.maxitems >
+[GLOBAL]
