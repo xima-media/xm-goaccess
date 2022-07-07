@@ -177,6 +177,7 @@ return [
             'yamlImportsFollowDeclarationOrder' => true,
         ],
         'sitename' => 'Example TYPO3',
+        'systemLocale' => 'de_DE.UTF-8',
         'systemMaintainers' => [
             1,
             2,
