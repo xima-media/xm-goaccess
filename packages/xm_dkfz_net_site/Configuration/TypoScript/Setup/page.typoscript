@@ -6,6 +6,7 @@ page {
     templateName = Default
     layoutRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Layouts
     partialRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Partials
+    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials
     templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Templates
 
     variables {
@@ -36,6 +37,12 @@ page {
         special.range = 0|-1
         includeNotInMenu = 1
         as = breadNav
+      }
+
+      # Page image
+      40 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      40 {
+        references.fieldName = media
       }
     }
   }

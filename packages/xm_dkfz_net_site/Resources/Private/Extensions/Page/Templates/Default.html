@@ -3,8 +3,10 @@
 <f:section name="Main">
 
 	<f:render partial="BreadcrumbNavigation" arguments="{_all}" />
+	<f:render partial="Hero" arguments="{_all}" />
 
 	<div class="layout color--{f:if(condition: data.tx_xmdkfznetsite_color, then: data.tx_xmdkfznetsite_color, else: 'primary')}">
+		<f:render partial="Teaser" arguments="{_all}" />
 		<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '0'}"/>
 	</div>
 </f:section>
