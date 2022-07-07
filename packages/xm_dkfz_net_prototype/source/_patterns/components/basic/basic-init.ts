@@ -27,7 +27,9 @@ import app from '../basic/basic'
 class Basic {
     constructor () {
         app.log('component "basic" loaded')
+
         this.scrollbarWidthAsCssVariable();
+        this.detectWebpImageSupport();
     }
 
     /**
@@ -35,6 +37,13 @@ class Basic {
      */
     scrollbarWidthAsCssVariable () {
         document.documentElement.style.setProperty('--scrollbar-width', (app.scrollbarWidth) + "px");
+    }
+
+    detectWebpImageSupport () {
+        const hasSupport = document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
+        if (hasSupport) {
+          document.documentElement.classList.add('img-webp');
+        }
     }
 }
 
