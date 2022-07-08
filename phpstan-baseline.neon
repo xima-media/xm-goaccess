@@ -368,4 +368,9 @@ parameters:
 		-
 			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
 			count: 1
+			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_2cols.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
+			count: 1
 			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_accordion.php
