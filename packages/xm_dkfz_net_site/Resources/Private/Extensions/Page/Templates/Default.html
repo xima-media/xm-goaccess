@@ -6,7 +6,7 @@
 	<f:render partial="Hero" arguments="{_all}" />
 	<f:render partial="AnchorNavigation" arguments="{_all}" />
 
-	<div class="layout color-accent--{f:if(condition: data.tx_xmdkfznetsite_color, then: data.tx_xmdkfznetsite_color, else: 'primary')}">
+	<div class="layout">
 		<f:if condition="{data.is_siteroot}">
 			<f:render partial="Welcome" arguments="{_all}" />
 		</f:if>

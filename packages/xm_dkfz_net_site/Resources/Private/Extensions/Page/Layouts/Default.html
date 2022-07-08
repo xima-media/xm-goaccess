@@ -1,78 +1,69 @@
-<div class="app">
-	<!-- Component Start: header -->
+<header class="header background--expanded">
+	<span class="header__sticky-trigger"></span>
+	<div class="header__meta background--expanded">
+		<div class="header__center">
 
-	<header class="header background--expanded">
-		<span class="header__sticky-trigger"></span>
-		<div class="header__meta background--expanded">
-			<div class="header__center">
-				<!-- Component Start: logo -->
+			<a class="logo" href="/">
+				<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/logo/logo.svg')}"
+					 width="212"
+					 height="32"
+					 class="logo__image"
+					 alt="DKFZ Logo"/>
+			</a>
 
-				<a class="logo" href="/">
-					<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/logo/logo.svg')}" width="212" height="32" class="logo__image" alt="DKFZ Logo" />
-				</a>
-
-				<!-- Components End: logo -->
+		</div>
+		<div class="header__left">
+			<div class="language-switcher">
+				<ul class="language-switcher__items">
+					<f:for each="{langNav}" as="langItem">
+						<li class="language-switcher__item">
+							<a class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}"
+							   href="{langItem.link}"
+							   data-tooltip="{langItem.title}"
+							   aria-expanded="false">{langItem.twoLetterIsoCode}
+							</a>
+						</li>
+					</f:for>
+				</ul>
 			</div>
-			<div class="header__left">
-				<!-- Component Start: language-switcher -->
 
-				<div class="language-switcher">
-					<ul class="language-switcher__items">
-						<f:for each="{langNav}" as="langItem">
-							<li class="language-switcher__item">
-								<a class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}" href="{langItem.link}" data-tooltip="{langItem.title}" aria-expanded="false">{langItem.twoLetterIsoCode}</a>
-							</li>
-						</f:for>
-					</ul>
-				</div>
+			<a class="header__link" href="#notfall">
+				<f:render partial="Icon" arguments="{icon: 'emergency'}"/>
+				Notfall
+			</a>
+		</div>
+		<div class="header__right">
 
-				<!-- Components End: language-switcher -->
-				<a class="header__link" href="#notfall">
-					<!-- Component Start: icon -->
+			<div class="navigation navigation--sub">
+				<ul class="navigation__items">
 
-					<svg class="icon icon--emergency" role="img" width="20" height="20" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-emergency')}"></use>
-					</svg>
-
-					<!-- Components End: icon -->
-					Notfall
-				</a>
-			</div>
-			<div class="header__right">
-				<!-- Component Start: navigation--sub -->
-
-				<div class="navigation navigation--sub">
-					<ul class="navigation__items">
-
-						<f:security.ifAuthenticated>
+					<f:security.ifAuthenticated>
 
 						<li class="navigation__item navigation__item--open-chat">
-							<a class="navigation__link button button--icon-only" href="#message" aria-label="Feedback geben" data-tooltip="Feedback geben" aria-expanded="false">
-								<!-- Component Start: icon -->
-
-								<svg class="icon icon--message" role="img" width="20" height="20" aria-hidden="true">
-									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-message')}"></use>
-								</svg>
-
-								<!-- Components End: icon -->
+							<a class="navigation__link button button--icon-only"
+							   href="#message"
+							   aria-label="Feedback geben"
+							   data-tooltip="Feedback geben"
+							   aria-expanded="false">
+								<f:render partial="Icon" arguments="{icon: 'message'}"/>
 							</a>
 						</li>
 						<li class="navigation__item navigation__item--bookmark">
-							<a class="navigation__link button button--icon-only" href="#bookmark" aria-label="Lesezeichen anzeigen" data-tooltip="Favoriten aufrufen" aria-expanded="false">
-								<!-- Component Start: icon -->
-
-								<svg class="icon icon--bookmark" role="img" width="20" height="20" aria-hidden="true">
-									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-bookmark')}"></use>
-								</svg>
-
-								<!-- Components End: icon -->
+							<a class="navigation__link button button--icon-only"
+							   href="#bookmark"
+							   aria-label="Lesezeichen anzeigen"
+							   data-tooltip="Favoriten aufrufen"
+							   aria-expanded="false">
+								<f:render partial="Icon" arguments="{icon: 'bookmark'}"/>
 							</a>
 						</li>
 						<li class="navigation__item navigation__item--user">
-							<!-- Component Start: dropdown--user -->
 
 							<div class="dropdown">
-								<button class=" button button--icon-only button--white" id="dropdown-menu-link" data-bs-toggle="dropdown" aria-expanded="false">
+								<button class=" button button--icon-only button--white"
+										id="dropdown-menu-link"
+										data-bs-toggle="dropdown"
+										aria-expanded="false">
 									<!-- Component Start: image -->
 									<figure class="
         picture
@@ -84,7 +75,10 @@
 
     ">
 										<div class="picture__item image-color--transparent">
-											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}" width="35" class="picture__image image--responsive" alt="" />
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 width="35"
+												 class="picture__image image--responsive"
+												 alt=""/>
 										</div>
 									</figure>
 
@@ -92,159 +86,136 @@
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
 									<f:comment>
-										<li><a class="dropdown-item" href="#">Onboarding Informationen</a></li>
-										<li><a class="dropdown-item" href="#">Profil bearbeiten</a></li>
-										<li><hr class="dropdown-divider"></li>
+										<li>
+											<a class="dropdown-item" href="#">Onboarding Informationen</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#">Profil bearbeiten</a>
+										</li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
 									</f:comment>
-									<li><f:link.page pageUid="{pidLogin}" class="dropdown-item" additionalParams="{logintype:'logout'}">Abmelden</f:link.page></li>
+									<li>
+										<f:link.page pageUid="{pidLogin}"
+													 class="dropdown-item"
+													 additionalParams="{logintype:'logout'}">Abmelden
+										</f:link.page>
+									</li>
 								</ul>
 							</div>
 
-							<!-- Components End: dropdown--user -->
 						</li>
-						</f:security.ifAuthenticated>
+					</f:security.ifAuthenticated>
 
-						<li class="navigation__item navigation__item--quick-search">
-							<!-- Component Start: quick-search -->
+					<li class="navigation__item navigation__item--quick-search">
 
-							<div class="quick-search">
-								<button type="button" class="quick-search__button quick-search__button--toggle button button--icon-only button--white" aria-label="Volltextsuche öffnen" aria-expanded="false">
-									<!-- Component Start: icon -->
+						<div class="quick-search">
+							<button type="button"
+									class="quick-search__button quick-search__button--toggle button button--icon-only button--white"
+									aria-label="Volltextsuche öffnen"
+									aria-expanded="false">
 
-									<svg class="icon icon--search" role="img" width="20" height="20" aria-hidden="true">
-										<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-search')}"></use>
-									</svg>
+								<f:render partial="Icon" arguments="{icon: 'search'}"/>
 
-									<!-- Components End: icon -->
-								</button>
-								<form class="quick-search__form" action="#">
-									<!-- Component Start: field--text -->
-
-
-									<div class="field field--text">
-										<label class="field__label visually-hidden" for="field__input--495632666">Suche</label>
-										<input type="text" class="field__input" id="field__input--495632666" placeholder="Platzhaltertext">
-									</div>
-
-									<!-- Components End: field--text -->
-									<button type="button" class="quick-search__button quick-search__button--submit button button--icon-only button--white">
-										<!-- Component Start: icon -->
-
-										<svg class="icon icon--search" role="img" width="20" height="20" aria-hidden="true">
-											<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-search')}"></use>
-										</svg>
-
-										<!-- Components End: icon -->
-									</button>
-								</form>
-							</div>
-
-							<!-- Components End: quick-search -->
-						</li>
-						<li class="navigation__item navigation__item--menu-toggle">
-							<button class="navigation__link button button--icon-only button--white fx--toggle-main-menu" type="button" aria-expanded="false" aria-controls="navigation__items--main">
-								<!-- Component Start: icon -->
-
-								<svg class="icon icon--menu" role="img" width="20" height="20" aria-hidden="true">
-									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-menu')}"></use>
-								</svg>
-
-								<!-- Components End: icon -->
-								<!-- Component Start: icon -->
-
-								<svg class="icon icon--close" role="img" width="20" height="20" aria-hidden="true">
-									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-close')}"></use>
-								</svg>
-
-								<!-- Components End: icon -->
 							</button>
-						</li>
-					</ul>
-				</div>
+							<form class="quick-search__form" action="#">
 
-				<!-- Components End: navigation--sub -->
+								<div class="field field--text">
+									<label class="field__label visually-hidden"
+										   for="field__input--495632666">Suche</label> <input type="text"
+																							  class="field__input"
+																							  id="field__input--495632666"
+																							  placeholder="Platzhaltertext">
+								</div>
+
+								<button type="button"
+										class="quick-search__button quick-search__button--submit button button--icon-only button--white">
+									<f:render partial="Icon" arguments="{icon: 'search'}"/>
+								</button>
+							</form>
+						</div>
+
+					</li>
+					<li class="navigation__item navigation__item--menu-toggle">
+						<button class="navigation__link button button--icon-only button--white fx--toggle-main-menu"
+								type="button"
+								aria-expanded="false"
+								aria-controls="navigation__items--main">
+							<f:render partial="Icon" arguments="{icon: 'menu'}"/>
+							<f:render partial="Icon" arguments="{icon: 'close'}"/>
+						</button>
+					</li>
+				</ul>
 			</div>
+
 		</div>
-		<div class="header__navigation">
-			<!-- Component Start: navigation--main -->
+	</div>
+	<div class="header__navigation">
+		<f:render partial="MainNavigation" arguments="{_all}"/>
+	</div>
+</header>
 
-			<f:render partial="MainNavigation" arguments="{_all}" />
+<main class="main {mainClass} color-accent--{f:if(condition: data.tx_xmdkfznetsite_color, then: data.tx_xmdkfznetsite_color, else: 'primary')}">
+	<f:render section="Main"/>
+</main>
 
-			<!-- Components End: navigation--main -->
-		</div>
-	</header>
+<footer class="footer background--expanded">
+	<ul class="footer__items">
+		<li class="footer__item">
+			<a class="footer__link footer__link--meta" href="">
+				Impressum
+			</a>
+		</li>
+		<li class="footer__item">
+			<a class="footer__link footer__link--meta" href="">
+				Datenschutz
+			</a>
+		</li>
+	</ul>
+	<ul class="footer__items">
+		<li class="footer__item">
+			<a class="footer__link footer__link--social button button--icon-only"
+			   href=""
+			   aria-label="Instagram"
+			   data-tooltip="Instagram"
+			   aria-expanded="false">
+				<f:render partial="Icon" arguments="{icon: 'instagram'}"/>
+			</a>
+		</li>
+		<li class="footer__item">
+			<a class="footer__link footer__link--social button button--icon-only"
+			   href=""
+			   aria-label="Twitter"
+			   data-tooltip="Twitter"
+			   aria-expanded="false">
+				<f:render partial="Icon" arguments="{icon: 'twitter'}"/>
+			</a>
+		</li>
+		<li class="footer__item">
+			<a class="footer__link footer__link--social button button--icon-only"
+			   href=""
+			   aria-label="Facebook"
+			   data-tooltip="Facebook"
+			   aria-expanded="false">
+				<f:render partial="Icon" arguments="{icon: 'facebook'}"/>
+			</a>
+		</li>
+		<li class="footer__item">
+			<a class="footer__link footer__link--social button button--icon-only"
+			   href=""
+			   aria-label="LinkedIn"
+			   data-tooltip="LinkedIn"
+			   aria-expanded="false">
+				<f:render partial="Icon" arguments="{icon: 'linkedin'}"/>
+			</a>
+		</li>
+	</ul>
+	<div class="footer__items">
+		<p class="footer__copyright">
+			© Copyright DKFZ
+			<span class="small">2022</span>
+		</p>
+	</div>
+</footer>
 
-	<!-- Components End: header -->
-	<main class="main--one-column">
-		<f:render section="Main" />
-	</main>
-	<!-- Component Start: footer -->
-
-	<footer class="footer background--expanded">
-		<ul class="footer__items">
-			<li class="footer__item">
-				<a class="footer__link footer__link--meta" href="">
-					Impressum
-				</a>
-			</li>
-			<li class="footer__item">
-				<a class="footer__link footer__link--meta" href="">
-					Datenschutz
-				</a>
-			</li>
-		</ul>
-		<ul class="footer__items">
-			<li class="footer__item">
-				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="Instagram" data-tooltip="Instagram" aria-expanded="false">
-					<!-- Component Start: icon -->
-
-					<svg class="icon icon--instagram" role="img" width="20" height="20" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-instagram')}"></use>
-					</svg>
-
-					<!-- Components End: icon -->
-				</a>
-			</li>
-			<li class="footer__item">
-				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="Twitter" data-tooltip="Twitter" aria-expanded="false">
-					<!-- Component Start: icon -->
-
-					<svg class="icon icon--twitter" role="img" width="20" height="20" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-twitter')}"></use>
-					</svg>
-
-					<!-- Components End: icon -->
-				</a>
-			</li>
-			<li class="footer__item">
-				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="Facebook" data-tooltip="Facebook" aria-expanded="false">
-					<!-- Component Start: icon -->
-
-					<svg class="icon icon--facebook" role="img" width="20" height="20" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-facebook')}"></use>
-					</svg>
-
-					<!-- Components End: icon -->
-				</a>
-			</li>
-			<li class="footer__item">
-				<a class="footer__link footer__link--social button button--icon-only" href="" aria-label="LinkedIn" data-tooltip="LinkedIn" aria-expanded="false">
-					<!-- Component Start: icon -->
-
-					<svg class="icon icon--linkedin" role="img" width="20" height="20" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-linkedin')}"></use>
-					</svg>
-
-					<!-- Components End: icon -->
-				</a>
-			</li>
-		</ul>
-		<div class="footer__items">
-			<p class="footer__copyright">
-				© Copyright DKFZ <span class="small">2022</span>
-			</p>
-		</div>
-	</footer>
-
-	<!-- Components End: footer -->
-</div>
