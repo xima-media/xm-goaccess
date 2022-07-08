@@ -1,0 +1,19 @@
+<f:if condition="{content}">
+	<f:format.raw>{content}</f:format.raw>
+</f:if>
+<f:if condition="{links}">
+	<div class="content-infobox-preview">
+		<div>
+			<p><strong>Links</strong></p>
+			<ul>
+				<f:for each="{links}" as="link">
+					<li>
+						<f:link.typolink parameter="{link.link}">{f:if(condition: link.title, then: link.title,
+							else: link.link)}
+						</f:link.typolink>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</div>
+</f:if>
