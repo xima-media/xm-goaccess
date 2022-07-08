@@ -20,12 +20,12 @@ body {
     font-family: $font-family-sans-serif;
     font-weight: 200;
     font-variant-numeric: oldstyle-nums;
-    //background-color: transparent; // @todo die bootstrap variable überschreiben
-    background-color: var(--color-gray-100); // @todo die bootstrap variable überschreiben
+    background-color: transparent; // @todo die bootstrap variable überschreiben
+    //background-color: var(--color-gray-100); // @todo die bootstrap variable überschreiben
 
-     .layout {
-        background-color: var(--color-accent);
-    }
+     /*.layout {
+         background-color: var(--color-accent);
+    }*/
 }
 
 .app {
@@ -109,7 +109,7 @@ body {
     }
 
     + .content-wrapper {
-        margin-top: 5rem;
+        //margin-top: 5rem;
         margin-bottom: 6.5rem;
     }
 

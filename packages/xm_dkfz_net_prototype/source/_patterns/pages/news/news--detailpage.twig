@@ -2,7 +2,7 @@
 {% block main %}
     {% include '@components/breadcrumb/breadcrumb.twig' %}
 
-    <article class="article">
+    <article class="article {{ prototype.layout.color }}">
         {# hero #}
         {% embed '@components/hero/hero.twig' with {
             title: 'Unternehmer spendet 30 Millionen Euro für 5 wichtige Projekte',
@@ -180,7 +180,7 @@
         }
     } %}
         {% block content %}
-            <div class="content-wrapper__horizontal">
+            <div class="content-wrapper__horizontal color-accent--gray-900">
                 {% for item in prototype.topics.items %}
                     {% include '@components/card/card.twig' with {
                         title: item.title,

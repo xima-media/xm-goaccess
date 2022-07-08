@@ -56,6 +56,12 @@
             font-weight: 200;
         }
     }
+
+    &-intro {
+        + p {
+            margin-top: 3rem;
+        }
+    }
 }
 
 .list {

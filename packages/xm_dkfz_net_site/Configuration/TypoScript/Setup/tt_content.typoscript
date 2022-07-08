@@ -11,6 +11,17 @@ tt_content {
   infobox =< lib.contentElement
   infobox {
     templateName = Infobox
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      10 {
+        table = tt_content_item
+        pidInList.field = pid
+        where = foreign_uid=###uid### AND deleted=0 AND hidden=0
+        orderBy = sorting
+        markers.uid.field = uid
+        as = links
+      }
+    }
   }
 
   teaser =< lib.contentElement
