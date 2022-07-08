@@ -1,0 +1,41 @@
+{% extends "@layouts/default.twig" %}
+{% block content %}
+
+    {# hero form search#}
+    {% include '@components/hero-form/hero-form--search.twig' %}
+
+<div class="layout {{ prototype.layout.class }}">
+    <div class="layout__item--two {{ prototype.layout.color }}">
+
+        <div>
+            filtern
+        </div>
+
+        {# results #}
+        <div class="results">
+            <h2 class="results__title h3">23 Suchergebnisse </h2>
+            <div class="results__items">
+                <div class="list-view">
+                    <ul class="list-view__items">
+                        {% for news in prototype.results %}
+                            <li class="list-view__item">
+                                {% include '@components/card/card.twig' with {
+                                    title: news.title,
+                                    subTitle: news.subTitle,
+                                    text: news.text,
+                                    link: {
+                                        href: news.link.url
+                                    },
+                                    tags: news.tag
+                                } only %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}

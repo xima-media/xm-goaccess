@@ -19,7 +19,8 @@ $transition-time: 300ms;
 
 // colors
 $color-primary: rgb(0, 71, 185); // #0047b9;
-$color-primary-opacity-10: rgb(229 236 248); // #0047b9 10%; // @todo umbennen, da keine Opacity mehr vorhanden
+$color-primary-opacity-10: rgb(229 236 248); // #0047b9 10%;
+$color-primary-opacity-15: rgba(0, 71, 185, .85); // #0047b9 15%;
 $color-secondary: #f00;
 $color-cyan: rgb(0, 158, 227); // #009ee3
 $color-blue-900: rgb(0, 24, 110); // #00186E;
