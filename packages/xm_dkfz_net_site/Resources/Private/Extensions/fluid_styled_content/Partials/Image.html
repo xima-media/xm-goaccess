@@ -44,13 +44,13 @@
 						<f:image image="{image}" maxWidth="440" maxHeight="440" class="picture__image image--responsive" />
 					</f:else>
 				</f:if>
-				<span class="picture__pattern pattern--{f:if(condition: patternColor, then: patternColor, else: 'primary')}"></span>
+				<span class="picture__pattern pattern color-accent--{f:if(condition: patternColor, then: patternColor, else: 'primary')}"></span>
 				<f:if condition="{image.properties.copyright}">
 					<f:render partial="Copyright" arguments="{text: image.properties.copyright}" />
 				</f:if>
 			</f:then>
 			<f:else>
-				<span class="picture__pattern pattern--gray-900"></span>
+				<span class="picture__pattern pattern color-accent--gray-900"></span>
 			</f:else>
 		</f:if>
 	</div>
