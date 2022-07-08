@@ -64,29 +64,29 @@ class Carousel {
                 },
                 breakpoints: {
                     0: {
-                        slidesPerView: cols.xs,
-                        slidesPerGroup: cols.xs,
+                        slidesPerView: parseInt(cols.xs),
+                        slidesPerGroup: parseInt(cols.xs),
                         pagination: {
                             type: paginationStyle.xs
                         }
                     },
                     480: {
-                        slidesPerView: cols.sm,
-                        slidesPerGroup: cols.sm,
+                        slidesPerView: parseInt(cols.sm),
+                        slidesPerGroup: parseInt(cols.sm),
                         pagination: {
                             type: paginationStyle.sm
                         }
                     },
                     768: {
-                        slidesPerView: cols.md,
-                        slidesPerGroup: cols.md,
+                        slidesPerView: parseInt(cols.md),
+                        slidesPerGroup: parseInt(cols.md),
                         pagination: {
                             type: paginationStyle.md
                        }
                     },
                     1024: {
-                        slidesPerView: cols.lg,
-                        slidesPerGroup: cols.lg,
+                        slidesPerView: parseInt(cols.lg),
+                        slidesPerGroup: parseInt(cols.lg),
                         pagination: {
                              type: paginationStyle.lg
                         }

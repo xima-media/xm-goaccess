@@ -132,6 +132,26 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:render\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:setTemplatePathAndFilename\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
 
