@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  data-namespace-typo3-fluid="true">
+
+
+<f:if condition="{newsItem}">
+
+	<div class="hero">
+		<h1 itemprop="headline" class="hero__title">{newsItem.title}</h1>
+
+		<p class="hero__info">
+			<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'d. F Y')}">
+				<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+			</time>
+			<f:if condition="{newsItem.firstCategory}">
+				| {newsItem.firstCategory.title}
+			</f:if>
+		</p>
+
+		<button class="button button--primary icon icon--bookmark-add button--bookmark-add"
+				data-bookmark-entity="tx_news_domain_model_news"
+				data-bookmark-added="false"
+				data-bookmark-id="{newsItem.uid}">
+			<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark"/>
+		</button>
+	</div>
+
+	<f:render partial="Detail/MediaContainer" arguments="{media: newsItem.mediaNonPreviews, settings:settings}"/>
+
+	<f:if condition="{newsItem.teaser}">
+		<p class="text-intro" itemprop="description">
+			<f:format.html>{newsItem.teaser}</f:format.html>
+		</p>
+	</f:if>
+
+	<div class="news-text-wrap" itemprop="articleBody">
+		<f:format.html>{newsItem.bodytext}</f:format.html>
+	</div>
+
+</f:if>
+
+</html>
