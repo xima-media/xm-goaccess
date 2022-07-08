@@ -1,0 +1,11 @@
+# Load default processing options
+imports:
+  - { resource: "EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetDefault.yaml" }
+
+editor:
+  config:
+    removeButtons:
+      - Link
+      - Unlink
+      - NumberedList
+      - BulletedList

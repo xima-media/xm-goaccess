@@ -41,6 +41,7 @@ $GLOBALS['TCA']['tt_content']['types']['infobox'] = [
         'bodytext' => [
             'config' => [
                 'enableRichtext' => true,
+                'richtextConfiguration' => 'minimal'
             ],
         ],
         'tt_content_items' => [
