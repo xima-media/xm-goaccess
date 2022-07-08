@@ -1,0 +1,38 @@
+{
+    "prototype": {
+        "title": "Mitarbeiterverzeichnis",
+        "navigation": {
+            "activeId": "our-center"
+        },
+        "debug": {
+            "screenshot": "employee-profile"
+        },
+        "html": {
+            "class": "background--gray-100"
+        },
+		"layout": {
+			"class": "color-accent--white",
+			"color": "color-accent--gray-900"
+		},
+		"results": [
+			{
+				"title": "ERC-Förderung für Guoliang Cui",
+				"subTitle": "22. März 2022",
+				"text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen.",
+				"tag": "Aktuelles",
+				"link": {
+					"url": "#"
+				}
+			},
+			{
+				"title": "ERC-Förderung für Guoliang Cui",
+				"subTitle": "22. März 2022",
+				"text": "Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen.",
+				"tag": "Aktuelles",
+				"link": {
+					"url": "#"
+				}
+			}
+		]
+    }
+}
