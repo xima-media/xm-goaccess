@@ -39,17 +39,19 @@
 			<div class="card__image">
 				<figure class="picture picture--with-image picture--with-pattern picture--orientation-md-">
 					<div class="picture__item image-color--transparent">
-						<f:for each="{newsItem.falMedia}" as="file">
-							<picture>
-								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'webp')}"
-										type="image/webp">
-								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'jpg')}"
-										type="image/jpeg">
-								<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
-									 alt="{file.originalResource.alternative}"
-									 class="picture__image image--responsive"
-									 loading="lazy"/>
-							</picture>
+						<f:for each="{newsItem.falMedia}" as="file" iteration="i">
+							<f:if condition="{i.isFirst}">
+								<picture>
+									<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'webp', cropVariant: 'preview')}"
+											type="image/webp">
+									<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
+											type="image/jpeg">
+									<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
+										 alt="{file.originalResource.alternative}"
+										 class="picture__image image--responsive"
+										 loading="lazy"/>
+								</picture>
+							</f:if>
 						</f:for>
 						<span class="picture__pattern pattern color-accent--magenta"></span>
 					</div>
