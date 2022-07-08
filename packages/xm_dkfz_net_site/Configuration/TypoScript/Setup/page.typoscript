@@ -1,6 +1,12 @@
 page = PAGE
 page {
 
+  headerData.2039 = FLUIDTEMPLATE
+  headerData.2039 {
+    file = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Partials/Favicons.html
+    extbase.controllerExtensionName = XmDkfzNetSite
+  }
+
   10 = FLUIDTEMPLATE
   10 {
     templateName = Default
