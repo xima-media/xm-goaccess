@@ -1,0 +1,20 @@
+<f:layout name="Default"/>
+
+<f:section name="Main">
+
+	<div class="row">
+		<div class="column">
+			<f:for each="{children_100}" as="item">
+				<f:format.raw>{item.renderedContent}</f:format.raw>
+			</f:for>
+		</div>
+
+		<div class="column">
+			<f:for each="{children_200}" as="item">
+				<f:format.raw>{item.renderedContent}</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+
+
+</f:section>

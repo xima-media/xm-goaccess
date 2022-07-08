@@ -172,6 +172,18 @@
 			<trans-unit id="button.next">
 				<source>Next</source>
 			</trans-unit>
+			<trans-unit id="container.2cols">
+				<source>2 Columns</source>
+			</trans-unit>
+			<trans-unit id="container.2cols.description">
+				<source>Container that displays content element next to each other</source>
+			</trans-unit>
+			<trans-unit id="container.2cols.left">
+				<source>Left</source>
+			</trans-unit>
+			<trans-unit id="container.2cols.right">
+				<source>Right</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

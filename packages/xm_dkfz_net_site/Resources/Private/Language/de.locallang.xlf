@@ -137,6 +137,18 @@
 			<trans-unit id="button.next">
 				<target>Nächste</target>
 			</trans-unit>
+			<trans-unit id="container.2cols">
+				<target>2 Spalter</target>
+			</trans-unit>
+			<trans-unit id="container.2cols.description">
+				<target>Container, der Content-Elemente nebeneinander darstellt</target>
+			</trans-unit>
+			<trans-unit id="container.2cols.left">
+				<target>Links</target>
+			</trans-unit>
+			<trans-unit id="container.2cols.right">
+				<target>Rechts</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
