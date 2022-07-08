@@ -1,4 +1,4 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="Header"></f:section>
 
@@ -8,7 +8,18 @@
 			<f:if condition="{data.header}">
 				<h4 class="infobox__title">{data.header}</h4>
 			</f:if>
-			<p class="infobox__text">{data.bodytext->f:format.html()}</p>
+			<p class="infobox__text">{data.bodytext -> f:format.html()}</p>
+			<f:if condition="{links}">
+				<ul class="infobox__items">
+					<f:for each="{links}" as="link">
+						<li class="infobox__item">
+							<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+							<f:link.typolink parameter="{link.data.link}" class="primary-link">{f:if(condition: link.data.title,
+								then: link.data.title)}</f:link.typolink>
+						</li>
+					</f:for>
+				</ul>
+			</f:if>
 		</div>
 	</div>
 </f:section>
