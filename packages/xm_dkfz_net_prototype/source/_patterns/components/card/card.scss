@@ -225,7 +225,8 @@
     .card {
         &__image {
             @include media-breakpoint-up(md) {
-                flex: 0 0 22.5rem; // @todo variable
+                //flex: 0 0 22.5rem; // @todo variable
+                flex: 0 0 0; // @todo variable
                 width: 22.5rem; // @todo variable
             }
         }
@@ -236,8 +237,8 @@
     .card {
         &__image {
             @include media-breakpoint-up(md) {
-                flex: 0 0 auto; // @todo variable
-                width: 100%; // @todo variable
+                //flex: 0 0 auto; // @todo variable
+                //width: 100%; // @todo variable
             }
         }
     }

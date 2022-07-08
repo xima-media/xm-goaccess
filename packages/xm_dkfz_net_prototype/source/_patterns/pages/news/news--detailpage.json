@@ -7,6 +7,10 @@
         "debug": {
             "screenshot": "news--detailpage--02"
         },
+		"layout": {
+			"class": "color-accent--white",
+			"color": "color-accent--blue-900"
+		},
         "topics": {
             "title": "Weitere News",
             "titleWithPattern": true,
@@ -56,5 +60,5 @@
                 }
             ]
         }
-    }
+	}
 }

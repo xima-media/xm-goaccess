@@ -4,6 +4,9 @@
         "navigation": {
             "activeId": "our-center"
         },
+		"html": {
+			"class": "background--gray-100"
+		},
 		"layout": {
 			"class": "color-accent--white",
 			"color": "color-accent--gray-900"

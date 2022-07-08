@@ -11,7 +11,7 @@
 .quote {
     position: relative;
     margin: 5.5rem 0;
-    padding: 2rem 6rem;
+    padding: 3.3rem 6rem;
     text-align: center;
     background-color: var(--color-white);
 
@@ -27,12 +27,13 @@
     &__content {
         position: relative;
         z-index: 0;
+        line-height: 36px;
 
         &:before {
             position: absolute;
             content: open-quote;
-            font-size: 17rem;
-            margin-top: -3rem;
+            font-size: 25rem;
+            margin-top: -6rem;
             margin-left: 50%;
             transform: translateX(-50%);
             color: var(--color-cyan);
