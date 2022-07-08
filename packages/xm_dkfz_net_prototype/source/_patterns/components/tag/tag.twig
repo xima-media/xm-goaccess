@@ -6,8 +6,10 @@
     {% endif %}
     <ul class="list list--inline">
         {% for item in items %}
-            <li>
-                <a href="#" class="button button--secondary">{{ item.text }}</a>
+            <li class="button button--secondary">
+                {# the the action on tags will be implemented later, so link is not needed now #}
+                {# <a href="#" class="button button--secondary">{{ item.text }}</a> #}
+                {{ item.text }}
             </li>
         {% endfor %}
     </ul>
