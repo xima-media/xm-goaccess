@@ -64,7 +64,6 @@ plugin.tx_news {
     recursive = 1
     cssFile >
     displayDummyIfNoMedia >
-    detailPid = {$pidNewsDetail}
   }
   view {
     layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/news/Layouts/
