@@ -45,7 +45,7 @@
 										type="image/webp">
 								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'jpg')}"
 										type="image/jpeg">
-								<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg')}"
+								<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
 									 alt="{file.originalResource.alternative}"
 									 class="picture__image image--responsive"
 									 loading="lazy"/>
