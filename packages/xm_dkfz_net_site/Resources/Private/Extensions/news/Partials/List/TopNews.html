@@ -1,0 +1,104 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<div class="carousel carousel--pagination-right"
+	 data-cols="{&quot;xs&quot;: &quot;1&quot;, &quot;sm&quot;: &quot;1&quot;, &quot;md&quot;: &quot;1&quot;, &quot;lg&quot;: &quot;1&quot;}"
+	 data-pagination-style="{&quot;xs&quot;: &quot;fraction&quot;, &quot;sm&quot;: &quot;bullets&quot;, &quot;md&quot;: &quot;bullets&quot;, &quot;lg&quot;: &quot;bullets&quot;}"
+	 data-pagination-colored="true"
+	 data-count="3">
+
+	<div class="carousel__content swiper">
+		<div class="carousel__body swiper-wrapper">
+			<f:for each="{news}" as="newsItem" iteration="i">
+				<f:render section="NewsItem" arguments="{newsItem: newsItem, i: i}"/>
+			</f:for>
+		</div>
+	</div>
+	<div class="carousel__pagination swiper-pagination"></div>
+	<button class="carousel__button swiper-button-prev" aria-label="Zurück">
+		<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
+	</button>
+	<button class="carousel__button swiper-button-next" aria-label="Vor">
+		<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+	</button>
+
+</div>
+
+
+<f:section name="NewsItem">
+
+
+	<div class="swiper-slide article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}"
+		 itemscope="itemscope"
+		 itemtype="https://schema.org/Article">
+		<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+		<div class="card card--image-left card--md card--image-size-md  card--main-news">
+
+			<div class="card__image">
+				<figure class="picture picture--with-image picture--with-pattern picture--orientation-md-">
+					<div class="picture__item image-color--transparent">
+						<f:for each="{newsItem.falMedia}" as="file">
+							<picture>
+								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'webp')}"
+										type="image/webp">
+								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'jpg')}"
+										type="image/jpeg">
+								<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg')}"
+									 alt="{file.originalResource.alternative}"
+									 class="picture__image image--responsive"
+									 loading="lazy"/>
+							</picture>
+						</f:for>
+						<span class="picture__pattern pattern color-accent--magenta"></span>
+					</div>
+				</figure>
+			</div>
+
+			<div class="card__content">
+				<div class="card__header">
+					<h3 itemprop="headline">{newsItem.title}</h3>
+					<p>
+						<time itemprop="datePublished"
+							  datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+							<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+						</time>
+						|
+						<f:if condition="{newsItem.firstCategory}">
+							<!-- first category -->
+							<span class="news-list-category">{newsItem.firstCategory.title}</span>
+						</f:if>
+					</p>
+				</div>
+				<div class="card__body">
+					<div class="card__text">
+						<f:if condition="{newsItem.teaser}">
+							<f:then>
+								<div itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters:
+									'{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+								</div>
+							</f:then>
+							<f:else>
+								<div itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters:
+									'{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+								</div>
+							</f:else>
+						</f:if>
+					</div>
+
+					<n:link newsItem="{newsItem}"
+							settings="{settings}"
+							class="card__link card__link--more"
+							title="{newsItem.title}">
+						<f:translate key="more-link"/>
+					</n:link>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+</f:section>
+</html>

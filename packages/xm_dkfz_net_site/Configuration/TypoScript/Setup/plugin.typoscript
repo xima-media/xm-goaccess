@@ -1,0 +1,5 @@
+plugin.tx_news {
+  view {
+    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
+  }
+}

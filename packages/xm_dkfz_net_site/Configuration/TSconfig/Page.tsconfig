@@ -145,3 +145,9 @@ mod.wizards.newContentElement.wizardItems {
 [page["is_siteroot"] == 1]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
+
+tx_news.templateLayouts {
+  topnews =  Top News
+  latestnews = Latest News
+  shortnews = Short News
+}

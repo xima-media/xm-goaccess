@@ -21,6 +21,7 @@ pidJobList = 25
 pidLogin = 2
 pidFeUserStorage = 91
 pidNewsDetail = 102
+pidNewsStorage = 101
 pidUserDetail = 103
 
 ##############################
@@ -51,6 +52,24 @@ plugin.tx_xmdkfznetjobs {
 plugin.tx_xmdkfznetevents {
   settings {
     latestEventCount = 9
+  }
+}
+
+##############
+#### News ####
+##############
+plugin.tx_news {
+  settings {
+    startingpoint = {$pidNewsStorage}
+    recursive = 1
+    cssFile >
+    displayDummyIfNoMedia >
+    detailPid = {$pidNewsDetail}
+  }
+  view {
+    layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/news/Layouts/
+    partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/news/Partials/
+    templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/news/Templates/
   }
 }
 

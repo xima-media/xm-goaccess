@@ -1,0 +1,57 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+	<!--TYPO3SEARCH_end-->
+	<f:if condition="{news}">
+
+		<f:if condition="{settings.templateLayout} == 'topnews'">
+			<f:render partial="List/TopNews" arguments="{_all}" />
+		</f:if>
+
+		<f:if condition="{settings.templateLayout} == 'latestnews'">
+			LATEST
+		</f:if>
+
+		<f:if condition="{settings.templateLayout} == 'shortnews'">
+			SHORT
+		</f:if>
+
+		<f:if condition="{settings.templateLayout} == ''">
+
+			<div class="news-list-view" id="news-container-{contentObjectData.uid}">
+				<f:if condition="{settings.hidePagination}">
+					<f:then>
+						<f:for each="{news}" as="newsItem" iteration="iterator">
+							<f:render partial="List/Item"
+									  arguments="{newsItem: newsItem,settings:settings,iterator:iterator}"/>
+						</f:for>
+					</f:then>
+					<f:else>
+						<f:if condition="{settings.list.paginate.insertAbove}">
+							<f:render partial="List/Pagination"
+									  arguments="{pagination: pagination.pagination, paginator: pagination.paginator}"/>
+						</f:if>
+						<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+							<f:render partial="List/Item"
+									  arguments="{newsItem: newsItem,settings:settings,iterator:iterator}"/>
+						</f:for>
+						<f:if condition="{settings.list.paginate.insertBelow}">
+							<f:render partial="List/Pagination"
+									  arguments="{pagination: pagination.pagination, paginator: pagination.paginator}"/>
+						</f:if>
+					</f:else>
+				</f:if>
+			</div>
+
+		</f:if>
+
+	</f:if>
+	<f:if condition="!{news}">
+		<div class="no-news-found">
+			<f:translate key="list_nonewsfound"/>
+		</div>
+	</f:if>
+	<!--TYPO3SEARCH_begin-->
+
+</html>
