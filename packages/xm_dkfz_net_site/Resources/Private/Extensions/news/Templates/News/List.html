@@ -14,7 +14,7 @@
 		</f:if>
 
 		<f:if condition="{settings.templateLayout} == 'shortnews'">
-			SHORT
+			<f:render partial="List/ShortNews" arguments="{_all}" />
 		</f:if>
 
 		<f:if condition="{settings.templateLayout} == ''">

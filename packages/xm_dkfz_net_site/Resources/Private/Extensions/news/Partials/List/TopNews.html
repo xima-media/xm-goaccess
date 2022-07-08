@@ -53,12 +53,9 @@
 			</div>
 			<div class="card__content">
 				<div class="card__header">
-					<h3 itemprop="headline">{newsItem.title}</h3>
+					<h3>{newsItem.title}</h3>
 					<p>
-						<time itemprop="datePublished"
-							  datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
-							<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
-						</time>
+						<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
 						|
 						<f:if condition="{newsItem.firstCategory}">
 							{newsItem.firstCategory.title}
@@ -69,14 +66,12 @@
 					<div class="card__text">
 						<f:if condition="{newsItem.teaser}">
 							<f:then>
-								<div itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters:
-									'{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
-								</div>
+								{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
+								respectWordBoundaries:'1') -> f:format.html()}
 							</f:then>
 							<f:else>
-								<div itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters:
-									'{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
-								</div>
+								{newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
+								respectWordBoundaries:'1') -> f:format.html()}
 							</f:else>
 						</f:if>
 					</div>

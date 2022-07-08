@@ -1,0 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<f:for each="{news}" as="newsItem" iteration="i">
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+	<f:render section="NewsItem" arguments="{newsItem: newsItem, i: i}"/>
+</f:for>
+
+<f:section name="NewsItem">
+
+
+	<div class="card card--short-message">
+
+		<n:link newsItem="{newsItem}"
+				settings="{settings}"
+				class="card__link card__link--hidden"
+				title="{newsItem.title}">
+			<f:translate key="more-link"/>
+		</n:link>
+
+		<div class="card__content">
+			<div class="card__header">
+				<p>
+					<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+					|
+					<f:if condition="{newsItem.firstCategory}">
+						{newsItem.firstCategory.title}
+					</f:if>
+				</p>
+				<h3 class="card__title">{newsItem.title}</h3>
+			</div>
+		</div>
+
+	</div>
+</f:section>
+
+</html>
