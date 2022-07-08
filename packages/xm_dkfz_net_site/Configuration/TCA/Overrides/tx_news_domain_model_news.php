@@ -37,3 +37,23 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['fal_media']['config']['
         ],
     ],
 ];
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news', [
+    'tx_xmdkfznetsite_color' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.color',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField(),
+            'default' => '',
+        ],
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    'tx_news_domain_model_news',
+    'tx_xmdkfznetsite_color',
+    '',
+    'after:title'
+);

@@ -37,3 +37,7 @@ create table tt_content_item (
 	KEY              parent (pid),
 	KEY language (l10n_parent,sys_language_uid)
 );
+
+create table tx_news_domain_model_news (
+	tx_xmdkfznetsite_color varchar(64) not null default '',
+);

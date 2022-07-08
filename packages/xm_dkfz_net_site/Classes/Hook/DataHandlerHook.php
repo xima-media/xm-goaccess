@@ -31,7 +31,7 @@ class DataHandlerHook
         $id,
         DataHandler $parentObj
     ): void {
-        if ($table === 'pages') {
+        if ($table === 'pages' || $table === 'tx_news_domain_model_news') {
             $color = $incomingFieldArray['tx_xmdkfznetsite_color'] ?? null;
 
             if ('' === $color || !in_array($color, TcaUtility::$colors, true)) {
