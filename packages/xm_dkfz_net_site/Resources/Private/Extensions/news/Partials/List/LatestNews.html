@@ -13,8 +13,7 @@
 
 <f:section name="NewsItem">
 
-
-	<div class="card card--image-top card--md card--image-size-md">
+	<div class="card color-accent--{newsItem.txXmdkfznetsiteColor}">
 
 		<n:link newsItem="{newsItem}"
 				settings="{settings}"
@@ -29,11 +28,11 @@
 					<f:for each="{newsItem.falMedia}" as="file" iteration="i">
 						<f:if condition="{i.isFirst}">
 							<picture>
-								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'webp', cropVariant: 'preview')}"
+								<source srcset="{f:uri.image(image:file, width:'285', fileExtension: 'webp', cropVariant: 'preview')}"
 										type="image/webp">
-								<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
+								<source srcset="{f:uri.image(image:file, width:'285', fileExtension: 'jpg', cropVariant: 'preview')}"
 										type="image/jpeg">
-								<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
+								<img src="{f:uri.image(image:file, width:'285', fileExtension: 'jpg', cropVariant: 'preview')}"
 									 alt="{file.originalResource.alternative}"
 									 class="picture__image image--responsive"
 									 loading="lazy"/>
