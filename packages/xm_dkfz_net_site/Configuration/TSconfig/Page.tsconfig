@@ -24,10 +24,10 @@ TCEFORM {
     }
 
     header_link.disabled = 1
-    header_link.types.plugin.disabled = 0
+    header_link.types.list.disabled = 0
 
     subheader.disabled = 1
-    subheader.types.plugin.disabled = 0
+    subheader.types.list.disabled = 0
 
     frame_class {
       removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
