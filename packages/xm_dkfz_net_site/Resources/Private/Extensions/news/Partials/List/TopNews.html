@@ -11,6 +11,7 @@
 	<div class="carousel__content swiper">
 		<div class="carousel__body swiper-wrapper">
 			<f:for each="{news}" as="newsItem" iteration="i">
+				<n:excludeDisplayedNews newsItem="{newsItem}"/>
 				<f:render section="NewsItem" arguments="{newsItem: newsItem, i: i}"/>
 			</f:for>
 		</div>
@@ -27,15 +28,8 @@
 
 
 <f:section name="NewsItem">
-
-
-	<div class="swiper-slide article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}"
-		 itemscope="itemscope"
-		 itemtype="https://schema.org/Article">
-		<n:excludeDisplayedNews newsItem="{newsItem}"/>
-
+	<div class="swiper-slide">
 		<div class="card card--image-left card--md card--image-size-md  card--main-news">
-
 			<div class="card__image">
 				<figure class="picture picture--with-image picture--with-pattern picture--orientation-md-">
 					<div class="picture__item image-color--transparent">
@@ -57,7 +51,6 @@
 					</div>
 				</figure>
 			</div>
-
 			<div class="card__content">
 				<div class="card__header">
 					<h3 itemprop="headline">{newsItem.title}</h3>
@@ -87,7 +80,6 @@
 							</f:else>
 						</f:if>
 					</div>
-
 					<n:link newsItem="{newsItem}"
 							settings="{settings}"
 							class="card__link card__link--more"
@@ -96,10 +88,7 @@
 					</n:link>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
-
 </f:section>
 </html>

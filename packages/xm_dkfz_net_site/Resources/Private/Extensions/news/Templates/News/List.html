@@ -10,7 +10,7 @@
 		</f:if>
 
 		<f:if condition="{settings.templateLayout} == 'latestnews'">
-			LATEST
+			<f:render partial="List/LatestNews" arguments="{_all}" />
 		</f:if>
 
 		<f:if condition="{settings.templateLayout} == 'shortnews'">
