@@ -1,7 +1,7 @@
 {% extends "@layouts/default--with-sidebar.twig" %}
 {% block main %}
 
-    <div class="layout">
+    <div class="layout ">
         <div class="layout__item">
             {% include '@components/employee/employee-header.twig' with {
                 title: 'Ammon, Lisa',
@@ -11,8 +11,8 @@
                 }
             } only %}
         </div>
-        <div class="layout__item">
-            <div class="content--info"> {# @todo Klasse umbennen #}
+        <div class="layout__item {{ prototype.layout.class }}">
+            <div class="content--info">
                 <div class="layout__item">
                     {% for item in prototype.employeeInfo %}
                         {% include '@components/employee/employee-info.twig' with {
@@ -72,7 +72,7 @@
     {% endfor %}
 {% endblock sidebarHeader %}
 {% block sidebarBody %}
-    <div class="sidebar__body--wrapper">
+    <div class="sidebar__body--wrapper {{ prototype.layout.color }}">
         {#  Leitung#}
         {% for item in prototype.contacts %}
             {% include '@components/contact/contact.twig' with {
@@ -111,7 +111,7 @@
         {% endfor %}
     </div>
 
-    <div class="sidebar__footer">
+    <div class="sidebar__footer {{ prototype.layout.color }}">
         {# Infobox #}
         {% for info in prototype.infoBoxSidebar %}
             {% include '@components/infobox/infobox.twig' with {

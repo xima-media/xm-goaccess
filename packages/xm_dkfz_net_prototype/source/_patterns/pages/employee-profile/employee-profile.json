@@ -10,6 +10,10 @@
         "html": {
             "class": "background--gray-100"
         },
+		"layout": {
+			"class": "color-accent--white",
+			"color": "color-accent--blue-900"
+		},
         "tags": {
             "skills": [
                 {
@@ -177,7 +181,14 @@
                     {
                         "type": "phone",
                         "url": "+49 6221-42-2651",
-                        "text": "+49 6221-42-2651"
+                        "text": "+49 6221-42-2651",
+						"explain": " - Büro"
+                    },
+					{
+                        "type": "phone",
+                        "url": "+49 6221-42-2651",
+                        "text": "+49 6221-42-2651",
+						"explain": " - Labor"
                     },
                     {
                         "type": "printer",

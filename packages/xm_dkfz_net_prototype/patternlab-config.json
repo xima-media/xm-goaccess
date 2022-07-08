@@ -66,10 +66,10 @@
       "data": "./Resources/Public/patternlab/styleguide/data/",
       "annotations": "./Resources/Public/patternlab/annotations/",
       "styleguide": "./Resources/Public/patternlab/styleguide/",
-      "js": "./Resources/Public/patternlab/js",
-      "images": "./Resources/Public/patternlab/images",
-      "fonts": "./Resources/Public/patternlab/fonts",
-      "css": "./Resources/Public/patternlab/css"
+      "js": "./Resources/Public/patternlab/JavaScript",
+      "images": "./Resources/Public/patternlab/Images",
+      "fonts": "./Resources/Public/patternlab/Fonts",
+      "css": "./Resources/Public/patternlab/Css"
     }
   },
   "patternExtension": "twig",
@@ -95,7 +95,16 @@
     "color": "light",
     "density": "compact",
     "layout": "horizontal",
-    "noViewAll": false
+    "noViewAll": false,
+	"logo": {
+	  "text": "",
+	  "altText": "DKFZ Logo",
+	  "url": "./",
+	  "srcLight": "./Images/logo/logo.svg",
+	  "srcDark": "./Images/logo/logo.svg",
+	  "width": "187",
+	  "height": "185"
+	}
   },
   "uikits": [
     {

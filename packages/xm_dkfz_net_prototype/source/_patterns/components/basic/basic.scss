@@ -130,14 +130,20 @@ body {
     &__header {
         padding: 1.5rem;
         color: var(--color-white);
-        background-color: var(--color-primary);
+        background-color: rgba(0,71,185, .8);
 
         @include media-breakpoint-up(md) {
             padding: 2.5rem 3rem 1.5rem;
         }
 
-        .contact--background {
-            width: auto;
+        .contact {
+            &--background {
+                width: auto;
+            }
+
+            &__items {
+                margin-top: 1rem;
+            }
         }
     }
 
