@@ -5,6 +5,13 @@ $GLOBALS['TCA']['tt_content']['types']['textmedia']['columnsOverrides'] = [
         'config' => [
             'overrideChildTca' => [
                 'columns' => [
+                    'uid_local' => [
+                        'config' => [
+                            'appearance' => [
+                                'elementBrowserAllowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+                            ],
+                        ],
+                    ],
                     'crop' => [
                         'config' => [
                             'cropVariants' => [
