@@ -7,3 +7,9 @@ plugin.tx_news {
     defaultDetailPid = {$pidNewsDetail}
   }
 }
+
+plugin.tx_bwguild {
+  view {
+    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
+  }
+}
