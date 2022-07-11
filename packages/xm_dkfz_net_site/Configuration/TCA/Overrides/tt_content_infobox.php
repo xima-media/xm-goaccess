@@ -15,7 +15,7 @@ $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['infobox'] = 'content-
 
 $GLOBALS['TCA']['tt_content']['palettes']['infoboxAppearance'] = [
     'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.palette.infoboxAppearance',
-    'showitem' => 'color,--linebreak--,frame_class'
+    'showitem' => 'color,--linebreak--,frame_class',
 ];
 
 $GLOBALS['TCA']['tt_content']['types']['infobox'] = [
@@ -46,7 +46,7 @@ $GLOBALS['TCA']['tt_content']['types']['infobox'] = [
         'bodytext' => [
             'config' => [
                 'enableRichtext' => true,
-                'richtextConfiguration' => 'minimal'
+                'richtextConfiguration' => 'minimal',
             ],
         ],
         'tt_content_items' => [
