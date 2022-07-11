@@ -124,11 +124,11 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-feature/v11",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
-                "reference": "cc6cbd01720a6950f87dc887f1b086b430c1b607"
+                "reference": "2e8e227ca4e2f990d1366831e1ecaf5866c9e4ff"
             },
             "require": {
                 "ext-gd": "*",
@@ -9999,16 +9999,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.8.0",
+            "version": "v3.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3"
+                "reference": "94441633b80495464eb34eb3f7d63445221b2585"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/94441633b80495464eb34eb3f7d63445221b2585",
+                "reference": "94441633b80495464eb34eb3f7d63445221b2585",
                 "shasum": ""
             },
             "require": {
@@ -10076,7 +10076,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.8.0"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.1"
             },
             "funding": [
                 {
@@ -10084,7 +10084,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-18T17:20:59+00:00"
+            "time": "2022-07-11T08:51:43+00:00"
         },
         {
             "name": "mikey179/vfsstream",
