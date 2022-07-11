@@ -8,6 +8,8 @@ use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Core\DataHandling\Model\RecordStateFactory;
+use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2BeUserProviderConfigurationRestriction;
 use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2FeUserProviderConfigurationRestriction;
@@ -81,6 +83,9 @@ class FrontendUserFactory
             $userRecord = $this->persistAndRetrieveUser($userRecord);
         }
 
+        // update user slug
+        $this->updateFrontendUserSlug($userRecord);
+
         try {
             if ($this->persistIdentityForUser($userRecord)) {
                 return $userRecord;
@@ -89,6 +94,37 @@ class FrontendUserFactory
         }
 
         return null;
+    }
+
+    protected function updateFrontendUserSlug(&$userRecord): void
+    {
+        // init SlugHelper for this table
+        $fieldConfig = $GLOBALS['TCA']['fe_users']['columns']['slug']['config'];
+        /** @var SlugHelper $slugHelper */
+        $slugHelper = GeneralUtility::makeInstance(
+            SlugHelper::class,
+            'fe_users',
+            'slug',
+            $fieldConfig
+        );
+
+        // generate unique slug for user
+        $value = $slugHelper->generate($userRecord, $userRecord['pid']);
+        $state = RecordStateFactory::forName('fe_users')
+            ->fromArray($userRecord, $userRecord['pid'], $userRecord['uid']);
+        $slug = $slugHelper->buildSlugForUniqueInPid($value, $state);
+
+        // update slug field of user
+        $qb = $this->getQueryBuilder('fe_users');
+        $qb->update('fe_users')
+            ->where(
+                $qb->expr()->eq(
+                    'uid',
+                    $qb->createNamedParameter($userRecord['uid'], \PDO::PARAM_INT)
+                )
+            )
+            ->set('slug', $slug);
+        $qb->execute();
     }
 
     /**
