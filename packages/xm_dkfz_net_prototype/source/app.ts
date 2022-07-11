@@ -48,6 +48,7 @@
  *       2.41 Video player
  *       2.42 Bookmarks
  *       2.43 Employee info
+ *       2.44 Employee info
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -192,6 +193,9 @@ import './_patterns/components/bookmarks/bookmarks'
 
 /** @section 2.43 Employee info */
 import './_patterns/components/employee/employee-info'
+
+/** @section 2.43 Userinfo */
+import './_patterns/components/userinfo/userinfo'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

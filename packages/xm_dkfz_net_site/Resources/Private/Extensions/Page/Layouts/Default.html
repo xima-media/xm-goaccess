@@ -57,7 +57,7 @@
 								<f:render partial="Icon" arguments="{icon: 'bookmark'}"/>
 							</a>
 						</li>
-						<li class="navigation__item navigation__item--user">
+						<li class="navigation__item navigation__item--user" data-user-info="{f:uri.action(action: 'userinfo', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}" id="userinfoUri">
 
 							<div class="dropdown">
 								<button class=" button button--icon-only button--white"
@@ -85,9 +85,8 @@
 									<!-- Components End: image -->
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
-									<f:comment>
 										<li>
-											<a class="dropdown-item" href="#">Onboarding Informationen</a>
+											<a class="dropdown-item" href="#" data-user-profile-link>Mein Profil</a>
 										</li>
 										<li>
 											<a class="dropdown-item" href="#">Profil bearbeiten</a>
@@ -95,7 +94,6 @@
 										<li>
 											<hr class="dropdown-divider">
 										</li>
-									</f:comment>
 									<li>
 										<f:link.page pageUid="{pidLogin}"
 													 class="dropdown-item"
