@@ -1,0 +1,50 @@
+routeEnhancers:
+  BwGuildOffer:
+    type: Extbase
+    extension: BwGuild
+    plugin: Offerlist
+    routes:
+      - routePath: '/{offer}'
+        _controller: 'Offer::show'
+        _arguments:
+          offer: offer
+      - routePath: '/'
+        _controller: 'Offer::list'
+      - routePath: '/{localized_edit}'
+        _controller: 'Offer::edit'
+      - routePath: '/{localized_edit}/{offer}'
+        _controller: 'Offer::edit'
+        _arguments:
+          offer: offer
+      - routePath: '/update'
+        _controller: 'Offer::update'
+      - routePath: '/{localized_new}'
+        _controller: 'Offer::new'
+      - routePath: '/{localized_delete}/{offer}'
+        _controller: 'Offer::delete'
+        _arguments:
+          offer: offer
+    defaultController: 'Offer::list'
+    aspects:
+      offer:
+        type: PersistedAliasMapper
+        tableName: tx_bwguild_domain_model_offer
+        routeFieldName: slug
+      localized_new:
+        type: LocaleModifier
+        default: 'new'
+        localeMap:
+          - locale: 'de_DE.*'
+            value: 'neu'
+      localized_edit:
+        type: LocaleModifier
+        default: 'edit'
+        localeMap:
+          - locale: 'de_DE.*'
+            value: 'bearbeiten'
+      localized_delete:
+        type: LocaleModifier
+        default: 'delete'
+        localeMap:
+          - locale: 'de_DE.*'
+            value: 'loeschen'
