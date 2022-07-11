@@ -40,5 +40,10 @@ $tempFields = [
 // Add all fields to tt_content
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempFields);
 
-// Note: \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes() is called in zz_tt_content.php
-// because custom tt_content elements are not yet known here
+// Add color to appearance tab of selected CTypes
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    'color',
+    'textmedia',
+    'before:sectionIndex'
+);
