@@ -361,6 +361,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:updateFrontendUserSlug\\(\\) has parameter \\$userRecord with no type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
