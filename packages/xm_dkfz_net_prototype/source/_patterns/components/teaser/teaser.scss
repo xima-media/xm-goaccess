@@ -1,0 +1,60 @@
+.teaser {
+    padding: .75rem;
+    position: relative;
+    margin-bottom: var(--space-md);
+
+      .picture__pattern {
+        @include pattern('left');
+    }
+
+    &__contact {
+        background: var(--color-primary-opacity-10);
+        padding: 2.5rem 2.5rem 1rem;
+
+        [class*='image-color-'] {
+            position: relative;
+            background-color: var(--color-gray-100);
+
+            // @todo mixin zusammen mit .picture--no-image ::after erstellen
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -.5rem; // @todo variable
+                left: -.5rem; // @todo variable
+                z-index: -1;
+                width: calc(50% + .5rem); // @todo variable
+                aspect-ratio: 1;
+            }
+
+            &::before {
+                background-color: $color-white;
+            }
+
+            &::after {
+                opacity: .7;
+                background-color: var(--color-accent);
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            position: absolute;
+            top: 20rem;
+            right: 0;
+            z-index: 1;
+        }
+
+        @include media-breakpoint-up(lg) {
+            top: 31rem;
+        }
+
+    }
+
+    &.row {
+        .teaser__contact {
+            position: relative;
+            top: 0;
+            height: fit-content;
+        }
+    }
+}

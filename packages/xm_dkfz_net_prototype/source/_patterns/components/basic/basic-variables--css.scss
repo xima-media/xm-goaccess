@@ -23,6 +23,7 @@
     //   @section 2. Colors
     //
 
+    --color-background: #{$color-gray-100};
     --color-primary: #{$color-primary};
     --color-primary-opacity-10: #{$color-primary-opacity-10};
     --color-primary-opacity-15: #{$color-primary-opacity-15};
@@ -51,16 +52,30 @@
 
     --font-family-serif: #{$font-family-serif};
     --font-family-sans-serif: #{$font-family-sans-serif};
+
+    //
+    //  @section 4. Spacing
+
+    --space-unit: 1rem;
+    --space-xxs:  calc(0.25 * var(--space-unit));
+    --space-xs:   calc(0.5 * var(--space-unit));
+    --space-sm:   calc(0.75 * var(--space-unit));
+    --space-md:   calc(1.5625 * var(--space-unit));
+    --space-lg:   calc(3.5 * var(--space-unit));
+    --space-xl:   calc(4 * var(--space-unit));
+    --space-xxl:  calc(5 * var(--space-unit));
+
 }
 
-.layout,
+
+main,
 .styleguide,
 .sidebar,
 .article,
 .background--image,
 .content-wrapper {
     &.color-accent--primary,
-    .color-accent-primary,
+    .color-accent--primary,
     .image-color--primary {
         --color-accent: #{$color-primary};
         --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-primary};"/></svg>');

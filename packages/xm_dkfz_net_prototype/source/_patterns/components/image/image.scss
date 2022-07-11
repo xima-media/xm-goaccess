@@ -15,6 +15,7 @@
 
 .image--responsive {
     width: 100%;
+    height: auto;
 }
 
 
@@ -80,7 +81,7 @@
 
 .picture--with-image {
     &.picture--with-pattern {
-        margin-top: 1rem;
+        margin-top: 0;
     }
 
     .picture {
