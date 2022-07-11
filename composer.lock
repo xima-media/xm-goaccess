@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bf75e94ab8cec36910190392712479a",
+    "content-hash": "50256edbc09f4cd4cb4ed61e3fa782cc",
     "packages": [
         {
             "name": "b13/container",
@@ -121,6 +121,88 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.7"
             },
             "time": "2022-03-14T02:02:36+00:00"
+        },
+        {
+            "name": "blueways/bw-guild",
+            "version": "dev-feature/v11",
+            "dist": {
+                "type": "path",
+                "url": "./packages/bw_guild",
+                "reference": "cc6cbd01720a6950f87dc887f1b086b430c1b607"
+            },
+            "require": {
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "typo3/cms-core": "^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "bk2k/bootstrap-package": "^12.0",
+                "helhum/typo3-console": "^7.0",
+                "tpwd/ke_search": "^4.0",
+                "typo3/cms-adminpanel": "^11.5",
+                "typo3/cms-backend": "^11.5",
+                "typo3/cms-belog": "^11.5",
+                "typo3/cms-beuser": "^11.5",
+                "typo3/cms-dashboard": "^11.5",
+                "typo3/cms-extbase": "^11.5",
+                "typo3/cms-extensionmanager": "^11.5",
+                "typo3/cms-felogin": "^11.5",
+                "typo3/cms-filelist": "^11.5",
+                "typo3/cms-fluid": "^11.5",
+                "typo3/cms-fluid-styled-content": "^11.5",
+                "typo3/cms-form": "^11.5",
+                "typo3/cms-frontend": "^11.5",
+                "typo3/cms-impexp": "^11.5",
+                "typo3/cms-indexed-search": "^11.5",
+                "typo3/cms-info": "^11.5",
+                "typo3/cms-install": "^11.5",
+                "typo3/cms-lowlevel": "^11.5",
+                "typo3/cms-opendocs": "^11.5",
+                "typo3/cms-recordlist": "^11.5",
+                "typo3/cms-recycler": "^11.5",
+                "typo3/cms-redirects": "^11.5",
+                "typo3/cms-reports": "^11.5",
+                "typo3/cms-rte-ckeditor": "^11.5",
+                "typo3/cms-scheduler": "^11.5",
+                "typo3/cms-seo": "^11.5",
+                "typo3/cms-setup": "^11.5",
+                "typo3/cms-tstemplate": "^11.5",
+                "typo3/cms-viewpage": "^11.5"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": "public",
+                    "extension-key": "bw_guild"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwGuild\\": "Classes/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "homepage": "https://blueways.de",
+                    "email": "m.schneider@blueways.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extends TYPO3 for the management of guilds",
+            "homepage": "https://blueways.de",
+            "keywords": [
+                "TYPO3 CMS"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "blueways/deployer-recipes",
@@ -1055,12 +1137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "5f613b13aab793bd071d32509c0569190dd33c1b"
+                "reference": "fdab3ac7d354aac19288b023f105671755753d72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/5f613b13aab793bd071d32509c0569190dd33c1b",
-                "reference": "5f613b13aab793bd071d32509c0569190dd33c1b",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/fdab3ac7d354aac19288b023f105671755753d72",
+                "reference": "fdab3ac7d354aac19288b023f105671755753d72",
                 "shasum": ""
             },
             "require": {
@@ -1129,7 +1211,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-07T05:24:27+00:00"
+            "time": "2022-07-08T14:39:41+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -12762,6 +12844,7 @@
         "georgringer/news": 20,
         "sourcebroker/deployer-extended-database": 20,
         "xima/xm-dkfz-net-events": 20,
+        "blueways/bw-guild": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },
