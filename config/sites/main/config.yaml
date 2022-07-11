@@ -51,3 +51,5 @@ websiteTitle: 'DKFZ Intranet'
 imports:
   -
     resource: 'EXT:bw_guild/Configuration/Routing/Api.yaml'
+  -
+    resource: 'EXT:bw_guild/Configuration/Routing/Userlist.yaml'

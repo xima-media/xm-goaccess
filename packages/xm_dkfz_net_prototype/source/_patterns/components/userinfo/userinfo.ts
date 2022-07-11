@@ -1,8 +1,10 @@
 import app from '../basic/basic'
 
 interface UserData {
+  uid: number,
   username: string,
-  logo: string
+  logo: string,
+  url: string
 }
 
 interface UserOffer {
@@ -33,13 +35,25 @@ class Userinfo {
       return
     }
 
-    this.loadUserinfo();
+    this.loadUserinfo().then(r => {
+      this.modifyUserNav();
+    });
+
   }
 
-  protected loadUserinfo() {
+  protected modifyUserNav()
+  {
+    const userLinkElement = document.querySelector('[data-user-profile-link]');
+    if (!userLinkElement || !this.userinfo) {
+      return;
+    }
+    userLinkElement.setAttribute('href', this.userinfo.user.url)
+  }
+
+  protected async loadUserinfo() {
     const loadedFromStorage = this.loadUserinfoFromStorage();
     if (!loadedFromStorage) {
-      this.requestUserinfo();
+      return await this.requestUserinfo();
     }
   }
 
@@ -52,14 +66,14 @@ class Userinfo {
     return true;
   }
 
-  protected requestUserinfo() {
+  protected async requestUserinfo() {
     const url = document.querySelector('#userinfoUri').getAttribute('data-user-info')
 
     if (!url) {
       return
     }
 
-    this.apiRequest(url).then((userinfo) => {
+    return this.apiRequest(url).then((userinfo) => {
       this.userinfo = userinfo
     });
   }
