@@ -32,6 +32,9 @@
 			<trans-unit id="tt_content.frame_class.yellow">
 				<target>Gelb Hintergrund</target>
 			</trans-unit>
+			<trans-unit id="tt_content.palette.infoboxAppearance">
+				<target>Farbe und Rahmen</target>
+			</trans-unit>
 			<trans-unit id="tt_content.color">
 				<target>Farbe</target>
 			</trans-unit>
