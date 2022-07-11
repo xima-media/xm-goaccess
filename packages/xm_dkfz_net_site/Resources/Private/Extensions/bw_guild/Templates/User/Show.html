@@ -1,0 +1,26 @@
+<div class="layout__item">
+	<div class="employee-header">
+		<div class="employee-header__body">
+			<h1 class="employee-header__title h3">{user.name}</h1>
+
+		</div>
+		<div class="employee-header__image">
+			<figure class="">
+				<div class="picture__item image-color--primary">
+					<f:if condition="{user.logo}">
+						<picture>
+							<source srcset="{f:uri.image(image:user.logo, width:'150', fileExtension: 'webp')}"
+									type="image/webp">
+							<source srcset="{f:uri.image(image:user.logo, width:'150', fileExtension: 'jpg')}"
+									type="image/jpeg">
+							<img src="{f:uri.image(image:user.logo, width:'150', fileExtension: 'jpg')}"
+								 alt="{file.originalResource.alternative}"
+								 class="picture__image image--responsive"
+								 loading="lazy"/>
+						</picture>
+					</f:if>
+				</div>
+			</figure>
+		</div>
+	</div>
+</div>

@@ -1,4 +1,6 @@
-<f:if condition="{breadNav->f:count()} > 1">
+<f:variable name="isProfilePage">{f:if(condition: '{data.uid}=={pidUserDetail}', then: 'true')}</f:variable>
+
+<f:if condition="{breadNav->f:count()} > 1 && !{isProfilePage}">
 	<nav class="breadcrumb__wrapper" aria-label="Brotkrumen-Navigation">
 		<ul class="breadcrumb">
 			<f:for each="{breadNav}" as="item" iteration="i">

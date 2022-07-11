@@ -80,6 +80,11 @@ plugin.tx_news {
 ##################
 plugin {
   tx_bwguild {
+    view {
+      layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Layouts/
+      partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Partials/
+      templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Templates/
+    }
     settings {
       showPid = {$pidUserDetail}
     }

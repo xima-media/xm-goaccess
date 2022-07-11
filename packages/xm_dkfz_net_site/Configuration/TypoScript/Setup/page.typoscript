@@ -18,6 +18,8 @@ page {
     variables {
       pidLogin = TEXT
       pidLogin.value = {$pidLogin}
+      pidUserDetail = TEXT
+      pidUserDetail.value = {$pidUserDetail}
     }
 
     dataProcessing {
