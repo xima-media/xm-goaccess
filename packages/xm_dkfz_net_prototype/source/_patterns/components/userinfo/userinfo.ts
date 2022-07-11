@@ -75,6 +75,7 @@ class Userinfo {
 
     return this.apiRequest(url).then((userinfo) => {
       this.userinfo = userinfo
+      localStorage.setItem('userinfo', JSON.stringify(userinfo));
     });
   }
 
