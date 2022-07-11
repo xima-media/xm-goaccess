@@ -78,8 +78,16 @@ plugin.tx_news {
 ##################
 #### Bw_guild ####
 ##################
-plugin.tx_bwguild {
-  settings {
-    showPid = {$pidUserDetail}
+plugin {
+  tx_bwguild {
+    settings {
+      showPid = {$pidUserDetail}
+    }
+  }
+
+  tx_bwguild_userlist {
+    settings {
+      schema.enable = 0
+    }
   }
 }
