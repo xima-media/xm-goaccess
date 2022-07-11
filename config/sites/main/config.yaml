@@ -48,3 +48,6 @@ routes:
     type: staticText
     content: "User-agent: *\r\nDisallow: /typo3/\r\n"
 websiteTitle: 'DKFZ Intranet'
+imports:
+  -
+    resource: 'EXT:bw_guild/Configuration/Routing/Api.yaml'

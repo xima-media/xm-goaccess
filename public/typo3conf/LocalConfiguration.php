@@ -139,6 +139,9 @@ return [
     'SYS' => [
         'caching' => [
             'cacheConfigurations' => [
+                'bwguild' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                ],
                 'hash' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                 ],
