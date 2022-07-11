@@ -96,11 +96,6 @@ class Carousel {
                     init: (swiper) => {
                         // print items count
                         self.printItemsCount(swiper)
-
-                        // colored pagination?
-                        if (paginationColored) {
-                            self.coloredPagination(swiper)
-                        }
                     },
                 },
             })
@@ -113,19 +108,6 @@ class Carousel {
     printItemsCount (swiper: Swiper) {
         // print item counts as data attribute
         swiper.$el[0].parentElement.dataset.count = String(swiper.$el[0].querySelectorAll<HTMLElement>('.swiper-slide').length)
-    }
-
-    /**
-     * Colored pagination
-     */
-    coloredPagination (swiper: Swiper) {
-        swiper.$el[0].querySelectorAll<HTMLElement>('.swiper-slide').forEach((carouselItemEl, index) => {
-            const paginationItemEl = swiper.pagination.el.querySelectorAll('.swiper-pagination-bullet')[index]
-            const paginationColor = carouselItemEl.querySelector<HTMLElement>('[data-pattern-color]').dataset.patternColor
-
-            // set color
-            paginationItemEl.classList.add('color--' + paginationColor)
-        })
     }
 }
 
