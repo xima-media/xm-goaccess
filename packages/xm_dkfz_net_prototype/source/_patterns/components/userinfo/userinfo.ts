@@ -39,10 +39,29 @@ class Userinfo {
       this.modifyUserNav();
     });
 
+    this.bindEvents()
   }
 
-  protected modifyUserNav()
+  protected bindEvents() {
+    this.bindBookmarkLinks()
+  }
+
+  protected bindBookmarkLinks() {
+    document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
+      button.addEventListener('click', this.onBookmarkLinkClick.bind(this));
+    })
+  }
+
+  protected onBookmarkLinkClick(e: Event)
   {
+    e.preventDefault()
+    const button = e.currentTarget as Element;
+    const url = button.getAttribute('data-bookmark-url');
+    const method = button.classList.contains('button--primary') ? 'DELETE' : 'POST';
+    this.apiRequest(url, method).then(() => button.classList.toggle('button--primary'));
+  }
+
+  protected modifyUserNav() {
     const userLinkElement = document.querySelector('[data-user-profile-link]');
     if (!userLinkElement || !this.userinfo) {
       return;
@@ -83,8 +102,10 @@ class Userinfo {
     console.error('could not load user data', error)
   }
 
-  protected async apiRequest(url: string): Promise<Userinfo> {
-    return fetch(url)
+  protected async apiRequest(url: string, method: string = 'GET'): Promise<Userinfo> {
+    return fetch(url, {
+      method: method
+    })
       .then(response => {
         if (!response.ok) {
           this.handleRequestError(response)
