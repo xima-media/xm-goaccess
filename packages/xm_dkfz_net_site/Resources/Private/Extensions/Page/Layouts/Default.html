@@ -57,7 +57,9 @@
 								<f:render partial="Icon" arguments="{icon: 'bookmark'}"/>
 							</a>
 						</li>
-							<li class="navigation__item navigation__item--user" data-user-info="{f:uri.action(action: 'userinfo', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}" id="userinfoUri">
+						<li class="navigation__item navigation__item--user"
+							data-user-info="{f:uri.action(action: 'userinfo', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}"
+							id="userinfoUri">
 
 							<div class="dropdown">
 								<button class=" button button--icon-only button--white"
@@ -85,15 +87,19 @@
 									<!-- Components End: image -->
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
-										<li>
-											<a class="dropdown-item" href="#" data-user-profile-link>Mein Profil</a>
-										</li>
-										<li>
-											<a class="dropdown-item" href="#" data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}">Profil bearbeiten</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
+									<li>
+										<a class="dropdown-item" href="#" data-user-profile-link>Mein Profil</a>
+									</li>
+									<li>
+										<a class="dropdown-item"
+										   href="#"
+										   data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}">
+											Profil bearbeiten
+										</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
 									<li>
 										<f:link.page pageUid="{pidLogin}"
 													 class="dropdown-item"
@@ -222,11 +228,7 @@
 		<a class="lightbox__close" href="#" aria-hidden="true" title="Close">
 			<f:render partial="Icon" arguments="{icon: 'close'}" />
 		</a>
-		<div class="lightbox__wrap">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aspernatur dolor ex excepturi explicabo illo impedit molestias omnis, porro quod sequi sit ullam! Deserunt eius id odio omnis tempora?</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aspernatur dolor ex excepturi explicabo illo impedit molestias omnis, porro quod sequi sit ullam! Deserunt eius id odio omnis tempora?</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi aspernatur dolor ex excepturi explicabo illo impedit molestias omnis, porro quod sequi sit ullam! Deserunt eius id odio omnis tempora?</p>
-		</div>
+		<div class="lightbox__wrap"></div>
 		<div class="lightbox__loader">
 			<div class="loading"></div>
 		</div>
