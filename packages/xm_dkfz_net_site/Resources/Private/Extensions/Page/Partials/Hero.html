@@ -6,6 +6,92 @@
 		<button class="button button--primary icon icon--bookmark-add button--bookmark-add" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="{data.uid}">
 			<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark" />
 		</button>
+
+		<f:if condition="{data.description}">
+
+			<div class="hero-teaser {f:if(condition: '{files}', then: '', else: 'hero-teaser__no-image')}">
+				<f:if condition="{files}">
+					<div class="hero-teaser__image">
+						<span aria-hidden="true" class="picture__pattern pattern"></span>
+						<f:for each="{files}" as="file">
+							<figure>
+								<picture>
+									<source srcset="{f:uri.image(image:file, width:'1146', fileExtension: 'webp')}"
+											type="image/webp">
+									<source srcset="{f:uri.image(image:file, width:'1146', fileExtension: 'jpg')}"
+											type="image/jpeg">
+									<img src="{f:uri.image(image:file, width:'1146', fileExtension: 'jpg')}"
+										 alt="{file.originalResource.alternative}"
+										 class="picture__image image--responsive"
+										 loading="lazy"/>
+								</picture>
+
+								<figcaption class="picture__caption">
+									Bildunterschrift zum Bild – Bildformat fix, Bild ist optional
+								</figcaption>
+							</figure>
+						</f:for>
+					</div>
+				</f:if>
+
+				<div class="hero-teaser__contact">
+					<div class="contact ">
+						<h5 class="contact--title">Kontakt</h5>
+						<ul class="contact__items">
+							<li class="contact__item contact--subtitle">
+								Event-Vorstand
+							</li>
+							<li class="contact__item">
+								<svg class="icon icon--phone icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-phone')}"></use>
+								</svg>
+								<a class="contact__link" href="tel:+49 6221-42-2651">+49 6221-42-2651
+								</a>
+							</li>
+							<li class="contact__item">
+								<svg class="icon icon--phone icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-phone')}"></use>
+								</svg>
+								<a class="contact__link" href="tel:+49 6221-42-2651">+49 6221-42-2651
+								</a>
+							</li>
+							<li class="contact__item">
+								<svg class="icon icon--mail icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-mail')}"></use>
+								</svg>
+								<a class="contact__link" href="mailto:betriebsarzt@dkfz-heidelberg.de">betriebsarzt@dkfz-heidelberg.de</a>
+							</li>
+						</ul>
+						<div class="contact--person">
+							<h5 class="contact--subtitle">Ansprechpartner</h5>
+							<div class="contact--person-container">
+								<div class="card card--image-size-xxs">
+									<div class="card__image">
+										<figure class="picture" data-color="transparent" data-pattern-color="transparent">
+											<div class="picture__item image-color--transparent">
+												<img class="image--responsive" src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+													 alt="Mitarbeiterbild"/>
+											</div>
+										</figure>
+									</div>
+								</div>
+								<div class="contact--information">
+									<a href="https://dkfz-intranet.xima-web.de/?p=pages-employee-profile">Fuchs, Andreas</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="hero-teaser__text">
+					<h2 class="h6 text-copy-small"><f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.lastEdit" />: {f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'d.
+						F o\')}', else:'{data.SYS_LASTCHANGED->f:format.date(format:\'d. F o\')}')}</h2>
+					<f:if condition="{data.description}">
+						<p class="text-intro">{data.description}</p>
+					</f:if>
+				</div>
+			</div>
+		</f:if>
 	</div>
 
 </f:if>

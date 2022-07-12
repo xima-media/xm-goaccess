@@ -3,7 +3,7 @@
     {% include '@components/breadcrumb/breadcrumb.twig' %}
 
     {# hero #}
-    {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst'} %}
+    {% embed '@components/hero/hero.twig' with { title: 'Betriebsärztlicher Dienst', image: '../../../Images/examples/big.png', teaser: 'true'} %}
         {% block content %}
             <button class="button button--primary icon icon--bookmark-add button--bookmark-add" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="2">
                 Seite merken
@@ -14,63 +14,6 @@
     {% include '@components/navigation/navigation--anchor.twig' %}
 
 <div class="layout {{ prototype.layout.class }}">
-
-
-    {% embed '@components/content-wrapper/content-wrapper.twig' with {
-        class: 'frame-type-heroteaser',
-    } %}
-        {% block content %}
-            {% include '@components/teaser/teaser.twig' with {
-                asHeader: true,
-                image: {
-                    src: prototype.pictureHead.image.src,
-                    alt: prototype.pictureHead.image.alt,
-                    copyright: prototype.pictureHead.image.copyright,
-                    caption: prototype.pictureHead.image.caption,
-                    patternColor: prototype.pictureHead.image.patternColor,
-                },
-                contact: {
-                    title: prototype.pictureHead.contact.title,
-                    subTitle: prototype.pictureHead.contact.subTitle,
-                    items: prototype.pictureHead.contact.items,
-                    subTitleImage: prototype.pictureHead.contact.subTitleImage,
-                    patternColor: prototype.pictureHead.image.patternColor,
-                    link: {
-                        url: prototype.pictureHead.contact.link.url,
-                        text: prototype.pictureHead.contact.link.text
-                    },
-                    image: {
-                        src: prototype.pictureHead.contact.image.src,
-                        alt: prototype.pictureHead.contact.image.alt,
-                    }
-                }
-            } only %}
-        {% endblock content %}
-    {% endembed %}
-
-    {% embed '@components/content-wrapper/content-wrapper.twig' with {
-    } %}
-        {% block content %}
-            {% include '@components/teaser/teaser.twig' with {
-                asHeader: true,
-                contact: {
-                    title: prototype.pictureHead.contact.title,
-                    subTitle: prototype.pictureHead.contact.subTitle,
-                    items: prototype.pictureHead.contact.items,
-                    subTitleImage: prototype.pictureHead.contact.subTitleImage,
-                    patternColor: prototype.pictureHead.image.patternColor,
-                    link: {
-                        url: prototype.pictureHead.contact.link.url,
-                        text: prototype.pictureHead.contact.link.text
-                    },
-                    image: {
-                        src: prototype.pictureHead.contact.image.src,
-                        alt: prototype.pictureHead.contact.image.alt,
-                    }
-                }
-            } only %}
-        {% endblock content %}
-    {% endembed %}
 
     {% for info in prototype.infoBox %}
         {% embed '@components/content-wrapper/content-wrapper.twig' with {

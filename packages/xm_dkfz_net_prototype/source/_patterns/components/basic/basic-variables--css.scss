@@ -69,6 +69,8 @@
     --space-doubled: calc(2 * var(--space-unit));
 
     --dimension-default: calc(1.25 * var(--space-unit));
+    --default-overflow-margin-negative:  calc(-7.188 * var(--space-unit));
+    --default-overflow-margin:  calc(7.188 * var(--space-unit));
 
 }
 
