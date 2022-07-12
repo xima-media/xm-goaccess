@@ -9,6 +9,74 @@
         <p class="hero__info">{{ info }}</p>
     {% endif %}
     {% block content %}{% endblock content %}
+    {% if teaser %}
+    <div class="hero-teaser {{ image ? '' : 'hero-teaser__no-image' }}">
+        {% if image %}
+        <div class="hero-teaser__image">
+            <span aria-hidden="true" class="picture__pattern pattern"></span>
+            <figure>
+                <picture>
+                    <img src="{{ image }}"
+                         class="picture__image image--responsive"
+                         loading="lazy"/>
+                </picture>
+
+                <figcaption class="picture__caption">
+                    Bildunterschrift zum Bild – Bildformat fix, Bild ist optional
+                </figcaption>
+            </figure>
+        </div>
+        {% endif %}
+
+        <div class="hero-teaser__contact">
+            <div class="contact ">
+                <h5 class="contact--title">Kontakt</h5>
+                <ul class="contact__items">
+                    <li class="contact__item contact--subtitle">
+                        Event-Vorstand
+                    </li>
+                    <li class="contact__item">
+                        {% include '@components/icon/icon.twig' with {icon: 'phone'} %}
+                        <a class="contact__link" href="tel:+49 6221-42-2651">+49 6221-42-2651
+                        </a>
+                    </li>
+                    <li class="contact__item">
+                        {% include '@components/icon/icon.twig' with {icon: 'phone'} %}
+                        <a class="contact__link" href="tel:+49 6221-42-2651">+49 6221-42-2651
+                        </a>
+                    </li>
+                    <li class="contact__item">
+                        {% include '@components/icon/icon.twig' with {icon: 'mail'} %}
+                        <a class="contact__link" href="mailto:betriebsarzt@dkfz-heidelberg.de">betriebsarzt@dkfz-heidelberg.de</a>
+                    </li>
+                </ul>
+                <div class="contact--person">
+                    <h5 class="contact--subtitle">Ansprechpartner</h5>
+                    <div class="contact--person-container">
+                        <div class="card card--image-size-xxs">
+                            <div class="card__image">
+                                <figure class="picture" data-color="transparent" data-pattern-color="transparent">
+                                    <div class="picture__item image-color--transparent">
+                                        <img class="image--responsive" src="../../../Images/examples/user.jpg"
+                                             alt="Mitarbeiterbild"/>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="contact--information">
+                            <a href="https://dkfz-intranet.xima-web.de/?p=pages-employee-profile">Fuchs, Andreas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-teaser__text">
+            <h2 class="h6 text-copy-small">Zuletzt geändert: 02. Juli 2022</h2>
+            <p class="text-intro">Praesent ut ligula non mi varius sagittis. Ut non enim eleifend felis pretium feugiat. Maecenas egestas arcu quis ligula mattis placerat. Vivamus quis mi. Aenean imperdiet. Cras risus ipsum, faucibus ut, ullamcorper id, varius ac, leo. Pellentesque ut neque. Nam adipiscing. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. Fusce neque.</p>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 <!-- Components End: hero -->

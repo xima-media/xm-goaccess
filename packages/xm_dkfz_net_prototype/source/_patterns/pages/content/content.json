@@ -62,6 +62,7 @@
         },
         "infoBox": [
             {
+				"segmentTitle": "Infoboxes",
                 "color": "magenta",
                 "title": "Der Begriff „Webinar“ darf nicht mehr verwendet werden",
                 "text": "Wir bitten Sie, Formulierungen wie „Online-Seminar“ / „Online-Kurs“ / „Digital Meeting“ etc. zu nutzen. Der Begriff „Webinar“ ist seit 2003 beim Marken- und Patentamt als Wortmarke eingetragen. Der Markenschutz dieses Begriffs gilt bis März 2023. Bei Verwendung des Begriffs ohne Zustimmung des Markeninhabers droht eine kostenpflichtige Abmahnung. Aus Gründen der Rechtssicherheit sollte vorerst auf diesen Begriff verzichtet werden."
@@ -124,11 +125,11 @@
             }
         ],
         "pictureText": {
-            "title": "Bild-Text-Elemente",
-            "titleSize": "h3",
-            "positionDistance": "left",
             "items": [
                 {
+					"segmentTitle": "Bild-Text-Elemente",
+					"titleSize": "h3",
+					"positionDistance": "left",
                     "image": {
                         "src": "../../../Images/examples/horizontal-3to2.png",
                         "alt": "Picture title",
@@ -268,6 +269,7 @@
                     "copyright": "copyright",
                     "caption": "Maximale Bildgröße (440 x 440px)"
                 },
+				"segmentTitle": "Bildgrößen",
                 "type": "picture-text",
                 "imagePosition": "left",
                 "title": "Maximale Bildgröße",
@@ -371,19 +373,50 @@
                 }
             ]
         },
-        "pictureHead": [
-            {
-                "image": {
-                    "src": "../../../Images/examples/big.png",
-                    "alt": "Picture title",
-                    "patternColor": "primary",
-                    "size": "xl",
-                    "orientation": "square",
-                    "copyright": "Uwe Anspach",
-                    "caption": "Bildunterschrift zum Bild – Bildformat fix, Bild ist optional"
-                }
-            }
-        ],
+        "pictureHead":
+		{
+			"image": {
+				"src": "../../../Images/examples/big.png",
+				"alt": "Picture title",
+				"patternColor": "primary",
+				"size": "xl",
+				"orientation": "square",
+				"copyright": "Uwe Anspach",
+				"caption": "Bildunterschrift zum Bild – Bildformat fix, Bild ist optional"
+			},
+			"contact": {
+				"background": "primary-opacity-10",
+				"title": "Kontakt",
+				"subTitle": "Event-Vorstand",
+				"items": [
+					{
+						"type": "phone",
+						"url": "+49 6221-42-2651",
+						"text": "+49 6221-42-2651"
+					},
+					{
+						"type": "phone",
+						"url": "+49 6221-42-2651",
+						"text": "+49 6221-42-2651"
+					},
+					{
+						"type": "mail",
+						"url": "betriebsarzt@dkfz-heidelberg.de",
+						"text": "betriebsarzt@dkfz-heidelberg.de"
+					}
+				],
+				"subTitleImage": "Ansprechpartner",
+				"link": {
+					"url": "https://dkfz-intranet.xima-web.de/?p=pages-employee-profile",
+					"text": "Fuchs, Andreas"
+				},
+				"image": {
+					"src": "../../../Images/examples/user.jpg",
+					"color": "orange",
+					"size": "xxs"
+				}
+			}
+		},
         "contacts": [
             {
                 "background": "primary-opacity-10",

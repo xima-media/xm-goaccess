@@ -1,6 +1,6 @@
 <!-- Component Start: content-wrapper -->
 
-<div class="content-wrapper {{ pattern.visible ? 'content-wrapper--title-with-pattern' : '' }}  {{ headerSize ? 'content-wrapper--' ~ headerSize : '' }}">
+<div class="{{ class }} content-wrapper layout__item {{ pattern.visible ? 'content-wrapper--title-with-pattern' : '' }}  {{ size ? 'content-wrapper--' ~ size : '' }}">
     {% if title %}
         <div class="content-wrapper__header">
             <h2 class="content-wrapper__title-{{ positionDistance }} {{ titleSize|default('h4') }}">{{ title }}</h2>

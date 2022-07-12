@@ -8,6 +8,7 @@
     {{ color ? 'image-color--' ~ color : '' }} {# @todo image-color umbennen, da es wie hier auch für Cards verwendet wird #}
     {{ ratio ? 'card--ratio-' ~ ratio : '' }} {# @todo wieder entfernen > wird über card-Klasse geregelt #}
     {{ type ? 'card--' ~ type : '' }}
+    {{ asHeader ? 'card__intro' : '' }}
 ">
     {% if link.href and not link.text %}
         <a href="{{ link.href }}" class="card__link card__link--hidden" aria-label="{{ title }}">
@@ -55,22 +56,44 @@
         </div>
     {% endif %}
     {% if contact %}
-        <ul class="card__contact">
-            {% for item in contact %}
-                <li class="card__item">
-                    {% if item.icon %}
-                        {% include '@components/icon/icon.twig' with {icon: item.icon, size: 'sm'} %}
-                    {% endif %}
-                    {% if item.url %}
-                        <a href="{{ item.url }}">
+        {% if contact.card %}
+            <div class="card__contact">
+                {% include '@components/contact/contact.twig' with {
+                    background: contact.background,
+                    title: contact.title,
+                    subTitle: contact.subTitle,
+                    items: contact.items,
+                    subTitleImage: contact.subTitleImage,
+                    link: {
+                        url: contact.link.url,
+                        text: contact.link.text
+                    },
+                    image: {
+                        src: contact.image.src,
+                        alt: contact.image.alt,
+                        size: contact.image.size,
+                        color: contact.image.color
+                    }
+                } only %}
+            </div>
+        {% else %}
+            <ul class="card__contact">
+                {% for item in contact %}
+                    <li class="card__item">
+                        {% if item.icon %}
+                            {% include '@components/icon/icon.twig' with {icon: item.icon, size: 'sm'} %}
+                        {% endif %}
+                        {% if item.url %}
+                            <a href="{{ item.url }}">
+                                {{ item.text }}
+                            </a>
+                        {% else %}
                             {{ item.text }}
-                        </a>
-                    {% else %}
-                        {{ item.text }}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     {% endif %}
     {% if tags %}
         <div class="card__footer">

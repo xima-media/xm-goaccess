@@ -12,7 +12,7 @@
     position: relative;
     max-width: $container-default-widths + 2rem;
     //margin: auto;
-    margin-bottom: 3.5rem;
+    transform-style: preserve-3d;
 
     &--background {
         &-white {
@@ -30,7 +30,7 @@
         bottom: 0;
         right: 0;
         left: -1rem;
-        z-index: -1;
+        transform: translateZ(-1px);
         height: 100%;
         background-image: var(--pattern-url);
     }

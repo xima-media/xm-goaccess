@@ -173,6 +173,8 @@
     font-family: var(--font-family-sans-serif);
     font-size: 18px;
     line-height: 30px;
+    max-width: 60.625rem;
+    margin: auto;
 
     @if $font-weight {
         font-weight: $font-weight;
@@ -367,6 +369,16 @@
     @supports (backdrop-filter: none) {
         background-color: rgba($background-color, $alpha);
         backdrop-filter: blur(20px); // @todo variable
+    }
+}
+
+// Pattern
+
+@mixin pattern($position) {
+    @if $position == left {
+        left: -1rem;
+        right: 2.5rem;
+        bottom: 2.5rem;
     }
 }
 

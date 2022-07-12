@@ -9,6 +9,11 @@
 //
 
 .content-wrapper {
+
+    &:not(:first-of-type) {
+        margin-top: var(--space-xxl);
+    }
+
     &__header {
         position: relative;
         display: flex;
@@ -141,7 +146,6 @@
                 .--content {
                     max-width: $container-md-widths;
                     margin-left: auto;
-                    margin-bottom: 4rem;
                 }
             }
 
@@ -207,7 +211,6 @@
                 .--content {
                     max-width: $container-md-widths;
                     margin-right: auto;
-                    margin-bottom: 4rem;
                 }
             }
         }
@@ -254,11 +257,51 @@
             }
         }
     }
+
+    &.frame-type-textmedia {
+        +.frame-type-textmedia {
+            margin-top: var(--space-xl);
+            margin-bottom: 0;
+        }
+    }
+
+    &.frame-type-infobox {
+        +.frame-type-infobox {
+            margin-top: var(--space-lg);
+            margin-bottom: 0;
+        }
+    }
+
+    &.frame-type-heroteaser {
+        margin-bottom: var(--space-md);
+    }
 }
 
 .head-area {
     &--picture {
         position: relative;
+    }
+}
+
+.main--default {
+    .frame-type-heroteaser {
+       width: 1200px;
+        max-width: 1200px;
+    }
+
+    .frame-type-textmedia {
+        width: 1200px;
+        max-width: 1200px;
+    }
+
+    .frame-type-accordion {
+        width: 1200px;
+        max-width: 1200px;
+    }
+
+    .frame-type-table {
+        width: 1200px;
+        max-width: 1200px;
     }
 }
 // end of content-wrapper.scss file
