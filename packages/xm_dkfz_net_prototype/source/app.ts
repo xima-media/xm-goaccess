@@ -194,9 +194,6 @@ import './_patterns/components/bookmarks/bookmarks'
 /** @section 2.43 Employee info */
 import './_patterns/components/employee/employee-info'
 
-/** @section 2.44 Teaser */
-import './_patterns/components/teaser/teaser'
-
 /** @section 2.43 Userinfo */
 import './_patterns/components/userinfo/userinfo'
 
