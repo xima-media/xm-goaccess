@@ -23,6 +23,20 @@
     border-radius: 2rem;
     border: 2px solid transparent;
 
+    span[data-checked] {
+        display: none;
+    }
+
+    &.js--checked {
+        span[data-checked] {
+            display: inline;
+        }
+
+        span[data-onload] {
+            display: none;
+        }
+    }
+
     &.fx--focus,
     &:focus {
         border-color: var(--color-cyan);

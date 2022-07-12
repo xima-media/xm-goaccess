@@ -58,7 +58,10 @@ class Userinfo {
     const button = e.currentTarget as Element;
     const url = button.getAttribute('data-bookmark-url');
     const method = button.classList.contains('button--primary') ? 'DELETE' : 'POST';
-    this.apiRequest(url, method).then(() => button.classList.toggle('button--primary'));
+    this.apiRequest(url, method).then(() => {
+      button.classList.toggle('fx--hover')
+      button.classList.toggle('js--checked')
+    });
   }
 
   protected modifyUserNav() {
