@@ -19,6 +19,99 @@
 }
 
 
+.frame-type-textmedia {
+    .picture__pattern {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        max-height: 80%;
+    }
+
+    figure {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        margin: 2rem;
+    }
+
+    &.image-orient {
+        // Above, center
+        &--0 {
+            .content-wrapper__content-image {
+                display: grid;
+                margin: 0 -115px;
+                max-height: fit-content;
+                height: fit-content;
+            }
+        }
+
+        // In text, right
+        &--17 {
+            .content-wrapper__content-image {
+                display: grid;
+                max-width: 400px;
+                float: right;
+                margin: 0 -115px 0 4rem;
+                max-height: fit-content;
+                height: fit-content;
+            }
+        }
+
+        // In text, left
+        &--18 {
+            .content-wrapper__content-image {
+                display: grid;
+                max-width: 400px;
+                float: left;
+                margin: 0 4rem 0 -115px;
+                max-height: fit-content;
+                height: fit-content;
+            }
+        }
+
+        // Beside text, right
+        &--25 {
+            .content-wrapper__content {
+                display: flex;
+                flex-direction: row;
+                gap: 47px;
+            }
+
+            .content-wrapper__content-image {
+                display: grid;
+                margin-right: -115px;
+                max-height: fit-content;
+                height: fit-content;
+                flex: 1;
+            }
+
+            .content-wrapper__content-text {
+                flex: 1;
+            }
+        }
+
+        // Beside text, left
+        &--26 {
+            .content-wrapper__content {
+                display: flex;
+                flex-direction: row;
+                gap: 47px;
+            }
+
+            .content-wrapper__content-image {
+                display: grid;
+                margin-left: -115px;
+                max-height: fit-content;
+                height: fit-content;
+                flex: 1;
+            }
+
+            .content-wrapper__content-text {
+                flex: 1;
+            }
+        }
+    }
+}
+
+
 //
 //   @section 2. Picture defaults
 //

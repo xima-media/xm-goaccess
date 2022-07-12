@@ -1,59 +1,26 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
-<f:section name="Header">
-        <f:render partial="Header/All" arguments="{_all}" />
-</f:section>
-<f:section name="Main">
-	<f:variable name="position" value="left" />
-	<f:if condition="{data.imageorient} == 17 || {data.imageorient} == 25">
-		<f:variable name="position" value="right" />
-	</f:if>
-	<f:if condition="{data.imageorient} == 0">
-		<f:variable name="position" value="top" />
-	</f:if>
-	<f:switch expression="{data.imageorient}">
-		<f:case value="0">
-			<f:render section="imageBesideText" arguments="{files: files, data: data, position: position}" />
-		</f:case>
-		<f:case value="17">
-			<f:render section="imageInText" arguments="{files: files, data: data, position: position}" />
-		</f:case>
-		<f:case value="18">
-			<f:render section="imageInText" arguments="{files: files, data: data, position: position}" />
-		</f:case>
-		<f:case value="25">
-			<f:render section="imageBesideText" arguments="{files: files, data: data, position: position}" />
-		</f:case>
-		<f:case value="26">
-			<f:render section="imageBesideText" arguments="{files: files, data: data, position: position}" />
-		</f:case>
-	</f:switch>
-
-
-</f:section>
-</html>
-
-<f:section name="imageInText">
-	<div class="content-wrapper__picture">
-		<div
-			class="content-wrapper__picture-position-{position}">
-			<f:render partial="Image"
-					  arguments="{image: files.0, position: position, patternColor: data.color, type: 'picture-text'}" />
-			<div class="content-wrapper__picture --content">
-				<f:format.html>{data.bodytext}</f:format.html>
-			</div>
+	<f:layout name="Default" />
+	<f:section name="Main">
+		<div class="content-wrapper__content-image">
+			<f:for each="{files}" as="file">
+				<span aria-hidden="true" class="picture__pattern pattern"></span>
+				<figure>
+					<picture>
+						<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'webp')}"
+								type="image/webp">
+						<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
+								type="image/jpeg">
+						<img src="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
+							 alt="{file.originalResource.alternative}"
+							 class="picture__image image--responsive"
+							 loading="lazy"/>
+					</picture>
+				</figure>
+			</f:for>
 		</div>
-	</div>
-</f:section>
 
-<f:section name="imageBesideText">
-	<f:variable name="size" value="md" />
-	<f:variable name="type" value="picture-text" />
-	<f:if condition="{data.imageorient} == 0">
-		<f:variable name="size" value="lg" />
-		<f:variable name="type" value="" />
-	</f:if>
-	<f:render partial="Card"
-			  arguments="{title: data.header, imagePosition: position, size: size, patternColor: data.color,
-			  type: type, image: files.0, bodytext: data.bodytext}"/>
-</f:section>
+		<div class="content-wrapper__content-text">
+			<f:format.html>{data.bodytext}</f:format.html>
+		</div>
+	</f:section>
+</html>
