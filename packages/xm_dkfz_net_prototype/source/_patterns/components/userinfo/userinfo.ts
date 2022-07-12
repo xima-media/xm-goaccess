@@ -36,7 +36,8 @@ class Userinfo {
     }
 
     this.loadUserinfo().then(r => {
-      this.modifyUserNav();
+      this.modifyUserNav()
+      this.modifyBookmarkLinks()
     });
 
     this.bindEvents()
@@ -70,6 +71,24 @@ class Userinfo {
       return;
     }
     userLinkElement.setAttribute('href', this.userinfo.user.url)
+  }
+
+  protected modifyBookmarkLinks()
+  {
+    document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
+      const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)');
+      if (urlParts.length !== 3) {
+        return
+      }
+      if (!(urlParts[1] in this.userinfo.bookmarks)) {
+        return
+      }
+      // @ts-ignore
+      if (!(urlParts[2] in this.userinfo.bookmarks[urlParts[1]])) {
+        return
+      }
+      button.classList.add('fx--hover', 'js--checked')
+    })
   }
 
   protected async loadUserinfo() {
