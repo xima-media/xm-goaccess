@@ -4,7 +4,7 @@ class Lightbox {
 
   protected box: Element;
 
-  protected content: Element;
+  public content: Element;
 
   protected closeButton: Element;
 

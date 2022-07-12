@@ -126,10 +126,15 @@ export default {
   },
 
 
-  apiRequest: async function (url: string, method: string = 'GET'): Promise<any> {
-    return fetch(url, {
-      method: method
-    })
+  apiRequest: async function (url: string, method: string = 'GET', form: HTMLFormElement = null): Promise<any> {
+
+    let initConf = Object({ method: method});
+
+    if (form) {
+      initConf['body'] = new FormData(form);
+    }
+
+    return fetch(url, initConf)
       .then(response => {
         if (!response.ok) {
           this.handleRequestError(response)

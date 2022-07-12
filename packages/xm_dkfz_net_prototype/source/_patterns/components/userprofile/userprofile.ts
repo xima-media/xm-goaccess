@@ -3,17 +3,10 @@ import './userprofile.scss'
 
 class Userprofile {
 
-  protected lightbox: Element;
-
   constructor() {
     app.log('component "userinfo" loaded')
 
-    this.cacheDom()
     this.bindEvents()
-}
-
-  protected cacheDom() {
-    this.lightbox = document.querySelector('.lightbox')
   }
 
   protected bindEvents() {
@@ -35,8 +28,8 @@ class Userprofile {
     app.lightbox.open()
 
     this.loadUserEditForm(url).then((formHtml) => {
-      this.bindUserEditFormEvents()
       app.lightbox.displayContent(formHtml)
+      this.bindUserEditFormEvents()
       app.lightbox.stopLoading()
     })
   }
@@ -48,6 +41,24 @@ class Userprofile {
   }
 
   protected bindUserEditFormEvents() {
+    const form = app.lightbox.content.querySelector('form')
+    form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
+  }
+
+  protected onUserEditFormSubmit(e: Event) {
+    e.preventDefault()
+
+    const form = e.currentTarget as HTMLFormElement
+    const url = form.getAttribute('action')
+
+    app.lightbox.startLoading()
+    app.apiRequest(url, 'POST', form)
+      .then(data => {
+        app.lightbox.displayContent(data.html)
+        this.bindUserEditFormEvents()
+        app.lightbox.stopLoading()
+      })
+      .catch(e => app.handleRequestError.bind(this))
   }
 
 
