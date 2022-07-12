@@ -125,6 +125,26 @@ export default {
     }).observe(checkEl)
   },
 
+
+  apiRequest: async function (url: string, method: string = 'GET'): Promise<any> {
+    return fetch(url, {
+      method: method
+    })
+      .then(response => {
+        if (!response.ok) {
+          this.handleRequestError(response)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        this.handleRequestError(error)
+      })
+  },
+
+  handleRequestError: function (error: any) {
+    console.error('could not load data', error)
+  }
+
 }
 
 // end of basic.js
