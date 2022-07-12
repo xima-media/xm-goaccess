@@ -57,7 +57,7 @@ class Userinfo {
     e.preventDefault()
     const button = e.currentTarget as Element;
     const url = button.getAttribute('data-bookmark-url');
-    const method = button.classList.contains('button--primary') ? 'DELETE' : 'POST';
+    const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST';
     this.apiRequest(url, method).then(() => {
       button.classList.toggle('fx--hover')
       button.classList.toggle('js--checked')
