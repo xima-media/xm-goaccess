@@ -22,6 +22,7 @@
             display: flex;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--color-gray-100);
+            margin-top: 55px;
         }
 
         &--subtitle {
@@ -32,6 +33,12 @@
     &__item {
         padding-left: 0;
         list-style-type: none;
+    }
+
+    &-collapse {
+        background: var(--color-gray-100);
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
     }
 
     &-button {
@@ -63,7 +70,8 @@
     &-body {
         position: relative;
         padding: var(--space-doubled) 0;
-        background: var(--color-gray-100);
+        max-width: $container-md-widths;
+        margin: auto;
 
         // infobox in accordion
         .infobox {
@@ -136,6 +144,14 @@
                 }
             }
         }
+    }
+}
+
+.frame-type-container-accordion {
+    width: 100%;
+    max-width: 100%;
+    +.frame-type-container-accordion {
+        margin-top: 0;
     }
 }
 
