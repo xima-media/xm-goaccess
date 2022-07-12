@@ -201,6 +201,9 @@ import './_patterns/components/userinfo/userinfo'
 /** @section 2.44 Userprofile */
 import './_patterns/components/userprofile/userprofile'
 
+/** @section 2.45 Lightbox */
+import './_patterns/components/lightbox/lightbox'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

@@ -14,6 +14,7 @@
 
 // import css dependencies
 import './basic.scss'
+import Lightbox from "../lightbox/lightbox";
 
 /**
  *     @section 2. Class
@@ -35,6 +36,7 @@ export default {
     primary: getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
     secondary: getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')
   },
+  lightbox: new Lightbox(),
 
   /**
    * get hex from emoji

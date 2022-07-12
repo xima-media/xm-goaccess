@@ -1,0 +1,74 @@
+body.open-lightbox {
+    overflow-x: hidden;
+
+    .lightbox {
+        display: grid;
+    }
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    width: calc(100vw);
+    height: calc(100vh);
+    background-color: rgba(#000, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-sm);
+    overflow-x: scroll;
+    align-items: flex-start;
+
+    &--loading {
+        .lightbox__loader {
+            display: flex;
+        }
+    }
+
+    &__content {
+        background: #FFF;
+        max-width: calc(100vw - var(--space-lg));
+        padding: var(--space-lg);
+        display: grid;
+
+        @include media-breakpoint-up(md) {
+            max-width: calc(800px - var(--space-lg));
+        }
+    }
+
+    &__wrap {
+        width: calc(800px - 3 * var(--space-lg));
+        transition: all 0.3s ease;
+
+        &:empty {
+            max-width: none;
+            width: 300px;
+        }
+    }
+
+    &__close, &__wrap, &__loader {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    &__close {
+        justify-self: right;
+        width: var(--space-lg);
+        height: var(--space-lg);
+        position: relative;
+        top: calc(-0.95 * var(--space-lg));
+        right: calc(-0.9 * var(--space-lg));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__loader {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(#FFF, 0.75);
+    }
+
+}
