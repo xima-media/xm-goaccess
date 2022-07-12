@@ -162,8 +162,8 @@
 
     .card {
         &__image {
-            flex: 0 0 16rem; // @todo variable
-            width: 16rem; // @todo variable
+            flex: 0 0 var(--space-16);
+            width: var(--space-16);
         }
     }
 }
@@ -181,8 +181,8 @@
     .card {
         &__image {
             order: 1;
-            flex: 0 0 16rem; // @todo variable
-            width: 16rem; // @todo variable
+            flex: 0 0 var(--space-16);
+            width: var(--space-16);
         }
     }
 }
@@ -209,8 +209,8 @@
         &::after {
             content: '';
             position: absolute;
-            bottom: -.5rem; // @todo variable
-            left: -.5rem; // @todo variable
+            bottom: var(--space-xs-negative);
+            left: var(--space-xs-negative);
             z-index: -1;
             width: calc(50% + .5rem); // @todo variable
             aspect-ratio: 1;

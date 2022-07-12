@@ -16,8 +16,8 @@
     flex-wrap: wrap;
 
     &__wrapper {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: var(--space-unit);
+        margin-bottom: var(--space-unit);
     }
 
     li {
@@ -26,7 +26,7 @@
         list-style: none;
 
         &:not(:last-child) {
-            padding-right: .625rem;
+            padding-right: calc(.625 * var(--space-unit));
         }
 
         &:last-child {
@@ -36,7 +36,7 @@
         .icon {
             width: 7px;
             height: 7px;
-            margin-left: .625rem;
+            margin-left: calc(.625 * var(--space-unit));
         }
 
         .breadcrumb__link {
@@ -53,7 +53,7 @@
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        padding-left: 1rem;
+        padding-left: var(--space-unit);;
         color: var(--color-gray-500);
 
         @include  text-copy-x-small()

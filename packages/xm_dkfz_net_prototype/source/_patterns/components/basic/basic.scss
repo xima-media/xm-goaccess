@@ -27,20 +27,12 @@ body {
     }
 }
 
-.app {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
-    max-width: $container-expand-widths + 1rem;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding-right: .5rem;
-    padding-left: .5rem;
-}
-
 // @todo eventuell auslagern
 .main {
+
+    max-width: 970px;
+    margin: auto;
+
     &--default {
         max-width: $container-default-widths;
         margin: auto;
@@ -48,24 +40,6 @@ body {
         &__center {
             display: flex;
             justify-content: center;
-        }
-    }
-
-    &--expanded {
-        max-width: $container-default-widths;
-        margin: auto;
-
-        .layout {
-            &::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: -31.875rem;
-                bottom: 0;
-                left: -11.875rem;
-                z-index: -1;
-                background-color: inherit;
-            }
         }
     }
 

@@ -54,16 +54,21 @@
     --font-family-sans-serif: #{$font-family-sans-serif};
 
     //
-    //  @section 4. Spacing
+    //  @section 4. Spacing / Dimensions
 
     --space-unit: 1rem;
     --space-xxs:  calc(0.25 * var(--space-unit));
     --space-xs:   calc(0.5 * var(--space-unit));
+    --space-xs-negative:  calc(-0.5 * var(--space-unit));
     --space-sm:   calc(0.75 * var(--space-unit));
     --space-md:   calc(1.5625 * var(--space-unit));
     --space-lg:   calc(3.5 * var(--space-unit));
     --space-xl:   calc(4 * var(--space-unit));
     --space-xxl:  calc(5 * var(--space-unit));
+    --space-16: calc(16 * var(--space-unit));
+    --space-doubled: calc(2 * var(--space-unit));
+
+    --dimension-default: calc(1.25 * var(--space-unit));
 
 }
 
