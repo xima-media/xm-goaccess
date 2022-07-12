@@ -2,52 +2,54 @@
 
 namespace Blueways\BwGuild\Controller;
 
+use Blueways\BwGuild\Domain\Model\Dto\UserDemand;
 use Blueways\BwGuild\Domain\Model\User;
-use Blueways\BwGuild\Property\TypeConverter\UploadedFileReferenceConverter;
+use Blueways\BwGuild\Domain\Repository\CategoryRepository;
+use Blueways\BwGuild\Domain\Repository\UserRepository;
 use Blueways\BwGuild\Service\AccessControlService;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
+use TYPO3\CMS\Core\Exception\Page\PageNotFoundException;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
+use TYPO3\CMS\Core\Page\AssetCollector;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
-use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Frontend\Page\PageAccessFailureReasons;
-use TYPO3\CMS\Lang\LanguageService;
 
 /**
  * Class UserController
- *
- * @package Blueways\BwGuild\Controller
  */
 class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+    protected UserRepository $userRepository;
 
-    /**
-     * @var \Blueways\BwGuild\Domain\Repository\UserRepository
-     */
-    protected $userRepository;
+    protected CategoryRepository $categoryRepository;
 
-    /**
-     * @var \Blueways\BwGuild\Domain\Repository\CategoryRepository
-     */
-    protected $categoryRepository;
+    protected AccessControlService $accessControlService;
 
-    /**
-     * @var \Blueways\BwGuild\Service\AccessControlService
-     */
-    protected $accessControlService;
+    public function __construct(
+        UserRepository $userRepository,
+        CategoryRepository $categoryRepository,
+        AccessControlService $accessControlService
+    ) {
+        $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->accessControlService = $accessControlService;
+    }
 
     public function initializeAction(): void
     {
         parent::initializeAction();
 
-        $this->accessControlService = GeneralUtility::makeInstance(AccessControlService::class);
         $this->mergeTyposcriptSettings();
     }
 
@@ -56,13 +58,23 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     private function mergeTyposcriptSettings(): void
     {
-        $configurationManager = $this->objectManager->get(ConfigurationManager::class);
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         try {
-            $typoscript = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-            ArrayUtility::mergeRecursiveWithOverrule($typoscript['plugin.']['tx_bwguild_userlist.']['settings.'],
-                $typoscript['plugin.']['tx_bwguild.']['settings.'], true, false, false);
-            ArrayUtility::mergeRecursiveWithOverrule($typoscript['plugin.']['tx_bwguild_userlist.']['settings.'],
-                $this->settings, true, false, false);
+            $typoscript = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+            ArrayUtility::mergeRecursiveWithOverrule(
+                $typoscript['plugin.']['tx_bwguild_userlist.']['settings.'],
+                $typoscript['plugin.']['tx_bwguild.']['settings.'],
+                true,
+                false,
+                false
+            );
+            ArrayUtility::mergeRecursiveWithOverrule(
+                $typoscript['plugin.']['tx_bwguild_userlist.']['settings.'],
+                $this->settings,
+                true,
+                false,
+                false
+            );
             $this->settings = $typoscript['plugin.']['tx_bwguild_userlist.']['settings.'];
         } catch (\TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException $exception) {
         }
@@ -70,29 +82,29 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
      */
-    public function listAction(): void
+    public function listAction(): ResponseInterface
     {
-        $demand = $this->userRepository->createDemandObjectFromSettings($this->settings);
+        $demand = UserDemand::createFromSettings($this->settings);
 
         // override filter from form
         if ($this->request->hasArgument('demand')) {
-            $demand->overrideDemand($this->request->getArgument('demand'));
+            $demand->overrideFromRequest($this->request);
         }
 
         // redirect to search action to display another view
         if ($this->settings['mode'] === 'search') {
-            $this->forward('search');
+            return new ForwardResponse('search');
         }
 
         // find user by demand
         $users = $this->userRepository->findDemanded($demand);
 
-        // create pagnation
+        // create pagination
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+        $currentPage = $currentPage > 0 ? $currentPage : 1;
         $itemsPerPage = (int)$this->settings['itemsPerPage'];
         $paginator = new ArrayPaginator($users, $currentPage, $itemsPerPage);
         $pagination = new SimplePagination($paginator);
@@ -107,7 +119,7 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $categories = $this->categoryRepository->findAll();
         }
 
-        // disbale indexing of list view
+        // disable indexing of list view
         $metaTagManager = GeneralUtility::makeInstance(MetaTagManagerRegistry::class);
         $metaTagManager->getManagerForProperty('robots')->addProperty('robots', 'noindex, follow');
 
@@ -119,20 +131,24 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             'paginator' => $paginator,
             'pagination' => $pagination,
         ]);
+
+        return $this->htmlResponse($this->view->render());
     }
 
-    public function searchAction(): void
+    public function searchAction(): ResponseInterface
     {
-        $demand = $this->userRepository->createDemandObjectFromSettings($this->settings);
+        $demand = UserDemand::createFromSettings($this->settings);
 
         // override filter from form
         if ($this->request->hasArgument('demand')) {
-            $demand->overrideDemand($this->request->getArgument('demand'));
+            $demand->overrideFromRequest($this->request);
         }
 
         $this->view->assign('demand', $demand);
-    }
 
+        return $this->htmlResponse($this->view->render());
+    }
+    
     public function showAction(?User $user = null): ResponseInterface
     {
         if (!$user || !$user->isPublicProfile()) {
@@ -141,7 +157,7 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 'Profile not found',
                 ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]
             );
-            throw new ImmediateResponseException($response);
+            throw new PageNotFoundException($response);
         }
 
         $schema = $user->getJsonSchema($this->settings);
@@ -152,9 +168,9 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         if ((int)$this->settings['schema.']['enable']) {
-            $json = json_encode($schema);
-            $jsCode = '<script type="application/ld+json">' . $json . '</script>';
-            $this->response->addAdditionalHeaderData($jsCode);
+            $json = json_encode($schema, JSON_THROW_ON_ERROR);
+            $assetCollector = GeneralUtility::makeInstance(AssetCollector::class);
+            $assetCollector->addInlineJavaScript('bwguild_json', $json, ['type' => 'application/ld+json']);
         }
 
         $GLOBALS['TSFE']->page['title'] = $schema['name'];
@@ -171,11 +187,10 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @throws \TYPO3\CMS\Core\Http\PropagateResponseException
      */
-    public function editAction(): void
+    public function editAction(): ResponseInterface
     {
         if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->throwStatus(403, 'Not logged in');
@@ -186,93 +201,48 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $this->view->assign('user', $user);
         $this->view->assign('categories', $categories);
+
+        return $this->htmlResponse($this->view->render());
     }
 
+    /**
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     */
     public function initializeUpdateAction(): void
     {
-        if ($this->arguments->hasArgument('user')) {
+        $isLogoDelete = $this->request->hasArgument('deleteLogo') && $this->request->getArgument('deleteLogo');
+        $isEmptyLogoUpdate = $_FILES['tx_bwguild_userlist']['name']['user']['logo'] === '';
 
-            $this->setTypeConverterConfigurationForImageUpload('user');
+        if ($isLogoDelete || $isEmptyLogoUpdate) {
+            $this->ignoreLogoArgumentInUpdate();
+        }
+    }
 
-            $deleteLog = $this->request->hasArgument('deleteLogo') && $this->request->getArgument('deleteLogo');
+    protected function ignoreLogoArgumentInUpdate(): void
+    {
+        // unset logo argument
+        $userArgument = $this->request->getArgument('user');
+        unset($userArgument['logo']);
+        $this->request->setArgument('user', $userArgument);
 
-            // ignore logo parameter if empty
-            if ($deleteLog || $_FILES['tx_bwguild_userlist']['name']['user']['logo'] === '') {
-                // unset logo argument
-                $userArgument = $this->request->getArgument('user');
-                unset($userArgument['logo']);
-                $this->request->setArgument('user', $userArgument);
-
-                // unset logo validator
-                $validator = $this->arguments->getArgument('user')->getValidator();
-                foreach ($validator->getValidators() as $subValidator) {
-                    /** @var GenericObjectValidator $subValidatorSub */
-                    foreach ($subValidator->getValidators() as $subValidatorSub) {
-                        $subValidatorSub->getPropertyValidators('logo')->removeAll(
-                            $subValidatorSub->getPropertyValidators('logo')
-                        );
-                    }
-                }
+        // unset logo validator
+        $validator = $this->arguments->getArgument('user')->getValidator();
+        foreach ($validator->getValidators() as $subValidator) {
+            /** @var GenericObjectValidator $subValidatorSub */
+            foreach ($subValidator->getValidators() as $subValidatorSub) {
+                $subValidatorSub->getPropertyValidators('logo')->removeAll(
+                    $subValidatorSub->getPropertyValidators('logo')
+                );
             }
         }
     }
 
-    protected function setTypeConverterConfigurationForImageUpload($argumentName): void
-    {
-        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
-            ->registerImplementation(
-                \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
-                \Blueways\BwGuild\Domain\Model\FileReference::class
-            );
-
-        $uploadFolder = $this->getTargetLogoStorageUid() . ':/' . $this->getTargetLogoFolderName();
-
-        $uploadConfiguration = [
-            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
-            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => $uploadFolder,
-        ];
-        $newExampleConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
-        $newExampleConfiguration->forProperty('logo')
-            ->setTypeConverterOptions(
-                UploadedFileReferenceConverter::class,
-                $uploadConfiguration
-            );
-    }
-
-    private function getTargetLogoStorageUid(): int
-    {
-        $targetParts = GeneralUtility::trimExplode(':', $this->settings['userLogoFolder']);
-        if (count($targetParts) === 2) {
-            return (int)$targetParts[0];
-        }
-        /** @var ResourceFactory $resourceFactory */
-        $resourceFactory = $this->objectManager->get(ResourceFactory::class);
-        return $resourceFactory->getDefaultStorage() ? $resourceFactory->getDefaultStorage()->getUid() : 0;
-    }
-
-    private function getTargetLogoFolderName(): string
-    {
-        $targetParts = GeneralUtility::trimExplode(':', $this->settings['userLogoFolder']);
-        return count($targetParts) === 2 ? $targetParts[1] : $targetParts[0];
-    }
-
-    public function injectCategoryRepository(\Blueways\BwGuild\Domain\Repository\CategoryRepository $categoryRepository)
-    {
-        $this->categoryRepository = $categoryRepository;
-    }
-
-    public function injectUserRepository(\Blueways\BwGuild\Domain\Repository\UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
     /**
-     * @param \Blueways\BwGuild\Domain\Model\User $user
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Core\Http\PropagateResponseException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
     public function updateAction(User $user): void
     {
@@ -287,7 +257,7 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         // delete existing logo(s) if new one is created
         $userArguments = $this->request->getArgument('user');
-        if (isset($userArguments['logo']) && $logo = $user->getLogo()) {
+        if (isset($userArguments['logo']) && $user->getLogo()) {
             $this->userRepository->deleteAllUserLogos($user->getUid());
         }
 
@@ -297,17 +267,18 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->addFlashMessage(
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.update.success.message'),
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.update.success.title'),
-            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+        );
 
         $this->redirect('edit');
     }
 
     /**
-     * @return \TYPO3\CMS\Lang\LanguageService
+     * @return \TYPO3\CMS\Core\Localization\LanguageService
      */
     protected function getLanguageService(): LanguageService
     {
-        return $GLOBALS['LANG'] ?? $this->objectManager->get(LanguageService::class);
+        return $GLOBALS['LANG'] ?? GeneralUtility::makeInstance(LanguageService::class);
     }
 
     /**
@@ -323,12 +294,9 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
-     * @param \Blueways\BwGuild\Domain\Model\User $user
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException|\TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException
-     * @TYPO3\CMS\Extbase\Annotation\Validate("Blueways\BwGuild\Validation\Validator\PasswordRepeatValidator", param="user")
-     * @TYPO3\CMS\Extbase\Annotation\Validate("Blueways\BwGuild\Validation\Validator\CustomUsernameValidator", param="user")
+     * @throws \TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
     public function createAction(User $user): void
     {
@@ -336,7 +304,8 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->addFlashMessage(
                 $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.create.loggedin.message'),
                 $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.create.loggedin.title'),
-                \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+                \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+            );
             $this->redirect('new');
         }
 
@@ -344,11 +313,12 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->addFlashMessage(
                 $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.create.exists.message'),
                 $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.create.exists.title'),
-                \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+                \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR
+            );
             $this->redirect('new');
         }
 
-        if ($this->settings['useEmailAsUsername'] === "1") {
+        if ($this->settings['useEmailAsUsername'] === '1') {
             $user->setUsername($user->getEmail());
         }
 
@@ -360,7 +330,8 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->addFlashMessage(
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.create.success.message'),
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.create.success.title'),
-            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+        );
 
         $this->view->assign('user', $user);
     }
@@ -372,12 +343,7 @@ class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     private function encryptPassword(string $password): string
     {
-        /** @var \TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory $passwordHashFactory */
-        $passwordHashFactory = $this->objectManager->get(
-            \TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory::class
-        );
-        $passwordHash = $passwordHashFactory->getDefaultHashInstance('FE');
-        return $passwordHash->getHashedPassword($password);
+        $passwordHashFactory = GeneralUtility::makeInstance(PasswordHashFactory::class);
+        return $passwordHashFactory->getDefaultHashInstance('FE')->getHashedPassword($password);
     }
-
 }
