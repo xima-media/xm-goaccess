@@ -31,6 +31,8 @@ class Userinfo {
   constructor() {
     app.log('component "userinfo" loaded')
 
+    this.bindStorageResetAtLogin()
+
     if (!document.querySelectorAll('#userinfoUri').length) {
       return
     }
@@ -53,8 +55,16 @@ class Userinfo {
     })
   }
 
-  protected onBookmarkLinkClick(e: Event)
-  {
+  protected bindStorageResetAtLogin() {
+    const loginButton = document.querySelector('#login-link')
+    if (loginButton) {
+      loginButton.addEventListener('click', () => {
+        localStorage.removeItem('userinfo')
+      })
+    }
+  }
+
+  protected onBookmarkLinkClick(e: Event) {
     e.preventDefault()
     const button = e.currentTarget as Element;
     const url = button.getAttribute('data-bookmark-url');
@@ -73,8 +83,7 @@ class Userinfo {
     userLinkElement.setAttribute('href', this.userinfo.user.url)
   }
 
-  protected modifyBookmarkLinks()
-  {
+  protected modifyBookmarkLinks() {
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
       const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)');
       if (urlParts.length !== 3) {
