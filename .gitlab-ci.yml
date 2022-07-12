@@ -32,6 +32,11 @@ build-node:
     paths:
       - packages/xm_dkfz_net_prototype/Resources/Public
 
+test-php-lint:
+  stage: test
+  script:
+    - composer run ci:php:lint
+
 test-php-cs-fixer:
   stage: test
   needs: [ "build-php" ]
@@ -46,7 +51,7 @@ test-php-stan:
 
 .deploy-prepare:
   stage: deploy
-  needs: [ "build-php", "build-node", "test-php-cs-fixer", "test-php-stan" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   before_script:
     - apk add --quiet rsync
     - eval $(ssh-agent -s)

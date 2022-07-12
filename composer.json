@@ -121,6 +121,7 @@
 		],
 		"php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
 		"php:stan": "php vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
+		"ci:php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*' -print0 | xargs -0 -n 1 -P 4 php -l",
 		"ci:php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots",
 		"ci:php:stan": "php vendor/bin/phpstan --no-progress"
 	}
