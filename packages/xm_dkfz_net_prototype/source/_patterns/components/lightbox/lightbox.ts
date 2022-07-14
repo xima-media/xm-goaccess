@@ -10,6 +10,10 @@ class Lightbox {
 
   protected closeButton: Element;
 
+  protected backgroundClickEventHandler = this.onBackgroundClick.bind(this)
+
+  protected escKeyPressEventHandler = this.onEscKeyPress.bind(this)
+
   constructor() {
     const boxElement = document.querySelector('.lightbox');
 
@@ -21,7 +25,7 @@ class Lightbox {
 
   protected init() {
     this.cacheDom()
-    this.bindEvents()
+    this.bindCloseButtonEvent()
   }
 
   protected cacheDom() {
@@ -29,36 +33,49 @@ class Lightbox {
     this.closeButton = this.box.querySelector('.lightbox__close')
   }
 
-  protected bindEvents() {
+  protected bindCloseButtonEvent() {
     this.closeButton.addEventListener('click', (e: Event) => {
       this.close()
     })
   }
 
-  protected bindEscCloseEvent() {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.onEscKeyPress()
-      }
-    })
+  protected bindEscKeyPressEvent() {
+    document.addEventListener('keydown', this.escKeyPressEventHandler)
   }
 
-  protected onEscKeyPress() {
-    this.close();
+  protected bindBackgroundClickEvent() {
+    setTimeout(() => window.addEventListener('click', this.backgroundClickEventHandler), 1)
+  }
+
+  protected onBackgroundClick(e: PointerEvent) {
+    const isClickInsideContent = e.composedPath().includes(this.box.querySelector('.lightbox__content'))
+    if (this.isCloseable && !isClickInsideContent) {
+      this.close()
+    }
+  }
+
+  protected onEscKeyPress(e: KeyboardEvent) {
+    if (this.isCloseable && e.key === 'Escape') {
+      this.close()
+    }
+  }
+
+  protected removeAllListener() {
+    window.removeEventListener('click', this.backgroundClickEventHandler)
+    document.removeEventListener('keydown', this.escKeyPressEventHandler)
   }
 
   public close() {
     document.querySelector('body').classList.remove('open-lightbox')
-    document.removeEventListener('keydown', this.onEscKeyPress.bind(this));
+    this.removeAllListener()
     this.stopLoading()
     this.clear()
   }
 
   public open() {
     document.querySelector('body').classList.add('open-lightbox')
-    if (this.isCloseable) {
-      this.bindEscCloseEvent()
-    }
+    this.bindEscKeyPressEvent()
+    this.bindBackgroundClickEvent()
   }
 
   public startLoading() {
