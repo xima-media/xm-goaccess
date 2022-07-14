@@ -113,7 +113,11 @@ class Userinfo {
     if (!storedUserinfo) {
       return false;
     }
-    this.userinfo = JSON.parse(storedUserinfo);
+    try {
+      this.userinfo = JSON.parse(storedUserinfo);
+    } catch (e) {
+      return false;
+    }
     return true;
   }
 
