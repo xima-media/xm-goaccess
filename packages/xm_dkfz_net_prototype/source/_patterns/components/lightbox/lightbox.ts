@@ -36,7 +36,11 @@ class Lightbox {
   }
 
   protected bindEscCloseEvent() {
-    document.addEventListener('keydown', this.onEscKeyPress.bind(this))
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.onEscKeyPress()
+      }
+    })
   }
 
   protected onEscKeyPress() {
