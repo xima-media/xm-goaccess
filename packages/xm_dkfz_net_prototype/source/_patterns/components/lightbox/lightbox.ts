@@ -6,6 +6,8 @@ class Lightbox {
 
   public content: Element;
 
+  public isCloseable = true;
+
   protected closeButton: Element;
 
   constructor() {
@@ -33,14 +35,26 @@ class Lightbox {
     })
   }
 
+  protected bindEscCloseEvent() {
+    document.addEventListener('keydown', this.onEscKeyPress.bind(this))
+  }
+
+  protected onEscKeyPress() {
+    this.close();
+  }
+
   public close() {
     document.querySelector('body').classList.remove('open-lightbox')
+    document.removeEventListener('keydown', this.onEscKeyPress.bind(this));
     this.stopLoading()
     this.clear()
   }
 
   public open() {
     document.querySelector('body').classList.add('open-lightbox')
+    if (this.isCloseable) {
+      this.bindEscCloseEvent()
+    }
   }
 
   public startLoading() {
