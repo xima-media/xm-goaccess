@@ -1,5 +1,11 @@
 import app from '../basic/basic'
 import './userprofile.scss'
+import autocomplete, {AutocompleteItem} from "autocompleter";
+
+interface FeatureItem extends AutocompleteItem {
+  label: string,
+  value: number
+}
 
 class Userprofile {
 
@@ -42,7 +48,35 @@ class Userprofile {
 
   protected bindUserEditFormEvents() {
     const form = app.lightbox.content.querySelector('form')
+    this.initUserFeatureInputs()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
+  }
+
+  protected initUserFeatureInputs() {
+    app.lightbox.content.querySelectorAll('div[data-available-features]').forEach((container) => {
+
+      const inputElement = container.querySelector('input') as HTMLInputElement
+      const availableFeatures = JSON.parse(container.getAttribute('data-available-features')) as FeatureItem[]
+
+      autocomplete({
+        input: inputElement,
+        preventSubmit: true,
+        showOnFocus: true,
+        disableAutoSelect: true,
+        minLength: 1,
+        fetch: (text, update) => {
+          text = text.toLowerCase()
+          const filteredFeatures = availableFeatures.filter((feature) => {
+            console.log(feature)
+            return feature.label.toLowerCase().indexOf(text) >= 0;
+          })
+          update(filteredFeatures)
+        },
+        onSelect: (item: FeatureItem) => {
+          console.log(item.label)
+        },
+      })
+    })
   }
 
   protected onUserEditFormSubmit(e: Event) {

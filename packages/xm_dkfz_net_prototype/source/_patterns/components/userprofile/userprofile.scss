@@ -1,0 +1,35 @@
+form.userprofile {
+    .form-group {
+        display: flex;
+        gap: var(--space-md);
+    }
+}
+
+
+.autocomplete {
+    background: var(--color-white);
+    z-index: 1000;
+    overflow: auto;
+    box-sizing: border-box;
+    border: 1px solid rgba(50, 50, 50, 0.6);
+}
+
+.autocomplete * {
+    font: inherit;
+}
+
+.autocomplete > div {
+    padding: 0 4px;
+}
+
+.autocomplete .group {
+    background: var(--color-gray-200)
+}
+
+.autocomplete > div:hover:not(.group),
+.autocomplete > div.selected {
+    background: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+}
+
