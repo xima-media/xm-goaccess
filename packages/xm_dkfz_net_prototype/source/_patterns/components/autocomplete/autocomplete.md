@@ -1,4 +1,0 @@
----
-title: Autocomplete
-state: incomplete
----

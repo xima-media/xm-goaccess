@@ -183,9 +183,6 @@ import './_patterns/components/text/text'
 /** @section 2.39 Hero form */
 import './_patterns/components/hero-form/hero-form'
 
-/** @section 2.40 Autocomplete */
-import './_patterns/components/autocomplete/autocomplete'
-
 /** @section 2.41 Video player */
 import './_patterns/components/video-player/video-player'
 
