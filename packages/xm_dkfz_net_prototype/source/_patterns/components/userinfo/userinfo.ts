@@ -71,6 +71,7 @@ class Userinfo {
     const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST';
     app.apiRequest(url, method).then((userinfo) => {
       this.userinfo = userinfo
+      localStorage.setItem('userinfo', userinfo)
       button.classList.toggle('fx--hover')
       button.classList.toggle('js--checked')
     });
