@@ -54,6 +54,7 @@
     "@pattern-lab/engine-twig-php": "^5.16.2",
     "@pattern-lab/starterkit-twig-demo": "^5.16.1",
     "@pattern-lab/uikit-workshop": "^5.16.2",
+    "autocompleter": "^6.1.3",
     "awesomplete": "^1.1.5",
     "bootstrap": "^5.1.3",
     "swiper": "^8.1.5",
