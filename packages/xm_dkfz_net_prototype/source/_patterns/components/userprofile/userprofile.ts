@@ -63,6 +63,7 @@ class Userprofile {
       const inputElement = container.querySelector('input') as HTMLInputElement
       const selectElement = container.querySelector('select')
       const bubbleDropZoneElement = container.querySelector('ul.list') as HTMLDivElement
+      const recordType = container.getAttribute('data-record-type')
       const allFeatures = JSON.parse(container.getAttribute('data-all-features')) as FeatureItem[]
       const selectedFeaturesJson = container.getAttribute('data-selected-features')
       let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
@@ -83,9 +84,15 @@ class Userprofile {
         const featureId = featureElement.getAttribute('data-feature')
         // remove from selectable items
         selectedFeatures = selectedFeatures.filter(feature => feature.value !== featureId)
-        // remove from form selection
-        const optionElement = selectElement.querySelector('option[value="' + featureId + '"]') as HTMLOptionElement
-        optionElement.removeAttribute('selected')
+
+        // remove from form selection OR remove created newly created hidden element
+        const isPersisted = parseInt(featureId) > 0;
+        if (isPersisted) {
+          const optionElement = selectElement.querySelector('option[value="' + featureId + '"]') as HTMLOptionElement
+          optionElement.removeAttribute('selected')
+        } else {
+          container.querySelectorAll('input[name^="tx_bwguild_api[user][features]['+featureId+']"]').forEach(el => el.remove())
+        }
         // delete element
         featureElement.remove()
       }
@@ -134,8 +141,22 @@ class Userprofile {
         // create new feature
         const newFeatureItem: FeatureItem = {label: inputElement.value, value: newFeatureId}
         addNewBubbleForFeature(newFeatureItem)
+
         // add to select list
         selectedFeatures.push(newFeatureItem)
+
+        // create hidden form elements (name & record_type)
+        const hiddenElementRt = document.createElement('input')
+        hiddenElementRt.value = recordType
+        hiddenElementRt.setAttribute('type', 'hidden')
+        hiddenElementRt.setAttribute('name', 'tx_bwguild_api[user][features]['+newFeatureId+'][recordType]')
+        container.append(hiddenElementRt)
+        const hiddenElementNa = document.createElement('input')
+        hiddenElementNa.value = newFeatureItem.label
+        hiddenElementNa.setAttribute('type', 'hidden')
+        hiddenElementNa.setAttribute('name', 'tx_bwguild_api[user][features]['+newFeatureId+'][name]')
+        container.append(hiddenElementNa)
+
         // clear input
         inputElement.value = ''
       }
