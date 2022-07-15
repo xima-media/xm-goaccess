@@ -63,6 +63,10 @@
 //
 
 .icon--size {
+    &-xs {
+        width: 9px;
+        height: 9px;
+    }
     &-sm {
         @include size(1rem);
     }

@@ -22,6 +22,7 @@
     text-decoration: none;
     border-radius: var(--space-doubled);
     border: 2px solid transparent;
+    align-items: center;
 
     span[data-checked] {
         display: none;
@@ -35,6 +36,10 @@
         span[data-onload] {
             display: none;
         }
+    }
+
+    &:hover {
+        text-decoration: none;
     }
 
     &.fx--focus,
@@ -73,13 +78,12 @@
     background-color: var(--color-primary-opacity-10);
     border-color: var(--color-primary-opacity-10);
 
-    // the action on these buttons will be implemented later, so hover effect is not needed now
-    //&.fx--hover,
-    //&:hover {
-    //    color: var(--color-white);
-    //    background-color: var(--color-primary);
-    //    border-color: var(--color-primary);
-    //}
+    &.fx--hover,
+    &:hover {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
 }
 
 
