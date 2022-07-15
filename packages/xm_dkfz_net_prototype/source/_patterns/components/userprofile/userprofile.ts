@@ -57,11 +57,11 @@ class Userprofile {
   protected initUserFeatureInputs() {
 
     const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]') as HTMLLinkElement
+    const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
     app.lightbox.content.querySelectorAll('div[data-all-features]').forEach((container) => {
 
       const inputElement = container.querySelector('input') as HTMLInputElement
-      const selectElement = container.querySelector('select')
       const bubbleDropZoneElement = container.querySelector('ul.list') as HTMLDivElement
       const recordType = container.getAttribute('data-record-type')
       const allFeatures = JSON.parse(container.getAttribute('data-all-features')) as FeatureItem[]
