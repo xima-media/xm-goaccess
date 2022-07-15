@@ -79,13 +79,7 @@ body.open-lightbox {
     }
 
     &__wrap {
-        width: calc(800px - 3 * var(--space-lg));
         transition: all 0.3s ease;
-
-        &:empty {
-            max-width: none;
-            width: 300px;
-        }
     }
 
     &__close, &__wrap, &__loader {
