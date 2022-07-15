@@ -112,10 +112,7 @@ module.exports = {
                 },
                 {
                     from: './source/_patterns/components/debug/assets', to: './Images/debug'
-                },
-                {
-                    from: './source/_patterns/components/autocomplete/assets', to: './Images/autocomplete'
-                },
+                }
             ],
         }),
         new MiniCssExtractPlugin({
