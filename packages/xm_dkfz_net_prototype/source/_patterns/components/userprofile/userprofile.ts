@@ -5,7 +5,7 @@ import dropdown from "../dropdown/dropdown";
 
 interface FeatureItem extends AutocompleteItem {
   label: string,
-  value: number
+  value: string
 }
 
 class Userprofile {
@@ -67,10 +67,20 @@ class Userprofile {
       const selectedFeaturesJson = container.getAttribute('data-selected-features')
       let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
 
+      function hashCode(str: string) {
+        let hash = 0;
+        for (let i = 0, len = str.length; i < len; i++) {
+          let chr = str.charCodeAt(i);
+          hash = (hash << 5) - hash + chr;
+          hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+      }
+
       function onBubbleClick(e: Event) {
         e.preventDefault()
         const featureElement = e.currentTarget as HTMLLinkElement
-        const featureId = parseInt(featureElement.getAttribute('data-feature'))
+        const featureId = featureElement.getAttribute('data-feature')
         // remove from selectable items
         selectedFeatures = selectedFeatures.filter(feature => feature.value !== featureId)
         // remove from form selection
@@ -84,14 +94,18 @@ class Userprofile {
         bubbleElement.addEventListener('click', onBubbleClick)
       }
 
-      function onAutocompleteSelect(item: FeatureItem) {
-        // create new bubble
+      function addNewBubbleForFeature(feature: FeatureItem) {
         let newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement;
-        newFeatureBubble.setAttribute('data-feature', item.value.toString())
-        newFeatureBubble.querySelector('span').innerHTML = item.label
+        newFeatureBubble.setAttribute('data-feature', feature.value)
+        newFeatureBubble.querySelector('span').innerHTML = feature.label
         newFeatureBubble.classList.remove('d-none')
         addBubbleClickEvent(newFeatureBubble)
         bubbleDropZoneElement.appendChild(newFeatureBubble)
+      }
+
+      function onAutocompleteSelect(item: FeatureItem) {
+        // create new bubble
+        addNewBubbleForFeature(item)
         // add as selected in form
         const optionElement = selectElement.querySelector('option[value="' + item.value + '"]') as HTMLOptionElement
         optionElement.setAttribute('selected', 'selected')
@@ -109,7 +123,34 @@ class Userprofile {
         update(filteredFeatures)
       }
 
+      function onNewFeatureEntered() {
+        const newFeatureId = 'NEW' + hashCode(inputElement.value)
+        const isAlreadySelected = selectedFeatures.find(f => f.value === newFeatureId) !== undefined
+
+        if (isAlreadySelected) {
+          return
+        }
+
+        // create new feature
+        const newFeatureItem: FeatureItem = {label: inputElement.value, value: newFeatureId}
+        addNewBubbleForFeature(newFeatureItem)
+        // add to select list
+        selectedFeatures.push(newFeatureItem)
+        // clear input
+        inputElement.value = ''
+      }
+
       bubbleDropZoneElement.querySelectorAll('a[data-feature]').forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
+
+      inputElement.addEventListener('keydown', (e) => {
+        const isEnterKey = e.key === 'Enter'
+        const isAutocompleteOptionSelected = document.querySelector('.autocomplete .selected')
+        const hasMinLength = inputElement.value.length > 2
+
+        if (isEnterKey && !isAutocompleteOptionSelected && hasMinLength) {
+          onNewFeatureEntered()
+        }
+      })
 
       autocomplete({
         input: inputElement,
