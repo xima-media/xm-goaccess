@@ -118,6 +118,8 @@ class Userprofile {
         optionElement.setAttribute('selected', 'selected')
         // add to selected list
         selectedFeatures.push(item)
+        // clear input
+        inputElement.value = ''
       }
 
       function onAutocompleteFetch(text: string, update: any) {
@@ -131,15 +133,16 @@ class Userprofile {
       }
 
       function onNewFeatureEntered() {
-        const newFeatureId = 'NEW' + hashCode(inputElement.value)
-        const isAlreadySelected = selectedFeatures.find(f => f.value === newFeatureId) !== undefined
+        const trimmedInputString = inputElement.value.trim()
+        const newFeatureId = 'NEW' + hashCode(trimmedInputString)
+        const isAlreadySelected = selectedFeatures.find(f => f.label === trimmedInputString) !== undefined
 
         if (isAlreadySelected) {
           return
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = {label: inputElement.value, value: newFeatureId}
+        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
