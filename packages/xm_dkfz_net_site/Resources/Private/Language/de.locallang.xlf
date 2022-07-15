@@ -180,13 +180,13 @@
 				<target>Hobby hinzufügen</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.yourSelection">
-				<source>Ihre Auswahl</source>
+				<target>Ihre Auswahl</target>
 			</trans-unit>
 			<trans-unit id="abort">
-				<source>Abbruch</source>
+				<target>Abbruch</target>
 			</trans-unit>
 			<trans-unit id="save">
-				<source>Speichern</source>
+				<target>Speichern</target>
 			</trans-unit>
 		</body>
 	</file>

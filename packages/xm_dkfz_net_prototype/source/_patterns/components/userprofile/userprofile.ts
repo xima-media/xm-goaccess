@@ -181,7 +181,6 @@ class Userprofile {
         input: inputElement,
         preventSubmit: true,
         minLength: 1,
-        showOnFocus: true,
         disableAutoSelect: true,
         fetch: onAutocompleteFetch,
         onSelect: onAutocompleteSelect
