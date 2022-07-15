@@ -10,13 +10,18 @@ input[type="text"] {
 
 form.userprofile {
 
-    fieldset, h3 {
+    fieldset:not(:last-child), h3 {
         margin-bottom: var(--space-md);
     }
 
     .form-group {
         display: flex;
         gap: var(--space-md);
+        flex-direction: column;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
     }
 
     .form-element {
@@ -38,6 +43,13 @@ form.userprofile {
         &:empty + h6 {
             display: none;
         }
+    }
+
+    .button-group {
+        margin-top: var(--space-md);
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
     }
 }
 

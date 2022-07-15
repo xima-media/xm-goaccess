@@ -51,6 +51,7 @@ class Userprofile {
     const form = app.lightbox.content.querySelector('form')
     this.initUserFeatureInputs()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
+    form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
   }
 
   protected initUserFeatureInputs() {
@@ -60,16 +61,22 @@ class Userprofile {
     app.lightbox.content.querySelectorAll('div[data-all-features]').forEach((container) => {
 
       const inputElement = container.querySelector('input') as HTMLInputElement
+      const selectElement = container.querySelector('select')
+      const bubbleDropZoneElement = container.querySelector('ul.list') as HTMLDivElement
       const allFeatures = JSON.parse(container.getAttribute('data-all-features')) as FeatureItem[]
-      let selectedFeatures = JSON.parse(container.getAttribute('data-selected-features')) as FeatureItem[]
-      const bubbleDropZone = container.querySelector('ul.list') as HTMLDivElement
+      const selectedFeaturesJson = container.getAttribute('data-selected-features')
+      let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
 
       function onBubbleClick(e: Event) {
         e.preventDefault()
         const featureElement = e.currentTarget as HTMLLinkElement
         const featureId = parseInt(featureElement.getAttribute('data-feature'))
-        // remove from selected items
+        // remove from selectable items
         selectedFeatures = selectedFeatures.filter(feature => feature.value !== featureId)
+        // remove from form selection
+        const optionElement = selectElement.querySelector('option[value="' + featureId + '"]') as HTMLOptionElement
+        optionElement.removeAttribute('selected')
+        // delete element
         featureElement.remove()
       }
 
@@ -78,12 +85,17 @@ class Userprofile {
       }
 
       function onAutocompleteSelect(item: FeatureItem) {
+        // create new bubble
         let newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement;
         newFeatureBubble.setAttribute('data-feature', item.value.toString())
         newFeatureBubble.querySelector('span').innerHTML = item.label
         newFeatureBubble.classList.remove('d-none')
         addBubbleClickEvent(newFeatureBubble)
-        bubbleDropZone.appendChild(newFeatureBubble)
+        bubbleDropZoneElement.appendChild(newFeatureBubble)
+        // add as selected in form
+        const optionElement = selectElement.querySelector('option[value="' + item.value + '"]') as HTMLOptionElement
+        optionElement.setAttribute('selected', 'selected')
+        // add to selected list
         selectedFeatures.push(item)
       }
 
@@ -97,7 +109,7 @@ class Userprofile {
         update(filteredFeatures)
       }
 
-      bubbleDropZone.querySelectorAll('a[data-feature]').forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
+      bubbleDropZoneElement.querySelectorAll('a[data-feature]').forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
 
       autocomplete({
         input: inputElement,
@@ -125,6 +137,11 @@ class Userprofile {
         app.lightbox.stopLoading()
       })
       .catch(e => app.handleRequestError.bind(this))
+  }
+
+  protected onAbortButtonClick(e: Event) {
+    e.preventDefault()
+    app.lightbox.close()
   }
 
 
