@@ -152,6 +152,42 @@
 			<trans-unit id="container.2cols.right">
 				<target>Rechts</target>
 			</trans-unit>
+			<trans-unit id="userEditForm.profileEdit">
+				<target>Profil bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.profilePicture">
+				<target>Profilbild</target>
+			</trans-unit>
+			<trans-unit id="noProfilePicture">
+				<target>Kein Profilbild</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-headline">
+				<target>Kompetenzen</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-placeholder">
+				<target>Kompetenz hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-1-headline">
+				<target>Fachliche Themen, die mich interessieren:</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-placeholder">
+				<target>Thema hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-2-headline">
+				<target>Meine Hobbys</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-placeholder">
+				<target>Hobby hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.yourSelection">
+				<source>Ihre Auswahl</source>
+			</trans-unit>
+			<trans-unit id="abort">
+				<source>Abbruch</source>
+			</trans-unit>
+			<trans-unit id="save">
+				<source>Speichern</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

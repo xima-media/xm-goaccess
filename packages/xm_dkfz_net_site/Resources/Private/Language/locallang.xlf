@@ -187,6 +187,42 @@
 			<trans-unit id="container.2cols.right">
 				<source>Right</source>
 			</trans-unit>
+			<trans-unit id="userEditForm.profileEdit">
+				<source>Edit profile</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.profilePicture">
+				<source>Profile picture</source>
+			</trans-unit>
+			<trans-unit id="noProfilePicture">
+				<source>No profile picture</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-headline">
+				<source>Qualification</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-placeholder">
+				<source>Add qualification</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-1-headline">
+				<source>Technical topics I am interested in</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-placeholder">
+				<source>Add topic</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-2-headline">
+				<source>Hobbys</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.feature-0-placeholder">
+				<source>Add hobby</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.yourSelection">
+				<source>Your selection</source>
+			</trans-unit>
+			<trans-unit id="abort">
+				<source>Abort</source>
+			</trans-unit>
+			<trans-unit id="save">
+				<source>Save</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
