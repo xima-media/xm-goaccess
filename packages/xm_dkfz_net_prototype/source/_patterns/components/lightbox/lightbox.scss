@@ -3,6 +3,38 @@ body.open-lightbox {
 
     .lightbox {
         display: grid;
+        animation: opacityIn 0.4s ease;
+    }
+
+    .lightbox__content {
+        animation: moveIn 0.4s ease;
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes opacityIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveIn {
+    0% {
+        transform: translate3d(0, 100px, 0);
+        opacity: 0
+    }
+    30% {
+        transform: translate3d(0, 100px, 0);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
     }
 }
 
@@ -15,10 +47,15 @@ body.open-lightbox {
     top: 0;
     left: 0;
     z-index: 100;
-    justify-content: center;
     padding: var(--space-xl) var(--space-sm);
     overflow-x: scroll;
     align-items: flex-start;
+    backdrop-filter: blur(5px);
+
+    &--closing {
+        transition: opacity 0.2s ease;
+        opacity: 0;
+    }
 
     &--loading {
         .lightbox__loader {
@@ -29,8 +66,12 @@ body.open-lightbox {
     &__content {
         background: #FFF;
         max-width: calc(100vw - var(--space-lg));
+        width: 100%;
+        margin: 0 auto;
         padding: var(--space-lg);
         display: grid;
+        opacity: 0;
+        min-height: 40vh;
 
         @include media-breakpoint-up(md) {
             max-width: calc(800px - var(--space-lg));

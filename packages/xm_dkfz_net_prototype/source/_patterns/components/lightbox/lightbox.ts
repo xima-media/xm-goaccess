@@ -66,10 +66,16 @@ class Lightbox {
   }
 
   public close() {
-    document.querySelector('body').classList.remove('open-lightbox')
+
+    this.box.classList.add('lightbox--closing')
     this.removeAllListener()
-    this.stopLoading()
-    this.clear()
+
+    setTimeout(() => {
+      document.querySelector('body').classList.remove('open-lightbox')
+      this.box.classList.remove('lightbox--closing')
+      this.stopLoading()
+      this.clear()
+    }, 400);
   }
 
   public open() {
