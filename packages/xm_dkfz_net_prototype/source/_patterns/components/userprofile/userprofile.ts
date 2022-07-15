@@ -64,7 +64,8 @@ class Userprofile {
       const inputElement = container.querySelector('input') as HTMLInputElement
       const bubbleDropZoneElement = container.querySelector('ul.list') as HTMLDivElement
       const recordType = container.getAttribute('data-record-type')
-      const allFeatures = JSON.parse(container.getAttribute('data-all-features')) as FeatureItem[]
+      const allFeaturesJson = container.getAttribute('data-all-features')
+      const allFeatures = allFeaturesJson ? JSON.parse(allFeaturesJson) as FeatureItem[] : []
       const selectedFeaturesJson = container.getAttribute('data-selected-features')
       let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
 
