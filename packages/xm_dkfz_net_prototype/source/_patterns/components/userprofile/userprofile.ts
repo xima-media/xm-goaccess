@@ -1,6 +1,7 @@
 import app from '../basic/basic'
 import './userprofile.scss'
 import autocomplete, {AutocompleteItem} from "autocompleter";
+import dropdown from "../dropdown/dropdown";
 
 interface FeatureItem extends AutocompleteItem {
   label: string,
@@ -53,28 +54,59 @@ class Userprofile {
   }
 
   protected initUserFeatureInputs() {
-    app.lightbox.content.querySelectorAll('div[data-available-features]').forEach((container) => {
+
+    const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]') as HTMLLinkElement
+
+    app.lightbox.content.querySelectorAll('div[data-all-features]').forEach((container) => {
 
       const inputElement = container.querySelector('input') as HTMLInputElement
-      const availableFeatures = JSON.parse(container.getAttribute('data-available-features')) as FeatureItem[]
+      const allFeatures = JSON.parse(container.getAttribute('data-all-features')) as FeatureItem[]
+      let selectedFeatures = JSON.parse(container.getAttribute('data-selected-features')) as FeatureItem[]
+      const bubbleDropZone = container.querySelector('ul.list') as HTMLDivElement
+
+      function onBubbleClick(e: Event) {
+        e.preventDefault()
+        const featureElement = e.currentTarget as HTMLLinkElement
+        const featureId = parseInt(featureElement.getAttribute('data-feature'))
+        // remove from selected items
+        selectedFeatures = selectedFeatures.filter(feature => feature.value !== featureId)
+        featureElement.remove()
+      }
+
+      function addBubbleClickEvent(bubbleElement: Element) {
+        bubbleElement.addEventListener('click', onBubbleClick)
+      }
+
+      function onAutocompleteSelect(item: FeatureItem) {
+        let newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement;
+        newFeatureBubble.setAttribute('data-feature', item.value.toString())
+        newFeatureBubble.querySelector('span').innerHTML = item.label
+        newFeatureBubble.classList.remove('d-none')
+        addBubbleClickEvent(newFeatureBubble)
+        bubbleDropZone.appendChild(newFeatureBubble)
+        selectedFeatures.push(item)
+      }
+
+      function onAutocompleteFetch(text: string, update: any) {
+        text = text.toLowerCase()
+        const filteredFeatures = allFeatures.filter((feature) => {
+          const isMatchedByTextSearch = feature.label.toLowerCase().indexOf(text) >= 0
+          const isNotAlreadySelected = selectedFeatures.find(f => f.value === feature.value) === undefined
+          return isMatchedByTextSearch && isNotAlreadySelected;
+        })
+        update(filteredFeatures)
+      }
+
+      bubbleDropZone.querySelectorAll('a[data-feature]').forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
 
       autocomplete({
         input: inputElement,
         preventSubmit: true,
+        minLength: 1,
         showOnFocus: true,
         disableAutoSelect: true,
-        minLength: 1,
-        fetch: (text, update) => {
-          text = text.toLowerCase()
-          const filteredFeatures = availableFeatures.filter((feature) => {
-            console.log(feature)
-            return feature.label.toLowerCase().indexOf(text) >= 0;
-          })
-          update(filteredFeatures)
-        },
-        onSelect: (item: FeatureItem) => {
-          console.log(item.label)
-        },
+        fetch: onAutocompleteFetch,
+        onSelect: onAutocompleteSelect
       })
     })
   }
