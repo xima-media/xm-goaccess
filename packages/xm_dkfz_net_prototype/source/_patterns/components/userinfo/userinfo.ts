@@ -40,6 +40,7 @@ class Userinfo {
     this.loadUserinfo().then(() => {
       this.modifyUserNav()
       this.modifyBookmarkLinks()
+      this.modifyWelcomeMessage()
     });
 
     this.bindEvents()
@@ -83,6 +84,15 @@ class Userinfo {
       return;
     }
     userLinkElement.setAttribute('href', this.userinfo.user.url)
+  }
+
+  protected modifyWelcomeMessage() {
+    const welcomeMessageBox = document.querySelector('.employee-welcome')
+    if (!welcomeMessageBox || !this.userinfo) {
+      return
+    }
+    welcomeMessageBox.querySelector('span[data-username]').innerHTML = this.userinfo.user.username
+    welcomeMessageBox.classList.remove('employee-welcome--onload-hidden')
   }
 
   protected modifyBookmarkLinks() {

@@ -9,6 +9,19 @@
 //
 
 .employee-welcome {
+
+    &--onload-hidden {
+        .employee-welcome-message {
+            opacity: 0;
+            transform: translate3d(-5rem, 0, 0);
+        }
+
+        .employee-finder {
+            opacity: 0;
+            transform: translate3d(5rem, 0, 0);
+        }
+    }
+
     @include media-breakpoint-up(md) {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -20,27 +33,23 @@
 .employee-welcome-message {
     @include background-blur;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 3rem;
     max-width: 56.5rem;
     padding: 1.5rem;
+    transition: opacity 1s ease 0.8s, transform 0.7s ease 0.7s;
 
     @include media-breakpoint-up(md) {
-        flex-direction: row;
         padding: 2.25rem 2rem 1.875rem 3rem;
-        grid-column: 1 / 10;
-        grid-row: 1 / 6;
+        grid-column: 1 / 9;
+        grid-row: 1 / 7;
     }
 
     @include media-breakpoint-up(xl) {
-    }
-
-    &__header {
-        @include media-breakpoint-up(md) {
-            flex: 0 0 20rem; // @todo variabe mit card teilen
-            width: 20rem; // @todo variabe mit card teilen
-        }
+        grid-template-columns: 2fr 3fr;
+        padding: 2.25rem 2rem 1.875rem 3rem;
+        grid-column: 1 / 10;
+        grid-row: 1 / 6;
     }
 
     &__title {

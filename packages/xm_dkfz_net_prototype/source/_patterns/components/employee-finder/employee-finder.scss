@@ -13,8 +13,14 @@
 
     padding: 2.125rem 3rem 3.25rem 3rem;
     color: var(--color-white);
+    transition: opacity 1s ease 0.8s, transform 0.7s ease 0.7s;
 
     @include media-breakpoint-up(md) {
+        grid-column: 8 / 13;
+        grid-row: 6 / 9;
+    }
+
+    @include media-breakpoint-up(xl) {
         grid-column: 9 / 13;
         grid-row: 5 / 9;
     }
