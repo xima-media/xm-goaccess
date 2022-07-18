@@ -226,6 +226,57 @@
 			<trans-unit id="save">
 				<source>Save</source>
 			</trans-unit>
+			<trans-unit id="user_contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="user_contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="user_contact.record_type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="user_contact.record_type.0">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="user_contact.record_type.1">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="user_contact.room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="user_contact.phone_number">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="user_contact.fe_user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="user_contact.fe_group">
+				<source>User group</source>
+			</trans-unit>
+			<trans-unit id="user_contact.position">
+				<source>Position</source>
+			</trans-unit>
+			<trans-unit id="user.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="user.member_since">
+				<source>Member since</source>
+			</trans-unit>
+			<trans-unit id="user.birthday">
+				<source>Birthday</source>
+			</trans-unit>
+			<trans-unit id="user.dkfz_id">
+				<source>DKFZ ID</source>
+			</trans-unit>
+			<trans-unit id="user.ad_account_name">
+				<source>Active Directory ID</source>
+			</trans-unit>
+			<trans-unit id="user.ad_account_name">
+				<source>Active Directory ID</source>
+			</trans-unit>
+			<trans-unit id="user.contacts">
+				<source>Contacts</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -41,3 +41,35 @@ create table tt_content_item (
 create table tx_news_domain_model_news (
 	tx_xmdkfznetsite_color varchar(64) not null default '',
 );
+
+create table fe_users (
+	location        varchar(255) default '' not null,
+	member_since    int(11) unsigned default '0' not null,
+	birthday        int(11) unsigned default '0' not null,
+	dkfz_id         varchar(255) default '' not null,
+	ad_account_name varchar(255) default '' not null,
+	contacts        int(11) unsigned default '0' not null,
+);
+
+create table fe_groups (
+	department_id varchar(255) default '' not null,
+);
+
+create table tx_xmdkfznetsite_domain_model_usercontact (
+	uid            int(11) not null auto_increment,
+	pid            int(11) default '0' not null,
+	sorting        int(11) unsigned default '0' not null,
+	tstamp         int(11) unsigned default '0' not null,
+	crdate         int(11) unsigned default '0' not null,
+
+	fe_user        int(11) default '0' not null,
+	record_type    varchar(255) default '' not null,
+	fe_group       int(11) default '0' not null,
+	position       varchar(255) default '' not null,
+	primary_number tinyint(4) unsigned default '0' not null,
+	room           varchar(255)            not null default '',
+	phone_number   int(11) unsigned default '0' not null,
+
+	primary key (uid),
+	KEY            parent (pid),
+);
