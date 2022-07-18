@@ -121,6 +121,23 @@ TCEFORM {
     title.disabled = 1
     showinpreview.disabled = 1
   }
+
+  fe_users {
+    member_nr.disabled = 1
+    company.disabled = 1
+    short_name.disabled = 1
+    middle_name.disabled = 1
+    sorting_field.disabled = 1
+    address.disabled = 1
+    zip.disabled = 1
+    city.disabled = 1
+    country.disabled = 1
+    telephone.disabled = 1
+    mobile.disabled = 1
+    fax.disabled = 1
+    www.disabled = 1
+    image.disabled = 1
+  }
 }
 
 mod.wizards.newContentElement.wizardItems {
