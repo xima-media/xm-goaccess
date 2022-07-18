@@ -89,4 +89,16 @@ tt_content {
     }
   }
 
+  image {
+    templateName = Carousel
+    templateRootPaths {
+      10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/fluid_styled_content/Templates
+  }
+  dataProcessing {
+          10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+          10 {
+              references.fieldName = image
+          }
+          20 >
+      }
 }

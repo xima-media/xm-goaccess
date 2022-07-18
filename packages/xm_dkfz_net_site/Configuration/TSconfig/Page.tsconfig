@@ -46,7 +46,10 @@ TCEFORM {
       removeItems = 3
       altLabels.1 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.1
       altLabels.2 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.2
+
+    types.image.removeItems =0,2,3
     }
+
 
     assets {
       config {
@@ -141,6 +144,15 @@ mod.wizards.newContentElement.wizardItems {
         description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.infobox.description
         tt_content_defValues {
           CType = infobox
+        }
+      }
+
+      image {
+         iconIdentifier = content-image
+         title = Bilder-Slider
+         description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.description
+         tt_content_defValues {
+         CType = image
         }
       }
     }

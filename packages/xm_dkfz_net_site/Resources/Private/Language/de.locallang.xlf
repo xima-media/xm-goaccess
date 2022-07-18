@@ -152,6 +152,12 @@
 			<trans-unit id="container.2cols.right">
 				<target>Rechts</target>
 			</trans-unit>
+			<trans-unit id="image.slider.title">
+                <target>Bilder-Slider</target>
+            </trans-unit>
+            <trans-unit id="image.slider.description">
+                 <target>Von 2 bis maximal 15 Bilder in einem Schieberegler ausgerichtet</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

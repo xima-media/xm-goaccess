@@ -187,6 +187,12 @@
 			<trans-unit id="container.2cols.right">
 				<source>Right</source>
 			</trans-unit>
+			<trans-unit id="image.slider.title">
+            	<source>Image Slider</source>
+            </trans-unit>
+            <trans-unit id="image.slider.description">
+                <source>From 2 to maximum 15 images aligned in a slider</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>
