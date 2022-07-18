@@ -26,12 +26,6 @@
 
     &__title {
         margin-bottom: .25rem;
-
-        &-left {
-            @include media-breakpoint-up(lg) {
-                margin-left: 6rem;
-            }
-        }
     }
 
     &__pattern {
