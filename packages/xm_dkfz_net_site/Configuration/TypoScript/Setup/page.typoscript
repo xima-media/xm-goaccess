@@ -167,4 +167,6 @@ page {
 [tree.level < 2]
   page.10.variables.mainClass = TEXT
   page.10.variables.mainClass.value = main--expanded
+[else]
+  config.htmlTag.attributes.class = background--white
 [end]

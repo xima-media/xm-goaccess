@@ -33,6 +33,10 @@
     &__item {
         padding-left: 0;
         list-style-type: none;
+
+        .frame {
+            background: transparent;
+        }
     }
 
     &-collapse {

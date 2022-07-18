@@ -22,9 +22,6 @@ body {
     font-variant-numeric: oldstyle-nums;
     background-color: transparent; // @todo die bootstrap variable überschreiben
     //background-color: var(--color-gray-100); // @todo die bootstrap variable überschreiben
-     .layout {
-         background-color: var(--color-white);
-    }
 }
 
 // @todo eventuell auslagern
@@ -41,6 +38,10 @@ body {
             display: flex;
             justify-content: center;
         }
+    }
+
+    &--expanded {
+        max-width: $container-default-widths;
     }
 
     &--with-sidebar {
@@ -121,7 +122,7 @@ body {
     &__header {
         padding: 1.5rem;
         color: var(--color-white);
-        background-color: rgba(0,71,185, .8);
+        background-color: rgba(0, 71, 185, .8);
 
         @include media-breakpoint-up(md) {
             padding: 2.5rem 3rem 1.5rem;
@@ -168,7 +169,7 @@ body {
         margin-top: 1.5rem;
 
         .infobox--with-border {
-            &>.infobox--wrapper {
+            & > .infobox--wrapper {
                 @include media-breakpoint-down(md) {
                     margin: 1.5rem;
                 }
@@ -192,292 +193,293 @@ body {
     flex-direction: column;
     align-items: center;
 
-+ .layout__item {
-    padding-top: 6rem;
-    padding-bottom: 5rem;
-}
-
-&__item {
-    grid-column: main;
-    position: relative;
-
-    + .footer {
-        margin-top: 5rem;
+    + .layout__item {
+        padding-top: 6rem;
+        padding-bottom: 5rem;
     }
 
-    &.fx--expanded {
-        grid-column: full;
-    }
-
-    &.background--expanded {
-        background-color: transparent;
-
-        &::after {
-            top: -6rem;
-            bottom: -6rem;
-
-            @include media-breakpoint-up(lg) {
-                top: -9rem;
-                bottom: -5rem;
-                //bottom: -9rem;
-            }
-        }
-    }
-
-    &--two {
-        display: grid;
-        grid-template-columns: 1fr;
+    &__item {
         grid-column: main;
         position: relative;
 
-        @include media-breakpoint-up(lg) {
-            grid-template-columns: 1fr 1fr;
-            column-gap: 3.5rem;
+        + .footer {
+            margin-top: 5rem;
         }
 
-        .text--column {
-            @include media-breakpoint-up(lg) {
-                width: 39.375rem;
-                margin-left: 6rem;
+        &.fx--expanded {
+            grid-column: full;
+        }
+
+        &.background--expanded {
+            background-color: transparent;
+
+            &::after {
+                top: -6rem;
+                bottom: -6rem;
+
+                @include media-breakpoint-up(lg) {
+                    top: -9rem;
+                    bottom: -5rem;
+                    //bottom: -9rem;
+                }
             }
         }
-    }
 
-    &.background--orange {
-        &::after {
-            background-color: rgba($color-orange, .75);
+        &--two {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-column: main;
+            position: relative;
+
+            @include media-breakpoint-up(lg) {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 3.5rem;
+            }
+
+            .text--column {
+                @include media-breakpoint-up(lg) {
+                    width: 39.375rem;
+                    margin-left: 6rem;
+                }
+            }
+        }
+
+        &.background--orange {
+            &::after {
+                background-color: rgba($color-orange, .75);
+            }
+        }
+
+        &.background--yellow {
+            &::after {
+                background-color: rgba($color-yellow, .75);
+            }
+        }
+
+        &.background--cyan {
+            &::after {
+                background-color: rgba($color-cyan, .75);
+            }
+        }
+
+        &.background--image {
+            background-size: 0; // hide image
+
+            &::after {
+                background-image: inherit;
+                background-position: 50% 50%;
+                background-size: cover;
+                transform: translateX(-50%);
+            }
+        }
+
+        .infobox {
+            background-color: var(--color-white);
         }
     }
-
-    &.background--yellow {
-        &::after {
-            background-color: rgba($color-yellow, .75);
-        }
-    }
-
-    &.background--cyan {
-        &::after {
-            background-color: rgba($color-cyan, .75);
-        }
-    }
-
-    &.background--image {
-        background-size: 0; // hide image
-
-        &::after {
-            background-image: inherit;
-            background-position: 50% 50%;
-            background-size: cover;
-            transform: translateX(-50%);
-        }
-    }
-
-    .infobox {
-        background-color: var(--color-white);
-    }
-}
 }
 
 // @todo umbennen und wahrscheinlich auslagern
 .content-box {
-@include background-blur;
+    @include background-blur;
 
-position: relative;
-z-index: 1;
-height: 100%;
-padding: .75rem;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    padding: .75rem;
 
-@include media-breakpoint-up(md) {
-    padding: 2.75rem;
-}
+    @include media-breakpoint-up(md) {
+        padding: 2.75rem;
+    }
 
-.layout__item {
-    grid-column: unset;
-}
+    .layout__item {
+        grid-column: unset;
+    }
 
-&--main-hero {
-    .content-box {
-        // &__header {  }
+    &--main-hero {
+        .content-box {
+            // &__header {  }
 
-        &__footer {
-            display: grid;
-            gap: 2rem;
-            max-width: $container-default-widths;
-            margin: auto;
+            &__footer {
+                display: grid;
+                gap: 2rem;
+                max-width: $container-default-widths;
+                margin: auto;
 
-            @include media-breakpoint-up(lg) {
-                //grid-template-columns: 1fr 1fr;
-                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            }
+                @include media-breakpoint-up(lg) {
+                    //grid-template-columns: 1fr 1fr;
+                    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                }
 
-            .content-wrapper {
-                &:last-child {
-                    @include media-breakpoint-up(lg) {
-                        margin-left: 6.25rem;
+                .content-wrapper {
+                    &:last-child {
+                        @include media-breakpoint-up(lg) {
+                            margin-left: 6.25rem;
+                        }
                     }
                 }
             }
         }
     }
 }
-}
 
 // @todo in eigene Komponente auslagern
 a {
-color: inherit; // mit bootstrap lösen
-text-decoration: none;
+    color: inherit; // mit bootstrap lösen
+    text-decoration: none;
 
-&:hover {
-    color: inherit;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-// todo für TYPO3 muss das noch individuell angepasst werden. zum Beispiel in dem man dann auf die url der Seite mapped
-&:not([href="#"]):not([href*="rendered.html"]) {
-    .icon--arrow-right {
-        transform: rotate(-45deg);
+    &:hover {
+        color: inherit;
+        text-decoration: underline;
+        cursor: pointer;
     }
-}
+
+    // todo für TYPO3 muss das noch individuell angepasst werden. zum Beispiel in dem man dann auf die url der Seite mapped
+    &:not([href="#"]):not([href*="rendered.html"]) {
+        .icon--arrow-right {
+            transform: rotate(-45deg);
+        }
+    }
 }
 
 .link {
-&--secondary {
-    @include link-secondary;
-}
-
-&--arrow-right {
-    text-decoration: none;
-
-    // @todo siehe css icon in icon-Komponente
-    &::after {
-        @include size($css-icon-size);
-
-        content: '';
-        display: inline-block;
-        margin-left: .5rem;
-        background-image: url(map-get($sprites, 'arrow-right'));
-        background-position: 0 ($css-icon-size * -1);
-        background-repeat: no-repeat;
-        background-size: cover;
-        //filter: invert(1);
-    }
-}
-
-&--primary {
-    @include link-primary;
-    display: block;
-
-    .icon {
-        @include size(.75rem, .75rem);
+    &--secondary {
+        @include link-secondary;
     }
 
-    &-angle {
-        @include link-primary--angle;
+    &--arrow-right {
+        text-decoration: none;
+
+        // @todo siehe css icon in icon-Komponente
+        &::after {
+            @include size($css-icon-size);
+
+            content: '';
+            display: inline-block;
+            margin-left: .5rem;
+            background-image: url(map-get($sprites, 'arrow-right'));
+            background-position: 0 ($css-icon-size * -1);
+            background-repeat: no-repeat;
+            background-size: cover;
+            //filter: invert(1);
+        }
     }
 
-    + .link--primary {
-        margin-top: 1rem;
+    &--primary {
+        @include link-primary;
+        display: block;
+
+        .icon {
+            @include size(.75rem, .75rem);
+        }
+
+        &-angle {
+            @include link-primary--angle;
+        }
+
+        + .link--primary {
+            margin-top: 1rem;
+        }
     }
-}
 }
 
 // @todo aufräumen > für footer
 ul {
-padding-left: 0;
+    padding-left: 0;
 }
+
 ul > li {
-list-style: none;
+    list-style: none;
 }
 
 .list-inline {
-display: inline-flex;
+    display: inline-flex;
 
-li {
-    margin-right: 1rem;
-}
+    li {
+        margin-right: 1rem;
+    }
 }
 
 // @todo umbennen bzw so bauen das es generischere funktioniert
 .list-view {
-padding-right: 4rem;
-padding-left: 4.25rem;
+    padding-right: 4rem;
+    padding-left: 4.25rem;
 }
 
 // @todo entfernen > Klasse "visually-hidden" verwenden
 .sr-only {
-position: absolute;
-width: 1px;
-height: 1px;
-padding: 0;
-margin: -1px;
-overflow: hidden;
-clip: rect(0, 0, 0, 0);
-white-space: nowrap;
-border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 // @todo eigene Komponente erstellen und erweitern, eventuell auch umbennen
 .badge {
-display: inline-flex;
-padding: .25rem .5rem;
-font-family: $font-family-sans-serif;
-font-size: 16px;
-line-height: 1;
-letter-spacing: .6px;
-color: var(--color-white);
-background-color: var(--color-black);
+    display: inline-flex;
+    padding: .25rem .5rem;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: .6px;
+    color: var(--color-white);
+    background-color: var(--color-black);
 }
 
 .spacing {
-&--bottom {
-    margin-bottom: 1.5rem;
-}
-
-&--block {
-    margin-bottom: 1rem;
-
-    @include media-breakpoint-up(lg) {
-        margin-bottom: 5rem;
+    &--bottom {
+        margin-bottom: 1.5rem;
     }
-}
+
+    &--block {
+        margin-bottom: 1rem;
+
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 5rem;
+        }
+    }
 }
 
 // @todo verschieben > eigene Kompontente
 .results {
-padding-top: 3rem;
-padding-bottom: 3rem;
-background-color: var(--color-white);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: var(--color-white);
 
-&__title,
-&__items {
-    width: 100%;
-    max-width: $container-default-widths;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-&__title {
-    @include h6;
-}
-
-&__items {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-
-    @include media-breakpoint-up(md) {
-        grid-template-columns: 1fr 1fr;
+    &__title,
+    &__items {
+        width: 100%;
+        max-width: $container-default-widths;
+        margin-right: auto;
+        margin-left: auto;
     }
 
-    @include media-breakpoint-up(lg) {
-        grid-template-columns: 1fr 1fr 1fr;
+    &__title {
+        @include h6;
     }
-}
+
+    &__items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
 }
 
 .d-none {
-display: none !important;
+    display: none !important;
 }
 
 // end of basic.scss file

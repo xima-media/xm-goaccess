@@ -1,55 +1,56 @@
 <f:variable name="cssVariables">
 	<f:for each="{files}" as="file" iteration="i">
 		<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
-		--background-image-{index}jpg: url({f:uri.image(image: file, width: 576)});
-		--background-image-{index}jpg-md: url({f:uri.image(image: file, width: 768)});
-		--background-image-{index}jpg-lg: url({f:uri.image(image: file, width: 992)});
-		--background-image-{index}jpg-xl: url({f:uri.image(image: file, width: 1200)});
-		--background-image-{index}jpg-xxl: url({f:uri.image(image: file, width: 2500)});
-		--background-image-{index}webp: url({f:uri.image(image: file, width: 576, fileExtension: 'webp')});
-		--background-image-{index}webp-md: url({f:uri.image(image: file, width: 768, fileExtension: 'webp')});
-		--background-image-{index}webp-lg: url({f:uri.image(image: file, width: 992, fileExtension: 'webp')});
-		--background-image-{index}webp-xl: url({f:uri.image(image: file, width: 1200, fileExtension: 'webp')});
-		--background-image-{index}webp-xxl: url({f:uri.image(image: file, width: 2500, fileExtension: 'webp')});
+		--background-image-{index}jpg: url({f:uri.image(image: file, width: 576)}); --background-image-{index}jpg-md:
+		url({f:uri.image(image: file, width: 768)}); --background-image-{index}jpg-lg: url({f:uri.image(image: file,
+		width: 992)}); --background-image-{index}jpg-xl: url({f:uri.image(image: file, width: 1200)});
+		--background-image-{index}jpg-xxl: url({f:uri.image(image: file, width: 2500)}); --background-image-{index}webp:
+		url({f:uri.image(image: file, width: 576, fileExtension: 'webp')}); --background-image-{index}webp-md:
+		url({f:uri.image(image: file, width: 768, fileExtension: 'webp')}); --background-image-{index}webp-lg:
+		url({f:uri.image(image: file, width: 992, fileExtension: 'webp')}); --background-image-{index}webp-xl:
+		url({f:uri.image(image: file, width: 1200, fileExtension: 'webp')}); --background-image-{index}webp-xxl:
+		url({f:uri.image(image: file, width: 2500, fileExtension: 'webp')});
 	</f:for>
 </f:variable>
 
 <div class="layout__item background--image background--image-hero background--expanded" style="{cssVariables}">
 
-	<div class="employee-welcome-message">
-		<div class="employee-welcome-message__header">
-			<h2 class="employee-welcome-message__title">Guten Tag ###USER###</h2>
-			<p class="employee-welcome-message__sub-title">Herzlich Willkommen im Intranet!</p>
-			<a class="employee-welcome-message__link" href="#">
-				Onboarding Informationen
-				<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-			</a>
-		</div>
-		<div class="employee-welcome-message__body">
-			<h3 class="employee-welcome-message__badge badge">Ihr Mitarbeiterprofil</h3>
-			<p>
-				Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr Profil, um
-				besser gefunden zu werden. </p>
-			<a class="employee-welcome-message__link" href="#">
-				Jetzt Profil bearbeiten
-				<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-			</a>
-		</div>
-	</div>
-
-	<div class="employee-finder">
-		<h2 class="employee-finder__title">Mitarbeiter finden</h2>
-		<form class="employee-finder__form" action="#">
-			<div class="field field--text">
-				<label class="field__label " for="field__input--970814446">Suchen nach Name, Vorname, Telefon</label>
-				<input type="text"
-					   class="field__input "
-					   id="field__input--970814446"
-					   placeholder="Suchen nach Name, Vorname, Telefon">
+	<div class="employee-welcome">
+		<div class="employee-welcome-message">
+			<div class="employee-welcome-message__header">
+				<h2 class="employee-welcome-message__title">Guten Tag ###USER###</h2>
+				<p class="employee-welcome-message__sub-title">Herzlich Willkommen im Intranet!</p>
+				<a class="employee-welcome-message__link" href="#">
+					Onboarding Informationen
+					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+				</a>
 			</div>
-			<button class="employee-finder__button" type="button" aria-label="Suche starten">
-				<f:render partial="Icon" arguments="{icon: 'search'}"/>
-			</button>
-		</form>
+			<div class="employee-welcome-message__body">
+				<h3 class="employee-welcome-message__badge badge">Ihr Mitarbeiterprofil</h3>
+				<p>
+					Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr Profil, um
+					besser gefunden zu werden. </p>
+				<a class="employee-welcome-message__link" href="#">
+					Jetzt Profil bearbeiten
+					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+				</a>
+			</div>
+		</div>
+
+		<div class="employee-finder">
+			<h2 class="employee-finder__title">Mitarbeiter finden</h2>
+			<form class="employee-finder__form" action="#">
+				<div class="field field--text">
+					<label class="field__label " for="field__input--970814446">Suchen nach Name, Vorname,
+						Telefon</label> <input type="text"
+											   class="field__input "
+											   id="field__input--970814446"
+											   placeholder="Suchen nach Name, Vorname, Telefon">
+				</div>
+				<button class="employee-finder__button" type="button" aria-label="Suche starten">
+					<f:render partial="Icon" arguments="{icon: 'search'}"/>
+				</button>
+			</form>
+		</div>
 	</div>
 </div>
