@@ -163,6 +163,9 @@
 			<trans-unit id="page.bookmark">
 				<source>Bookmark page</source>
 			</trans-unit>
+			<trans-unit id="page.bookmark.remove">
+				<source>Remove bookmark</source>
+			</trans-unit>
 			<trans-unit id="categories">
 				<source>Categories</source>
 			</trans-unit>

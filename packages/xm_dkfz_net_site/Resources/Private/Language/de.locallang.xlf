@@ -128,6 +128,9 @@
 			<trans-unit id="page.bookmark">
 				<target>Seite merken</target>
 			</trans-unit>
+			<trans-unit id="page.bookmark.remove">
+				<target>Bookmark entfernen</target>
+			</trans-unit>
 			<trans-unit id="categories">
 				<target>Kategorien</target>
 			</trans-unit>
