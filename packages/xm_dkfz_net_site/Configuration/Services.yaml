@@ -39,3 +39,9 @@ services:
 
   Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
     public: true
+
+  Xima\XmDkfzNetSite\Command\ImportUserCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importUser'
+        schedulable: false
