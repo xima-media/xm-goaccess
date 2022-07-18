@@ -253,6 +253,10 @@
     .background--image + & {
         box-shadow: 0 var(--space-xxl) 0 var(--space-xxl) var(--color-white);
     }
+
+    &.frame-type-container-accordion {
+        box-shadow: none;
+    }
 }
 
 .main--default {
