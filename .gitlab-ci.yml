@@ -11,9 +11,6 @@ stages:
   - deploy
 
 build-php:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: build
   script:
     - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
@@ -22,9 +19,6 @@ build-php:
       - vendor/
 
 build-node:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: build
   image: misterio92/ci-php-node
   cache:
