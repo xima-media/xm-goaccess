@@ -91,6 +91,28 @@ deploy-staging:
     name: staging
     url: https://stage.dkfz-typo3-dev.xima.local/
 
+deploy-staging-dkfz:
+  stage: deploy
+  needs: [ "build-php", "build-node" ]
+  only:
+    refs:
+      - "master"
+    variables:
+      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  script:
+    - apk add --quiet rsync
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan intracmsstage.dkfz.de >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
+    - vendor/bin/dep deploy-fast staging-dkfz
+  environment:
+    name: staging
+    url: https://intracmsstage.dkfz.de/
+
 deploy-feature:
   extends: .deploy-prepare
   only:
