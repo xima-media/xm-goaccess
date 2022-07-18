@@ -187,7 +187,7 @@ body {
     // https://stackoverflow.com/questions/55851493/break-out-with-css-grid
     //padding-top: 5rem; // @todo variable
     padding-top: 3.5rem; // @todo variable
-    padding-bottom: 4rem; // @todo variable > selbe Zahl wie gap
+    padding-bottom: var(--space-xxl);
 
     display: flex;
     flex-direction: column;
