@@ -49,6 +49,7 @@ create table fe_users (
 	dkfz_id         varchar(255) default '' not null,
 	ad_account_name varchar(255) default '' not null,
 	contacts        int(11) unsigned default '0' not null,
+	dkfz_hash       varchar(255) default '' not null,
 );
 
 create table fe_groups (

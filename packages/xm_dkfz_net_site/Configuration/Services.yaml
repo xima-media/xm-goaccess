@@ -45,3 +45,6 @@ services:
       - name: 'console.command'
         command: 'dkfz:importUser'
         schedulable: false
+
+  Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
+    public: true
