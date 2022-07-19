@@ -99,13 +99,13 @@ deploy-staging-dkfz:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-keyscan intracmsstage.dkfz.de >> ~/.ssh/known_hosts
+    - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
     - vendor/bin/dep deploy-fast staging-dkfz
   environment:
     name: staging
-    url: https://intracmsstage.dkfz.de/
+    url: https://intracmsstage.dkfz-heidelberg.de/
 
 deploy-feature:
   extends: .deploy-prepare
