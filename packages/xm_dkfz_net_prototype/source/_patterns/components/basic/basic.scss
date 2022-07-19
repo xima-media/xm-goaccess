@@ -84,6 +84,12 @@ body {
                 }
             }
         }
+
+        .hero-form + .layout {
+            &:after {
+                top: -5rem;
+            }
+        }
     }
 
     &--with-sidebar {
