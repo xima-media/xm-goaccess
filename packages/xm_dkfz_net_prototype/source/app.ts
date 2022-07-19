@@ -50,6 +50,7 @@
  *       2.43 Employee info
  *       2.44 Userinfo
  *       2.45 Userprofile
+ *       2.46 Field checkbox
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -200,6 +201,9 @@ import './_patterns/components/userprofile/userprofile'
 
 /** @section 2.45 Lightbox */
 import './_patterns/components/lightbox/lightbox'
+
+/** @section 2.46 Field checkbox */
+import './_patterns/components/field/field--checkbox'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

@@ -146,6 +146,14 @@
             }
         }
     }
+
+    &__content {
+        mark {
+            padding: 0;
+            background: transparent;
+            color: var(--color-accent);
+        }
+    }
 }
 
 
@@ -569,9 +577,6 @@
 
     @include media-breakpoint-up(md) {
         gap: 7.25rem;
-        grid-template-columns: 1fr 1fr;
-        display: grid;
-        margin-top: 4rem;
     }
 
     .card {
@@ -608,6 +613,8 @@
             padding: 3rem;
 
             @include media-breakpoint-up(md) {
+                flex: 0 0 50%;
+                width: 50%;
             }
 
             //&::after {
