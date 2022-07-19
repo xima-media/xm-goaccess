@@ -7,9 +7,12 @@
 		"html": {
 			"class": "background--gray-100"
 		},
+		"mainExpanded": {
+			"class": "main--expanded"
+		},
 		"layout": {
-			"class": "color-accent--white",
-			"color": "color-accent--gray-900"
+			"class": "background--white",
+			"color": "color--gray-900"
 		},
 		"topics": {
 			"title": "News",
