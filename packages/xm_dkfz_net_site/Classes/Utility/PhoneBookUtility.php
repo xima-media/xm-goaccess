@@ -4,17 +4,28 @@ namespace Xima\XmDkfzNetSite\Utility;
 
 use DOMXPath;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\TypoScript\TypoScriptService;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use Xima\XmDkfzNetSite\Domain\Model\User;
-use function PHPUnit\Framework\throwException;
 
 class PhoneBookUtility
 {
 
     protected ExtensionConfiguration $extensionConfiguration;
 
-    public function __construct(ExtensionConfiguration $extensionConfiguration)
-    {
+    protected ConfigurationManager $configurationManager;
+
+    protected TypoScriptService $typoScriptService;
+
+    public function __construct(
+        ExtensionConfiguration $extensionConfiguration,
+        ConfigurationManager $configurationManager,
+        TypoScriptService $typoScriptService
+    ) {
         $this->extensionConfiguration = $extensionConfiguration;
+        $this->configurationManager = $configurationManager;
+        $this->typoScriptService = $typoScriptService;
     }
 
     public function getXpath(): DOMXPath
@@ -22,6 +33,13 @@ class PhoneBookUtility
         $url = $this->getApiUrl();
         $xml = $this->fetchXmlFromApi($url);
         return $this->getXpathFromXml($xml);
+    }
+
+    protected function getUserStoragePid(): int
+    {
+        $typoscript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $settings = $this->typoScriptService->convertTypoScriptArrayToPlainArray($typoscript);
+        return (int)$settings['plugin']['tx_bwguild']['persistence']['storagePid'];
     }
 
     protected function getXpathFromXml(string $xml): DOMXPath
@@ -56,13 +74,23 @@ class PhoneBookUtility
         return $extConf['phone_book_api_url'] ?? '';
     }
 
-    public function updateFeUserFromXpath(User &$user, DOMXPath $xpath)
+    public function updateFeUserFromXpath(User &$user, DOMXPath $xpath): void
     {
         $cPersonNode = $xpath->query('//x:CPerson[x:Id="' . $user->getDkfzId() . '"]');
 
         if ($cPersonNode->count() !== 1) {
             return;
         }
+
+        $user->setPid($this->getUserStoragePid());
+
+        $hashOfNode = md5($cPersonNode->item(0)->nodeValue);
+        $user->setDkfzHash($hashOfNode);
+
+        $deactivated = $xpath->query('x:Deaktiviert', $cPersonNode->item(0))->item(0)->nodeValue;
+        $adAccountDeactivated = $xpath->query('x:AdAccountGesperrt', $cPersonNode->item(0))->item(0)->nodeValue;
+        $isHidden = filter_var($deactivated, FILTER_VALIDATE_BOOLEAN) || filter_var($adAccountDeactivated, FILTER_VALIDATE_BOOLEAN);
+        $user->setDisable($isHidden);
 
         $firstName = $xpath->query('x:Vorname', $cPersonNode->item(0))->item(0)->nodeValue;
         if ($firstName) {
@@ -79,21 +107,17 @@ class PhoneBookUtility
         $mail = $xpath->query('x:Mail', $cPersonNode->item(0))->item(0)->nodeValue;
         if ($mail) {
             $user->setEmail($mail);
-            $user->setUsername($mail);
         }
         $adAccountName = $xpath->query('x:AdAccountName', $cPersonNode->item(0))->item(0)->nodeValue;
         if ($adAccountName) {
             $user->setAdAccountName($adAccountName);
+            $user->setUsername($adAccountName);
         }
         $genderMapping = ['Herr' => 1, 'Frau' => 2];
         $gender = $xpath->query('x:Anrede', $cPersonNode->item(0))->item(0)->nodeValue;
         if ($gender && in_array($gender, $genderMapping)) {
             $user->setGender($genderMapping[$gender]);
         }
-        $deactivated = $xpath->query('x:Mail', $cPersonNode->item(0))->item(0)->nodeValue;
-        $adAccountDeactivated = $xpath->query('x:Mail', $cPersonNode->item(0))->item(0)->nodeValue;
-        $isHidden = filter_var($deactivated) || filter_var($adAccountDeactivated);
-        $user->setDisable($isHidden);
     }
 
 }
