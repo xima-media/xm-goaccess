@@ -37,7 +37,7 @@
 			<div class="navigation navigation--sub">
 				<ul class="navigation__items">
 
-					<f:security.ifAuthenticated>
+
 
 						<li class="navigation__item navigation__item--open-chat">
 							<a class="navigation__link button button--icon-only"
@@ -110,7 +110,7 @@
 							</div>
 
 						</li>
-					</f:security.ifAuthenticated>
+
 
 					<li class="navigation__item navigation__item--quick-search">
 
@@ -232,6 +232,512 @@
 		<div class="lightbox__loader">
 			<div class="loading"></div>
 		</div>
+	</div>
+</div>
+
+
+<!--Bookmark Prototyp test-->
+<div class="bookmarks__sidebar d-none" id="bookmarkResultsContainer">
+	<div class="bookmarks__sidebar-header">
+		<div class="bookmarks__sidebar-header-title">
+			<h2 class="h3">
+				Meine Merkliste
+			</h2>
+		</div>
+		<button id="bookmarksClose" class="bookmarks__sidebar-close" aria-label="Schließen Sie den Bookmarks">
+			<f:render partial="Icon" arguments="{icon: 'close'}"/>
+		</button>
+	</div>
+
+	<div class="bookmarks__sidebar-list-wrapper">
+		<!--	Bookmark empty	-->
+		<div class="bookmarks__sidebar-list--empty">
+			<h3 class="h5">Hallo Username</h3>
+			<p class="text-copy-small">
+				Sie haben Ihrer persönlichen Merkliste nichts hinzugefügt.
+				Merken Sie sich Mitarbeiter, Seiten, Doumente, News und Kurzmeldungen, um diese über Ihre Merkliste schneller wiederzufinden!
+			</p>
+		</div>
+
+		<!--	Employees	-->
+		<h3 class="h5">Mitarbeiter</h3>
+		<ul class="bookmarks__sidebar-list">
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<a href="#">Fuchs, Andreas</a>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<a href="#">Fuchs, Andreas</a>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<a href="#">Fuchs, Andreas</a>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<a href="#">Fuchs, Andreas</a>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<a href="#">Fuchs, Andreas</a>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<a href="#">Fuchs, Andreas</a>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+
+			<button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+		</ul>
+
+		<!--	Page	 -->
+		<h3 class="h5">Seiten</h3>
+		<ul class="bookmarks__sidebar-list">
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item bookmarks__sidebar-list-item--site">
+				<div class="bookmarks__sidebar-list-item__data">
+					<h4 class="h6 icon icon--arrow-right">
+						<a class="bookmarks__sidebar-list-item__data-link" href="#">Veranstaltungsplanung und Logistik</a>
+					</h4>
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+				<div class="bookmarks__sidebar-list-item__data-footer">
+					<nav class="breadcrumb__wrapper" aria-label="Brotkrumen-Navigation">
+						<ul class="breadcrumb breadcrumb--bookmark">
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Start</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Services & Dienste</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Service</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Organisation von Veranstaltungen</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item bookmarks__sidebar-list-item--site">
+				<div class="bookmarks__sidebar-list-item__data">
+					<h4 class="h6 icon icon--arrow-right">
+						<a class="bookmarks__sidebar-list-item__data-link" href="#">Veranstaltungsplanung und Logistik</a>
+					</h4>
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+				<div class="bookmarks__sidebar-list-item__data-footer">
+					<nav class="breadcrumb__wrapper" aria-label="Brotkrumen-Navigation">
+						<ul class="breadcrumb breadcrumb--bookmark">
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Start</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Services & Dienste</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Service</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Organisation von Veranstaltungen</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item bookmarks__sidebar-list-item--site">
+				<div class="bookmarks__sidebar-list-item__data">
+					<h4 class="h6 icon icon--arrow-right">
+						<a class="bookmarks__sidebar-list-item__data-link" href="#">Veranstaltungsplanung und Logistik</a>
+					</h4>
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="page" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+				<div class="bookmarks__sidebar-list-item__data-footer">
+					<nav class="breadcrumb__wrapper" aria-label="Brotkrumen-Navigation">
+						<ul class="breadcrumb breadcrumb--bookmark">
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Start</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Services & Dienste</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Service</a>
+								<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+							</li>
+							<li>
+								<a class="breadcrumb__link" href="#" aria-current="location">Organisation von Veranstaltungen</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</li>
+			<button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+		</ul>
+
+		<!--	Documents	 -->
+		<h3 class="h5">Dokumente</h3>
+		<ul class="bookmarks__sidebar-list">
+			<li class="bookmarks__sidebar-items row tab-item__wrapper tab-item__wrapper--background-gray-100">
+				<h6 class="col-md-8 tab-item__title">Bewirtungsrichtinie</h6>
+				<div class="col-md-4 tab-item__detail">
+					<span class="tab-item__type">Pdf</span>
+					<a class="tab-item__link tab-item__link--download" type="button" aria-label="Herunterladen" data-tooltip="Herunterladen" download>
+						<f:render partial="Icon" arguments="{icon: 'download'}" />
+					</a>
+					<button class="tab-item__link" id="tabId"  aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="file" data-bookmark-added="false" data-bookmark-id="tabId">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}" />
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items row tab-item__wrapper tab-item__wrapper--background-gray-100">
+				<h6 class="col-md-8 tab-item__title">Bewirtungsrichtinie</h6>
+				<div class="col-md-4 tab-item__detail">
+					<span class="tab-item__type">Pdf</span>
+					<a class="tab-item__link tab-item__link--download" type="button" aria-label="Herunterladen" data-tooltip="Herunterladen" download>
+						<f:render partial="Icon" arguments="{icon: 'download'}" />
+					</a>
+					<button class="tab-item__link" id="tabId"  aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="file" data-bookmark-added="false" data-bookmark-id="tabId">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}" />
+					</button>
+				</div>
+			</li>
+			<li class="bookmarks__sidebar-items row tab-item__wrapper tab-item__wrapper--background-gray-100">
+				<h6 class="col-md-8 tab-item__title">Bewirtungsrichtinie</h6>
+				<div class="col-md-4 tab-item__detail">
+					<span class="tab-item__type">Pdf</span>
+					<a class="tab-item__link tab-item__link--download" type="button" aria-label="Herunterladen" data-tooltip="Herunterladen" download>
+						<f:render partial="Icon" arguments="{icon: 'download'}" />
+					</a>
+					<button class="tab-item__link" id="tabId"  aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="file" data-bookmark-added="false" data-bookmark-id="tabId">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}" />
+					</button>
+				</div>
+			</li>
+			<button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+		</ul>
+
+		<!--	News	 -->
+		<h3 class="h5">News</h3>
+		<ul class="bookmarks__sidebar-list">
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<ul class="list-view__items">
+					<li class="list-view__item">
+						<div class="
+								card
+								card--image-left
+								card--md
+								card--image-size-md
+							">
+							<div class="card__image">
+								<!-- Component Start: image -->
+								<figure class="
+											picture
+											picture--with-image
+											picture--with-color
+											picture--orientation-md-
+										" data-color="cyan" data-pattern-color="transparent">
+									<div class="picture__item image-color--cyan">
+										<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/news-header.jpg')}"
+											 class="picture__image image--responsive"
+											 alt=""/>
+									</div>
+								</figure>
+								<!-- Components End: image -->
+							</div>
+							<div class="card__content">
+								<div class="card__header ">
+									<h3 class="card__title">ERC-Förderung für Guoliang Cui</h3>
+									<p class="card__sub-title">22. März 2022 | Wissenschaft</p>
+								</div>
+								<div class="card__body">
+									<div class="card__text">
+										<p>Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="news" data-bookmark-added="false" data-bookmark-id="tabId">
+							<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+						</button>
+					</li>
+				</ul>
+			</li>
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<ul class="list-view__items">
+					<li class="list-view__item">
+						<div class="
+								card
+								card--image-left
+								card--md
+								card--image-size-md
+							">
+							<div class="card__image">
+								<!-- Component Start: image -->
+								<figure class="
+											picture
+											picture--with-image
+											picture--with-color
+											picture--orientation-md-
+										" data-color="cyan" data-pattern-color="transparent">
+									<div class="picture__item image-color--cyan">
+										<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/news-header.jpg')}"
+											 class="picture__image image--responsive"
+											 alt=""/>
+									</div>
+								</figure>
+								<!-- Components End: image -->
+							</div>
+							<div class="card__content">
+								<div class="card__header ">
+									<h3 class="card__title">ERC-Förderung für Guoliang Cui</h3>
+									<p class="card__sub-title">22. März 2022 | Wissenschaft</p>
+								</div>
+								<div class="card__body">
+									<div class="card__text">
+										<p>Guoliang Cui leitet eine DKFZ-Forschungsabteilung am Helmholtz-Institut für Translationale Onkologie (HI-TRON) Mainz. Der Experte für die Stoffwechselsignale, die die Funktion von T-Zellen des Immunsystems fördern oder unterdrücken, kann sich über einen ERC Consolidator Grant freuen.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="news" data-bookmark-added="false" data-bookmark-id="tabId">
+							<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+						</button>
+					</li>
+				</ul>
+			</li>
+			<button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+		</ul>
+
+		<!--	Short message	 -->
+		<h3 class="h5">Kurzmeldungen</h3>
+		<ul class="bookmarks__sidebar-list">
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="card
+							card--image-top
+							card--md
+							card--image-size-md
+							card--short-message
+						">
+					<div class="card__content">
+						<div class="card__header ">
+							<h3 class="card__title">Ergebnisse der Wahl zum Wissenschaftlichen Rat</h3>
+							<p class="card__sub-title">16. März 2022</p>
+						</div>
+					</div>
+				</div>
+				<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="message" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+					<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+				</button>
+			</li>
+			<button class="button--more" aria-label="Mehr anzeigen">Mehr anzeigen (3)</button>
+		</ul>
 	</div>
 </div>
 
