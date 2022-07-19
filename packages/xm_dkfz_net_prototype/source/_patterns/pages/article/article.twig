@@ -10,7 +10,7 @@
     {% endembed %}
 
     <div class="layout {{ prototype.layout.class }}">
-        <div class="layout__item {{ prototype.layout.color }}">
+        <div class="layout__item">
             {# related content #}
             {% embed '@components/content-wrapper/content-wrapper.twig' with {
                 title: prototype.topics.title,
@@ -23,7 +23,7 @@
                 }
             } %}
                 {% block content %}
-                    <div class="content-wrapper__horizontal color-accent--gray-900">
+                    <div class="content-wrapper__horizontal {{ prototype.layout.color }}">
                         {% for item in prototype.topics.items %}
                             {% include '@components/card/card.twig' with {
                                 title: item.title,
@@ -60,8 +60,7 @@
             <div class="layout__item--two">
                 <h3>Kurzmeldung</h3>
 
-{#                <div class="{{ prototype.layout.color }}">#}
-                <div class="color-accent--gray-900">
+                <div class="{{ prototype.layout.color }}">
                     <!-- cards -->
                     {% for item in prototype.shortMessages.items %}
                         {% include '@components/card/card.twig' with {
@@ -232,6 +231,7 @@
                 {% endblock content %}
             {% endembed %}
         </div>
+
     </div>
 
     <div class="layout__item fx--expanded background--image background--expanded background--gray-900" style="background-image: url('../../../Images/examples/blackboard.jpg');">
