@@ -63,7 +63,10 @@ call_user_func(function () {
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
-    ExtensionManagementUtility::addToAllTCAtypes('fe_users',
-        'location,member_since,birthday,dkfz_id,ad_account_name,contacts', '', 'after:email');
+    ExtensionManagementUtility::addToAllTCAtypes(
+        'fe_users',
+        'location,member_since,birthday,dkfz_id,ad_account_name,contacts',
+        '',
+        'after:email'
+    );
 });
-

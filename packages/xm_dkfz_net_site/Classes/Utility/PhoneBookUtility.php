@@ -11,7 +11,6 @@ use Xima\XmDkfzNetSite\Domain\Model\User;
 
 class PhoneBookUtility
 {
-
     protected ExtensionConfiguration $extensionConfiguration;
 
     protected ConfigurationManager $configurationManager;
@@ -119,5 +118,4 @@ class PhoneBookUtility
             $user->setGender($genderMapping[$gender]);
         }
     }
-
 }
