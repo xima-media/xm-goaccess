@@ -197,7 +197,13 @@ body {
         padding: var(--space-xxl) 0;
     }
 
+    + .layout__item {
+        padding-top: 6rem;
+        padding-bottom: 5rem;
+    }
+
     &__item {
+        width: 100%;
         grid-column: main;
         position: relative;
 
@@ -246,6 +252,25 @@ body {
                 background-position: 50% 50%;
                 background-size: cover;
                 transform: translateX(-50%);
+            }
+        }
+
+        &--two {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-column: main;
+            position: relative;
+
+            @include media-breakpoint-up(lg) {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 3.5rem;
+            }
+
+            .text--column {
+                @include media-breakpoint-up(lg) {
+                    width: 39.375rem;
+                    margin-left: 6rem;
+                }
             }
         }
     }
