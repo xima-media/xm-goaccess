@@ -60,13 +60,13 @@ class ImportUserCommand extends Command
         $io->writeln('Comparing Users..');
 
         $userIdsToUpdate = [];
-        $userActions = ['create' => [], 'update' => [], 'delete' => []];
+        $userActions = ['create' => [], 'update' => [], 'delete' => [], 'nothing' => []];
 
         /** @var \Xima\XmDkfzNetSite\Domain\Model\User $dbUser */
         foreach ($dbUsers ?? [] as $dbUser) {
             $dkfzUserId = $dbUser->getDkfzId();
 
-            $xmlUser = $xpath->query('//CPerson[/Id[text()="' . $dkfzUserId . '"]]');
+            $xmlUser = $xpath->query('//x:CPerson[/x:Id[text()="' . $dkfzUserId . '"]]');
 
             // search for user id in xml and mark for update
             if ($xpath->query('//CPerson/Id[text()="' . $dkfzUserId . '"]')->length) {
@@ -79,9 +79,9 @@ class ImportUserCommand extends Command
             $userActions['delete'][] = $dbUser;
         }
 
-        $xmlUsersIds = $xpath->query('//x:CPerson/x:Id');
-        foreach ($xmlUsersIds as $objNode) {
-            $userId = (string)$objNode->nodeValue;
+        $xmlUsers = $xpath->query('//x:CPerson');
+        foreach ($xmlUsers as $xmlUserNode) {
+            $userId = $xpath->query('x:Id', $xmlUserNode)->item(0)->nodeValue;
 
             // skip creation if already marked to update
             if (in_array($userId, $userIdsToUpdate, true)) {
@@ -98,6 +98,12 @@ class ImportUserCommand extends Command
             '<warning>' . count($userActions['update']) . '</warning> to update',
             '<error>' . count($userActions['delete']) . '</error> to delete',
         ]);
+
+        $io->writeln('Creating Users..');
+
+        foreach ($userActions['create'] ?? [] as $user) {
+            $phoneBookUtility->updateFeUserFromXpath($user, $xpath);
+        }
 
         return Command::SUCCESS;
     }
