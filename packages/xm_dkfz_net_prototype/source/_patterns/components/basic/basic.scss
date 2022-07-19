@@ -21,12 +21,10 @@ body {
     font-weight: 200;
     font-variant-numeric: oldstyle-nums;
     background-color: transparent; // @todo die bootstrap variable überschreiben
-    //background-color: var(--color-gray-100); // @todo die bootstrap variable überschreiben
 }
 
 // @todo eventuell auslagern
 .main {
-
     max-width: 970px;
     margin: auto;
 
@@ -46,6 +44,46 @@ body {
 
     &--expanded {
         max-width: $container-default-widths;
+
+        & > .layout {
+            position: relative;
+
+            &::after {
+                @media screen and (min-width: 1430px) {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -13rem;
+                    right: -13rem;
+                    z-index: 0;
+                    height: 100%;
+                    background-color: var(--color-white);
+                }
+            }
+
+            > .layout__item {
+                @media screen and (min-width: 1430px) {
+                    z-index: 2;
+                }
+
+                @include media-breakpoint-down(lg) {
+                    padding: 0 1rem;
+                }
+            }
+
+            + .background--expanded {
+                .layout__item {
+                    margin-top: 1rem;
+                    margin-bottom: 6rem;
+
+                    @include media-breakpoint-down(lg) {
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                    }
+                }
+            }
+        }
     }
 
     &--with-sidebar {
@@ -207,30 +245,53 @@ body {
         grid-column: main;
         position: relative;
 
-        &.fx--expanded {
-            grid-column: full;
-        }
+    + .footer {
+        margin-top: 5rem;
+    }
 
-        &.background--expanded {
-            background-color: transparent;
+    &.fx--expanded {
+        grid-column: full;
+    }
 
-            &::after {
-                top: -6rem;
-                bottom: -6rem;
+    &.background--expanded {
+        background-color: transparent;
 
-                @include media-breakpoint-up(lg) {
-                    top: -9rem;
-                    bottom: -5rem;
-                    //bottom: -9rem;
-                }
+        &::after {
+            top: -6rem;
+            bottom: -6rem;
+
+            @include media-breakpoint-up(lg) {
+                top: -9rem;
+                bottom: -5rem;
+                //bottom: -9rem;
             }
         }
+    }
 
-        &.background--orange {
-            &::after {
-                background-color: rgba($color-orange, .75);
+    &--two {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column: main;
+        position: relative;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr;
+            column-gap: 3.5rem;
+        }
+
+        .text--column {
+            @include media-breakpoint-up(lg) {
+                width: 39.375rem;
+                margin-left: 6rem;
             }
         }
+    }
+
+    &.background--orange {
+        &::after {
+            background-color: rgba($color-orange, .75);
+        }
+    }
 
         &.background--yellow {
             &::after {
