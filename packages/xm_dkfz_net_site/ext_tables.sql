@@ -50,6 +50,7 @@ create table fe_users (
 	ad_account_name varchar(255) default '' not null,
 	contacts        int(11) unsigned default '0' not null,
 	dkfz_hash       varchar(255) default '' not null,
+	gender          int(11) unsigned default '0' not null,
 );
 
 create table fe_groups (

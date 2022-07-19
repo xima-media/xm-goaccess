@@ -20,6 +20,42 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected string $dkfzHash = '';
 
+    protected bool $disable = false;
+
+    protected int $gender = 0;
+
+    /**
+     * @return int
+     */
+    public function getGender(): int
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param int $gender
+     */
+    public function setGender(int $gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDisable(): bool
+    {
+        return $this->disable;
+    }
+
+    /**
+     * @param bool $disable
+     */
+    public function setDisable(bool $disable): void
+    {
+        $this->disable = $disable;
+    }
+
     /**
      * @param string $room
      */
