@@ -103,15 +103,33 @@ body {
         }
 
         .layout {
-            padding-top: 0;
+            padding-top: 1.5rem;
             padding-bottom: 0;
+
+            &__item + .color-accent--white {
+                margin-top: 3rem;
+            }
+        }
+
+        .sidebar {
+            margin-top: 1rem;
         }
 
         .content--info {
             position: relative;
             padding-top: 2rem;
             padding-bottom: 2rem;
+            margin-right: 7rem;
             background-color: var(--color-white);
+
+            @include media-breakpoint-down(lg) {
+                margin-right: 1rem;
+                padding-left: 1rem;
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 100%;
+            }
 
             &::after {
                 content: '';
@@ -132,7 +150,7 @@ body {
     padding: 0 2rem 2rem 1rem;
 
     @include media-breakpoint-up(lg) {
-        padding: 0 19rem 6rem 19rem;
+        padding: 0 6rem 6rem 6rem;
     }
 
     dl {
@@ -145,6 +163,7 @@ body {
         dd {
             @include text-copy-standard;
             margin-bottom: 3rem;
+            max-width: 100%;
         }
     }
 
@@ -162,6 +181,10 @@ body {
 
     .link-primary {
         text-decoration: underline;
+    }
+
+    .text-copy-standard {
+        max-width: 100%;
     }
 }
 

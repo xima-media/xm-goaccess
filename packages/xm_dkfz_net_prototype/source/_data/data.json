@@ -1263,7 +1263,7 @@
                                 "text": "Der Immunologe, Krebsforscher und Unternehmer Ugur Sahin baut am Helmholtz-Institut „HI-TRON Mainz“ eine wissenschaftliche Abteilung für mRNA-basierte Krebs-Immunthera-pie auf. Die bestechende Idee hinter dem Konzept der mRNA-basierten Krebs-Immunthera-pien: Mit Boten RNA-Molekülen (mRNA) bringt man den Körper dazu, selbst Tumorproteine zu produzieren, die das Immunsystem dazu anregen, den Krebs zu bekämpfen. Ugur Sahin ist einer der weltweit wichtigsten Pioniere auf diesem Forschungsgebiet.",
                                 "image": {
                                     "src": "../../../Images//examples/news-header.jpg",
-                                    "color": "purple",
+                                    "color": "green",
                                     "position": "left"
                                 },
                                 "link": {

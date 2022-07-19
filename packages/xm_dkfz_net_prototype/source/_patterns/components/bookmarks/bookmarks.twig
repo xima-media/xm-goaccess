@@ -1,17 +1,9 @@
 <!-- Module Start: bookmarks -->
 
-{#
-    Variables
-#}
-{% set bookmarkInputId = random() %}
-{% set bookmarkRemoveId = random() %}
-
-{#
-    Markup
-#}
 
 
-<div class="bookmarks__sidebar d-none" id="bookmarkResultsContainer">
+{#<div class="bookmarks__sidebar d-none" id="bookmarkResultsContainer">#}
+<div class="bookmarks__sidebar d-none">
     <div class="bookmarks__sidebar-header">
         <div class="bookmarks__sidebar-header-title">
             <h2 class="h3">
@@ -42,7 +34,7 @@
                 <ul class="bookmarks__sidebar-list">
                     {% for item in employlee.items %}
                         <li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
-                            <div class="contact--wrapper">
+                            <div class="contact--wrapper color-accent--blue-900">
                                 {% include '@components/contact/contact--image.twig' with {
                                     link: {
                                         url: item.link.url,
