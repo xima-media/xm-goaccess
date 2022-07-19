@@ -132,7 +132,7 @@ body {
     padding: 0 2rem 2rem 1rem;
 
     @include media-breakpoint-up(lg) {
-        padding: 0 19rem 6rem 19rem;
+        padding: 0 6rem 6rem 6rem;
     }
 
     dl {
@@ -145,6 +145,7 @@ body {
         dd {
             @include text-copy-standard;
             margin-bottom: 3rem;
+            max-width: 100%;
         }
     }
 
@@ -162,6 +163,10 @@ body {
 
     .link-primary {
         text-decoration: underline;
+    }
+
+    .text-copy-standard {
+        max-width: 100%;
     }
 }
 
