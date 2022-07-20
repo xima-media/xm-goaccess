@@ -105,6 +105,7 @@ deploy-staging-dkfz:
     - cat ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
     - cat ~/.ssh/config
+    - ssh xima@intracmsstage "echo $PATH"
   script:
     - vendor/bin/dep deploy-fast staging-dkfz -vvv
   environment:
