@@ -99,6 +99,7 @@ deploy-staging-dkfz:
     - echo "$SSH_PRIVATE_KEY" >> | tr -d '\r' > ~/.ssh/id_rsa
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - ssh -V
