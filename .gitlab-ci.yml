@@ -104,6 +104,7 @@ deploy-staging-dkfz:
     - ssh -V
     - cat ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
+    - cat ~/.ssh/config
   script:
     - vendor/bin/dep deploy-fast staging-dkfz -vvv
   environment:
