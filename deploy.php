@@ -33,8 +33,6 @@ host('staging-dkfz')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_recursive', false)
     ->set('writable_chmod_mode', '0770')
-    ->addSshOption('HostKeyAlgorithms', 'ssh-ed25519')
-    ->addSshOption('StrictHostKeyChecking', 'no')
     ->set('deploy_path', '/var/www/html/intracmsstage.dkfz.de');
 
 host('feature')

@@ -11,9 +11,6 @@ stages:
   - deploy
 
 build-php:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: build
   script:
     - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
@@ -22,9 +19,6 @@ build-php:
       - vendor/
 
 build-node:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: build
   image: misterio92/ci-php-node
   cache:
@@ -93,31 +87,21 @@ deploy-staging:
 
 deploy-staging-dkfz:
   stage: deploy
-  image: debian:latest
+  needs: [ "build-php", "build-node" ]
   only:
     refs:
       - "master"
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
-  before_script:
-    - apt-get -yq update
-    - apt-get install ssh rsync -yq
-    - eval $(ssh-agent -s)
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 700 ~/.ssh
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
-    - ssh-keyscan intracmsstage >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - ssh -V
-    - cat ~/.ssh/known_hosts
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
-    - cat ~/.ssh/config
-    - ls -la ~/.ssh/
-    - cat ~/.ssh/id*
-    - ssh -v -i ~/.ssh/id_rsa xima@intracmsstage "echo $PATH"
   script:
+    - apk add --quiet rsync
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
     - vendor/bin/dep deploy-fast staging-dkfz -vvv
   environment:
     name: staging
