@@ -106,6 +106,7 @@ deploy-staging-dkfz:
     - chmod 700 ~/.ssh
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
+    - ssh-keyscan intracmsstage >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - ssh -V
     - cat ~/.ssh/known_hosts
