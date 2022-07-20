@@ -116,7 +116,7 @@ deploy-staging-dkfz:
     - cat ~/.ssh/config
     - ls -la ~/.ssh/
     - cat ~/.ssh/id*
-    - ssh -i ~/.ssh/id_rsa xima@intracmsstage "echo $PATH"
+    - ssh -v -i ~/.ssh/id_rsa xima@intracmsstage "echo $PATH"
   script:
     - vendor/bin/dep deploy-fast staging-dkfz -vvv
   environment:
