@@ -96,8 +96,8 @@ deploy-staging-dkfz:
   before_script:
     - apk add --quiet rsync
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
     - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
     - chmod 700 ~/.ssh
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
