@@ -60,6 +60,13 @@ call_user_func(function () {
                 'foreign_field' => 'fe_user',
             ],
         ],
+        'dkfz_hash' => [
+            'exlude' => false,
+            'label' => 'Hash of CPerson node',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
