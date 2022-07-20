@@ -102,6 +102,7 @@ deploy-staging-dkfz:
     - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - ssh -V
+    - cat ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
   script:
     - vendor/bin/dep deploy-fast staging-dkfz -vvv
