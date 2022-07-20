@@ -12,7 +12,7 @@ This is the main repository for the DKFZ TYPO3 project.
 2. Run `ddev start`
 3. Done.
 
-### 1.1 Asset-Building
+### 1.1. Asset-Building
 
 All TypeScript and SCSS source files are located inside the `packages/xm_dkfz_net_prototype` directory and become compiled via webpack.
 
@@ -54,7 +54,7 @@ When starting the project for the first time, an example database is imported th
   * Username: max@example.com
   * Password: changeme
 
-### 3.2 Staging database (sync)
+### 3.2. Staging database (sync)
 
 To download the staging database, you can use deployer. These commands download the database and media files:
 
@@ -65,14 +65,14 @@ dep media:pull staging
 
 (Make sure you have authenticated your ddev container and added the `dep` command alias, see 5. Commands)
 
-## 3.1 TYPO3 Styleguide
+### 3.3. TYPO3 Styleguide
 
 * [https://stage.dkfz-typo3-dev.xima.local/styleguide/themenseite](https://stage.dkfz-typo3-dev.xima.local/styleguide/themenseite)
 * [https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten](https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten)
 
 ## 4. Project structure
 
-All configurations are made for the production context. Configurations can be overridden via `.env` oder `dev.typoscript` files to fit in the
+All configurations are made for the production context. Configurations can be overridden via `.env` oder `dev.typoscript` files to fit your local ddev installation.
 
 ```
 ├── Tests
