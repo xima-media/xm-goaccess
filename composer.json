@@ -67,8 +67,9 @@
 		"xima/xm-dkfz-net-events": "*@dev",
 		"typo3/cms-filemetadata": "^11.5",
 		"b13/container": "^1.6.1",
-		"blueways/bw-guild": "*@dev"
-	},
+		"blueways/bw-guild": "*@dev",
+      "ext-dom": "*"
+    },
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"friendsofphp/php-cs-fixer": "^3.6.0",

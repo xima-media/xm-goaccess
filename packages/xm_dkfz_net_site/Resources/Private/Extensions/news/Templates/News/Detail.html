@@ -18,11 +18,13 @@
 			</f:if>
 		</p>
 
-		<button class="button button--primary icon icon--bookmark-add button--bookmark-add"
-				data-bookmark-entity="tx_news_domain_model_news"
-				data-bookmark-added="false"
-				data-bookmark-id="{newsItem.uid}">
-			<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark"/>
+		<button type="button" class="button button--primary" data-bookmark-url="{f:uri.action(action: 'bookmark', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'tx_news_domain_model_news', recordUid: newsItem.uid})}">
+			<span data-onload><f:render partial="Icon" arguments="{icon: 'bookmark-add'}" />
+				<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark"/>
+			</span>
+			<span data-checked><f:render partial="Icon" arguments="{icon: 'bookmark-delete'}" />
+				<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark.remove"/>
+			</span>
 		</button>
 	</div>
 

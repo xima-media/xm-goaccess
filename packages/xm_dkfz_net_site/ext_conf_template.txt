@@ -1,0 +1,2 @@
+# cat=basic/enable; type=string; label=URL of the DKFZ phone book API
+phone_book_api_url =

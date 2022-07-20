@@ -62,6 +62,18 @@ page {
       50 {
         references.fieldName = media
       }
+
+      60 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      60 {
+        table = fe_users
+        where =
+        where.dataWrap = uid IN ({field:tx_xmdkfznetsite_contacts})
+        if.isTrue.field = tx_xmdkfznetsite_contacts
+        pidInList = {$pidFeUserStorage}
+        as = contacts
+        orderBy = reclist_sortby
+        selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:tx_xmdkfznetsite_contacts}') AS reclist_sortby
+      }
     }
   }
 
@@ -155,4 +167,6 @@ page {
 [tree.level < 2]
   page.10.variables.mainClass = TEXT
   page.10.variables.mainClass.value = main--expanded
+[else]
+  config.htmlTag.attributes.class = background--white
 [end]

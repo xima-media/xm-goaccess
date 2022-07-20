@@ -93,6 +93,9 @@ return [
         'xm_dkfz_net_jobs' => [
             'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
         ],
+        'xm_dkfz_net_site' => [
+            'phone_book_api_url' => 'https://info.dkfz-heidelberg.de/telefonbuch/api/db',
+        ],
     ],
     'FE' => [
         'cookieSameSite' => 'lax',

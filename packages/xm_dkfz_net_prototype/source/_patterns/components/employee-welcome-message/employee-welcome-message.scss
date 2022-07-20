@@ -8,43 +8,55 @@
 //   @section 1. Employee welcome message
 //
 
+.employee-welcome {
+
+    &--onload-hidden {
+        .employee-welcome-message {
+            opacity: 0;
+            transform: translate3d(-5rem, 0, 0);
+        }
+
+        .employee-finder {
+            opacity: 0;
+            transform: translate3d(5rem, 0, 0);
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        margin-bottom: -8rem;
+    }
+}
+
 .employee-welcome-message {
     @include background-blur;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 3rem;
     max-width: 56.5rem;
-    margin-top: -1.5rem;
-    margin-bottom: 1.5rem;
     padding: 1.5rem;
+    transition: opacity 1s ease 0.8s, transform 0.7s ease 0.7s;
 
     @include media-breakpoint-up(md) {
-        flex-direction: row;
-        margin-top: -4.75rem;
-        margin-bottom: -1.5rem;
         padding: 2.25rem 2rem 1.875rem 3rem;
+        grid-column: 1 / 9;
+        grid-row: 1 / 7;
     }
 
     @include media-breakpoint-up(xl) {
-        margin-left: -1rem;
-    }
-
-    &__header {
-        @include media-breakpoint-up(md) {
-            flex: 0 0 20rem; // @todo variabe mit card teilen
-            width: 20rem; // @todo variabe mit card teilen
-        }
+        grid-template-columns: 2fr 3fr;
+        padding: 2.25rem 2rem 1.875rem 3rem;
+        grid-column: 1 / 10;
+        grid-row: 1 / 6;
     }
 
     &__title {
         @include h4;
-
-        margin-bottom: -.25rem;
     }
 
     &__sub-title {
-        margin-bottom: .7rem;
         font-size: 20px; // @todo style-variable?
         line-height: 38px; // @todo style-variable?
     }
@@ -54,7 +66,6 @@
     }
 
     &__body {
-        margin-top: .375rem;
     }
 }
 

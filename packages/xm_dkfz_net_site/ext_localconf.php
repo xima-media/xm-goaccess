@@ -27,3 +27,12 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['extended'] = 'EXT:xm_dkfz_net_sit
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\GeorgRinger\News\Domain\Repository\NewsRepository::class] = [
     'className' => Xima\XmDkfzNetSite\Domain\Repository\NewsRepository::class,
 ];
+// Register User override
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Blueways\BwGuild\Domain\Model\User::class] = [
+    'className' => Xima\XmDkfzNetSite\Domain\Model\User::class,
+];
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+    ->registerImplementation(
+        Blueways\BwGuild\Domain\Model\User::class,
+        \Xima\XmDkfzNetSite\Domain\Model\User::class
+    );

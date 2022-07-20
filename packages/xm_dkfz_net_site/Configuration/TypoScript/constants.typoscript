@@ -88,6 +88,7 @@ plugin {
     settings {
       showPid = {$pidUserDetail}
     }
+    persistence.storagePid = {$pidFeUserStorage}
   }
 
   tx_bwguild_userlist {

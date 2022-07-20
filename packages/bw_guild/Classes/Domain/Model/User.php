@@ -39,6 +39,12 @@ class User extends FrontendUser
     protected $offers;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blueways\BwGuild\Domain\Model\AbstractUserFeature>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     */
+    protected $features;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
@@ -82,11 +88,14 @@ class User extends FrontendUser
         return $this->bookmarks;
     }
 
-    /**
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
-     * @TYPO3\CMS\Extbase\Annotation\Validate("Blueways\BwGuild\Validation\Validator\UserLogoValidator")
-     */
-    protected $logo;
+    protected string $slug = '';
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    protected ?FileReference $logo = null;
 
     public function __construct(string $username = '', string $password = '')
     {
@@ -96,20 +105,15 @@ class User extends FrontendUser
         $this->offers = new ObjectStorage();
         $this->sharedOffers = new ObjectStorage();
         $this->sortingField = 'company';
+        $this->features = new ObjectStorage();
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
-     */
-    public function getLogo(): ?\TYPO3\CMS\Extbase\Domain\Model\FileReference
+    public function getLogo(): ?FileReference
     {
         return $this->logo;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $logo
-     */
-    public function setLogo(\TYPO3\CMS\Extbase\Domain\Model\FileReference $logo): void
+    public function setLogo(?FileReference $logo): void
     {
         $this->logo = $logo;
     }
@@ -369,5 +373,39 @@ class User extends FrontendUser
         }
 
         return $schema;
+    }
+
+    public function getFeatures(): ObjectStorage
+    {
+        return $this->features;
+    }
+
+    public function getFeaturesGroupedByRecordType(): array
+    {
+        $groupedFeatures = [];
+        /** @var \Blueways\BwGuild\Domain\Model\AbstractUserFeature $feature */
+        foreach ($this->features as $feature) {
+            $groupedFeatures[(int)$feature->getRecordType()] ??= new ObjectStorage();
+            $groupedFeatures[(int)$feature->getRecordType()]->attach($feature);
+        }
+        return $groupedFeatures;
+    }
+
+    public function getFeaturesAsJsonGroupedByRecordType(): array
+    {
+        $groupedFeatures = $this->getFeaturesGroupedByRecordType();
+
+        return array_map(function ($featureGroup) {
+            $featureGroup = array_map(function ($feature) {
+                return $feature->getApiOutputArray();
+            }, [...$featureGroup]);
+
+            return json_encode(array_values($featureGroup));
+        }, $groupedFeatures);
+    }
+
+    public function setFeatures(ObjectStorage $features): void
+    {
+        $this->features = $features;
     }
 }

@@ -30,6 +30,9 @@
 			<trans-unit id="user.logo">
 				<source>Logo</source>
 			</trans-unit>
+			<trans-unit id="user.features">
+				<source>Features</source>
+			</trans-unit>
 
 			<trans-unit id="tx_bwguild_domain_model_offer">
 				<source>Offer</source>
@@ -81,6 +84,24 @@
 			</trans-unit>
 			<trans-unit id="tx_bwguild_domain_model_offer.slug">
 				<source>Slug</source>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_feature">
+				<source>Feature</source>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_feature.record_type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_feature.record_type.0">
+				<source>Skill</source>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_feature.record_type.1">
+				<source>Interest</source>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_feature.record_type.2">
+				<source>Hobby</source>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_feature.name">
+				<source>Name</source>
 			</trans-unit>
 		</body>
 	</file>

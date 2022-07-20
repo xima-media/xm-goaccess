@@ -9,6 +9,11 @@
 //
 
 .content-wrapper {
+
+    &:not(:first-of-type) {
+        margin-top: var(--space-xxl);
+    }
+
     &__header {
         position: relative;
         display: flex;
@@ -21,12 +26,6 @@
 
     &__title {
         margin-bottom: .25rem;
-
-        &-left {
-            @include media-breakpoint-up(lg) {
-                margin-left: 6rem;
-            }
-        }
     }
 
     &__pattern {
@@ -141,7 +140,6 @@
                 .--content {
                     max-width: $container-md-widths;
                     margin-left: auto;
-                    margin-bottom: 4rem;
                 }
             }
 
@@ -207,7 +205,6 @@
                 .--content {
                     max-width: $container-md-widths;
                     margin-right: auto;
-                    margin-bottom: 4rem;
                 }
             }
         }
@@ -222,43 +219,66 @@
         }
     }
 
-    &__content {
-        & >.layout__item--two {
-            grid-template-columns: 1fr;
-
-            @include media-breakpoint-up(md) {
-                grid-template-columns: 22rem 1fr;
-            }
-
-            .card:not(:last-child):not(.card--link) {
-                border-bottom: 1px solid var(--color-gray-200);
-            }
-
-            .card {
-                &--link {
-                    margin-top: 0;
-                    padding-bottom: .375rem;
-                }
-
-                &--short-message {
-                    padding-left: .75rem;
-                }
-            }
-
-            .tab-item__wrapper {
-                margin: .25rem auto 1.5rem;
-
-                &--background-gray-100 {
-                    background: rgb(238 238 238 / 50%);
-                }
-            }
+    &.frame-type-textmedia {
+        +.frame-type-textmedia {
+            margin-top: var(--space-xl);
+            margin-bottom: 0;
         }
+    }
+
+    &.frame-type-infobox {
+        +.frame-type-infobox {
+            margin-top: var(--space-lg);
+            margin-bottom: 0;
+        }
+    }
+
+    &.frame-type-heroteaser {
+        margin-bottom: var(--space-md);
     }
 }
 
 .head-area {
     &--picture {
         position: relative;
+    }
+}
+
+
+.frame {
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 var(--space-xxl) var(--color-white);
+
+    .background--image + & {
+        box-shadow: 0 var(--space-xxl) 0 var(--space-xxl) var(--color-white);
+    }
+
+    &.frame-type-container-accordion {
+        box-shadow: none;
+    }
+}
+
+.main--default {
+
+    .frame-type-heroteaser {
+       width: 1200px;
+        max-width: 1200px;
+    }
+
+    .frame-type-textmedia {
+        width: 1200px;
+        max-width: 1200px;
+    }
+
+    .frame-type-accordion {
+        width: 1200px;
+        max-width: 1200px;
+    }
+
+    .frame-type-table {
+        width: 1200px;
+        max-width: 1200px;
     }
 }
 // end of content-wrapper.scss file

@@ -23,6 +23,18 @@ host('staging')
     ->set('writable_chmod_mode', '0770')
     ->set('deploy_path', '/var/www/html/stage.dkfz-typo3-dev.xima.local');
 
+host('staging-dkfz')
+    ->hostname('intracmsstage')
+    ->stage('staging')
+    ->user('xima')
+    ->set('branch', 'master')
+    ->set('public_urls', ['https://intracmsstage.dkfz-heidelberg.de'])
+    ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod')
+    ->set('writable_chmod_recursive', false)
+    ->set('writable_chmod_mode', '0770')
+    ->set('deploy_path', '/var/www/html/intracmsstage.dkfz.de');
+
 host('feature')
     ->hostname('192.168.2.41')
     ->stage('feature')

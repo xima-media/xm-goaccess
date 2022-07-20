@@ -1,0 +1,147 @@
+<f:flashMessages/>
+
+<f:spaceless>
+
+	<f:form class="userprofile"
+			controller="Api"
+			action="userEditUpdate"
+			object="{user}"
+			name="user"
+			method="POST"
+			enctype="multipart/form-data"
+			pageType="1657523819">
+
+		<f:form.select class="d-none"
+					   property="features"
+					   multiple="1"
+					   options="{features}"
+					   optionLabelField="name"/>
+
+		<a href="#" class="d-none button button--secondary" data-feature="###JS_TEMPLATE###">
+			<span></span>
+			<f:render partial="Icon" arguments="{icon: 'close', size: 'xs'}"/>
+		</a>
+
+		<h3>{f:translate(key: 'userEditForm.profileEdit', extensionName: 'XmDkfzNetSite')}</h3>
+
+		<fieldset>
+			<h5>{f:translate(key: 'userEditForm.profilePicture', extensionName: 'XmDkfzNetSite')}</h5>
+			<div class="form-group">
+				<div class="form-element">
+					<figure class="">
+						<f:if condition="{user.logo}">
+							<picture>
+								<source srcset="{f:uri.image(image:user.logo, width:'150', fileExtension: 'webp')}"
+										type="image/webp">
+								<source srcset="{f:uri.image(image:user.logo, width:'150', fileExtension: 'jpg')}"
+										type="image/jpeg">
+								<img src="{f:uri.image(image:user.logo, width:'150', fileExtension: 'jpg')}"
+									 alt="{file.originalResource.alternative}"
+									 class="picture__image image--responsive"
+									 loading="lazy"/>
+							</picture>
+						</f:if>
+						<f:if condition="!{user.logo}">
+							<img width="150"
+								 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
+								 alt="{f:translate(key: 'noProfilePicture', extensionName: 'XmDkfzNetSite')}"/>
+						</f:if>
+					</figure>
+				</div>
+				<div>
+					<f:form.upload additionalAttributes="{accept: 'image/*'}" property="logo" id="logo"/>
+					<f:if condition="{user.logo}">
+						<label>Delete Logo
+							<f:form.checkbox value="1" name="deleteLogo"/>
+						</label>
+					</f:if>
+				</div>
+			</div>
+		</fieldset>
+
+		<f:render section="FeatureFieldset" arguments="{recordType: 0, groupedJsonFeatures:groupedJsonFeatures, user:user}" />
+
+		<f:render section="FeatureFieldset" arguments="{recordType: 1, groupedJsonFeatures:groupedJsonFeatures, user:user}" />
+
+		<f:render section="FeatureFieldset" arguments="{recordType: 2, groupedJsonFeatures:groupedJsonFeatures, user:user}" />
+
+		<fieldset>
+			<div class="button-group">
+				<button data-abort href="#" class="button button--primary fx--hover">
+					{f:translate(key: 'abort', extensionName: 'XmDkfzNetSite')}
+				</button>
+				<button type="submit" class="button button--primary">
+					{f:translate(key: 'save', extensionName: 'XmDkfzNetSite')}
+				</button>
+			</div>
+		</fieldset>
+
+		<f:comment>
+			<div class="form__item">
+				<label> Firmenname
+					<f:form.textfield property="company"/>
+				</label>
+			</div>
+			<div class="form__item">
+				<label> Anschrift
+					<f:form.textfield property="address"/>
+				</label>
+			</div>
+			<div class="form__item form__item--2">
+				<label> PLZ
+					<f:form.textfield property="zip"/>
+				</label> <label> Stadt
+				<f:form.textfield property="city"/>
+			</label>
+			</div>
+			<div class="form__item">
+				<label> Telefon
+					<f:form.textfield property="telephone"/>
+				</label>
+			</div>
+			<div class="form__item">
+				<label> Email
+					<f:form.textfield property="email"/>
+				</label>
+			</div>
+			<div class="form__item">
+				<label id="publicProfile"> Öffentliches Profil
+					<f:form.checkbox property="publicProfile" id="publicProfile" value="1"/>
+				</label>
+			</div>
+			<div class="form__item form__item--submit">
+				<button type="submit" class="button hollow">
+					<span class="icon-save"></span>
+					Speichern
+				</button>
+			</div>
+		</f:comment>
+	</f:form>
+
+
+	<f:section name="FeatureFieldset">
+		<fieldset>
+			<label class="h5" for="feature-{recordType}">{f:translate(key: 'userEditForm.feature-{recordType}-headline', extensionName: 'XmDkfzNetSite')}</label>
+			<div class="form-group">
+				<div class="form-element"
+					 data-record-type="{recordType}"
+					 data-all-features="{groupedJsonFeatures.{recordType}}"
+					 data-selected-features="{user.featuresAsJsonGroupedByRecordType.{recordType}}">
+					<input type="text" placeholder="{f:translate(key: 'userEditForm.feature-2-placeholder', extensionName: 'XmDkfzNetSite')}" id="feature-{recordType}"/>
+
+					<ul class="list list--inline">
+						<f:for each="{user.featuresGroupedByRecordType.{recordType}}" as="feature">
+							<a href="#" class="button button--secondary" data-feature="{feature.uid}">
+								<span>{feature.name}</span>
+								<f:render partial="Icon" arguments="{icon: 'close', size: 'xs'}"/>
+							</a>
+						</f:for>
+					</ul>
+
+					<h6>{f:translate(key: 'userEditForm.yourSelection', extensionName: 'XmDkfzNetSite')}</h6>
+				</div>
+			</div>
+		</fieldset>
+	</f:section>
+
+</f:spaceless>

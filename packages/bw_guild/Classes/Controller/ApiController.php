@@ -4,6 +4,7 @@ namespace Blueways\BwGuild\Controller;
 
 use Blueways\BwGuild\Domain\Model\Dto\Userinfo;
 use Blueways\BwGuild\Domain\Model\User;
+use Blueways\BwGuild\Domain\Repository\AbstractUserFeatureRepository;
 use Blueways\BwGuild\Domain\Repository\UserRepository;
 use Blueways\BwGuild\Service\AccessControlService;
 use Psr\Http\Message\ResponseInterface;
@@ -11,6 +12,7 @@ use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter;
 
 class ApiController extends ActionController
 {
@@ -18,10 +20,16 @@ class ApiController extends ActionController
 
     protected UserRepository $userRepository;
 
-    public function __construct(AccessControlService $accessControlService, UserRepository $userRepository)
-    {
+    protected AbstractUserFeatureRepository $featureRepository;
+
+    public function __construct(
+        AccessControlService $accessControlService,
+        UserRepository $userRepository,
+        AbstractUserFeatureRepository $featureRepository
+    ) {
         $this->accessControlService = $accessControlService;
         $this->userRepository = $userRepository;
+        $this->featureRepository = $featureRepository;
     }
 
     public function userinfoAction(): ResponseInterface
@@ -53,13 +61,13 @@ class ApiController extends ActionController
             $userinfo->setBookmarkOutput($relationHandler->results);
         }
 
-        if ($this->settings['showPid']) {
+        if ($this->settings['showPid'] && $user->getSlug()) {
             $url = $this->uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$this->settings['showPid'])
                 ->uriFor(
                     'show',
-                    ['user' => $userinfo->user['uid']],
+                    ['user' => $user->getSlug()],
                     'User',
                     'BwGuild',
                     'Usershow'
@@ -87,5 +95,78 @@ class ApiController extends ActionController
         }
 
         return $this->responseFactory->createResponse(405);
+    }
+
+    public function userEditFormAction(): ResponseInterface
+    {
+        if (!($userId = $this->accessControlService->getFrontendUserUid())) {
+            return $this->responseFactory->createResponse('403', '');
+        }
+
+        $user = $this->userRepository->findByUid($userId);
+        $features = $this->featureRepository->findAll();
+        $groupedJsonFeatures = $this->featureRepository->getFeaturesAsJsonGroupedByRecordType();
+
+        $this->view->assign('user', $user);
+        $this->view->assign('features', $features);
+        $this->view->assign('groupedJsonFeatures', $groupedJsonFeatures);
+        $html = $this->view->render();
+        $response = ['html' => $html];
+
+        return $this->jsonResponse(json_encode($response));
+    }
+
+    public function initializeUserEditUpdateAction()
+    {
+        $isLogoDelete = $this->request->hasArgument('deleteLogo') && $this->request->getArgument('deleteLogo');
+        $isEmptyLogoUpdate = $_FILES['tx_bwguild_api']['name']['user']['logo'] === '';
+
+        if ($isLogoDelete || $isEmptyLogoUpdate) {
+            $this->ignoreLogoArgumentInUpdate();
+        }
+
+        $propertyMappingConfiguration = $this->arguments->getArgument('user')->getPropertyMappingConfiguration();
+        $propertyMappingConfiguration->allowAllProperties('features');
+        $propertyMappingConfiguration->forProperty('features.*')->allowCreationForSubProperty('*');
+        $propertyMappingConfiguration->forProperty('features.*')->allowProperties('name', 'record_type');
+        $propertyMappingConfiguration->forProperty('features.*')->setTypeConverter(
+            GeneralUtility::makeInstance(PersistentObjectConverter::class),
+        );
+        $propertyMappingConfiguration->forProperty('features.*')->setTypeConverterOption(
+            'TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter',
+            PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED,
+            true
+        );
+    }
+
+    protected function ignoreLogoArgumentInUpdate(): void
+    {
+        // unset logo argument
+        $userArgument = $this->request->getArgument('user');
+        unset($userArgument['logo']);
+        $this->request->setArgument('user', $userArgument);
+    }
+
+    public function userEditUpdateAction(User $user): ResponseInterface
+    {
+        if (!$this->accessControlService->isLoggedIn($user)) {
+            $this->throwStatus(403, 'No access to edit this user');
+        }
+
+        // delete all logos
+        if ($this->request->hasArgument('deleteLogo') && $this->request->getArgument('deleteLogo') === '1') {
+            $this->userRepository->deleteAllUserLogos($user->getUid());
+        }
+
+        // delete existing logo(s) if new one is created
+        $userArguments = $this->request->getArgument('user');
+        if (isset($userArguments['logo']) && $user->getLogo()) {
+            $this->userRepository->deleteAllUserLogos($user->getUid());
+        }
+
+        $user->geoCodeAddress();
+        $this->userRepository->update($user);
+
+        return new ForwardResponse('userEditForm');
     }
 }

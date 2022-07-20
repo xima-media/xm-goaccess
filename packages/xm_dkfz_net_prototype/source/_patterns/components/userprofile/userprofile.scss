@@ -1,0 +1,83 @@
+input[type="text"] {
+    display: block;
+    background: $color-gray-100;
+    border: 0;
+    border-bottom: 1px solid $color-gray-900;
+    padding: 0.7rem 1rem;
+    margin-bottom: var(--space-sm);
+    font-weight: 200;
+}
+
+form.userprofile {
+
+    fieldset:not(:last-child), h3 {
+        margin-bottom: var(--space-md);
+    }
+
+    .form-group {
+        display: flex;
+        gap: var(--space-md);
+        flex-direction: column;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
+    }
+
+    .form-element {
+        display: flex;
+        flex-direction: column;
+
+        &:only-child {
+            width: 100%;
+        }
+    }
+
+    h5, .h5 {
+        margin-bottom: var(--space-sm);
+    }
+
+    .list {
+        order: 99;
+
+        &:empty + h6 {
+            display: none;
+        }
+    }
+
+    .button-group {
+        margin-top: var(--space-md);
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}
+
+
+.autocomplete {
+    background: var(--color-white);
+    z-index: 1000;
+    overflow: auto;
+    box-sizing: border-box;
+    border: 1px solid rgba(50, 50, 50, 0.6);
+}
+
+.autocomplete * {
+    font: inherit;
+}
+
+.autocomplete > div {
+    padding: 0 4px;
+}
+
+.autocomplete .group {
+    background: var(--color-gray-200)
+}
+
+.autocomplete > div:hover:not(.group),
+.autocomplete > div.selected {
+    background: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+}
+

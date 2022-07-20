@@ -48,7 +48,9 @@
  *       2.41 Video player
  *       2.42 Bookmarks
  *       2.43 Employee info
- *       2.44 Employee info
+ *       2.44 Userinfo
+ *       2.45 Userprofile
+ *       2.46 Field checkbox
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -182,9 +184,6 @@ import './_patterns/components/text/text'
 /** @section 2.39 Hero form */
 import './_patterns/components/hero-form/hero-form'
 
-/** @section 2.40 Autocomplete */
-import './_patterns/components/autocomplete/autocomplete'
-
 /** @section 2.41 Video player */
 import './_patterns/components/video-player/video-player'
 
@@ -196,6 +195,15 @@ import './_patterns/components/employee/employee-info'
 
 /** @section 2.43 Userinfo */
 import './_patterns/components/userinfo/userinfo'
+
+/** @section 2.44 Userprofile */
+import './_patterns/components/userprofile/userprofile'
+
+/** @section 2.45 Lightbox */
+import './_patterns/components/lightbox/lightbox'
+
+/** @section 2.46 Field checkbox */
+import './_patterns/components/field/field--checkbox'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

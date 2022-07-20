@@ -21,27 +21,17 @@ body {
     font-weight: 200;
     font-variant-numeric: oldstyle-nums;
     background-color: transparent; // @todo die bootstrap variable überschreiben
-    //background-color: var(--color-gray-100); // @todo die bootstrap variable überschreiben
-
-     .layout {
-         background-color: var(--color-accent);
-    }
-}
-
-.app {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
-    max-width: $container-expand-widths + 1rem;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding-right: .5rem;
-    padding-left: .5rem;
 }
 
 // @todo eventuell auslagern
 .main {
+    max-width: 970px;
+    margin: auto;
+
+    @include media-breakpoint-up(md) {
+        min-height: calc(100vh - 19rem);
+    }
+
     &--default {
         max-width: $container-default-widths;
         margin: auto;
@@ -49,6 +39,56 @@ body {
         &__center {
             display: flex;
             justify-content: center;
+        }
+    }
+
+    &--expanded {
+        max-width: $container-default-widths;
+
+        & > .layout {
+            position: relative;
+
+            &::after {
+                @media screen and (min-width: 1430px) {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -13rem;
+                    right: -13rem;
+                    z-index: 0;
+                    height: 100%;
+                    background-color: var(--color-white);
+                }
+            }
+
+            > .layout__item {
+                @media screen and (min-width: 1430px) {
+                    z-index: 2;
+                }
+
+                @include media-breakpoint-down(lg) {
+                    padding: 0 1rem;
+                }
+            }
+
+            + .background--expanded {
+                .layout__item {
+                    margin-top: 1rem;
+                    margin-bottom: 6rem;
+
+                    @include media-breakpoint-down(lg) {
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                    }
+                }
+            }
+        }
+
+        .hero-form + .layout {
+            &:after {
+                top: -5rem;
+            }
         }
     }
 
@@ -63,15 +103,33 @@ body {
         }
 
         .layout {
-            padding-top: 0;
+            padding-top: 1.5rem;
             padding-bottom: 0;
+
+            &__item + .color-accent--white {
+                margin-top: 3rem;
+            }
+        }
+
+        .sidebar {
+            margin-top: 1rem;
         }
 
         .content--info {
             position: relative;
             padding-top: 2rem;
             padding-bottom: 2rem;
+            margin-right: 7rem;
             background-color: var(--color-white);
+
+            @include media-breakpoint-down(lg) {
+                margin-right: 1rem;
+                padding-left: 1rem;
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 100%;
+            }
 
             &::after {
                 content: '';
@@ -92,7 +150,7 @@ body {
     padding: 0 2rem 2rem 1rem;
 
     @include media-breakpoint-up(lg) {
-        padding: 0 19rem 6rem 19rem;
+        padding: 0 6rem 6rem 6rem;
     }
 
     dl {
@@ -105,6 +163,7 @@ body {
         dd {
             @include text-copy-standard;
             margin-bottom: 3rem;
+            max-width: 100%;
         }
     }
 
@@ -123,6 +182,10 @@ body {
     .link-primary {
         text-decoration: underline;
     }
+
+    .text-copy-standard {
+        max-width: 100%;
+    }
 }
 
 // @todo eventuell auslagern
@@ -130,7 +193,7 @@ body {
     &__header {
         padding: 1.5rem;
         color: var(--color-white);
-        background-color: rgba(0,71,185, .8);
+        background-color: rgba(0, 71, 185, .8);
 
         @include media-breakpoint-up(md) {
             padding: 2.5rem 3rem 1.5rem;
@@ -177,7 +240,7 @@ body {
         margin-top: 1.5rem;
 
         .infobox--with-border {
-            &>.infobox--wrapper {
+            & > .infobox--wrapper {
                 @include media-breakpoint-down(md) {
                     margin: 1.5rem;
                 }
@@ -192,21 +255,13 @@ body {
 //
 
 .layout {
-    // https://stackoverflow.com/questions/55851493/break-out-with-css-grid
-    display: grid;
-    grid-template-columns:
-        [full-start] minmax(0, 1fr)
-        [main-start] minmax(0, $container-default-widths)
-        [main-end] minmax(0, 1fr)
-        [full-end];
-    gap: 2rem 0;
-    margin: auto;
-    //padding-top: 5rem; // @todo variable
-    padding-top: 3.5rem; // @todo variable
-    padding-bottom: 4rem; // @todo variable > selbe Zahl wie gap
+    padding-bottom: var(--space-xxl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @include media-breakpoint-up(lg) {
-        gap: 4rem;
+        padding: var(--space-xxl) 0;
     }
 
     + .layout__item {
@@ -215,56 +270,57 @@ body {
     }
 
     &__item {
+        width: 100%;
         grid-column: main;
         position: relative;
 
-        + .footer {
-            margin-top: 5rem;
-        }
+    + .footer {
+        margin-top: 5rem;
+    }
 
-        &.fx--expanded {
-            grid-column: full;
-        }
+    &.fx--expanded {
+        grid-column: full;
+    }
 
-        &.background--expanded {
-            background-color: transparent;
+    &.background--expanded {
+        background-color: transparent;
 
-            &::after {
-                top: -6rem;
-                bottom: -6rem;
-
-                @include media-breakpoint-up(lg) {
-                    top: -9rem;
-                    bottom: -5rem;
-                    //bottom: -9rem;
-                }
-            }
-        }
-
-        &--two {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-column: main;
-            position: relative;
+        &::after {
+            top: -6rem;
+            bottom: -6rem;
 
             @include media-breakpoint-up(lg) {
-                grid-template-columns: 1fr 1fr;
-                column-gap: 3.5rem;
-            }
-
-            .text--column {
-                @include media-breakpoint-up(lg) {
-                    width: 39.375rem;
-                    margin-left: 6rem;
-                }
+                top: -9rem;
+                bottom: -5rem;
+                //bottom: -9rem;
             }
         }
+    }
 
-        &.background--orange {
-            &::after {
-                background-color: rgba($color-orange, .75);
+    &--two {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column: main;
+        position: relative;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr;
+            column-gap: 3.5rem;
+        }
+
+        .text--column {
+            @include media-breakpoint-up(lg) {
+                width: 39.375rem;
+                margin-left: 6rem;
             }
         }
+    }
+
+    &.background--orange {
+        &::after {
+            background-color: rgba($color-orange, .75);
+        }
+    }
 
         &.background--yellow {
             &::after {
@@ -288,6 +344,25 @@ body {
                 transform: translateX(-50%);
             }
         }
+
+        &--two {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-column: main;
+            position: relative;
+
+            @include media-breakpoint-up(lg) {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 3.5rem;
+            }
+
+            .text--column {
+                @include media-breakpoint-up(lg) {
+                    width: 39.375rem;
+                    margin-left: 6rem;
+                }
+            }
+        }
     }
 }
 
@@ -302,6 +377,10 @@ body {
 
     @include media-breakpoint-up(md) {
         padding: 2.75rem;
+    }
+
+    .layout__item {
+        grid-column: unset;
     }
 
     &--main-hero {
@@ -395,6 +474,7 @@ a {
 ul {
     padding-left: 0;
 }
+
 ul > li {
     list-style: none;
 }
