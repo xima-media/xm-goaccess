@@ -26,7 +26,7 @@ To build the patternlab prototype, run the following commands:
 
 ## 2. Git-Server
 
-There a currently two Gitlab installations where you can checkout the source code:
+There are currently two Gitlab installations where you can checkout the source code:
 
 * [DKFZ-Intern](https://git.dkfz.de/dkfz/dkfz-t3-intranet.git) (**PRIMARY**)
 * [XIMA-Intern](https://t3-gitlab-dev.xima.local)
