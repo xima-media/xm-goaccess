@@ -33,7 +33,7 @@ host('staging-dkfz')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_recursive', false)
     ->set('writable_chmod_mode', '0770')
-    ->set('deploy_path', '/var/www/html/intracmsstage.dkfz.de');
+    ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de');
 
 host('feature')
     ->hostname('192.168.2.41')
