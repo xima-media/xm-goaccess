@@ -47,9 +47,21 @@ TCEFORM {
       altLabels.1 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.1
       altLabels.2 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.2
 
-    types.image.removeItems =0,2,3
+      types.image.removeItems = 0,2,3
     }
 
+    image {
+      types {
+        # CType image is used for image slider
+        image {
+          description = Mindestens 2 und maximal 15 Bilder sind erforderlich
+          config {
+            minitems = 2
+            maxitems = 15
+          }
+        }
+      }
+    }
 
     assets {
       config {
