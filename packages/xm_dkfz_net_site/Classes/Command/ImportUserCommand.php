@@ -55,57 +55,39 @@ class ImportUserCommand extends Command
         ]);
 
         $io->writeln('Comparing Users..');
-
         $progress = $io->createProgressBar(count($dbUsers));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
 
         $compareResult = $phoneBookUtility->compareFeUserWithXml($dbUsers, $progress);
-
         $progress->finish();
         $io->newLine(2);
 
-        $phoneBookUsersById = $compareResult['phoneBookUsersById'];
-        $usersIdToCreate = $compareResult['actions']['create'];
-        $usersIdToUpdate = $compareResult['actions']['update'];
-        $usersIdToDelete = $compareResult['actions']['delete'];
-        $usersIdToSkip = $compareResult['actions']['skip'];
-
         $io->listing([
-            '<success>' . count($usersIdToCreate) . '</success> to create',
-            '<warning>' . count($usersIdToUpdate) . '</warning> to update',
-            '<error>' . count($usersIdToDelete) . '</error> to delete',
-            '' . count($usersIdToSkip) . ' to skip',
+            '<success>' . count($compareResult->dkfzIdsToCreate) . '</success> to create',
+            '<warning>' . count($compareResult->dkfzIdsToUpdate) . '</warning> to update',
+            '<error>' . count($compareResult->dkfzIdsToDelete) . '</error> to delete',
+            '' . count($compareResult->dkfzIdsToSkip) . ' to skip',
         ]);
 
-        $phoneBookUsersToCreate = array_filter(
-            $phoneBookUsersById,
-            function ($id) use ($usersIdToCreate) {
-                return in_array($id, $usersIdToCreate);
-            },
-            ARRAY_FILTER_USE_KEY
-        );
-        if (count($phoneBookUsersToCreate)) {
+        if (count($compareResult->dkfzIdsToCreate)) {
             $io->writeln('Creating users..');
-            $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToCreate);
+            $phoneBookUsersToAdd = $compareResult->getPhoneBookPersonsForAction('create');
+            $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd);
             $io->write('<success>done</success>');
         }
 
-        $phoneBookUsersToUpdate = array_filter(
-            $phoneBookUsersById,
-            function ($id) use ($usersIdToUpdate) {
-                return in_array($id, $usersIdToUpdate);
-            },
-            ARRAY_FILTER_USE_KEY
-        );
-        foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
+        if (count($compareResult->dkfzIdsToUpdate)) {
             $io->writeln('Updating users..');
-            $this->userRepository->updateFromPhoneBook($phoneBookPerson);
-            $io->write('<success>done</success>');
+            $phoneBookUsersToUpdate = $compareResult->getPhoneBookPersonsForAction('update');
+            foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
+                $this->userRepository->updateFromPhoneBook($phoneBookPerson);
+                $io->write('<success>done</success>');
+            }
         }
 
-        if (count($usersIdToDelete)) {
+        if (count($compareResult->dkfzIdsToDelete)) {
             $io->writeln('Deleting users..');
-            $this->userRepository->deleteByDkfzIds($usersIdToDelete);
+            $this->userRepository->deleteByDkfzIds($compareResult->dkfzIdsToDelete);
             $io->write('<success>done</success>');
         }
 

@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookImportResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 use Xima\XmDkfzNetSite\Domain\Model\User;
 
@@ -83,10 +84,9 @@ class PhoneBookUtility
         return $extConf['phone_book_api_url'] ?? '';
     }
 
-    #[ArrayShape(['actions' => 'array|array[]', 'phoneBookUsersById' => 'array'])] public function compareFeUserWithXml(array $dbUsers, ?ProgressBar $progress): array
+    public function compareFeUserWithXml(array $dbUsers, ?ProgressBar $progress): PhoneBookImportResult
     {
-        $userIdsForActions = ['create' => [], 'update' => [], 'delete' => [], 'skip' => []];
-        $phoneBookUsersById = [];
+        $result = new PhoneBookImportResult();
 
         foreach ($dbUsers ?? [] as $dbUser) {
             $progress?->advance();
@@ -97,36 +97,34 @@ class PhoneBookUtility
             if ($userNode->length === 1) {
                 $nodeHash = md5($userNode->item(0)->nodeValue);
                 if ($dbUser['dkfz_hash'] !== $nodeHash) {
-                    $userIdsForActions['update'][] = $dbUser['dkfz_id'];
-                    $phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
+                    $result->dkfzIdsToCreate[] = $dbUser['dkfz_id'];
+                    $result->phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
                         $this->xpath,
                         $userNode->item(0)
                     );
                 } else {
-                    $userIdsForActions['skip'][] = $dbUser['dkfz_id'];
+                    $result->dkfzIdsToSkip[] = $dbUser['dkfz_id'];
                 }
                 continue;
             }
 
             // delete user from database if not found in xml
-            $userIdsForActions['delete'][] = $dbUser['dkfz_id'];
+            $result->dkfzIdsToDelete[] = $dbUser['dkfz_id'];
         }
 
         foreach ($this->getUsersInXml() ?? [] as $xmlUserNode) {
             $userId = $this->xpath->query('x:Id', $xmlUserNode)->item(0)->nodeValue;
 
             // skip creation if already marked to update or to skip
-            if (in_array($userId, array_merge($userIdsForActions['update'], $userIdsForActions['skip']), true)) {
+            $idsToIgnore = array_merge($result->dkfzIdsToUpdate, $result->dkfzIdsToSkip);
+            if (in_array($userId, $idsToIgnore, true)) {
                 continue;
             }
 
-            $userIdsForActions['create'][] = $userId;
-            $phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode);
+            $result->dkfzIdsToUpdate[] = $userId;
+            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode);
         }
 
-        return [
-            'actions' => $userIdsForActions,
-            'phoneBookUsersById' => $phoneBookUsersById,
-        ];
+        return $result;
     }
 }
