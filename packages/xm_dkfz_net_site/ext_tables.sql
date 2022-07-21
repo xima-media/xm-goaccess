@@ -54,7 +54,7 @@ create table fe_users (
 );
 
 create table fe_groups (
-	department_id varchar(255) default '' not null,
+	dkfz_id varchar(255) default '' not null,
 );
 
 create table tx_xmdkfznetsite_domain_model_usercontact (
