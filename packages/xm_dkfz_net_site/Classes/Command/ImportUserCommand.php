@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 use Xima\XmDkfzNetSite\Domain\Model\User;
 use Xima\XmDkfzNetSite\Domain\Repository\UserRepository;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
@@ -20,15 +21,11 @@ class ImportUserCommand extends Command
 
     protected UserRepository $userRepository;
 
-    protected PersistenceManager $persistenceManager;
-
     public function __construct(
         UserRepository $userRepository,
-        PersistenceManager $persistenceManager,
         string $name = null
     ) {
         parent::__construct($name);
-        $this->persistenceManager = $persistenceManager;
         $this->userRepository = $userRepository;
     }
 
@@ -54,64 +51,87 @@ class ImportUserCommand extends Command
 
         $io->listing([
             '<success>' . count($xmlUsers) . '</success> found in XML',
-            '<success>' . $dbUsers->count() . '</success> found in database',
+            '<success>' . count($dbUsers) . '</success> found in database',
         ]);
-
         $io->writeln('Comparing Users..');
 
-        $userIdsToUpdate = [];
-        $userIdsToSkip = [];
-        $userActions = ['create' => [], 'update' => [], 'delete' => []];
+        $progress = $io->createProgressBar(count($dbUsers));
+        $progress->setFormat('%current%/%max% [%bar%] %percent%%');
 
-        /** @var \Xima\XmDkfzNetSite\Domain\Model\User $dbUser */
+        $userIdsForActions = ['create' => [], 'update' => [], 'delete' => [], 'skip' => []];
+        $phoneBookUsersById = [];
+
         foreach ($dbUsers ?? [] as $dbUser) {
-            $dkfzUserId = $dbUser->getDkfzId();
-
-            $userNode = $xpath->query('//x:CPerson[x:Id[text()="' . $dkfzUserId . '"]]');
+            $progress->advance();
+            $userNode = $xpath->query('//x:CPerson[x:Id[text()="' . $dbUser['dkfz_id'] . '"]]');
 
             // search for user id in xml and mark for update if changed (as skipped otherwise)
             if ($userNode->length === 1) {
                 $nodeHash = md5($userNode->item(0)->nodeValue);
-                if ($dbUser->getDkfzHash() !== $nodeHash) {
-                    $userActions['update'][] = $dbUser;
-                    $userIdsToUpdate[] = $dkfzUserId;
+                if ($dbUser['dkfz_hash'] !== $nodeHash) {
+                    $userIdsForActions['update'][] = $dbUser['dkfz_id'];
+                    $phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
+                        $xpath,
+                        $userNode->item(0)
+                    );
                 } else {
-                    $userIdsToSkip[] = $dkfzUserId;
+                    $userIdsForActions['skip'][] = $dbUser['dkfz_id'];
                 }
                 continue;
             }
 
             // delete user from database if not found in xml
-            $userActions['delete'][] = $dbUser;
+            $userIdsForActions['delete'][] = $dbUser['dkfz_id'];
         }
 
-        $xmlUsers = $xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
         foreach ($xmlUsers as $xmlUserNode) {
             $userId = $xpath->query('x:Id', $xmlUserNode)->item(0)->nodeValue;
 
             // skip creation if already marked to update or to skip
-            if (in_array($userId, $userIdsToUpdate, true) || in_array($userId, $userIdsToSkip, true)) {
+            if (in_array($userId, array_merge($userIdsForActions['update'], $userIdsForActions['skip']), true)) {
                 continue;
             }
 
-            $newUser = new User();
-            $newUser->setDkfzId($userId);
-            $userActions['create'][] = $newUser;
+            $userIdsForActions['create'][] = $userId;
+            $phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($xpath, $xmlUserNode);
         }
 
+        $progress->finish();
+        $io->newLine();
+
         $io->listing([
-            '<success>' . count($userActions['create']) . '</success> to create',
-            '<warning>' . count($userActions['update']) . '</warning> to update',
-            '<error>' . count($userActions['delete']) . '</error> to delete',
-            '' . count($userIdsToSkip) . ' to skip',
+            '<success>' . count($userIdsForActions['create']) . '</success> to create',
+            '<warning>' . count($userIdsForActions['update']) . '</warning> to update',
+            '<error>' . count($userIdsForActions['delete']) . '</error> to delete',
+            '' . count($userIdsForActions['skip']) . ' to skip',
         ]);
 
-        $io->writeln('Creating and updating Users..');
+        $phoneBookUsersToCreate = array_filter(
+            $phoneBookUsersById,
+            function ($id) use ($userIdsForActions) {
+                return in_array($id, $userIdsForActions['create']);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+        if (count($phoneBookUsersToCreate)) {
+            $io->writeln('Creating users..');
+            $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToCreate);
+        }
 
-        foreach (array_merge($userActions['create'], $userActions['update']) ?? [] as $user) {
-            $phoneBookUtility->updateFeUserFromXpath($user, $xpath);
-            $this->userRepository->add($user);
-            $this->persistenceManager->persistAll();
+        $phoneBookUsersToUpdate = array_filter(
+            $phoneBookUsersById,
+            function ($id) use ($userIdsForActions) {
+                return in_array($id, $userIdsForActions['update']);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+        foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
+            $this->userRepository->updateFromPhoneBook($phoneBookPerson);
+        }
+
+        if (count($userIdsForActions['delete'])) {
+            $io->writeln('Deleting users..');
+            $this->userRepository->deleteByDkfzIds($userIdsForActions['delete']);
         }
 
         return Command::SUCCESS;

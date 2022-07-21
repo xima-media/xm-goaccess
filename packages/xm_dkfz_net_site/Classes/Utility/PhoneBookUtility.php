@@ -73,49 +73,9 @@ class PhoneBookUtility
         return $extConf['phone_book_api_url'] ?? '';
     }
 
-    public function updateFeUserFromXpath(User &$user, DOMXPath $xpath): void
+    protected function compareFeUserWithXml(array $dbUser)
     {
-        $cPersonNode = $xpath->query('//x:CPerson[x:Id="' . $user->getDkfzId() . '"]');
 
-        if ($cPersonNode->count() !== 1) {
-            return;
-        }
-
-        $user->setPid($this->getUserStoragePid());
-
-        $hashOfNode = md5($cPersonNode->item(0)->nodeValue);
-        $user->setDkfzHash($hashOfNode);
-
-        $deactivated = $xpath->query('x:Deaktiviert', $cPersonNode->item(0))->item(0)->nodeValue;
-        $adAccountDeactivated = $xpath->query('x:AdAccountGesperrt', $cPersonNode->item(0))->item(0)->nodeValue;
-        $isHidden = filter_var($deactivated, FILTER_VALIDATE_BOOLEAN) || filter_var($adAccountDeactivated, FILTER_VALIDATE_BOOLEAN);
-        $user->setDisable($isHidden);
-
-        $firstName = $xpath->query('x:Vorname', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($firstName) {
-            $user->setFirstName($firstName);
-        }
-        $title = $xpath->query('x:Titel', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($title) {
-            $user->setTitle($title);
-        }
-        $lastName = $xpath->query('x:Nachname', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($lastName) {
-            $user->setLastName($lastName);
-        }
-        $mail = $xpath->query('x:Mail', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($mail) {
-            $user->setEmail($mail);
-        }
-        $adAccountName = $xpath->query('x:AdAccountName', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($adAccountName) {
-            $user->setAdAccountName($adAccountName);
-            $user->setUsername($adAccountName);
-        }
-        $genderMapping = ['Herr' => 1, 'Frau' => 2];
-        $gender = $xpath->query('x:Anrede', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($gender && in_array($gender, $genderMapping)) {
-            $user->setGender($genderMapping[$gender]);
-        }
     }
+
 }
