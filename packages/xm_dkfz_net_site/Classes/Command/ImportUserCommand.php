@@ -41,97 +41,72 @@ class ImportUserCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
 
-        $phoneBookUtility = GeneralUtility::makeInstance(PhoneBookUtility::class);
-        $xpath = $phoneBookUtility->getXpath();
-
-        $xmlUsers = $xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
-        $dbUsers = $this->userRepository->findAllDkfzUser();
-
         $io->writeln('Reading Users from database and XML..');
+
+        $phoneBookUtility = GeneralUtility::makeInstance(PhoneBookUtility::class);
+        $phoneBookUtility->loadXpath();
+
+        $xmlUsers = $phoneBookUtility->getUsersInXml();
+        $dbUsers = $this->userRepository->findAllDkfzUser();
 
         $io->listing([
             '<success>' . count($xmlUsers) . '</success> found in XML',
             '<success>' . count($dbUsers) . '</success> found in database',
         ]);
+
         $io->writeln('Comparing Users..');
 
         $progress = $io->createProgressBar(count($dbUsers));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
 
-        $userIdsForActions = ['create' => [], 'update' => [], 'delete' => [], 'skip' => []];
-        $phoneBookUsersById = [];
-
-        foreach ($dbUsers ?? [] as $dbUser) {
-            $progress->advance();
-            $userNode = $xpath->query('//x:CPerson[x:Id[text()="' . $dbUser['dkfz_id'] . '"]]');
-
-            // search for user id in xml and mark for update if changed (as skipped otherwise)
-            if ($userNode->length === 1) {
-                $nodeHash = md5($userNode->item(0)->nodeValue);
-                if ($dbUser['dkfz_hash'] !== $nodeHash) {
-                    $userIdsForActions['update'][] = $dbUser['dkfz_id'];
-                    $phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
-                        $xpath,
-                        $userNode->item(0)
-                    );
-                } else {
-                    $userIdsForActions['skip'][] = $dbUser['dkfz_id'];
-                }
-                continue;
-            }
-
-            // delete user from database if not found in xml
-            $userIdsForActions['delete'][] = $dbUser['dkfz_id'];
-        }
-
-        foreach ($xmlUsers as $xmlUserNode) {
-            $userId = $xpath->query('x:Id', $xmlUserNode)->item(0)->nodeValue;
-
-            // skip creation if already marked to update or to skip
-            if (in_array($userId, array_merge($userIdsForActions['update'], $userIdsForActions['skip']), true)) {
-                continue;
-            }
-
-            $userIdsForActions['create'][] = $userId;
-            $phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($xpath, $xmlUserNode);
-        }
+        $compareResult = $phoneBookUtility->compareFeUserWithXml($dbUsers, $progress);
 
         $progress->finish();
-        $io->newLine();
+        $io->newLine(2);
+
+        $phoneBookUsersById = $compareResult['phoneBookUsersById'];
+        $usersIdToCreate = $compareResult['actions']['create'];
+        $usersIdToUpdate = $compareResult['actions']['update'];
+        $usersIdToDelete = $compareResult['actions']['delete'];
+        $usersIdToSkip = $compareResult['actions']['skip'];
 
         $io->listing([
-            '<success>' . count($userIdsForActions['create']) . '</success> to create',
-            '<warning>' . count($userIdsForActions['update']) . '</warning> to update',
-            '<error>' . count($userIdsForActions['delete']) . '</error> to delete',
-            '' . count($userIdsForActions['skip']) . ' to skip',
+            '<success>' . count($usersIdToCreate) . '</success> to create',
+            '<warning>' . count($usersIdToUpdate) . '</warning> to update',
+            '<error>' . count($usersIdToDelete) . '</error> to delete',
+            '' . count($usersIdToSkip) . ' to skip',
         ]);
 
         $phoneBookUsersToCreate = array_filter(
             $phoneBookUsersById,
-            function ($id) use ($userIdsForActions) {
-                return in_array($id, $userIdsForActions['create']);
+            function ($id) use ($usersIdToCreate) {
+                return in_array($id, $usersIdToCreate);
             },
             ARRAY_FILTER_USE_KEY
         );
         if (count($phoneBookUsersToCreate)) {
             $io->writeln('Creating users..');
             $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToCreate);
+            $io->write('<success>done</success>');
         }
 
         $phoneBookUsersToUpdate = array_filter(
             $phoneBookUsersById,
-            function ($id) use ($userIdsForActions) {
-                return in_array($id, $userIdsForActions['update']);
+            function ($id) use ($usersIdToUpdate) {
+                return in_array($id, $usersIdToUpdate);
             },
             ARRAY_FILTER_USE_KEY
         );
         foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
+            $io->writeln('Updating users..');
             $this->userRepository->updateFromPhoneBook($phoneBookPerson);
+            $io->write('<success>done</success>');
         }
 
-        if (count($userIdsForActions['delete'])) {
+        if (count($usersIdToDelete)) {
             $io->writeln('Deleting users..');
-            $this->userRepository->deleteByDkfzIds($userIdsForActions['delete']);
+            $this->userRepository->deleteByDkfzIds($usersIdToDelete);
+            $io->write('<success>done</success>');
         }
 
         return Command::SUCCESS;
