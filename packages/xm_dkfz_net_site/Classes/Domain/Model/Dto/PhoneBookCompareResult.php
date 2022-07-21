@@ -2,7 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Model\Dto;
 
-class PhoneBookImportResult
+class PhoneBookCompareResult
 {
     /**
      * @var int[]

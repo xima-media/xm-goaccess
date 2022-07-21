@@ -46,5 +46,11 @@ services:
         command: 'dkfz:importUser'
         schedulable: false
 
+  Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importFeUserGroup'
+        schedulable: false
+
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

@@ -3,13 +3,12 @@
 namespace Xima\XmDkfzNetSite\Utility;
 
 use DOMXPath;
-use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Component\Console\Helper\ProgressBar;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookImportResult;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 use Xima\XmDkfzNetSite\Domain\Model\User;
 
@@ -43,6 +42,22 @@ class PhoneBookUtility
     public function getUsersInXml()
     {
         return $this->xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
+    }
+
+    public function getGroupIdentifierInXml()
+    {
+        $groupIdentifier = [];
+        $nodes = $this->xpath->query('//x:Abteilung[text()!=""]');
+
+        foreach ($nodes as $key => $node) {
+            $name = $node->nodeValue;
+            preg_match('/([A-Z]{1,3}[\d]{1,3})(?:[\s\-])?/', $name, $matches);
+            if (count($matches) === 2) {
+                $groupIdentifier[] = $matches[1];
+            }
+        }
+
+        return array_unique($groupIdentifier);
     }
 
     public function getUserStoragePid(): int
@@ -84,9 +99,9 @@ class PhoneBookUtility
         return $extConf['phone_book_api_url'] ?? '';
     }
 
-    public function compareFeUserWithXml(array $dbUsers, ?ProgressBar $progress): PhoneBookImportResult
+    public function compareFeUserWithXml(array $dbUsers, ?ProgressBar $progress): PhoneBookCompareResult
     {
-        $result = new PhoneBookImportResult();
+        $result = new PhoneBookCompareResult();
 
         foreach ($dbUsers ?? [] as $dbUser) {
             $progress?->advance();
