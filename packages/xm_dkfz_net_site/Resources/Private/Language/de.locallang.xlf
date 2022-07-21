@@ -197,6 +197,9 @@
             <trans-unit id="image.slider.description">
                  <target>Von 2 bis maximal 15 Bilder in einem Schieberegler ausgerichtet</target>
             </trans-unit>
+            <trans-unit id="image.slider.notification">
+                 <target>Bitte lade 2 bis 15 Bilder hoch</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -54,7 +54,7 @@ TCEFORM {
       types {
         # CType image is used for image slider
         image {
-          description = Mindestens 2 und maximal 15 Bilder sind erforderlich
+          description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.notification
           config {
             minitems = 2
             maxitems = 15
