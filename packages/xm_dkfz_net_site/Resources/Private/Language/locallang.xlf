@@ -284,7 +284,7 @@
                 <source>From 2 to maximum 15 images aligned in a slider</source>
             </trans-unit>
             <trans-unit id="image.slider.notification">
-                <source>Please upload 2 to 15 images</source>
+                <source>Please add 2 to 15 images</source>
             </trans-unit>
 		</body>
 	</file>
