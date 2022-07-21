@@ -277,6 +277,18 @@
 			<trans-unit id="user.contacts">
 				<source>Contacts</source>
 			</trans-unit>
+			<trans-unit id="user.gender">
+				<source>Salution</source>
+			</trans-unit>
+			<trans-unit id="user.gender.0">
+				<source> </source>
+			</trans-unit>
+			<trans-unit id="user.gender.1">
+				<source>Mr</source>
+			</trans-unit>
+			<trans-unit id="user.gender.2">
+				<source>Mrs</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

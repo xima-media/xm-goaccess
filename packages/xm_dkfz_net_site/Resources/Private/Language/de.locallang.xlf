@@ -191,6 +191,18 @@
 			<trans-unit id="save">
 				<target>Speichern</target>
 			</trans-unit>
+			<trans-unit id="user.gender">
+				<source>Anrede</source>
+			</trans-unit>
+			<trans-unit id="user.gender.0">
+				<source> </source>
+			</trans-unit>
+			<trans-unit id="user.gender.1">
+				<source>Herr</source>
+			</trans-unit>
+			<trans-unit id="user.gender.2">
+				<source>Frau</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
