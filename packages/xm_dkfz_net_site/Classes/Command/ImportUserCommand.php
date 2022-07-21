@@ -70,25 +70,28 @@ class ImportUserCommand extends Command
         ]);
 
         if (count($compareResult->dkfzIdsToCreate)) {
-            $io->writeln('Creating users..');
+            $io->write('Creating users..');
             $phoneBookUsersToAdd = $compareResult->getPhoneBookPersonsForAction('create');
             $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd);
             $io->write('<success>done</success>');
+            $io->newLine();
         }
 
         if (count($compareResult->dkfzIdsToUpdate)) {
-            $io->writeln('Updating users..');
+            $io->write('Updating users..');
             $phoneBookUsersToUpdate = $compareResult->getPhoneBookPersonsForAction('update');
             foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
                 $this->userRepository->updateFromPhoneBook($phoneBookPerson);
-                $io->write('<success>done</success>');
             }
+            $io->write('<success>done</success>');
+            $io->newLine();
         }
 
         if (count($compareResult->dkfzIdsToDelete)) {
-            $io->writeln('Deleting users..');
+            $io->write('Deleting users..');
             $this->userRepository->deleteByDkfzIds($compareResult->dkfzIdsToDelete);
             $io->write('<success>done</success>');
+            $io->newLine();
         }
 
         return Command::SUCCESS;

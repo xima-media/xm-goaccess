@@ -97,7 +97,7 @@ class PhoneBookUtility
             if ($userNode->length === 1) {
                 $nodeHash = md5($userNode->item(0)->nodeValue);
                 if ($dbUser['dkfz_hash'] !== $nodeHash) {
-                    $result->dkfzIdsToCreate[] = $dbUser['dkfz_id'];
+                    $result->dkfzIdsToUpdate[] = $dbUser['dkfz_id'];
                     $result->phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
                         $this->xpath,
                         $userNode->item(0)
@@ -121,7 +121,7 @@ class PhoneBookUtility
                 continue;
             }
 
-            $result->dkfzIdsToUpdate[] = $userId;
+            $result->dkfzIdsToCreate[] = $userId;
             $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode);
         }
 

@@ -83,20 +83,4 @@ class PhoneBookPerson
 
         return $person;
     }
-
-    public function getSqlValuesForFeUserInsert(): array
-    {
-        return [
-            'dkfz_hash' => $this->dkfzHash,
-            'disable' => $this->disable,
-            'dkfz_id' => $this->dkfzId,
-            'first_name' => $this->firstName,
-            'title' => $this->title,
-            'last_name' => $this->lastName,
-            'email' => $this->email,
-            'ad_account_name' => $this->adAccountName,
-            'username' => $this->username,
-            'gender' => $this->gender,
-        ];
-    }
 }
