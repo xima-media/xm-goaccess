@@ -45,7 +45,7 @@ class PhoneBookUtility
         return $this->xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
     }
 
-    protected function getUserStoragePid(): int
+    public function getUserStoragePid(): int
     {
         $typoscript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $settings = $this->typoScriptService->convertTypoScriptArrayToPlainArray($typoscript);

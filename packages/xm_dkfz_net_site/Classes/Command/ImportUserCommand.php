@@ -47,7 +47,7 @@ class ImportUserCommand extends Command
         $phoneBookUtility->loadXpath();
 
         $xmlUsers = $phoneBookUtility->getUsersInXml();
-        $dbUsers = $this->userRepository->findAllDkfzUser();
+        $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
 
         $io->listing([
             '<success>' . count($xmlUsers) . '</success> found in XML',
@@ -71,7 +71,8 @@ class ImportUserCommand extends Command
         if (count($compareResult->dkfzIdsToCreate)) {
             $io->write('Creating users..');
             $phoneBookUsersToAdd = $compareResult->getPhoneBookPersonsForAction('create');
-            $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd);
+            $pid = $phoneBookUtility->getUserStoragePid();
+            $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd, $pid);
             $io->write('<success>done</success>');
             $io->newLine();
         }
@@ -80,7 +81,7 @@ class ImportUserCommand extends Command
             $io->write('Updating users..');
             $phoneBookUsersToUpdate = $compareResult->getPhoneBookPersonsForAction('update');
             foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
-                $this->userRepository->updateFromPhoneBook($phoneBookPerson);
+                $this->userRepository->updateUserFromPhoneBook($phoneBookPerson);
             }
             $io->write('<success>done</success>');
             $io->newLine();
@@ -88,7 +89,7 @@ class ImportUserCommand extends Command
 
         if (count($compareResult->dkfzIdsToDelete)) {
             $io->write('Deleting users..');
-            $this->userRepository->deleteByDkfzIds($compareResult->dkfzIdsToDelete);
+            $this->userRepository->deleteUserByDkfzIds($compareResult->dkfzIdsToDelete);
             $io->write('<success>done</success>');
             $io->newLine();
         }

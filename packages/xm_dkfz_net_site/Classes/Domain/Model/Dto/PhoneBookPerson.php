@@ -19,10 +19,6 @@ class PhoneBookPerson
 
     public string $location = '';
 
-    public ?\DateTime $memberSince = null;
-
-    public ?\DateTime $birthday = null;
-
     public int $dkfzId = 0;
 
     public string $adAccountName = '';

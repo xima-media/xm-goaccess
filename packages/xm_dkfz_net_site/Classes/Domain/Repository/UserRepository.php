@@ -9,7 +9,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
 {
-    public function findAllDkfzUser(): array
+    public function findAllUsersWithDkfzId(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
         $qb->getRestrictions()->removeAll();
@@ -26,13 +26,13 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
     /**
      * @param PhoneBookPerson[] $persons
      */
-    public function bulkInsertFromPhoneBook(array $persons)
+    public function bulkInsertFromPhoneBook(array $persons, int $pid)
     {
         if (!count($persons)) {
             return;
         }
 
-        $rows = array_map(function ($person) {
+        $rows = array_map(function ($person) use ($pid) {
             return [
                 $person->dkfzHash,
                 $person->disable,
@@ -44,6 +44,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                 $person->adAccountName,
                 $person->username,
                 $person->gender,
+                $pid,
             ];
         }, $persons);
 
@@ -62,6 +63,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                 'ad_account_name',
                 'username',
                 'gender',
+                'pid',
             ],
             [
                 Connection::PARAM_STR,
@@ -74,11 +76,12 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_INT,
             ]
         );
     }
 
-    public function updateFromPhoneBook(PhoneBookPerson $person)
+    public function updateUserFromPhoneBook(PhoneBookPerson $person)
     {
         GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users')
@@ -110,7 +113,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
             );
     }
 
-    public function deleteByDkfzIds(array $ids): int
+    public function deleteUserByDkfzIds(array $ids): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
         $qb->getRestrictions()->removeAll();
