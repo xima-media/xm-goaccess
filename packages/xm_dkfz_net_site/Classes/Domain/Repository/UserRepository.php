@@ -110,8 +110,15 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
             );
     }
 
-    public function deleteByDkfzIds(array $ids)
+    public function deleteByDkfzIds(array $ids): int
     {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $qb->getRestrictions()->removeAll();
 
+        return $qb->delete('fe_users')
+            ->where(
+                $qb->expr()->in('dkfz_id', $ids)
+            )
+            ->executeStatement();
     }
 }

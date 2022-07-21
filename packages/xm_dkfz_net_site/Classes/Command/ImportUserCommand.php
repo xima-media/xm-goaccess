@@ -57,7 +57,6 @@ class ImportUserCommand extends Command
         $io->writeln('Comparing Users..');
         $progress = $io->createProgressBar(count($dbUsers));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
-
         $compareResult = $phoneBookUtility->compareFeUserWithXml($dbUsers, $progress);
         $progress->finish();
         $io->newLine(2);
@@ -93,6 +92,8 @@ class ImportUserCommand extends Command
             $io->write('<success>done</success>');
             $io->newLine();
         }
+
+        $io->success('Done');
 
         return Command::SUCCESS;
     }
