@@ -173,6 +173,8 @@ return [
                     ],
                 ],
             ],
+            'fileCreateMask' => '0660',
+            'folderCreateMask' => '2770',
         ],
         'devIPmask' => '',
         'displayErrors' => 0,
