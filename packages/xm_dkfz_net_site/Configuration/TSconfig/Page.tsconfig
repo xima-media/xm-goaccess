@@ -47,7 +47,7 @@ TCEFORM {
       altLabels.1 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.1
       altLabels.2 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.2
 
-      types.image.removeItems = 0,2,3
+      types.image.removeItems = 0,1,3
     }
 
     image {
