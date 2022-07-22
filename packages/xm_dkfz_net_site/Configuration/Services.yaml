@@ -40,10 +40,10 @@ services:
   Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
     public: true
 
-  Xima\XmDkfzNetSite\Command\ImportUserCommand:
+  Xima\XmDkfzNetSite\Command\ImportFeUserCommand:
     tags:
       - name: 'console.command'
-        command: 'dkfz:importUser'
+        command: 'dkfz:importFeUser'
         schedulable: false
 
   Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:

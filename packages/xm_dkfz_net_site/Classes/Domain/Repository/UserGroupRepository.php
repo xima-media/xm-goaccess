@@ -53,7 +53,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         );
     }
 
-    public function deleteByDkfzIds(array $dkfzIds)
+    public function deleteByDkfzIds(array $dkfzIds): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
         $qb->getRestrictions()->removeAll();

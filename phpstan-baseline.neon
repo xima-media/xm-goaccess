@@ -46,6 +46,46 @@ parameters:
 			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
 
 		-
+			message: "#^Call to an undefined method object\\:\\:compareFeUserWithXml\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getUserStoragePid\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getUsersInXml\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:loadXpath\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:compareFeGroupsWithXml\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getGroupIdentifierInXml\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getUserStoragePid\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:loadXpath\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
+
+		-
 			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
@@ -69,6 +109,96 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
+
+		-
+			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
+			count: 9
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 9
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function md5 expects string, string\\|null given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: TEntity$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:setContacts\\(\\) has parameter \\$contacts with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: TEntity$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getConnectionForTable\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:bulkInsertDkfzIds\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:bulkInsertDkfzIds\\(\\) has parameter \\$dkfzIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:deleteByDkfzIds\\(\\) has parameter \\$dkfzIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getConnectionForTable\\(\\)\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:bulkInsertFromPhoneBook\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:deleteUserByDkfzIds\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:updateUserFromPhoneBook\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:createResolver\\(\\) should return Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver but returns object\\.$#"
@@ -366,6 +496,81 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
 
 		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Cannot call method query\\(\\) on DOMXPath\\|null\\.$#"
+			count: 4
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:compareFeGroupsWithXml\\(\\) has parameter \\$dbGroups with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:compareFeUserWithXml\\(\\) has parameter \\$dbUsers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getApiUrl\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getGroupIdentifierInXml\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getUsersInXml\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function md5 expects string, string\\|null given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Parameter \\#1 \\$xpath of static method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:createFromXpathNode\\(\\) expects DOMXPath, DOMXPath\\|null given\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Parameter \\#2 \\$userNode of static method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:createFromXpathNode\\(\\) expects DOMNode, DOMNode\\|null given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookCompareResult\\:\\:\\$dkfzIdsToCreate \\(array\\<int\\>\\) does not accept array\\<int\\|string\\|null\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^Variable \\$dbUsers on left side of \\?\\? always exists and is not nullable\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
@@ -379,3 +584,8 @@ parameters:
 			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_accordion.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:registerImplementation\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/ext_localconf.php

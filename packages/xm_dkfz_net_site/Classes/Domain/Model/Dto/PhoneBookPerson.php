@@ -39,9 +39,9 @@ class PhoneBookPerson
         $deactivated = $xpath->query('x:Deaktiviert', $userNode)->item(0)->nodeValue;
         $adAccountDeactivated = $xpath->query('x:AdAccountGesperrt', $userNode)->item(0)->nodeValue;
         $isHidden = filter_var($deactivated, FILTER_VALIDATE_BOOLEAN) || filter_var(
-                $adAccountDeactivated,
-                FILTER_VALIDATE_BOOLEAN
-            );
+            $adAccountDeactivated,
+            FILTER_VALIDATE_BOOLEAN
+        );
         $person->disable = $isHidden;
 
         $dkfzId = $xpath->query('x:Id', $userNode)->item(0)->nodeValue;
