@@ -1,0 +1,36 @@
+<html data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Main">
+	<!-- Component Start: tabs -->
+
+	<ul class="nav nav-tabs nav-fill" id="tab-c{data.uid}" role="tablist">
+		<f:for each="{0: 1, 1: 2, 2: 3}" as="number">
+			<f:if condition="{children_10{number}}">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link{f:if(condition: '{number} == 1', then: ' active')}" id="tab-c{data.uid}-{number}" data-bs-toggle="tab"
+							data-bs-target="#tabcontent-c{data.uid}-{number}" type="button" role="tab"
+							aria-controls="tabcontent-c{data.uid}-{number}" aria-selected="true">
+						{data.tx_xmdkfznetsite_tabs_tab{number}}
+					</button>
+				</li>
+			</f:if>
+		</f:for>
+	</ul>
+	<div class="tab-content background--expanded">
+		<f:for each="{0: 1, 1: 2, 2: 3}" as="number">
+			<f:if condition="{children_10{number}}">
+				<div class="tab-pane fade{f:if(condition: '{number} == 1', then: ' show active')}"
+					 id="tabcontent-c{data.uid}-{number}" role="tabpanel" aria-labelledby="tab-c{data.uid}-{number}">
+					<f:for each="{children_10{number}}" as="tabContentItem">
+						<f:format.raw>{tabContentItem.renderedContent}</f:format.raw>
+					</f:for>
+				</div>
+			</f:if>
+		</f:for>
+	</div>
+
+	<!-- Components End: tabs -->
+</f:section>
+
+</html>
