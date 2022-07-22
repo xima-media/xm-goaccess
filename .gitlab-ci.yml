@@ -102,8 +102,10 @@ deploy-staging-dkfz:
     - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
-    - export no_proxy="intracmsstage.dkfz-heidelberg.de,10.135.76.30,intracmsprod.dkfz-heidelberg.de,10.135.76.19,intradb.dkfz-heidelberg.de,10.135.76.39,intrasolr.dkfz-heidelberg.de,10.135.76.40"
+    - export no_proxy="intracmsstage.dkfz-heidelberg.de,intracmsstage.dkfz-heidelberg.de,10.135.76.30,intracmsprod.dkfz-heidelberg.de,10.135.76.19,intradb.dkfz-heidelberg.de,10.135.76.39,intrasolr.dkfz-heidelberg.de,10.135.76.40"
+    - export NO_PROXY="intracmsstage.dkfz-heidelberg.de,intracmsstage.dkfz-heidelberg.de,10.135.76.30,intracmsprod.dkfz-heidelberg.de,10.135.76.19,intradb.dkfz-heidelberg.de,10.135.76.39,intrasolr.dkfz-heidelberg.de,10.135.76.40"
     - export noproxy="intracmsstage.dkfz-heidelberg.de,10.135.76.30,intracmsprod.dkfz-heidelberg.de,10.135.76.19,intradb.dkfz-heidelberg.de,10.135.76.39,intrasolr.dkfz-heidelberg.de,10.135.76.40"
+    - export NOPROXY="intracmsstage.dkfz-heidelberg.de,10.135.76.30,intracmsprod.dkfz-heidelberg.de,10.135.76.19,intradb.dkfz-heidelberg.de,10.135.76.39,intrasolr.dkfz-heidelberg.de,10.135.76.40"
     - curl -v https://intracmsstage.dkfz-heidelberg.de/cache_clear_random_7297bb1367ec31652e8b342654a56b22.php
     - wget https://intracmsstage.dkfz-heidelberg.de/cache_clear_random_7297bb1367ec31652e8b342654a56b22.php
   environment:
