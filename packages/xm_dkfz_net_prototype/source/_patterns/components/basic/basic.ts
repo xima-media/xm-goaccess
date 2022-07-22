@@ -138,6 +138,7 @@ export default {
       .then(response => {
         if (!response.ok) {
           this.handleRequestError(response)
+          return
         }
         return response.json()
       })
