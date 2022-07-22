@@ -148,13 +148,16 @@ class PhoneBookUtility
         $result = new PhoneBookCompareResult();
 
         $xmlGroups = $this->getGroupIdentifierInXml();
+        $dbGroupsIdentifier = array_map(function ($dbGroup) {
+            return $dbGroup['dkfz_id'];
+        }, $dbGroups);
 
-        $result->dkfzIdsToDelete = array_filter($dbGroups, function ($dbGroup) use ($xmlGroups) {
-            return !in_array($dbGroup, $xmlGroups);
+        $result->dkfzIdsToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($xmlGroups) {
+            return !in_array($identifier, $xmlGroups);
         });
 
-        $result->dkfzIdsToCreate = array_filter($xmlGroups, function ($xmlGroup) use ($dbGroups) {
-            return !in_array($xmlGroup, $dbGroups);
+        $result->dkfzIdsToCreate = array_filter($xmlGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
+            return !in_array($xmlGroup, $dbGroupsIdentifier);
         });
 
         return $result;

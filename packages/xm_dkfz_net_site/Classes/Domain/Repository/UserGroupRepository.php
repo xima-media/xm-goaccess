@@ -52,4 +52,20 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
             ]
         );
     }
+
+    public function deleteByDkfzIds(array $dkfzIds)
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
+        $qb->getRestrictions()->removeAll();
+
+        $idStringList = array_map(function ($id) use ($qb) {
+            return $qb->createNamedParameter($id, \PDO::PARAM_STR);
+        }, $dkfzIds);
+
+        return $qb->delete('fe_groups')
+            ->where(
+                $qb->expr()->in('dkfz_id', $idStringList)
+            )
+            ->executeStatement();
+    }
 }
