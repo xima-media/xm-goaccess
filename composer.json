@@ -68,6 +68,7 @@
 		"typo3/cms-filemetadata": "^11.5",
 		"b13/container": "^1.6.1",
 		"blueways/bw-guild": "*@dev",
+		"xima/xm-goaccess": "*@dev",
       "ext-dom": "*"
     },
 	"require-dev": {

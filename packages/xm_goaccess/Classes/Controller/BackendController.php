@@ -4,32 +4,41 @@ namespace Xima\XmGoaccess\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class BackendController extends ActionController
 {
     protected ModuleTemplateFactory $moduleTemplateFactory;
 
+    protected ExtensionConfiguration $extensionConfiguration;
+
     public function __construct(
-        ModuleTemplateFactory $moduleTemplateFactory
+        ModuleTemplateFactory $moduleTemplateFactory,
+        ExtensionConfiguration $extensionConfiguration
     ) {
         $this->moduleTemplateFactory = $moduleTemplateFactory;
+        $this->extensionConfiguration = $extensionConfiguration;
     }
 
     public function indexAction(): ResponseInterface
     {
-        //$parser = GeneralUtility::makeInstance(LogParserUtility::class);
-        //$parser->run();
-        //$mails = $parser->getMessages();
+        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
 
-        //$pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-        //$pageRenderer->loadRequireJsModule('TYPO3/CMS/XmMailCatcher/MailCatcher');
+        if (!isset($extConf['html_path']) || !$extConf['html_path']) {
+            $content = 'No "html_path" set';
+            return $this->htmlResponse($content);
+        }
 
-        //$this->view->assign('mails', $mails);
+        $filePath = Environment::getPublicPath() . '/' . $extConf['html_path'];
+        if (!file_exists($filePath)) {
+            $content = 'File "' . $filePath . '" not found';
+            return $this->htmlResponse($content);
+        }
 
-        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-        $moduleTemplate->setContent($this->view->render());
-        return $this->htmlResponse($moduleTemplate->renderContent());
+        $content = file_get_contents($filePath);
+        $css = '<style>body{max-height:100vh;}</style>';
+        return $this->htmlResponse($content . $css);
     }
 }
