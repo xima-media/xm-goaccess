@@ -17,7 +17,7 @@
                 {% for link in links %}
                     <li class="infobox__item">
                         {% include '@components/icon/icon.twig' with {icon: 'arrow-right'} %}
-                        <a href="{{ link.href }}" class="primary-link">{{ link.text }}</a>
+                        <a href="{{ link.href }}">{{ link.text }}</a>
                     </li>
                 {% endfor %}
             </ul>

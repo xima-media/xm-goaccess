@@ -421,8 +421,8 @@ a {
         cursor: pointer;
     }
 
-    // todo für TYPO3 muss das noch individuell angepasst werden. zum Beispiel in dem man dann auf die url der Seite mapped
-    &:not([href="#"]):not([href*="rendered.html"]) {
+    // rotate Icon if Link extern
+     &[href^="http"]{
         .icon--arrow-right {
             transform: rotate(-45deg);
         }
@@ -454,7 +454,7 @@ a {
 
     &--primary {
         @include link-primary;
-        display: block;
+        //display: block;
 
         .icon {
             @include size(.75rem, .75rem);
