@@ -65,26 +65,13 @@ class ImportFeUserGroupCommand extends Command
 
         $io->listing([
             '<success>' . count($compareResult->dkfzIdsToCreate) . '</success> to create',
-            '<warning>' . count($compareResult->dkfzIdsToUpdate) . '</warning> to update',
             '<error>' . count($compareResult->dkfzIdsToDelete) . '</error> to delete',
-            '' . count($compareResult->dkfzIdsToSkip) . ' to skip',
         ]);
 
         if (count($compareResult->dkfzIdsToCreate)) {
             $io->write('Creating users..');
-            $phoneBookUsersToAdd = $compareResult->getPhoneBookPersonsForAction('create');
             $pid = $phoneBookUtility->getUserStoragePid();
-            $this->groupRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd, $pid);
-            $io->write('<success>done</success>');
-            $io->newLine();
-        }
-
-        if (count($compareResult->dkfzIdsToUpdate)) {
-            $io->write('Updating users..');
-            $phoneBookUsersToUpdate = $compareResult->getPhoneBookPersonsForAction('update');
-            foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
-                $this->groupRepository->updateFromPhoneBook($phoneBookPerson);
-            }
+            $this->groupRepository->bulkInsertDkfzIds($compareResult->dkfzIdsToCreate, $pid);
             $io->write('<success>done</success>');
             $io->newLine();
         }

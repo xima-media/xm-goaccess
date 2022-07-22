@@ -142,4 +142,21 @@ class PhoneBookUtility
 
         return $result;
     }
+
+    public function compareFeGroupsWithXml(array $dbGroups, ?ProgressBar $progress): PhoneBookCompareResult
+    {
+        $result = new PhoneBookCompareResult();
+
+        $xmlGroups = $this->getGroupIdentifierInXml();
+
+        $result->dkfzIdsToDelete = array_filter($dbGroups, function ($dbGroup) use ($xmlGroups) {
+            return !in_array($dbGroup, $xmlGroups);
+        });
+
+        $result->dkfzIdsToCreate = array_filter($xmlGroups, function ($xmlGroup) use ($dbGroups) {
+            return !in_array($xmlGroup, $dbGroups);
+        });
+
+        return $result;
+    }
 }
