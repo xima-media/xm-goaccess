@@ -1,0 +1,24 @@
+{
+	"name": "xima/xm-goaccess",
+	"description": "Integrates goaccess.io into TYPO3",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Maik Schneider",
+			"email": "maik.schneider@xima.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "xm_goaccess"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Xima\\XmGoaccess\\": "Classes"
+		}
+	}
+}
