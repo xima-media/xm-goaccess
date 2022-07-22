@@ -69,7 +69,8 @@
 		"b13/container": "^1.6.1",
 		"blueways/bw-guild": "*@dev",
 		"xima/xm-goaccess": "*@dev",
-      "ext-dom": "*"
+      "ext-dom": "*",
+		"ichhabrecht/content-defender": "^3.2"
     },
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

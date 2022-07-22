@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "774a884b5b4a73154f49615339ffa293",
+    "content-hash": "2a441575ce1870981214a106e466a4f2",
     "packages": [
         {
             "name": "b13/container",
@@ -1792,6 +1792,71 @@
                 }
             ],
             "time": "2022-05-31T06:51:43+00:00"
+        },
+        {
+            "name": "ichhabrecht/content-defender",
+            "version": "3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IchHabRecht/content_defender.git",
+                "reference": "3af431bc4d167cb1ec01491dd532fd9e2191fe66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IchHabRecht/content_defender/zipball/3af431bc4d167cb1ec01491dd532fd9e2191fe66",
+                "reference": "3af431bc4d167cb1ec01491dd532fd9e2191fe66",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7.2, < 7.5 || ^8.0",
+                "typo3/cms-backend": "^9.5 || ^10.4 || ^11.5"
+            },
+            "replace": {
+                "typo3-ter/content-defender": "self.version"
+            },
+            "require-dev": {
+                "nimut/testing-framework": "6.x-dev",
+                "typo3/cms-fluid-styled-content": "^9.5 || ^10.4 || ^11.5",
+                "typo3/cms-indexed-search": "^9.5 || ^10.4 || ^11.5"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "content_defender",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/public"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IchHabRecht\\ContentDefender\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nicole Cordes",
+                    "email": "typo3@cordes.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Define allowed or denied content element types in your backend layouts",
+            "homepage": "https://github.com/IchHabRecht/content_defender",
+            "keywords": [
+                "TYPO3 CMS",
+                "backend",
+                "content",
+                "restrict"
+            ],
+            "support": {
+                "issues": "https://github.com/IchHabRecht/content_defender/issues",
+                "source": "https://github.com/IchHabRecht/content_defender/tree/3.2.2"
+            },
+            "time": "2022-03-15T11:28:27+00:00"
         },
         {
             "name": "league/oauth2-client",
