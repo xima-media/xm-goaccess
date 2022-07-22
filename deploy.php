@@ -25,7 +25,7 @@ host('staging')
 
 host('staging-dkfz')
     ->hostname('intracmsstage')
-    ->stage('staging')
+    ->stage('staging-dkfz')
     ->user('xima')
     ->set('branch', 'master')
     ->set('repository', 'git@git.dkfz.de:dkfz/dkfz-t3-intranet.git')
