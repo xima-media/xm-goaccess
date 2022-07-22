@@ -107,6 +107,30 @@
 			<trans-unit id="container.accordion.group.description">
 				<target>Eine Überschrift, die die Akkordion-Elemente zu einer neuen Gruppe abgrenzt</target>
 			</trans-unit>
+			<trans-unit id="container.tabs">
+				<target>Tabelement</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.description">
+				<target>Gruppierung von Inhalten in 2-3 Registern (Tabs)</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title1">
+				<target>Titel Tab 1</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title2">
+				<target>Titel Tab 2</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title3">
+				<target>Titel Tab 3</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab1">
+				<target>Inhalt Tab 1</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab2">
+				<target>Inhalt Tab 2</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab3">
+				<target>Inhalt Tab 3 (optional)</target>
+			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
 				<target>Zeigt Video von YouTube oder Vimeo an</target>
 			</trans-unit>

@@ -49,6 +49,11 @@
 
     &-pane {
         padding: 2rem 0;
+
+        .frame {
+            background: transparent;
+            box-shadow: none;
+        }
     }
 
     &-title:not(:first-child) {
