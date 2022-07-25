@@ -50,9 +50,6 @@ When starting the project for the first time, an example database is imported th
 * Backend user:
   * Username: admin
   * Password: changeme
-* Frontend user:
-  * Username: max@example.com
-  * Password: changeme
 
 ### 3.2. Staging database (sync)
 
@@ -76,30 +73,17 @@ All configurations are made for the production context. Configurations can be ov
 
 ```
 ├── Tests
-│   └── codeception.yml
 ├── config
-│   └── sites
 ├── packages
 │   ├── xm_dkfz_net_jobs
-│   │   ├── Classes
-│   │   ├── composer.json
-│   │   └── ext_localconf.php
 │   ├── xm_dkfz_net_prototype
-│   │   ├── source
-│   │   ├── composer.json
-│   │   └── package.json
 │   └── xm_dkfz_net_site
-│       ├── Configuration
-│       ├── Resources
-│       ├── composer.json
-│       └── ext_localconf.php
-├── public
+├── public (Web root)
 │   ├── typo3conf
 │   │   ├── AdditionalConfiguration.php
 │   │   └── LocalConfiguration.php
 │   └── .htaccess
 ├── .env
-├── README.md
 ├── composer.json
 ├── deploy.php
 └── package.json
