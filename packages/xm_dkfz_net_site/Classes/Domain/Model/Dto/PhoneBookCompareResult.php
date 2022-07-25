@@ -61,5 +61,4 @@ class PhoneBookCompareResult
             $person->usergroup = implode(',', $dbGroupUids);
         }
     }
-
 }

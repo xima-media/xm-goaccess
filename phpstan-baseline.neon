@@ -111,13 +111,23 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookCompareResult\\:\\:addFeUserGroupRelationToPhoneBookUsers\\(\\) has parameter \\$dbGroups with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookCompareResult.php
+
+		-
 			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
-			count: 9
+			count: 10
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
 
 		-
 			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 9
+			count: 10
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:getAbteilungIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
 
 		-
@@ -141,6 +151,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
 
 		-
+			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
+
+		-
 			message: "#^Call to an undefined method object\\:\\:getConnectionForTable\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
@@ -148,11 +163,6 @@ parameters:
 		-
 			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
 			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:bulkInsertDkfzIds\\(\\) has no return type specified\\.$#"
-			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
@@ -171,6 +181,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
+			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
 			message: "#^Call to an undefined method object\\:\\:getConnectionForTable\\(\\)\\.$#"
 			count: 2
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
@@ -181,22 +196,12 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:bulkInsertFromPhoneBook\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:deleteUserByDkfzIds\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:updateUserFromPhoneBook\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
@@ -536,7 +541,7 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getGroupIdentifierInXml\\(\\) has no return type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getGroupIdentifierInXml\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
 

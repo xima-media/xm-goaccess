@@ -10,5 +10,4 @@ class PhoneBookAbteilung
     {
         $this->dkfzId = $dkfzId;
     }
-
 }
