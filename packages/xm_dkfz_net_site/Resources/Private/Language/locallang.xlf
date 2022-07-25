@@ -313,6 +313,12 @@
 			<trans-unit id="user.gender.2">
 				<source>Mrs</source>
 			</trans-unit>
+			<trans-unit id="label.download">
+				<source>Download</source>
+			</trans-unit>
+			<trans-unit id="label.addBookmark">
+				<source>Add to bookmarks</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
