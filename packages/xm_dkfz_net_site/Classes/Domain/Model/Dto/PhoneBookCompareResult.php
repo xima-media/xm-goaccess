@@ -51,7 +51,6 @@ class PhoneBookCompareResult
 
     /**
      * @param array<array{dkfz_id: string, uid: int}> $dbGroups
-     * @return void
      */
     public function addFeUserGroupRelationToPhoneBookUsers(array $dbGroups): void
     {

@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\BeUser>
  */
-class BeGroupRepository extends Repository
+class BeGroupRepository extends Repository implements ImportableGroupInterface
 {
     /**
      * @return array<int, array{dkfz_id: string, uid: int}>
@@ -39,10 +39,11 @@ class BeGroupRepository extends Repository
 
     /**
      * @param array<string|int> $dkfzIds
+     * @param int $pid
      * @param string $subgroup
      * @return int
      */
-    public function bulkInsertDkfzIds(array $dkfzIds, string $subgroup = ''): int
+    public function bulkInsertDkfzIds(array $dkfzIds, int $pid, string $subgroup): int
     {
         if (!count($dkfzIds)) {
             return 0;
@@ -93,6 +94,4 @@ class BeGroupRepository extends Repository
             )
             ->executeStatement();
     }
-
-
 }

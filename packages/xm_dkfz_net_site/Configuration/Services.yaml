@@ -51,12 +51,16 @@ services:
       - name: 'console.command'
         command: 'dkfz:importFeUserGroup'
         schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
 
   Xima\XmDkfzNetSite\Command\ImportBeGroupCommand:
     tags:
       - name: 'console.command'
         command: 'dkfz:importBeUserGroup'
         schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
 
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

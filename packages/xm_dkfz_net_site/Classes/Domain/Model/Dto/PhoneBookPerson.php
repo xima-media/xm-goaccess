@@ -39,9 +39,9 @@ class PhoneBookPerson
 
     public static function createFromXpathNode(DOMXPath $xpath, DOMNode $userNode): static
     {
-        $person = new static();
+        $person = new self();
 
-        $hashOfNode = md5($userNode->nodeValue);
+        $hashOfNode = md5($userNode->nodeValue ?: '');
         $person->dkfzHash = $hashOfNode;
 
         $deactivated = $xpath->query('x:Deaktiviert', $userNode)->item(0)->nodeValue;
