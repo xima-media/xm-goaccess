@@ -57,8 +57,7 @@ abstract class AbstractUserImportCommand extends Command
         $io->writeln('Comparing Users..');
         $progress = $io->createProgressBar(count($dbUsers));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
-        $this->compareResult = $this->phoneBookUtility->compareFeUserWithXml($dbUsers, $progress);
-        $this->compareResult->addFeUserGroupRelationToPhoneBookUsers($dbGroups);
+        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithXml($dbUsers, $dbGroups, $progress);
         $progress->finish();
         $io->newLine(2);
 

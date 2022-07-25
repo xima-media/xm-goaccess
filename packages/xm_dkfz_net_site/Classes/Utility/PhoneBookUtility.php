@@ -138,10 +138,11 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_id: string, dkfz_hash: string}> $dbUsers
+     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
      * @param \Symfony\Component\Console\Helper\ProgressBar|null $progress
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
-    public function compareFeUserWithXml(array $dbUsers, ?ProgressBar $progress): PhoneBookCompareResult
+    public function compareDbUsersWithXml(array $dbUsers, array $dbGroups, ?ProgressBar $progress): PhoneBookCompareResult
     {
         $result = new PhoneBookCompareResult();
 
@@ -164,7 +165,8 @@ class PhoneBookUtility
                     $result->dkfzIdsToUpdate[] = $dbUser['dkfz_id'];
                     $result->phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
                         $this->xpath,
-                        $userNode->item(0)
+                        $userNode->item(0),
+                        $dbGroups
                     );
                 } else {
                     $result->dkfzIdsToSkip[] = $dbUser['dkfz_id'];
@@ -192,7 +194,7 @@ class PhoneBookUtility
             }
 
             $result->dkfzIdsToCreate[] = (int)$userId;
-            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode);
+            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode, $dbGroups);
         }
 
         return $result;

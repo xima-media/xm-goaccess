@@ -37,69 +37,85 @@ class PhoneBookPerson
      */
     public array $abteilungen = [];
 
-    public static function createFromXpathNode(DOMXPath $xpath, DOMNode $userNode): static
+    /**
+     * @param \DOMXPath $xpath
+     * @param \DOMNode $userNode
+     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
+     * @return PhoneBookPerson
+     */
+    public static function createFromXpathNode(DOMXPath $xpath, DOMNode $userNode, array $dbGroups): PhoneBookPerson
     {
         $person = new self();
 
         $hashOfNode = md5($userNode->nodeValue ?: '');
         $person->dkfzHash = $hashOfNode;
 
-        $deactivated = $xpath->query('x:Deaktiviert', $userNode)->item(0)->nodeValue;
-        $adAccountDeactivated = $xpath->query('x:AdAccountGesperrt', $userNode)->item(0)->nodeValue;
+        $deactivated = self::getNodeValueFromXpath($xpath, $userNode, 'x:Deaktiviert');
+        $adAccountDeactivated = self::getNodeValueFromXpath($xpath, $userNode, 'x:AdAccountGesperrt');
         $isHidden = filter_var($deactivated, FILTER_VALIDATE_BOOLEAN) || filter_var(
             $adAccountDeactivated,
             FILTER_VALIDATE_BOOLEAN
         );
         $person->disable = $isHidden;
 
-        $dkfzId = $xpath->query('x:Id', $userNode)->item(0)->nodeValue;
+        $dkfzId = self::getNodeValueFromXpath($xpath, $userNode, 'x:Id');
         if ($dkfzId) {
             $person->dkfzId = (int)$dkfzId;
         }
 
-        $firstName = $xpath->query('x:Vorname', $userNode)->item(0)->nodeValue;
+        $firstName = self::getNodeValueFromXpath($xpath, $userNode, 'x:Vorname');
         if ($firstName) {
             $person->firstName = $firstName;
         }
-        $title = $xpath->query('x:Titel', $userNode)->item(0)->nodeValue;
+        $title = self::getNodeValueFromXpath($xpath, $userNode, 'x:Titel');
         if ($title) {
             $person->title = $title;
         }
-        $lastName = $xpath->query('x:Nachname', $userNode)->item(0)->nodeValue;
+        $lastName = self::getNodeValueFromXpath($xpath, $userNode, 'x:Nachname');
         if ($lastName) {
             $person->lastName = $lastName;
         }
-        $mail = $xpath->query('x:Mail', $userNode)->item(0)->nodeValue;
+        $mail = self::getNodeValueFromXpath($xpath, $userNode, 'x:Mail');
         if ($mail) {
             $person->email = $mail;
         }
-        $adAccountName = $xpath->query('x:AdAccountName', $userNode)->item(0)->nodeValue;
+        $adAccountName = self::getNodeValueFromXpath($xpath, $userNode, 'x:AdAccountName');
         if ($adAccountName) {
             $person->adAccountName = $adAccountName;
             $person->username = $adAccountName;
         }
 
         $genderMapping = ['Herr' => 1, 'Frau' => 2];
-        $gender = $xpath->query('x:Anrede', $userNode)->item(0)->nodeValue;
+        $gender = self::getNodeValueFromXpath($xpath, $userNode, 'x:Anrede');
         if ($gender && in_array($gender, $genderMapping)) {
             $person->gender = $genderMapping[$gender];
         }
 
-        $abteilung = $xpath->query('x:Abteilung', $userNode)->item(0)->nodeValue;
+        $abteilung = self::getNodeValueFromXpath($xpath, $userNode, 'x:Abteilung');
         if ($abteilung) {
             $groupIds = PhoneBookUtility::getGroupIdsFromXmlAbteilungString($abteilung);
             foreach ($groupIds as $groupId) {
                 $person->abteilungen[] = new PhoneBookAbteilung($groupId);
             }
+
+            $filteredDbGroups = array_filter($dbGroups, function ($dbGroup) use ($groupIds) {
+                return in_array($dbGroup['dkfz_id'], $groupIds);
+            });
+            $dbGroupUids = array_map(function ($dbGroup) {
+                return $dbGroup['uid'];
+            }, $filteredDbGroups);
+            $person->usergroup = implode(',', $dbGroupUids);
         }
 
         return $person;
     }
 
-    public function getAbteilungIds(): array
+    protected static function getNodeValueFromXpath(DOMXPath $xpath, DOMNode $userNode, string $nodeName): string
     {
-        return array_map(function ($abteilung) {
-            return $abteilung->dkfzId;
-        }, $this->abteilungen);
+        $node = $xpath->query($nodeName, $userNode);
+        if (!$node) {
+            return '';
+        }
+        return $node->item(0)?->nodeValue ?? '';
     }
 }
