@@ -46,47 +46,32 @@ parameters:
 			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:compareFeUserWithXml\\(\\)\\.$#"
+			message: "#^Variable \\$phoneBookUsersToUpdate on left side of \\?\\? always exists and is not nullable\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getUserStoragePid\\(\\)\\.$#"
+			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getUsersInXml\\(\\)\\.$#"
+			message: "#^Cannot access offset 'media' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:loadXpath\\(\\)\\.$#"
+			message: "#^Cannot access offset 'title' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:compareFeGroupsWithXml\\(\\)\\.$#"
+			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getGroupIdentifierInXml\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getUserStoragePid\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:loadXpath\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserGroupCommand.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
+			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
@@ -141,12 +126,12 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: TEntity$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: T$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:setContacts\\(\\) has parameter \\$contacts with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: TEntity$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:setContacts\\(\\) has parameter \\$contacts with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: T$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
 
@@ -156,13 +141,8 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getConnectionForTable\\(\\)\\.$#"
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 2
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
@@ -186,13 +166,8 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getConnectionForTable\\(\\)\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 2
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
@@ -206,11 +181,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:createResolver\\(\\) should return Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver but returns object\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
-
-		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:getTypo3User\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
@@ -219,11 +189,6 @@ parameters:
 			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\FrontendUserLookup\\:\\:createResolver\\(\\) should return Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver but returns object\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/FrontendUserLookup.php
 
 		-
 			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\FrontendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
@@ -241,22 +206,7 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
-			count: 3
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:render\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:setTemplatePathAndFilename\\(\\)\\.$#"
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
 
@@ -266,42 +216,37 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
+
+		-
+			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Cannot access offset 'media' on array\\<string, mixed\\>\\|false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Cannot access offset 'title' on array\\<string, mixed\\>\\|false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on array\\<string, mixed\\>\\|false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+
+		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:render\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:setTemplatePathAndFilename\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:assign\\(\\)\\.$#"
-			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 3
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:render\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:setTemplatePathAndFilename\\(\\)\\.$#"
+			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
 
@@ -371,16 +316,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:getDefaultHashInstance\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
 			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 2
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
@@ -432,16 +367,6 @@ parameters:
 
 		-
 			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getDefaultHashInstance\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:getQueryBuilderForTable\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
 
@@ -579,23 +504,3 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_2cols.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_accordion.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:configureContainer\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Configuration/TCA/Overrides/tt_content_tabs.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:registerImplementation\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/ext_localconf.php
