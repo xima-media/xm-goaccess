@@ -48,10 +48,9 @@ class PhoneBookUtility
      */
     public static function getGroupIdsFromXmlAbteilungString(string $abteilung): array
     {
-        preg_match('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $abteilung, $matches);
-        if (count($matches) > 1) {
-            array_shift($matches);
-            return $matches;
+        preg_match_all('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $abteilung, $matches);
+        if (count($matches) && count($matches[1])) {
+            return $matches[1];
         }
         return [];
     }
