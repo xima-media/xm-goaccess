@@ -43,14 +43,14 @@ class PhoneBookUtility
         return $this->xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
     }
 
-    public function getGroupIdentifierInXml()
+    public function getGroupIdentifierInXml(): array
     {
         $groupIdentifier = [];
         $nodes = $this->xpath->query('//x:Abteilung[text()!=""]');
 
-        foreach ($nodes as $key => $node) {
+        foreach ($nodes as $node) {
             $name = $node->nodeValue;
-            preg_match('/([A-Z]{1,3}[\d]{1,3})(?:[\s\-])?/', $name, $matches);
+            preg_match('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $name, $matches);
             if (count($matches) === 2) {
                 $groupIdentifier[] = $matches[1];
             }
