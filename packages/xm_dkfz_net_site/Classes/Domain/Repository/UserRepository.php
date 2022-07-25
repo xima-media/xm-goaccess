@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use JetBrains\PhpStorm\ArrayShape;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -9,6 +10,14 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
 {
+    /**
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    #[ArrayShape([
+        'dkfz_id' => 'string',
+        'dkfz_hash' => 'string',
+    ])]
     public function findAllUsersWithDkfzId(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
@@ -26,10 +35,10 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
     /**
      * @param PhoneBookPerson[] $persons
      */
-    public function bulkInsertFromPhoneBook(array $persons, int $pid)
+    public function bulkInsertFromPhoneBook(array $persons, int $pid): int
     {
         if (!count($persons)) {
-            return;
+            return 0;
         }
 
         $rows = array_map(function ($person) use ($pid) {
@@ -49,7 +58,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
         }, $persons);
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
-        $connection->bulkInsert(
+        return $connection->bulkInsert(
             'fe_users',
             $rows,
             [
@@ -81,9 +90,9 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
         );
     }
 
-    public function updateUserFromPhoneBook(PhoneBookPerson $person)
+    public function updateUserFromPhoneBook(PhoneBookPerson $person): int
     {
-        GeneralUtility::makeInstance(ConnectionPool::class)
+        return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users')
             ->update(
                 'fe_users',
@@ -113,6 +122,9 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
             );
     }
 
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function deleteUserByDkfzIds(array $ids): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
