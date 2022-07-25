@@ -43,6 +43,19 @@ class PhoneBookUtility
         return $this->xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
     }
 
+    /**
+     * @return string[]
+     */
+    public static function getGroupIdsFromXmlAbteilungString(string $abteilung): array
+    {
+        preg_match('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $abteilung, $matches);
+        if (count($matches) > 1) {
+            array_shift($matches);
+            return $matches;
+        }
+        return [];
+    }
+
     public function getGroupIdentifierInXml(): array
     {
         $groupIdentifier = [];
@@ -50,10 +63,8 @@ class PhoneBookUtility
 
         foreach ($nodes as $node) {
             $name = $node->nodeValue;
-            preg_match('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $name, $matches);
-            if (count($matches) === 2) {
-                $groupIdentifier[] = $matches[1];
-            }
+            $groupIdsOfNode = self::getGroupIdsFromXmlAbteilungString($name);
+            $groupIdentifier = array_merge($groupIdentifier, $groupIdsOfNode);
         }
 
         return array_unique($groupIdentifier);
