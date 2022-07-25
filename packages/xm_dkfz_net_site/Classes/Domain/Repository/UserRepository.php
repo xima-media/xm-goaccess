@@ -53,6 +53,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                 $person->adAccountName,
                 $person->username,
                 $person->gender,
+                $person->usergroup,
                 $pid,
             ];
         }, $persons);
@@ -72,6 +73,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                 'ad_account_name',
                 'username',
                 'gender',
+                'usergroup',
                 'pid',
             ],
             [
@@ -85,6 +87,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_STR,
                 Connection::PARAM_INT,
             ]
         );
@@ -106,6 +109,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                     'ad_account_name' => $person->adAccountName,
                     'username' => $person->username,
                     'gender' => $person->gender,
+                    'usergroup' => $person->usergroup,
                 ],
                 ['dkfz_id' => $person->dkfzId],
                 [
@@ -118,6 +122,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
+                    Connection::PARAM_STR,
                 ]
             );
     }

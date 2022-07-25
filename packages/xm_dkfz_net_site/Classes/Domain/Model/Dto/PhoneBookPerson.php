@@ -4,6 +4,7 @@ namespace Xima\XmDkfzNetSite\Domain\Model\Dto;
 
 use DOMNode;
 use DOMXPath;
+use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
 
 class PhoneBookPerson
 {
@@ -28,6 +29,13 @@ class PhoneBookPerson
     public bool $disable = false;
 
     public int $gender = 0;
+
+    public string $usergroup = '';
+
+    /**
+     * @var \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung[]
+     */
+    public array $abteilungen = [];
 
     public static function createFromXpathNode(DOMXPath $xpath, DOMNode $userNode): static
     {
@@ -77,6 +85,21 @@ class PhoneBookPerson
             $person->gender = $genderMapping[$gender];
         }
 
+        $abteilung = $xpath->query('x:Abteilung', $userNode)->item(0)->nodeValue;
+        if ($abteilung) {
+            $groupIds = PhoneBookUtility::getGroupIdsFromXmlAbteilungString($abteilung);
+            foreach ($groupIds as $groupId) {
+                $person->abteilungen[] = new PhoneBookAbteilung($groupId);
+            }
+        }
+
         return $person;
+    }
+
+    public function getAbteilungIds(): array
+    {
+        return array_map(function ($abteilung) {
+            return $abteilung->dkfzId;
+        }, $this->abteilungen);
     }
 }

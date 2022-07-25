@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository;
 use Xima\XmDkfzNetSite\Domain\Repository\UserRepository;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
 
@@ -18,12 +19,16 @@ class ImportFeUserCommand extends Command
 
     protected UserRepository $userRepository;
 
+    protected UserGroupRepository $groupRepository;
+
     public function __construct(
         UserRepository $userRepository,
+        UserGroupRepository $groupRepository,
         string $name = null
     ) {
         parent::__construct($name);
         $this->userRepository = $userRepository;
+        $this->groupRepository = $groupRepository;
     }
 
     protected function configure(): void
@@ -45,6 +50,7 @@ class ImportFeUserCommand extends Command
 
         $xmlUsers = $phoneBookUtility->getUsersInXml();
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
+        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzId();
 
         $io->listing([
             '<success>' . count($xmlUsers) . '</success> found in XML',
@@ -55,6 +61,7 @@ class ImportFeUserCommand extends Command
         $progress = $io->createProgressBar(count($dbUsers));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
         $compareResult = $phoneBookUtility->compareFeUserWithXml($dbUsers, $progress);
+        $compareResult->addFeUserGroupRelationToPhoneBookUsers($dbGroups);
         $progress->finish();
         $io->newLine(2);
 

@@ -48,4 +48,18 @@ class PhoneBookCompareResult
             ARRAY_FILTER_USE_KEY
         );
     }
+
+    public function addFeUserGroupRelationToPhoneBookUsers(array $dbGroups): void
+    {
+        foreach ($this->phoneBookUsersById as $person) {
+            $filteredDbGroups = array_filter($dbGroups, function ($dbGroup) use ($person) {
+                return in_array($dbGroup['dkfz_id'], $person->getAbteilungIds());
+            });
+            $dbGroupUids = array_map(function ($dbGroup) {
+                return $dbGroup['uid'];
+            }, $filteredDbGroups);
+            $person->usergroup = implode(',', $dbGroupUids);
+        }
+    }
+
 }
