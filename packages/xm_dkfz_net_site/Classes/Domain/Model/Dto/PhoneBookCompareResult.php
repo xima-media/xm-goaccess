@@ -5,22 +5,22 @@ namespace Xima\XmDkfzNetSite\Domain\Model\Dto;
 class PhoneBookCompareResult
 {
     /**
-     * @var int[]
+     * @var int[]|string[]
      */
     public array $dkfzIdsToCreate = [];
 
     /**
-     * @var int[]
+     * @var int[]|string[]
      */
     public array $dkfzIdsToUpdate = [];
 
     /**
-     * @var int[]
+     * @var int[]|string[]
      */
     public array $dkfzIdsToDelete = [];
 
     /**
-     * @var int[]
+     * @var int[]|string[]
      */
     public array $dkfzIdsToSkip = [];
 
@@ -49,6 +49,10 @@ class PhoneBookCompareResult
         );
     }
 
+    /**
+     * @param array<array{dkfz_id: string, uid: int}> $dbGroups
+     * @return void
+     */
     public function addFeUserGroupRelationToPhoneBookUsers(array $dbGroups): void
     {
         foreach ($this->phoneBookUsersById as $person) {

@@ -96,11 +96,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookCompareResult\\:\\:addFeUserGroupRelationToPhoneBookUsers\\(\\) has parameter \\$dbGroups with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookCompareResult.php
-
-		-
 			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
 			count: 10
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
@@ -424,81 +419,6 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:updateFrontendUserSlug\\(\\) has parameter \\$userRecord with no type specified\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 3
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Cannot call method query\\(\\) on DOMXPath\\|null\\.$#"
-			count: 4
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:compareFeGroupsWithXml\\(\\) has parameter \\$dbGroups with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:compareFeUserWithXml\\(\\) has parameter \\$dbUsers with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getApiUrl\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getGroupIdentifierInXml\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getUsersInXml\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function md5 expects string, string\\|null given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Parameter \\#1 \\$xpath of static method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:createFromXpathNode\\(\\) expects DOMXPath, DOMXPath\\|null given\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Parameter \\#2 \\$userNode of static method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:createFromXpathNode\\(\\) expects DOMNode, DOMNode\\|null given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookCompareResult\\:\\:\\$dkfzIdsToCreate \\(array\\<int\\>\\) does not accept array\\<int\\|string\\|null\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^Variable \\$dbUsers on left side of \\?\\? always exists and is not nullable\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"

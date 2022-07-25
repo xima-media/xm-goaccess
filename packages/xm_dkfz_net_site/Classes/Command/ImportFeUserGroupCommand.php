@@ -54,7 +54,7 @@ class ImportFeUserGroupCommand extends Command
         $io->writeln('Comparing Groups..');
         $progress = $io->createProgressBar(count($dbGroups));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
-        $compareResult = $phoneBookUtility->compareFeGroupsWithXml($dbGroups, $progress);
+        $compareResult = $phoneBookUtility->compareFeGroupsWithXml($dbGroups);
         $progress->finish();
         $io->newLine(2);
 
