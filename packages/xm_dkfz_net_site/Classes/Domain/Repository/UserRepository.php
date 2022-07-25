@@ -2,34 +2,36 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
-use JetBrains\PhpStorm\ArrayShape;
+use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
-class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository
+class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
 {
     /**
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Doctrine\DBAL\DBALException
+     * @return array<int, array{dkfz_id: string, dkfz_hash: string}>
      */
-    #[ArrayShape([
-        'dkfz_id' => 'string',
-        'dkfz_hash' => 'string',
-    ])]
     public function findAllUsersWithDkfzId(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
         $qb->getRestrictions()->removeAll();
 
-        return $qb->select('dkfz_id', 'dkfz_hash')
+        $result = $qb->select('dkfz_id', 'dkfz_hash')
             ->from('fe_users')
             ->where(
                 $qb->expr()->neq('ad_account_name', $qb->createNamedParameter('', \PDO::PARAM_STR))
             )
-            ->execute()
-            ->fetchAllAssociative();
+            ->execute();
+
+        if (!$result instanceof Result) {
+            return [];
+        }
+
+        return $result->fetchAllAssociative();
     }
 
     /**

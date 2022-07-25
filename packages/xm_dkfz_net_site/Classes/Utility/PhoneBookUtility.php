@@ -4,12 +4,12 @@ namespace Xima\XmDkfzNetSite\Utility;
 
 use DOMNodeList;
 use DOMXPath;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use Xima\XmDkfzNetSite\Command\AbstractImportGroupCommand;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
@@ -85,14 +85,14 @@ class PhoneBookUtility
     /**
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    public function getUserStoragePid(AbstractImportGroupCommand $commandClass): int
+    public function getUserStoragePid(Command $commandClass): int
     {
         $typoscript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $settings = $this->typoScriptService->convertTypoScriptArrayToPlainArray($typoscript);
         return (int)$settings['plugin']['tx_bwguild']['persistence']['storagePid'];
     }
 
-    public function getSubGroupForGroups(AbstractImportGroupCommand $commandClass): string
+    public function getSubGroupForGroups(Command $commandClass): string
     {
         return '';
     }
@@ -137,7 +137,7 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<array{dkfz_id: int, dkfz_hash: string}> $dbUsers
+     * @param array<int, array{dkfz_id: string, dkfz_hash: string}> $dbUsers
      * @param \Symfony\Component\Console\Helper\ProgressBar|null $progress
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */

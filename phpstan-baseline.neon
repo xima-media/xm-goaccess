@@ -46,11 +46,6 @@ parameters:
 			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
 
 		-
-			message: "#^Variable \\$phoneBookUsersToUpdate on left side of \\?\\? always exists and is not nullable\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Command/ImportFeUserCommand.php
-
-		-
 			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
@@ -106,17 +101,12 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:createFromXpathNode\\(\\) should return static\\(Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\) but returns Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookPerson\\:\\:getAbteilungIds\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function md5 expects string, string\\|null given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
-
-		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
 
@@ -131,47 +121,22 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
 
 		-
-			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
+
+		-
+			message: "#^Class Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository extends generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\Repository but does not specify its types\\: TEntityClass$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:bulkInsertDkfzIds\\(\\) has parameter \\$dkfzIds with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:deleteByDkfzIds\\(\\) has parameter \\$dkfzIds with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:deleteUserByDkfzIds\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 

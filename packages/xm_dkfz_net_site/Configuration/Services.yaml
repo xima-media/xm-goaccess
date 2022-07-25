@@ -45,6 +45,9 @@ services:
       - name: 'console.command'
         command: 'dkfz:importFeUser'
         schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserRepository'
 
   Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:
     tags:
