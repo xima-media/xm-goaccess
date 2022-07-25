@@ -193,10 +193,10 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<array{dkfz_id: string, uid: int}> $dbGroups
+     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
-    public function compareFeGroupsWithXml(array $dbGroups): PhoneBookCompareResult
+    public function compareDbGroupsWithXml(array $dbGroups): PhoneBookCompareResult
     {
         $result = new PhoneBookCompareResult();
         $xmlGroups = $this->getGroupIdentifierInXml();

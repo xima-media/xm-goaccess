@@ -8,4 +8,10 @@ return [
     \Xima\XmDkfzNetSite\Domain\Model\User::class => [
         'tableName' => 'fe_users',
     ],
+    \Xima\XmDkfzNetSite\Domain\Model\BeGroup::class => [
+        'tableName' => 'be_groups',
+    ],
+    \Xima\XmDkfzNetSite\Domain\Model\BeUser::class => [
+        'tableName' => 'be_groups',
+    ],
 ];

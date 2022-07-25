@@ -7,19 +7,20 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository;
 use Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
 
-class ImportFeUserGroupCommand extends Command
+class ImportBeGroupCommand extends Command
 {
     protected SymfonyStyle $io;
 
     protected OutputInterface $output;
 
-    protected UserGroupRepository $groupRepository;
+    protected BeGroupRepository $groupRepository;
 
     public function __construct(
-        UserGroupRepository $userRepository,
+        BeGroupRepository $userRepository,
         string $name = null
     ) {
         parent::__construct($name);
@@ -28,8 +29,8 @@ class ImportFeUserGroupCommand extends Command
 
     protected function configure(): void
     {
-        $this->setDescription('Import DKFZ user groups from phone book API');
-        $this->setHelp('Reads groups from API and updates the corresponding fe_groups');
+        $this->setDescription('Import DKFZ backend user groups from phone book API');
+        $this->setHelp('Reads groups from API and updates the corresponding be_groups');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -51,7 +52,7 @@ class ImportFeUserGroupCommand extends Command
             '<success>' . count($dbGroups) . '</success> found in database',
         ]);
 
-        $io->writeln('Comparing Groups..');
+        $io->writeln('Comparing BeGroups..');
         $progress = $io->createProgressBar(count($dbGroups));
         $progress->setFormat('%current%/%max% [%bar%] %percent%%');
         $compareResult = $phoneBookUtility->compareDbGroupsWithXml($dbGroups);
@@ -65,14 +66,13 @@ class ImportFeUserGroupCommand extends Command
 
         if (count($compareResult->dkfzIdsToCreate)) {
             $io->write('Creating groups..');
-            $pid = $phoneBookUtility->getUserStoragePid();
-            $this->groupRepository->bulkInsertDkfzIds($compareResult->dkfzIdsToCreate, $pid);
+            $this->groupRepository->bulkInsertDkfzIds($compareResult->dkfzIdsToCreate);
             $io->write('<success>done</success>');
             $io->newLine();
         }
 
         if (count($compareResult->dkfzIdsToDelete)) {
-            $io->write('Deleting groups..');
+            $io->write('Deleting users..');
             $this->groupRepository->deleteByDkfzIds($compareResult->dkfzIdsToDelete);
             $io->write('<success>done</success>');
             $io->newLine();

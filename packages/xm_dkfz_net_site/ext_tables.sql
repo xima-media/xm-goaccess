@@ -60,6 +60,10 @@ create table fe_groups (
 	dkfz_id varchar(255) default '' not null,
 );
 
+create table be_groups (
+	dkfz_id varchar(255) default '' not null,
+);
+
 create table tx_xmdkfznetsite_domain_model_usercontact (
 	uid            int(11) not null auto_increment,
 	pid            int(11) default '0' not null,

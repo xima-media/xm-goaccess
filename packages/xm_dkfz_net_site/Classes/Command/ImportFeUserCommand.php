@@ -84,7 +84,7 @@ class ImportFeUserCommand extends Command
         if (count($compareResult->dkfzIdsToUpdate)) {
             $io->write('Updating users..');
             $phoneBookUsersToUpdate = $compareResult->getPhoneBookPersonsForAction('update');
-            foreach ($phoneBookUsersToUpdate ?? [] as $phoneBookPerson) {
+            foreach ($phoneBookUsersToUpdate as $phoneBookPerson) {
                 $this->userRepository->updateUserFromPhoneBook($phoneBookPerson);
             }
             $io->write('<success>done</success>');
