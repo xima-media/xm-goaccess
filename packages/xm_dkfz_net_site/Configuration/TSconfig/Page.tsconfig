@@ -61,7 +61,7 @@ TCEFORM {
 
     imageorient.disabled = 1
     imageorient.types.textmedia.disabled = 0
-    imageorient.removeItems = 1, 2, 8, 9, 10
+    imageorient.removeItems = 1, 2, 8, 9, 10, 25
     image_zoom.disabled = 1
     rowDescription.disabled = 1
   }
