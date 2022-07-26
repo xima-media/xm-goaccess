@@ -231,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "97ed5a8bd906002039eeb38f536792b20b3d2986"
+                "reference": "c24629a1131353e3e87d5396de5facb9dcd88c26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/97ed5a8bd906002039eeb38f536792b20b3d2986.zip",
-                "reference": "97ed5a8bd906002039eeb38f536792b20b3d2986",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/c24629a1131353e3e87d5396de5facb9dcd88c26.zip",
+                "reference": "c24629a1131353e3e87d5396de5facb9dcd88c26",
                 "shasum": ""
             },
             "require": {
@@ -267,9 +267,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/97ed5a8bd906002039eeb38f536792b20b3d2986/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/c24629a1131353e3e87d5396de5facb9dcd88c26/?at=feature/fb-deployment"
             },
-            "time": "2022-07-26T14:11:08+00:00"
+            "time": "2022-07-26T15:16:41+00:00"
         },
         {
             "name": "christian-riesen/base32",
