@@ -41,6 +41,15 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             ],
         ],
     ],
+    'teaser' => [
+        'title' => 'Teaser',
+        'allowedAspectRatios' => [
+            '5:2' => [
+                'title' => '5:2',
+                'value' => 5 / 2,
+            ],
+        ],
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', [
