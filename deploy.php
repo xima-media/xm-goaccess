@@ -20,7 +20,7 @@ host('staging')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_recursive', false)
-    ->set('writable_chmod_mode', '0770')
+    ->set('writable_chmod_mode', '2770')
     ->set('deploy_path', '/var/www/html/stage.dkfz-typo3-dev.xima.local');
 
 host('staging-dkfz')
@@ -33,7 +33,7 @@ host('staging-dkfz')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_recursive', false)
-    ->set('writable_chmod_mode', '0770')
+    ->set('writable_chmod_mode', '2770')
     ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de')
     ->set('fetch_method', 'curl');
 
@@ -44,7 +44,7 @@ host('feature')
     ->set('db_source_host', 'staging')
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
-    ->set('writable_chmod_mode', '0770')
+    ->set('writable_chmod_mode', '2770')
     ->set('writable_chmod_recursive', false)
     ->set('public_urls', ['https://fbd.dkfz-typo3-dev.xima.local'])
     ->set('deploy_path', '/var/www/html/fbd.dkfz-typo3-dev.xima.local');
@@ -56,18 +56,4 @@ task('deploy:upload-dist', function () {
         'packages/xm_dkfz_net_prototype/Resources/Public/',
         '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/'
     );
-});
-
-set('writable_dirs', function () {
-    return [
-        get('web_path') . 'typo3conf',
-        get('web_path') . 'typo3temp',
-        get('web_path') . 'typo3temp/assets',
-        get('web_path') . 'typo3temp/assets/images',
-        get('web_path') . 'typo3temp/assets/_processed_',
-        get('web_path') . 'uploads',
-        get('web_path') . 'fileadmin',
-        get('web_path') . '../var',
-        get('web_path') . 'fileadmin/_processed_',
-    ];
 });

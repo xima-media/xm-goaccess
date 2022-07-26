@@ -231,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "587700529ca1a8a46e13c0afc3ee0d484e741b9a"
+                "reference": "0bc803ab8132a456e9b3d12980c28a40c1534e36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/587700529ca1a8a46e13c0afc3ee0d484e741b9a.zip",
-                "reference": "587700529ca1a8a46e13c0afc3ee0d484e741b9a",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/0bc803ab8132a456e9b3d12980c28a40c1534e36.zip",
+                "reference": "0bc803ab8132a456e9b3d12980c28a40c1534e36",
                 "shasum": ""
             },
             "require": {
@@ -267,9 +267,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/587700529ca1a8a46e13c0afc3ee0d484e741b9a/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/0bc803ab8132a456e9b3d12980c28a40c1534e36/?at=feature/fb-deployment"
             },
-            "time": "2022-06-27T17:34:04+00:00"
+            "time": "2022-07-26T14:06:11+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -1158,12 +1158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "8fa2bc25c09120c0af62b273ebc1e124dd8c3988"
+                "reference": "808c7cb8a867e5940c03f77ef15006aebcbbee10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/8fa2bc25c09120c0af62b273ebc1e124dd8c3988",
-                "reference": "8fa2bc25c09120c0af62b273ebc1e124dd8c3988",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/808c7cb8a867e5940c03f77ef15006aebcbbee10",
+                "reference": "808c7cb8a867e5940c03f77ef15006aebcbbee10",
                 "shasum": ""
             },
             "require": {
@@ -1232,7 +1232,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-20T18:06:56+00:00"
+            "time": "2022-07-24T08:02:21+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -10205,16 +10205,16 @@
         },
         {
             "name": "mikey179/vfsstream",
-            "version": "v1.6.10",
+            "version": "v1.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bovigo/vfsStream.git",
-                "reference": "250c0825537d501e327df879fb3d4cd751933b85"
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/250c0825537d501e327df879fb3d4cd751933b85",
-                "reference": "250c0825537d501e327df879fb3d4cd751933b85",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
                 "shasum": ""
             },
             "require": {
@@ -10252,7 +10252,7 @@
                 "source": "https://github.com/bovigo/vfsStream/tree/master",
                 "wiki": "https://github.com/bovigo/vfsStream/wiki"
             },
-            "time": "2021-09-25T08:05:01+00:00"
+            "time": "2022-02-23T02:02:42+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -11169,12 +11169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "4bc2609bf9e2c2146d25465546bb10651cce47ac"
+                "reference": "13587f393de35e82081d102217f46284d3beb4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4bc2609bf9e2c2146d25465546bb10651cce47ac",
-                "reference": "4bc2609bf9e2c2146d25465546bb10651cce47ac",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/13587f393de35e82081d102217f46284d3beb4f7",
+                "reference": "13587f393de35e82081d102217f46284d3beb4f7",
                 "shasum": ""
             },
             "conflict": {
@@ -11254,7 +11254,7 @@
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
                 "dolibarr/dolibarr": "<16|= 12.0.5|>= 3.3.beta1, < 13.0.2",
                 "dompdf/dompdf": "<2",
-                "drupal/core": ">=7,<7.88|>=8,<9.2.13|>=9.3,<9.3.6",
+                "drupal/core": ">=7,<7.91|>=8,<9.3.19|>=9.4,<9.4.3",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
                 "dweeves/magmi": "<=0.7.24",
                 "ecodev/newsletter": "<=4",
@@ -11674,7 +11674,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-21T23:04:29+00:00"
+            "time": "2022-07-26T09:04:23+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
