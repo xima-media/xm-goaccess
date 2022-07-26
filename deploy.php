@@ -57,3 +57,17 @@ task('deploy:upload-dist', function () {
         '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/'
     );
 });
+
+set('writable_dirs', function () {
+    return [
+        get('web_path') . 'typo3conf',
+        get('web_path') . 'typo3temp',
+        get('web_path') . 'typo3temp/assets',
+        get('web_path') . 'typo3temp/assets/images',
+        get('web_path') . 'typo3temp/assets/_processed_',
+        get('web_path') . 'uploads',
+        get('web_path') . 'fileadmin',
+        get('web_path') . '../var',
+        get('web_path') . 'fileadmin/_processed_',
+    ];
+});
