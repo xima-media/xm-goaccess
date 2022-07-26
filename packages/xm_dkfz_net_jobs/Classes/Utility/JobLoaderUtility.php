@@ -51,10 +51,10 @@ class JobLoaderUtility
     protected function loadJobs(bool $useCache = true): bool
     {
         // download and cache json
-        if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
+        //if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
             $jsonJobs = $this->fetchRemoteJobs();
             $this->cache->set('dkfz', $jsonJobs);
-        }
+        //}
 
         if (!is_string($jsonJobs)) {
             $this->logger->error('Cached jobs are not valid', ['code' => 1658818320, 'jobs' => $jsonJobs]);
@@ -81,8 +81,9 @@ class JobLoaderUtility
             $client = new Client(['verify' => false]);
             $response = $client->request('GET', $extConf['api_url']);
             $jsonJobs = $response->getBody()->getContents();
+            $this->logger->error($jsonJobs);
         } catch (GuzzleException $e) {
-            $this->logger->error('Could not fetch job postings', ['error' => $e, 'code' => 1658818306]);
+            $this->logger->error('Could not fetch job postings', ['error' => $e->getMessage(), 'code' => 1658818306]);
             return '';
         }
 
