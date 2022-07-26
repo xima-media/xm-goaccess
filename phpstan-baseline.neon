@@ -26,26 +26,6 @@ parameters:
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
-
-		-
-			message: "#^Parameter \\#1 \\$json of function json_decode expects string, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
-
-		-
-			message: "#^Parameter \\#1 \\$json of method JsonMapper\\:\\:mapArray\\(\\) expects array, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
-
-		-
-			message: "#^Property Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:\\$jobs \\(array\\<Xima\\\\XmDkfzNetJobs\\\\Domain\\\\Model\\\\Dto\\\\Job\\>\\) does not accept mixed\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
-
-		-
 			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
