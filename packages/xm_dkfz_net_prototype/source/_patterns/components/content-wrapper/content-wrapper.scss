@@ -252,6 +252,8 @@
 
     .background--image + & {
         box-shadow: 0 var(--space-xxl) 0 var(--space-xxl) var(--color-white);
+        margin-top: 0;
+        padding-top: var(--space-xxl);
     }
 
     &.frame-type-container-accordion {

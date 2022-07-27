@@ -26,7 +26,11 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: repeat(8, 1fr);
-        margin-bottom: -8rem;
+        margin: -1rem 0 -4rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin: -2rem 0;
     }
 }
 
