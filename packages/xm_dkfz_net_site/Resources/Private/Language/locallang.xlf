@@ -322,6 +322,15 @@
 			<trans-unit id="new">
 				<source>New</source>
 			</trans-unit>
+			<trans-unit id="image.slider.title">
+            	<source>Image Slider</source>
+            </trans-unit>
+            <trans-unit id="image.slider.description">
+                <source>From 2 to maximum 15 images aligned in a slider</source>
+            </trans-unit>
+            <trans-unit id="image.slider.notification">
+                <source>Please add 2 to 15 images</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -101,4 +101,10 @@ tt_content {
     }
   }
 
+  image {
+    templateName = Carousel
+    dataProcessing {
+      20 >
+    }
+  }
 }
