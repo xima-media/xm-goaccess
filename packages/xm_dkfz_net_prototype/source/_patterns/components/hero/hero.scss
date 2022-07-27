@@ -16,21 +16,19 @@
     padding: 2rem 0 5rem;
     text-align: center;
 
-    &--with-image {
-        margin: 0 var(--default-overflow-margin-negative);
-    }
-
     @include media-breakpoint-up(xxl) {
         padding-bottom: 1rem;
     }
 
-    &__title {
-        + .button {
-            margin-top: 1.5rem;
+    &--with-image {
+        margin: 0 var(--default-overflow-margin-negative);
+    }
 
-            @include media-breakpoint-up(xl) {
-                margin-bottom: -1.5rem;
-            }
+    button {
+        margin-top: 1.5rem;
+
+        @include media-breakpoint-up(xl) {
+            margin-bottom: -1.5rem;
         }
     }
 
@@ -40,12 +38,6 @@
         font-size: 36px;
         line-height: 50px;
         letter-spacing: -0.3px;
-    }
-
-    &__info {
-        + .button {
-            margin: 2rem auto;
-        }
     }
 
     &-teaser {
@@ -109,14 +101,19 @@
         }
 
         &__contact {
-            grid-column: 1/2;
-            grid-row: 1/2;
+            justify-self: left;
+            margin: .5rem 0 0 0;
             max-width: fit-content;
             max-height: fit-content;
             height: fit-content;
-            justify-self: right;
             align-self: flex-end;
-            margin-right: -1rem;
+
+            @include media-breakpoint-up(sm) {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                justify-self: right;
+                margin: 0 -1rem 0 0;
+            }
 
             .contact {
                 background: var(--color-primary-opacity-10);
