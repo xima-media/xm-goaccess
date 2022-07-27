@@ -15,7 +15,10 @@
     align-items: center;
     padding: 2rem 0 5rem;
     text-align: center;
-    margin: 0 var(--default-overflow-margin-negative);
+
+    &--with-image {
+        margin: 0 var(--default-overflow-margin-negative);
+    }
 
     @include media-breakpoint-up(xxl) {
         padding-bottom: 1rem;
@@ -58,9 +61,11 @@
             .hero-teaser__contact {
                 margin: 0 var(--default-overflow-margin-negative) 0 0;
                 position: relative;
-                flex: .6;
+                flex: .5;
                 order: 2;
                 max-width: unset;
+                align-self: flex-start;
+                margin-top: 5rem;
             }
 
             .hero-teaser__text {

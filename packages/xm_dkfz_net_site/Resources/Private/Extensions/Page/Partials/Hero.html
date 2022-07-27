@@ -1,6 +1,6 @@
 <f:if condition="!{data.is_siteroot}">
 
-	<div class="hero">
+	<div class="hero {f:if(condition: '{files}', then: 'hero--with-image')}">
 		<h1 class="hero__title">{data.title}</h1>
 
 		<button type="button"
