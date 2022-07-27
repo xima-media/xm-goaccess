@@ -51,10 +51,10 @@ class JobLoaderUtility
     protected function loadJobs(bool $useCache = true): bool
     {
         // download and cache json
-        //if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
+        if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
             $jsonJobs = $this->fetchRemoteJobs();
             $this->cache->set('dkfz', $jsonJobs);
-        //}
+        }
 
         if (!is_string($jsonJobs)) {
             $this->logger->error('Cached jobs are not valid', ['code' => 1658818320, 'jobs' => $jsonJobs]);
