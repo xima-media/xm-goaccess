@@ -63,9 +63,25 @@ class JobLoaderUtility
 
         $jobsArray = $this->decodeJsonJobs($jsonJobs);
 
+        $this->orderJobsArray($jobsArray);
+
         $this->jobs = $this->mapJobsArray($jobsArray);
 
         return true;
+    }
+
+    /**
+     * @param Job[] $jobsArray
+     */
+    protected function orderJobsArray(array &$jobsArray): void
+    {
+        usort($jobsArray, function ($a, $b) {
+            if (!$a->startDate || !$b->startDate || $a->startDate === $b->startDate) {
+                return 0;
+            }
+
+            return $a->startDate < $b->startDate ? -1 : 1;
+        });
     }
 
     protected function fetchRemoteJobs(): string
