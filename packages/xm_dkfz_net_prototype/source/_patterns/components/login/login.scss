@@ -1,0 +1,39 @@
+main.login {
+
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    display: grid;
+
+    .login__blur {
+        @include background-blur(#FFF, .2);
+        display: grid;
+        justify-items: center;
+    }
+
+    .logo, .box {
+        align-self: flex-start;
+        grid-column: 1 /2;
+        grid-row: 1 /2;
+    }
+
+    .box {
+        align-self: center;
+        background: #FFF;
+        @include background-blur(#FFF, .5);
+        text-align: center;
+        padding: 1rem;
+
+        @include media-breakpoint-up(md) {
+            padding: var(--space-xxl);
+        }
+    }
+
+    .button {
+        margin: 1rem;
+
+        @include media-breakpoint-up(md) {
+            margin: var(--space-xl);
+        }
+    }
+}
