@@ -5,53 +5,33 @@
 <f:comment><!--
 	Arguments:
 	- image (FileInterface)
-	- round (bool)
-	- icon (bool)
-	- size: sm, md, lg (default: md)
-	- color (if overridden from page and only if needed in the calling element!)
-	- patternColor (if overridden from page and only if needed in the calling element!)
+	- size: sm (default: 970)
 --></f:comment>
 
-<f:variable name="orientation" value="square" />
-<f:if condition="{image}">
-	<f:variable name="cropInfo"><dkfz:format.json.decode>{image.properties.crop}</dkfz:format.json.decode></f:variable>
-	<f:if condition="{cropInfo.default.selectedRatio} == '2:3' || {cropInfo.default.selectedRatio} == '3:4'">
-		<f:variable name="orientation" value="rectangle" />
-	</f:if>
-</f:if>
 
-<figure
-	class="
-        picture
-        {f:if(condition: image, then: 'picture--with-image', else: 'picture--no-image')}
-        {f:if(condition: round, then: 'picture--round')}
-        {f:if(condition: icon, then: 'picture--as-icon')}
-        {f:if(condition: image.description, then: 'picture--with-caption')}
-        {f:if(condition: '{type} == \'picture-text\'', then: 'picture--with-pattern')}
-        picture--orientation-{f:if(condition: size, then: size, else: 'md')}-{orientation}
-    "
-	data-color="{f:if(condition: color, then: color, else: 'transparent')}"
-	data-pattern-color="{f:if(condition: patternColor, then: patternColor, else: 'transparent')}"
->
-	<div class="picture__item {f:if(condition: image, then: 'image-color--', else: 'background--')}{f:if(condition: color, then: color, else: 'transparent')}">
-		<f:if condition="{image}">
-			<f:then>
-				<f:if condition="{size} == 'lg'">
-					<f:then>
-						<f:image image="{image}" maxWidth="970" class="picture__image image--responsive" />
-					</f:then>
-					<f:else>
-						<f:image image="{image}" maxWidth="440" maxHeight="440" class="picture__image image--responsive" />
-					</f:else>
-				</f:if>
-				<span class="picture__pattern pattern color-accent--{f:if(condition: patternColor, then: patternColor, else: 'primary')}"></span>
-				<f:if condition="{image.properties.copyright}">
-					<f:render partial="Copyright" arguments="{text: image.properties.copyright}" />
-				</f:if>
-			</f:then>
-			<f:else>
-				<span class="picture__pattern pattern color-accent--gray-900"></span>
-			</f:else>
+<f:if condition="{size} == 'sm'">
+	<f:then>
+		<f:variable name='imageSize' value='440'></f:variable>
+	</f:then>
+	<f:else>
+		<f:variable name='imageSize' value='970'></f:variable>
+	</f:else>
+</f:if>
+<figure>
+	<div class="picture__item">
+		<span aria-hidden="true" class="picture__pattern pattern"></span>
+		<picture>
+			<source srcset="{f:uri.image(image:image, width:'{imageSize}', fileExtension: 'webp')}"
+					type="image/webp">
+			<source srcset="{f:uri.image(image:image, width:'{imageSize}', fileExtension: 'jpg')}"
+					type="image/jpeg">
+			<img src="{f:uri.image(image:image, width:'970', fileExtension: 'jpg')}"
+				 alt="{file.originalResource.alternative}"
+				 class="picture__image image--responsive"
+				 loading="lazy"/>
+		</picture>
+		<f:if condition="{image.properties.copyright}">
+			<f:render partial="Copyright" arguments="{text: image.properties.copyright}" />
 		</f:if>
 	</div>
 	<f:if condition="{image.properties.description}">

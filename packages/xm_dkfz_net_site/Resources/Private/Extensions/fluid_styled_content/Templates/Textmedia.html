@@ -3,29 +3,7 @@
 	<f:section name="Main">
 		<div class="content-wrapper__content-image">
 			<f:for each="{files}" as="file">
-				<figure>
-					<div class="picture__item">
-						<span aria-hidden="true" class="picture__pattern pattern"></span>
-						<picture>
-							<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'webp')}"
-									type="image/webp">
-							<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
-									type="image/jpeg">
-							<img src="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
-								 alt="{file.originalResource.alternative}"
-								 class="picture__image image--responsive"
-								 loading="lazy"/>
-						</picture>
-						<f:if condition="{file.properties.copyright}">
-							<f:render partial="Copyright" arguments="{text: file.properties.copyright}" />
-						</f:if>
-					</div>
-					<f:if condition="{file.properties.description}">
-						<figcaption class="picture__caption">
-							{file.properties.description}
-						</figcaption>
-					</f:if>
-				</figure>
+				<f:render partial="Image" arguments="{image: file}" />
 			</f:for>
 		</div>
 
