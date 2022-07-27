@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a441575ce1870981214a106e466a4f2",
+    "content-hash": "418a232c180467591b998083049ae9f8",
     "packages": [
         {
             "name": "b13/container",
@@ -3637,13 +3637,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Starraider/deployer-extended-typo3.git",
-                "reference": "b8ba16e0e5ecd6ff8ce3f46a3f6e18594e818ca9"
+                "url": "https://github.com/sourcebroker/deployer-extended-typo3.git",
+                "reference": "83307c9030be1659276708626276ddc22a8876ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Starraider/deployer-extended-typo3/zipball/b8ba16e0e5ecd6ff8ce3f46a3f6e18594e818ca9",
-                "reference": "b8ba16e0e5ecd6ff8ce3f46a3f6e18594e818ca9",
+                "url": "https://api.github.com/repos/sourcebroker/deployer-extended-typo3/zipball/83307c9030be1659276708626276ddc22a8876ab",
+                "reference": "83307c9030be1659276708626276ddc22a8876ab",
                 "shasum": ""
             },
             "require": {
@@ -3669,6 +3669,7 @@
                     "SourceBroker\\DeployerExtendedTypo3\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3684,13 +3685,14 @@
             ],
             "description": "Deployment tool for TYPO3.",
             "keywords": [
-                "TYPO3",
-                "deployer"
+                "deployer",
+                "typo3"
             ],
             "support": {
-                "source": "https://github.com/Starraider/deployer-extended-typo3/tree/master"
+                "issues": "https://github.com/sourcebroker/deployer-extended-typo3/issues",
+                "source": "https://github.com/sourcebroker/deployer-extended-typo3/tree/master"
             },
-            "time": "2022-05-31T11:52:24+00:00"
+            "time": "2022-07-13T20:28:52+00:00"
         },
         {
             "name": "sourcebroker/deployer-instance",
@@ -12868,22 +12870,22 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "6.16.5",
+            "version": "6.16.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "3aa25fa072f93ab001f97e346e2b8c788c6c6530"
+                "reference": "5b5cd686fdbbdb891930e74c8b70c4c06a785976"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/3aa25fa072f93ab001f97e346e2b8c788c6c6530",
-                "reference": "3aa25fa072f93ab001f97e346e2b8c788c6c6530",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/5b5cd686fdbbdb891930e74c8b70c4c06a785976",
+                "reference": "5b5cd686fdbbdb891930e74c8b70c4c06a785976",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
                 "guzzlehttp/psr7": "^1.7 || ^2.0",
-                "mikey179/vfsstream": "~1.6.10",
+                "mikey179/vfsstream": "~1.6.11",
                 "php": ">= 7.2",
                 "phpunit/phpunit": "^8.4 || ^9.0",
                 "psr/container": "^1.0",
@@ -12900,10 +12902,10 @@
                 "doctrine/dbal": "2.13.0 || 2.13.1"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.7.0",
+                "phpstan/phpstan": "^1.8.0",
                 "phpstan/phpstan-phpunit": "^1.1.1",
                 "typo3/cms-workspaces": "10.*.*@dev || 11.*.*@dev",
-                "typo3/coding-standards": "^0.5.0"
+                "typo3/coding-standards": "^0.5.3"
             },
             "type": "library",
             "autoload": {
@@ -12938,9 +12940,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/6.16.5"
+                "source": "https://github.com/TYPO3/testing-framework/tree/6.16.6"
             },
-            "time": "2022-05-23T16:08:14+00:00"
+            "time": "2022-07-26T17:30:58+00:00"
         }
     ],
     "aliases": [

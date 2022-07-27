@@ -1,6 +1,6 @@
 {
 	"name": "xima/xm-dkfz-net",
-	"description": "Example TYPO3 project",
+	"description": "DKFZ Intranet TYPO3 project",
 	"authors": [
 		{
 			"name": "Maik Schneider",
@@ -12,10 +12,6 @@
 		{
 			"type": "path",
 			"url": "./packages/*"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/Starraider/deployer-extended-typo3"
 		},
 		{
 			"type": "vcs",
@@ -69,9 +65,9 @@
 		"b13/container": "^1.6.1",
 		"blueways/bw-guild": "*@dev",
 		"xima/xm-goaccess": "*@dev",
-      "ext-dom": "*",
+		"ext-dom": "*",
 		"ichhabrecht/content-defender": "^3.2"
-    },
+	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"friendsofphp/php-cs-fixer": "^3.6.0",
