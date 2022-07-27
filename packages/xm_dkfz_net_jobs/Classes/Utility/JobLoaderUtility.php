@@ -81,7 +81,6 @@ class JobLoaderUtility
             $client = new Client(['verify' => false]);
             $response = $client->request('GET', $extConf['api_url']);
             $jsonJobs = $response->getBody()->getContents();
-            $this->logger->error($jsonJobs);
         } catch (GuzzleException $e) {
             $this->logger->error('Could not fetch job postings', ['error' => $e->getMessage(), 'code' => 1658818306]);
             return '';
