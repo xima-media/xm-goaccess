@@ -8,6 +8,9 @@ create table tt_content (
 	tx_xmdkfznetsite_accordion_group varchar(255) not null default '',
 	tt_content_items                 int(11) unsigned default '0' not null,
 	color                            varchar(64)  not null default '',
+	tx_xmdkfznetsite_tabs_tab1       varchar(255) not null default '',
+	tx_xmdkfznetsite_tabs_tab2       varchar(255) not null default '',
+	tx_xmdkfznetsite_tabs_tab3       varchar(255) not null default '',
 );
 
 create table tt_content_item (
@@ -54,7 +57,11 @@ create table fe_users (
 );
 
 create table fe_groups (
-	department_id varchar(255) default '' not null,
+	dkfz_id varchar(255) default '' not null,
+);
+
+create table be_groups (
+	dkfz_id varchar(255) default '' not null,
 );
 
 create table tx_xmdkfznetsite_domain_model_usercontact (

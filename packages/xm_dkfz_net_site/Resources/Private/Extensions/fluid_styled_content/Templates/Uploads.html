@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+
+    <f:if condition="{files}">
+		<f:for each="{files}" as="file" iteration="fileIterator">
+			<div class="tab-item__wrapper tab-item__wrapper--background-white row">
+				<div class="col-md-8 tab-item__title">
+					<f:render partial="Icon" arguments="{icon: 'file'}" /> <h6>{f:if(condition: file.properties.title, then: file.properties.title, else: file.name) -> f:format.htmlspecialchars()}</h6>
+				</div>
+				<div class="col-md-4 tab-item__detail">
+					<span class="tab-item__type">{file.extension}</span>
+					<span class="tab-item__size"><f:format.bytes value="{file.properties.size}" /></span>
+					<a href="{file.publicUrl}" {f:if(condition:data.target,then: ' target="{data.target}"')}
+						class="tab-item__link tab-item__link--download"
+						type="button"
+						aria-label="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
+						data-tooltip="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
+						download>
+						<f:render partial="Icon" arguments="{icon: 'download'}" />
+					</a>
+					<button class="tab-item__link" type="button" id="file-{file.uid}"
+							aria-label="{f:translate(key: 'label.addBookmark', extensionName: 'XmDkfzNetSite')}"
+							data-tooltip="{f:translate(key: 'label.addBookmark', extensionName: 'XmDkfzNetSite')}"
+							data-bookmark-entity="file"
+							data-bookmark-added="false"
+							data-bookmark-id="file-{file.uid}">
+						<f:render partial="Icon" arguments="{icon: 'bookmark-add'}" />
+					</button>
+				</div>
+			</div>
+		</f:for>
+    </f:if>
+
+</f:section>
+</html>

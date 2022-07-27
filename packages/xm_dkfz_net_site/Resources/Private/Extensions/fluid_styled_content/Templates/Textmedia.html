@@ -3,19 +3,7 @@
 	<f:section name="Main">
 		<div class="content-wrapper__content-image">
 			<f:for each="{files}" as="file">
-				<span aria-hidden="true" class="picture__pattern pattern"></span>
-				<figure>
-					<picture>
-						<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'webp')}"
-								type="image/webp">
-						<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
-								type="image/jpeg">
-						<img src="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
-							 alt="{file.originalResource.alternative}"
-							 class="picture__image image--responsive"
-							 loading="lazy"/>
-					</picture>
-				</figure>
+				<f:render partial="Image" arguments="{image: file}" />
 			</f:for>
 		</div>
 

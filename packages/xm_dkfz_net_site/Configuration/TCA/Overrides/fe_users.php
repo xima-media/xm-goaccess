@@ -60,12 +60,34 @@ call_user_func(function () {
                 'foreign_field' => 'fe_user',
             ],
         ],
+        'dkfz_hash' => [
+            'exlude' => false,
+            'label' => 'Hash of CPerson node',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'gender' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender',
+            'config' => [
+                'type' => 'select',
+                'readOnly' => true,
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender.0', 0],
+                    ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender.1', 1],
+                    ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender.2', 2],
+                ],
+                'default' => 0,
+            ],
+        ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,dkfz_id,ad_account_name,contacts',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts',
         '',
         'after:email'
     );

@@ -1,7 +1,7 @@
 <?xml version="1.2" encoding="UTF-8" ?>
 <xliff version="1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z"
-	product-name="xm_dkfz_net_site">
+		  product-name="xm_dkfz_net_site">
 		<header>
 			<generator>XLIFF Editor</generator>
 			<authorName>Maik Schneider</authorName>
@@ -107,6 +107,30 @@
 			<trans-unit id="container.accordion.group.description">
 				<target>Eine Überschrift, die die Akkordion-Elemente zu einer neuen Gruppe abgrenzt</target>
 			</trans-unit>
+			<trans-unit id="container.tabs">
+				<target>Tabelement</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.description">
+				<target>Gruppierung von Inhalten in 2-3 Registern (Tabs)</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title1">
+				<target>Titel Tab 1</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title2">
+				<target>Titel Tab 2</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title3">
+				<target>Titel Tab 3</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab1">
+				<target>Inhalt Tab 1</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab2">
+				<target>Inhalt Tab 2</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab3">
+				<target>Inhalt Tab 3 (optional)</target>
+			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
 				<target>Zeigt Video von YouTube oder Vimeo an</target>
 			</trans-unit>
@@ -190,6 +214,27 @@
 			</trans-unit>
 			<trans-unit id="save">
 				<target>Speichern</target>
+			</trans-unit>
+			<trans-unit id="user.gender">
+				<target>Anrede</target>
+			</trans-unit>
+			<trans-unit id="user.gender.0">
+				<target></target>
+			</trans-unit>
+			<trans-unit id="user.gender.1">
+				<target>Herr</target>
+			</trans-unit>
+			<trans-unit id="user.gender.2">
+				<target>Frau</target>
+			</trans-unit>
+			<trans-unit id="label.download">
+				<target>Herunterladen</target>
+			</trans-unit>
+			<trans-unit id="label.addBookmark">
+				<target>Zur Merkliste hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="new">
+				<target>Neu</target>
 			</trans-unit>
 			<trans-unit id="image.slider.title">
                 <target>Bilder-Slider</target>

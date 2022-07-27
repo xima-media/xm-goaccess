@@ -40,11 +40,30 @@ services:
   Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
     public: true
 
-  Xima\XmDkfzNetSite\Command\ImportUserCommand:
+  Xima\XmDkfzNetSite\Command\ImportFeUserCommand:
     tags:
       - name: 'console.command'
-        command: 'dkfz:importUser'
+        command: 'dkfz:importFeUser'
         schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserRepository'
+
+  Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importFeUserGroup'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+
+  Xima\XmDkfzNetSite\Command\ImportBeGroupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importBeUserGroup'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
 
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

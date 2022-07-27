@@ -96,6 +96,11 @@ class Userinfo {
   }
 
   protected modifyBookmarkLinks() {
+
+    if (!this.userinfo) {
+      return
+    }
+
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
       const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)');
       if (urlParts.length !== 3) {

@@ -2,12 +2,16 @@
 
 namespace Xima\XmDkfzNetSite\Utility;
 
+use DOMNodeList;
 use DOMXPath;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\ProgressBar;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use Xima\XmDkfzNetSite\Domain\Model\User;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 class PhoneBookUtility
 {
@@ -16,6 +20,8 @@ class PhoneBookUtility
     protected ConfigurationManager $configurationManager;
 
     protected TypoScriptService $typoScriptService;
+
+    protected DOMXPath $xpath;
 
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
@@ -27,18 +33,68 @@ class PhoneBookUtility
         $this->typoScriptService = $typoScriptService;
     }
 
-    public function getXpath(): DOMXPath
+    public function loadXpath(): void
     {
         $url = $this->getApiUrl();
         $xml = $this->fetchXmlFromApi($url);
-        return $this->getXpathFromXml($xml);
+        $this->xpath = $this->getXpathFromXml($xml);
     }
 
-    protected function getUserStoragePid(): int
+    /**
+     * @return \DOMNodeList<\DOMNode>
+     */
+    public function getUsersInXml(): DOMNodeList
+    {
+        $nodes = $this->xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
+        return $nodes ?: new DOMNodeList();
+    }
+
+    /**
+     * @return string[]
+     */
+    public static function getGroupIdsFromXmlAbteilungString(string $abteilung): array
+    {
+        preg_match_all('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $abteilung, $matches);
+        if (count($matches) && count($matches[1])) {
+            return $matches[1];
+        }
+        return [];
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getGroupIdentifierInXml(): array
+    {
+        $groupIdentifier = [];
+        $nodes = $this->xpath->query('//x:Abteilung[text()!=""]');
+
+        if (!$nodes instanceof DOMNodeList) {
+            return [];
+        }
+
+        foreach ($nodes as $node) {
+            $name = (string)$node->nodeValue;
+            $groupIdsOfNode = self::getGroupIdsFromXmlAbteilungString($name);
+            $groupIdentifier = array_merge($groupIdentifier, $groupIdsOfNode);
+        }
+
+        return array_unique($groupIdentifier);
+    }
+
+    /**
+     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
+     */
+    public function getUserStoragePid(Command $commandClass): int
     {
         $typoscript = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $settings = $this->typoScriptService->convertTypoScriptArrayToPlainArray($typoscript);
         return (int)$settings['plugin']['tx_bwguild']['persistence']['storagePid'];
+    }
+
+    public function getSubGroupForGroups(Command $commandClass): string
+    {
+        return '';
     }
 
     protected function getXpathFromXml(string $xml): DOMXPath
@@ -67,55 +123,104 @@ class PhoneBookUtility
         return $xmlContent;
     }
 
+    /**
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     */
     protected function getApiUrl(): string
     {
         $extConf = (array)$this->extensionConfiguration->get('xm_dkfz_net_site');
-        return $extConf['phone_book_api_url'] ?? '';
+        if (!$extConf['phone_book_api_url'] || !is_string($extConf['phone_book_api_url'])) {
+            return '';
+        }
+        return $extConf['phone_book_api_url'];
     }
 
-    public function updateFeUserFromXpath(User &$user, DOMXPath $xpath): void
+    /**
+     * @param array<int, array{dkfz_id: string, dkfz_hash: string}> $dbUsers
+     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
+     * @param \Symfony\Component\Console\Helper\ProgressBar|null $progress
+     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
+     */
+    public function compareDbUsersWithXml(array $dbUsers, array $dbGroups, ?ProgressBar $progress): PhoneBookCompareResult
     {
-        $cPersonNode = $xpath->query('//x:CPerson[x:Id="' . $user->getDkfzId() . '"]');
+        $result = new PhoneBookCompareResult();
 
-        if ($cPersonNode->count() !== 1) {
-            return;
+        foreach ($dbUsers as $dbUser) {
+            $progress?->advance();
+
+            $userNode = $this->xpath->query('//x:CPerson[x:Id[text()="' . $dbUser['dkfz_id'] . '"]]');
+
+            // delete user from database if node not found
+            if ($userNode === false) {
+                $result->dkfzIdsToDelete[] = $dbUser['dkfz_id'];
+                continue;
+            }
+
+            // search for user id in xml and mark for update if changed (as skipped otherwise)
+            if ($userNode->length === 1 && $userNode->item(0)) {
+                $nodeDkfzId = $userNode->item(0)->nodeValue ? $userNode->item(0)->nodeValue : '';
+                $nodeHash = md5($nodeDkfzId);
+                if ($dbUser['dkfz_hash'] !== $nodeHash) {
+                    $result->dkfzIdsToUpdate[] = $dbUser['dkfz_id'];
+                    $result->phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
+                        $this->xpath,
+                        $userNode->item(0),
+                        $dbGroups
+                    );
+                } else {
+                    $result->dkfzIdsToSkip[] = $dbUser['dkfz_id'];
+                }
+                continue;
+            }
+
+            // delete user from database if not found in xml
+            $result->dkfzIdsToDelete[] = $dbUser['dkfz_id'];
         }
 
-        $user->setPid($this->getUserStoragePid());
+        foreach ($this->getUsersInXml() as $xmlUserNode) {
+            $userIdNode = $this->xpath->query('x:Id', $xmlUserNode);
 
-        $hashOfNode = md5($cPersonNode->item(0)->nodeValue);
-        $user->setDkfzHash($hashOfNode);
+            if (!$userIdNode) {
+                continue;
+            }
 
-        $deactivated = $xpath->query('x:Deaktiviert', $cPersonNode->item(0))->item(0)->nodeValue;
-        $adAccountDeactivated = $xpath->query('x:AdAccountGesperrt', $cPersonNode->item(0))->item(0)->nodeValue;
-        $isHidden = filter_var($deactivated, FILTER_VALIDATE_BOOLEAN) || filter_var($adAccountDeactivated, FILTER_VALIDATE_BOOLEAN);
-        $user->setDisable($isHidden);
+            $userId = $userIdNode->item(0)?->nodeValue;
 
-        $firstName = $xpath->query('x:Vorname', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($firstName) {
-            $user->setFirstName($firstName);
+            // skip creation if already marked to update or to skip
+            $idsToIgnore = array_merge($result->dkfzIdsToUpdate, $result->dkfzIdsToSkip);
+            if (in_array($userId, $idsToIgnore, true)) {
+                continue;
+            }
+
+            $result->dkfzIdsToCreate[] = (int)$userId;
+            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode, $dbGroups);
         }
-        $title = $xpath->query('x:Titel', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($title) {
-            $user->setTitle($title);
-        }
-        $lastName = $xpath->query('x:Nachname', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($lastName) {
-            $user->setLastName($lastName);
-        }
-        $mail = $xpath->query('x:Mail', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($mail) {
-            $user->setEmail($mail);
-        }
-        $adAccountName = $xpath->query('x:AdAccountName', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($adAccountName) {
-            $user->setAdAccountName($adAccountName);
-            $user->setUsername($adAccountName);
-        }
-        $genderMapping = ['Herr' => 1, 'Frau' => 2];
-        $gender = $xpath->query('x:Anrede', $cPersonNode->item(0))->item(0)->nodeValue;
-        if ($gender && in_array($gender, $genderMapping)) {
-            $user->setGender($genderMapping[$gender]);
-        }
+
+        return $result;
+    }
+
+    /**
+     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
+     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
+     */
+    public function compareDbGroupsWithXml(array $dbGroups): PhoneBookCompareResult
+    {
+        $result = new PhoneBookCompareResult();
+        $xmlGroups = $this->getGroupIdentifierInXml();
+
+        $dbGroupsIdentifier = array_map(function ($dbGroup) {
+            return $dbGroup['dkfz_id'];
+        }, $dbGroups);
+
+        $result->dkfzIdsToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($xmlGroups) {
+            return !in_array($identifier, $xmlGroups);
+        });
+
+        $result->dkfzIdsToCreate = array_filter($xmlGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
+            return !in_array($xmlGroup, $dbGroupsIdentifier);
+        });
+
+        return $result;
     }
 }

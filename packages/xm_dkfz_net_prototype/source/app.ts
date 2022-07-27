@@ -205,6 +205,9 @@ import './_patterns/components/lightbox/lightbox'
 /** @section 2.46 Field checkbox */
 import './_patterns/components/field/field--checkbox'
 
+/** @section 2.46 Field checkbox */
+import './_patterns/components/jobs/jobs'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

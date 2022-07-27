@@ -120,6 +120,7 @@
         @include list-reset;
 
         display: flex;
+        flex-wrap: wrap;
     }
 
     &__tag {
@@ -472,40 +473,6 @@
             @include h5;
 
             margin-bottom: 0;
-        }
-    }
-}
-
-
-//
-//   @section 13. Card - new job
-//
-
-.card--new-job {
-    margin-top: 1rem;
-    padding-top: .25rem;
-
-    .card {
-        &__title {
-            @include h6;
-        }
-
-        &__link {
-            &--hidden { // @todo > umbennen von --hidden in --overlay
-                opacity: 1;
-                align-items: flex-start;
-                justify-content: flex-start;
-
-                [class*='icon-'] {
-                    border-radius: 50%;
-                    //transform: rotate(-45deg);
-                }
-            }
-
-            ~ .card__content,
-            ~ .card__footer {
-                margin-left: 2rem;
-            }
         }
     }
 }

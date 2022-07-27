@@ -71,6 +71,18 @@ tt_content {
     }
   }
 
+  container-tabs < lib.contentElement
+  container-tabs {
+    templateName = Tabs
+    templateRootPaths {
+      10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates
+    }
+
+    dataProcessing {
+      100 = B13\Container\DataProcessing\ContainerProcessor
+    }
+  }
+
   container-2cols < lib.contentElement
   container-2cols {
     templateName = 2cols
