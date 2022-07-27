@@ -164,7 +164,7 @@ page {
   page.10.templateName = Login
 [end]
 
-[tree.level < 2]
+[tree.level < 1]
   page.10.variables.mainClass = TEXT
   page.10.variables.mainClass.value = main--expanded
 [else]

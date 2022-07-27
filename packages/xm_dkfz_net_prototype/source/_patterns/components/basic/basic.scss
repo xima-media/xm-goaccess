@@ -25,25 +25,16 @@ body {
 
 // @todo eventuell auslagern
 .main {
-    max-width: 970px;
+    max-width: var(--content-width);
     margin: auto;
 
     @include media-breakpoint-up(md) {
         min-height: calc(100vh - 19rem);
     }
 
-    &--default {
-        max-width: $container-default-widths;
-        margin: auto;
-
-        &__center {
-            display: flex;
-            justify-content: center;
-        }
-    }
-
     &--expanded {
-        max-width: $container-default-widths;
+        --content-width: #{$container-default-widths};
+        --default-overflow-margin-negative: 0;
     }
 
     &--with-sidebar {
