@@ -47,4 +47,3 @@ $tempFields = [
     'textmedia',
     'before:sectionIndex'
 );
-
