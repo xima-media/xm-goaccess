@@ -80,7 +80,7 @@ class JobLoaderUtility
                 return 0;
             }
 
-            return $a->startDate < $b->startDate ? -1 : 1;
+            return $a->startDate > $b->startDate ? -1 : 1;
         });
     }
 
