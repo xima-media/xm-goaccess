@@ -233,6 +233,9 @@
 			<trans-unit id="label.addBookmark">
 				<target>Zur Merkliste hinzufügen</target>
 			</trans-unit>
+			<trans-unit id="new">
+				<target>Neu</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
