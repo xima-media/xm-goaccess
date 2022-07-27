@@ -20,16 +20,24 @@
 
 
 .frame-type-textmedia {
+    .picture {
+        &__item {
+            display: grid;
+            position: relative;
+            z-index: 1;
+
+            picture {
+                grid-column: 1/2;
+                grid-row: 1/2;
+            }
+        }
+    }
+
     .picture__pattern {
         grid-column: 1/2;
         grid-row: 1/2;
-        max-height: 80%;
-    }
-
-    figure {
-        grid-column: 1/2;
-        grid-row: 1/2;
-        margin: 2rem;
+        max-height: 100%;
+        margin: -2rem -2rem 0;
     }
 
     &.image-orient {
@@ -120,14 +128,8 @@
     position: relative;
     margin: auto;
 
-    &__item {
-        position: relative;
-        z-index: 1;
-    }
-
     &__caption {
         margin-top: .625rem;
-        margin-bottom: 2rem;
     }
 }
 
