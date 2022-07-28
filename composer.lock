@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f3e446a2f385b6194094b7c8702d287",
+    "content-hash": "418a232c180467591b998083049ae9f8",
     "packages": [
         {
             "name": "b13/container",
@@ -124,7 +124,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-DKFZ-310",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -231,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "587700529ca1a8a46e13c0afc3ee0d484e741b9a"
+                "reference": "c24629a1131353e3e87d5396de5facb9dcd88c26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/587700529ca1a8a46e13c0afc3ee0d484e741b9a.zip",
-                "reference": "587700529ca1a8a46e13c0afc3ee0d484e741b9a",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/c24629a1131353e3e87d5396de5facb9dcd88c26.zip",
+                "reference": "c24629a1131353e3e87d5396de5facb9dcd88c26",
                 "shasum": ""
             },
             "require": {
@@ -267,9 +267,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/587700529ca1a8a46e13c0afc3ee0d484e741b9a/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/c24629a1131353e3e87d5396de5facb9dcd88c26/?at=feature/fb-deployment"
             },
-            "time": "2022-06-27T17:34:04+00:00"
+            "time": "2022-07-26T15:16:41+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -801,34 +801,31 @@
         },
         {
             "name": "doctrine/event-manager",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/event-manager.git",
-                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f"
+                "reference": "eb2ecf80e3093e8f3c2769ac838e27d8ede8e683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/41370af6a30faa9dc0368c4a6814d596e81aba7f",
-                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/eb2ecf80e3093e8f3c2769ac838e27d8ede8e683",
+                "reference": "eb2ecf80e3093e8f3c2769ac838e27d8ede8e683",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "conflict": {
-                "doctrine/common": "<2.9@dev"
+                "doctrine/common": "<2.9"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
-                "phpunit/phpunit": "^7.0"
+                "doctrine/coding-standard": "^9",
+                "phpstan/phpstan": "~1.4.10 || ^1.5.4",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "vimeo/psalm": "^4.22"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\": "lib/Doctrine/Common"
@@ -875,7 +872,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/event-manager/issues",
-                "source": "https://github.com/doctrine/event-manager/tree/1.1.x"
+                "source": "https://github.com/doctrine/event-manager/tree/1.1.2"
             },
             "funding": [
                 {
@@ -891,7 +888,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T18:28:51+00:00"
+            "time": "2022-07-27T22:18:11+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -1158,12 +1155,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "8fa2bc25c09120c0af62b273ebc1e124dd8c3988"
+                "reference": "69bfab018399a40334853d35e79e923874e673d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/8fa2bc25c09120c0af62b273ebc1e124dd8c3988",
-                "reference": "8fa2bc25c09120c0af62b273ebc1e124dd8c3988",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/69bfab018399a40334853d35e79e923874e673d5",
+                "reference": "69bfab018399a40334853d35e79e923874e673d5",
                 "shasum": ""
             },
             "require": {
@@ -1232,7 +1229,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-20T18:06:56+00:00"
+            "time": "2022-07-27T21:06:23+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1792,6 +1789,71 @@
                 }
             ],
             "time": "2022-05-31T06:51:43+00:00"
+        },
+        {
+            "name": "ichhabrecht/content-defender",
+            "version": "3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IchHabRecht/content_defender.git",
+                "reference": "3af431bc4d167cb1ec01491dd532fd9e2191fe66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IchHabRecht/content_defender/zipball/3af431bc4d167cb1ec01491dd532fd9e2191fe66",
+                "reference": "3af431bc4d167cb1ec01491dd532fd9e2191fe66",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7.2, < 7.5 || ^8.0",
+                "typo3/cms-backend": "^9.5 || ^10.4 || ^11.5"
+            },
+            "replace": {
+                "typo3-ter/content-defender": "self.version"
+            },
+            "require-dev": {
+                "nimut/testing-framework": "6.x-dev",
+                "typo3/cms-fluid-styled-content": "^9.5 || ^10.4 || ^11.5",
+                "typo3/cms-indexed-search": "^9.5 || ^10.4 || ^11.5"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "content_defender",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/public"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IchHabRecht\\ContentDefender\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nicole Cordes",
+                    "email": "typo3@cordes.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Define allowed or denied content element types in your backend layouts",
+            "homepage": "https://github.com/IchHabRecht/content_defender",
+            "keywords": [
+                "TYPO3 CMS",
+                "backend",
+                "content",
+                "restrict"
+            ],
+            "support": {
+                "issues": "https://github.com/IchHabRecht/content_defender/issues",
+                "source": "https://github.com/IchHabRecht/content_defender/tree/3.2.2"
+            },
+            "time": "2022-03-15T11:28:27+00:00"
         },
         {
             "name": "league/oauth2-client",
@@ -3572,13 +3634,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Starraider/deployer-extended-typo3.git",
-                "reference": "b8ba16e0e5ecd6ff8ce3f46a3f6e18594e818ca9"
+                "url": "https://github.com/sourcebroker/deployer-extended-typo3.git",
+                "reference": "83307c9030be1659276708626276ddc22a8876ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Starraider/deployer-extended-typo3/zipball/b8ba16e0e5ecd6ff8ce3f46a3f6e18594e818ca9",
-                "reference": "b8ba16e0e5ecd6ff8ce3f46a3f6e18594e818ca9",
+                "url": "https://api.github.com/repos/sourcebroker/deployer-extended-typo3/zipball/83307c9030be1659276708626276ddc22a8876ab",
+                "reference": "83307c9030be1659276708626276ddc22a8876ab",
                 "shasum": ""
             },
             "require": {
@@ -3604,6 +3666,7 @@
                     "SourceBroker\\DeployerExtendedTypo3\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3619,13 +3682,14 @@
             ],
             "description": "Deployment tool for TYPO3.",
             "keywords": [
-                "TYPO3",
-                "deployer"
+                "deployer",
+                "typo3"
             ],
             "support": {
-                "source": "https://github.com/Starraider/deployer-extended-typo3/tree/master"
+                "issues": "https://github.com/sourcebroker/deployer-extended-typo3/issues",
+                "source": "https://github.com/sourcebroker/deployer-extended-typo3/tree/master"
             },
-            "time": "2022-05-31T11:52:24+00:00"
+            "time": "2022-07-13T20:28:52+00:00"
         },
         {
             "name": "sourcebroker/deployer-instance",
@@ -8848,16 +8912,16 @@
         },
         {
             "name": "typo3/html-sanitizer",
-            "version": "v2.0.14",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/html-sanitizer.git",
-                "reference": "719de8bd771ce2d6e3c3b51992b251dc95375fbd"
+                "reference": "f9d501a9b8422df2aff4ce8f23684bb47e55f3c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/html-sanitizer/zipball/719de8bd771ce2d6e3c3b51992b251dc95375fbd",
-                "reference": "719de8bd771ce2d6e3c3b51992b251dc95375fbd",
+                "url": "https://api.github.com/repos/TYPO3/html-sanitizer/zipball/f9d501a9b8422df2aff4ce8f23684bb47e55f3c7",
+                "reference": "f9d501a9b8422df2aff4ce8f23684bb47e55f3c7",
                 "shasum": ""
             },
             "require": {
@@ -8893,9 +8957,9 @@
             "description": "HTML sanitizer aiming to provide XSS-safe markup based on explicitly allowed tags, attributes and values.",
             "support": {
                 "issues": "https://github.com/TYPO3/html-sanitizer/issues",
-                "source": "https://github.com/TYPO3/html-sanitizer/tree/v2.0.14"
+                "source": "https://github.com/TYPO3/html-sanitizer/tree/v2.0.15"
             },
-            "time": "2022-02-21T08:29:43+00:00"
+            "time": "2022-07-27T18:38:57+00:00"
         },
         {
             "name": "typo3/phar-stream-wrapper",
@@ -9183,7 +9247,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-DKFZ-310",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -9218,7 +9282,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-DKFZ-310",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -9252,7 +9316,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-prototype",
-            "version": "dev-DKFZ-310",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
@@ -9283,7 +9347,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-DKFZ-310",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -9308,6 +9372,37 @@
                 }
             ],
             "description": "Sitepackage extension",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "xima/xm-goaccess",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./packages/xm_goaccess",
+                "reference": "a4d01af04e0ec45fe5b129fbdfeb8a74a61ca6fe"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "xm_goaccess"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Xima\\XmGoaccess\\": "Classes"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "maik.schneider@xima.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Integrates goaccess.io into TYPO3",
             "transport-options": {
                 "relative": true
             }
@@ -9656,16 +9751,16 @@
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "54cbd32d2312f7d050d9482f71a00bfef3c8fcde"
+                "reference": "1c2680b9f6584bb0413c56087eb0613e7b61afb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/54cbd32d2312f7d050d9482f71a00bfef3c8fcde",
-                "reference": "54cbd32d2312f7d050d9482f71a00bfef3c8fcde",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/1c2680b9f6584bb0413c56087eb0613e7b61afb0",
+                "reference": "1c2680b9f6584bb0413c56087eb0613e7b61afb0",
                 "shasum": ""
             },
             "require": {
@@ -9710,9 +9805,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-webdriver/issues",
-                "source": "https://github.com/Codeception/module-webdriver/tree/3.1.1"
+                "source": "https://github.com/Codeception/module-webdriver/tree/3.1.2"
             },
-            "time": "2022-04-09T08:22:33+00:00"
+            "time": "2022-07-27T09:09:02+00:00"
         },
         {
             "name": "codeception/stub",
@@ -10020,16 +10115,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.9.4",
+            "version": "v3.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "093466b1c3ff3e3b469bdbc9827bb2362de6b2fa"
+                "reference": "4465d70ba776806857a1ac2a6f877e582445ff36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/093466b1c3ff3e3b469bdbc9827bb2362de6b2fa",
-                "reference": "093466b1c3ff3e3b469bdbc9827bb2362de6b2fa",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/4465d70ba776806857a1ac2a6f877e582445ff36",
+                "reference": "4465d70ba776806857a1ac2a6f877e582445ff36",
                 "shasum": ""
             },
             "require": {
@@ -10097,7 +10192,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.4"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.5"
             },
             "funding": [
                 {
@@ -10105,20 +10200,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-15T21:04:49+00:00"
+            "time": "2022-07-22T08:43:51+00:00"
         },
         {
             "name": "mikey179/vfsstream",
-            "version": "v1.6.10",
+            "version": "v1.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bovigo/vfsStream.git",
-                "reference": "250c0825537d501e327df879fb3d4cd751933b85"
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/250c0825537d501e327df879fb3d4cd751933b85",
-                "reference": "250c0825537d501e327df879fb3d4cd751933b85",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
                 "shasum": ""
             },
             "require": {
@@ -10156,7 +10251,7 @@
                 "source": "https://github.com/bovigo/vfsStream/tree/master",
                 "wiki": "https://github.com/bovigo/vfsStream/wiki"
             },
-            "time": "2021-09-25T08:05:01+00:00"
+            "time": "2022-02-23T02:02:42+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -11073,12 +11168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0144c1225b5e4da02cf2c27a0e2cb2705168c47c"
+                "reference": "66afddaae8d97c72945ae2f49bb94aff47084804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0144c1225b5e4da02cf2c27a0e2cb2705168c47c",
-                "reference": "0144c1225b5e4da02cf2c27a0e2cb2705168c47c",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/66afddaae8d97c72945ae2f49bb94aff47084804",
+                "reference": "66afddaae8d97c72945ae2f49bb94aff47084804",
                 "shasum": ""
             },
             "conflict": {
@@ -11158,7 +11253,7 @@
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
                 "dolibarr/dolibarr": "<16|= 12.0.5|>= 3.3.beta1, < 13.0.2",
                 "dompdf/dompdf": "<2",
-                "drupal/core": ">=7,<7.88|>=8,<9.2.13|>=9.3,<9.3.6",
+                "drupal/core": ">=7,<7.91|>=8,<9.3.19|>=9.4,<9.4.3",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
                 "dweeves/magmi": "<=0.7.24",
                 "ecodev/newsletter": "<=4",
@@ -11240,6 +11335,7 @@
                 "in2code/femanager": "<5.5.1|>=6,<6.3.1",
                 "in2code/lux": "<17.6.1|>=18,<24.0.2",
                 "intelliants/subrion": "<=4.2.1",
+                "islandora/islandora": ">=2,<2.4.1",
                 "ivankristianto/phpwhois": "<=4.3",
                 "jackalope/jackalope-doctrine-dbal": "<1.7.4",
                 "james-heinrich/getid3": "<1.9.21",
@@ -11257,6 +11353,7 @@
                 "krayin/laravel-crm": "<1.2.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
+                "laminas/laminas-diactoros": "<2.11.1",
                 "laminas/laminas-form": "<2.17.1|>=3,<3.0.2|>=3.1,<3.1.1",
                 "laminas/laminas-http": "<2.14.2",
                 "laravel/fortify": "<1.11.1",
@@ -11381,7 +11478,7 @@
                 "shopware/core": "<=6.4.9",
                 "shopware/platform": "<=6.4.9",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<5.7.12",
+                "shopware/shopware": "<=5.7.13",
                 "shopware/storefront": "<=6.4.8.1",
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
@@ -11406,7 +11503,7 @@
                 "simplito/elliptic-php": "<1.0.6",
                 "slim/slim": "<2.6",
                 "smarty/smarty": "<3.1.45|>=4,<4.1.1",
-                "snipe/snipe-it": "<5.4.4|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
+                "snipe/snipe-it": "<=6.0.2|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "spipu/html2pdf": "<5.2.4",
@@ -11497,6 +11594,7 @@
                 "wikimedia/parsoid": "<0.12.2",
                 "willdurand/js-translation-bundle": "<2.1.1",
                 "wintercms/winter": "<1.0.475|>=1.1,<1.1.9",
+                "woocommerce/woocommerce": "<6.6",
                 "wp-cli/wp-cli": "<2.5",
                 "wp-graphql/wp-graphql": "<0.3.5",
                 "wpanel/wpanel4-cms": "<=4.3.1",
@@ -11576,7 +11674,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-15T22:04:13+00:00"
+            "time": "2022-07-27T23:04:16+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -12770,22 +12868,22 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "6.16.5",
+            "version": "6.16.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "3aa25fa072f93ab001f97e346e2b8c788c6c6530"
+                "reference": "5b5cd686fdbbdb891930e74c8b70c4c06a785976"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/3aa25fa072f93ab001f97e346e2b8c788c6c6530",
-                "reference": "3aa25fa072f93ab001f97e346e2b8c788c6c6530",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/5b5cd686fdbbdb891930e74c8b70c4c06a785976",
+                "reference": "5b5cd686fdbbdb891930e74c8b70c4c06a785976",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
                 "guzzlehttp/psr7": "^1.7 || ^2.0",
-                "mikey179/vfsstream": "~1.6.10",
+                "mikey179/vfsstream": "~1.6.11",
                 "php": ">= 7.2",
                 "phpunit/phpunit": "^8.4 || ^9.0",
                 "psr/container": "^1.0",
@@ -12802,10 +12900,10 @@
                 "doctrine/dbal": "2.13.0 || 2.13.1"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.7.0",
+                "phpstan/phpstan": "^1.8.0",
                 "phpstan/phpstan-phpunit": "^1.1.1",
                 "typo3/cms-workspaces": "10.*.*@dev || 11.*.*@dev",
-                "typo3/coding-standards": "^0.5.0"
+                "typo3/coding-standards": "^0.5.3"
             },
             "type": "library",
             "autoload": {
@@ -12840,9 +12938,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/6.16.5"
+                "source": "https://github.com/TYPO3/testing-framework/tree/6.16.6"
             },
-            "time": "2022-05-23T16:08:14+00:00"
+            "time": "2022-07-26T17:30:58+00:00"
         }
     ],
     "aliases": [
@@ -12871,6 +12969,7 @@
         "sourcebroker/deployer-extended-database": 20,
         "xima/xm-dkfz-net-events": 20,
         "blueways/bw-guild": 20,
+        "xima/xm-goaccess": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },
