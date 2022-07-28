@@ -37,7 +37,7 @@
             &.swiper-button-prev {
                 left: 0;
             }
-           
+
         }
 
         .picture__pattern {
@@ -70,9 +70,13 @@
         &--0 {
             .content-wrapper__content-image {
                 display: grid;
-                margin: 0 var(--default-overflow-margin-negative);
+                //margin: 0 var(--default-overflow-margin-negative);
                 max-height: fit-content;
                 height: fit-content;
+
+                .picture__pattern {
+                    margin: -2rem -7rem 0;
+                }
             }
         }
 
