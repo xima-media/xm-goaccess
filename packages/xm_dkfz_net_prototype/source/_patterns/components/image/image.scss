@@ -23,7 +23,10 @@
 .frame-type-image {
 
     .carousel {
-        margin: 0 var(--default-overflow-margin-negative);
+        
+        @include media-breakpoint-up(md) {
+            margin: 0 var(--default-overflow-margin-negative);
+        }
 
         .carousel__button {
 
