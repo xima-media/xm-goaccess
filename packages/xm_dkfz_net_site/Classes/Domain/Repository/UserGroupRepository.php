@@ -33,19 +33,19 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         return $result->fetchAllAssociative();
     }
 
-    public function bulkInsertDkfzNumbers(array $dkfzIds, int $pid, string $subgroup): int
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup): int
     {
-        if (!count($dkfzIds)) {
+        if (!count($phoneBookAbteilungen)) {
             return 0;
         }
 
-        $rows = array_map(function ($dkfzId) use ($pid) {
+        $rows = array_map(function ($abteilung) use ($pid) {
             return [
-                $dkfzId,
-                $dkfzId,
+                $abteilung->nummer,
+                $abteilung->bezeichnung,
                 $pid,
             ];
-        }, $dkfzIds);
+        }, $phoneBookAbteilungen);
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_groups');
         return $connection->bulkInsert(

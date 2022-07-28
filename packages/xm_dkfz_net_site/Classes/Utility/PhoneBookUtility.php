@@ -231,7 +231,7 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
+     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
     public function compareDbGroupsWithJson(array $dbGroups): PhoneBookCompareResult
@@ -240,18 +240,26 @@ class PhoneBookUtility
         $jsonGroups = array_keys($this->phoneBookAbteilungen);
 
         $dbGroupsIdentifier = array_map(function ($dbGroup) {
-            return $dbGroup['dkfz_id'];
+            return $dbGroup['dkfz_number'];
         }, $dbGroups);
 
-        $result->dkfzIdsToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($jsonGroups) {
+        $result->dkfzNumbersToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($jsonGroups) {
             return !in_array($identifier, $jsonGroups);
         });
 
-        $result->dkfzIdsToCreate = array_filter($jsonGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
+        $result->dkfzNumbersToCreate = array_filter($jsonGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
             return !in_array($xmlGroup, $dbGroupsIdentifier);
         });
 
         return $result;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getGroupIdentifierInJson(): array
+    {
+        return array_keys($this->phoneBookAbteilungen);
     }
 
     /**

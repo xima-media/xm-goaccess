@@ -5,24 +5,44 @@ namespace Xima\XmDkfzNetSite\Domain\Model\Dto;
 class PhoneBookCompareResult
 {
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToCreate = [];
 
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToUpdate = [];
 
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToDelete = [];
 
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToSkip = [];
+
+    /**
+     * @var string[]
+     */
+    public array $dkfzNumbersToCreate = [];
+
+    /**
+     * @var string[]
+     */
+    public array $dkfzNumbersToUpdate = [];
+
+    /**
+     * @var string[]
+     */
+    public array $dkfzNumbersToDelete = [];
+
+    /**
+     * @var string[]
+     */
+    public array $dkfzNumbersToSkip = [];
 
     /**
      * @var PhoneBookPerson[]

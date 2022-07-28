@@ -41,7 +41,7 @@ abstract class AbstractImportGroupCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
 
-        $io->writeln('Reading Groups from database and XML..');
+        $io->writeln('Reading Groups from database and JSON..');
 
         $this->phoneBookUtility->loadJson();
 
@@ -57,22 +57,22 @@ abstract class AbstractImportGroupCommand extends Command
         $this->compareResult = $this->phoneBookUtility->compareDbGroupsWithJson($dbGroups);
 
         $io->listing([
-            '<success>' . count($this->compareResult->dkfzIdsToCreate) . '</success> to create',
-            '<error>' . count($this->compareResult->dkfzIdsToDelete) . '</error> to delete',
+            '<success>' . count($this->compareResult->dkfzNumbersToCreate) . '</success> to create',
+            '<error>' . count($this->compareResult->dkfzNumbersToDelete) . '</error> to delete',
         ]);
 
-        if (count($this->compareResult->dkfzIdsToCreate)) {
+        if (count($this->compareResult->dkfzNumbersToCreate)) {
             $io->write('Creating groups..');
             $pid = $this->phoneBookUtility->getUserStoragePid($this);
             $subgroup = $this->phoneBookUtility->getSubGroupForGroups($this);
-            $this->groupRepository->bulkInsertDkfzIds($this->compareResult->dkfzIdsToCreate, $pid, $subgroup);
+            $this->groupRepository->bulkInsertDkfzNumbers($this->compareResult->dkfzNumbersToCreate, $pid, $subgroup);
             $io->write('<success>done</success>');
             $io->newLine();
         }
 
-        if (count($this->compareResult->dkfzIdsToDelete)) {
+        if (count($this->compareResult->dkfzNumbersToDelete)) {
             $io->write('Deleting groups..');
-            $this->groupRepository->deleteByDkfzIds($this->compareResult->dkfzIdsToDelete);
+            $this->groupRepository->deleteByDkfzNumbers($this->compareResult->dkfzNumbersToDelete);
             $io->write('<success>done</success>');
             $io->newLine();
         }

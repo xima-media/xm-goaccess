@@ -37,32 +37,26 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
         return $result->fetchAllAssociative();
     }
 
-    /**
-     * @param array<string> $dkfzNumbers
-     * @param int $pid
-     * @param string $subgroup
-     * @return int
-     */
-    public function bulkInsertDkfzNumbers(array $dkfzNumbers, int $pid, string $subgroup): int
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup): int
     {
-        if (!count($dkfzNumbers)) {
+        if (!count($phoneBookAbteilungen)) {
             return 0;
         }
 
-        $rows = array_map(function ($dkfzNumber) use ($subgroup) {
+        $rows = array_map(function ($abteilung) use ($subgroup) {
             return [
-                (string)$dkfzNumber,
-                (string)$dkfzNumber,
+                $abteilung->nummer,
+                $abteilung->bezeichnung,
                 $subgroup,
             ];
-        }, $dkfzNumbers);
+        }, $phoneBookAbteilungen);
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('be_groups');
         return $connection->bulkInsert(
             'be_groups',
             $rows,
             [
-                'dkfz_id',
+                'dkfz_number',
                 'title',
                 'subgroup',
             ],
@@ -90,7 +84,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
 
         return $qb->delete('be_groups')
             ->where(
-                $qb->expr()->in('dkfz_id', $idStringList)
+                $qb->expr()->in('dkfz_number', $idStringList)
             )
             ->executeStatement();
     }
