@@ -55,7 +55,7 @@
         }
 
         &::after {
-            background-image: url(map-get($sprites, 'plus'));
+            @include svg-icon-plus($color-black);
         }
 
         &:not(.collapsed) {
@@ -63,12 +63,28 @@
             background: transparent;
 
             &::after {
-                background-image: url(map-get($sprites, 'minus'));
+                @include svg-icon-minus($color-black);
             }
         }
 
         &--description {
             font-family: $font-family-sans-serif;
+        }
+
+        &:hover {
+            background-color: #111;
+            color: $color-white;
+
+            &::after {
+                @include svg-icon-plus($color-white);
+            }
+
+            &:not(.collapsed) {
+    
+                &::after {
+                    @include svg-icon-minus($color-white);
+                }
+            }
         }
     }
 
@@ -157,6 +173,12 @@
     max-width: 100%;
     +.frame-type-container-accordion {
         margin-top: 0;
+
+        .content-wrapper__header {
+            .h3 {
+                margin-top: var(--space-xxl);
+            }
+        }
     }
 }
 
