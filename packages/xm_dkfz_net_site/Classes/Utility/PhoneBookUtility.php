@@ -55,6 +55,7 @@ class PhoneBookUtility
         $jsonArray = $this->decodeJsonString($jsonString);
         $phoneBookEntries = $this->mapJsonToEntryDto($jsonArray);
         $this->setEntriesOrdered($phoneBookEntries);
+        $this->loadAbteilungen();
     }
 
     /**
@@ -150,6 +151,14 @@ class PhoneBookUtility
         }
 
         return array_unique($groupIdentifier);
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getGroupIdentifierInJson(): array
+    {
+        return array_keys($this->phoneBookAbteilungen);
     }
 
     public function loadAbteilungen(): void
@@ -310,6 +319,30 @@ class PhoneBookUtility
         });
 
         $result->dkfzIdsToCreate = array_filter($xmlGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
+            return !in_array($xmlGroup, $dbGroupsIdentifier);
+        });
+
+        return $result;
+    }
+
+    /**
+     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
+     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
+     */
+    public function compareDbGroupsWithJson(array $dbGroups): PhoneBookCompareResult
+    {
+        $result = new PhoneBookCompareResult();
+        $jsonGroups = $this->getGroupIdentifierInJson();
+
+        $dbGroupsIdentifier = array_map(function ($dbGroup) {
+            return $dbGroup['dkfz_id'];
+        }, $dbGroups);
+
+        $result->dkfzIdsToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($jsonGroups) {
+            return !in_array($identifier, $jsonGroups);
+        });
+
+        $result->dkfzIdsToCreate = array_filter($jsonGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
             return !in_array($xmlGroup, $dbGroupsIdentifier);
         });
 

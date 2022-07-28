@@ -43,18 +43,19 @@ abstract class AbstractImportGroupCommand extends Command
 
         $io->writeln('Reading Groups from database and XML..');
 
-        $this->phoneBookUtility->loadXpath();
+        $this->phoneBookUtility->loadJson();
+        $this->phoneBookUtility->loadJson();
 
-        $xmlGroups = $this->phoneBookUtility->getGroupIdentifierInXml();
+        $apiGroups = $this->phoneBookUtility->getGroupIdentifierInJson();
         $dbGroups = $this->groupRepository->findAllGroupsWithDkfzId();
 
         $io->listing([
-            '<success>' . count($xmlGroups) . '</success> found in XML',
+            '<success>' . count($apiGroups) . '</success> found in PhoneBook (JSON)',
             '<success>' . count($dbGroups) . '</success> found in database',
         ]);
 
         $io->writeln('Comparing Groups..');
-        $this->compareResult = $this->phoneBookUtility->compareDbGroupsWithXml($dbGroups);
+        $this->compareResult = $this->phoneBookUtility->compareDbGroupsWithJson($dbGroups);
 
         $io->listing([
             '<success>' . count($this->compareResult->dkfzIdsToCreate) . '</success> to create',
@@ -71,7 +72,7 @@ abstract class AbstractImportGroupCommand extends Command
         }
 
         if (count($this->compareResult->dkfzIdsToDelete)) {
-            $io->write('Deleting users..');
+            $io->write('Deleting groups..');
             $this->groupRepository->deleteByDkfzIds($this->compareResult->dkfzIdsToDelete);
             $io->write('<success>done</success>');
             $io->newLine();
