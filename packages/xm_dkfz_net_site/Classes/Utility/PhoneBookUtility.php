@@ -4,6 +4,7 @@ namespace Xima\XmDkfzNetSite\Utility;
 
 use DOMNodeList;
 use DOMXPath;
+use JsonMapper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -11,6 +12,7 @@ use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 class PhoneBookUtility
@@ -22,6 +24,12 @@ class PhoneBookUtility
     protected TypoScriptService $typoScriptService;
 
     protected DOMXPath $xpath;
+
+    /** @var array<int, PhoneBookEntry> */
+    protected array $phoneBookEntries = [];
+
+    /** @var array<string, PhoneBookAbteilung> */
+    protected array $phoneBookAbteilungen = [];
 
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
@@ -36,8 +44,70 @@ class PhoneBookUtility
     public function loadXpath(): void
     {
         $url = $this->getApiUrl();
-        $xml = $this->fetchXmlFromApi($url);
+        $xml = $this->fetchFileFromApi($url);
         $this->xpath = $this->getXpathFromXml($xml);
+    }
+
+    public function loadJson(): void
+    {
+        $url = $this->getApiUrl();
+        $jsonString = $this->fetchFileFromApi($url);
+        $jsonArray = $this->decodeJsonString($jsonString);
+        $phoneBookEntries = $this->mapJsonToEntryDto($jsonArray);
+        $this->setEntriesOrdered($phoneBookEntries);
+    }
+
+    /**
+     * @param array<PhoneBookEntry> $entries
+     */
+    protected function setEntriesOrdered(array $entries): void
+    {
+        foreach ($entries as $entry) {
+            $this->phoneBookEntries[$entry->id] = $entry;
+        }
+    }
+
+    /**
+     * @param array<int, mixed> $json
+     * @return array<PhoneBookEntry>
+     */
+    protected function mapJsonToEntryDto(array $json): array
+    {
+        $mapper = new JsonMapper();
+
+        try {
+            $entries = $mapper->mapArray(
+                $json,
+                [],
+                PhoneBookEntry::class
+            );
+        } catch (\JsonMapper_Exception $e) {
+            //$this->logger->error('Could not map json to Jobs', ['code' => 1658818340, 'error' => $e]);
+            return [];
+        }
+
+        if (!is_array($entries)) {
+            //$this->logger->error('Mapped jobs are not valid', ['code' => 1658818350, 'jobs' => $entries]);
+            return [];
+        }
+
+        return $entries;
+    }
+
+    /**
+     * @return array<int, mixed>
+     */
+    protected function decodeJsonString(string $jsonString): array
+    {
+        // decode string
+        $jsonArray = json_decode($jsonString);
+
+        if (!is_array($jsonArray)) {
+            //$this->logger->error('Decoded json is not valid', ['code' => 1658819330]);
+            return [];
+        }
+
+        return $jsonArray;
     }
 
     /**
@@ -82,6 +152,21 @@ class PhoneBookUtility
         return array_unique($groupIdentifier);
     }
 
+    public function loadAbteilungen(): void
+    {
+        $identifier = [];
+
+        /** @var PhoneBookEntry $entry */
+        foreach ($this->phoneBookEntries as $entry) {
+            foreach ($entry->abteilung as $abteilung) {
+                if (!in_array($abteilung->nummer, $identifier)) {
+                    $identifier[] = $abteilung->nummer;
+                    $this->phoneBookAbteilungen[$abteilung->nummer] = $abteilung;
+                }
+            }
+        }
+    }
+
     /**
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
@@ -109,18 +194,18 @@ class PhoneBookUtility
     /**
      * @throws \TYPO3\CMS\Core\Exception
      */
-    protected function fetchXmlFromApi(string $url): string
+    protected function fetchFileFromApi(string $url): string
     {
-        $xmlContent = file_get_contents($url);
+        $fileContent = file_get_contents($url);
 
-        if (!$xmlContent) {
+        if (!$fileContent) {
             throw new \TYPO3\CMS\Core\Exception(
-                'Could not fetch XML from API ("' . $url . '")',
+                'Could not fetch data from API ("' . $url . '")',
                 1658212643
             );
         }
 
-        return $xmlContent;
+        return $fileContent;
     }
 
     /**
@@ -142,8 +227,11 @@ class PhoneBookUtility
      * @param \Symfony\Component\Console\Helper\ProgressBar|null $progress
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
-    public function compareDbUsersWithXml(array $dbUsers, array $dbGroups, ?ProgressBar $progress): PhoneBookCompareResult
-    {
+    public function compareDbUsersWithXml(
+        array $dbUsers,
+        array $dbGroups,
+        ?ProgressBar $progress
+    ): PhoneBookCompareResult {
         $result = new PhoneBookCompareResult();
 
         foreach ($dbUsers as $dbUser) {
@@ -194,7 +282,11 @@ class PhoneBookUtility
             }
 
             $result->dkfzIdsToCreate[] = (int)$userId;
-            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode($this->xpath, $xmlUserNode, $dbGroups);
+            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode(
+                $this->xpath,
+                $xmlUserNode,
+                $dbGroups
+            );
         }
 
         return $result;
