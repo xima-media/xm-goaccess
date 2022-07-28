@@ -65,8 +65,8 @@ abstract class AbstractUserImportCommand extends Command
         ]);
 
         $this->createUsers();
-        //$this->updateUsers();
-        //$this->deleteUsers();
+        $this->updateUsers();
+        $this->deleteUsers();
 
         $io->success('Done');
 
@@ -94,9 +94,9 @@ abstract class AbstractUserImportCommand extends Command
         }
 
         $this->io->write('Updating users..');
-        $phoneBookUsersToUpdate = $this->compareResult->getPhoneBookPersonsForAction('update');
-        foreach ($phoneBookUsersToUpdate as $phoneBookPerson) {
-            $this->userRepository->updateUserFromPhoneBook($phoneBookPerson);
+        $phoneBookUsersToUpdate = $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToUpdate);
+        foreach ($phoneBookUsersToUpdate as $phoneBookEntry) {
+            $this->userRepository->updateUserFromPhoneBookEntry($phoneBookEntry);
         }
         $this->io->write('<success>done</success>');
         $this->io->newLine();
@@ -109,7 +109,7 @@ abstract class AbstractUserImportCommand extends Command
         }
 
         $this->io->write('Deleting users..');
-        $this->userRepository->deleteUserByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $this->userRepository->deleteUsersByDkfzIds($this->compareResult->dkfzIdsToDelete);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }

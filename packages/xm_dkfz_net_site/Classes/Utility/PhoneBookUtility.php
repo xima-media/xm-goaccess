@@ -16,6 +16,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
+use function PHPUnit\Framework\throwException;
 
 class PhoneBookUtility
 {
@@ -87,25 +88,20 @@ class PhoneBookUtility
     /**
      * @param array<int, mixed> $json
      * @return array<PhoneBookEntry>
+     * @throws \Exception
      */
     protected function mapJsonToEntryDto(array $json): array
     {
         $mapper = new JsonMapper();
 
-        try {
-            $entries = $mapper->mapArray(
-                $json,
-                [],
-                PhoneBookEntry::class
-            );
-        } catch (\JsonMapper_Exception $e) {
-            $this->logger->error('Could not map json to PhoneBookEntry::class', ['code' => 1658818340, 'error' => $e]);
-            return [];
-        }
+        $entries = $mapper->mapArray(
+            $json,
+            [],
+            PhoneBookEntry::class
+        );
 
         if (!is_array($entries)) {
-            $this->logger->error('Mapped PhoneBookEntrys are not valid', ['code' => 1658828352]);
-            return [];
+            throw new \Exception('Mapped PhoneBookEntrys are not valid', 1659019225);
         }
 
         return $entries;
@@ -113,14 +109,15 @@ class PhoneBookUtility
 
     /**
      * @return array<int, mixed>
+     * @throws \JsonException
+     * @throws \Exception
      */
     protected function decodeJsonString(string $jsonString): array
     {
-        $jsonArray = json_decode($jsonString);
+        $jsonArray = json_decode($jsonString, null, 512, JSON_THROW_ON_ERROR);
 
         if (!is_array($jsonArray)) {
-            $this->logger->error('Decoded json is not valid', ['code' => 1658820330]);
-            return [];
+            throw new \Exception('Decoded json is not valid', 1658820330);
         }
 
         return $jsonArray;
@@ -191,7 +188,7 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_id: int, dkfz_hash: string}> $dbUsers
-     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
+     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
     public function compareDbUsersWithPhoneBookUsers(

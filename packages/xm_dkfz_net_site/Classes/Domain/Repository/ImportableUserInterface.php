@@ -8,7 +8,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 interface ImportableUserInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, dkfz_hash: string}>
+     * @return array<int, array{dkfz_id: int, dkfz_hash: string}>
      **/
     public function findAllUsersWithDkfzId(): array;
 
