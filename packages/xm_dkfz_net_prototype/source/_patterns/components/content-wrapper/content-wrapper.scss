@@ -219,6 +219,15 @@
         }
     }
 
+    &__content-text {
+        p  {
+            > a {
+                text-decoration: underline;
+            }
+
+        }
+    }
+
     &.frame-type-textmedia {
         +.frame-type-textmedia {
             margin-top: var(--space-xl);
