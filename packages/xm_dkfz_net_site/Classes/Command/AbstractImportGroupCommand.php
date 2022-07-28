@@ -63,9 +63,10 @@ abstract class AbstractImportGroupCommand extends Command
 
         if (count($this->compareResult->dkfzNumbersToCreate)) {
             $io->write('Creating groups..');
+            $phoneBookAbteilungenToCreate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToCreate);
             $pid = $this->phoneBookUtility->getUserStoragePid($this);
             $subgroup = $this->phoneBookUtility->getSubGroupForGroups($this);
-            $this->groupRepository->bulkInsertDkfzNumbers($this->compareResult->dkfzNumbersToCreate, $pid, $subgroup);
+            $this->groupRepository->bulkInsertPhoneBookAbteilungen($phoneBookAbteilungenToCreate, $pid, $subgroup);
             $io->write('<success>done</success>');
             $io->newLine();
         }

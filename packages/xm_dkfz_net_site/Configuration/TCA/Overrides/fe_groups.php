@@ -6,7 +6,7 @@ defined('TYPO3_MODE') || die();
 
 call_user_func(function () {
     $tempColumns = [
-        'dkfz_id' => [
+        'dkfz_number' => [
             'exclude' => false,
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.dkfz_id',
             'config' => [
@@ -19,7 +19,7 @@ call_user_func(function () {
     ExtensionManagementUtility::addTCAcolumns('fe_groups', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_groups',
-        'dkfz_id',
+        'dkfz_number',
         '',
         'after:title'
     );

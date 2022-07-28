@@ -263,7 +263,7 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<string|int> $ids
+     * @param array<int> $ids
      * @return array<PhoneBookEntry>
      */
     public function getPhoneBookUsersByIds(array $ids): array
@@ -271,6 +271,17 @@ class PhoneBookUtility
         return array_filter($this->phoneBookUser, function ($entry) use ($ids) {
             return in_array($entry->id, $ids);
         });
+    }
+
+    /**
+     * @param array<string> $numbers
+     * @return array<PhoneBookAbteilung>
+     */
+    public function getPhoneBookAbteilungenByNumbers(array $numbers): array
+    {
+        return array_filter($this->phoneBookAbteilungen, function ($number) use ($numbers) {
+            return in_array($number, $numbers);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
 }
