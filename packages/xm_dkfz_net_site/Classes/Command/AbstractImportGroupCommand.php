@@ -44,10 +44,9 @@ abstract class AbstractImportGroupCommand extends Command
         $io->writeln('Reading Groups from database and XML..');
 
         $this->phoneBookUtility->loadJson();
-        $this->phoneBookUtility->loadJson();
 
         $apiGroups = $this->phoneBookUtility->getGroupIdentifierInJson();
-        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzId();
+        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
 
         $io->listing([
             '<success>' . count($apiGroups) . '</success> found in PhoneBook (JSON)',

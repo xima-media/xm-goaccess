@@ -40,25 +40,21 @@ abstract class AbstractUserImportCommand extends Command
         $this->io = $io;
         $io->title($this->getDescription());
 
-        $io->writeln('Reading Users from database and XML..');
+        $io->writeln('Reading Users from database and JSON..');
 
         $this->phoneBookUtility = GeneralUtility::makeInstance(PhoneBookUtility::class);
-        $this->phoneBookUtility->loadXpath();
+        $this->phoneBookUtility->loadJson();
 
-        $xmlUsers = $this->phoneBookUtility->getUsersInXml();
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
-        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzId();
+        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
 
         $io->listing([
-            '<success>' . count($xmlUsers) . '</success> found in XML',
+            '<success>' . $this->phoneBookUtility->getUserCountInJson() . '</success> found in XML',
             '<success>' . count($dbUsers) . '</success> found in database',
         ]);
 
         $io->writeln('Comparing Users..');
-        $progress = $io->createProgressBar(count($dbUsers));
-        $progress->setFormat('%current%/%max% [%bar%] %percent%%');
-        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithXml($dbUsers, $dbGroups, $progress);
-        $progress->finish();
+        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookUsers($dbUsers, $dbGroups);
         $io->newLine(2);
 
         $io->listing([
@@ -69,8 +65,8 @@ abstract class AbstractUserImportCommand extends Command
         ]);
 
         $this->createUsers();
-        $this->updateUsers();
-        $this->deleteUsers();
+        //$this->updateUsers();
+        //$this->deleteUsers();
 
         $io->success('Done');
 
@@ -84,9 +80,9 @@ abstract class AbstractUserImportCommand extends Command
         }
 
         $this->io->write('Creating users..');
-        $phoneBookUsersToAdd = $this->compareResult->getPhoneBookPersonsForAction('create');
+        $phoneBookUsersToAdd = $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToCreate);
         $pid = $this->phoneBookUtility->getUserStoragePid($this);
-        $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd, $pid);
+        $this->userRepository->bulkInsertPhoneBookEntries($phoneBookUsersToAdd, $pid);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }

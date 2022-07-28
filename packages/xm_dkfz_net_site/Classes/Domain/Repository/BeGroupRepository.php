@@ -18,15 +18,15 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
-    public function findAllGroupsWithDkfzId(): array
+    public function findAllGroupsWithDkfzNumber(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_id', 'uid')
+        $result = $qb->select('dkfz_number', 'uid')
             ->from('be_groups')
             ->where(
-                $qb->expr()->neq('dkfz_id', $qb->createNamedParameter(''))
+                $qb->expr()->neq('dkfz_number', $qb->createNamedParameter(''))
             )
             ->execute();
 
@@ -38,24 +38,24 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
     }
 
     /**
-     * @param array<string|int> $dkfzIds
+     * @param array<string> $dkfzNumbers
      * @param int $pid
      * @param string $subgroup
      * @return int
      */
-    public function bulkInsertDkfzIds(array $dkfzIds, int $pid, string $subgroup): int
+    public function bulkInsertDkfzNumbers(array $dkfzNumbers, int $pid, string $subgroup): int
     {
-        if (!count($dkfzIds)) {
+        if (!count($dkfzNumbers)) {
             return 0;
         }
 
-        $rows = array_map(function ($dkfzId) use ($subgroup) {
+        $rows = array_map(function ($dkfzNumber) use ($subgroup) {
             return [
-                (string)$dkfzId,
-                (string)$dkfzId,
+                (string)$dkfzNumber,
+                (string)$dkfzNumber,
                 $subgroup,
             ];
-        }, $dkfzIds);
+        }, $dkfzNumbers);
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('be_groups');
         return $connection->bulkInsert(
@@ -75,18 +75,18 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
     }
 
     /**
-     * @param array<string|int> $dkfzIds
+     * @param array<string> $dkfzNumbers
      * @return int
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function deleteByDkfzIds(array $dkfzIds): int
+    public function deleteByDkfzNumbers(array $dkfzNumbers): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
         $idStringList = array_map(function ($id) use ($qb) {
             return $qb->createNamedParameter($id);
-        }, $dkfzIds);
+        }, $dkfzNumbers);
 
         return $qb->delete('be_groups')
             ->where(

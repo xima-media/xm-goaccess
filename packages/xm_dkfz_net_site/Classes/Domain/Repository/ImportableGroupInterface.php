@@ -5,21 +5,21 @@ namespace Xima\XmDkfzNetSite\Domain\Repository;
 interface ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, uid: int}>
+     * @return array<int, array{dkfz_number: string, uid: int}>
      **/
-    public function findAllGroupsWithDkfzId(): array;
+    public function findAllGroupsWithDkfzNumber(): array;
 
     /**
-     * @param array<string|int> $dkfzIds
+     * @param array<string> $dkfzNumbers
      * @param int $pid
      * @param string $subgroup
      * @return int
      */
-    public function bulkInsertDkfzIds(array $dkfzIds, int $pid, string $subgroup): int;
+    public function bulkInsertDkfzNumbers(array $dkfzNumbers, int $pid, string $subgroup): int;
 
     /**
-     * @param array<string|int> $dkfzIds
+     * @param array<string> $dkfzNumbers
      * @return int
      */
-    public function deleteByDkfzIds(array $dkfzIds): int;
+    public function deleteByDkfzNumbers(array $dkfzNumbers): int;
 }

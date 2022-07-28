@@ -10,19 +10,19 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupRepository implements ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, uid: int}>
+     * @return array<int, array{dkfz_number: string, uid: int}>
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
-    public function findAllGroupsWithDkfzId(): array
+    public function findAllGroupsWithDkfzNumber(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_id', 'uid')
+        $result = $qb->select('dkfz_number', 'uid')
             ->from('fe_groups')
             ->where(
-                $qb->expr()->neq('dkfz_id', $qb->createNamedParameter('', \PDO::PARAM_STR))
+                $qb->expr()->neq('dkfz_number', $qb->createNamedParameter('', \PDO::PARAM_STR))
             )
             ->execute();
 
@@ -33,7 +33,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         return $result->fetchAllAssociative();
     }
 
-    public function bulkInsertDkfzIds(array $dkfzIds, int $pid, string $subgroup): int
+    public function bulkInsertDkfzNumbers(array $dkfzIds, int $pid, string $subgroup): int
     {
         if (!count($dkfzIds)) {
             return 0;
@@ -52,7 +52,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
             'fe_groups',
             $rows,
             [
-                'dkfz_id',
+                'dkfz_number',
                 'title',
                 'pid',
             ],
@@ -67,18 +67,18 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
     /**
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function deleteByDkfzIds(array $dkfzIds): int
+    public function deleteByDkfzNumbers(array $dkfzNumbers): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
         $qb->getRestrictions()->removeAll();
 
         $idStringList = array_map(function ($id) use ($qb) {
             return $qb->createNamedParameter($id, \PDO::PARAM_STR);
-        }, $dkfzIds);
+        }, $dkfzNumbers);
 
         return $qb->delete('fe_groups')
             ->where(
-                $qb->expr()->in('dkfz_id', $idStringList)
+                $qb->expr()->in('dkfz_number', $idStringList)
             )
             ->executeStatement();
     }

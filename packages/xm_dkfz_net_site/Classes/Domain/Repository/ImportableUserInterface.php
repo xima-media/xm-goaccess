@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 interface ImportableUserInterface
@@ -12,15 +13,15 @@ interface ImportableUserInterface
     public function findAllUsersWithDkfzId(): array;
 
     /**
-     * @param PhoneBookPerson[] $persons
+     * @param PhoneBookEntry[] $entries
      */
-    public function bulkInsertFromPhoneBook(array $persons, int $pid): int;
+    public function bulkInsertPhoneBookEntries(array $entries, int $pid): int;
 
-    public function updateUserFromPhoneBook(PhoneBookPerson $person): int;
+    public function updateUserFromPhoneBookEntry(PhoneBookEntry $entry): int;
 
     /**
-     * @param array<string|int> $dkfzIds
+     * @param array<int> $dkfzIds
      * @return int
      */
-    public function deleteUserByDkfzIds(array $dkfzIds): int;
+    public function deleteUsersByDkfzIds(array $dkfzIds): int;
 }

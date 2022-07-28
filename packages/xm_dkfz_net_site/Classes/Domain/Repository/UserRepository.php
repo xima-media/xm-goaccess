@@ -6,14 +6,15 @@ use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
 {
     /**
-     * @throws \Doctrine\DBAL\Driver\Exception
-     * @throws \Doctrine\DBAL\DBALException
      * @return array<int, array{dkfz_id: string, dkfz_hash: string}>
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Driver\Exception
      */
     public function findAllUsersWithDkfzId(): array
     {
@@ -35,30 +36,30 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
     }
 
     /**
-     * @param PhoneBookPerson[] $persons
+     * @param PhoneBookEntry[] $entries
      */
-    public function bulkInsertFromPhoneBook(array $persons, int $pid): int
+    public function bulkInsertPhoneBookEntries(array $entries, int $pid): int
     {
-        if (!count($persons)) {
+        if (!count($entries)) {
             return 0;
         }
 
-        $rows = array_map(function ($person) use ($pid) {
+        $rows = array_map(function ($user) use ($pid) {
             return [
-                $person->dkfzHash,
-                $person->disable,
-                $person->dkfzId,
-                $person->firstName,
-                $person->title,
-                $person->lastName,
-                $person->email,
-                $person->adAccountName,
-                $person->username,
-                $person->gender,
-                $person->usergroup,
+                $user->getHash(),
+                $user->getDisable(),
+                $user->id,
+                $user->vorname,
+                $user->titel,
+                $user->nachname,
+                $user->mail,
+                $user->adAccountName,
+                $user->getUsername(),
+                $user->getGender(),
+                $user->getUsergroup(),
                 $pid,
             ];
-        }, $persons);
+        }, $entries);
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
         return $connection->bulkInsert(
@@ -95,25 +96,25 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
         );
     }
 
-    public function updateUserFromPhoneBook(PhoneBookPerson $person): int
+    public function updateUserFromPhoneBookEntry(PhoneBookEntry $entry): int
     {
         return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users')
             ->update(
                 'fe_users',
                 [
-                    'dkfz_hash' => $person->dkfzHash,
-                    'disable' => $person->disable,
-                    'first_name' => $person->firstName,
-                    'title' => $person->title,
-                    'last_name' => $person->lastName,
-                    'email' => $person->email,
-                    'ad_account_name' => $person->adAccountName,
-                    'username' => $person->username,
-                    'gender' => $person->gender,
-                    'usergroup' => $person->usergroup,
+                    'dkfz_hash' => $entry->getHash(),
+                    'disable' => $entry->getDisable(),
+                    'first_name' => $entry->vorname,
+                    'title' => $entry->titel,
+                    'last_name' => $entry->nachname,
+                    'email' => $entry->mail,
+                    'ad_account_name' => $entry->adAccountName,
+                    'username' => $entry->getUsername(),
+                    'gender' => $entry->getGender(),
+                    'usergroup' => $entry->getUsergroup(),
                 ],
-                ['dkfz_id' => $person->dkfzId],
+                ['dkfz_id' => $entry->id],
                 [
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,
@@ -132,14 +133,14 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
     /**
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function deleteUserByDkfzIds(array $ids): int
+    public function deleteUsersByDkfzIds(array $dkfzIds): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
         $qb->getRestrictions()->removeAll();
 
         return $qb->delete('fe_users')
             ->where(
-                $qb->expr()->in('dkfz_id', $ids)
+                $qb->expr()->in('dkfz_id', $dkfzIds)
             )
             ->executeStatement();
     }

@@ -5,12 +5,14 @@ namespace Xima\XmDkfzNetSite\Utility;
 use DOMNodeList;
 use DOMXPath;
 use JsonMapper;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
@@ -23,10 +25,13 @@ class PhoneBookUtility
 
     protected TypoScriptService $typoScriptService;
 
-    protected DOMXPath $xpath;
+    protected LoggerInterface $logger;
 
     /** @var array<int, PhoneBookEntry> */
-    protected array $phoneBookEntries = [];
+    protected array $phoneBookUser = [];
+
+    /** @var array<int, PhoneBookEntry> */
+    protected array $phoneBookPlace = [];
 
     /** @var array<string, PhoneBookAbteilung> */
     protected array $phoneBookAbteilungen = [];
@@ -34,18 +39,13 @@ class PhoneBookUtility
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
         ConfigurationManager $configurationManager,
-        TypoScriptService $typoScriptService
+        TypoScriptService $typoScriptService,
+        LoggerInterface $logger,
     ) {
         $this->extensionConfiguration = $extensionConfiguration;
         $this->configurationManager = $configurationManager;
         $this->typoScriptService = $typoScriptService;
-    }
-
-    public function loadXpath(): void
-    {
-        $url = $this->getApiUrl();
-        $xml = $this->fetchFileFromApi($url);
-        $this->xpath = $this->getXpathFromXml($xml);
+        $this->logger = $logger;
     }
 
     public function loadJson(): void
@@ -54,17 +54,33 @@ class PhoneBookUtility
         $jsonString = $this->fetchFileFromApi($url);
         $jsonArray = $this->decodeJsonString($jsonString);
         $phoneBookEntries = $this->mapJsonToEntryDto($jsonArray);
-        $this->setEntriesOrdered($phoneBookEntries);
-        $this->loadAbteilungen();
+
+        $this->setAbteilungenOrdered($phoneBookEntries);
+        $this->setUsersOrdered($phoneBookEntries);
+        $this->setPlaccesOrdered($phoneBookEntries);
     }
 
     /**
      * @param array<PhoneBookEntry> $entries
      */
-    protected function setEntriesOrdered(array $entries): void
+    protected function setUsersOrdered(array $entries): void
     {
         foreach ($entries as $entry) {
-            $this->phoneBookEntries[$entry->id] = $entry;
+            if ($entry->isUser()) {
+                $this->phoneBookUser[$entry->id] = $entry;
+            }
+        }
+    }
+
+    /**
+     * @param array<PhoneBookEntry> $entries
+     */
+    protected function setPlaccesOrdered(array $entries): void
+    {
+        foreach ($entries as $entry) {
+            if (!$entry->isUser()) {
+                $this->phoneBookPlace[$entry->id] = $entry;
+            }
         }
     }
 
@@ -83,12 +99,12 @@ class PhoneBookUtility
                 PhoneBookEntry::class
             );
         } catch (\JsonMapper_Exception $e) {
-            //$this->logger->error('Could not map json to Jobs', ['code' => 1658818340, 'error' => $e]);
+            $this->logger->error('Could not map json to PhoneBookEntry::class', ['code' => 1658818340, 'error' => $e]);
             return [];
         }
 
         if (!is_array($entries)) {
-            //$this->logger->error('Mapped jobs are not valid', ['code' => 1658818350, 'jobs' => $entries]);
+            $this->logger->error('Mapped PhoneBookEntrys are not valid', ['code' => 1658828352]);
             return [];
         }
 
@@ -100,78 +116,30 @@ class PhoneBookUtility
      */
     protected function decodeJsonString(string $jsonString): array
     {
-        // decode string
         $jsonArray = json_decode($jsonString);
 
         if (!is_array($jsonArray)) {
-            //$this->logger->error('Decoded json is not valid', ['code' => 1658819330]);
+            $this->logger->error('Decoded json is not valid', ['code' => 1658820330]);
             return [];
         }
 
         return $jsonArray;
     }
 
-    /**
-     * @return \DOMNodeList<\DOMNode>
-     */
-    public function getUsersInXml(): DOMNodeList
+    public function getUserCountInJson(): int
     {
-        $nodes = $this->xpath->query('//x:CPerson[x:AdAccountName[text()!=""]]');
-        return $nodes ?: new DOMNodeList();
+        return count($this->phoneBookUser);
     }
 
     /**
-     * @return string[]
+     * @param array<PhoneBookEntry> $entries
+     * @return void
      */
-    public static function getGroupIdsFromXmlAbteilungString(string $abteilung): array
+    public function setAbteilungenOrdered(array $entries): void
     {
-        preg_match_all('/([A-Z]{1,3}\d{1,3})(?:[\s\-])?/', $abteilung, $matches);
-        if (count($matches) && count($matches[1])) {
-            return $matches[1];
-        }
-        return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    public function getGroupIdentifierInXml(): array
-    {
-        $groupIdentifier = [];
-        $nodes = $this->xpath->query('//x:Abteilung[text()!=""]');
-
-        if (!$nodes instanceof DOMNodeList) {
-            return [];
-        }
-
-        foreach ($nodes as $node) {
-            $name = (string)$node->nodeValue;
-            $groupIdsOfNode = self::getGroupIdsFromXmlAbteilungString($name);
-            $groupIdentifier = array_merge($groupIdentifier, $groupIdsOfNode);
-        }
-
-        return array_unique($groupIdentifier);
-    }
-
-    /**
-     * @return array<string>
-     */
-    public function getGroupIdentifierInJson(): array
-    {
-        return array_keys($this->phoneBookAbteilungen);
-    }
-
-    public function loadAbteilungen(): void
-    {
-        $identifier = [];
-
-        /** @var PhoneBookEntry $entry */
-        foreach ($this->phoneBookEntries as $entry) {
+        foreach ($entries as $entry) {
             foreach ($entry->abteilung as $abteilung) {
-                if (!in_array($abteilung->nummer, $identifier)) {
-                    $identifier[] = $abteilung->nummer;
-                    $this->phoneBookAbteilungen[$abteilung->nummer] = $abteilung;
-                }
+                $this->phoneBookAbteilungen[$abteilung->nummer] = $abteilung;
             }
         }
     }
@@ -189,15 +157,6 @@ class PhoneBookUtility
     public function getSubGroupForGroups(Command $commandClass): string
     {
         return '';
-    }
-
-    protected function getXpathFromXml(string $xml): DOMXPath
-    {
-        $doc = new \DOMDocument();
-        $doc->loadXML($xml);
-        $xpath = new DOMXPath($doc);
-        $xpath->registerNamespace('x', 'http://schemas.datacontract.org/2004/07/TeleMailMvc.Models');
-        return $xpath;
     }
 
     /**
@@ -231,96 +190,42 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<int, array{dkfz_id: string, dkfz_hash: string}> $dbUsers
+     * @param array<int, array{dkfz_id: int, dkfz_hash: string}> $dbUsers
      * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
-     * @param \Symfony\Component\Console\Helper\ProgressBar|null $progress
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
-    public function compareDbUsersWithXml(
+    public function compareDbUsersWithPhoneBookUsers(
         array $dbUsers,
         array $dbGroups,
-        ?ProgressBar $progress
     ): PhoneBookCompareResult {
         $result = new PhoneBookCompareResult();
 
         foreach ($dbUsers as $dbUser) {
-            $progress?->advance();
 
-            $userNode = $this->xpath->query('//x:CPerson[x:Id[text()="' . $dbUser['dkfz_id'] . '"]]');
+            $entry = $this->phoneBookUser[(int)$dbUser['dkfz_id']] ?? false;
 
-            // delete user from database if node not found
-            if ($userNode === false) {
+            // delete user from database if user not found
+            if (!$entry) {
                 $result->dkfzIdsToDelete[] = $dbUser['dkfz_id'];
                 continue;
             }
 
             // search for user id in xml and mark for update if changed (as skipped otherwise)
-            if ($userNode->length === 1 && $userNode->item(0)) {
-                $nodeDkfzId = $userNode->item(0)->nodeValue ? $userNode->item(0)->nodeValue : '';
-                $nodeHash = md5($nodeDkfzId);
-                if ($dbUser['dkfz_hash'] !== $nodeHash) {
-                    $result->dkfzIdsToUpdate[] = $dbUser['dkfz_id'];
-                    $result->phoneBookUsersById[$dbUser['dkfz_id']] = PhoneBookPerson::createFromXpathNode(
-                        $this->xpath,
-                        $userNode->item(0),
-                        $dbGroups
-                    );
-                } else {
-                    $result->dkfzIdsToSkip[] = $dbUser['dkfz_id'];
-                }
-                continue;
+            if ($dbUser['dkfz_hash'] !== $entry->getHash()) {
+                $result->dkfzIdsToUpdate[] = $dbUser['dkfz_id'];
+            } else {
+                $result->dkfzIdsToSkip[] = $dbUser['dkfz_id'];
             }
-
-            // delete user from database if not found in xml
-            $result->dkfzIdsToDelete[] = $dbUser['dkfz_id'];
         }
 
-        foreach ($this->getUsersInXml() as $xmlUserNode) {
-            $userIdNode = $this->xpath->query('x:Id', $xmlUserNode);
-
-            if (!$userIdNode) {
+        // skip creation if already marked to update or to skip
+        $idsToIgnore = array_merge($result->dkfzIdsToUpdate, $result->dkfzIdsToSkip);
+        foreach ($this->phoneBookUser as $id => $phoneBookEntry) {
+            if (in_array($id, $idsToIgnore, true)) {
                 continue;
             }
-
-            $userId = $userIdNode->item(0)?->nodeValue;
-
-            // skip creation if already marked to update or to skip
-            $idsToIgnore = array_merge($result->dkfzIdsToUpdate, $result->dkfzIdsToSkip);
-            if (in_array($userId, $idsToIgnore, true)) {
-                continue;
-            }
-
-            $result->dkfzIdsToCreate[] = (int)$userId;
-            $result->phoneBookUsersById[$userId] = PhoneBookPerson::createFromXpathNode(
-                $this->xpath,
-                $xmlUserNode,
-                $dbGroups
-            );
+            $result->dkfzIdsToCreate[] = $id;
         }
-
-        return $result;
-    }
-
-    /**
-     * @param array<int, array{dkfz_id: string, uid: int}> $dbGroups
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
-     */
-    public function compareDbGroupsWithXml(array $dbGroups): PhoneBookCompareResult
-    {
-        $result = new PhoneBookCompareResult();
-        $xmlGroups = $this->getGroupIdentifierInXml();
-
-        $dbGroupsIdentifier = array_map(function ($dbGroup) {
-            return $dbGroup['dkfz_id'];
-        }, $dbGroups);
-
-        $result->dkfzIdsToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($xmlGroups) {
-            return !in_array($identifier, $xmlGroups);
-        });
-
-        $result->dkfzIdsToCreate = array_filter($xmlGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
-            return !in_array($xmlGroup, $dbGroupsIdentifier);
-        });
 
         return $result;
     }
@@ -332,7 +237,7 @@ class PhoneBookUtility
     public function compareDbGroupsWithJson(array $dbGroups): PhoneBookCompareResult
     {
         $result = new PhoneBookCompareResult();
-        $jsonGroups = $this->getGroupIdentifierInJson();
+        $jsonGroups = array_keys($this->phoneBookAbteilungen);
 
         $dbGroupsIdentifier = array_map(function ($dbGroup) {
             return $dbGroup['dkfz_id'];
@@ -348,4 +253,16 @@ class PhoneBookUtility
 
         return $result;
     }
+
+    /**
+     * @param array<string|int> $ids
+     * @return array<PhoneBookEntry>
+     */
+    public function getPhoneBookUsersByIds(array $ids): array
+    {
+        return array_filter($this->phoneBookUser, function ($entry) use ($ids) {
+            return in_array($entry->id, $ids);
+        });
+    }
+
 }
