@@ -112,6 +112,9 @@
 			<trans-unit id="tt_content.infobox.description" space="preserve">
 				<source>Displays a highlighted message with border or inside a box</source>
 			</trans-unit>
+			<trans-unit id="tt_content.quote.description" space="preserve">
+				<source>Displays a highlighted quote with colored border</source>
+			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
 				<source>Teaser settings</source>
 			</trans-unit>
@@ -286,6 +289,21 @@
             <trans-unit id="image.slider.notification">
                 <source>Please add 2 to 15 images</source>
             </trans-unit>
+			<trans-unit id="quote.author">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="quote.author.description">
+				<source>Please enter the name of the quote author</source>
+			</trans-unit>
+			<trans-unit id="quote.author.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="quote.author.function.description">
+				<source>Please enter the job title or the academic rank of the quote author</source>
+			</trans-unit>
+			<trans-unit id="quote.palette">
+				<source>Information about the author</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

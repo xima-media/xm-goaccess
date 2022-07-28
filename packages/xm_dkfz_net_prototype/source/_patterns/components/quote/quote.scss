@@ -9,37 +9,43 @@
 //
 
 .quote {
-    position: relative;
-    margin: 5.5rem 0;
-    padding: 3.3rem 6rem;
+    display: grid;
     text-align: center;
-    background-color: var(--color-white);
 
     &__pattern {
-        position: absolute;
-        top: -2rem;
-        right: -7rem; // @todo variable, siehe image
-        bottom: -2rem;
-        left: -7rem; // @todo variable, siehe image
-        z-index: -1;
+        grid-column: 1/2;
+        grid-row:1/2;
+        margin-top: -2rem;
+        margin-bottom: 4rem;
+        margin-left: -7rem;
+        margin-right: -7rem;
+    }
+
+    &__body {
+        grid-column: 1/2;
+        grid-row:1/2;
+        margin-bottom: 6rem;
+        background-color: var(--color-white);
     }
 
     &__content {
         position: relative;
-        z-index: 0;
         line-height: 36px;
+        padding: 3.3rem 6rem 0rem;
 
         &:before {
             position: absolute;
             content: open-quote;
             font-size: 25rem;
             margin-top: -6rem;
-            margin-left: 50%;
+            margin-left: 40%;
             transform: translateX(-50%);
             color: var(--color-cyan);
             opacity: .2;
-            z-index: -1;
         }
+    }
+    &__caption{
+        margin-bottom: 3.3rem;
     }
 
     &__cite {

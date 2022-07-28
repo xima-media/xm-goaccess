@@ -45,6 +45,8 @@ TCEFORM {
 
       types.infobox.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,cyan,yellow,orange
       types.infobox.addItems.box = Box
+
+      types.quote.removeItems = default, ruler-before,ruler-after,indent,indent-left,indent-right,cyan,yellow,orange
     }
 
     layout {
@@ -189,9 +191,18 @@ mod.wizards.newContentElement.wizardItems {
            CType = image
         }
       }
+
+      tt_content_quote {
+              iconIdentifier = content-quote
+              title = Quote
+              description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.infobox.description
+              tt_content_defValues {
+                CType = quote
+              }
+            }
     }
 
-    show := addToList(tt_content_video,tt_content_infobox)
+    show := addToList(tt_content_video,tt_content_infobox, tt_content_quote)
   }
 }
 

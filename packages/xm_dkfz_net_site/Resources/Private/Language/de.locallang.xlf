@@ -113,6 +113,9 @@
 			<trans-unit id="tt_content.infobox.description" space="preserve">
 				<target>Zeigt eine hervorgehobene Nachricht in einer Box oder Rahmen an</target>
 			</trans-unit>
+			<trans-unit id="tt_content.quote.description" space="preserve">
+				<target>Zeigt ein hervorgehobenes Zitat mit farbigem Rahmen an</target>
+			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
 				<target>Teaser-Einstellungen</target>
 			</trans-unit>
@@ -200,6 +203,21 @@
             <trans-unit id="image.slider.notification">
                  <target>Bitte 2 bis 15 Bilder hinzufügen</target>
             </trans-unit>
+			<trans-unit id="quote.author">
+				<target>Autor</target>
+			</trans-unit>
+			<trans-unit id="quote.author.description">
+				<target>Bitte geben Sie den Namen des Autors des Zitats ein</target>
+			</trans-unit>
+			<trans-unit id="quote.author.function">
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="quote.author.function.description">
+				<target>Bitte geben Sie die Berufsbezeichnung oder den akademischen Rang des Autors des Zitats an</target>
+			</trans-unit>
+			<trans-unit id="quote.palette">
+				<target>Informationen über den Autor</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
