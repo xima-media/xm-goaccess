@@ -43,5 +43,4 @@ class PhoneBookCompareResult
      * @var string[]
      */
     public array $dkfzNumbersToSkip = [];
-
 }

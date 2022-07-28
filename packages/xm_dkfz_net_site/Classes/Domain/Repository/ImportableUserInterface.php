@@ -3,7 +3,6 @@
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
-use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 interface ImportableUserInterface
 {

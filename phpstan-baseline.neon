@@ -71,6 +71,21 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookAbteilung\\:\\:\\$leitung type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookAbteilung\\:\\:\\$sekretariat type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
+
+		-
+			message: "#^Call to an undefined static method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getGroupIdsFromXmlAbteilungString\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: T$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
@@ -81,7 +96,12 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableGroupInterface\\:\\:findAllGroupsWithDkfzNumber\\(\\)$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
@@ -91,12 +111,17 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableUserInterface\\:\\:findAllUsersWithDkfzId\\(\\)$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 

@@ -7,7 +7,6 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
-use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
 
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
 {

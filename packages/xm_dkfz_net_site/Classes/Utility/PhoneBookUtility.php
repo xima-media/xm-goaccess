@@ -2,12 +2,9 @@
 
 namespace Xima\XmDkfzNetSite\Utility;
 
-use DOMNodeList;
-use DOMXPath;
 use JsonMapper;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
@@ -15,8 +12,6 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
-use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson;
-use function PHPUnit\Framework\throwException;
 
 class PhoneBookUtility
 {
@@ -49,6 +44,12 @@ class PhoneBookUtility
         $this->logger = $logger;
     }
 
+    /**
+     * @throws \TYPO3\CMS\Core\Exception
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws \JsonException
+     */
     public function loadJson(): void
     {
         $url = $this->getApiUrl();
@@ -101,7 +102,7 @@ class PhoneBookUtility
         );
 
         if (!is_array($entries)) {
-            throw new \Exception('Mapped PhoneBookEntrys are not valid', 1659019225);
+            throw new \Exception('Mapped PhoneBookEntries are not valid', 1659019225);
         }
 
         return $entries;
@@ -130,7 +131,6 @@ class PhoneBookUtility
 
     /**
      * @param array<PhoneBookEntry> $entries
-     * @return void
      */
     public function setAbteilungenOrdered(array $entries): void
     {
@@ -198,7 +198,6 @@ class PhoneBookUtility
         $result = new PhoneBookCompareResult();
 
         foreach ($dbUsers as $dbUser) {
-
             $entry = $this->phoneBookUser[(int)$dbUser['dkfz_id']] ?? false;
 
             // delete user from database if user not found
@@ -280,5 +279,4 @@ class PhoneBookUtility
             return in_array($number, $numbers);
         }, ARRAY_FILTER_USE_KEY);
     }
-
 }

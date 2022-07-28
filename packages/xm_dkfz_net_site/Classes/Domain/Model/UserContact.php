@@ -15,5 +15,7 @@ class UserContact extends AbstractEntity
 
     protected bool $primaryNumber = false;
 
+    protected string $number = '';
+
     protected ?FrontendUserGroup $feGroup = null;
 }
