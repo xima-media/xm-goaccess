@@ -195,10 +195,10 @@ mod.wizards.newContentElement.wizardItems {
   }
 }
 
-[page["is_siteroot"] == 1]
+[traverse(page, "is_siteroot") == 1]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
-[page["uid"] == 2]
+[traverse(page, "uid") == 2]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
 

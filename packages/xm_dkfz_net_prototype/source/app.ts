@@ -69,9 +69,6 @@ import './app.scss'
 import './_patterns/components/basic/basic'
 import './_patterns/components/basic/basic-init'
 
-/** @section 2.2 Color */
-import './_patterns/components/color/color'
-
 /** @section 2.3 Icon */
 import './_patterns/components/icon/icon'
 
