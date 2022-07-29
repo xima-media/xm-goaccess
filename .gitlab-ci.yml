@@ -80,7 +80,7 @@ deploy-staging:
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
-    - vendor/bin/dep deploy-fast staging
+    - vendor/bin/dep deploy-fast staging -vvv
   environment:
     name: staging
     url: https://stage.dkfz-typo3-dev.xima.local/
