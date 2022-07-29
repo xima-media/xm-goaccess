@@ -60,49 +60,59 @@
 						<div class="contact ">
 							<h5 class="contact--title">Kontakt</h5>
 
-							<div class="contact--person">
-								<h5 class="contact--subtitle">Ansprechpartner</h5>
-								<f:for each="{contacts}" as="user">
+							<f:for each="{contacts.tx_xmdkfznetsite_domain_model_place}" as="place">
+								<div class="contact--person">
+									<h5 class="contact--subtitle">{place.name}</h5>
 									<div class="contact--person-container">
-										<div class="card card--image-size-xxs">
-											<div class="card__image">
-												<figure class="picture"
-														data-color="transparent"
-														data-pattern-color="transparent">
-													<div class="picture__item image-color--transparent">
-														<f:if condition="{user.logo}">
-															<picture>
-																<source srcset="{f:uri.image(image:user.logo, width:'54', fileExtension: 'webp')}"
-																		type="image/webp">
-																<source srcset="{f:uri.image(image:user.logo, width:'54', fileExtension: 'jpg')}"
-																		type="image/jpeg">
-																<img src="{f:uri.image(image:user.logo, width:'54', fileExtension: 'jpg')}"
-																	 alt="{file.originalResource.alternative}"
-																	 class="picture__image image--responsive"
-																	 loading="lazy"/>
-															</picture>
-														</f:if>
-														<f:if condition="!{user.logo}">
-															<img width="54"
-																 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-																 alt="No profile picture"/>
-														</f:if>
-													</div>
-												</figure>
+										<p>Infos folgen</p>
+									</div>
+								</div>
+							</f:for>
+							<f:if condition="{contacts.fe_users}">
+								<div class="contact--person">
+									<h5 class="contact--subtitle">Ansprechpartner</h5>
+									<f:for each="{contacts.fe_users}" as="user">
+										<div class="contact--person-container">
+											<div class="card card--image-size-xxs">
+												<div class="card__image">
+													<figure class="picture"
+															data-color="transparent"
+															data-pattern-color="transparent">
+														<div class="picture__item image-color--transparent">
+															<f:if condition="{user.logo}">
+																<picture>
+																	<source srcset="{f:uri.image(image:user.logo, width:'54', fileExtension: 'webp')}"
+																			type="image/webp">
+																	<source srcset="{f:uri.image(image:user.logo, width:'54', fileExtension: 'jpg')}"
+																			type="image/jpeg">
+																	<img src="{f:uri.image(image:user.logo, width:'54', fileExtension: 'jpg')}"
+																		 alt="{file.originalResource.alternative}"
+																		 class="picture__image image--responsive"
+																		 loading="lazy"/>
+																</picture>
+															</f:if>
+															<f:if condition="!{user.logo}">
+																<img width="54"
+																	 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
+																	 alt="No profile picture"/>
+															</f:if>
+														</div>
+													</figure>
+												</div>
+											</div>
+											<div class="contact--information">
+												<f:link.action action="show"
+															   pluginName="Usershow"
+															   extensionName="BwGuild"
+															   controller="User"
+															   pageUid="{pidUserDetail}"
+															   arguments="{user: user.uid}">{user.username}
+												</f:link.action>
 											</div>
 										</div>
-										<div class="contact--information">
-											<f:link.action action="show"
-														   pluginName="Usershow"
-														   extensionName="BwGuild"
-														   controller="User"
-														   pageUid="{pidUserDetail}"
-														   arguments="{user: user.data.uid}">{user.data.username}
-											</f:link.action>
-										</div>
-									</div>
-								</f:for>
-							</div>
+									</f:for>
+								</div>
+							</f:if>
 						</div>
 					</div>
 				</f:if>
