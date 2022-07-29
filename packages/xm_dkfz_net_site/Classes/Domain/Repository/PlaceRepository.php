@@ -12,7 +12,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 class PlaceRepository extends Repository implements ImportableUserInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, dkfz_hash: string}>
+     * @return array<int, array{dkfz_id: int, dkfz_hash: string}>
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
@@ -50,7 +50,8 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 $user->getDisable(),
                 $user->id,
                 $user->nachname,
-                $user->getUsergroup(),
+                $user->funktion,
+                $user->getFeGroupForPlace(),
                 $user->raum,
                 $pid,
             ];
@@ -65,7 +66,8 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 'hidden',
                 'dkfz_id',
                 'name',
-                'usergroup',
+                'function',
+                'fe_group',
                 'room',
                 'pid',
             ],
@@ -75,6 +77,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
+                Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
             ]
@@ -89,19 +92,16 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 'tx_xmdkfznetsite_domain_model_place',
                 [
                     'dkfz_hash' => $entry->getHash(),
-                    'disable' => $entry->getDisable(),
+                    'hidden' => $entry->getDisable(),
                     'name' => $entry->nachname,
-                    'usergroup' => $entry->getUsergroup(),
+                    'function' => $entry->funktion,
+                    'fe_group' => $entry->getFeGroupForPlace(),
                     'room' => $entry->raum,
                 ],
                 ['dkfz_id' => $entry->id],
                 [
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,

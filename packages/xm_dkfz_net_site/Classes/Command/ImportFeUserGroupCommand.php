@@ -7,9 +7,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ImportFeUserGroupCommand extends AbstractImportGroupCommand
 {
-    protected SymfonyStyle $io;
-
-    protected OutputInterface $output;
 
     protected function configure(): void
     {

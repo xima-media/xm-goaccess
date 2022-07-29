@@ -7,9 +7,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ImportBeGroupCommand extends AbstractImportGroupCommand
 {
-    protected SymfonyStyle $io;
-
-    protected OutputInterface $output;
 
     protected function configure(): void
     {

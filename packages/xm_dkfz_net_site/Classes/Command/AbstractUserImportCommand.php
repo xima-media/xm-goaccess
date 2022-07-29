@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableGroupInterface;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableUserInterface;
+use Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
 
 abstract class AbstractUserImportCommand extends Command
@@ -27,11 +28,13 @@ abstract class AbstractUserImportCommand extends Command
     public function __construct(
         ImportableUserInterface $userRepository,
         ImportableGroupInterface $groupRepository,
+        PhoneBookUtility $phoneBookUtility,
         string $name = null
     ) {
         parent::__construct($name);
         $this->userRepository = $userRepository;
         $this->groupRepository = $groupRepository;
+        $this->phoneBookUtility = $phoneBookUtility;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -42,18 +45,20 @@ abstract class AbstractUserImportCommand extends Command
 
         $io->writeln('Reading Users from database and JSON..');
 
-        $this->phoneBookUtility = GeneralUtility::makeInstance(PhoneBookUtility::class);
+        $filterEntriesForPlaces = $this->userRepository instanceof PlaceRepository;
+        $this->phoneBookUtility->setFilterEntriesForPlaces($filterEntriesForPlaces);
         $this->phoneBookUtility->loadJson();
 
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
         $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
 
         $io->listing([
-            '<success>' . $this->phoneBookUtility->getUserCountInJson() . '</success> found in XML',
+            '<success>' . $this->phoneBookUtility->getPhoneBookEntryCount() . '</success> found in XML',
             '<success>' . count($dbUsers) . '</success> found in database',
         ]);
 
-        $this->compareDbWithEntries($dbUsers, $dbGroups);
+        $this->io->writeln('Comparing Users..');
+        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookEntries($dbUsers, $dbGroups);
         $this->io->newLine(1);
 
         $io->listing([
@@ -72,42 +77,13 @@ abstract class AbstractUserImportCommand extends Command
         return Command::SUCCESS;
     }
 
-    /**
-     * @param array<int, array{dkfz_id: int, dkfz_hash: string}> $dbUsers
-     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
-     * @return void
-     */
-    protected function compareDbWithEntries(array $dbUsers, array $dbGroups): void
-    {
-        $this->io->writeln('Comparing Users..');
-        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookUsers($dbUsers, $dbGroups);
-    }
-
-    /**
-     * @return array<\Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry>
-     */
-    protected function getPhoneBookEntriesToAdd(): array
-    {
-        $this->io->write('Creating users..');
-        return $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToCreate);
-    }
-
-    /**
-     * @return array<\Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry>
-     */
-    protected function getPhoneBookEntriesToUpdate(): array
-    {
-        $this->io->write('Updating users..');
-        return $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToUpdate);
-    }
-
     protected function createUsers(): void
     {
         if (!count($this->compareResult->dkfzIdsToCreate)) {
             return;
         }
 
-        $phoneBookEntriesToAdd = $this->getPhoneBookEntriesToAdd();
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
         $pid = $this->phoneBookUtility->getUserStoragePid($this);
         $this->userRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid);
         $this->io->write('<success>done</success>');
@@ -120,8 +96,8 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
-        $phoneBookUsersToUpdate = $this->getPhoneBookEntriesToUpdate();
-        foreach ($phoneBookUsersToUpdate as $phoneBookEntry) {
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
+        foreach ($phoneBookEntriesToUpdate as $phoneBookEntry) {
             $this->userRepository->updateUserFromPhoneBookEntry($phoneBookEntry);
         }
         $this->io->write('<success>done</success>');
@@ -134,7 +110,7 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
-        $this->io->write('Deleting users..');
+        $this->io->write('Deleting entries..');
         $this->userRepository->deleteUsersByDkfzIds($this->compareResult->dkfzIdsToDelete);
         $this->io->write('<success>done</success>');
         $this->io->newLine();

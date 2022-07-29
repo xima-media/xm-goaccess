@@ -69,4 +69,10 @@ class PhoneBookEntry
     {
         return '';
     }
+
+    public function getFeGroupForPlace(): int
+    {
+        // @TODO return uid of first Abteilung
+        return 0;
+    }
 }

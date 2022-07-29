@@ -24,13 +24,12 @@ class PhoneBookUtility
     protected LoggerInterface $logger;
 
     /** @var array<int, PhoneBookEntry> */
-    protected array $phoneBookUser = [];
-
-    /** @var array<int, PhoneBookEntry> */
-    protected array $phoneBookPlace = [];
+    protected array $phoneBookEntries = [];
 
     /** @var array<string, PhoneBookAbteilung> */
     protected array $phoneBookAbteilungen = [];
+
+    protected bool $filterEntriesForPlaces;
 
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
@@ -58,30 +57,17 @@ class PhoneBookUtility
         $phoneBookEntries = $this->mapJsonToEntryDto($jsonArray);
 
         $this->setAbteilungenOrdered($phoneBookEntries);
-        $this->setUsersOrdered($phoneBookEntries);
-        $this->setPlaccesOrdered($phoneBookEntries);
+        $this->setEntriesOrdered($phoneBookEntries);
     }
 
     /**
      * @param array<PhoneBookEntry> $entries
      */
-    protected function setUsersOrdered(array $entries): void
+    protected function setEntriesOrdered(array $entries): void
     {
         foreach ($entries as $entry) {
-            if ($entry->isUser()) {
-                $this->phoneBookUser[$entry->id] = $entry;
-            }
-        }
-    }
-
-    /**
-     * @param array<PhoneBookEntry> $entries
-     */
-    protected function setPlaccesOrdered(array $entries): void
-    {
-        foreach ($entries as $entry) {
-            if (!$entry->isUser()) {
-                $this->phoneBookPlace[$entry->id] = $entry;
+            if ((!$this->filterEntriesForPlaces && $entry->isUser()) || ($this->filterEntriesForPlaces && !$entry->isUser())) {
+                $this->phoneBookEntries[$entry->id] = $entry;
             }
         }
     }
@@ -124,9 +110,9 @@ class PhoneBookUtility
         return $jsonArray;
     }
 
-    public function getUserCountInJson(): int
+    public function getPhoneBookEntryCount(): int
     {
-        return count($this->phoneBookUser);
+        return count($this->phoneBookEntries);
     }
 
     /**
@@ -191,14 +177,14 @@ class PhoneBookUtility
      * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
-    public function compareDbUsersWithPhoneBookUsers(
+    public function compareDbUsersWithPhoneBookEntries(
         array $dbUsers,
         array $dbGroups,
     ): PhoneBookCompareResult {
         $result = new PhoneBookCompareResult();
 
         foreach ($dbUsers as $dbUser) {
-            $entry = $this->phoneBookUser[(int)$dbUser['dkfz_id']] ?? false;
+            $entry = $this->phoneBookEntries[(int)$dbUser['dkfz_id']] ?? false;
 
             // delete user from database if user not found
             if (!$entry) {
@@ -216,7 +202,7 @@ class PhoneBookUtility
 
         // skip creation if already marked to update or to skip
         $idsToIgnore = array_merge($result->dkfzIdsToUpdate, $result->dkfzIdsToSkip);
-        foreach ($this->phoneBookUser as $id => $phoneBookEntry) {
+        foreach ($this->phoneBookEntries as $id => $phoneBookEntry) {
             if (in_array($id, $idsToIgnore, true)) {
                 continue;
             }
@@ -262,9 +248,9 @@ class PhoneBookUtility
      * @param array<int> $ids
      * @return array<PhoneBookEntry>
      */
-    public function getPhoneBookUsersByIds(array $ids): array
+    public function getPhoneBookEntriesByIds(array $ids): array
     {
-        return array_filter($this->phoneBookUser, function ($entry) use ($ids) {
+        return array_filter($this->phoneBookEntries, function ($entry) use ($ids) {
             return in_array($entry->id, $ids);
         });
     }
@@ -278,5 +264,13 @@ class PhoneBookUtility
         return array_filter($this->phoneBookAbteilungen, function ($number) use ($numbers) {
             return in_array($number, $numbers);
         }, ARRAY_FILTER_USE_KEY);
+    }
+
+    /**
+     * @param bool $filterEntriesForPlaces
+     */
+    public function setFilterEntriesForPlaces(bool $filterEntriesForPlaces): void
+    {
+        $this->filterEntriesForPlaces = $filterEntriesForPlaces;
     }
 }
