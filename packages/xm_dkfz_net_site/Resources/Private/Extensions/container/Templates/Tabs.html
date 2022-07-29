@@ -17,7 +17,7 @@
 			</f:if>
 		</f:for>
 	</ul>
-	<div class="tab-content background--expanded">
+	<div class="tab-content">
 		<f:for each="{0: 1, 1: 2, 2: 3}" as="number">
 			<f:if condition="{children_10{number}}">
 				<div class="tab-pane fade{f:if(condition: '{number} == 1', then: ' show active')}"
