@@ -53,9 +53,8 @@ abstract class AbstractUserImportCommand extends Command
             '<success>' . count($dbUsers) . '</success> found in database',
         ]);
 
-        $io->writeln('Comparing Users..');
-        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookUsers($dbUsers, $dbGroups);
-        $io->newLine(2);
+        $this->compareDbWithEntries($dbUsers, $dbGroups);
+        $this->io->newLine(1);
 
         $io->listing([
             '<success>' . count($this->compareResult->dkfzIdsToCreate) . '</success> to create',
@@ -73,16 +72,44 @@ abstract class AbstractUserImportCommand extends Command
         return Command::SUCCESS;
     }
 
+    /**
+     * @param array<int, array{dkfz_id: int, dkfz_hash: string}> $dbUsers
+     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
+     * @return void
+     */
+    protected function compareDbWithEntries(array $dbUsers, array $dbGroups): void
+    {
+        $this->io->writeln('Comparing Users..');
+        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookUsers($dbUsers, $dbGroups);
+    }
+
+    /**
+     * @return array<\Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry>
+     */
+    protected function getPhoneBookEntriesToAdd(): array
+    {
+        $this->io->write('Creating users..');
+        return $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToCreate);
+    }
+
+    /**
+     * @return array<\Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry>
+     */
+    protected function getPhoneBookEntriesToUpdate(): array
+    {
+        $this->io->write('Updating users..');
+        return $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToUpdate);
+    }
+
     protected function createUsers(): void
     {
         if (!count($this->compareResult->dkfzIdsToCreate)) {
             return;
         }
 
-        $this->io->write('Creating users..');
-        $phoneBookUsersToAdd = $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToCreate);
+        $phoneBookEntriesToAdd = $this->getPhoneBookEntriesToAdd();
         $pid = $this->phoneBookUtility->getUserStoragePid($this);
-        $this->userRepository->bulkInsertPhoneBookEntries($phoneBookUsersToAdd, $pid);
+        $this->userRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
@@ -93,8 +120,7 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
-        $this->io->write('Updating users..');
-        $phoneBookUsersToUpdate = $this->phoneBookUtility->getPhoneBookUsersByIds($this->compareResult->dkfzIdsToUpdate);
+        $phoneBookUsersToUpdate = $this->getPhoneBookEntriesToUpdate();
         foreach ($phoneBookUsersToUpdate as $phoneBookEntry) {
             $this->userRepository->updateUserFromPhoneBookEntry($phoneBookEntry);
         }

@@ -95,6 +95,7 @@ create table tx_xmdkfznetsite_domain_model_place (
 	l10n_parent      int(11) unsigned default '0' not null,
 
 	dkfz_id          int(11) unsigned default '0' not null,
+	dkfz_hash        varchar(255) default '' not null,
 	name             varchar(255) default '' not null,
 	function         varchar(255) default '' not null,
 	room             varchar(255) default '' not null,

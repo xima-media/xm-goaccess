@@ -17,7 +17,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'name,function,room,fe_group,contacts',
+            'showitem' => 'dkfz_id,name,function,room,fe_group,contacts',
         ],
     ],
     'columns' => [
@@ -59,6 +59,21 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_groups',
+            ],
+        ],
+        'dkfz_id' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.dkfz_id',
+            'config' => [
+                'type' => 'input',
+                'readOnly' => true,
+            ],
+        ],
+        'dkfz_hash' => [
+            'exlude' => false,
+            'label' => 'Hash of CPerson node',
+            'config' => [
+                'type' => 'passthrough',
             ],
         ],
     ],
