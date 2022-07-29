@@ -49,6 +49,15 @@ services:
       $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
       $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserRepository'
 
+  Xima\XmDkfzNetSite\Command\ImportPlaceCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importPlace'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository'
+
   Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:
     tags:
       - name: 'console.command'
