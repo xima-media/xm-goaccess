@@ -73,14 +73,34 @@ create table tx_xmdkfznetsite_domain_model_usercontact (
 	tstamp         int(11) unsigned default '0' not null,
 	crdate         int(11) unsigned default '0' not null,
 
-	fe_user        int(11) default '0' not null,
 	record_type    varchar(255) default '' not null,
 	fe_group       int(11) default '0' not null,
-	position       varchar(255) default '' not null,
+	function       varchar(255) default '' not null,
 	primary_number tinyint(4) unsigned default '0' not null,
 	room           varchar(255)            not null default '',
-	phone_number   int(11) unsigned default '0' not null,
+	number         int(11) unsigned default '0' not null,
 
 	primary key (uid),
 	KEY            parent (pid),
+);
+
+create table tx_xmdkfznetsite_domain_model_place (
+	uid              int(11) not null auto_increment,
+	pid              int(11) default '0' not null,
+	tstamp           int(11) unsigned default 0 not null,
+	crdate           int(11) unsigned default 0 not null,
+	deleted          tinyint(4) unsigned default 0 not null,
+	hidden           tinyint(4) unsigned default 0 not null,
+	sys_language_uid int(11) default 0 not null,
+	l10n_parent      int(11) unsigned default '0' not null,
+
+	dkfz_id          int(11) unsigned default '0' not null,
+	name             varchar(255) default '' not null,
+	function         varchar(255) default '' not null,
+	room             varchar(255) default '' not null,
+	fe_group         int(11) default 0 not null,
+	contacts         int(11) default 0 not null,
+
+	primary key (uid),
+	KEY              parent (pid),
 );

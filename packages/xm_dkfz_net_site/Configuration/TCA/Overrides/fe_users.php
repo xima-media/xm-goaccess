@@ -56,8 +56,7 @@ call_user_func(function () {
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.contacts',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_xmdkfznetsite_domain_model_usercontact',
-                'foreign_field' => 'fe_user',
+                'foreign_table' => 'tx_xmdkfznetsite_domain_model_contact',
             ],
         ],
         'dkfz_hash' => [

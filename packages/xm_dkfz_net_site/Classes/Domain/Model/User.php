@@ -185,7 +185,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\UserContact>|null
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected ?ObjectStorage $contacts = null;

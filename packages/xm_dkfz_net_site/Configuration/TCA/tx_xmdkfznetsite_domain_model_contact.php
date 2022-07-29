@@ -2,14 +2,14 @@
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact',
+        'title' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact',
         'label' => 'position',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'searchFields' => 'position,phone_number,room',
         'hideTable' => true,
         'type' => 'record_type',
-        'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-user-contact.svg',
+        'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-contact.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'position,phone_number,room',
@@ -21,17 +21,17 @@ return [
     ],
     'columns' => [
         'record_type' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact.record_type',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.record_type',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact.record_type.0',
+                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.record_type.0',
                         0,
                     ],
                     [
-                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact.record_type.1',
+                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.record_type.1',
                         1,
                     ],
                 ],
@@ -42,8 +42,8 @@ return [
                 'type' => 'passthrough',
             ],
         ],
-        'position' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact.position',
+        'function' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.function',
             'config' => [
                 'type' => 'input',
                 'eval' => 'trim',
@@ -51,27 +51,19 @@ return [
             ],
         ],
         'room' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact.room',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.room',
             'config' => [
                 'type' => 'input',
                 'eval' => 'trim',
                 'max' => 255,
             ],
         ],
-        'phone_number' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user_contact.phone_number',
+        'number' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.number',
             'config' => [
                 'type' => 'input',
                 'eval' => 'trim',
                 'max' => 255,
-            ],
-        ],
-        'fe_user' => [
-            'label' => 'fe_user',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'fe_users',
             ],
         ],
         'fe_group' => [

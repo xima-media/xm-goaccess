@@ -14,7 +14,7 @@ class Place extends AbstractEntity
     protected string $room = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\UserContact>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>
      */
     protected ObjectStorage $contacts;
 
