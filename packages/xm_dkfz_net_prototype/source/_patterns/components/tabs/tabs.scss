@@ -43,12 +43,15 @@
 
 .tab {
     &-content {
-        position: relative;
         background: var(--color-gray-100);
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
     }
 
     &-pane {
         padding: 2rem 0;
+        max-width: var(--content-width);
+        margin: auto;
 
         .frame {
             background: transparent;
