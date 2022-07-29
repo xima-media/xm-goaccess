@@ -16,7 +16,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'record_type,fe_user,fe_group,position,room,phone_number,primary_number',
+            'showitem' => 'record_type,number,fe_group,room,function,primary_number',
         ],
     ],
     'columns' => [
@@ -67,11 +67,17 @@ return [
             ],
         ],
         'fe_group' => [
-            'label' => 'fe_groups',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.fe_group',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_groups',
+            ],
+        ],
+        'primary_number' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.primary_number',
+            'config' => [
+                'type' => 'check',
             ],
         ],
     ],

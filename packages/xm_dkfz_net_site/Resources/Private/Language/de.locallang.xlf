@@ -269,6 +269,30 @@
 			<trans-unit id="contact.function">
 				<target>Funktion</target>
 			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<target>Abteilung</target>
+			</trans-unit>
+			<trans-unit id="contact.primary_number">
+				<target>Ist Primärnummer</target>
+			</trans-unit>
+			<trans-unit id="place">
+				<target>Kontaktstelle</target>
+			</trans-unit>
+			<trans-unit id="place.name">
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="place.function">
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="place.room">
+				<target>Raum</target>
+			</trans-unit>
+			<trans-unit id="place.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
+			<trans-unit id="place.fe_group">
+				<target>Abteilung</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

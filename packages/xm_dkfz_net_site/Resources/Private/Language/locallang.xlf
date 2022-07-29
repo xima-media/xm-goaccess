@@ -274,6 +274,12 @@
 			<trans-unit id="contact.function">
 				<source>Function</source>
 			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<source>Frontend Group</source>
+			</trans-unit>
+			<trans-unit id="contact.primary_number">
+				<source>Is primary number</source>
+			</trans-unit>
 			<trans-unit id="user.location">
 				<source>Location</source>
 			</trans-unit>
@@ -328,8 +334,20 @@
 			<trans-unit id="place">
 				<source>Place</source>
 			</trans-unit>
-			<trans-unit id="place">
-				<source>Place</source>
+			<trans-unit id="place.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="place.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="place.room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="place.contacts">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="place.fe_group">
+				<source>Frontend Group</source>
 			</trans-unit>
 		</body>
 	</file>

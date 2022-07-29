@@ -17,7 +17,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'name,function,room,contacts,fe_group',
+            'showitem' => 'name,function,room,fe_group,contacts',
         ],
     ],
     'columns' => [
@@ -25,7 +25,7 @@ return [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.name',
             'config' => [
                 'type' => 'input',
-                'eval' => 'trim',
+                'eval' => 'trim,required',
                 'max' => 255,
             ],
         ],
@@ -54,7 +54,7 @@ return [
             ],
         ],
         'fe_group' => [
-            'label' => 'fe_groups',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.fe_group',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
