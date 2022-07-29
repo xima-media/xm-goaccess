@@ -27,12 +27,6 @@ tt_content {
   quote =< lib.contentElement
     quote {
       templateName = Quote
-      templateRootPaths {
-         10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/fluid_styled_content/Templates
-      }
-      dataProcessing {
-        10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-      }
     }
 
   teaser =< lib.contentElement

@@ -289,6 +289,9 @@
             <trans-unit id="image.slider.notification">
                 <source>Please add 2 to 15 images</source>
             </trans-unit>
+			<trans-unit id="quote">
+				<source>Quote</source>
+			</trans-unit>
 			<trans-unit id="quote.author">
 				<source>Author</source>
 			</trans-unit>

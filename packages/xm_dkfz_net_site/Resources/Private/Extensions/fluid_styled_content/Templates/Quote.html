@@ -7,11 +7,10 @@
 		<div class="quote__body">
 			<blockquote class="quote__content h5">„{data.bodytext}“</blockquote>
 			<figcaption class="quote__caption">
-				<cite class="quote__cite">{data.tx_xmdkfznetsite_author},
-					<f:if condition="{data.tx_xmdkfznetsite_function}">
-						<span>{data.tx_xmdkfznetsite_function}</span>
-					</f:if>
-				</cite>
+				<f:if condition="{data.tx_xmdkfznetsite_author}">
+					<cite class="quote__cite">{data.tx_xmdkfznetsite_author}{f:if(condition: '{data.tx_xmdkfznetsite_function}', then: ', <span>{data.tx_xmdkfznetsite_function}</span>')}
+					</cite>
+				</f:if>
 			</figcaption>
 		</div>
 	</figure>

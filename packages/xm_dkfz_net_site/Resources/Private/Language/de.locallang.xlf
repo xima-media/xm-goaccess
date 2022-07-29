@@ -203,6 +203,9 @@
             <trans-unit id="image.slider.notification">
                  <target>Bitte 2 bis 15 Bilder hinzufügen</target>
             </trans-unit>
+			<trans-unit id="quote">
+				<source>Zitat</source>
+			</trans-unit>
 			<trans-unit id="quote.author">
 				<target>Autor</target>
 			</trans-unit>
