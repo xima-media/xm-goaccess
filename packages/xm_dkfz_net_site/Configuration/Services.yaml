@@ -40,6 +40,9 @@ services:
   Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
     public: true
 
+  Xima\XmDkfzNetSite\DataProcessing\PageContactsProcessor:
+    public: true
+
   Xima\XmDkfzNetSite\Command\ImportFeUserCommand:
     tags:
       - name: 'console.command'
