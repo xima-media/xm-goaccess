@@ -4,6 +4,7 @@ namespace Xima\XmDkfzNetSite\Hook;
 
 use TYPO3\CMS\Backend\Controller\PageLayoutController;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -17,6 +18,11 @@ class DrawHeaderHook
         $this->fileRepository = $fileRepository;
     }
 
+    /**
+     * @param array<int, mixed> $configuration
+     * @param \TYPO3\CMS\Backend\Controller\PageLayoutController $parentObject
+     * @return string
+     */
     public function addPageInfos(array $configuration, PageLayoutController $parentObject): string
     {
         $pageInfo = $parentObject->pageinfo;
@@ -35,16 +41,17 @@ class DrawHeaderHook
         }
 
         if ($pageInfo['tx_xmdkfznetsite_contacts']) {
-            $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
-            $qb->getRestrictions()->removeAll();
-            $users = $qb->select('*')
-                ->from('fe_users')
-                ->where(
-                    $qb->expr()->in('uid', $pageInfo['tx_xmdkfznetsite_contacts'])
-                )
-                ->execute()
-                ->fetchAllAssociative();
-
+            $relationHandler = GeneralUtility::makeInstance(RelationHandler::class);
+            $relationHandler->start(
+                $pageInfo['tx_xmdkfznetsite_contacts'],
+                $GLOBALS['TCA']['pages']['columns']['tx_xmdkfznetsite_contacts']['config']['allowed'],
+                '',
+                '',
+                'pages',
+                $GLOBALS['TCA']['pages']['columns']['tx_xmdkfznetsite_contacts']
+            );
+            $relationHandler->getFromDB();
+            $users = $relationHandler->results;
             $view->assign('users', $users);
         }
 
