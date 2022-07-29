@@ -15,10 +15,11 @@
 .carousel {
     position: relative;
     width: $container-expand-widths -6rem;
-    max-width: calc(100vw - 1rem);
 
     .content-wrapper & {
-        max-width: calc(100vw - 3rem);
+        @include media-breakpoint-up(md) {
+            max-width: calc(100vw - 3rem);
+        }
     }
 
     .content-box & {

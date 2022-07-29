@@ -179,6 +179,7 @@ return [
         ],
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
+        'lockSSL' => 2,
         'devIPmask' => '',
         'displayErrors' => 0,
         'encryptionKey' => 'c8485f56f13ae2690459c8bf7fc2c5dfa9f49d6ae5cf54ad0c66bf1f1a2f752f1c86269e1bfca18ef4fd69dbe5ec21bf',

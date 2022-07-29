@@ -51,6 +51,14 @@
     background-image: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color};"/></svg>');
 }
 
+@mixin svg-icon-plus($color: $color-black) {
+    background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path style="fill:#{$color};" d="M10.5,10.5L10.5,1.5C10.5,0.672 11.172,0 12,0C12.828,0 13.5,0.672 13.5,1.5L13.5,10.5L22.5,10.5C23.328,10.5 24,11.172 24,12C24,12.828 23.328,13.5 22.5,13.5L13.5,13.5L13.5,22.5C13.5,23.328 12.828,24 12,24C11.172,24 10.5,23.328 10.5,22.5L10.5,13.5L1.5,13.5C0.672,13.5 0,12.828 0,12C0,11.172 0.672,10.5 1.5,10.5L10.5,10.5Z"/></svg>'); 
+}
+
+@mixin svg-icon-minus($color: $color-black) {
+    background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"><path style="fill:#{$color};" d="M1.5,13.5L22.5,13.5C23.328,13.5 24,12.828 24,12C24,11.172 23.328,10.5 22.5,10.5L1.5,10.5C0.672,10.5 0,11.172 0,12C0,12.828 0.672,13.5 1.5,13.5Z"/></svg>');
+}
+
 
 //
 //    @section 4. Styled scrollbars
