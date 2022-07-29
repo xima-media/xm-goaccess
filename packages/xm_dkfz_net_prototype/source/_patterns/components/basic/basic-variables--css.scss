@@ -1,16 +1,4 @@
-//
-//    @tableOfContent
-//      1. Basic variables css
-//      2. Colors
-//      3. Typography
-//
-
-
 :root {
-    //
-    //   @section 1. Global
-    //
-
     // size
     --css-icon-size: #{$css-icon-size};
     --scrollbar-width: 0;
@@ -18,44 +6,16 @@
     // timing
     --transition-time: #{$transition-time};
 
+    // Colors
+    @each $name, $value in $colors {
+        --color-#{$name}: #{$value};
+    }
 
-    //
-    //   @section 2. Colors
-    //
-
-    --color-background: #{$color-gray-100};
-    --color-primary: #{$color-primary};
-    --color-primary-opacity-10: #{$color-primary-opacity-10};
-    --color-primary-opacity-15: #{$color-primary-opacity-15};
-    --color-secondary: #{$color-secondary};
-    --color-cyan: #{$color-cyan};
-    --color-blue-900: #{$color-blue-900};
-    --color-green: #{$color-green};
-    --color-green-light: #{$color-green-light};
-    --color-yellow: #{$color-yellow};
-    --color-orange: #{$color-orange};
-    --color-magenta: #{$color-magenta};
-    --color-purple: #{$color-purple};
-    --color-white: #{$color-white};
-    --color-black: #{$color-black};
-    --color-gray-100: #{$color-gray-100};
-    --color-gray-200: #{$color-gray-200};
-    --color-gray-300: #{$color-gray-300};
-    --color-gray-500: #{$color-gray-500};
-    --color-gray-700: #{$color-gray-700};
-    --color-gray-900: #{$color-gray-900};
-
-
-    //
-    //   @section 3. Typography
-    //
-
+    // Typography
     --font-family-serif: #{$font-family-serif};
     --font-family-sans-serif: #{$font-family-sans-serif};
 
-    //
-    //  @section 4. Spacing / Dimensions
-
+    // Spacing / Dimensions
     --space-unit: 1rem;
     --space-xxs:  calc(0.25 * var(--space-unit));
     --space-xs:   calc(0.5 * var(--space-unit));
@@ -77,97 +37,82 @@
     }
 }
 
-
-main,
-.styleguide,
-.sidebar,
-.article,
-.background--image,
-.bookmarks__sidebar,
-.content-wrapper {
-    &.color-accent--primary,
-    .color-accent--primary,
-    .image-color--primary {
-        --color-accent: #{$color-primary};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-primary};"/></svg>');
+@each $name, $value in $colors {
+    .color-accent--#{$name},
+    // @TODO: Is this .image-color-* class needed?
+    .image-color--#{$name} {
+        --color-accent: #{$value};
+        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$value};"/></svg>');
     }
 
-    &.color-accent--primary-opacity-10,
-    .color-accent--primary-opacity-10,
-    .image-color--primary-opacity-10 {
-        --color-accent: #{$color-primary-opacity-10};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-primary-opacity-10};"/></svg>');
+    // NOTE: AVOID THESE CLASSES
+    .color--#{$name} {
+        color: var(--color-#{$name});
     }
 
-    &.color-accent--cyan,
-    .color-accent--cyan,
-    .image-color--cyan{
-        --color-accent: #{$color-cyan};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-cyan};"/></svg>');
+    .background--#{$name} {
+        background-color: var(--color-#{$name});
     }
 
-    &.color-accent--blue-900,
-    .color-accent--blue-900,
-    .image-color--blue-900{
-        --color-accent: #{$color-blue-900};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-blue-900};"/></svg>');
-    }
-
-    &.color-accent--green,
-    .color-accent--green,
-    .image-color--green {
-        --color-accent: #{$color-green};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-green};"/></svg>');
-    }
-
-    &.color-accent--green-light,
-    .color-accent--green-light,
-    .image-color--green-light {
-        --color-accent:#{$color-green-light};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-green-light};"/></svg>');
-    }
-
-    &.color-accent--orange,
-    .color-accent--orange,
-    .image-color--orange {
-        --color-accent: #{$color-orange};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-orange};"/></svg>');
-    }
-
-    &.color-accent--yellow,
-    .color-accent--yellow,
-    .image-color--yellow {
-        --color-accent: #{$color-yellow};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-yellow};"/></svg>');
-    }
-
-    &.color-accent--magenta,
-    .color-accent--magenta,
-    .image-color--magenta {
-        --color-accent: #{$color-magenta};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-magenta};"/></svg>');
-    }
-
-    &.color-accent--gray-500,
-    .color-accent--gray-500,
-    .image-color--gray-500 {
-        --color-accent: #{$color-gray-500};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-gray-500};"/></svg>');
-    }
-
-    &.color-accent--gray-900,
-    .color-accent--gray-900,
-    .image-color--gray-900 {
-        --color-accent: #{$color-gray-900};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-gray-900};"/></svg>');
-    }
-
-    &.color-accent--white,
-    .color-accent--white,
-    .image-color--white {
-        --color-accent: #{$color-white};
-        --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$color-white};"/></svg>');
+    .corner--#{$name}::after {
+        background-color: var(--color-#{$name});
     }
 }
 
-// end of basic-variables-css.scss file
+// NOTE: BETTER USE THESE CLASSES
+.color {
+    color: var(--color-accent);
+}
+
+.background-color {
+    background-color: var(--color-accent);
+}
+
+.background-pattern, .pattern {
+    background-image: var(--pattern-url);
+}
+
+// @TODO: Is this class needed anymore?
+.background--expanded {
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        z-index: -1;
+        width: calc(100vw - var(--scrollbar-width)); // @todo minus
+        background-color: inherit;
+        transform: translateX(-50%);
+    }
+}
+
+// @TODO: Is there a better location for this class?
+[class*="corner-"] {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-white);
+    }
+
+    &::before {
+        z-index: -1;
+    }
+
+    &::after {
+        z-index: -2;
+        transform: translate3d(-1rem, 1rem, 0);
+        background-color: var(--color-accent);
+    }
+
+    &.corner--right::after {
+        transform: translate3d(1rem, 1rem, 0);
+    }
+}
