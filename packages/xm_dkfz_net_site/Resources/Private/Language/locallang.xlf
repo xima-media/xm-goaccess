@@ -52,6 +52,9 @@
 			<trans-unit id="tt_content.color.0">
 				<source>Take over from page</source>
 			</trans-unit>
+			<trans-unit id="tt_content.color.transparent">
+				<source>Do not use a color</source>
+			</trans-unit>
 			<trans-unit id="pages.color" space="preserve">
 				<source>Color</source>
 			</trans-unit>

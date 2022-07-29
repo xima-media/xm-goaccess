@@ -44,6 +44,9 @@
 			<trans-unit id="tt_content.color.0">
 				<target>Von Seite übernehmen</target>
 			</trans-unit>
+			<trans-unit id="tt_content.color.transparent">
+				<target>Keinen Farbe anzeigen</target>
+			</trans-unit>
 			<trans-unit id="tt_content.frame_class.orange">
 				<target>Orange Hintergrund</target>
 			</trans-unit>
