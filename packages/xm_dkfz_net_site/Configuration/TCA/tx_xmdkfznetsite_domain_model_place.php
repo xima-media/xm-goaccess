@@ -17,7 +17,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'dkfz_id,name,function,room,fe_group,contacts',
+            'showitem' => 'dkfz_id,name,function,room,mail,fe_group,contacts',
         ],
     ],
     'columns' => [
@@ -31,6 +31,14 @@ return [
         ],
         'function' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.function',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'max' => 255,
+            ],
+        ],
+        'mail' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.mail',
             'config' => [
                 'type' => 'input',
                 'eval' => 'trim',

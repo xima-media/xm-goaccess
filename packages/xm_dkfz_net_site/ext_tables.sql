@@ -72,8 +72,8 @@ create table tx_xmdkfznetsite_domain_model_contact (
 	sorting        int(11) unsigned default '0' not null,
 	tstamp         int(11) unsigned default '0' not null,
 	crdate         int(11) unsigned default '0' not null,
-	foreign_uid      int(11) default '0' not null,
-	foreign_table    varchar(255) default '' not null,
+	foreign_uid    int(11) default '0' not null,
+	foreign_table  varchar(255) default '' not null,
 
 	record_type    varchar(255) default '' not null,
 	fe_group       int(11) default '0' not null,
@@ -101,6 +101,7 @@ create table tx_xmdkfznetsite_domain_model_place (
 	name             varchar(255) default '' not null,
 	function         varchar(255) default '' not null,
 	room             varchar(255) default '' not null,
+	mail             varchar(255) default '' not null,
 	fe_group         int(11) default 0 not null,
 	contacts         int(11) default 0 not null,
 

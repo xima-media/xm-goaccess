@@ -57,6 +57,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 $user->getFeGroupForPlace(),
                 $user->raum,
                 count($user->rufnummern),
+                $user->mail,
                 $pid,
             ];
         }, $entries);
@@ -74,6 +75,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 'fe_group',
                 'room',
                 'contacts',
+                'mail',
                 'pid',
             ],
             [
@@ -85,6 +87,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_STR,
                 Connection::PARAM_INT,
             ]
         );
@@ -104,6 +107,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                     'fe_group' => $entry->getFeGroupForPlace(),
                     'room' => $entry->raum,
                     'contacts' => count($entry->rufnummern),
+                    'mail' => $entry->mail,
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -114,6 +118,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                     Connection::PARAM_INT,
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
+                    Connection::PARAM_STR,
                 ]
             );
     }

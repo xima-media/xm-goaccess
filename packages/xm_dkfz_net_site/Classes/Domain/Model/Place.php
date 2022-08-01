@@ -13,6 +13,16 @@ class Place extends AbstractEntity
 
     protected string $room = '';
 
+    protected string $mail = '';
+
+    /**
+     * @return string
+     */
+    public function getMail(): string
+    {
+        return $this->mail;
+    }
+
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
      */
