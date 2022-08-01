@@ -47,7 +47,7 @@ class PhoneBookEntry
 
     public function getDisable(): bool
     {
-        return !($this->adAccountGesperrt || $this->deaktiviert);
+        return $this->adAccountGesperrt || $this->deaktiviert;
     }
 
     public function getHash(): string
