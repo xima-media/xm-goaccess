@@ -26,7 +26,10 @@ TCEFORM {
       altLabels.4 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.4
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
 
-      types.infobox.disabled = 1
+      types {
+          infobox.disabled = 1
+          quote.removeItems = 0,1,2,3,4,5
+        }
     }
 
     header_link.disabled = 1
