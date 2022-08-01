@@ -26,6 +26,16 @@ parameters:
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
+			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on mixed\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
+			message: "#^Parameter \\#1 \\$itemlist of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\RelationHandler\\:\\:start\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
 			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
@@ -81,11 +91,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
 
 		-
-			message: "#^Call to an undefined static method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:getGroupIdsFromXmlAbteilungString\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookPerson.php
-
-		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: T$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
@@ -106,9 +111,9 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
 		-
-			message: "#^Class Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository extends generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\Repository but does not specify its types\\: TEntityClass$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
@@ -116,12 +121,17 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableUserInterface\\:\\:findAllUsersWithDkfzId\\(\\)$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableUserInterface\\:\\:findAllUsersWithDkfzId\\(\\)$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
@@ -149,16 +159,6 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DataHandlerHook\\:\\:processDatamap_preProcessFieldArray\\(\\) has parameter \\$incomingFieldArray with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DrawHeaderHook\\:\\:addPageInfos\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
 
 		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
@@ -369,6 +369,16 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:updateFrontendUserSlug\\(\\) has parameter \\$userRecord with no type specified\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:setUserGroupRelations\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$dbGroups$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"

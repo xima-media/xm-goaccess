@@ -148,4 +148,27 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
             )
             ->executeStatement();
     }
+
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function findByDkfzIds(array $dkfzIds): array
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $qb->getRestrictions()->removeAll();
+
+        $result = $qb->select('dkfz_id', 'dkfz_hash', 'uid')
+            ->from('fe_users')
+            ->where(
+                $qb->expr()->in('dkfz_id', $dkfzIds)
+            )
+            ->execute();
+
+        if (!$result instanceof Result) {
+            return [];
+        }
+
+        return $result->fetchAllAssociative();
+    }
 }

@@ -23,4 +23,10 @@ interface ImportableUserInterface
      * @return int
      */
     public function deleteUsersByDkfzIds(array $dkfzIds): int;
+
+    /**
+     * @return array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}>
+     * @param array<int> $dkfzIds
+     */
+    public function findByDkfzIds(array $dkfzIds): array;
 }

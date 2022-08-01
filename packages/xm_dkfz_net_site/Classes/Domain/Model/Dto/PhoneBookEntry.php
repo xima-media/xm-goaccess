@@ -88,5 +88,4 @@ class PhoneBookEntry
         }
         return $abteilungen;
     }
-
 }

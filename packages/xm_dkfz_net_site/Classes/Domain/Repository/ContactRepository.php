@@ -32,7 +32,6 @@ class ContactRepository extends Repository
         }
 
         foreach ($entries as $entry) {
-
             if (!isset($dbUserUidsById[$entry->id])) {
                 continue;
             }
@@ -85,5 +84,29 @@ class ContactRepository extends Repository
                 Connection::PARAM_INT,
             ]
         );
+    }
+
+    /**
+     * @param array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}> $dbUsers
+     * @param string $foreignTable
+     * @return int
+     */
+    public function deleteByDkfzUserIds(array $dbUsers, string $foreignTable): int
+    {
+        $userUidList = array_map(function ($dbUser) {
+            return $dbUser['uid'];
+        }, $dbUsers);
+
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_contact');
+
+        return $qb->delete('tx_xmdkfznetsite_domain_model_contact')
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->eq('foreign_table', $qb->createNamedParameter($foreignTable, \PDO::PARAM_STR)),
+                    $qb->expr()->in('foreign_uid', $userUidList)
+                )
+            )
+            ->executeStatement();
     }
 }

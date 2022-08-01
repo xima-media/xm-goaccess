@@ -7,7 +7,6 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
@@ -30,7 +29,7 @@ class PhoneBookUtility
     /** @var array<string, PhoneBookAbteilung> */
     protected array $phoneBookAbteilungen = [];
 
-    protected bool $filterEntriesForPlaces;
+    protected bool $filterEntriesForPlaces = false;
 
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
@@ -274,25 +273,35 @@ class PhoneBookUtility
         $this->filterEntriesForPlaces = $filterEntriesForPlaces;
     }
 
+    public function getFilterEntriesForPlaces(): bool
+    {
+        return $this->filterEntriesForPlaces;
+    }
+
     /**
      * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
-     * @return void
      */
     public function setUserGroupRelations(array $dbGroups)
     {
+        $dbGroupUidsById = [];
+        foreach ($dbGroups as $dbGroup) {
+            $dbGroupUidsById[$dbGroup['dkfz_number']] = $dbGroup['uid'];
+        }
+
         foreach ($this->phoneBookEntries as $entry) {
             $dbGroupsOfUser = [];
-            foreach ($dbGroups as $dbGroup) {
-                if (in_array($dbGroup['dkfz_number'], $entry->getNumbersOfAbteilungen())) {
-                    $dbGroupsOfUser[] = $dbGroup['uid'];
-                }
-                foreach ($entry->rufnummern as $rufnummer) {
-                    if ($rufnummer->abteilung === $dbGroup['dkfz_number']) {
-                        $rufnummer->feGroup = $dbGroup['uid'];
-                    }
+            foreach ($entry->getNumbersOfAbteilungen() as $abteilungsId) {
+                if (isset($dbGroupUidsById[$abteilungsId])) {
+                    $dbGroupsOfUser[] = $dbGroupUidsById[$abteilungsId];
                 }
             }
             $entry->usergroup = implode(',', $dbGroupsOfUser);
+
+            foreach ($entry->rufnummern as $rufnummer) {
+                if (isset($dbGroupUidsById[$rufnummer->abteilung])) {
+                    $rufnummer->feGroup = $dbGroupUidsById[$rufnummer->abteilung];
+                }
+            }
         }
     }
 }

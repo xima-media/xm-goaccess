@@ -76,11 +76,27 @@ abstract class AbstractUserImportCommand extends Command
         $this->createUsers();
         $this->createContacts();
         $this->updateUsers();
+        $this->updateContacts();
+        $this->deleteContacts();
         $this->deleteUsers();
 
         $io->success('Done');
 
         return Command::SUCCESS;
+    }
+
+    protected function createUsers(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToCreate)) {
+            return;
+        }
+
+        $this->io->write('Creating entries..');
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        $pid = $this->phoneBookUtility->getUserStoragePid($this);
+        $this->userRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid);
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
     }
 
     protected function createContacts(): void
@@ -98,30 +114,34 @@ abstract class AbstractUserImportCommand extends Command
         $this->io->newLine();
     }
 
-    protected function createUsers(): void
-    {
-        if (!count($this->compareResult->dkfzIdsToCreate)) {
-            return;
-        }
-
-        $this->io->write('Creating entries..');
-        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
-        $pid = $this->phoneBookUtility->getUserStoragePid($this);
-        $this->userRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid);
-        $this->io->write('<success>done</success>');
-        $this->io->newLine();
-    }
-
     protected function updateUsers(): void
     {
         if (!count($this->compareResult->dkfzIdsToUpdate)) {
             return;
         }
 
+        $this->io->write('Updating entries..');
         $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
         foreach ($phoneBookEntriesToUpdate as $phoneBookEntry) {
             $this->userRepository->updateUserFromPhoneBookEntry($phoneBookEntry);
         }
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
+    }
+
+    public function updateContacts(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToUpdate)) {
+            return;
+        }
+
+        $tableName = $this->phoneBookUtility->getFilterEntriesForPlaces() ? 'tx_xmdkfznetsite_domain_model_place' : 'fe_users';
+        $this->io->write('Updating (delete + create new) contacts for entries (' . $tableName . ')..');
+        $dbUsers = $this->userRepository->findByDkfzIds($this->compareResult->dkfzIdsToUpdate);
+        $this->contactRepository->deleteByDkfzUserIds($dbUsers, $tableName);
+        $pid = $this->phoneBookUtility->getUserStoragePid($this);
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
+        $this->contactRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToUpdate, $pid, $dbUsers);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
@@ -134,6 +154,20 @@ abstract class AbstractUserImportCommand extends Command
 
         $this->io->write('Deleting entries..');
         $this->userRepository->deleteUsersByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
+    }
+
+    protected function deleteContacts(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToDelete)) {
+            return;
+        }
+
+        $tableName = $this->phoneBookUtility->getFilterEntriesForPlaces() ? 'tx_xmdkfznetsite_domain_model_place' : 'fe_users';
+        $this->io->write('Deleting contacts for entries (' . $tableName . ')..');
+        $dbUsers = $this->userRepository->findByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $this->contactRepository->deleteByDkfzUserIds($dbUsers, $tableName);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
