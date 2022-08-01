@@ -66,19 +66,21 @@ create table be_groups (
 	title       varchar(255) default '' not null,
 );
 
-create table tx_xmdkfznetsite_domain_model_usercontact (
+create table tx_xmdkfznetsite_domain_model_contact (
 	uid            int(11) not null auto_increment,
 	pid            int(11) default '0' not null,
 	sorting        int(11) unsigned default '0' not null,
 	tstamp         int(11) unsigned default '0' not null,
 	crdate         int(11) unsigned default '0' not null,
+	foreign_uid      int(11) default '0' not null,
+	foreign_table    varchar(255) default '' not null,
 
 	record_type    varchar(255) default '' not null,
 	fe_group       int(11) default '0' not null,
 	function       varchar(255) default '' not null,
 	primary_number tinyint(4) unsigned default '0' not null,
 	room           varchar(255)            not null default '',
-	number         int(11) unsigned default '0' not null,
+	number         varchar(255) default '' not null,
 
 	primary key (uid),
 	KEY            parent (pid),

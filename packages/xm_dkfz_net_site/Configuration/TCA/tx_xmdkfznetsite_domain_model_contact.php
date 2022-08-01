@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact',
-        'label' => 'position',
+        'label' => 'number',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'searchFields' => 'position,phone_number,room',
@@ -62,7 +62,7 @@ return [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.number',
             'config' => [
                 'type' => 'input',
-                'eval' => 'trim',
+                'eval' => 'trim,required',
                 'max' => 255,
             ],
         ],
@@ -72,6 +72,11 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_groups',
+                'items' => [
+                    ['', 0],
+                ],
+                'eval' => 'int',
+                'default' => 0,
             ],
         ],
         'primary_number' => [
