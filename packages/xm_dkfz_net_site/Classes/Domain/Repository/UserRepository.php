@@ -3,6 +3,7 @@
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
 use Doctrine\DBAL\Result;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -43,7 +44,10 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
             return 0;
         }
 
-        $rows = array_map(function ($user) use ($pid) {
+        $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
+        $defaultPassword = $saltingInstance->getHashedPassword(md5(uniqid()));
+
+        $rows = array_map(function ($user) use ($pid, $defaultPassword) {
             return [
                 $user->getHash(),
                 $user->getDisable(),
@@ -58,11 +62,29 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 $user->usergroup,
                 count($user->rufnummern),
                 $user->getUsername(),
+                $defaultPassword,
                 $pid,
             ];
         }, $entries);
 
+        // chunk rows in order to prevent to reach the max. number of mysql placeholders (default 65,535)
+        $insertCount = 0;
+        $chunkedRowArrays = array_chunk($rows, 3000);
+        foreach ($chunkedRowArrays as $chunkRow) {
+            $insertCount += $this->bulkInsertRows($chunkRow);
+        }
+
+        return $insertCount;
+    }
+
+    /**
+     * @param array<int, mixed> $rows
+     * @return int
+     */
+    protected function bulkInsertRows(array $rows): int
+    {
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
+
         return $connection->bulkInsert(
             'fe_users',
             $rows,
@@ -80,6 +102,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 'usergroup',
                 'contacts',
                 'slug',
+                'password',
                 'pid',
             ],
             [
@@ -95,6 +118,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
             ]
