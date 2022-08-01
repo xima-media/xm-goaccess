@@ -5,8 +5,8 @@ namespace Xima\XmDkfzNetSite\Domain\Repository;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\BeUser>
+ * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\Contact>
  */
-class BeUserRepository extends Repository
+class ContactRepository extends Repository
 {
 }

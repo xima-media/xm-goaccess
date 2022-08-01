@@ -9,6 +9,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 
+/**
+ * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\Place>
+ */
 class PlaceRepository extends Repository implements ImportableUserInterface
 {
     /**

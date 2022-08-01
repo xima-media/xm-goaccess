@@ -3,7 +3,6 @@
 namespace Xima\XmDkfzNetSite\Hook;
 
 use TYPO3\CMS\Backend\Controller\PageLayoutController;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
