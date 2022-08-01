@@ -64,7 +64,7 @@
 								<div class="contact--person">
 									<h5 class="contact--subtitle">{place.name}</h5>
 									<div class="contact--person-container">
-										<f:if condition="{place.contacts}">
+										<f:if condition="{place.contacts} || {place.mail}">
 											<ul>
 												<f:for each="{place.contacts}" as="contact">
 													<li class="contact__item">
