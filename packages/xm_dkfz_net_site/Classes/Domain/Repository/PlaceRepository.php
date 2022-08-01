@@ -56,6 +56,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 $user->funktion,
                 $user->getFeGroupForPlace(),
                 $user->raum,
+                count($user->rufnummern),
                 $pid,
             ];
         }, $entries);
@@ -72,6 +73,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 'function',
                 'fe_group',
                 'room',
+                'contacts',
                 'pid',
             ],
             [
@@ -82,6 +84,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
+                Connection::PARAM_INT,
                 Connection::PARAM_INT,
             ]
         );
@@ -100,6 +103,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                     'function' => $entry->funktion,
                     'fe_group' => $entry->getFeGroupForPlace(),
                     'room' => $entry->raum,
+                    'contacts' => count($entry->rufnummern),
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -109,6 +113,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
                     Connection::PARAM_STR,
+                    Connection::PARAM_INT,
                 ]
             );
     }
@@ -126,5 +131,28 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 $qb->expr()->in('dkfz_id', $dkfzIds)
             )
             ->executeStatement();
+    }
+
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function findByDkfzIds(array $dkfzIds): array
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
+        $qb->getRestrictions()->removeAll();
+
+        $result = $qb->select('dkfz_id', 'dkfz_hash', 'uid')
+            ->from('tx_xmdkfznetsite_domain_model_place')
+            ->where(
+                $qb->expr()->in('dkfz_id', $dkfzIds)
+            )
+            ->execute();
+
+        if (!$result instanceof Result) {
+            return [];
+        }
+
+        return $result->fetchAllAssociative();
     }
 }
