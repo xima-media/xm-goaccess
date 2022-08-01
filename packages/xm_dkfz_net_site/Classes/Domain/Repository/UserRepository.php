@@ -11,7 +11,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, dkfz_hash: string}>
+     * @return array<int, array{dkfz_id: string, dkfz_hash: string, uid: int}>
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
@@ -20,7 +20,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_id', 'dkfz_hash')
+        $result = $qb->select('dkfz_id', 'dkfz_hash', 'uid')
             ->from('fe_users')
             ->where(
                 $qb->expr()->neq('ad_account_name', $qb->createNamedParameter('', \PDO::PARAM_STR))
@@ -56,6 +56,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 $user->getUsername(),
                 $user->getGender(),
                 $user->usergroup,
+                count($user->rufnummern),
                 $pid,
             ];
         }, $entries);
@@ -76,6 +77,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 'username',
                 'gender',
                 'usergroup',
+                'contacts',
                 'pid',
             ],
             [
@@ -90,6 +92,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
+                Connection::PARAM_INT,
                 Connection::PARAM_INT,
             ]
         );
@@ -112,6 +115,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     'username' => $entry->getUsername(),
                     'gender' => $entry->getGender(),
                     'usergroup' => $entry->usergroup,
+                    'contacts' => count($entry->rufnummern),
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -125,6 +129,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
                     Connection::PARAM_STR,
+                    Connection::PARAM_INT,
                 ]
             );
     }
