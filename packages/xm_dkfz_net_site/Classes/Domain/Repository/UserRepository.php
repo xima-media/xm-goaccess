@@ -57,6 +57,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 $user->getGender(),
                 $user->usergroup,
                 count($user->rufnummern),
+                $user->getUsername(),
                 $pid,
             ];
         }, $entries);
@@ -78,6 +79,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 'gender',
                 'usergroup',
                 'contacts',
+                'slug',
                 'pid',
             ],
             [
@@ -93,6 +95,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_STR,
                 Connection::PARAM_INT,
             ]
         );
