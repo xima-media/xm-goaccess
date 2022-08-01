@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Model\Dto;
 
+use TYPO3\CMS\Core\Utility\MathUtility;
+
 class PhoneBookEntry
 {
     public int $id = 0;
@@ -69,7 +71,9 @@ class PhoneBookEntry
 
     public function getFeGroupForPlace(): int
     {
-        // @TODO return uid of first Abteilung
+        if (MathUtility::canBeInterpretedAsInteger($this->usergroup)) {
+            return (int)$this->usergroup;
+        }
         return 0;
     }
 
