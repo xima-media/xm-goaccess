@@ -77,5 +77,11 @@ services:
     arguments:
       $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
 
+  Xima\XmDkfzNetSite\Command\SlugUpdaterCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:updateSlugs'
+        schedulable: true
+
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

@@ -4,6 +4,8 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3_MODE') || die();
 
+$GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = ['first_name', 'last_name'];
+
 call_user_func(function () {
     $tempColumns = [
         'location' => [
