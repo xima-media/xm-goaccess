@@ -15,7 +15,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 class PlaceRepository extends Repository implements ImportableUserInterface
 {
     /**
-     * @return array<int, array{dkfz_id: int, dkfz_hash: string}>
+     * @return array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}>
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
@@ -24,7 +24,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_id', 'dkfz_hash')
+        $result = $qb->select('dkfz_id', 'dkfz_hash', 'uid')
             ->from('tx_xmdkfznetsite_domain_model_place')
             ->where(
                 $qb->expr()->neq('dkfz_id', 0)

@@ -15,4 +15,15 @@ class PhoneBookRufnummer
     public string $funktion = '';
 
     public bool $primaernummer = false;
+
+    public int $feGroup = 0;
+
+    public int $foreignUid = 0;
+
+    public string $foreignTable = '';
+
+    public function getRecordType(): int
+    {
+        return $this->rufnummerType === 'Fax' ? 1 : 0;
+    }
 }

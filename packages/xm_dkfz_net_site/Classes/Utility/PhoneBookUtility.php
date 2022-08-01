@@ -286,6 +286,11 @@ class PhoneBookUtility
                 if (in_array($dbGroup['dkfz_number'], $entry->getNumbersOfAbteilungen())) {
                     $dbGroupsOfUser[] = $dbGroup['uid'];
                 }
+                foreach ($entry->rufnummern as $rufnummer) {
+                    if ($rufnummer->abteilung === $dbGroup['dkfz_number']) {
+                        $rufnummer->feGroup = $dbGroup['uid'];
+                    }
+                }
             }
             $entry->usergroup = implode(',', $dbGroupsOfUser);
         }

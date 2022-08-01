@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
+use Xima\XmDkfzNetSite\Domain\Repository\ContactRepository;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableGroupInterface;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableUserInterface;
 use Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository;
@@ -20,6 +21,8 @@ abstract class AbstractUserImportCommand extends Command
 
     protected ImportableGroupInterface $groupRepository;
 
+    protected ContactRepository $contactRepository;
+
     protected PhoneBookCompareResult $compareResult;
 
     protected PhoneBookUtility $phoneBookUtility;
@@ -28,12 +31,14 @@ abstract class AbstractUserImportCommand extends Command
         ImportableUserInterface $userRepository,
         ImportableGroupInterface $groupRepository,
         PhoneBookUtility $phoneBookUtility,
+        ContactRepository $contactRepository,
         string $name = null
     ) {
         parent::__construct($name);
         $this->userRepository = $userRepository;
         $this->groupRepository = $groupRepository;
         $this->phoneBookUtility = $phoneBookUtility;
+        $this->contactRepository = $contactRepository;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -69,6 +74,7 @@ abstract class AbstractUserImportCommand extends Command
         ]);
 
         $this->createUsers();
+        $this->createContacts();
         $this->updateUsers();
         $this->deleteUsers();
 
@@ -77,12 +83,28 @@ abstract class AbstractUserImportCommand extends Command
         return Command::SUCCESS;
     }
 
+    protected function createContacts(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToCreate)) {
+            return;
+        }
+
+        $this->io->write('Creating contacts for entries..');
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        $pid = $this->phoneBookUtility->getUserStoragePid($this);
+        $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
+        $this->contactRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid, $dbUsers);
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
+    }
+
     protected function createUsers(): void
     {
         if (!count($this->compareResult->dkfzIdsToCreate)) {
             return;
         }
 
+        $this->io->write('Creating entries..');
         $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
         $pid = $this->phoneBookUtility->getUserStoragePid($this);
         $this->userRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid);
