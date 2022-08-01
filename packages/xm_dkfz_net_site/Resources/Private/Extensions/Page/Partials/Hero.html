@@ -64,7 +64,28 @@
 								<div class="contact--person">
 									<h5 class="contact--subtitle">{place.name}</h5>
 									<div class="contact--person-container">
-										<p>Infos folgen</p>
+										<f:if condition="{place.contacts}">
+											<ul>
+												<f:for each="{place.contacts}" as="contact">
+													<li class="contact__item">
+														<f:if condition="{contact.recordType} == 0">
+															<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+															<a href="tel:{contact.number}">{contact.number}</a>
+														</f:if>
+														<f:if condition="{contact.recordType} == 1">
+															<f:render partial="Icon" arguments="{icon: ''}"/>
+															{contact.number}
+														</f:if>
+													</li>
+												</f:for>
+												<f:if condition="{place.mail}">
+													<li class="contact__item">
+														<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+														<f:link.email email="{place.mail}">{place.mail}</f:link.email>
+													</li>
+												</f:if>
+											</ul>
+										</f:if>
 									</div>
 								</div>
 							</f:for>
