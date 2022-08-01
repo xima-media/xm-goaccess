@@ -51,6 +51,16 @@ return [
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_xmdkfznetsite_domain_model_contact',
+                'foreign_field' => 'foreign_uid',
+                'foreign_table_field' => 'foreign_table',
+                'foreign_sortby' => 'sorting',
+                'appearance' => [
+                    'useSortable' => true,
+                    'enabledControls' => [
+                        'dragdrop' => true,
+                        'info' => false,
+                    ],
+                ],
             ],
         ],
         'fe_group' => [
