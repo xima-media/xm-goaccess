@@ -50,6 +50,7 @@ abstract class AbstractUserImportCommand extends Command
 
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
         $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
+        $this->phoneBookUtility->setUserGroupRelations($dbGroups);
 
         $io->listing([
             '<success>' . $this->phoneBookUtility->getPhoneBookEntryCount() . '</success> found in XML',
@@ -57,7 +58,7 @@ abstract class AbstractUserImportCommand extends Command
         ]);
 
         $this->io->writeln('Comparing Users..');
-        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookEntries($dbUsers, $dbGroups);
+        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookEntries($dbUsers);
         $this->io->newLine(1);
 
         $io->listing([

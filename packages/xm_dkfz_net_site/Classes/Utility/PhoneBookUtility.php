@@ -7,6 +7,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
@@ -178,8 +179,7 @@ class PhoneBookUtility
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
     public function compareDbUsersWithPhoneBookEntries(
-        array $dbUsers,
-        array $dbGroups,
+        array $dbUsers
     ): PhoneBookCompareResult {
         $result = new PhoneBookCompareResult();
 
@@ -272,5 +272,22 @@ class PhoneBookUtility
     public function setFilterEntriesForPlaces(bool $filterEntriesForPlaces): void
     {
         $this->filterEntriesForPlaces = $filterEntriesForPlaces;
+    }
+
+    /**
+     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
+     * @return void
+     */
+    public function setUserGroupRelations(array $dbGroups)
+    {
+        foreach ($this->phoneBookEntries as $entry) {
+            $dbGroupsOfUser = [];
+            foreach ($dbGroups as $dbGroup) {
+                if (in_array($dbGroup['dkfz_number'], $entry->getNumbersOfAbteilungen())) {
+                    $dbGroupsOfUser[] = $dbGroup['uid'];
+                }
+            }
+            $entry->usergroup = implode(',', $dbGroupsOfUser);
+        }
     }
 }

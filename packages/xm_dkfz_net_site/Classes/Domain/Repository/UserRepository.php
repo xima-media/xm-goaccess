@@ -55,7 +55,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 $user->adAccountName,
                 $user->getUsername(),
                 $user->getGender(),
-                $user->getUsergroup(),
+                $user->usergroup,
                 $pid,
             ];
         }, $entries);
@@ -111,7 +111,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     'ad_account_name' => $entry->adAccountName,
                     'username' => $entry->getUsername(),
                     'gender' => $entry->getGender(),
-                    'usergroup' => $entry->getUsergroup(),
+                    'usergroup' => $entry->usergroup,
                 ],
                 ['dkfz_id' => $entry->id],
                 [

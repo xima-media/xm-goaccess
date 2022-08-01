@@ -36,6 +36,8 @@ class PhoneBookEntry
      */
     public array $abteilung = [];
 
+    public string $usergroup = '';
+
     public function isUser(): bool
     {
         return $this->adAccountName !== '';
@@ -65,14 +67,22 @@ class PhoneBookEntry
         return $this->adAccountName;
     }
 
-    public function getUsergroup(): string
-    {
-        return '';
-    }
-
     public function getFeGroupForPlace(): int
     {
         // @TODO return uid of first Abteilung
         return 0;
     }
+
+    /**
+     * @return array<int, string>
+     */
+    public function getNumbersOfAbteilungen(): array
+    {
+        $abteilungen = [];
+        foreach ($this->abteilung as $abteilung) {
+            $abteilungen[] = $abteilung->nummer;
+        }
+        return $abteilungen;
+    }
+
 }
