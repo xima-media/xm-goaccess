@@ -26,17 +26,18 @@ class ContactRepository extends Repository
 
         $rows = [];
 
-        foreach ($entries as $entry) {
-            $dkfzId = $entry->id;
-            $dbUser = array_filter($dbUsers, function ($dbUser) use ($dkfzId) {
-                return $dbUser['dkfz_id'] === $dkfzId;
-            });
+        $dbUserUidsById = [];
+        foreach ($dbUsers as $dbUser) {
+            $dbUserUidsById[$dbUser['dkfz_id']] = $dbUser['uid'];
+        }
 
-            if (count($dbUser) !== 1) {
+        foreach ($entries as $entry) {
+
+            if (!isset($dbUserUidsById[$entry->id])) {
                 continue;
             }
 
-            $foreignUid = array_pop($dbUser)['uid'];
+            $foreignUid = $dbUserUidsById[$entry->id];
             $foreignTable = $entry->isUser() ? 'fe_users' : 'tx_xmdkfznetsite_domain_model_place';
 
             foreach ($entry->rufnummern as $key => $rufnummer) {
