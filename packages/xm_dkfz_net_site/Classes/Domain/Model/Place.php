@@ -14,12 +14,58 @@ class Place extends AbstractEntity
     protected string $room = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
      */
-    protected ObjectStorage $contacts;
+    protected ?ObjectStorage $contacts = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup>|null
      */
-    protected ObjectStorage $departments;
+    protected ?ObjectStorage $feGroups = null;
+
+    public function __construct()
+    {
+        $this->contacts = new ObjectStorage();
+        $this->feGroups = new ObjectStorage();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFunction(): string
+    {
+        return $this->function;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRoom(): string
+    {
+        return $this->room;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
+     */
+    public function getContacts(): ?ObjectStorage
+    {
+        return $this->contacts;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup>|null
+     */
+    public function getFeGroups(): ?ObjectStorage
+    {
+        return $this->feGroups;
+    }
 }

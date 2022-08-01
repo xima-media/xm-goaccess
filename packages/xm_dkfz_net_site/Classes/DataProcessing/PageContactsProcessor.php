@@ -6,6 +6,8 @@ use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
+use Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository;
+use Xima\XmDkfzNetSite\Domain\Repository\UserRepository;
 
 class PageContactsProcessor implements DataProcessorInterface
 {
@@ -13,10 +15,20 @@ class PageContactsProcessor implements DataProcessorInterface
 
     protected RelationHandler $relationHandler;
 
-    public function __construct(FileRepository $fileRepository, RelationHandler $relationHandler)
-    {
+    protected PlaceRepository $placeRepository;
+
+    protected UserRepository $userRepository;
+
+    public function __construct(
+        FileRepository $fileRepository,
+        RelationHandler $relationHandler,
+        PlaceRepository $placeRepository,
+        UserRepository $userRepository
+    ) {
         $this->fileRepository = $fileRepository;
         $this->relationHandler = $relationHandler;
+        $this->placeRepository = $placeRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -25,6 +37,7 @@ class PageContactsProcessor implements DataProcessorInterface
      * @param array<int, mixed> $processorConfiguration
      * @param array<string, mixed> $processedData
      * @return array<string, mixed>
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function process(
         ContentObjectRenderer $cObj,
@@ -47,17 +60,14 @@ class PageContactsProcessor implements DataProcessorInterface
         $this->relationHandler->getFromDB();
         $processedData['contacts'] = $this->relationHandler->results;
 
-        if (!isset($processedData['contacts']['fe_users'])) {
-            return $processedData;
+        if (isset($processedData['contacts']['tx_xmdkfznetsite_domain_model_place'])) {
+            $uids = array_keys($processedData['contacts']['tx_xmdkfznetsite_domain_model_place']);
+            $processedData['contacts']['tx_xmdkfznetsite_domain_model_place'] = $this->placeRepository->findByUids($uids);
         }
 
-        foreach ($processedData['contacts']['fe_users'] as &$feUser) {
-            if ($feUser['logo']) {
-                $sysFileReference = $this->fileRepository->findByRelation('fe_users', 'logo', $feUser['uid']);
-                if (!empty($sysFileReference[0])) {
-                    $feUser['logo'] = $sysFileReference[0];
-                }
-            }
+        if (isset($processedData['contacts']['fe_users'])) {
+            $uids = array_keys($processedData['contacts']['fe_users']);
+            $processedData['contacts']['fe_users'] = $this->userRepository->findByUids($uids);
         }
 
         return $processedData;

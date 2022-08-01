@@ -155,4 +155,20 @@ class PlaceRepository extends Repository implements ImportableUserInterface
 
         return $result->fetchAllAssociative();
     }
+
+    /**
+     * @param array<int, int|string> $uids
+     * @return object[]|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\Xima\XmDkfzNetSite\Domain\Model\Place>
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByUids(array $uids): array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $query->setQuerySettings($query->getQuerySettings()->setRespectStoragePage(false));
+        $query->matching(
+            $query->in('uid', $uids)
+        );
+
+        return $query->execute();
+    }
 }
