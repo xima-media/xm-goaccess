@@ -194,8 +194,8 @@ mod.wizards.newContentElement.wizardItems {
 
       tt_content_quote {
               iconIdentifier = content-quote
-              title = Quote
-              description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.infobox.description
+              title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:quote
+              description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.quote.description
               tt_content_defValues {
                 CType = quote
               }

@@ -114,7 +114,7 @@
 				<target>Zeigt eine hervorgehobene Nachricht in einer Box oder Rahmen an</target>
 			</trans-unit>
 			<trans-unit id="tt_content.quote.description" space="preserve">
-				<target>Zeigt ein hervorgehobenes Zitat mit farbigem Rahmen an</target>
+				<target>Zeigt ein hervorgehobenes Zitat in einem Rahmen an</target>
 			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
 				<target>Teaser-Einstellungen</target>
@@ -204,7 +204,7 @@
                  <target>Bitte 2 bis 15 Bilder hinzufügen</target>
             </trans-unit>
 			<trans-unit id="quote">
-				<source>Zitat</source>
+				<target>Zitat</target>
 			</trans-unit>
 			<trans-unit id="quote.author">
 				<target>Autor</target>
