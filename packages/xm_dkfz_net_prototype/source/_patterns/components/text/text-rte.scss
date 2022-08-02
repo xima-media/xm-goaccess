@@ -31,13 +31,6 @@ $table-alignments: left, right, center;
 
             li {
                 list-style: disc;
-                font-family: var(--font-family-sans-serif);
-                font-size: 18px;
-                line-height: 30px;
-                max-width: 60.625rem;
-                margin: auto;
-                letter-spacing: 0.6px;
-                margin-left: 0.375rem;
 
                 strong {
                     @include text-copy-standard(700);
@@ -77,6 +70,17 @@ $table-alignments: left, right, center;
 
         ol {
             padding-left: 4rem;
+        }
+
+        ul, 
+        ol {
+            font-family: var(--font-family-sans-serif);
+            font-size: 18px;
+            line-height: 30px;
+            max-width: 60.625rem;
+            margin: auto;
+            letter-spacing: 0.6px;
+            margin-left: 0.375rem;
         }
 
         table {
