@@ -31,6 +31,7 @@
     --content-width: 970px;
     --dimension-default: calc(1.25 * var(--space-unit));
     --default-overflow-margin:  calc(7.188 * var(--space-unit));
+    --default-overflow-margin-negative: 0;
 
     @include media-breakpoint-up(xl) {
         --default-overflow-margin-negative: calc(-7.188 * var(--space-unit));
