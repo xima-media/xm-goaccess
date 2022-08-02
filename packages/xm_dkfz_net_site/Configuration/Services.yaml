@@ -83,5 +83,11 @@ services:
         command: 'dkfz:updateSlugs'
         schedulable: true
 
+  Xima\XmDkfzNetSite\Command\ImportAllCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:import'
+        schedulable: true
+
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

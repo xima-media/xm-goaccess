@@ -66,7 +66,9 @@ class PhoneBookUtility
     protected function setEntriesOrdered(array $entries): void
     {
         foreach ($entries as $entry) {
-            if ((!$this->filterEntriesForPlaces && $entry->isUser()) || ($this->filterEntriesForPlaces && !$entry->isUser())) {
+            $filterForUser = !$this->filterEntriesForPlaces && $entry->isUser();
+            $filterForPlace = $this->filterEntriesForPlaces && !$entry->isUser();
+            if ($filterForUser || $filterForPlace) {
                 $this->phoneBookEntries[$entry->id] = $entry;
             }
         }
@@ -174,7 +176,6 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_id: int, dkfz_hash: string}> $dbUsers
-     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
      * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
      */
     public function compareDbUsersWithPhoneBookEntries(
@@ -270,6 +271,7 @@ class PhoneBookUtility
      */
     public function setFilterEntriesForPlaces(bool $filterEntriesForPlaces): void
     {
+        $this->phoneBookEntries = [];
         $this->filterEntriesForPlaces = $filterEntriesForPlaces;
     }
 
@@ -281,7 +283,7 @@ class PhoneBookUtility
     /**
      * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
      */
-    public function setUserGroupRelations(array $dbGroups)
+    public function setUserGroupRelations(array $dbGroups): void
     {
         $dbGroupUidsById = [];
         foreach ($dbGroups as $dbGroup) {
