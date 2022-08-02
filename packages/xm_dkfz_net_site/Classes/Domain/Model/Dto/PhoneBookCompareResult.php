@@ -5,47 +5,42 @@ namespace Xima\XmDkfzNetSite\Domain\Model\Dto;
 class PhoneBookCompareResult
 {
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToCreate = [];
 
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToUpdate = [];
 
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToDelete = [];
 
     /**
-     * @var int[]|string[]
+     * @var int[]
      */
     public array $dkfzIdsToSkip = [];
 
     /**
-     * @var PhoneBookPerson[]
+     * @var string[]
      */
-    public array $phoneBookUsersById = [];
+    public array $dkfzNumbersToCreate = [];
 
     /**
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookPerson[]
+     * @var string[]
      */
-    public function getPhoneBookPersonsForAction(string $actionName): array
-    {
-        if (!in_array($actionName, ['update', 'create'])) {
-            return [];
-        }
+    public array $dkfzNumbersToUpdate = [];
 
-        $idsToFilter = $actionName === 'update' ? $this->dkfzIdsToUpdate : $this->dkfzIdsToCreate;
+    /**
+     * @var string[]
+     */
+    public array $dkfzNumbersToDelete = [];
 
-        return array_filter(
-            $this->phoneBookUsersById,
-            function ($id) use ($idsToFilter) {
-                return in_array($id, $idsToFilter);
-            },
-            ARRAY_FILTER_USE_KEY
-        );
-    }
+    /**
+     * @var string[]
+     */
+    public array $dkfzNumbersToSkip = [];
 }

@@ -40,6 +40,9 @@ services:
   Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
     public: true
 
+  Xima\XmDkfzNetSite\DataProcessing\PageContactsProcessor:
+    public: true
+
   Xima\XmDkfzNetSite\Command\ImportFeUserCommand:
     tags:
       - name: 'console.command'
@@ -48,6 +51,15 @@ services:
     arguments:
       $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
       $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserRepository'
+
+  Xima\XmDkfzNetSite\Command\ImportPlaceCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importPlace'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository'
 
   Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:
     tags:
@@ -64,6 +76,18 @@ services:
         schedulable: false
     arguments:
       $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
+
+  Xima\XmDkfzNetSite\Command\SlugUpdaterCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:updateSlugs'
+        schedulable: true
+
+  Xima\XmDkfzNetSite\Command\ImportAllCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:import'
+        schedulable: true
 
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

@@ -6,10 +6,11 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
+use Xima\XmDkfzNetSite\Domain\Repository\ContactRepository;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableGroupInterface;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableUserInterface;
+use Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
 
 abstract class AbstractUserImportCommand extends Command
@@ -20,6 +21,8 @@ abstract class AbstractUserImportCommand extends Command
 
     protected ImportableGroupInterface $groupRepository;
 
+    protected ContactRepository $contactRepository;
+
     protected PhoneBookCompareResult $compareResult;
 
     protected PhoneBookUtility $phoneBookUtility;
@@ -27,11 +30,15 @@ abstract class AbstractUserImportCommand extends Command
     public function __construct(
         ImportableUserInterface $userRepository,
         ImportableGroupInterface $groupRepository,
+        PhoneBookUtility $phoneBookUtility,
+        ContactRepository $contactRepository,
         string $name = null
     ) {
         parent::__construct($name);
         $this->userRepository = $userRepository;
         $this->groupRepository = $groupRepository;
+        $this->phoneBookUtility = $phoneBookUtility;
+        $this->contactRepository = $contactRepository;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -40,26 +47,24 @@ abstract class AbstractUserImportCommand extends Command
         $this->io = $io;
         $io->title($this->getDescription());
 
-        $io->writeln('Reading Users from database and XML..');
+        $io->writeln('Reading Users from database and JSON..');
 
-        $this->phoneBookUtility = GeneralUtility::makeInstance(PhoneBookUtility::class);
-        $this->phoneBookUtility->loadXpath();
+        $filterEntriesForPlaces = $this->userRepository instanceof PlaceRepository;
+        $this->phoneBookUtility->setFilterEntriesForPlaces($filterEntriesForPlaces);
+        $this->phoneBookUtility->loadJson();
 
-        $xmlUsers = $this->phoneBookUtility->getUsersInXml();
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
-        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzId();
+        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
+        $this->phoneBookUtility->setUserGroupRelations($dbGroups);
 
         $io->listing([
-            '<success>' . count($xmlUsers) . '</success> found in XML',
+            '<success>' . $this->phoneBookUtility->getPhoneBookEntryCount() . '</success> found in XML',
             '<success>' . count($dbUsers) . '</success> found in database',
         ]);
 
-        $io->writeln('Comparing Users..');
-        $progress = $io->createProgressBar(count($dbUsers));
-        $progress->setFormat('%current%/%max% [%bar%] %percent%%');
-        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithXml($dbUsers, $dbGroups, $progress);
-        $progress->finish();
-        $io->newLine(2);
+        $this->io->writeln('Comparing Users..');
+        $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookEntries($dbUsers);
+        $this->io->newLine(1);
 
         $io->listing([
             '<success>' . count($this->compareResult->dkfzIdsToCreate) . '</success> to create',
@@ -69,7 +74,10 @@ abstract class AbstractUserImportCommand extends Command
         ]);
 
         $this->createUsers();
+        $this->createContacts();
         $this->updateUsers();
+        $this->updateContacts();
+        $this->deleteContacts();
         $this->deleteUsers();
 
         $io->success('Done');
@@ -83,10 +91,25 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
-        $this->io->write('Creating users..');
-        $phoneBookUsersToAdd = $this->compareResult->getPhoneBookPersonsForAction('create');
+        $this->io->write('Creating entries..');
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
         $pid = $this->phoneBookUtility->getUserStoragePid($this);
-        $this->userRepository->bulkInsertFromPhoneBook($phoneBookUsersToAdd, $pid);
+        $this->userRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid);
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
+    }
+
+    protected function createContacts(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToCreate)) {
+            return;
+        }
+
+        $this->io->write('Creating contacts for entries..');
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        $pid = $this->phoneBookUtility->getUserStoragePid($this);
+        $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
+        $this->contactRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid, $dbUsers);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
@@ -97,11 +120,28 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
-        $this->io->write('Updating users..');
-        $phoneBookUsersToUpdate = $this->compareResult->getPhoneBookPersonsForAction('update');
-        foreach ($phoneBookUsersToUpdate as $phoneBookPerson) {
-            $this->userRepository->updateUserFromPhoneBook($phoneBookPerson);
+        $this->io->write('Updating entries..');
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
+        foreach ($phoneBookEntriesToUpdate as $phoneBookEntry) {
+            $this->userRepository->updateUserFromPhoneBookEntry($phoneBookEntry);
         }
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
+    }
+
+    public function updateContacts(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToUpdate)) {
+            return;
+        }
+
+        $tableName = $this->phoneBookUtility->getFilterEntriesForPlaces() ? 'tx_xmdkfznetsite_domain_model_place' : 'fe_users';
+        $this->io->write('Updating (delete + create new) contacts for entries (' . $tableName . ')..');
+        $dbUsers = $this->userRepository->findByDkfzIds($this->compareResult->dkfzIdsToUpdate);
+        $this->contactRepository->deleteByDkfzUserIds($dbUsers, $tableName);
+        $pid = $this->phoneBookUtility->getUserStoragePid($this);
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
+        $this->contactRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToUpdate, $pid, $dbUsers);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
@@ -112,8 +152,22 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
-        $this->io->write('Deleting users..');
-        $this->userRepository->deleteUserByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $this->io->write('Deleting entries..');
+        $this->userRepository->deleteUsersByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $this->io->write('<success>done</success>');
+        $this->io->newLine();
+    }
+
+    protected function deleteContacts(): void
+    {
+        if (!count($this->compareResult->dkfzIdsToDelete)) {
+            return;
+        }
+
+        $tableName = $this->phoneBookUtility->getFilterEntriesForPlaces() ? 'tx_xmdkfznetsite_domain_model_place' : 'fe_users';
+        $this->io->write('Deleting contacts for entries (' . $tableName . ')..');
+        $dbUsers = $this->userRepository->findByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $this->contactRepository->deleteByDkfzUserIds($dbUsers, $tableName);
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }

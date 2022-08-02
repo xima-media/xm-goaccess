@@ -3,28 +3,31 @@
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
 use Doctrine\DBAL\Result;
-use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 
-class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
+/**
+ * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\Place>
+ */
+class PlaceRepository extends Repository implements ImportableUserInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, dkfz_hash: string, uid: int}>
+     * @return array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}>
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
     public function findAllUsersWithDkfzId(): array
     {
-        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
         $qb->getRestrictions()->removeAll();
 
         $result = $qb->select('dkfz_id', 'dkfz_hash', 'uid')
-            ->from('fe_users')
+            ->from('tx_xmdkfznetsite_domain_model_place')
             ->where(
-                $qb->expr()->neq('ad_account_name', $qb->createNamedParameter('', \PDO::PARAM_STR))
+                $qb->expr()->neq('dkfz_id', 0)
             )
             ->execute();
 
@@ -44,65 +47,35 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
             return 0;
         }
 
-        $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
-        $defaultPassword = $saltingInstance->getHashedPassword(md5(uniqid()));
-
-        $rows = array_map(function ($user) use ($pid, $defaultPassword) {
+        $rows = array_map(function ($user) use ($pid) {
             return [
                 $user->getHash(),
                 $user->getDisable(),
                 $user->id,
-                $user->vorname,
-                $user->titel,
                 $user->nachname,
-                $user->mail,
-                $user->adAccountName,
-                $user->getUsername(),
-                $user->getGender(),
-                $user->usergroup,
+                $user->funktion,
+                $user->getFeGroupForPlace(),
+                $user->raum,
                 count($user->rufnummern),
-                $user->getUsername(),
-                $defaultPassword,
+                $user->mail,
                 $pid,
             ];
         }, $entries);
 
-        // chunk rows in order to prevent to reach the max. number of mysql placeholders (default 65,535)
-        $insertCount = 0;
-        $chunkedRowArrays = array_chunk($rows, 3000);
-        foreach ($chunkedRowArrays as $chunkRow) {
-            $insertCount += $this->bulkInsertRows($chunkRow);
-        }
-
-        return $insertCount;
-    }
-
-    /**
-     * @param array<int, mixed> $rows
-     * @return int
-     */
-    protected function bulkInsertRows(array $rows): int
-    {
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('fe_users');
-
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_xmdkfznetsite_domain_model_place');
         return $connection->bulkInsert(
-            'fe_users',
+            'tx_xmdkfznetsite_domain_model_place',
             $rows,
             [
                 'dkfz_hash',
-                'disable',
+                'hidden',
                 'dkfz_id',
-                'first_name',
-                'title',
-                'last_name',
-                'email',
-                'ad_account_name',
-                'username',
-                'gender',
-                'usergroup',
+                'name',
+                'function',
+                'fe_group',
+                'room',
                 'contacts',
-                'slug',
-                'password',
+                'mail',
                 'pid',
             ],
             [
@@ -111,14 +84,9 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
-                Connection::PARAM_STR,
-                Connection::PARAM_STR,
-                Connection::PARAM_STR,
-                Connection::PARAM_STR,
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
-                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
             ]
@@ -128,21 +96,18 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
     public function updateUserFromPhoneBookEntry(PhoneBookEntry $entry): int
     {
         return GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable('fe_users')
+            ->getConnectionForTable('tx_xmdkfznetsite_domain_model_place')
             ->update(
-                'fe_users',
+                'tx_xmdkfznetsite_domain_model_place',
                 [
                     'dkfz_hash' => $entry->getHash(),
-                    'disable' => $entry->getDisable(),
-                    'first_name' => $entry->vorname,
-                    'title' => $entry->titel,
-                    'last_name' => $entry->nachname,
-                    'email' => $entry->mail,
-                    'ad_account_name' => $entry->adAccountName,
-                    'username' => $entry->getUsername(),
-                    'gender' => $entry->getGender(),
-                    'usergroup' => $entry->usergroup,
+                    'hidden' => $entry->getDisable(),
+                    'name' => $entry->nachname,
+                    'function' => $entry->funktion,
+                    'fe_group' => $entry->getFeGroupForPlace(),
+                    'room' => $entry->raum,
                     'contacts' => count($entry->rufnummern),
+                    'mail' => $entry->mail,
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -150,13 +115,10 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     Connection::PARAM_BOOL,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
                     Connection::PARAM_INT,
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
+                    Connection::PARAM_STR,
                 ]
             );
     }
@@ -166,10 +128,10 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
      */
     public function deleteUsersByDkfzIds(array $dkfzIds): int
     {
-        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
         $qb->getRestrictions()->removeAll();
 
-        return $qb->delete('fe_users')
+        return $qb->delete('tx_xmdkfznetsite_domain_model_place')
             ->where(
                 $qb->expr()->in('dkfz_id', $dkfzIds)
             )
@@ -182,11 +144,11 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
      */
     public function findByDkfzIds(array $dkfzIds): array
     {
-        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
         $qb->getRestrictions()->removeAll();
 
         $result = $qb->select('dkfz_id', 'dkfz_hash', 'uid')
-            ->from('fe_users')
+            ->from('tx_xmdkfznetsite_domain_model_place')
             ->where(
                 $qb->expr()->in('dkfz_id', $dkfzIds)
             )
@@ -201,7 +163,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
 
     /**
      * @param array<int, int|string> $uids
-     * @return object[]|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\Xima\XmDkfzNetSite\Domain\Model\User>
+     * @return object[]|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\Xima\XmDkfzNetSite\Domain\Model\Place>
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findByUids(array $uids): array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface

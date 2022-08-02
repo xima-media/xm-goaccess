@@ -68,11 +68,14 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
         'exclude' => 1,
         'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.contacts',
         'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'fe_users',
+            'type' => 'group',
+            'allowed' => 'fe_users,tx_xmdkfznetsite_domain_model_place',
             'size' => 5,
-            'minitems' => 0,
+            'fieldControl' => [
+                'addRecord' => [
+                    'disabled' => false,
+                ],
+            ],
         ],
     ],
 ]);

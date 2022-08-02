@@ -24,6 +24,7 @@ pidFeUserStorage = 91
 pidNewsDetail = 102
 pidNewsStorage = 101
 pidUserDetail = 103
+pidUserList = 8
 
 ##############################
 #### FLUID STYLED CONTENT ####

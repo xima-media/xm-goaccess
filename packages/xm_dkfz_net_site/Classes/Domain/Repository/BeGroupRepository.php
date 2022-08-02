@@ -18,15 +18,15 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
-    public function findAllGroupsWithDkfzId(): array
+    public function findAllGroupsWithDkfzNumber(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_id', 'uid')
+        $result = $qb->select('dkfz_number', 'uid')
             ->from('be_groups')
             ->where(
-                $qb->expr()->neq('dkfz_id', $qb->createNamedParameter(''))
+                $qb->expr()->neq('dkfz_number', $qb->createNamedParameter(''))
             )
             ->execute();
 
@@ -37,32 +37,26 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
         return $result->fetchAllAssociative();
     }
 
-    /**
-     * @param array<string|int> $dkfzIds
-     * @param int $pid
-     * @param string $subgroup
-     * @return int
-     */
-    public function bulkInsertDkfzIds(array $dkfzIds, int $pid, string $subgroup): int
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup): int
     {
-        if (!count($dkfzIds)) {
+        if (!count($phoneBookAbteilungen)) {
             return 0;
         }
 
-        $rows = array_map(function ($dkfzId) use ($subgroup) {
+        $rows = array_map(function ($abteilung) use ($subgroup) {
             return [
-                (string)$dkfzId,
-                (string)$dkfzId,
+                $abteilung->nummer,
+                $abteilung->bezeichnung,
                 $subgroup,
             ];
-        }, $dkfzIds);
+        }, $phoneBookAbteilungen);
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('be_groups');
         return $connection->bulkInsert(
             'be_groups',
             $rows,
             [
-                'dkfz_id',
+                'dkfz_number',
                 'title',
                 'subgroup',
             ],
@@ -75,22 +69,22 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
     }
 
     /**
-     * @param array<string|int> $dkfzIds
+     * @param array<string> $dkfzNumbers
      * @return int
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function deleteByDkfzIds(array $dkfzIds): int
+    public function deleteByDkfzNumbers(array $dkfzNumbers): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
         $idStringList = array_map(function ($id) use ($qb) {
             return $qb->createNamedParameter($id);
-        }, $dkfzIds);
+        }, $dkfzNumbers);
 
         return $qb->delete('be_groups')
             ->where(
-                $qb->expr()->in('dkfz_id', $idStringList)
+                $qb->expr()->in('dkfz_number', $idStringList)
             )
             ->executeStatement();
     }

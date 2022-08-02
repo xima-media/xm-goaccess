@@ -26,6 +26,26 @@ parameters:
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
+			message: "#^Cannot access offset 'fe_users' on mixed\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
+			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on mixed\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_keys expects array, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
+			message: "#^Parameter \\#1 \\$itemlist of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\RelationHandler\\:\\:start\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
 			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
@@ -71,32 +91,62 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: T$#"
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookAbteilung\\:\\:\\$leitung type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:setContacts\\(\\) has parameter \\$contacts with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: T$#"
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookAbteilung\\:\\:\\$sekretariat type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Place\\:\\:\\$contacts \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Contact\\>\\|null\\) does not accept TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
+
+		-
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Place\\:\\:\\$feGroups \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\|null\\) does not accept TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
 		-
-			message: "#^Class Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository extends generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\Repository but does not specify its types\\: TEntityClass$#"
+			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableGroupInterface\\:\\:findAllGroupsWithDkfzNumber\\(\\)$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
+
+		-
+			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableUserInterface\\:\\:findAllUsersWithDkfzId\\(\\)$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
@@ -124,16 +174,6 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DataHandlerHook\\:\\:processDatamap_preProcessFieldArray\\(\\) has parameter \\$incomingFieldArray with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\DrawHeaderHook\\:\\:addPageInfos\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DrawHeaderHook.php
 
 		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"

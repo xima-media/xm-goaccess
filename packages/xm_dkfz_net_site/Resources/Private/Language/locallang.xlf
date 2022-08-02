@@ -253,35 +253,35 @@
 			<trans-unit id="save">
 				<source>Save</source>
 			</trans-unit>
-			<trans-unit id="user_contact">
+			<trans-unit id="contact">
 				<source>Contact</source>
 			</trans-unit>
-			<trans-unit id="user_contact">
-				<source>Contact</source>
-			</trans-unit>
-			<trans-unit id="user_contact.record_type">
+			<trans-unit id="contact.record_type">
 				<source>Type</source>
 			</trans-unit>
-			<trans-unit id="user_contact.record_type.0">
+			<trans-unit id="contact.record_type.0">
 				<source>Phone</source>
 			</trans-unit>
-			<trans-unit id="user_contact.record_type.1">
+			<trans-unit id="contact.record_type.1">
 				<source>Fax</source>
 			</trans-unit>
-			<trans-unit id="user_contact.room">
+			<trans-unit id="contact.room">
 				<source>Room</source>
 			</trans-unit>
-			<trans-unit id="user_contact.phone_number">
+			<trans-unit id="contact.number">
 				<source>Phone</source>
 			</trans-unit>
-			<trans-unit id="user_contact.fe_user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="user_contact.fe_group">
+			<trans-unit id="contact.fe_group">
 				<source>User group</source>
 			</trans-unit>
-			<trans-unit id="user_contact.position">
-				<source>Position</source>
+			<trans-unit id="contact.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<source>Frontend Group</source>
+			</trans-unit>
+			<trans-unit id="contact.primary_number">
+				<source>Is primary number</source>
 			</trans-unit>
 			<trans-unit id="user.location">
 				<source>Location</source>
@@ -334,6 +334,27 @@
             <trans-unit id="image.slider.notification">
                 <source>Please add 2 to 15 images</source>
             </trans-unit>
+			<trans-unit id="place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="place.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="place.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="place.mail">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="place.room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="place.contacts">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="place.fe_group">
+				<source>Frontend Group</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -1,0 +1,131 @@
+<f:form action="list" name="demand" controller="User" object="{demand}" class="hero-form">
+	<div class="hero-form__header">
+		<h2 class="hero-form__title">Mitarbeiter suchen</h2>
+	</div>
+
+	<div class="hero-form__content">
+
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="field field--text">
+					<label class="field__label" for="search">Suche nach Name, Vorname, Telefonnummer</label>
+					<f:form.textfield id="search"
+									  class="field__input"
+									  placeholder="Suche nach Name, Vorname, Telefonnummer"
+									  property="search"/>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="field field--text">
+					<label class="field__label" for="feature">Suche nach Kompetenz, Thema, Interesse</label>
+					<f:form.textfield id="feature"
+									  class="field__input"
+									  placeholder="Suche nach Kompetenz, Thema, Interesse"
+									  property="feature"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="field field--text">
+					<label class="field__label" for="feGroup">Abteilung</label>
+					<f:form.textfield id="feGroup" class="field__input" placeholder="Abteilung" property="feGroup"/>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="field field--text">
+					<label class="field__label" for="function">Funktion</label>
+					<f:form.textfield id="function" class="field__input" placeholder="Funktion" property="function"/>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="field field--text">
+					<label class="field__label" for="gremium">Gremium</label>
+					<f:form.textfield id="gremium" class="field__input" placeholder="Funktion" property="gremium"/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="hero-form__footer">
+		<button type="submit" class="button button--white">
+			<f:render partial="Icon" arguments="{icon:'search'}"/>
+			Suchen
+		</button>
+	</div>
+</f:form>
+
+<div class="results">
+
+	<h2 class="results__title">Es wurden {users->f:count()} Mitarbeiter gefunden</h2>
+
+	<div class="results__items">
+		<f:for each="{pagination.paginator.paginatedItems}" as="user">
+			<div class="card card--image-top card--md card--image-size-md card--employee-contact">
+				<f:link.action action="show"
+							   class="card__link card__link--hidden"
+							   pageUid="{settings.showPid}"
+							   pluginName="Usershow"
+							   controller="User"
+							   arguments="{user: user.uid}">
+					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+				</f:link.action>
+				<div class="card__image">
+					<f:if condition="{user.logo}">
+						<picture>
+							<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'webp')}"
+									type="image/webp">
+							<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
+									type="image/jpeg">
+							<img src="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
+								 alt="{file.originalResource.alternative}"
+								 class="picture__image image--responsive"
+								 loading="lazy"/>
+						</picture>
+					</f:if>
+					<f:if condition="!{user.logo}">
+						<img width="80"
+							 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
+							 alt="No profile picture"/>
+					</f:if>
+				</div>
+				<div class="card__content">
+					<h3 class="card__title">{user.displayName}</h3>
+
+					<f:for each="{user.usergroup}" as="group">
+						<p>{group.title}</p>
+					</f:for>
+
+				</div>
+				<div class="card__contact">
+					<f:for each="{user.contacts}" as="contact">
+
+						<f:if condition="{contact.recordType} == 0">
+							<f:if condition="{contact.room}">
+								<li class="contact__item">
+									<f:render partial="Icon" arguments="{icon: 'location'}"/>
+									{contact.room}
+								</li>
+							</f:if>
+							<li class="contact__item">
+								<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+								<a href="tel:{contact.number}">{contact.number}</a>
+							</li>
+						</f:if>
+						<f:if condition="{contact.recordType} == 1">
+							<li class="contact__item">
+								<f:render partial="Icon" arguments="{icon: 'printer'}"/>
+								{contact.number}
+							</li>
+						</f:if>
+					</f:for>
+				</div>
+			</div>
+		</f:for>
+	</div>
+
+</div>
+
+<f:render partial="Pagination"
+		  arguments="{pagination: pagination.pagination, paginator: pagination.paginator}"/>

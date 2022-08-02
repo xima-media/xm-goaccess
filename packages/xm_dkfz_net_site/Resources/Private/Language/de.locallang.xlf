@@ -248,6 +248,54 @@
             <trans-unit id="image.slider.notification">
                  <target>Bitte 2 bis 15 Bilder hinzufügen</target>
             </trans-unit>
+			<trans-unit id="contact">
+				<target>Kontakt</target>
+			</trans-unit>
+			<trans-unit id="contact.record_type">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="contact.record_type.0">
+				<target>Telefonnummer</target>
+			</trans-unit>
+			<trans-unit id="contact.record_type.1">
+				<target>Faxnummer</target>
+			</trans-unit>
+			<trans-unit id="contact.room">
+				<target>Raum</target>
+			</trans-unit>
+			<trans-unit id="contact.number">
+				<target>Nummer</target>
+			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<target>Benutzergruppe</target>
+			</trans-unit>
+			<trans-unit id="contact.function">
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<target>Abteilung</target>
+			</trans-unit>
+			<trans-unit id="contact.primary_number">
+				<target>Ist Primärnummer</target>
+			</trans-unit>
+			<trans-unit id="place">
+				<target>Kontaktstelle</target>
+			</trans-unit>
+			<trans-unit id="place.name">
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="place.function">
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="place.room">
+				<target>Raum</target>
+			</trans-unit>
+			<trans-unit id="place.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
+			<trans-unit id="place.fe_group">
+				<target>Abteilung</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

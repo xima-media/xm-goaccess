@@ -4,6 +4,8 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3_MODE') || die();
 
+$GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = ['first_name', 'last_name', 'name'];
+
 call_user_func(function () {
     $tempColumns = [
         'location' => [
@@ -56,8 +58,17 @@ call_user_func(function () {
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.contacts',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_xmdkfznetsite_domain_model_usercontact',
-                'foreign_field' => 'fe_user',
+                'foreign_table' => 'tx_xmdkfznetsite_domain_model_contact',
+                'foreign_field' => 'foreign_uid',
+                'foreign_table_field' => 'foreign_table',
+                'foreign_sortby' => 'sorting',
+                'appearance' => [
+                    'useSortable' => true,
+                    'enabledControls' => [
+                        'dragdrop' => true,
+                        'info' => false,
+                    ],
+                ],
             ],
         ],
         'dkfz_hash' => [

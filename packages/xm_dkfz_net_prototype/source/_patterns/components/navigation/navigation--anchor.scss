@@ -15,10 +15,12 @@
     //@include media-breakpoint-up(xxl) {
     @media screen and (min-width: 1800px ) {
         position: fixed;
+        top: 27vh;
         left: 2rem;
         bottom: 5rem;
         background: transparent;
         overflow: hidden;
+        max-width: 24vw;
     }
 
     .navigation {
@@ -61,7 +63,7 @@
             flex-wrap: nowrap;
             padding: 1.25rem;
             margin-bottom: 0;
-            white-space: nowrap;
+            //white-space: nowrap;
             overflow: auto;
 
             // @todo mixin
@@ -101,14 +103,16 @@
             //@include media-breakpoint-up(xxl) {
             @media screen and (min-width: 1800px ) {
                 overflow: hidden;
+                text-overflow: ellipsis;
                 position: relative;
                 padding: 0 0 1.875rem 2rem;
+                margin-top: -0.25rem;
 
                 &::before {
                     content: '';
                     position: absolute;
                     left: .375rem;
-                    top: 0;
+                    top: 1rem;
                     display: block;
                     height: 100%;
                     border-left: 1px solid var(--color-gray-900);
@@ -118,25 +122,27 @@
                     content: '';
                     position: absolute;
                     left: 0;
-                    top: .375rem;
+                    top: 0.25rem;
                     display: block;
                     width: .75rem;
                     height: .75rem;
-                    background: var(--color-white);
+                    background: transparent;
                     border: 1px solid var(--color-gray-900);
                     border-radius: 50%;
+                }
+
+                &.active {
+                    &::after {
+                        background: var(--color-black);
+                    }
                 }
 
                 &:first-child {
                     margin-left: 0;
                 }
 
-                &:first-child::before {
-                    top: .75rem;
-                }
-
                 &:last-child::before {
-                    height: .375rem;
+                    height: 0;
                 }
             }
         }
@@ -145,6 +151,12 @@
             @include text-copy-x-small;
 
             text-decoration: none;
+
+            &.active,
+            &:focus,
+            &:hover {
+                font-weight: 700;
+            }
         }
     }
 }

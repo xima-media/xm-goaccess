@@ -1,7 +1,12 @@
 <div class="layout__item">
 	<div class="employee-header">
 		<div class="employee-header__body">
-			<h1 class="employee-header__title h3">{user.name}</h1>
+			<h1 class="employee-header__title h3">{user.displayName}</h1>
+			<f:for each="{user.usergroup}" as="group">
+				<div class="employee-header__text">
+					<p>{group.title}</p>
+				</div>
+			</f:for>
 			<div class="employee-header__text">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa dicta dolor, dolorem ducimus
 					facere.</p>
