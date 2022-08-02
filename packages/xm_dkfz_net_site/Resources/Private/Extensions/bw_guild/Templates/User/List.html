@@ -65,8 +65,10 @@
 			<div class="card card--image-top card--md card--image-size-md card--employee-contact">
 				<f:link.action action="show"
 							   class="card__link card__link--hidden"
+							   pageUid="{settings.showPid}"
+							   pluginName="Usershow"
 							   controller="User"
-							   arguments="{user: user}">
+							   arguments="{user: user.uid}">
 					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
 				</f:link.action>
 				<div class="card__image">

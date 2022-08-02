@@ -160,3 +160,8 @@ page {
 [else]
   config.htmlTag.attributes.class = background--white
 [end]
+
+[page["uid"] == {$pidUserList}]
+  page.10.variables.mainClass = TEXT
+  page.10.variables.mainClass.value = main--expanded
+[end]
