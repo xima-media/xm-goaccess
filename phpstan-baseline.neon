@@ -26,8 +26,18 @@ parameters:
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
+			message: "#^Cannot access offset 'fe_users' on mixed\\.$#"
+			count: 3
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
 			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on mixed\\.$#"
 			count: 3
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_keys expects array, mixed given\\.$#"
+			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
 
 		-
@@ -91,14 +101,14 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:getContacts\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: T$#"
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Place\\:\\:\\$contacts \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Contact\\>\\|null\\) does not accept TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\User\\:\\:setContacts\\(\\) has parameter \\$contacts with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: T$#"
+			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Place\\:\\:\\$feGroups \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\|null\\) does not accept TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
@@ -112,6 +122,11 @@ parameters:
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
 
@@ -369,16 +384,6 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:updateFrontendUserSlug\\(\\) has parameter \\$userRecord with no type specified\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Utility\\\\PhoneBookUtility\\:\\:setUserGroupRelations\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
-
-		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$dbGroups$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Utility/PhoneBookUtility.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
