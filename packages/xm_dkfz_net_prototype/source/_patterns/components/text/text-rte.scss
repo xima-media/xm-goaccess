@@ -1,4 +1,5 @@
 $heading-elements: h1, h2, h3, h4, h5;
+$table-alignments: left, right, center;
 
 .content-wrapper {
 
@@ -90,6 +91,14 @@ $heading-elements: h1, h2, h3, h4, h5;
                 width: 100%;
             }
 
+            @each $table-alignment in $table-alignments {
+                &[align="#{$table-alignment}"] {
+                    tr,td,th {
+                        text-align: $table-alignment;
+                    }
+                }
+            }
+
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
             color: var(--color-gray-900);
@@ -103,6 +112,7 @@ $heading-elements: h1, h2, h3, h4, h5;
                     th {
                         vertical-align: top;
                         text-align: center;
+                        padding: 0.6rem;
                     }
                 }
             }
