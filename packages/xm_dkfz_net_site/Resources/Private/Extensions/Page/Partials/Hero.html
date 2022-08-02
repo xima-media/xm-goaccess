@@ -42,18 +42,15 @@
 									</figcaption>
 								</f:if>
 							</figure>
+							<f:if condition="{file.properties.copyright}">
+								<div class="hero-teaser__copyright">
+									<f:render partial="Icon" arguments="{icon:'copyright'}"/>
+									{file.properties.copyright}
+								</div>
+							</f:if>
 						</f:for>
 					</div>
 				</f:if>
-
-				<f:for each="{files}" as="file">
-					<f:if condition="{file.properties.copyright}">
-						<div class="hero-teaser__copyright">
-							<f:render partial="Icon" arguments="{icon:'copyright'}"/>
-							{file.properties.copyright}
-						</div>
-					</f:if>
-				</f:for>
 
 				<f:if condition="{contacts}">
 					<div class="hero-teaser__contact">
