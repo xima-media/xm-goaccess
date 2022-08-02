@@ -189,4 +189,12 @@ class User extends \Blueways\BwGuild\Domain\Model\User
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected ?ObjectStorage $contacts = null;
+
+    public function getDisplayName(): string
+    {
+        if ($this->lastName && $this->firstName) {
+            return $this->lastName . ', ' . $this->firstName;
+        }
+        return $this->username;
+    }
 }
