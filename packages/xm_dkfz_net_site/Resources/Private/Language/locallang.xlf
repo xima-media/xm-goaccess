@@ -340,6 +340,9 @@
 			<trans-unit id="place.function">
 				<source>Function</source>
 			</trans-unit>
+			<trans-unit id="place.mail">
+				<source>E-Mail</source>
+			</trans-unit>
 			<trans-unit id="place.room">
 				<source>Room</source>
 			</trans-unit>

@@ -2,11 +2,9 @@
 
 namespace Xima\XmDkfzNetSite\Command;
 
-use Hoa\Iterator\Buffer;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -24,7 +22,7 @@ class ImportAllCommand extends Command
     protected function configure(): void
     {
         $this->setDescription('Runs all DKFZ importer');
-        $this->setHelp('Reads all user, usergroup, places and contacts from API and imports them');
+        $this->setHelp('Reads all user, user groups, places and contacts from API and imports them');
     }
 
     public function __construct(
@@ -39,7 +37,7 @@ class ImportAllCommand extends Command
      * @throws \TYPO3\CMS\Core\Console\UnknownCommandException
      * @throws \Exception
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $application = $this->getApplication();
         $commandRegistry = GeneralUtility::makeInstance(CommandRegistry::class);
