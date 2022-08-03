@@ -1,0 +1,18 @@
+<div class="video-player" data-video-id="{video.contents}" data-video-mime-type="{video.properties.mime_type}">
+    <div class="video-player__interactables">
+        <button class="video-player__button video-player__button--play button button--round button--large --play-video">
+            <f:render partial="Icon" arguments="{icon: 'play'}" />
+        </button>
+        <div class="video-player__tooltip">
+            <h3 class="h5">
+                Datenschutzhinweis
+            </h3>
+            <p>
+                <small>
+                    Wenn Sie unsere YouTube- oder Vimeo-Videos abspielen, werden Informationen über Ihre Nutzung von YouTube bzw. Vimeo an den Betreiber in den USA übertragen und unter Umständen gespeichert.
+                </small>
+            </p>
+        </div>
+    </div>
+    <f:render partial="Image" arguments="{image: video}" />
+</div>
