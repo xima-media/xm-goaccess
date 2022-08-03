@@ -78,7 +78,7 @@ class Lightbox {
     this.removeAllListener()
 
     setTimeout(() => {
-      document.querySelector('body').classList.remove('open-lightbox')
+      document.querySelector('html').classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
       this.stopLoading()
       this.clear()
@@ -87,7 +87,7 @@ class Lightbox {
 
   public open(style: LightboxStyle = 0) {
     this.setStyle(style)
-    document.querySelector('body').classList.add('open-lightbox')
+    document.querySelector('html').classList.add('open-lightbox')
     this.bindEscKeyPressEvent()
     this.bindBackgroundClickEvent()
   }
@@ -114,10 +114,10 @@ class Lightbox {
       return 'lightbox--' + name
     }))
     this.box.classList.add('lightbox--' + availableStyles[style])
-    document.querySelector('body').classList.remove(...availableStyles.map(name => {
+    document.querySelector('html').classList.remove(...availableStyles.map(name => {
       return 'lightbox-style-' + name
     }))
-    document.querySelector('body').classList.add('lightbox-style-' + availableStyles[style])
+    document.querySelector('html').classList.add('lightbox-style-' + availableStyles[style])
   }
 
 }
