@@ -60,8 +60,7 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',
-            'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField(),
-            'default' => '',
+            'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField()
         ],
     ],
     'tx_xmdkfznetsite_contacts' => [

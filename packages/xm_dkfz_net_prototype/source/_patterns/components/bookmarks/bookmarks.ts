@@ -19,6 +19,7 @@ import './bookmarks.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
+import {LightboxStyle} from "../lightbox/lightbox";
 
 /**
  *     @section 2. Class
@@ -26,29 +27,48 @@ import app from '../basic/basic'
 
 
 class Bookmarks {
-  constructor () {
+  constructor() {
     app.log('component "bookmarks" loaded')
     this.init()
   }
 
-  init () {
-    this.toggleBookmark()
-    this.toggleButtonAdd()
-    // this.getBookmarkButtons()
-    this.showMore()
-    // this.removeBookmarkByRemoveButton()
+  protected init() {
+    this.bindEvents()
+  }
+
+  protected bindEvents() {
+    const bookmarkButton = document.querySelector<HTMLButtonElement>('.navigation__item--bookmark')
+
+    if (!bookmarkButton) {
+      return
+    }
+
+    bookmarkButton.addEventListener('click', this.onBookmarkButtonClick.bind(this))
+  }
+
+  protected onBookmarkButtonClick(e: Event) {
+    e.preventDefault()
+
+
+    app.lightbox.open(LightboxStyle.sidebar)
   }
 
 
-  toggleBookmark () {
+
+
+  toggleBookmark() {
 
     const bookmarkButton = document.querySelector<HTMLButtonElement>('.navigation__item--bookmark')
     const bookmarkButtonIcon = document.querySelector<HTMLElement>('.icon--bookmark')
     const bookmarkSidebar = document.querySelector('.bookmarks__sidebar')
     const closeBookmarks = document.querySelector<HTMLButtonElement>('#bookmarksClose')
 
+    if (!bookmarkButton) {
+      return
+    }
 
-    bookmarkButton.addEventListener('click', ()=> {
+
+    bookmarkButton.addEventListener('click', () => {
       bookmarkSidebar.classList.remove('d-none')
       bookmarkSidebar.classList.add('bookmarks__sidebar--expanded')
       bookmarkButton.classList.add('background--blur')
@@ -84,7 +104,7 @@ class Bookmarks {
     })
   }
 
-  toggleButtonAdd () {
+  toggleButtonAdd() {
     const addBookmarkButtons = document.querySelectorAll('.button--bookmark-add')
 
     addBookmarkButtons.forEach(button => {
@@ -92,7 +112,7 @@ class Bookmarks {
         const buttonInner = e.target
 
         // @ts-ignore
-        if(buttonInner.classList.contains('icon--bookmark-add')) {
+        if (buttonInner.classList.contains('icon--bookmark-add')) {
           // @ts-ignore
           buttonInner.classList.remove('icon--bookmark-add')
           // @ts-ignore
@@ -176,7 +196,7 @@ class Bookmarks {
       let loadMoreButton = list.querySelector<HTMLButtonElement>('.button--more')
 
       // state of button first
-      if(currentItem >= itemsPage.length) {
+      if (currentItem >= itemsPage.length) {
         // @ts-ignore
         loadMoreButton.style.display = 'none'
       }
@@ -189,7 +209,7 @@ class Bookmarks {
         }
         currentItem += 3;
 
-        if(currentItem >= itemsPage.length) {
+        if (currentItem >= itemsPage.length) {
           // @ts-ignore
 
           loadMoreButton.classList.add('hide')

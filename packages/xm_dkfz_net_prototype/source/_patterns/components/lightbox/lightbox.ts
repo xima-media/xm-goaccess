@@ -108,6 +108,10 @@ class Lightbox {
     this.content.innerHTML = content
   }
 
+  public appendElement(element: HTMLElement) {
+    this.content.append(element)
+  }
+
   public setStyle(style: LightboxStyle): void {
     const availableStyles = ['default', 'sidebar', 'warning']
     this.box.classList.remove(...availableStyles.map(name => {

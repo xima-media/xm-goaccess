@@ -35,6 +35,10 @@ body {
     &--expanded {
         --content-width: #{$container-default-widths};
         --default-overflow-margin-negative: 0;
+
+        .button[data-bookmark-url] {
+            display: none;
+        }
     }
 
     &--with-sidebar {

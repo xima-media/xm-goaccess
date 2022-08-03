@@ -1,0 +1,51 @@
+<h2>Merkliste</h2>
+
+<f:if condition="{bookmarks.fe_users}">
+	<h3>Mitarbeiter</h3>
+	<ul class="bookmarks__sidebar-list">
+		<f:for each="{bookmarks.fe_users}" as="user">
+			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
+				<div class="contact--wrapper color-accent--blue-900">
+					<div class="contact-image">
+						<div class="contact-image--container">
+							<div class="card card--image-top card--md card--image-size-xxs">
+								<div class="card__image">
+									<figure class="picture picture--with-image picture--width-color"
+											data-color="primary" data-pattern-color="transparent">
+										<div class="picture__item image-color--primary">
+											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/examples/user.jpg')}"
+												 class="picture__image image--responsive"
+												 alt=""/>
+										</div>
+									</figure>
+								</div>
+							</div>
+
+							<div class="contact--information">
+								<div class="contact--information-data">
+									<h6>
+										<f:link.action action="show"
+													   pluginName="Usershow"
+													   extensionName="BwGuild"
+													   controller="User"
+													   pageUid="{pidUserDetail}"
+													   arguments="{user: user.uid}">{user.displayName}
+										</f:link.action>
+									</h6>
+									<p>
+										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
+										<span>M230 – Beschaffung und Materialwirtschaft</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</button>
+				</div>
+			</li>
+		</f:for>
+	</ul>
+</f:if>
