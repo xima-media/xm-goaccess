@@ -10,11 +10,11 @@
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.2cols.left',
-                    'colPos' => 100
+                    'colPos' => 100,
                 ],
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.2cols.right',
-                    'colPos' => 200
+                    'colPos' => 200,
                 ],
             ],
         ]

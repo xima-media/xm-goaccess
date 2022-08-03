@@ -251,7 +251,7 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) has parameter \\$itemToPrepend with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) has parameter \\$items with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
 
