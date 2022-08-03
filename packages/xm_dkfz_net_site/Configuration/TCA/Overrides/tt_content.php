@@ -29,7 +29,6 @@ $tempFields = [
             'type' => 'select',
             'renderType' => 'selectSingle',
             'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField(
-                true,
                 [
                     ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.color.0', ''],
                     ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.color.transparent', 'transparent']
