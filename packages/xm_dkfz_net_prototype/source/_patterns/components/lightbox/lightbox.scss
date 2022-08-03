@@ -10,19 +10,17 @@ html.open-lightbox {
         display: grid;
         animation: opacityIn 0.4s ease;
 
-        .lightbox__content {
+        &--default .lightbox__content {
             animation: moveIn 0.4s ease;
             animation-fill-mode: forwards;
         }
 
-        &--sidebar {
-
-            .lightbox__content {
-                animation: slideIn 0.4s ease;
-                animation-fill-mode: forwards;
-            }
+        &--sidebar .lightbox__content {
+            animation: slideIn 0.4s ease;
+            animation-fill-mode: forwards;
         }
     }
+
 }
 
 @keyframes opacityIn {
@@ -91,10 +89,12 @@ html.open-lightbox {
         justify-content: flex-end;
         overflow-x: hidden;
         overflow-y: hidden;
+        width: calc(100vw + 500px);
+        left: -500px;
 
         &.lightbox--closing {
             transform: translate3d(500px, 0, 0);
-            transition: transform .2s ease;
+            transition: opacity 0.2s ease 0.2s, transform .2s ease-in-out;
         }
 
         .lightbox__content {
