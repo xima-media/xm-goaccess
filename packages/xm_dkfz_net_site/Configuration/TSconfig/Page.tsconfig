@@ -84,6 +84,11 @@ TCEFORM {
     imageorient.removeItems = 1, 2, 8, 9, 10, 25
     image_zoom.disabled = 1
     rowDescription.disabled = 1
+
+    filelink_size.disabled = 1
+    uploads_description.disabled = 1
+    uploads_type.disabled = 1
+    target.disabled = 1
   }
 
   pages {
@@ -138,7 +143,6 @@ TCEFORM {
 
   sys_file_reference {
     link.disabled = 1
-    title.disabled = 1
     showinpreview.disabled = 1
   }
 
