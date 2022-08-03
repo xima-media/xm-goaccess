@@ -127,10 +127,10 @@
         }
 
         &__link {
+            @include size(44px);
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 44px;
             border: none;
             background: transparent;
 
