@@ -20,7 +20,7 @@
         justify-content: space-between;
         align-items: center;
         max-width: $container-default-widths;
-        margin: 0 auto 1.875rem; // .75rem;
+        margin: 0 auto 2.5rem; // .75rem;
         padding-bottom: .375rem;
     }
 
@@ -264,7 +264,7 @@
 .frame {
     width: 100%;
     background-color: var(--color-white);
-    box-shadow: 0 0 0 var(--space-xxl) var(--color-white);
+    box-shadow: 0 var(--space-xl) 0 var(--space-xxl) var(--color-white);
 
     .background--image + & {
         box-shadow: 0 var(--space-xxl) 0 var(--space-xxl) var(--color-white);

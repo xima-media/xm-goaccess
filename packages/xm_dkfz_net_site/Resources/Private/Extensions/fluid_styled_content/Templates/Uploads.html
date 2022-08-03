@@ -4,7 +4,7 @@
 
     <f:if condition="{files}">
 		<f:for each="{files}" as="file" iteration="fileIterator">
-			<div class="tab-item__wrapper tab-item__wrapper--background-white row">
+			<div class="tab-item__wrapper tab-item__wrapper--background-gray-100 row">
 				<div class="col-md-8 tab-item__title">
 					<f:render partial="Icon" arguments="{icon: 'file'}" /> <h6>{f:if(condition: file.properties.title, then: file.properties.title, else: file.name) -> f:format.htmlspecialchars()}</h6>
 				</div>
