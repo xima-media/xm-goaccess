@@ -73,6 +73,10 @@
 															<f:render partial="Icon" arguments="{icon: 'printer'}"/>
 															{contact.number}
 														</f:if>
+														<f:if condition="{contact.recordType} == 2">
+															<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+															<f:link.email email="{contact.number}">{contact.number}</f:link.email>
+														</f:if>
 													</li>
 												</f:for>
 												<f:if condition="{place.mail}">
