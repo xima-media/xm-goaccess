@@ -94,6 +94,16 @@ TCEFORM {
     uploads_description.disabled = 1
     uploads_type.disabled = 1
     target.disabled = 1
+
+    sectionIndex {
+      types {
+        quote {
+          config {
+            default = 0
+          }
+        }
+      }
+    }
   }
 
   pages {
