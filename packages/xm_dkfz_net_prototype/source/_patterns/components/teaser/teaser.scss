@@ -1,0 +1,54 @@
+.frame-type-teaser {
+    .picture {
+        &--no-image {
+            .picture__item {
+                aspect-ratio: 3 / 2;
+            }
+        }
+
+        &__item {
+            display: grid;
+
+            &::before,
+            &::after {
+                z-index: 0;
+            }
+    
+            picture {
+                z-index: 1;
+            }
+        }
+    }
+
+    .card {
+        gap: 3.75rem;
+        justify-content: flex-end;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
+
+        &:nth-child(2n-1) {
+            justify-content: flex-start;
+
+            .card__image {
+                order: unset;
+            }
+        }
+
+
+        &__image {
+            order: 1;
+            flex: 0 0 28.626rem;
+            width: 28.625rem;
+        }
+
+        &__content {
+            max-width: 33.75rem;
+        }
+    }
+
+    .list {
+        margin-top: 1.5rem;
+    }
+}

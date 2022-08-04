@@ -7,18 +7,7 @@
         <h5>{data.header}</h5>
         <ul>
             <f:for each="{links}" as="link">
-                <li class="list__link-item">
-                    <f:if condition="{link.data.title}">
-                        <f:then>
-                            <f:spaceless>
-                                <f:link.typolink parameter="{link.data.link}" class="link--primary" parts-as="parts" target="_blank">{link.data.title}</f:link.typolink>
-                            </f:spaceless>
-                        </f:then>
-                        <f:else>
-                            <f:link.typolink parameter="{link.data.link}" class="link--primary" parts-as="parts" target="_blank" />
-                        </f:else>
-                    </f:if>
-                </li>
+                <f:render partial="Linklist" arguments="{link: link}" />
             </f:for>
         </ul>
     </div>

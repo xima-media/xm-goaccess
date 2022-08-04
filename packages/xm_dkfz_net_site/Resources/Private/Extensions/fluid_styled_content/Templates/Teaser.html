@@ -2,7 +2,7 @@
 
 <f:section name="Main">
 	<f:for each="{children}" as="teaser" iteration="i">
-		<div class="card card--image-{f:if(condition: i.isOdd, then: 'left', else: 'right')} card--xl card--image-size-md color--{teaser.data.color}">
+		<div class="card card--xl card--image-size-md color-accent--{teaser.data.color}">
 			<div class="card__image">
 
 				<f:if condition="{teaser.files}">
@@ -26,9 +26,9 @@
 
 				<f:if condition="!{teaser.files}">
 					<figure class="picture picture--no-image picture--with-color picture--orientation-md-"
-							data-color="yellow"
+							data-color="{teaser.data.color}"
 							data-pattern-color="transparent">
-						<div class="picture__item background--yellow">
+						<div class="picture__item background--{teaser.data.color}">
 							<span class="picture__pattern pattern color-accent--gray-900"></span>
 						</div>
 					</figure>
@@ -47,14 +47,20 @@
 						<p>{teaser.data.text}</p>
 					</div>
 
-					<f:for each="{teaser.links}" as="link">
-						<f:link.typolink class="card__link card__link--more" parameter="{link.data.link}"/>
-						<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
-							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-						</svg>
-						<br/>
-					</f:for>
 
+					<f:link.typolink class="card__link card__link--more" parameter="{teaser.data.link}">Mehr erfahren</f:link.typolink>
+					<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
+						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+					</svg>
+					<f:if condition="{teaser.links -> f:count()} > 1">
+						<div class="list">
+							<ul>
+								<f:for each="{teaser.links}" as="link" iteration="i">
+									<f:render partial="Linklist" arguments="{link: link}" />
+								</f:for>
+							</ul>
+						</div>
+					</f:if>
 				</div>
 
 			</div>
