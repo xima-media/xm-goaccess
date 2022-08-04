@@ -1,5 +1,5 @@
 /**
- *    Tag
+ *    List
  *
  *    @tableofcontent
  *      1. Dependencies
@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './tag.scss'
+import './list.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
@@ -26,7 +26,7 @@ import app from '../basic/basic'
 
 class Tag {
     constructor () {
-        app.log('component "tag" loaded')
+        app.log('component "list" loaded')
     }
 }
 
@@ -36,4 +36,4 @@ class Tag {
 
 export default (new Tag())
 
-// end of tag.js
+// end of list.js

@@ -208,6 +208,9 @@ import './_patterns/components/jobs/jobs'
 /** @section 2.48 Login */
 import './_patterns/components/login/login'
 
+/** @section 2.49 List */
+import './_patterns/components/list/list'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

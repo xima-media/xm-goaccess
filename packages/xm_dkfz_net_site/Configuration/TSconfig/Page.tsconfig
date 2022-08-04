@@ -167,6 +167,16 @@ TCEFORM {
 mod.wizards.newContentElement.wizardItems {
   common {
     elements {
+
+      tt_content_linklist {
+        iconIdentifier = content-listgroup
+        title = Linkliste
+        description = Das ist eine Linkliste
+        tt_content_defValues {
+          CType = linklist
+        }
+      }
+
       tt_content_video {
         iconIdentifier = content-video
         title = Video
@@ -195,7 +205,7 @@ mod.wizards.newContentElement.wizardItems {
       }
     }
 
-    show := addToList(tt_content_video,tt_content_infobox)
+    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox)
   }
 }
 

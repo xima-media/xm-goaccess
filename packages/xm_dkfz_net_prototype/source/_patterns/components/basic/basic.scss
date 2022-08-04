@@ -338,13 +338,6 @@ a {
         text-decoration: underline;
         cursor: pointer;
     }
-
-    // rotate Icon if Link extern
-     &[href^="http"]{
-        .icon--arrow-right {
-            transform: rotate(-45deg);
-        }
-    }
 }
 
 .link {

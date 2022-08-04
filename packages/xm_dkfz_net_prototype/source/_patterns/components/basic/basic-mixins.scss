@@ -283,6 +283,24 @@
         color: var(--color-gray-900);
         text-decoration: underline;
     }
+
+    &::before {
+        @include size(.8rem);
+        content: "";
+        flex-shrink: 0;
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin-right: 0.625rem;
+        vertical-align: baseline;
+        @include svg-icon-arrow-right($color-black);
+    }
+
+    // rotate Icon if Link extern
+    &[href^="http"]{
+        &::before {
+            transform: rotate(-45deg);
+        }
+    }
 }
 
 @mixin link-secondary {
@@ -321,6 +339,7 @@
     &:hover,
     &:focus {
         color: inherit;
+        text-decoration: none;
 
         &::after {
             opacity: 1;
