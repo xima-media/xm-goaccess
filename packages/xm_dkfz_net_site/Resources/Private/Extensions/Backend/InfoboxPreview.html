@@ -8,9 +8,16 @@
 			<ul>
 				<f:for each="{links}" as="link">
 					<li>
-						<f:link.typolink parameter="{link.link}">{f:if(condition: link.title, then: link.title,
-							else: link.link)}
-						</f:link.typolink>
+						<f:if condition="{link.title}">
+							<f:then>
+								<f:spaceless>
+									<f:link.typolink parameter="{link.link}" target="_blank">{link.title}</f:link.typolink>
+								</f:spaceless>
+							</f:then>
+							<f:else>
+								<f:link.typolink parameter="{link.link}" target="_blank" />
+							</f:else>
+                    	</f:if>
 					</li>
 				</f:for>
 			</ul>
