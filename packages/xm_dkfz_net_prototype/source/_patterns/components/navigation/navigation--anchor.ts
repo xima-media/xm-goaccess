@@ -113,6 +113,7 @@ class NavigationAnchor {
             let nav = document.querySelector('.navigation--anchor');
             let navItems = nav.querySelector('.navigation__items');
             let navItem = navItems.querySelectorAll('.navigation__link');
+            let sections = document.querySelectorAll('.content-wrapper')
 
             navItem.forEach(el => {
                 el.addEventListener('click', function(){
@@ -129,6 +130,39 @@ class NavigationAnchor {
                 })
             })
 
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    // @ts-ignore
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const contentHeight = 900;
+
+                    // different multiplier to reach the last element
+                    if (sectionHeight < contentHeight) {
+                        if(window.scrollY >= (sectionTop - sectionHeight * 1.7)){
+                            current = '#' + section.getAttribute('id');
+                        }
+                    }
+
+                    if (sectionHeight > contentHeight) {
+                        if(window.scrollY >= (sectionTop - sectionHeight)){
+                            current = '#' + section.getAttribute('id');
+                        }
+                    }
+                })
+
+                navItem.forEach(li => {
+                    li.classList.remove('active')
+
+                    let liHref = li.getAttribute('href')
+
+                    if(liHref === current) {
+                        li.classList.add('active')
+                    }
+                })
+            })
 
             // buttons
             self._buttonEl.forEach((button) => button.addEventListener('click', () => self.scrollToTimelineItem({buttonEl: button})))

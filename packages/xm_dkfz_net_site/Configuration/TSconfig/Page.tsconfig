@@ -26,7 +26,10 @@ TCEFORM {
       altLabels.4 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.4
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
 
-      types.infobox.disabled = 1
+      types {
+          infobox.disabled = 1
+          quote.removeItems = 0,1,2,3,4,5
+        }
     }
 
     header_link.disabled = 1
@@ -45,6 +48,8 @@ TCEFORM {
 
       types.infobox.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,cyan,yellow,orange
       types.infobox.addItems.box = Box
+
+      types.quote.removeItems = default, ruler-before,ruler-after,indent,indent-left,indent-right,cyan,yellow,orange
     }
 
     layout {
@@ -89,6 +94,16 @@ TCEFORM {
     uploads_description.disabled = 1
     uploads_type.disabled = 1
     target.disabled = 1
+
+    sectionIndex {
+      types {
+        quote {
+          config {
+            default = 0
+          }
+        }
+      }
+    }
   }
 
   pages {
@@ -203,9 +218,18 @@ mod.wizards.newContentElement.wizardItems {
            CType = image
         }
       }
+
+      tt_content_quote {
+              iconIdentifier = content-quote
+              title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:quote
+              description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.quote.description
+              tt_content_defValues {
+                CType = quote
+              }
+            }
     }
 
-    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox)
+    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote)
   }
 }
 

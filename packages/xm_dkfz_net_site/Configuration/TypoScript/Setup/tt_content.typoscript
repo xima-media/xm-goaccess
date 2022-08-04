@@ -40,6 +40,11 @@ tt_content {
     }
   }
 
+  quote =< lib.contentElement
+    quote {
+      templateName = Quote
+    }
+
   teaser =< lib.contentElement
   teaser {
     templateName = Teaser
