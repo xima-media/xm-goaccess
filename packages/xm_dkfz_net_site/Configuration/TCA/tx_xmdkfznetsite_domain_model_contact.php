@@ -18,6 +18,14 @@ return [
         0 => [
             'showitem' => 'record_type,number,fe_group,room,function,primary_number',
         ],
+        2 => [
+            'showitem' => 'record_type,number,fe_group,room,function,primary_number',
+            'columnsOverrides' => [
+                'number' => [
+                    'label' => 'E-Mail',
+                ],
+            ],
+        ],
     ],
     'columns' => [
         'record_type' => [
@@ -33,6 +41,10 @@ return [
                     [
                         'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.record_type.1',
                         1,
+                    ],
+                    [
+                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.record_type.2',
+                        2,
                     ],
                 ],
             ],
