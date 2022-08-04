@@ -73,6 +73,10 @@
 															<f:render partial="Icon" arguments="{icon: 'printer'}"/>
 															{contact.number}
 														</f:if>
+														<f:if condition="{contact.recordType} == 2">
+															<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+															<f:link.email email="{contact.number}">{contact.number}</f:link.email>
+														</f:if>
 													</li>
 												</f:for>
 												<f:if condition="{place.mail}">
@@ -139,8 +143,8 @@
 					<div class="hero-teaser__text">
 						<h2 class="h6 text-copy-small">
 							<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.lastEdit"/>
-							: {f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'d. F
-							o\')}', else:'{data.SYS_LASTCHANGED->f:format.date(format:\'d. F o\')}')}
+							: {f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'%d. %B
+							%Y\')}', else:'{data.SYS_LASTCHANGED->f:format.date(format:\'%d. %B %Y\')}')}
 						</h2>
 						<f:if condition="{data.description}">
 							<p class="text-intro">{data.description}</p>

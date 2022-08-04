@@ -386,6 +386,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:initializeArguments\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php

@@ -2,8 +2,10 @@ html.open-lightbox {
     overflow: hidden;
     padding-right: var(--scrollbar-width);
 
-    .header__meta {
-        padding-right: calc(var(--scrollbar-width) + 1rem);
+    @include media-breakpoint-up(md) {
+        .header__meta {
+            transform: translate3d(-8px, 0, 0);
+        }
     }
 
     .lightbox {

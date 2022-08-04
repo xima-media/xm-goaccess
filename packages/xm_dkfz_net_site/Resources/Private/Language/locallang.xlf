@@ -265,6 +265,9 @@
 			<trans-unit id="contact.record_type.1">
 				<source>Fax</source>
 			</trans-unit>
+			<trans-unit id="contact.record_type.2">
+				<source>E-Mail</source>
+			</trans-unit>
 			<trans-unit id="contact.room">
 				<source>Room</source>
 			</trans-unit>
