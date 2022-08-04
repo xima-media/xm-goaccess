@@ -82,7 +82,6 @@ return [
                         'backend',
                         'frontend',
                     ],
-                    'test' => 'fef',
                 ],
             ],
         ],
