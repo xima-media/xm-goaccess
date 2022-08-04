@@ -28,4 +28,16 @@ class Job
     public ?string $weOffer;
 
     public ?JobOpening $jobOpening;
+
+    public function isNew(): bool
+    {
+        if (!$this->startDate) {
+            return false;
+        }
+
+        $pastDate = new \DateTime();
+        $pastDate->modify('-1 week');
+
+        return $pastDate < $this->startDate;
+    }
 }

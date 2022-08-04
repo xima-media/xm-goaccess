@@ -1,7 +1,7 @@
 <?xml version="1.2" encoding="UTF-8" ?>
 <xliff version="1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z"
-	product-name="xm_dkfz_net_site">
+		  product-name="xm_dkfz_net_site">
 		<header>
 			<generator>XLIFF Editor</generator>
 			<authorName>Maik Schneider</authorName>
@@ -43,6 +43,9 @@
 			</trans-unit>
 			<trans-unit id="tt_content.color.0">
 				<target>Von Seite übernehmen</target>
+			</trans-unit>
+			<trans-unit id="tt_content.color.transparent">
+				<target>Keine Farbe anzeigen</target>
 			</trans-unit>
 			<trans-unit id="tt_content.frame_class.orange">
 				<target>Orange Hintergrund</target>
@@ -106,6 +109,30 @@
 			</trans-unit>
 			<trans-unit id="container.accordion.group.description">
 				<target>Eine Überschrift, die die Akkordion-Elemente zu einer neuen Gruppe abgrenzt</target>
+			</trans-unit>
+			<trans-unit id="container.tabs">
+				<target>Tabelement</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.description">
+				<target>Gruppierung von Inhalten in 2-3 Registern (Tabs)</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title1">
+				<target>Titel Tab 1</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title2">
+				<target>Titel Tab 2</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.title3">
+				<target>Titel Tab 3</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab1">
+				<target>Inhalt Tab 1</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab2">
+				<target>Inhalt Tab 2</target>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab3">
+				<target>Inhalt Tab 3 (optional)</target>
 			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
 				<target>Zeigt Video von YouTube oder Vimeo an</target>
@@ -194,6 +221,27 @@
 			<trans-unit id="save">
 				<target>Speichern</target>
 			</trans-unit>
+			<trans-unit id="user.gender">
+				<target>Anrede</target>
+			</trans-unit>
+			<trans-unit id="user.gender.0">
+				<target></target>
+			</trans-unit>
+			<trans-unit id="user.gender.1">
+				<target>Herr</target>
+			</trans-unit>
+			<trans-unit id="user.gender.2">
+				<target>Frau</target>
+			</trans-unit>
+			<trans-unit id="label.download">
+				<target>Herunterladen</target>
+			</trans-unit>
+			<trans-unit id="label.addBookmark">
+				<target>Zur Merkliste hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="new">
+				<target>Neu</target>
+			</trans-unit>
 			<trans-unit id="image.slider.title">
                 <target>Bilder-Slider</target>
             </trans-unit>
@@ -203,6 +251,54 @@
             <trans-unit id="image.slider.notification">
                  <target>Bitte 2 bis 15 Bilder hinzufügen</target>
             </trans-unit>
+			<trans-unit id="contact">
+				<target>Kontakt</target>
+			</trans-unit>
+			<trans-unit id="contact.record_type">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="contact.record_type.0">
+				<target>Telefonnummer</target>
+			</trans-unit>
+			<trans-unit id="contact.record_type.1">
+				<target>Faxnummer</target>
+			</trans-unit>
+			<trans-unit id="contact.room">
+				<target>Raum</target>
+			</trans-unit>
+			<trans-unit id="contact.number">
+				<target>Nummer</target>
+			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<target>Benutzergruppe</target>
+			</trans-unit>
+			<trans-unit id="contact.function">
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<target>Abteilung</target>
+			</trans-unit>
+			<trans-unit id="contact.primary_number">
+				<target>Ist Primärnummer</target>
+			</trans-unit>
+			<trans-unit id="place">
+				<target>Kontaktstelle</target>
+			</trans-unit>
+			<trans-unit id="place.name">
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="place.function">
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="place.room">
+				<target>Raum</target>
+			</trans-unit>
+			<trans-unit id="place.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
+			<trans-unit id="place.fe_group">
+				<target>Abteilung</target>
+			</trans-unit>
 			<trans-unit id="quote">
 				<target>Zitat</target>
 			</trans-unit>

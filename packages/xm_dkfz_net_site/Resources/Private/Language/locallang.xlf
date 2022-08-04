@@ -52,6 +52,9 @@
 			<trans-unit id="tt_content.color.0">
 				<source>Take over from page</source>
 			</trans-unit>
+			<trans-unit id="tt_content.color.transparent">
+				<source>Do not use a color</source>
+			</trans-unit>
 			<trans-unit id="pages.color" space="preserve">
 				<source>Color</source>
 			</trans-unit>
@@ -105,6 +108,30 @@
 			</trans-unit>
 			<trans-unit id="container.accordion.group.description">
 				<source>A headline that separates the accordion elements into a new section</source>
+			</trans-unit>
+			<trans-unit id="container.tabs">
+				<source>Tab element</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.description">
+				<source>Grouping of content in 2 or 3 tabs</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.title1">
+				<source>Title tab 1</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.title2">
+				<source>Title tab 2</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.title3">
+				<source>Title tab 3</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab1">
+				<source>Content tab 1</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab2">
+				<source>Content tab 2</source>
+			</trans-unit>
+			<trans-unit id="container.tabs.tab3">
+				<source>Content tab 3 (optional)</source>
 			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
 				<source>Display videos from YouTube or Vimeo</source>
@@ -229,35 +256,38 @@
 			<trans-unit id="save">
 				<source>Save</source>
 			</trans-unit>
-			<trans-unit id="user_contact">
+			<trans-unit id="contact">
 				<source>Contact</source>
 			</trans-unit>
-			<trans-unit id="user_contact">
-				<source>Contact</source>
-			</trans-unit>
-			<trans-unit id="user_contact.record_type">
+			<trans-unit id="contact.record_type">
 				<source>Type</source>
 			</trans-unit>
-			<trans-unit id="user_contact.record_type.0">
+			<trans-unit id="contact.record_type.0">
 				<source>Phone</source>
 			</trans-unit>
-			<trans-unit id="user_contact.record_type.1">
+			<trans-unit id="contact.record_type.1">
 				<source>Fax</source>
 			</trans-unit>
-			<trans-unit id="user_contact.room">
+			<trans-unit id="contact.record_type.2">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="contact.room">
 				<source>Room</source>
 			</trans-unit>
-			<trans-unit id="user_contact.phone_number">
+			<trans-unit id="contact.number">
 				<source>Phone</source>
 			</trans-unit>
-			<trans-unit id="user_contact.fe_user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="user_contact.fe_group">
+			<trans-unit id="contact.fe_group">
 				<source>User group</source>
 			</trans-unit>
-			<trans-unit id="user_contact.position">
-				<source>Position</source>
+			<trans-unit id="contact.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="contact.fe_group">
+				<source>Frontend Group</source>
+			</trans-unit>
+			<trans-unit id="contact.primary_number">
+				<source>Is primary number</source>
 			</trans-unit>
 			<trans-unit id="user.location">
 				<source>Location</source>
@@ -280,6 +310,27 @@
 			<trans-unit id="user.contacts">
 				<source>Contacts</source>
 			</trans-unit>
+			<trans-unit id="user.gender">
+				<source>Salution</source>
+			</trans-unit>
+			<trans-unit id="user.gender.0">
+				<source> </source>
+			</trans-unit>
+			<trans-unit id="user.gender.1">
+				<source>Mr</source>
+			</trans-unit>
+			<trans-unit id="user.gender.2">
+				<source>Mrs</source>
+			</trans-unit>
+			<trans-unit id="label.download">
+				<source>Download</source>
+			</trans-unit>
+			<trans-unit id="label.addBookmark">
+				<source>Add to bookmarks</source>
+			</trans-unit>
+			<trans-unit id="new">
+				<source>New</source>
+			</trans-unit>
 			<trans-unit id="image.slider.title">
             	<source>Image Slider</source>
             </trans-unit>
@@ -289,6 +340,27 @@
             <trans-unit id="image.slider.notification">
                 <source>Please add 2 to 15 images</source>
             </trans-unit>
+			<trans-unit id="place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="place.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="place.function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="place.mail">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="place.room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="place.contacts">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="place.fe_group">
+				<source>Frontend Group</source>
+			</trans-unit>
 			<trans-unit id="quote">
 				<source>Quote</source>
 			</trans-unit>

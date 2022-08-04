@@ -6,10 +6,12 @@
     {% endif %}
 
     {% for item in items %}
-        <a class="link--primary {{ item.angle ? 'link--primary-angle' : '' }}" href="{{ item.link }}">
-            {% include '@components/icon/icon.twig' with {icon: item.icon} %}
-            {{ item.text }}
-        </a>
+        <li>
+            <a class="link--primary" href="{{ item.link }}">
+                {% include '@components/icon/icon.twig' with {icon: item.icon} %}
+                {{ item.text }}
+            </a>
+        </li>
 
         {% if item.tags %}
         <ul class="list__tags">

@@ -26,7 +26,10 @@
 				<target>Alle offenen Stellen</target>
 			</trans-unit>
 			<trans-unit id="latestJobs.more">
-				<target>Mehr erfahren</target>
+				<target>Weitere</target>
+			</trans-unit>
+			<trans-unit id="jobs">
+				<target>Stellenangebote</target>
 			</trans-unit>
 		</body>
 	</file>

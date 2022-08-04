@@ -28,6 +28,9 @@
 			<trans-unit id="latestJobs.more">
 				<source>More</source>
 			</trans-unit>
+			<trans-unit id="jobs">
+				<source>Jobs</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

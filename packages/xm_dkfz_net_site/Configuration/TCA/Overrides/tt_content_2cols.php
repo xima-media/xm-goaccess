@@ -11,12 +11,10 @@
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.2cols.left',
                     'colPos' => 100,
-                    'allowed' => ['CType' => '*'],
                 ],
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.2cols.right',
                     'colPos' => 200,
-                    'allowed' => ['CType' => '*'],
                 ],
             ],
         ]

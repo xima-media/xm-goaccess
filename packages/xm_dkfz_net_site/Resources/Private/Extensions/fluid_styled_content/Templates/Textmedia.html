@@ -3,19 +3,14 @@
 	<f:section name="Main">
 		<div class="content-wrapper__content-image">
 			<f:for each="{files}" as="file">
-				<span aria-hidden="true" class="picture__pattern pattern"></span>
-				<figure>
-					<picture>
-						<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'webp')}"
-								type="image/webp">
-						<source srcset="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
-								type="image/jpeg">
-						<img src="{f:uri.image(image:file, width:'970', fileExtension: 'jpg')}"
-							 alt="{file.originalResource.alternative}"
-							 class="picture__image image--responsive"
-							 loading="lazy"/>
-					</picture>
-				</figure>
+				<f:if condition="{file.properties.mime_type} === 'video/youtube' OR {file.properties.mime_type} === 'video/vimeo'">
+					<f:then>
+						<f:render partial="Video" arguments="{video: file}" />
+					</f:then>
+					<f:else>
+						<f:render partial="Image" arguments="{image: file}" />
+					</f:else>
+				</f:if>
 			</f:for>
 		</div>
 

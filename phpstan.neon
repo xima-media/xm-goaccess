@@ -1,5 +1,6 @@
 includes:
-    - phpstan-baseline.neon
+   - vendor/saschaegerer/phpstan-typo3/extension.neon
+   - phpstan-baseline.neon
 
 parameters:
     parallel:
@@ -14,5 +15,6 @@ parameters:
         - packages/xm_dkfz_net_jobs
         - packages/xm_dkfz_net_site
         - packages/xm_dkfz_net_events
+        - packages/xm_goaccess
 
     excludePaths:

@@ -17,14 +17,8 @@ class TcaUtility
         'green-light',
     ];
 
-    public static function getItemsForColorField(bool $prependItem = true, array $itemToPrepend = ['', '']): array
+    public static function getItemsForColorField(array $items = [['', '']]): array
     {
-        $items = [];
-
-        if ($prependItem) {
-            $items[] = $itemToPrepend;
-        }
-
         $ll = 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.color.';
 
         foreach (self::$colors as $color) {

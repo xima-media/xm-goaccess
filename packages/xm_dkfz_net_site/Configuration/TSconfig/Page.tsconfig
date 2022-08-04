@@ -86,9 +86,14 @@ TCEFORM {
 
     imageorient.disabled = 1
     imageorient.types.textmedia.disabled = 0
-    imageorient.removeItems = 1, 2, 8, 9, 10
+    imageorient.removeItems = 1, 2, 8, 9, 10, 25
     image_zoom.disabled = 1
     rowDescription.disabled = 1
+
+    filelink_size.disabled = 1
+    uploads_description.disabled = 1
+    uploads_type.disabled = 1
+    target.disabled = 1
   }
 
   pages {
@@ -143,7 +148,6 @@ TCEFORM {
 
   sys_file_reference {
     link.disabled = 1
-    title.disabled = 1
     showinpreview.disabled = 1
   }
 
@@ -168,6 +172,16 @@ TCEFORM {
 mod.wizards.newContentElement.wizardItems {
   common {
     elements {
+
+      tt_content_linklist {
+        iconIdentifier = content-listgroup
+        title = Linkliste
+        description = Das ist eine Linkliste
+        tt_content_defValues {
+          CType = linklist
+        }
+      }
+
       tt_content_video {
         iconIdentifier = content-video
         title = Video
@@ -205,11 +219,14 @@ mod.wizards.newContentElement.wizardItems {
             }
     }
 
-    show := addToList(tt_content_video,tt_content_infobox, tt_content_quote)
+    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote)
   }
 }
 
-[page["is_siteroot"] == 1]
+[traverse(page, "is_siteroot") == 1]
+  TCEFORM.pages.media.config.maxitems >
+[GLOBAL]
+[traverse(page, "uid") == 2]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
 

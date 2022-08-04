@@ -1,13 +1,18 @@
 <div class="layout__item">
 	<div class="employee-header">
 		<div class="employee-header__body">
-			<h1 class="employee-header__title h3">{user.name}</h1>
+			<h1 class="employee-header__title h3">{user.displayName}</h1>
+			<f:for each="{user.usergroup}" as="group">
+				<div class="employee-header__text">
+					<p>{group.title}</p>
+				</div>
+			</f:for>
 			<div class="employee-header__text">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa dicta dolor, dolorem ducimus
 					facere.</p>
 				<p>###GROUPS###</p>
 			</div>
-			<button type="button" class="button button--primary" data-bookmark-url="{f:uri.action(action: 'bookmark', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
+			<button type="button" class="button button--primary" data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
 				<span data-onload><f:render partial="Icon" arguments="{icon: 'person-add'}" />
 				Mitarbeiter merken
 				</span>

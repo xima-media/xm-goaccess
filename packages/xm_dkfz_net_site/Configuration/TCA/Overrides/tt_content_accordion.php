@@ -11,7 +11,6 @@
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 100,
-                    'allowed' => ['CType' => '*'],
                 ],
             ],
         ]

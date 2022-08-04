@@ -1,5 +1,11 @@
 import './lightbox.scss'
 
+export enum LightboxStyle {
+  default,
+  sidebar,
+  warning
+}
+
 class Lightbox {
 
   protected box: Element;
@@ -72,15 +78,16 @@ class Lightbox {
     this.removeAllListener()
 
     setTimeout(() => {
-      document.querySelector('body').classList.remove('open-lightbox')
+      document.querySelector('html').classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
       this.stopLoading()
       this.clear()
     }, 400);
   }
 
-  public open() {
-    document.querySelector('body').classList.add('open-lightbox')
+  public open(style: LightboxStyle = 0) {
+    this.setStyle(style)
+    document.querySelector('html').classList.add('open-lightbox')
     this.bindEscKeyPressEvent()
     this.bindBackgroundClickEvent()
   }
@@ -99,6 +106,22 @@ class Lightbox {
 
   public displayContent(content: string) {
     this.content.innerHTML = content
+  }
+
+  public appendElement(element: HTMLElement) {
+    this.content.append(element)
+  }
+
+  public setStyle(style: LightboxStyle): void {
+    const availableStyles = ['default', 'sidebar', 'warning']
+    this.box.classList.remove(...availableStyles.map(name => {
+      return 'lightbox--' + name
+    }))
+    this.box.classList.add('lightbox--' + availableStyles[style])
+    document.querySelector('html').classList.remove(...availableStyles.map(name => {
+      return 'lightbox-style-' + name
+    }))
+    document.querySelector('html').classList.add('lightbox-style-' + availableStyles[style])
   }
 
 }

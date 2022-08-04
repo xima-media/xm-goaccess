@@ -16,9 +16,16 @@
 				<ul class="infobox__items">
 					<f:for each="{links}" as="link">
 						<li class="infobox__item">
-							<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-							<f:link.typolink parameter="{link.data.link}" class="primary-link">{f:if(condition: link.data.title,
-								then: link.data.title)}</f:link.typolink>
+							<f:if condition="{link.data.title}">
+								<f:then>
+									<f:spaceless>
+										<f:link.typolink parameter="{link.data.link}" class="link--primary" target="_blank">{link.data.title}</f:link.typolink>
+									</f:spaceless>
+								</f:then>
+								<f:else>
+									<f:link.typolink parameter="{link.data.link}" class="link--primary" target="_blank" />
+								</f:else>
+							</f:if>
 						</li>
 					</f:for>
 				</ul>

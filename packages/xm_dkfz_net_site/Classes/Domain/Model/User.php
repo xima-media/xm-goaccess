@@ -113,7 +113,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage|null $contacts
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null $contacts
      */
     public function setContacts(?ObjectStorage $contacts): void
     {
@@ -177,7 +177,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage|null
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
      */
     public function getContacts(): ?ObjectStorage
     {
@@ -185,8 +185,16 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\UserContact>|null
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected ?ObjectStorage $contacts = null;
+
+    public function getDisplayName(): string
+    {
+        if ($this->lastName && $this->firstName) {
+            return $this->lastName . ', ' . $this->firstName;
+        }
+        return $this->username;
+    }
 }

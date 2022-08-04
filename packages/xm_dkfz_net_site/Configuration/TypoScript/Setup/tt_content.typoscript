@@ -24,6 +24,22 @@ tt_content {
     }
   }
 
+  linklist =< lib.contentElement
+  linklist {
+    templateName = Linklist
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      10 {
+        table = tt_content_item
+        pidInList.field = pid
+        where = foreign_uid=###uid### AND deleted=0 AND hidden=0
+        orderBy = sorting
+        markers.uid.field = uid
+        as = links
+      }
+    }
+  }
+
   quote =< lib.contentElement
     quote {
       templateName = Quote
@@ -67,6 +83,18 @@ tt_content {
   container-accordion < lib.contentElement
   container-accordion {
     templateName = Accordion
+    templateRootPaths {
+      10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates
+    }
+
+    dataProcessing {
+      100 = B13\Container\DataProcessing\ContainerProcessor
+    }
+  }
+
+  container-tabs < lib.contentElement
+  container-tabs {
+    templateName = Tabs
     templateRootPaths {
       10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates
     }

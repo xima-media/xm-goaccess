@@ -18,21 +18,17 @@
 
     @include media-breakpoint-up(xxl) {
         padding-bottom: 1rem;
-        max-width: $container-default-widths - 6rem;
-        margin: auto;
     }
 
-    + .hero-form {
-        //margin-top: -3rem;
+    &--with-image {
+        margin: 0 var(--default-overflow-margin-negative);
     }
 
-    &__title {
-        + .button {
-            margin-top: 1.5rem;
+    button {
+        margin-top: 1.5rem;
 
-            @include media-breakpoint-up(xl) {
-                margin-bottom: -1.5rem;
-            }
+        @include media-breakpoint-up(xl) {
+            margin-bottom: -1.5rem;
         }
     }
 
@@ -44,16 +40,11 @@
         letter-spacing: -0.3px;
     }
 
-    &__info {
-        + .button {
-            margin: 2rem auto;
-        }
-    }
-
     &-teaser {
         display: grid;
         margin-top: var(--space-lg);
         text-align: left;
+        justify-items: center;
 
         &__no-image {
             display: flex;
@@ -62,9 +53,11 @@
             .hero-teaser__contact {
                 margin: 0 var(--default-overflow-margin-negative) 0 0;
                 position: relative;
-                flex: .6;
+                flex: .5;
                 order: 2;
                 max-width: unset;
+                align-self: flex-start;
+                margin-top: 5rem;
             }
 
             .hero-teaser__text {
@@ -73,11 +66,21 @@
             }
         }
 
+        &__copyright {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            justify-self: flex-start;
+            align-self: flex-end;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            background-color: var(--color-gray-900);
+            color: #FFF;
+            margin: 0 0 4rem 1rem;
+        }
+
         &__image {
             display: grid;
             grid-column: 1/2;
             grid-row: 1/2;
-            margin: 0 var(--default-overflow-margin-negative);
 
             .picture__pattern {
                 grid-column: 1/2;
@@ -90,24 +93,32 @@
                 grid-column: 1/2;
                 grid-row: 1/2;
                 margin: 1rem 0 0 1rem;
-
-                figcaption {
-                    margin-left: var(--default-overflow-margin);
-                }
+                display: grid;
 
                 .picture__caption {
+                    max-width: var(--content-width);
+                    width: 100%;
                     margin-bottom: 0;
+                    margin-left: -1rem;
+                    justify-self: center;
                 }
             }
         }
 
         &__contact {
-            grid-column: 1/2;
-            grid-row: 1/2;
+            justify-self: left;
+            margin: .5rem 0 0 0;
             max-width: fit-content;
             max-height: fit-content;
             height: fit-content;
-            margin: auto -133px 0 auto;
+            align-self: flex-end;
+
+            @include media-breakpoint-up(sm) {
+                grid-column: 1/2;
+                grid-row: 1/2;
+                justify-self: right;
+                margin: 0 -1rem -1rem 0;
+            }
 
             .contact {
                 background: var(--color-primary-opacity-10);
@@ -117,6 +128,8 @@
 
         &__text {
             margin-top: 33px;
+            width: 100%;
+            max-width: var(--content-width);
         }
     }
 }

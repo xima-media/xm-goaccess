@@ -4,6 +4,9 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3_MODE') || die();
 
+$GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = ['first_name', 'last_name', 'name'];
+$GLOBALS['TCA']['fe_users']['columns']['bookmarks']['config']['allowed'] = 'pages,fe_users,sys_file,tx_news_domain_model_news';
+
 call_user_func(function () {
     $tempColumns = [
         'location' => [
@@ -56,8 +59,39 @@ call_user_func(function () {
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.contacts',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_xmdkfznetsite_domain_model_usercontact',
-                'foreign_field' => 'fe_user',
+                'foreign_table' => 'tx_xmdkfznetsite_domain_model_contact',
+                'foreign_field' => 'foreign_uid',
+                'foreign_table_field' => 'foreign_table',
+                'foreign_sortby' => 'sorting',
+                'appearance' => [
+                    'useSortable' => true,
+                    'enabledControls' => [
+                        'dragdrop' => true,
+                        'info' => false,
+                    ],
+                ],
+            ],
+        ],
+        'dkfz_hash' => [
+            'exlude' => false,
+            'label' => 'Hash of CPerson node',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'gender' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender',
+            'config' => [
+                'type' => 'select',
+                'readOnly' => true,
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender.0', 0],
+                    ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender.1', 1],
+                    ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.gender.2', 2],
+                ],
+                'default' => 0,
             ],
         ],
     ];
@@ -65,7 +99,7 @@ call_user_func(function () {
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,dkfz_id,ad_account_name,contacts',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts',
         '',
         'after:email'
     );

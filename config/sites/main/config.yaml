@@ -53,3 +53,5 @@ imports:
     resource: 'EXT:bw_guild/Configuration/Routing/Api.yaml'
   -
     resource: 'EXT:bw_guild/Configuration/Routing/Userlist.yaml'
+  -
+    resource: 'EXT:xm_dkfz_net_site/Configuration/Routing/News.yaml'

@@ -63,17 +63,7 @@ page {
         references.fieldName = media
       }
 
-      60 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-      60 {
-        table = fe_users
-        where =
-        where.dataWrap = uid IN ({field:tx_xmdkfznetsite_contacts})
-        if.isTrue.field = tx_xmdkfznetsite_contacts
-        pidInList = {$pidFeUserStorage}
-        as = contacts
-        orderBy = reclist_sortby
-        selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:tx_xmdkfznetsite_contacts}') AS reclist_sortby
-      }
+      60 = Xima\XmDkfzNetSite\DataProcessing\PageContactsProcessor
     }
   }
 
@@ -164,9 +154,14 @@ page {
   page.10.templateName = Login
 [end]
 
-[tree.level < 2]
+[tree.level < 1]
   page.10.variables.mainClass = TEXT
   page.10.variables.mainClass.value = main--expanded
 [else]
   config.htmlTag.attributes.class = background--white
+[end]
+
+[page["uid"] == {$pidUserList}]
+  page.10.variables.mainClass = TEXT
+  page.10.variables.mainClass.value = main--expanded
 [end]

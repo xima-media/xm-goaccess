@@ -32,8 +32,17 @@ $GLOBALS['TCA']['pages']['palettes']['robots2'] = [
 $GLOBALS['TCA']['pages']['columns']['description']['config']['cols'] = 60;
 $GLOBALS['TCA']['pages']['columns']['description']['config']['rows'] = 10;
 $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants'] = [
-    'default' => [
+    'teaser' => [
         'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.crop_variant.default',
+        'allowedAspectRatios' => [
+            '5:2' => [
+                'title' => '5:2',
+                'value' => 5 / 2,
+            ],
+        ],
+    ],
+    'default' => [
+        'title' => 'Teaser',
         'allowedAspectRatios' => [
             '3:2' => [
                 'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.3_2',
@@ -52,18 +61,24 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             'type' => 'select',
             'renderType' => 'selectSingle',
             'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField(),
-            'default' => '',
         ],
     ],
     'tx_xmdkfznetsite_contacts' => [
         'exclude' => 1,
         'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.contacts',
         'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'fe_users',
+            'type' => 'group',
+            'allowed' => 'fe_users,tx_xmdkfznetsite_domain_model_place',
             'size' => 5,
-            'minitems' => 0,
+            'fieldControl' => [
+                'addRecord' => [
+                    'disabled' => false,
+                    'options' => [
+                        'table' => 'tx_xmdkfznetsite_domain_model_place',
+                        'pid' => '91',
+                    ],
+                ],
+            ],
         ],
     ],
 ]);

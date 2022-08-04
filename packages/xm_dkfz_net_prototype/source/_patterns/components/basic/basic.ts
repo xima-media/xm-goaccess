@@ -138,6 +138,7 @@ export default {
       .then(response => {
         if (!response.ok) {
           this.handleRequestError(response)
+          return
         }
         return response.json()
       })
@@ -147,6 +148,7 @@ export default {
   },
 
   handleRequestError: function (error: any) {
+    localStorage.removeItem('userinfo');
     console.error('could not load data', error)
   }
 

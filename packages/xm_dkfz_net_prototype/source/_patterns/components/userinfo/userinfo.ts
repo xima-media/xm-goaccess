@@ -1,4 +1,5 @@
 import app from '../basic/basic'
+import {LightboxStyle} from "../lightbox/lightbox";
 
 export interface UserData {
   uid: number,
@@ -12,16 +13,15 @@ export interface UserOffer {
   title: string
 }
 
-export interface UserBookmark {
-  uid: number,
-  record_type: string,
-  foreign_uid: number
+export interface UserBookmarks {
+  fe_users: object
 }
 
 export interface UserinfoResponse {
   user: UserData
   offers: Array<UserOffer>,
-  bookmarks: Array<UserBookmark>
+  bookmarks: UserBookmarks,
+  html: string
 }
 
 class Userinfo {
@@ -48,11 +48,18 @@ class Userinfo {
 
   protected bindEvents() {
     this.bindBookmarkLinks()
+    this.bindBookmarkSidebar()
   }
 
   protected bindBookmarkLinks() {
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
       button.addEventListener('click', this.onBookmarkLinkClick.bind(this));
+    })
+  }
+
+  protected bindBookmarkSidebar() {
+    document.querySelectorAll('.navigation__item--bookmark').forEach(link => {
+      link.addEventListener('click', this.onBookmarkSidebarOpenClick.bind(this))
     })
   }
 
@@ -72,10 +79,25 @@ class Userinfo {
     const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST';
     app.apiRequest(url, method).then((userinfo) => {
       this.userinfo = userinfo
-      localStorage.setItem('userinfo', userinfo)
+      localStorage.setItem('userinfo', JSON.stringify(userinfo))
       button.classList.toggle('fx--hover')
       button.classList.toggle('js--checked')
     });
+  }
+
+  protected onBookmarkSidebarOpenClick() {
+    this.modifyBookmarkSidebar()
+  }
+
+  protected modifyBookmarkSidebar() {
+
+    if (!this.userinfo) {
+      return
+    }
+
+    app.lightbox.displayContent(this.userinfo.html)
+    app.lightbox.stopLoading()
+    app.lightbox.open(LightboxStyle.sidebar)
   }
 
   protected modifyUserNav() {
@@ -96,6 +118,11 @@ class Userinfo {
   }
 
   protected modifyBookmarkLinks() {
+
+    if (!this.userinfo) {
+      return
+    }
+
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
       const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)');
       if (urlParts.length !== 3) {

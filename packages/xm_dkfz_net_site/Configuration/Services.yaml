@@ -40,11 +40,54 @@ services:
   Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor:
     public: true
 
-  Xima\XmDkfzNetSite\Command\ImportUserCommand:
+  Xima\XmDkfzNetSite\DataProcessing\PageContactsProcessor:
+    public: true
+
+  Xima\XmDkfzNetSite\Command\ImportFeUserCommand:
     tags:
       - name: 'console.command'
-        command: 'dkfz:importUser'
+        command: 'dkfz:importFeUser'
         schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserRepository'
+
+  Xima\XmDkfzNetSite\Command\ImportPlaceCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importPlace'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository'
+
+  Xima\XmDkfzNetSite\Command\ImportFeUserGroupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importFeUserGroup'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
+
+  Xima\XmDkfzNetSite\Command\ImportBeGroupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importBeUserGroup'
+        schedulable: false
+    arguments:
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
+
+  Xima\XmDkfzNetSite\Command\SlugUpdaterCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:updateSlugs'
+        schedulable: true
+
+  Xima\XmDkfzNetSite\Command\ImportAllCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:import'
+        schedulable: true
 
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true

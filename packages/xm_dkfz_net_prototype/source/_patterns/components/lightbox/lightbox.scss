@@ -1,15 +1,28 @@
-body.open-lightbox {
-    overflow-x: hidden;
+html.open-lightbox {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width);
+
+    @include media-breakpoint-up(md) {
+        .header__meta {
+            transform: translate3d(-8px, 0, 0);
+        }
+    }
 
     .lightbox {
         display: grid;
         animation: opacityIn 0.4s ease;
+
+        &--default .lightbox__content {
+            animation: moveIn 0.4s ease;
+            animation-fill-mode: forwards;
+        }
+
+        &--sidebar .lightbox__content {
+            animation: slideIn 0.4s ease;
+            animation-fill-mode: forwards;
+        }
     }
 
-    .lightbox__content {
-        animation: moveIn 0.4s ease;
-        animation-fill-mode: forwards;
-    }
 }
 
 @keyframes opacityIn {
@@ -18,6 +31,15 @@ body.open-lightbox {
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translate3d(500px, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -60,6 +82,26 @@ body.open-lightbox {
     &--loading {
         .lightbox__loader {
             display: flex;
+        }
+    }
+
+    &--sidebar {
+        padding: 0;
+        align-items: unset;
+        justify-content: flex-end;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: calc(100vw + 500px);
+        left: -500px;
+
+        &.lightbox--closing {
+            transform: translate3d(500px, 0, 0);
+            transition: opacity 0.2s ease 0.2s, transform .2s ease-in-out;
+        }
+
+        .lightbox__content {
+            opacity: 1;
+            max-width: calc(100vw - var(--space-lg));
         }
     }
 

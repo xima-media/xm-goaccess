@@ -1,14 +1,45 @@
-<f:layout name="Default"/>
+<f:variable name="cssVariables">
+	<f:for each="{files}" as="file" iteration="i">
+		<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
+		--background-image-{index}jpg: url({f:uri.image(image: file, width: 576)}); --background-image-{index}jpg-md:
+		url({f:uri.image(image: file, width: 768)}); --background-image-{index}jpg-lg: url({f:uri.image(image: file,
+		width: 992)}); --background-image-{index}jpg-xl: url({f:uri.image(image: file, width: 1200)});
+		--background-image-{index}jpg-xxl: url({f:uri.image(image: file, width: 2500)}); --background-image-{index}webp:
+		url({f:uri.image(image: file, width: 576, fileExtension: 'webp')}); --background-image-{index}webp-md:
+		url({f:uri.image(image: file, width: 768, fileExtension: 'webp')}); --background-image-{index}webp-lg:
+		url({f:uri.image(image: file, width: 992, fileExtension: 'webp')}); --background-image-{index}webp-xl:
+		url({f:uri.image(image: file, width: 1200, fileExtension: 'webp')}); --background-image-{index}webp-xxl:
+		url({f:uri.image(image: file, width: 2500, fileExtension: 'webp')});
+	</f:for>
+</f:variable>
 
-<f:section name="Main">
+<main class="login background--image-hero" style="{cssVariables}">
 
-	<div class="layout">
-		<div class="layout__item">
-			<f:link.page id="login-link" pageUid="1" additionalParams="{oauth2-provider: 'gitlab', logintype: 'login'}" title="Login" class="button button--primary " additionalAttributes="{role: 'button'}" aria="{pressed: ariaPressed}">
+	<div class="login__blur">
+
+		<a class="logo" href="/">
+			<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/logo/logo.svg')}"
+				 width="212"
+				 height="32"
+				 class="logo__image"
+				 alt="DKFZ Logo"/>
+		</a>
+
+		<div class="box">
+			<h1 class="h5">Willkommen beim DKFZ intern</h1>
+			<f:link.page id="login-link"
+						 pageUid="1"
+						 additionalParams="{oauth2-provider: 'gitlab', logintype: 'login'}"
+						 title="Login"
+						 class="button button--primary "
+						 additionalAttributes="{role: 'button'}"
+						 aria="{pressed: ariaPressed}">
 				Login with GitLab
 			</f:link.page>
 		</div>
+
+		<f:render partial="Footer" arguments="{_all}" />
+
 	</div>
-</f:section>
 
-
+</main>
