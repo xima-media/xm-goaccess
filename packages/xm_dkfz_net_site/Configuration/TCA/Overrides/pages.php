@@ -60,7 +60,7 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',
-            'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField()
+            'items' => \Xima\XmDkfzNetSite\Tca\TcaUtility::getItemsForColorField(),
         ],
     ],
     'tx_xmdkfznetsite_contacts' => [
@@ -73,6 +73,10 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             'fieldControl' => [
                 'addRecord' => [
                     'disabled' => false,
+                    'options' => [
+                        'table' => 'tx_xmdkfznetsite_domain_model_place',
+                        'pid' => '91',
+                    ],
                 ],
             ],
         ],
