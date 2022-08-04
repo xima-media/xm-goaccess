@@ -25,6 +25,7 @@ import app from '../basic/basic'
  */
 
 class VideoPlayer {
+    playButtonEl: NodeListOf<HTMLButtonElement>
 
     constructor () {
         app.log('component "Video player" loaded')
@@ -58,18 +59,47 @@ class VideoPlayer {
             self.playButtonEl.forEach((button) => self.playExternalVideo(button))
         }
 
+       
         /**
          * Play a single external video
-         * @param button - DOM node
+         * @param button 
          */
-        playExternalVideo (button) {
-            const videoPlayerEl = button.closest('.video-player')
-            const src = videoPlayerEl.dataset.src
+        playExternalVideo (button: HTMLButtonElement) {
+            const videoPlayerEl: HTMLDivElement = button.closest('.video-player')
+            const videoId: String = videoPlayerEl.dataset.videoId
+            const videoMimeType: String = videoPlayerEl.dataset.videoMimeType
             const fullScreen = videoPlayerEl.dataset.fullScreen === 'true' ? 'allowfullscreen="true"' : ''
-            const title = videoPlayerEl.dataset.title
+            const title: String = videoPlayerEl.dataset.title
+            const videoSrc: String = this.buildVideoUrlByMimetype(videoMimeType, videoId)
 
             // append video
-            videoPlayerEl.insertAdjacentHTML('beforeend', '<iframe class="video-player__iframe" src="' + src + '" title="' + title + '" ' + fullScreen + '></iframe>')
+            if(videoSrc) {
+                videoPlayerEl.insertAdjacentHTML('beforeend', '<iframe class="video-player__iframe" src="' + videoSrc + '" title="' + title + '" ' + fullScreen + '></iframe>')
+            }
+        }
+
+        /**
+         * 
+         * @param mimeType 
+         * @param videoId 
+         * @returns 
+         */
+        buildVideoUrlByMimetype(mimeType: String, videoId: String): String {
+
+            let videoEmbedUrl
+
+            switch (mimeType) {
+                case 'video/youtube':
+                    videoEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
+                    break;
+                case 'video/vimeo':
+                    videoEmbedUrl = `https://player.vimeo.com/video/${videoId}`;
+                    break;
+                default:
+                    break;
+            }
+
+            return videoEmbedUrl
         }
 }
 

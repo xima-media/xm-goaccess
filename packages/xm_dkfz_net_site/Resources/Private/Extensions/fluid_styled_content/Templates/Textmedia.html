@@ -3,7 +3,14 @@
 	<f:section name="Main">
 		<div class="content-wrapper__content-image">
 			<f:for each="{files}" as="file">
-				<f:render partial="Image" arguments="{image: file}" />
+				<f:if condition="{file.properties.mime_type} === 'video/youtube' OR {file.properties.mime_type} === 'video/vimeo'">
+					<f:then>
+						<f:render partial="Video" arguments="{video: file}" />
+					</f:then>
+					<f:else>
+						<f:render partial="Image" arguments="{image: file}" />
+					</f:else>
+				</f:if>
 			</f:for>
 		</div>
 
