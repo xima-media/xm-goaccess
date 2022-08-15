@@ -49,7 +49,7 @@ TCEFORM {
       types.infobox.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,cyan,yellow,orange
       types.infobox.addItems.box = Box
 
-      types.quote.removeItems = default, ruler-before,ruler-after,indent,indent-left,indent-right,cyan,yellow,orange
+      types.quote.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,cyan,yellow,orange
     }
 
     layout {
