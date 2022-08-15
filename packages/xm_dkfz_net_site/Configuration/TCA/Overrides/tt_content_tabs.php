@@ -11,17 +11,17 @@
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.tabs.tab1',
                     'colPos' => 101,
-                    'allowed' => ['CType' => 'uploads,text'],
+                    'allowed' => ['CType' => 'uploads, textmedia, linklist'],
                 ],
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.tabs.tab2',
                     'colPos' => 102,
-                    'allowed' => ['CType' => 'uploads,text'],
+                    'allowed' => ['CType' => 'uploads, textmedia, linklist'],
                 ],
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.tabs.tab3',
                     'colPos' => 103,
-                    'allowed' => ['CType' => 'uploads,text'],
+                    'allowed' => ['CType' => 'uploads, textmedia, linklist'],
                 ],
             ],
         ]
