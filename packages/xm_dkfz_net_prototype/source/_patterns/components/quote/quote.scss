@@ -38,10 +38,9 @@
             content: open-quote;
             font-size: 25rem;
             margin-top: -6rem;
-            margin-left: 40%;
             transform: translateX(-50%);
-            color: var(--color-cyan);
-            opacity: .2;
+            color: inherit;
+            opacity: .15;
         }
     }
     &__caption{

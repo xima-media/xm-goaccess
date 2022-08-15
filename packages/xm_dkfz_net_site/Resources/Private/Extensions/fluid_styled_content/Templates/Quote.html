@@ -1,11 +1,11 @@
-<f:layout name="Default"/>
+<f:layout name="Default" />
 
 <!-- Start Quote-->
 <f:section name="Main">
 	<figure class="quote">
 		<span class="quote__pattern pattern color-accent--{data.color}"></span>
 		<div class="quote__body">
-			<blockquote class="quote__content h5">„{data.bodytext}“</blockquote>
+			<blockquote class="quote__content h5"><p>„{data.bodytext}“</p></blockquote>
 			<figcaption class="quote__caption">
 				<f:if condition="{data.tx_xmdkfznetsite_author}">
 					<cite class="quote__cite">{data.tx_xmdkfznetsite_author}{f:if(condition: '{data.tx_xmdkfznetsite_function}', then: ', <span>{data.tx_xmdkfznetsite_function}</span>')}
