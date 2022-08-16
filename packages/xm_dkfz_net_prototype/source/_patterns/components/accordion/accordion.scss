@@ -82,7 +82,7 @@
             }
 
             &:not(.collapsed) {
-    
+
                 &::after {
                     @include svg-icon-minus($color-white);
                 }
@@ -181,6 +181,11 @@
                 margin-top: var(--space-xxl);
             }
         }
+    }
+
+    .tab-item__wrapper {
+        background: var(--color-white);
+        margin: 0;
     }
 }
 
