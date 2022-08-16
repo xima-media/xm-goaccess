@@ -3,7 +3,7 @@
 	<f:section name="Main">
 		<div class="content-wrapper__content-image">
 			<f:for each="{files}" as="file">
-				<f:if condition="{file.properties.mime_type} === 'video/youtube' OR {file.properties.mime_type} === 'video/vimeo'">
+				<f:if condition="{file.properties.mime_type} === 'video/youtube' OR {file.properties.mime_type} === 'video/vimeo' OR {file.properties.mime_type} === 'video/mp4'">
 					<f:then>
 						<f:render partial="Video" arguments="{video: file}" />
 					</f:then>

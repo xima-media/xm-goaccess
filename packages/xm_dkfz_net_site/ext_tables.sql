@@ -110,3 +110,11 @@ create table tx_xmdkfznetsite_domain_model_place (
 	primary key (uid),
 	KEY              parent (pid),
 );
+
+#
+# Table structure for table 'sys_file_reference'
+#
+CREATE TABLE sys_file_reference
+(
+	video_preview_image       int(11) unsigned DEFAULT '0' NOT NULL,
+);

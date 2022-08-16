@@ -12,7 +12,26 @@
     display: grid;
     max-width: 60.625rem;
     margin: auto;
-    
+
+    &__internal {
+        grid-area: 1/1;
+        max-width: 100%;
+    }
+
+    &__preview-image {
+        z-index: 1;
+    }
+
+    &--hide-elements {
+        .video-player__interactables {
+            display: none;
+        }
+
+        .video-player__preview-image {
+            display: none;
+        }
+    }
+
 
     &__button {
         &--play {
@@ -29,7 +48,7 @@
     }
 
     figure {
-        grid-area: 1/1; 
+        grid-area: 1/1;
     }
 
     &__iframe {

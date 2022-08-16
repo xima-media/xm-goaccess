@@ -24,3 +24,20 @@ lib.dynamicContent {
 
   90 = RESTORE_REGISTER
 }
+
+lib.videoPreviewImage =< lib.contentElement
+lib.videoPreviewImage {
+  templateName = VideoPreviewImage
+  dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+  dataProcessing.10 {
+    as = images
+    references.fieldName = uid
+    references.table = sys_file_reference
+  }
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    10 {
+      references.fieldName = video_preview_image
+    }
+  }
+}

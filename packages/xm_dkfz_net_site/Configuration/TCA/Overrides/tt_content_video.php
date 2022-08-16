@@ -38,7 +38,7 @@ $GLOBALS['TCA']['tt_content']['types']['video'] = [
                         'uid_local' => [
                             'config' => [
                                 'appearance' => [
-                                    'elementBrowserAllowed' => 'youtube,vimeo',
+                                    'elementBrowserAllowed' => 'youtube,vimeo,mp4',
                                 ],
                             ],
                         ],

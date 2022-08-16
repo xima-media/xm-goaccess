@@ -59,10 +59,10 @@ class VideoPlayer {
             self.playButtonEl.forEach((button) => self.playExternalVideo(button))
         }
 
-       
+
         /**
          * Play a single external video
-         * @param button 
+         * @param button
          */
         playExternalVideo (button: HTMLButtonElement) {
             const videoPlayerEl: HTMLDivElement = button.closest('.video-player')
@@ -75,14 +75,16 @@ class VideoPlayer {
             // append video
             if(videoSrc) {
                 videoPlayerEl.insertAdjacentHTML('beforeend', '<iframe class="video-player__iframe" src="' + videoSrc + '" title="' + title + '" ' + fullScreen + '></iframe>')
+            } else if (videoMimeType === 'video/mp4') {
+              videoPlayerEl.classList.add('video-player--hide-elements')
             }
         }
 
         /**
-         * 
-         * @param mimeType 
-         * @param videoId 
-         * @returns 
+         *
+         * @param mimeType
+         * @param videoId
+         * @returns
          */
         buildVideoUrlByMimetype(mimeType: String, videoId: String): String {
 
