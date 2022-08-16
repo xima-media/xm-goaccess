@@ -52,6 +52,26 @@
         margin-right: auto;
         margin-left: auto;
         z-index: 1;
+
+        &-teaser {
+            .carousel__button {
+                &.swiper-button-next {
+                    right: -7.938rem;
+                }
+
+                &.swiper-button-prev {
+                    left: -7.938rem;
+                }
+            }
+        }
+
+        .card {
+            &__content {
+                .card__header {
+                    margin-bottom: 1.2rem;
+                }
+            }
+        }
     }
 
     &__body {

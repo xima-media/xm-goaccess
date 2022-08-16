@@ -33,11 +33,26 @@ body {
     }
 
     &--expanded {
-        --content-width: #{$container-default-widths};
+        --content-width: 1500px;
         --default-overflow-margin-negative: 0;
 
         .button[data-bookmark-url] {
             display: none;
+        }
+
+        .frame {
+            position: relative;
+            box-shadow: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(27px);
+            padding-bottom: var(--content-padding);
+            padding-top: var(--content-padding);
+
+            > * {
+                max-width: #{$container-md-widths};
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     }
 
