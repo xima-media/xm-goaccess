@@ -379,6 +379,25 @@
 			<trans-unit id="quote.palette">
 				<source>Information about the author</source>
 			</trans-unit>
+
+			<trans-unit id="disruptor">
+				<source>Disturber</source>
+			</trans-unit>
+			<trans-unit id="disruptor.headline">
+				<source>Headline</source>
+			</trans-unit>
+			<trans-unit id="disruptor.headline.description">
+				<source>Important note</source>
+			</trans-unit>
+			<trans-unit id="disruptor.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="disruptor.starttime">
+				<source>Start time</source>
+			</trans-unit>
+			<trans-unit id="disruptor.endtime">
+				<source>End time</source>
+			</trans-unit>
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<source>Video preview image for mp4 videos.</source>
 			</trans-unit>

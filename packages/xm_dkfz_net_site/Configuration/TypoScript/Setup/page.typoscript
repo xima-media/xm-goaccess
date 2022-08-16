@@ -20,6 +20,8 @@ page {
       pidLogin.value = {$pidLogin}
       pidUserDetail = TEXT
       pidUserDetail.value = {$pidUserDetail}
+      pidDisruptorStorage = TEXT
+      pidDisruptorStorage.value = {$pidDisruptorStorage}
     }
 
     dataProcessing {
@@ -64,6 +66,17 @@ page {
       }
 
       60 = Xima\XmDkfzNetSite\DataProcessing\PageContactsProcessor
+
+      # Disruptor
+      70 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      70 {
+        table = tx_xmdkfznetsite_domain_model_disruptor
+        pidInList = 112
+        recursive = 1
+        where = deleted=0 AND hidden=0
+        orderBy = sorting
+        as = disruptor
+      }
     }
   }
 

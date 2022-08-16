@@ -1,0 +1,104 @@
+//
+//    @tableOfContent
+//      1. Disruptor
+//      2. Lightbox warning
+//
+
+
+//
+//   @section 1. Disruptor
+//
+.disruptor-wrapper {
+    &--fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        //background: rgb(17, 17, 17);
+        //background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, .1) 100%);
+        background: $color-gray-200;
+        padding: .5rem;
+        z-index: 100;
+        animation: opacityIn 0.4s ease;
+    }
+
+    &--content {
+        max-width: $container-default-widths;
+        margin: 0 auto;
+        display: flex;
+
+        .disruptor__title,
+            p {
+            @include text-copy-x-small;
+            margin-bottom: 0;
+        }
+
+        .disruptor {
+            &__title {
+                letter-spacing: 1.2px;
+                margin-right: .5rem;
+                padding: 0 .25rem;
+                background: $color-secondary;
+            }
+        }
+    }
+}
+
+@keyframes opacityIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+//
+//   @section 2. Lightbox warning
+//
+
+.lightbox {
+    &--warning {
+        .lightbox {
+            &__content {
+                padding-left: var(--space-unit);
+                padding-top: 0;
+                padding-bottom: 0;
+
+                .infobox {
+                    padding-top: var(--space-lg);
+                    padding-bottom: var(--space-xl);
+
+                    p {
+                        @include text-copy-standard;
+                        strong {
+                            letter-spacing: .3px;
+                        }
+                    }
+                }
+            }
+
+            &__close {
+                padding-top: calc(10px + var(--space-xxl));
+            }
+        }
+    }
+
+    &-style-warning {
+        .header {
+            top: 4rem;
+
+            &__meta {
+                top: 36px;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+// end of disruptor.scss file

@@ -20,6 +20,8 @@ class Lightbox {
 
   protected escKeyPressEventHandler = this.onEscKeyPress.bind(this)
 
+  protected root = document.querySelector('html');
+
   constructor() {
     const boxElement = document.querySelector('.lightbox');
 
@@ -77,17 +79,24 @@ class Lightbox {
     this.box.classList.add('lightbox--closing')
     this.removeAllListener()
 
+    if(this.root.dataset.lightBoxType !== '') {
+      const lightBoxCloseEvent = new Event('lightboxClose')
+      document.dispatchEvent(lightBoxCloseEvent);
+    }
+
     setTimeout(() => {
-      document.querySelector('html').classList.remove('open-lightbox')
+      this.root.classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
+      this.root.dataset.lightBoxType = ''
       this.stopLoading()
       this.clear()
     }, 400);
   }
 
-  public open(style: LightboxStyle = 0) {
+  public open(style: LightboxStyle = 0, type: string = '') {
     this.setStyle(style)
-    document.querySelector('html').classList.add('open-lightbox')
+    this.root.classList.add('open-lightbox')
+    this.root.dataset.lightBoxType = type
     this.bindEscKeyPressEvent()
     this.bindBackgroundClickEvent()
   }
@@ -118,10 +127,10 @@ class Lightbox {
       return 'lightbox--' + name
     }))
     this.box.classList.add('lightbox--' + availableStyles[style])
-    document.querySelector('html').classList.remove(...availableStyles.map(name => {
+    this.root.classList.remove(...availableStyles.map(name => {
       return 'lightbox-style-' + name
     }))
-    document.querySelector('html').classList.add('lightbox-style-' + availableStyles[style])
+    this.root.classList.add('lightbox-style-' + availableStyles[style])
   }
 
 }

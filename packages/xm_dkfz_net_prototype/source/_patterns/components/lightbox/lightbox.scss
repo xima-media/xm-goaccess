@@ -17,6 +17,11 @@ html.open-lightbox {
             animation-fill-mode: forwards;
         }
 
+        &--warning .lightbox__content {
+            animation: moveIn 0.4s ease;
+            animation-fill-mode: forwards;
+        }
+
         &--sidebar .lightbox__content {
             animation: slideIn 0.4s ease;
             animation-fill-mode: forwards;
@@ -113,7 +118,7 @@ html.open-lightbox {
         padding: var(--space-lg);
         display: grid;
         opacity: 0;
-        min-height: 40vh;
+        min-height: 15vh;
 
         @include media-breakpoint-up(md) {
             max-width: calc(800px - var(--space-lg));
@@ -139,6 +144,8 @@ html.open-lightbox {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: transparent;
+        border: none;
     }
 
     &__loader {

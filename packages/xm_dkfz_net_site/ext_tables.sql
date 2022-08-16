@@ -111,6 +111,23 @@ create table tx_xmdkfznetsite_domain_model_place (
 	KEY              parent (pid),
 );
 
+create table tx_xmdkfznetsite_domain_model_disruptor (
+	uid              int(11) not null auto_increment,
+	pid              int(11) default '0' not null,
+	tstamp           int(11) unsigned default 0 not null,
+	crdate           int(11) unsigned default 0 not null,
+	deleted          tinyint(4) unsigned default 0 not null,
+	hidden           tinyint(4) unsigned default 0 not null,
+	headline				 varchar(255) default  '' not null,
+	text             text      default  '' not null,
+	starttime				 int(11) unsigned default '0' not null,
+	endtime				   int(11) unsigned default '0' not null,
+
+
+	primary key (uid),
+	KEY              parent (pid),
+);
+
 #
 # Table structure for table 'sys_file_reference'
 #

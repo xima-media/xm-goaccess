@@ -317,6 +317,25 @@
 			<trans-unit id="quote.palette">
 				<target>Informationen über den Autor</target>
 			</trans-unit>
+
+			<trans-unit id="disruptor">
+				<target>Störer</target>
+			</trans-unit>
+			<trans-unit id="disruptor.headline">
+				<target>Überschrift</target>
+			</trans-unit>
+			<trans-unit id="disruptor.headline.description">
+				<target>Wichtiger Hinweis</target>
+			</trans-unit>
+			<trans-unit id="disruptor.text">
+				<target>Text</target>
+			</trans-unit>
+			<trans-unit id="disruptor.starttime">
+				<target>Startzeit</target>
+			</trans-unit>
+			<trans-unit id="disruptor.endtime">
+				<target>Endzeit</target>
+			</trans-unit>
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<target>Vorschaubild für MP4-Videos.</target>
 			</trans-unit>
