@@ -379,6 +379,9 @@
 			<trans-unit id="quote.palette">
 				<source>Information about the author</source>
 			</trans-unit>
+			<trans-unit id="sys_file_reference.video_preview_image">
+				<source>Video preview image for mp4 videos.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

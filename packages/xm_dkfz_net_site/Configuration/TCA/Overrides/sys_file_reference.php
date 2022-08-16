@@ -7,16 +7,6 @@ call_user_func(function () {
      */
     $table = 'sys_file_reference';
 
-//    /**
-//     * Add fields to sys_file_reference with type image
-//     */
-//    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
-//        $table,
-//        'imageoverlayPalette',
-//        'preserve_aspect_ratio',
-//        'after:crop'
-//    );
-
     /**
      * Add references to sys_file_reference with type video
      */
@@ -32,7 +22,7 @@ call_user_func(function () {
      */
     $tmp_additional_fields = [
         'video_preview_image' => [
-            'label' => 'Vorschaubild (optional)',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:sys_file_reference.video_preview_image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'video_preview_image',
                 [
