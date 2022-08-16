@@ -43,6 +43,14 @@ luxletterUnsubscribePid: '115'
 oauth2_callback_slug: login
 oauth2_storage_pid: 91
 rootPageId: 1
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    default: ''
+    map:
+      preview.html: 1560777975
+      newsletter.html: 1562349004
+      pixel.png: 1561894816
 routes:
   -
     route: robots.txt
