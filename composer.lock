@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "418a232c180467591b998083049ae9f8",
+    "content-hash": "1273e238a53d4f52908e9d52e26c1f65",
     "packages": [
         {
             "name": "b13/container",
@@ -124,7 +124,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -1854,6 +1854,91 @@
                 "source": "https://github.com/IchHabRecht/content_defender/tree/3.2.2"
             },
             "time": "2022-03-15T11:28:27+00:00"
+        },
+        {
+            "name": "in2code/luxletter",
+            "version": "14.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/in2code-de/luxletter.git",
+                "reference": "55421a1a5af86bcc03af251d10b303f82e698815"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/in2code-de/luxletter/zipball/55421a1a5af86bcc03af251d10b303f82e698815",
+                "reference": "55421a1a5af86bcc03af251d10b303f82e698815",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": ">=2.11.0",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-pdo": "*",
+                "php": ">=7.2.0",
+                "tijsverkoyen/css-to-inline-styles": "^2.2",
+                "typo3/cms-core": "^10.4 || ^11.5"
+            },
+            "replace": {
+                "typo3-ter/luxletter": "self.version"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.19",
+                "helmich/typo3-typoscript-lint": "^2.5",
+                "mikey179/vfsstream": "^1.6",
+                "nimut/testing-framework": "^5.0",
+                "phpmd/phpmd": "^2.8",
+                "phpunit/phpunit": "^6.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "typo3/cms-core": "^10.4"
+            },
+            "suggest": {
+                "in2code/lux": "Marketing automation for TYPO3",
+                "typo3/cms-dashboard": "*"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "web-dir": ".Build/Web",
+                    "extension-key": "luxletter"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "In2code\\Luxletter\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Florian Froidevaux",
+                    "email": "florian.froidevaux@in2code.de",
+                    "homepage": "https://www.in2code.de",
+                    "role": "Product owner"
+                },
+                {
+                    "name": "Alex Kellner",
+                    "email": "alexander.kellner@in2code.de",
+                    "homepage": "https://www.in2code.de",
+                    "role": "Technical owner"
+                }
+            ],
+            "description": "Free newsletter extension for TYPO3 for an individual email marketing. A lot of analytics and modern concepts. Works with and without EXT:lux.",
+            "homepage": "https://github.com/in2code-de/luxletter",
+            "keywords": [
+                "direct_mail",
+                "marketing",
+                "newsletter",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/in2code-de/luxletter/issues",
+                "source": "https://github.com/in2code-de/luxletter/tree/14.0.0"
+            },
+            "time": "2022-07-06T20:18:15+00:00"
         },
         {
             "name": "league/oauth2-client",
@@ -6886,6 +6971,59 @@
             "time": "2022-06-27T16:58:25+00:00"
         },
         {
+            "name": "tijsverkoyen/css-to-inline-styles",
+            "version": "2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
+                "reference": "da444caae6aca7a19c0c140f68c6182e337d5b1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/da444caae6aca7a19c0c140f68c6182e337d5b1c",
+                "reference": "da444caae6aca7a19c0c140f68c6182e337d5b1c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "php": "^5.5 || ^7.0 || ^8.0",
+                "symfony/css-selector": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0 || ^7.5 || ^8.5.21 || ^9.5.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TijsVerkoyen\\CssToInlineStyles\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tijs Verkoyen",
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
+            "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
+            "support": {
+                "issues": "https://github.com/tijsverkoyen/CssToInlineStyles/issues",
+                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
+            },
+            "time": "2021-12-08T09:12:39+00:00"
+        },
+        {
             "name": "typo3/class-alias-loader",
             "version": "v1.1.3",
             "source": {
@@ -9288,7 +9426,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -9322,7 +9460,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-prototype",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
@@ -9353,7 +9491,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -9384,7 +9522,7 @@
         },
         {
             "name": "xima/xm-goaccess",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_goaccess",

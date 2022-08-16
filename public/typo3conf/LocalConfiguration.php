@@ -40,6 +40,14 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+        'luxletter' => [
+            'addTypeNumToNumberLocation' => '1562349004',
+            'embedImagesInNewsletter' => '1',
+            'limitToContext' => '',
+            'multiLanguageMode' => '0',
+            'receiverAction' => '1',
+            'rewriteLinksInNewsletter' => '1',
+        ],
         'news' => [
             'advancedMediaPreview' => '1',
             'archiveDate' => 'date',

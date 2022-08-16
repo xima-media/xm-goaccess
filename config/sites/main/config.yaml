@@ -39,6 +39,7 @@ languages:
     fallbacks: '0'
     flag: en-us-gb
     languageId: 1
+luxletterUnsubscribePid: '115'
 oauth2_callback_slug: login
 oauth2_storage_pid: 91
 rootPageId: 1
