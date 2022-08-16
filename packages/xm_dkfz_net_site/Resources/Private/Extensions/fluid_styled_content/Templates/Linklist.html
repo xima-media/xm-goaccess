@@ -4,7 +4,7 @@
 
 <f:section name="Main">
     <div class="list">
-        <h5>{data.header}</h5>
+		<f:render partial="Header/All" arguments="{_all}"/>
         <ul>
             <f:for each="{links}" as="link">
                 <f:render partial="Linklist" arguments="{link: link}" />
