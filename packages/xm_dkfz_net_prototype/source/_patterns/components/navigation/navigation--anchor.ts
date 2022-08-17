@@ -130,38 +130,30 @@ class NavigationAnchor {
                 })
             })
 
-            window.addEventListener('scroll', () => {
-                let current = '';
+            // change the active class on anchor menu item
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                      let entryTarget = entry.target;
+                      let entryTargetId = '#' + entryTarget.getAttribute('id')
 
-                sections.forEach(section => {
-                    // @ts-ignore
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    const contentHeight = 900;
+                        navItem.forEach(li => {
+                            li.classList.remove('active')
 
-                    // different multiplier to reach the last element
-                    if (sectionHeight < contentHeight) {
-                        if(window.scrollY >= (sectionTop - sectionHeight * 1.7)){
-                            current = '#' + section.getAttribute('id');
-                        }
-                    }
+                            let liHref = li.getAttribute('href')
 
-                    if (sectionHeight > contentHeight) {
-                        if(window.scrollY >= (sectionTop - sectionHeight)){
-                            current = '#' + section.getAttribute('id');
-                        }
+                            if(liHref === entryTargetId) {
+                                li.classList.add('active')
+                            }
+                        })
                     }
                 })
+            }, {
+                threshold: .5
+            })
 
-                navItem.forEach(li => {
-                    li.classList.remove('active')
-
-                    let liHref = li.getAttribute('href')
-
-                    if(liHref === current) {
-                        li.classList.add('active')
-                    }
-                })
+            sections.forEach(section => {
+                observer.observe(section)
             })
 
             // buttons
