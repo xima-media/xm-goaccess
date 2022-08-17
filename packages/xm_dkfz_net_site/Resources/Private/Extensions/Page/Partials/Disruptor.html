@@ -1,22 +1,6 @@
 <f:if condition="{disruptor}">
 	<f:for each="{disruptor}" as="disruptor">
-
 		<div class="disruptor-wrapper">
-			<f:comment>
-<!--				<div class="infobox-->
-<!--				{f:if(condition: disruptor.data.color, then: 'color-accent&#45;&#45;{disruptor.data.color}')}-->
-<!--				infobox&#45;&#45;background-white-->
-<!--				{f:if(condition: '{disruptor.data.frame_class}==\'box\'', then:'color__border')}">-->
-<!--					<div class="infobox&#45;&#45;wrapper">-->
-<!--						<f:if condition="{disruptor.data.headline}">-->
-<!--							<h4 class="infobox__title">{disruptor.data.headline}</h4>-->
-<!--						</f:if>-->
-<!--						<p class="infobox__text">{disruptor.data.text -> f:format.html()}</p>-->
-<!--					</div>-->
-<!--				</div>-->
-			</f:comment>
-
-
 			<div class="infobox color-accent--magenta infobox--background-white">
 				<div class="infobox--wrapper">
 					<f:if condition="{disruptor.data.headline}">
@@ -27,7 +11,6 @@
 			</div>
 		</div>
 
-
 		<div class="disruptor-wrapper--fixed d-none">
 			<div class="disruptor-wrapper--content">
 				<f:if condition="{disruptor.data.headline}">
@@ -36,7 +19,5 @@
 				{disruptor.data.text -> f:format.html()}
 			</div>
 		</div>
-
-
 	</f:for>
 </f:if>
