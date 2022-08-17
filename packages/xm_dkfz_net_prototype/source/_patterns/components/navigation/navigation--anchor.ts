@@ -139,11 +139,13 @@ class NavigationAnchor {
 
                         navItem.forEach(li => {
                             li.classList.remove('active')
+                            li.parentElement.classList.remove('active')
 
                             let liHref = li.getAttribute('href')
 
                             if(liHref === entryTargetId) {
                                 li.classList.add('active')
+                                li.parentElement.classList.add('active')
                             }
                         })
                     }
