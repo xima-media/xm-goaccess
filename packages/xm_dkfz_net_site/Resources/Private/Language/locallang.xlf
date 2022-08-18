@@ -404,6 +404,10 @@
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<source>Video preview image for mp4 videos.</source>
 			</trans-unit>
+
+			<trans-unit id="tt_content.slider.description" space="preserve">
+				<source>This is a slider</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

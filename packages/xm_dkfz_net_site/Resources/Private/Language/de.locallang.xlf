@@ -339,6 +339,10 @@
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<target>Vorschaubild für MP4-Videos.</target>
 			</trans-unit>
+
+			<trans-unit id="tt_content.slider.description" space="preserve">
+				<target>Das ist ein Slider</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

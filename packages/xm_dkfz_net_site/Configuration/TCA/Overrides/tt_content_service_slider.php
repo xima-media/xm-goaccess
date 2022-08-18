@@ -67,36 +67,3 @@ $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
 // Register custom Preview
 $GLOBALS['TCA']['tt_content']['types']['linklist']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\InfoboxPreviewRenderer::class;
 
-
-//'tt_content_items' => [
-//    'label' => 'Service-Slider',
-//    'config' => [
-//        'overrideChildTca' => [
-//            'types' => [
-//                'link' => [
-//                    'showitem' => 'record_type, title, link',
-//                ],
-//                'teaser-item' => [
-//                    'showitem' => 'record_type, link, --linebreak--, overrides, --palette--;;slider-override',
-//                ],
-//            ],
-//            'columns' => [
-//                'record_type' => [
-//                    'config' => [
-//                        'default' => 'link',
-//                        'items' => [
-//                            [
-//                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link',
-//                                'link',
-//                            ],
-//                            [
-//                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser',
-//                                'teaser-item',
-//                            ],
-//                        ],
-//                    ],
-//                ],
-//            ],
-//        ],
-//    ],
-//],
