@@ -72,6 +72,10 @@
                 }
             }
         }
+
+        &+.carousel__pagination {
+            margin-top: 1.5rem;
+        }
     }
 
     &__body {
