@@ -78,6 +78,7 @@
     &.color__border {
         border-width: 1px;
         border-style: solid;
+        border-color: var(--color-accent);
 
         &::after {
             top: 1rem;
