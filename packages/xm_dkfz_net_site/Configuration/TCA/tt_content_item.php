@@ -41,6 +41,10 @@ return [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
             'showitem' => 'title,color,--linebreak--,text,--linebreak--,image,--linebreak--,tt_content_items',
         ],
+        'slider-override' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
+            'showitem' => 'title,--linebreak--,text,--linebreak--',
+        ],
     ],
     'columns' => [
         'record_type' => [

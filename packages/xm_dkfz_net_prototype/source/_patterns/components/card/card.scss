@@ -105,6 +105,13 @@
                     background-color: var(--color-gray-900);
                 }
             }
+
+            // rotate Icon if Link extern
+            &[href^="http"]{
+                [class*='icon-'] {
+                    transform: rotate(-45deg);
+                }
+            }
         }
 
         &--more {

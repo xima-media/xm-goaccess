@@ -1,0 +1,54 @@
+<f:layout name="Default" />
+
+<f:section name="Header"></f:section>
+
+<f:section name="Main">
+
+	<f:render partial="Header/All" arguments="{_all}"/>
+
+	<div class="carousel carousel--color-black carousel__content-teaser carousel--cards-with-pattern"
+		 data-cols="{&quot;xs&quot;: &quot;1&quot;, &quot;sm&quot;: &quot;2&quot;, &quot;md&quot;: &quot;3&quot;, &quot;lg&quot;: &quot;4&quot;}"
+		 data-pagination-style="{&quot;xs&quot;: &quot;fraction&quot;, &quot;sm&quot;: &quot;bullets&quot;, &quot;md&quot;: &quot;bullets&quot;, &quot;lg&quot;: &quot;bullets&quot;}"
+		 data-pagination-colored="false"
+		 data-count="{serviceSlider->f:count()}">
+		<div class="carousel__content swiper">
+			<div class="carousel__body swiper-wrapper">
+				<f:for each="{serviceSlider}" as="service" iteration="i">
+					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
+						<div class="card card--image-top card--md card--image-size-md card--service">
+
+							<a href="{service.data.link}" class="card__link card__link--hidden" aria-label="{service.data.title}">
+								<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+									<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+								</svg>
+							</a>
+
+							<div class="card__content">
+								<div class="card__header">
+									<h3 class="card__title">{service.data.title}</h3>
+								</div>
+								<div class="card__body">
+									<div class="card__text">
+										<p>{service.data.text}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</f:for>
+			</div>
+		</div>
+		<div class="carousel__pagination swiper-pagination"></div>
+
+		<button class="carousel__button swiper-button-prev" aria-label="Zurück">
+			<svg class="icon icon--chevron-left icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-chevron-left')}"></use>
+			</svg>
+		</button>
+		<button class="carousel__button swiper-button-next" aria-label="Vor">
+			<svg class="icon icon--chevron-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-chevron-right')}"></use>
+			</svg>
+		</button>
+	</div>
+</f:section>

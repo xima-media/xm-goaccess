@@ -252,6 +252,26 @@
     &.frame-type-heroteaser {
         margin-bottom: var(--space-md);
     }
+
+    &.frame-type-serviceSlider {
+        background-color: rgba($color-cyan, .75);
+        width: 100vw;
+
+        +.frame-type-serviceSlider {
+            margin-top: 0;
+        }
+
+        .content-wrapper__content {
+            max-width: $container-default-widths;
+
+            .card {
+                &__header,
+                &__text {
+                    color: $black;
+                }
+            }
+        }
+    }
 }
 
 .head-area {

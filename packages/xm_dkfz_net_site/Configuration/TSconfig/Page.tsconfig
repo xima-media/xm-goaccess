@@ -192,6 +192,15 @@ mod.wizards.newContentElement.wizardItems {
         }
       }
 
+      tt_content_serviceSlider {
+        iconIdentifier = content-listgroup
+        title = ServiceSlider
+        description = Das ist ein Service-Slider
+        tt_content_defValues {
+          CType = serviceSlider
+        }
+      }
+
       tt_content_video {
         iconIdentifier = content-video
         title = Video
@@ -229,7 +238,7 @@ mod.wizards.newContentElement.wizardItems {
             }
     }
 
-    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote)
+    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote, tt_content_serviceSlider)
   }
 }
 
