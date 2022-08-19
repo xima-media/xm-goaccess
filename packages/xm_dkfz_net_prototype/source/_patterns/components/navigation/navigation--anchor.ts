@@ -151,7 +151,7 @@ class NavigationAnchor {
                     }
                 })
             }, {
-                threshold: .5
+                threshold: 1
             })
 
             sections.forEach(section => {

@@ -128,9 +128,7 @@
                     border-radius: 50%;
                 }
 
-                &.active,
-                &:focus,
-                &:hover {
+                &.active {
                     &::after {
                         background: var(--color-black);
                     }

@@ -20,8 +20,16 @@
         padding-bottom: 1rem;
     }
 
+    &+.navigation--anchor {
+        margin-top: var(--space-lg);
+    }
+
     &--with-image {
         margin: 0 var(--default-overflow-margin-negative);
+
+        &+.navigation--anchor {
+            margin: 0;
+        }
     }
 
     button {
