@@ -66,6 +66,7 @@ test-php-stan:
 
 deploy-xima-staging:
   extends: .deploy-prepare
+  stage: deploy
   only:
     refs:
       - "master"
@@ -75,6 +76,7 @@ deploy-xima-staging:
     - vendor/bin/dep deploy-fast staging
 
 deploy-dkfz-staging:
+  extends: .deploy-prepare
   stage: deploy
   only:
     refs:
@@ -86,6 +88,7 @@ deploy-dkfz-staging:
     - vendor/bin/dep deploy-fast staging-dkfz
 
 deploy-dkfz-production:
+  extends: .deploy-prepare
   stage: deploy
   only:
     refs:
