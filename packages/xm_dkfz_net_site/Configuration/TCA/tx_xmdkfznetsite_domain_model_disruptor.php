@@ -14,7 +14,7 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
-            'endtime' => 'endtime'
+            'endtime' => 'endtime',
         ],
         'searchFields' => 'headline, text, starttime, endtime',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-info.svg',
@@ -44,7 +44,7 @@ return [
                 'eval' => 'required',
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'minimal',
-            ]
+            ],
         ],
         'starttime' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.starttime',
@@ -68,6 +68,6 @@ return [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),
                 ],
             ],
-        ]
+        ],
     ],
 ];

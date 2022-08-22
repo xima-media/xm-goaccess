@@ -66,4 +66,3 @@ $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
 
 // Register custom Preview
 $GLOBALS['TCA']['tt_content']['types']['linklist']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\InfoboxPreviewRenderer::class;
-
