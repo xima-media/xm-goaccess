@@ -60,7 +60,7 @@ test-php-stan:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - ssh-keyscan $TYPO3_STAGING_URL >> ~/.ssh/known_hosts
-    - [[ ! -z "$TYPO3_PRODUCTION_URL" ]] && ssh-keyscan $TYPO3_PRODUCTION_URL >> ~/.ssh/known_hosts
+    - if [[ ! -z "$TYPO3_PRODUCTION_URL" ]]; then ssh-keyscan $TYPO3_PRODUCTION_URL >> ~/.ssh/known_hosts; fi
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
 
