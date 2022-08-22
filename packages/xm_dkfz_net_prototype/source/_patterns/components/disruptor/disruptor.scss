@@ -83,22 +83,19 @@
             }
         }
     }
+}
 
-    &-style-warning {
-        .header {
-            top: 4rem;
+// when disruptor is fixed at the top
+.lightbox-style-warning,
+.modal-disruptor-fixed {
+    .header {
+        padding-top: 8rem;
 
-            &__meta {
-                top: 36px;
-            }
+        &__meta {
+            top: 2.25rem;
         }
     }
 }
-
-
-
-
-
 
 
 // end of disruptor.scss file

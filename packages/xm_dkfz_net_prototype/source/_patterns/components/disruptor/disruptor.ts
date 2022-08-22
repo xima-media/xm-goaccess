@@ -16,7 +16,7 @@ class Disruptor {
             disruptorModal.forEach(modal => {
                 const disruptorModalFixed = modal.nextElementSibling
 
-                if(modal as HTMLElement) {
+                if(modal as HTMLElement && sessionStorage.getItem("disruptor") === null) {
                     app.lightbox.startLoading()
                     app.lightbox.open(2, 'disruptor')
                     app.lightbox.displayContent(modal.innerHTML)
@@ -28,9 +28,16 @@ class Disruptor {
                         if (root.dataset.lightBoxType && root.dataset.lightBoxType === 'disruptor' ) {
                             disruptorModalFixed.classList.remove('d-none')
                             modal.classList.add('d-none')
+
+                            sessionStorage.setItem('disruptor', 'close')
                         }
                       })
                     app.lightbox.stopLoading()
+                }
+
+                if(sessionStorage.getItem("disruptor") !== null) {
+                    disruptorModalFixed.classList.remove('d-none')
+                    document.querySelector('html').classList.add('modal-disruptor-fixed')
                 }
             })
         });
