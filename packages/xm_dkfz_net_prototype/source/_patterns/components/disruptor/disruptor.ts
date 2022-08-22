@@ -1,5 +1,6 @@
 import app from '../basic/basic'
 import './disruptor.scss'
+import {LightboxStyle} from "../lightbox/lightbox";
 
 class Disruptor {
 
@@ -18,7 +19,7 @@ class Disruptor {
 
                 if(modal as HTMLElement && sessionStorage.getItem("disruptor") === null) {
                     app.lightbox.startLoading()
-                    app.lightbox.open(2, 'disruptor')
+                    app.lightbox.open(LightboxStyle.warning, 'disruptor')
                     app.lightbox.displayContent(modal.innerHTML)
 
                     document.addEventListener('lightboxClose', e => {

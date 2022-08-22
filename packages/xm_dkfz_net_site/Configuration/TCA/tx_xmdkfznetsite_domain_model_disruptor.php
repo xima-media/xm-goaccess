@@ -42,8 +42,7 @@ return [
             'config' => [
                 'type' => 'text',
                 'eval' => 'required',
-                'enableRichtext' => true,
-                'richtextConfiguration' => 'minimal',
+                'max' => 140,
             ]
         ],
         'starttime' => [
