@@ -262,14 +262,21 @@
             padding-top: 0;
         }
 
-        .content-wrapper__content {
-            max-width: $container-default-widths;
+        .content-wrapper {
+            &__content {
+                max-width: $container-default-widths + 2rem;
 
-            .card {
-                &__header,
-                &__text {
-                    color: $black;
+                .card {
+                    &__header,
+                    &__text {
+                        color: $black;
+                    }
                 }
+            }
+
+            &__header {
+                margin: 0 auto .75rem;
+                padding: 0;
             }
         }
     }

@@ -4,14 +4,13 @@
     'tt_content',
     'CType',
     [
-        'ServiceSlider',
+        'Service-Slider',
         'serviceSlider',
         'content-carousel',
     ],
-    'uploads',
+    'image',
     'after'
 );
-$GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['carousel'] = 'content-carousel';
 
 $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
     'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
@@ -31,30 +30,19 @@ $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
                     rowDescription,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,',
     'columnsOverrides' => [
-        'sectionIndex' => [
-            'config' => [
-                'default' => 0,
-            ],
-        ],
         'tt_content_items' => [
             'label' => 'Service-Slider',
             'config' => [
                 'overrideChildTca' => [
                     'types' => [
                         'teaser-item' => [
-                            'showitem' => 'record_type, link, --linebreak--, overrides, --palette--;;slider-override',
+                            'showitem' => 'link, --linebreak--, overrides, --palette--;;slider-override',
                         ],
                     ],
                     'columns' => [
                         'record_type' => [
                             'config' => [
-                                'default' => 'teaser-item',
-                                'items' => [
-                                    [
-                                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser',
-                                        'teaser-item',
-                                    ],
-                                ],
+                                'default' => 'teaser-item'
                             ],
                         ],
                     ],
@@ -63,6 +51,3 @@ $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
         ],
     ],
 ];
-
-// Register custom Preview
-$GLOBALS['TCA']['tt_content']['types']['linklist']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\InfoboxPreviewRenderer::class;

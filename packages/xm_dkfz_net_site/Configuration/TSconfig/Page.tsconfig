@@ -194,7 +194,7 @@ mod.wizards.newContentElement.wizardItems {
 
       tt_content_serviceSlider {
         iconIdentifier = content-carousel
-        title = ServiceSlider
+        title = Service-Slider
         description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.slider.description
         tt_content_defValues {
           CType = serviceSlider

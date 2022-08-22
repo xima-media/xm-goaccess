@@ -25,7 +25,12 @@
     &--content {
         max-width: $container-default-widths;
         margin: 0 auto;
-        display: flex;
+        display: grid;
+        grid-template-columns: auto;
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: auto 1fr;
+        }
 
         .disruptor__title,
             p {
@@ -39,17 +44,13 @@
                 margin-right: .5rem;
                 padding: 0 .25rem;
                 background: $color-secondary;
+                max-height: 2.5rem;
+
+                @include media-breakpoint-down(md) {
+                    max-width: fit-content;
+                }
             }
         }
-    }
-}
-
-@keyframes opacityIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }
 
@@ -89,10 +90,20 @@
 .lightbox-style-warning,
 .modal-disruptor-fixed {
     .header {
-        padding-top: 8rem;
+        @include media-breakpoint-up(lg) {
+            padding-top: 8rem;
+        }
 
         &__meta {
-            top: 2.25rem;
+            top: 6rem;
+
+            @include media-breakpoint-up(sm) {
+                top: 4rem;
+            }
+
+            @include media-breakpoint-up(md) {
+                top: 3rem;
+            }
         }
     }
 }
