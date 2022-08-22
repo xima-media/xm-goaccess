@@ -102,6 +102,10 @@
 
                 [class*='icon-'] {
                     color: var(--color-white);
+                    //background-color: var(--color-gray-900);
+                }
+
+                .card__link--background {
                     background-color: var(--color-gray-900);
                 }
             }
@@ -317,7 +321,7 @@
 //
 
 .card--service {
-    padding: 1.125rem 2rem 4rem;
+    padding: 2rem 3rem 4rem 2rem;
 
     .card {
         &__title {
@@ -329,6 +333,12 @@
         &__link {
             &--hidden {
                 opacity: 1;
+            }
+        }
+
+        &__content {
+            .card__header {
+                margin-bottom: 0!important;
             }
         }
     }

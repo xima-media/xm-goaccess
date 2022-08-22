@@ -340,8 +340,10 @@
             }
 
             &::before {
-                top: .25rem;
-                left: .25rem;
+                //top: .25rem;
+                //left: .25rem;
+                top: 0;
+                left: 0;
             }
 
             &::after {
@@ -350,7 +352,7 @@
             }
 
             .card {
-                @include background-blur;
+                @include background-blur($background-color: $color-white, $alpha: .9);
 
                 height: 100%;
             }
