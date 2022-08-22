@@ -99,6 +99,17 @@ deploy-dkfz-production:
     - vendor/bin/dep deploy:unlock production-dkfz
     - vendor/bin/dep deploy production-dkfz
 
+sync-dkfz-stage-to-production:
+  extends: .deploy-prepare
+  stage: sync
+  only:
+    variables:
+      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  script:
+    - vendor/bin/dep db:pull staging-dkfz
+    - vendor/bin/dep media:pull staging-dkfz
+  when: manual
+
 deploy-feature:
   extends: .deploy-prepare
   only:

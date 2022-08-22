@@ -36,7 +36,8 @@ host('staging-dkfz')
     ->set('writable_chmod_recursive', false)
     ->set('writable_chmod_mode', '2770')
     ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de')
-    ->set('fetch_method', 'curl');
+    ->set('fetch_method', 'curl')
+    ->set('media_rsync_flags', '-rz --perms');
 
 host('production-dkfz')
     ->hostname('intracmsprod')
@@ -50,7 +51,8 @@ host('production-dkfz')
     ->set('writable_chmod_recursive', false)
     ->set('writable_chmod_mode', '2770')
     ->set('deploy_path', '/var/www/html/intracmsprod.dkfz-heidelberg.de')
-    ->set('fetch_method', 'curl');
+    ->set('fetch_method', 'curl')
+    ->set('media_rsync_flags', '-rz --perms');
 
 host('feature')
     ->hostname('192.168.2.41')
