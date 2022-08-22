@@ -34,26 +34,17 @@ build-node:
       - packages/xm_dkfz_net_prototype/Resources/Public
 
 test-php-lint:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: test
   script:
     - composer run ci:php:lint
 
 test-php-cs-fixer:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: test
   needs: [ "build-php" ]
   script:
     - composer run ci:php:fixer
 
 test-php-stan:
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   stage: test
   needs: [ "build-php" ]
   script:
@@ -68,11 +59,12 @@ test-php-stan:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-keyscan dkfz-typo3-dev.xima.local >> ~/.ssh/known_hosts
+    - ssh-keyscan $TYPO3_STAGING_URL >> ~/.ssh/known_hosts
+    - [[ ! -z "$TYPO3_PRODUCTION_URL" ]] && ssh-keyscan $TYPO3_PRODUCTION_URL >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
 
-deploy-staging:
+deploy-xima-staging:
   extends: .deploy-prepare
   only:
     refs:
@@ -81,32 +73,28 @@ deploy-staging:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
     - vendor/bin/dep deploy-fast staging
-  environment:
-    name: staging
-    url: https://stage.dkfz-typo3-dev.xima.local/
 
-deploy-staging-dkfz:
+deploy-dkfz-staging:
   stage: deploy
-  needs: [ "build-php", "build-node" ]
   only:
     refs:
       - "master"
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - apk add --quiet rsync
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan intracmsstage.dkfz-heidelberg.de >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
     - vendor/bin/dep deploy:unlock staging-dkfz
-    - vendor/bin/dep deploy-fast staging-dkfz -vvv
-  environment:
-    name: staging
-    url: https://intracmsstage.dkfz-heidelberg.de/
+    - vendor/bin/dep deploy-fast staging-dkfz
+
+deploy-dkfz-production:
+  stage: deploy
+  only:
+    refs:
+      - "master"
+    variables:
+      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  script:
+    - vendor/bin/dep deploy:unlock production-dkfz
+    - vendor/bin/dep deploy production-dkfz
 
 deploy-feature:
   extends: .deploy-prepare

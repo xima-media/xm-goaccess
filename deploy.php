@@ -38,6 +38,20 @@ host('staging-dkfz')
     ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de')
     ->set('fetch_method', 'curl');
 
+host('production-dkfz')
+    ->hostname('intracmsprod')
+    ->stage('production-dkfz')
+    ->user('xima')
+    ->set('branch', 'master')
+    ->set('repository', 'git@git.dkfz.de:dkfz/dkfz-t3-intranet.git')
+    ->set('public_urls', ['https://intracmsprod.dkfz-heidelberg.de'])
+    ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod')
+    ->set('writable_chmod_recursive', false)
+    ->set('writable_chmod_mode', '2770')
+    ->set('deploy_path', '/var/www/html/intracmsprod.dkfz-heidelberg.de')
+    ->set('fetch_method', 'curl');
+
 host('feature')
     ->hostname('192.168.2.41')
     ->stage('feature')
