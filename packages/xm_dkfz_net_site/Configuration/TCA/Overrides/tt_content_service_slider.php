@@ -42,7 +42,7 @@ $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
                     'columns' => [
                         'record_type' => [
                             'config' => [
-                                'default' => 'teaser-item'
+                                'default' => 'teaser-item',
                             ],
                         ],
                     ],
