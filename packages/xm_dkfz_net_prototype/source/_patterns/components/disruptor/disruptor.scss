@@ -93,6 +93,10 @@
 
         &__meta {
             top: 4rem;
+
+            @include media-breakpoint-up(lg) {
+                top: 2rem;
+            }
         }
     }
 }
