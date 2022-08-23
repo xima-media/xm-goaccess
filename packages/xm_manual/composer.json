@@ -1,0 +1,24 @@
+{
+	"name": "xima/xm-manual",
+	"description": "Editor manual for TYPO3",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Maik Schneider",
+			"email": "maik.schneider@xima.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "xm_manual"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Xima\\XmManual\\": "Classes"
+		}
+	}
+}
