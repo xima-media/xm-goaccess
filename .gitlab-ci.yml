@@ -100,7 +100,7 @@ deploy-dkfz-production:
     - vendor/bin/dep deploy:unlock production-dkfz
     - vendor/bin/dep deploy production-dkfz
 
-sync-dkfz-db-stage-to-production:
+reset-staging-db:
   extends: .deploy-prepare
   stage: sync
   only:
@@ -108,21 +108,21 @@ sync-dkfz-db-stage-to-production:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - export DUMPCODE=$((1 + $RANDOM % 10000))
-    - vendor/bin/dep db:export staging-dkfz --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:download staging-dkfz --options=dumpcode:$DUMPCODE --no-interaction
+    - vendor/bin/dep db:export production-dkfz --options=dumpcode:$DUMPCODE --no-interaction
+    - vendor/bin/dep db:download production-dkfz --options=dumpcode:$DUMPCODE --no-interaction
     - vendor/bin/dep db:process --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:upload production-dkfz --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:import production-dkfz --options=dumpcode:$DUMPCODE --no-interaction
+    - vendor/bin/dep db:upload staging-dkfz --options=dumpcode:$DUMPCODE --no-interaction
+    - vendor/bin/dep db:import staging-dkfz --options=dumpcode:$DUMPCODE --no-interaction
   when: manual
 
-sync-dkfz-media-stage-to-production:
+reset-staging-media:
   extends: .deploy-prepare
   stage: sync
   only:
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - vendor/bin/dep media:copy staging-dkfz --options=target:production-dkfz --no-interaction
+    - vendor/bin/dep media:copy production-dkfz --options=target:staging-dkfz --no-interaction
   when: manual
 
 deploy-feature:
