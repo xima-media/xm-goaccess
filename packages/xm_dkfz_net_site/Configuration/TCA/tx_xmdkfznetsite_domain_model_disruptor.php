@@ -42,8 +42,9 @@ return [
             'config' => [
                 'type' => 'text',
                 'eval' => 'required',
-                'max' => 140,
-            ],
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'disruptor',
+            ]
         ],
         'starttime' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.starttime',

@@ -1,0 +1,75 @@
+# Import basic configuration
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+
+# Add configuration for the editor
+# For complete documentation see http://docs.ckeditor.com/#!/api/CKEDITOR.config
+editor:
+  externalPlugins:
+    wordcount:
+      resource: 'EXT:rte_ckeditor/Resources/Public/JavaScript/Contrib/plugins/wordcount/'
+
+  config:
+    # Include custom CSS
+    contentsCss: "EXT:rte_ckeditor/Resources/Public/Css/rte.css"
+
+    wordcount:
+      showCharCount: true
+      maxCharCount: 140
+
+    removeButtons:
+        - Find
+        - Replace
+        - SelectAll
+        - Scayt
+        - Form
+        - Checkbox
+        - Radio
+        - TextField
+        - Textarea
+        - Select
+        - Button
+        - ImageButton
+        - HiddenField
+        - CopyFormatting
+        - RemoveFormat
+        - NumberedList
+        - BulletedList
+        - Indent
+        - Outdent
+        - Blockquote
+        - CreateDiv
+        - JustifyLeft
+        - JustifyCenter
+        - JustifyRight
+        - JustifyBlock
+        - BidiLtr
+        - BidiRtl
+        - Language
+        - Link
+        - Unlink
+        - Anchor
+        - Image
+        - Flash
+        - Table
+        - HorizontalRule
+        - Smiley
+        - SpecialChar
+        - PageBreak
+        - Iframe
+        - Styles
+        - Format
+        - Font
+        - FontSize
+        - TextColor
+        - BGColor
+        - Maximize
+        - ShowBlocks
+        - About
+        - Source
+        - NewPage
+        - Preview
+        - Print
+        - Templates
