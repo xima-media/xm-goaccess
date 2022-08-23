@@ -44,7 +44,7 @@ return [
                 'eval' => 'required',
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'disruptor',
-            ]
+            ],
         ],
         'starttime' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.starttime',
