@@ -111,8 +111,9 @@
 	},
 	"scripts": {
 		"typo3-cms-scripts": [
-			"php vendor/bin/typo3cms install:fixfolderstructure",
-			"mkdir -p var/goaccess"
+			"mkdir -p var/goaccess",
+			"mkdir -p var/debug",
+			"php vendor/bin/typo3cms install:fixfolderstructure"
 		],
 		"post-autoload-dump": [
 			"@typo3-cms-scripts"
