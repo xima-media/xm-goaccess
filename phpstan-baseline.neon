@@ -156,9 +156,19 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
 
 		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
+
+		-
 			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/EventListener/FrontendUserLookup.php
 
 		-
 			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\FrontendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
@@ -239,6 +249,16 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResolver.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$feUser with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResolver.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\GitlabResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"

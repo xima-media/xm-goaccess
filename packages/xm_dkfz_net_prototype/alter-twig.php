@@ -6,7 +6,6 @@
  */
 function addCustomExtension(\Twig_Environment &$env, $config)
 {
-
     /**
      * @example `<h1>Hello {{ customTwigFunctionThatSaysWorld() }}!</h1>` => `<h1>Hello Custom World</h1>`
      */
