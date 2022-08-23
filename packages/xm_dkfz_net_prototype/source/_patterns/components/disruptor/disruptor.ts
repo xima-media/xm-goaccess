@@ -39,6 +39,7 @@ class Disruptor {
                 if(sessionStorage.getItem("disruptor") !== null) {
                     disruptorModalFixed.classList.remove('d-none')
                     document.querySelector('html').classList.add('modal-disruptor-fixed')
+                    modal.classList.add('d-none')
                 }
             })
         });

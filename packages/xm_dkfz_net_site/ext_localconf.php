@@ -22,6 +22,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1657005026] = [
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetDefault.yaml';
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['minimal'] = 'EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetMinimal.yaml';
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['extended'] = 'EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetExtended.yaml';
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['disruptor'] = 'EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetDisruptor.yaml';
 
 // Register NewsRepository override
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\GeorgRinger\News\Domain\Repository\NewsRepository::class] = [
