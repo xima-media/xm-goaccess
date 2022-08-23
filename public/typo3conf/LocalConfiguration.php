@@ -91,6 +91,28 @@ return [
                         'frontend',
                     ],
                 ],
+                'dkfz' => [
+                    'description' => 'DKFZ OAuth Login',
+                    'iconIdentifier' => 'oauth2-gitlab',
+                    'label' => 'DKFZ',
+                    'options' => [
+                        'clientId' => '8086662d-c0d6-4daa-b154-8f6524bbf6a9',
+                        'clientSecret' => 'k_2XzWbsGYKaE2tgIUIOK6_FpQogkmZSVAKUYW3K',
+                        'scopeSeparator' => ' ',
+                        'scopes' => [
+                            'openid',
+                            'email',
+                            'profile',
+                        ],
+                        'urlAccessToken' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/token',
+                        'urlAuthorize' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/authorize',
+                        'urlResourceOwnerDetails' => 'https://tdkfzadfs.dkfz-heidelberg.de/userinfo',
+                    ],
+                    'scopes' => [
+                        'backend',
+                        'frontend',
+                    ],
+                ],
             ],
         ],
         'scheduler' => [
@@ -137,6 +159,13 @@ return [
                             ],
                         ],
                     ],
+                ],
+            ],
+        ],
+        'writerConfiguration' => [
+            'debug' => [
+                'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
+                    'logFile' => '/var/www/html/var/log/typo3_debug.log',
                 ],
             ],
         ],

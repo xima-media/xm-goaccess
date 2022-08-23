@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Waldhacker\Oauth2Client\Events\FrontendUserLookupEvent;
 use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
+use Xima\XmDkfzNetSite\ResourceResolver\DkfzResolver;
 use Xima\XmDkfzNetSite\ResourceResolver\GitlabResolver;
 use Xima\XmDkfzNetSite\UserFactory\FrontendUserFactory;
 
@@ -61,7 +62,7 @@ class FrontendUserLookup
     public function createResolver(FrontendUserLookupEvent $event): AbstractResolver
     {
         // @TODO: better way to guess the Resolver class
-        $resolverClass = $event->getProviderId() === 'gitlab' ? GitlabResolver::class : null;
+        $resolverClass = $event->getProviderId() === 'gitlab' ? GitlabResolver::class : DkfzResolver::class;
 
         if (!$resolverClass) {
             throw new \Exception('No Resolver found for provider id "' . $event->getProviderId() . '"');
