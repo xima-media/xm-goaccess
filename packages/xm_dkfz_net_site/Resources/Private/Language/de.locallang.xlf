@@ -185,6 +185,9 @@
 			<trans-unit id="container.2cols.right">
 				<target>Rechts</target>
 			</trans-unit>
+			<trans-unit id="container.2cols.notEqual">
+				<target>2 Spalter nicht gleich</target>
+			</trans-unit>
 			<trans-unit id="userEditForm.profileEdit">
 				<target>Profil bearbeiten</target>
 			</trans-unit>

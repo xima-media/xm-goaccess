@@ -223,6 +223,9 @@
 			<trans-unit id="container.2cols.right">
 				<source>Right</source>
 			</trans-unit>
+			<trans-unit id="container.2cols.notEqual">
+				<source>2 Columns not equal</source>
+			</trans-unit>
 			<trans-unit id="userEditForm.profileEdit">
 				<source>Edit profile</source>
 			</trans-unit>

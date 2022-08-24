@@ -135,6 +135,18 @@ tt_content {
     }
   }
 
+  container-2cols_not_equal < lib.contentElement
+  container-2cols_not_equal {
+    templateName = 2colsNotEqual
+    templateRootPaths {
+      10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates
+    }
+
+    dataProcessing {
+      100 = B13\Container\DataProcessing\ContainerProcessor
+    }
+  }
+
   textmedia {
     dataProcessing {
       20 >
