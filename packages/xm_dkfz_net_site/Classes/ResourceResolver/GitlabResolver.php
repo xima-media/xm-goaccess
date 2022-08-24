@@ -34,7 +34,7 @@ class GitlabResolver extends AbstractResolver
             $beUser['realName'] = $remoteUser['name'];
         }
 
-        if (!$beUser['admin'] && $remoteUser['is_admin']) {
+        if (!$beUser['admin'] && isset($remoteUser['is_admin']) && $remoteUser['is_admin']) {
             $beUser['admin'] = 1;
         }
     }
