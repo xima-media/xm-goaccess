@@ -93,7 +93,7 @@ return [
                 ],
                 'dkfz' => [
                     'description' => 'DKFZ OAuth Login',
-                    'iconIdentifier' => 'oauth2-gitlab',
+                    'iconIdentifier' => 'dkfz-d',
                     'label' => 'DKFZ',
                     'options' => [
                         'clientId' => '8086662d-c0d6-4daa-b154-8f6524bbf6a9',
@@ -106,6 +106,28 @@ return [
                         ],
                         'urlAccessToken' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/token',
                         'urlAuthorize' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/authorize',
+                        'urlResourceOwnerDetails' => '',
+                    ],
+                    'scopes' => [
+                        'backend',
+                        'frontend',
+                    ],
+                ],
+                'xima' => [
+                    'description' => 'Login with XIMA',
+                    'iconIdentifier' => 'xima-x',
+                    'label' => 'XIMA',
+                    'options' => [
+                        'clientId' => '14b07207-5728-4453-a6a6-5539803724cb',
+                        'clientSecret' => 'VcU8Q~21xmtapRPT24ZlK4itF~x0B1So2jEfOcWs',
+                        'scopeSeparator' => ' ',
+                        'scopes' => [
+                            'openid',
+                            'profile',
+                        ],
+                        'urlAccessToken' => 'https://login.microsoftonline.com/890938ce-3232-42b7-981d-9a7cbe37a475/oauth2/v2.0/token',
+                        'urlAuthorize' => 'https://login.microsoftonline.com/890938ce-3232-42b7-981d-9a7cbe37a475/oauth2/v2.0/authorize',
+                        'urlResourceOwnerDetails' => 'https://graph.microsoft.com/oidc/userinfo',
                     ],
                     'scopes' => [
                         'backend',

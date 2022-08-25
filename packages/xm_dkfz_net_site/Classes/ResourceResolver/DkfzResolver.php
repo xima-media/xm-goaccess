@@ -6,7 +6,7 @@ class DkfzResolver extends AbstractResolver
 {
     public function getIntendedUsername(): ?string
     {
-        return $this->resourceOwner->toArray()['username'] ?? null;
+        return $this->resourceOwner->toArray()['email'] ?? null;
     }
 
     public function getIntendedEmail(): ?string
@@ -18,24 +18,19 @@ class DkfzResolver extends AbstractResolver
     {
         $remoteUser = $this->getResourceOwner()->toArray();
 
-        if (!$beUser['username'] && $remoteUser['username']) {
-            $beUser['username'] = $remoteUser['username'];
+        if (!$beUser['username'] && $remoteUser['email']) {
+            $beUser['username'] = $remoteUser['email'];
         }
 
         if ($remoteUser['email']) {
             $beUser['email'] = $remoteUser['email'];
         }
 
-        if ($remoteUser['state'] === 'active') {
-            $beUser['disable'] =  0;
-        }
+        $beUser['disable'] =  0;
+        $beUser['admin'] = 1;
 
         if (!$beUser['realName']) {
             $beUser['realName'] = $remoteUser['name'];
-        }
-
-        if (!$beUser['admin'] && $remoteUser['is_admin']) {
-            $beUser['admin'] = 1;
         }
     }
 
