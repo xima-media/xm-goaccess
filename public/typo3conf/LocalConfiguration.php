@@ -106,7 +106,6 @@ return [
                         ],
                         'urlAccessToken' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/token',
                         'urlAuthorize' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/authorize',
-                        'urlResourceOwnerDetails' => 'https://tdkfzadfs.dkfz-heidelberg.de/userinfo',
                     ],
                     'scopes' => [
                         'backend',
