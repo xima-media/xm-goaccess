@@ -4,7 +4,7 @@ namespace Deployer;
 
 require_once(__DIR__ . '/vendor/blueways/deployer-recipes/autoload.php');
 
-set('repository', 'git@t3-gitlab-dev.xima.local:dkfz/dkfz-t3-intranet.git');
+set('repository', 'git@git.xima.de:typo3/dkfz/xm-dkfz-net.git');
 set('teams_webhook', 'https://ximamediagmbh.webhook.office.com/webhookb2/a14869ed-d90e-419d-849e-b185ac6e5636@890938ce-3232-42b7-981d-9a7cbe37a475/IncomingWebhook/49bc7a84cd024f79b74984417341520c/f0210cd8-c97d-4d14-b199-28af55f9215e');
 
 host('local')
