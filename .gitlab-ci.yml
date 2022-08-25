@@ -132,10 +132,10 @@ backup-production-dkfz:
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - vendor/bin/dep db:export production-dkfz --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
-    - vendor/bin/dep db:download production-dkfz --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
-    - vendor/bin/dep db:process --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
-    - vendor/bin/dep db:compress --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:export production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:download production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:process --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:compress --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep media:pull production-dkfz --no-interaction
   when: manual
   artifacts:
@@ -149,14 +149,14 @@ reset-staging-xima:
   stage: sync
   only:
     variables:
-      - $GITLAB_LOCATION == "DKFZ-INTERN"
+      - $GITLAB_LOCATION == "XIMA-INTERN"
   when: manual
   script:
     - 'curl --location --output artifacts.zip --header "PRIVATE-TOKEN: $DKFZ_ACCESS_TOKEN" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"'
     - unzip artifacts.zip
-    - vendor/bin/dep db:upload staging --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
-    - vendor/bin/dep db:decompress staging --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
-    - vendor/bin/dep db:import staging --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:upload staging --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:decompress staging --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:import staging --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep media:push staging --no-interaction
 
 deploy-feature:
