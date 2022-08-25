@@ -303,6 +303,32 @@
     &.frame-type-container-accordion {
         box-shadow: none;
     }
+
+    &.frame-type-container-2cols_not_equal {
+        position: relative;
+        //width: 100vw;
+        background-color: transparent;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 10rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: rgba($color-yellow, .75);
+            z-index: -1;
+        }
+
+        .content-wrapper__content {
+            max-width: $container-default-widths;
+
+            .content-wrapper {
+                padding: 3.625rem 2.5rem;
+            }
+        }
+    }
 }
 
 .main--default {
