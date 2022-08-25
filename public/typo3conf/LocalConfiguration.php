@@ -70,27 +70,6 @@ return [
         ],
         'oauth2_client' => [
             'providers' => [
-                'gitlab' => [
-                    'description' => 'Login with Gitlab',
-                    'iconIdentifier' => 'oauth2-gitlab',
-                    'label' => 'Gitlab',
-                    'options' => [
-                        'clientId' => '937dec2c36217253918ad7bc80003222d6a6bae97920afcff1990cf0f9b04994',
-                        'clientSecret' => '4a53040fbf5d503feb29339e441797fa51aa217f815b4176f4bfa23cbb5497eb',
-                        'scopeSeparator' => ' ',
-                        'scopes' => [
-                            'openid',
-                            'read_user',
-                        ],
-                        'urlAccessToken' => 'https://t3-gitlab-dev.xima.local/oauth/token',
-                        'urlAuthorize' => 'https://t3-gitlab-dev.xima.local/oauth/authorize',
-                        'urlResourceOwnerDetails' => 'https://t3-gitlab-dev.xima.local/api/v4/user',
-                    ],
-                    'scopes' => [
-                        'backend',
-                        'frontend',
-                    ],
-                ],
                 'dkfz' => [
                     'description' => 'DKFZ OAuth Login',
                     'iconIdentifier' => 'dkfz-d',
