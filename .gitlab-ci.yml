@@ -139,11 +139,12 @@ reset-staging-xima:
   when: manual
   script:
     - 'curl --location --output artifacts.zip --header "PRIVATE-TOKEN: $DKFZ_ACCESS_TOKEN" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"'
+    - ls -la
     - unzip -o artifacts.zip
-    - vendor/bin/dep db:upload staging --options=dumpcode:BackupProductionDkfz --no-interaction
-    - vendor/bin/dep db:decompress staging --options=dumpcode:BackupProductionDkfz --no-interaction
-    - vendor/bin/dep db:import staging --options=dumpcode:BackupProductionDkfz --no-interaction
-    - vendor/bin/dep media:push staging --no-interaction
+    - vendor/bin/dep db:decompress staging --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - vendor/bin/dep db:upload staging --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - vendor/bin/dep db:import staging --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - vendor/bin/dep media:push staging --no-interaction -vvv
 
 deploy-feature:
   extends: .deploy-prepare
