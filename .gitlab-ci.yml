@@ -55,7 +55,7 @@ test-php-stan:
   stage: deploy
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   before_script:
-    - apk add --quiet rsync
+    - apk add --quiet rsync gzip
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
@@ -100,28 +100,14 @@ deploy-dkfz-production:
     - vendor/bin/dep deploy:unlock production-dkfz
     - vendor/bin/dep deploy production-dkfz
 
-reset-staging-db:
+reset-staging-dkfz:
   extends: .deploy-prepare
   stage: sync
   only:
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - export DUMPCODE=$((1 + $RANDOM % 10000))
-    - vendor/bin/dep db:export production-dkfz --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:download production-dkfz --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:process --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:upload staging-dkfz --options=dumpcode:$DUMPCODE --no-interaction
-    - vendor/bin/dep db:import staging-dkfz --options=dumpcode:$DUMPCODE --no-interaction
-  when: manual
-
-reset-staging-media:
-  extends: .deploy-prepare
-  stage: sync
-  only:
-    variables:
-      - $GITLAB_LOCATION == "DKFZ-INTERN"
-  script:
+    - vendor/bin/dep db:copy production-dkfz --options=target:staging-dkfz --no-interaction
     - vendor/bin/dep media:copy production-dkfz --options=target:staging-dkfz --no-interaction
   when: manual
 
