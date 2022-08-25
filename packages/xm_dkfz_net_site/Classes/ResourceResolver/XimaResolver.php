@@ -2,7 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\ResourceResolver;
 
-class DkfzResolver extends AbstractResolver
+class XimaResolver extends AbstractResolver
 {
     public function getIntendedUsername(): ?string
     {
@@ -30,7 +30,7 @@ class DkfzResolver extends AbstractResolver
         $beUser['admin'] = 1;
 
         if (!$beUser['realName']) {
-            $beUser['realName'] = $remoteUser['unique_name'];
+            $beUser['realName'] = $remoteUser['name'];
         }
     }
 
@@ -49,7 +49,7 @@ class DkfzResolver extends AbstractResolver
         $feUser['disable'] =  0;
 
         if (!$feUser['name']) {
-            $feUser['name'] = $remoteUser['unique_name'];
+            $feUser['name'] = $remoteUser['name'];
         }
 
         // @TODO: usergroups

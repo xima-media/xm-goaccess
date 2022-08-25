@@ -9,6 +9,7 @@ use Waldhacker\Oauth2Client\Events\BackendUserLookupEvent;
 use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
 use Xima\XmDkfzNetSite\ResourceResolver\DkfzResolver;
 use Xima\XmDkfzNetSite\ResourceResolver\GitlabResolver;
+use Xima\XmDkfzNetSite\ResourceResolver\XimaResolver;
 use Xima\XmDkfzNetSite\UserFactory\BackendUserFactory;
 
 class BackendUserLookup
@@ -53,8 +54,12 @@ class BackendUserLookup
      */
     public function createResolver(BackendUserLookupEvent $event): AbstractResolver
     {
-        // @TODO: better way to guess the Resolver class
-        $resolverClass = $event->getProviderId() === 'gitlab' ? GitlabResolver::class : DkfzResolver::class;
+        $resolverClasses = [
+            'gitlab' => GitlabResolver::class,
+            'dkfz' => DkfzResolver::class,
+            'xima' => XimaResolver::class,
+        ];
+        $resolverClass = $resolverClasses[$event->getProviderId()] ?? false;
 
         if (!$resolverClass) {
             throw new \Exception('No Resolver found for provider id "' . $event->getProviderId() . '"');
