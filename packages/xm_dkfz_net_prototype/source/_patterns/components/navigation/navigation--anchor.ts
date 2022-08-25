@@ -138,10 +138,10 @@ class NavigationAnchor {
                       let entryTargetId = '#' + entryTarget.getAttribute('id')
 
                         navItem.forEach(li => {
+                            let liHref = li.getAttribute('href')
+
                             li.classList.remove('active')
                             li.parentElement.classList.remove('active')
-
-                            let liHref = li.getAttribute('href')
 
                             if(liHref === entryTargetId) {
                                 li.classList.add('active')
@@ -151,11 +151,20 @@ class NavigationAnchor {
                     }
                 })
             }, {
-                threshold: [ 0.5, 0.75, 1]
+                threshold: 0.75
             })
 
-            sections.forEach(section => {
-                observer.observe(section)
+            // filter the section for observe
+            Array.from(sections).filter(section => {
+                const sectionId = '#' + section.getAttribute('id')
+
+                navItem.forEach(li => {
+                    let liHref = li.getAttribute('href')
+
+                    if(liHref === sectionId) {
+                        observer.observe(section)
+                    }
+                })
             })
 
             // buttons
