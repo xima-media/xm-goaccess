@@ -112,7 +112,6 @@ class NavigationAnchor {
             // active links
             let nav = document.querySelector('.navigation--anchor');
             let navItems = nav.querySelector('.navigation__items');
-            let navItemsTest = document.querySelectorAll('.navigation__items');
             let navItem = navItems.querySelectorAll('.navigation__link');
             let sections = document.querySelectorAll('.content-wrapper')
 
@@ -132,7 +131,7 @@ class NavigationAnchor {
             })
 
             // change the active class on anchor menu item
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
                       let entryTarget = entry.target;
