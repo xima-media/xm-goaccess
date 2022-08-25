@@ -80,12 +80,10 @@ deploy-xima-staging:
 deploy-dkfz-staging:
   extends: .deploy-prepare
   stage: deploy
-  only:
-    refs:
-      - "master"
-    variables:
-      - $GITLAB_LOCATION == "DKFZ-INTERN"
-      - $IS_SCHEDULED_BACKUP != "true"
+  rules:
+    - if: $IS_SCHEDULED_BACKUP == "true"
+      when: never
+    - if: $CI_COMMIT_BRANCH == "master" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - vendor/bin/dep deploy:unlock staging-dkfz
     - vendor/bin/dep deploy-fast staging-dkfz
@@ -94,12 +92,10 @@ deploy-dkfz-production:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   stage: deploy
-  only:
-    refs:
-      - "master"
-    variables:
-      - $GITLAB_LOCATION == "DKFZ-INTERN"
-      - $IS_SCHEDULED_BACKUP != "true"
+  rules:
+    - if: $IS_SCHEDULED_BACKUP == "true"
+      when: never
+    - if: $CI_COMMIT_BRANCH == "master" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - vendor/bin/dep deploy:unlock production-dkfz
     - vendor/bin/dep deploy production-dkfz
@@ -149,12 +145,12 @@ reset-staging-xima:
     - vendor/bin/dep db:import staging --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
     - vendor/bin/dep media:push staging --no-interaction -vvv
 
-deploy-feature:
-  extends: .deploy-prepare
-  only:
-    refs:
-      - "/^DKFZ-.*$/"
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-  script:
-    - vendor/bin/dep deploy-fast feature -o branch=$CI_COMMIT_BRANCH
+#deploy-feature:
+#  extends: .deploy-prepare
+#  only:
+#    refs:
+#      - "/^DKFZ-.*$/"
+#    variables:
+#      - $GITLAB_LOCATION == "XIMA-INTERN"
+#  script:
+#    - vendor/bin/dep deploy-fast feature -o branch=$CI_COMMIT_BRANCH
