@@ -29,6 +29,10 @@ function setGlobalsFromStrings(array $from, array $allowedVariables)
             }
 
             $level[$finalKey] = $v;
+
+            if ($v === 'unset()') {
+                unset($level[$finalKey]);
+            }
         }
     }
 }
