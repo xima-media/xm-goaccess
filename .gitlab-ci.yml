@@ -53,7 +53,7 @@ test-php-stan:
 
 .deploy-prepare:
   stage: deploy
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
+  needs: [ "build-php" ]
   before_script:
     - apk add --quiet rsync gzip
     - eval $(ssh-agent -s)
@@ -67,6 +67,7 @@ test-php-stan:
 
 deploy-xima-staging:
   extends: .deploy-prepare
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   stage: deploy
   only:
     refs:
@@ -84,18 +85,21 @@ deploy-dkfz-staging:
       - "master"
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
+      - $IS_SCHEDULED_BACKUP != "true"
   script:
     - vendor/bin/dep deploy:unlock staging-dkfz
     - vendor/bin/dep deploy-fast staging-dkfz
 
 deploy-dkfz-production:
   extends: .deploy-prepare
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   stage: deploy
   only:
     refs:
       - "master"
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
+      - $IS_SCHEDULED_BACKUP != "true"
   script:
     - vendor/bin/dep deploy:unlock production-dkfz
     - vendor/bin/dep deploy production-dkfz
@@ -123,7 +127,6 @@ backup-production-dkfz:
     - vendor/bin/dep db:process --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep db:compress --options=dumpcode:BackupProductionDkfz --no-interaction
     #- vendor/bin/dep media:pull production-dkfz --no-interaction
-  when: manual
   artifacts:
     paths:
       - .dep/database
