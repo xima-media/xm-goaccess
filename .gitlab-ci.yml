@@ -125,6 +125,40 @@ reset-staging-media:
     - vendor/bin/dep media:copy production-dkfz --options=target:staging-dkfz --no-interaction
   when: manual
 
+backup-production-dkfz:
+  extends: .deploy-prepare
+  stage: sync
+  only:
+    variables:
+      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  script:
+    - vendor/bin/dep db:export production-dkfz --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:download production-dkfz --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:process --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:compress --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep media:pull production-dkfz --no-interaction
+  when: manual
+  artifacts:
+    paths:
+      - .dep/database
+      - public/fileadmin
+      - public/uploads
+
+reset-staging-xima:
+  extends: .deploy-prepare
+  stage: sync
+  only:
+    variables:
+      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  when: manual
+  script:
+    - 'curl --location --output artifacts.zip --header "PRIVATE-TOKEN: $DKFZ_ACCESS_TOKEN" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"'
+    - unzip artifacts.zip
+    - vendor/bin/dep db:upload staging --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:decompress staging --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep db:import staging --options=dumpcode:BACKUP-PROD-DKFZ --no-interaction
+    - vendor/bin/dep media:push staging --no-interaction
+
 deploy-feature:
   extends: .deploy-prepare
   only:
