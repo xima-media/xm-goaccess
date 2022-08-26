@@ -79,6 +79,7 @@ deploy-xima-staging:
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
+  needs: [ "build-php", "build-node" ]
   stage: deploy
   rules:
     - if: $IS_SCHEDULED_BACKUP == "true"
