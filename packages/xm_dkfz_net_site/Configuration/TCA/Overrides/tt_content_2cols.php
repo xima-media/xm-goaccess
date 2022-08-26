@@ -38,9 +38,9 @@ TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
                     0 => '75:25',
                     1 => 1,
                 ],
-            ]
-        ]
-    ]
+            ],
+        ],
+    ],
 ]);
 
 $GLOBALS['TCA']['tt_content']['types']['container-2cols']['showitem'] = '
