@@ -304,9 +304,8 @@
         box-shadow: none;
     }
 
-    &.frame-type-container-2cols_not_equal {
+    &.background--yellow {
         position: relative;
-        //width: 100vw;
         background-color: transparent;
 
         &:after {
@@ -328,6 +327,14 @@
                 padding: 3.625rem 2.5rem;
             }
         }
+    }
+
+    &.background--cyan {
+        background-color: rgba($color-cyan, .75) !important;
+    }
+
+    &.background--orange {
+        background-color: rgba($color-orange, .75) !important;
     }
 }
 

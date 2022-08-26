@@ -1,20 +1,23 @@
 <f:layout name="Default"/>
 
 <f:section name="Main">
-
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-{f:if(condition:'{data.viewColumn}==0',
+							then:'6',
+							else:'{f:if(condition:\'{data.viewColumn}=1\', then:\'8\')}'
+						)}">
 			<f:for each="{children_100}" as="item">
 				<f:format.raw>{item.renderedContent}</f:format.raw>
 			</f:for>
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-{f:if(condition:'{data.viewColumn}==0',
+							then:'6',
+							else:'{f:if(condition:\'{data.viewColumn}=1\', then:\'4\')}'
+						)}">
 			<f:for each="{children_200}" as="item">
 				<f:format.raw>{item.renderedContent}</f:format.raw>
 			</f:for>
 		</div>
 	</div>
-
-
 </f:section>

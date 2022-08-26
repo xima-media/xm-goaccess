@@ -185,9 +185,6 @@
 			<trans-unit id="container.2cols.right">
 				<target>Rechts</target>
 			</trans-unit>
-			<trans-unit id="container.2cols.notEqual">
-				<target>2 Spalter nicht gleich</target>
-			</trans-unit>
 			<trans-unit id="userEditForm.profileEdit">
 				<target>Profil bearbeiten</target>
 			</trans-unit>
@@ -345,6 +342,12 @@
 
 			<trans-unit id="tt_content.slider.description" space="preserve">
 				<target>Das ist ein Slider</target>
+			</trans-unit>
+			<trans-unit id="tt_content.orientation" space="preserve">
+				<target>Ausrichtung</target>
+			</trans-unit>
+			<trans-unit id="tt_content.orientation.description" space="preserve">
+				<target>Wählen Sie in welcher Proportion den Container-Element dargestellt ist.</target>
 			</trans-unit>
 		</body>
 	</file>
