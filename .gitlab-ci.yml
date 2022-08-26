@@ -18,6 +18,7 @@ build-php:
   artifacts:
     paths:
       - vendor/
+    expire_in: 1 day
 
 build-node:
   stage: build
@@ -33,6 +34,7 @@ build-node:
   artifacts:
     paths:
       - packages/xm_dkfz_net_prototype/Resources/Public
+    expire_in: 1 day
 
 test-php-lint:
   stage: test
@@ -129,6 +131,7 @@ backup-production-dkfz:
       - .dep/database
       - public/fileadmin
       - public/uploads
+    expire_in: 1 day
 
 reset-staging-xima:
   extends: .deploy-prepare
