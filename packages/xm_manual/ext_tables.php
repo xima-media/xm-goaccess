@@ -6,6 +6,8 @@
         'allowedTables' => '*',
     ];
 
+    $GLOBALS['TBE_STYLES']['skins']['xm_manual']['stylesheetDirectories'][] = 'EXT:xm_manual/Resources/Public/Css/Backend/';
+
     if (TYPO3_MODE === 'BE') {
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
             'XmManual',

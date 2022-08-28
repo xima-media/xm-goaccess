@@ -18,7 +18,7 @@ define(['TYPO3/CMS/Core/DocumentService'], function (DocumentService) {
 
                     document.dispatchEvent(new CustomEvent('typo3:manual:loaded'));
 
-                }, 200);
+                }, 500);
 
 
             });
