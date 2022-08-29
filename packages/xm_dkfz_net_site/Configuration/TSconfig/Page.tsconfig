@@ -27,9 +27,9 @@ TCEFORM {
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
 
       types {
-          infobox.disabled = 1
-          quote.removeItems = 0,1,2,3,4,5
-        }
+        infobox.disabled = 1
+        quote.removeItems = 0,1,2,3,4,5
+      }
     }
 
     header_link.disabled = 1
@@ -223,18 +223,18 @@ mod.wizards.newContentElement.wizardItems {
         title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.title
         description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.description
         tt_content_defValues {
-           CType = image
+          CType = image
         }
       }
 
       tt_content_quote {
-              iconIdentifier = content-quote
-              title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:quote
-              description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.quote.description
-              tt_content_defValues {
-                CType = quote
-              }
-            }
+        iconIdentifier = content-quote
+        title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:quote
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.quote.description
+        tt_content_defValues {
+          CType = quote
+        }
+      }
     }
 
     show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote, tt_content_serviceSlider)
@@ -244,6 +244,7 @@ mod.wizards.newContentElement.wizardItems {
 [traverse(page, "is_siteroot") == 1]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
+
 [traverse(page, "uid") == 2]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
