@@ -25,8 +25,22 @@
         ],
         'types' => [
             701 => [
-                'showitem' => $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT]['showitem'],
+                'showitem' => '
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                        --palette--;;standard,
+                        --palette--;;title,
+                    --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.resources,
+                        --palette--;;media,
+                        --palette--;;config,
+                    --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
+                        --palette--;;visibility,',
             ],
         ],
     ]
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile(
+    'xm_manual',
+    'Configuration/TSconfig/Page.tsconfig',
+    'Editor Manual',
 );

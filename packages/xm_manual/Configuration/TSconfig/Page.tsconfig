@@ -1,0 +1,9 @@
+mod.wizards.newContentElement.wizardItems {
+  common.elements >
+  forms.elements >
+  special.elements >
+  plugins.elements >
+  menu.elements >
+  luxletter.elements >
+  container.elements >
+}
