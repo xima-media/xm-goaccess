@@ -5,14 +5,14 @@
     'CType',
     [
         'Teaser',
-        'teaser',
+        'page_teaser',
         'content-listgroup',
     ],
     'image',
     'after'
 );
 
-$GLOBALS['TCA']['tt_content']['types']['teaser'] = [
+$GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
     'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;general,
                     --palette--;;header,
@@ -98,4 +98,4 @@ $GLOBALS['TCA']['tt_content']['types']['teaser'] = [
 ];
 
 // Register custom Preview
-$GLOBALS['TCA']['tt_content']['types']['teaser']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\TeaserPreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types']['page_teaser']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\TeaserPreviewRenderer::class;

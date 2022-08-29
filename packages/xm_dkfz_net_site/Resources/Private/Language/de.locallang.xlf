@@ -146,6 +146,12 @@
 			<trans-unit id="pages.palettes.teaser" space="preserve">
 				<target>Teaser-Einstellungen</target>
 			</trans-unit>
+			<trans-unit id="tt_content_page_teaser" space="preserve">
+				<target>Teaser</target>
+			</trans-unit>
+			<trans-unit id="tt_content_page_teaser.description" space="preserve">
+				<target>Zeit eine Vorschau von Seiten mit weiterführenden Links an</target>
+			</trans-unit>
 			<trans-unit id="pages.contacts" space="preserve">
 				<target>Kontaktpersonen</target>
 			</trans-unit>

@@ -64,8 +64,8 @@ tt_content {
       templateName = Quote
     }
 
-  teaser =< lib.contentElement
-  teaser {
+  page_teaser =< lib.contentElement
+  page_teaser {
     templateName = Teaser
     dataProcessing {
       10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor

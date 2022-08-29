@@ -187,6 +187,12 @@
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
 				<source>Page overrides</source>
 			</trans-unit>
+			<trans-unit id="tt_content_page_teaser" space="preserve">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tt_content_page_teaser.description" space="preserve">
+				<source>Shows a preview of pages with links</source>
+			</trans-unit>
 			<trans-unit id="linktext.readMore">
 				<source>Read more</source>
 			</trans-unit>
