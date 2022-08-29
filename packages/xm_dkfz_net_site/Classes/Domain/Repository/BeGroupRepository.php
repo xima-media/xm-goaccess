@@ -47,11 +47,20 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
             return 0;
         }
 
-        $rows = array_map(function ($abteilung) use ($subgroup) {
+        $rows = array_map(function ($abteilung) use ($subgroup, $fileMounts) {
+            $mountPoints = array_filter($fileMounts, function ($fileMount) use ($abteilung) {
+                return $fileMount['title'] === $abteilung->nummer;
+            });
+            $mountPoints = array_map(function ($mountPoint) {
+                return $mountPoint['uid'];
+            }, $mountPoints);
+            $mountPoints = implode(',', $mountPoints);
+
             return [
                 $abteilung->nummer,
                 $abteilung->bezeichnung,
                 $subgroup,
+                $mountPoints,
             ];
         }, $phoneBookAbteilungen);
 
@@ -63,8 +72,10 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 'dkfz_number',
                 'title',
                 'subgroup',
+                'file_mountpoints',
             ],
             [
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
