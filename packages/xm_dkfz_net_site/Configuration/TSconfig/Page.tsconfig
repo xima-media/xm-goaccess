@@ -132,7 +132,6 @@ TCEFORM {
     cache_tags.disabled = 1
     target.disabled = 1
     tsconfig_includes.disabled = 1
-    TSconfig.disabled = 1
     l18n_cfg.disabled = 1
     rowDescription.disabled = 1
 
