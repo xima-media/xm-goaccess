@@ -315,4 +315,13 @@ class PhoneBookUtility
         }
         return $extConf['storage_identifier_for_imported_groups'];
     }
+
+    public function getDkfzExtensionSetting(string $settingName): string
+    {
+        $extConf = (array)$this->extensionConfiguration->get('xm_dkfz_net_site');
+        if (!$extConf[$settingName] || !is_string($extConf[$settingName])) {
+            return '';
+        }
+        return $extConf[$settingName];
+    }
 }

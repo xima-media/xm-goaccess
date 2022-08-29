@@ -2,3 +2,7 @@
 phone_book_api_url =
 # cat=basic/enable; type=string; label=Identifier of Directory where the file storage of imported user groups should be created
 storage_identifier_for_imported_groups =
+# cat=basic/enable; type=string; label=Identifier of subgroup used as base of imported fe_group
+subgroup_for_imported_fe_groups =
+# cat=basic/enable; type=string; label=Identifier of subgroup used as base of imported be_group
+subgroup_for_imported_be_groups =

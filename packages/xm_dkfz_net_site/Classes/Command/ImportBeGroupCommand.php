@@ -51,4 +51,9 @@ class ImportBeGroupCommand extends AbstractImportGroupCommand
         // return all fileMounts
         return $this->groupRepository->findAllFileMounts();
     }
+
+    protected function getSubGroup(): string
+    {
+        return $this->phoneBookUtility->getDkfzExtensionSetting('subgroup_for_imported_be_groups');
+    }
 }
