@@ -12,6 +12,6 @@ class ImportFeUserGroupCommand extends AbstractImportGroupCommand
 
     protected function getSubGroup(): string
     {
-        return '';
+        return $this->phoneBookUtility->getDkfzExtensionSetting('subgroup_for_imported_fe_groups');
     }
 }
