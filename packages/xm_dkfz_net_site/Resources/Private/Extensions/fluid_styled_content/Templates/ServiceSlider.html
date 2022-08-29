@@ -18,13 +18,14 @@
 					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 						<div class="card card--image-top card--md card--image-size-md card--service">
 
-							<a href="{service.data.link}" class="card__link card__link--hidden" aria-label="{service.data.title}">
+							<f:link.typolink parameter="{service.data.link}" class="card__link card__link--hidden" parts-as="parts" target="_blank"
+											 additionalAttributes="{aria-label: '{service.data.title}'}">
 								<div class="card__link--background">
 									<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
 										<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
 									</svg>
 								</div>
-							</a>
+							</f:link.typolink>
 
 							<div class="card__content">
 								<div class="card__header">
