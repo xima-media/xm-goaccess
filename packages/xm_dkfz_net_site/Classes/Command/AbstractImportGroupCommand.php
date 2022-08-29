@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Resource\StorageRepository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableGroupInterface;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
@@ -20,6 +21,8 @@ abstract class AbstractImportGroupCommand extends Command
 
     protected PhoneBookUtility $phoneBookUtility;
 
+    protected StorageRepository $storageRepository;
+
     /**
      * @var ImportableGroupInterface
      */
@@ -28,11 +31,13 @@ abstract class AbstractImportGroupCommand extends Command
     public function __construct(
         ImportableGroupInterface $groupRepository,
         PhoneBookUtility $phoneBookUtility,
+        StorageRepository $storageRepository,
         string $name = null
     ) {
         parent::__construct($name);
         $this->groupRepository = $groupRepository;
         $this->phoneBookUtility = $phoneBookUtility;
+        $this->storageRepository = $storageRepository;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -63,6 +68,7 @@ abstract class AbstractImportGroupCommand extends Command
 
         if (count($this->compareResult->dkfzNumbersToCreate)) {
             $io->write('Creating groups..');
+            $this->createFileStorageForGroups();
             $phoneBookAbteilungenToCreate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToCreate);
             $pid = $this->phoneBookUtility->getUserStoragePid($this);
             $subgroup = $this->phoneBookUtility->getSubGroupForGroups($this);
@@ -81,5 +87,9 @@ abstract class AbstractImportGroupCommand extends Command
         $io->success('Done');
 
         return Command::SUCCESS;
+    }
+
+    protected function createFileStorageForGroups(): void
+    {
     }
 }

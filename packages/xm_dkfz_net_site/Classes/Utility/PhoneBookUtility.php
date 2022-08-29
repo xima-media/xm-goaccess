@@ -306,4 +306,13 @@ class PhoneBookUtility
             }
         }
     }
+
+    public function getStorageIdentifierForGroups(): string
+    {
+        $extConf = (array)$this->extensionConfiguration->get('xm_dkfz_net_site');
+        if (!$extConf['storage_identifier_for_imported_groups'] || !is_string($extConf['storage_identifier_for_imported_groups'])) {
+            return '';
+        }
+        return $extConf['storage_identifier_for_imported_groups'];
+    }
 }

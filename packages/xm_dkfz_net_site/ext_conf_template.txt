@@ -1,2 +1,4 @@
 # cat=basic/enable; type=string; label=URL of the DKFZ phone book API
 phone_book_api_url =
+# cat=basic/enable; type=string; label=Identifier of Directory where the file storage of imported user groups should be created
+storage_identifier_for_imported_groups =
