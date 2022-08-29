@@ -37,8 +37,12 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
         return $result->fetchAllAssociative();
     }
 
-    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup): int
-    {
+    public function bulkInsertPhoneBookAbteilungen(
+        array $phoneBookAbteilungen,
+        int $pid,
+        string $subgroup,
+        array $fileMounts
+    ): int {
         if (!count($phoneBookAbteilungen)) {
             return 0;
         }
@@ -87,5 +91,57 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 $qb->expr()->in('dkfz_number', $idStringList)
             )
             ->executeStatement();
+    }
+
+    /**
+     * @return array<int, array{title: string, uid: int}>
+     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function findAllFileMounts(): array
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_filemounts');
+        $qb->getRestrictions()->removeAll();
+
+        $result = $qb->select('uid', 'title')
+            ->from('sys_filemounts')
+            ->execute();
+
+        if (!$result instanceof Result) {
+            return [];
+        }
+
+        return $result->fetchAllAssociative();
+    }
+
+    public function bulkInsertFileMounts(array $dkfzNumbers, string $basePath): int
+    {
+        if (!count($dkfzNumbers)) {
+            return 0;
+        }
+
+        $rows = array_map(function ($numberToCreate) use ($basePath) {
+            return [
+                $numberToCreate,
+                '/' . $basePath . '/' . $numberToCreate . '/',
+                1,
+            ];
+        }, $dkfzNumbers);
+
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('sys_filemounts');
+        return $connection->bulkInsert(
+            'sys_filemounts',
+            $rows,
+            [
+                'title',
+                'path',
+                'base',
+            ],
+            [
+                Connection::PARAM_STR,
+                Connection::PARAM_STR,
+                Connection::PARAM_INT,
+            ]
+        );
     }
 }

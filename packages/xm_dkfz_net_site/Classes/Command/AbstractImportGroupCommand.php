@@ -68,11 +68,11 @@ abstract class AbstractImportGroupCommand extends Command
 
         if (count($this->compareResult->dkfzNumbersToCreate)) {
             $io->write('Creating groups..');
-            $this->createFileStorageForGroups();
+            $fileMounts = $this->getAndCreateFileMountsForGroups();
             $phoneBookAbteilungenToCreate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToCreate);
             $pid = $this->phoneBookUtility->getUserStoragePid($this);
             $subgroup = $this->phoneBookUtility->getSubGroupForGroups($this);
-            $this->groupRepository->bulkInsertPhoneBookAbteilungen($phoneBookAbteilungenToCreate, $pid, $subgroup);
+            $this->groupRepository->bulkInsertPhoneBookAbteilungen($phoneBookAbteilungenToCreate, $pid, $subgroup, $fileMounts);
             $io->write('<success>done</success>');
             $io->newLine();
         }
@@ -89,7 +89,11 @@ abstract class AbstractImportGroupCommand extends Command
         return Command::SUCCESS;
     }
 
-    protected function createFileStorageForGroups(): void
+    /**
+     * @return array<int, array{title: string, uid: int}>
+     */
+    protected function getAndCreateFileMountsForGroups(): array
     {
+        return [];
     }
 }

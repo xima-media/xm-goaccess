@@ -33,7 +33,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         return $result->fetchAllAssociative();
     }
 
-    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup): int
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup, array $fileMounts): int
     {
         if (!count($phoneBookAbteilungen)) {
             return 0;
@@ -81,5 +81,15 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 $qb->expr()->in('dkfz_number', $idStringList)
             )
             ->executeStatement();
+    }
+
+    public function findAllFileMounts(): array
+    {
+        return [];
+    }
+
+    public function bulkInsertFileMounts(array $dkfzNumbers, string $basePath): int
+    {
+        return 0;
     }
 }

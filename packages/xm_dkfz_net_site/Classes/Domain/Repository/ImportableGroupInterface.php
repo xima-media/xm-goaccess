@@ -15,13 +15,26 @@ interface ImportableGroupInterface
      * @param array<PhoneBookAbteilung> $phoneBookAbteilungen
      * @param int $pid
      * @param string $subgroup
+     * @param array<int, array{title: string, uid: int}> $fileMounts
      * @return int
      */
-    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup): int;
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup, array $fileMounts): int;
 
     /**
      * @param array<string> $dkfzNumbers
      * @return int
      */
     public function deleteByDkfzNumbers(array $dkfzNumbers): int;
+
+    /**
+     * @return array<int, array{title: string, uid: int}>
+     */
+    public function findAllFileMounts(): array;
+
+    /**
+     * @param string[] $dkfzNumbers
+     * @param string $basePath
+     * @return int
+     */
+    public function bulkInsertFileMounts(array $dkfzNumbers, string $basePath): int;
 }
