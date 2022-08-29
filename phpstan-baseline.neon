@@ -111,6 +111,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllFileMounts\\(\\) should return array\\<int, array\\{title\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
