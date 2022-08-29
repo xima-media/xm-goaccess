@@ -2,6 +2,13 @@
 @import 'EXT:xm_dkfz_net_events/Configuration/TSconfig/Page.tsconfig'
 @import 'EXT:bw_guild/Configuration/TSconfig/Page.tsconfig'
 
+TCEMAIN {
+  permissions {
+    groupid = 1
+    group = 31
+  }
+}
+
 TCEFORM {
   tt_content {
     CType {
