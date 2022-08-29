@@ -33,18 +33,17 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         return $result->fetchAllAssociative();
     }
 
-    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup, array $fileMounts): int
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, array $fileMounts): int
     {
         if (!count($phoneBookAbteilungen)) {
             return 0;
         }
 
-        $rows = array_map(function ($abteilung) use ($pid, $subgroup) {
+        $rows = array_map(function ($abteilung) use ($pid) {
             return [
                 $abteilung->nummer,
                 $abteilung->bezeichnung,
                 $pid,
-                $subgroup,
             ];
         }, $phoneBookAbteilungen);
 
@@ -56,13 +55,11 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'dkfz_number',
                 'title',
                 'pid',
-                'subgroup',
             ],
             [
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
-                Connection::PARAM_STR,
             ]
         );
     }

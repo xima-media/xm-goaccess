@@ -139,11 +139,6 @@ class PhoneBookUtility
         return (int)$settings['plugin']['tx_bwguild']['persistence']['storagePid'];
     }
 
-    public function getSubGroupForGroups(Command $commandClass): string
-    {
-        return '';
-    }
-
     /**
      * @throws \TYPO3\CMS\Core\Exception
      */

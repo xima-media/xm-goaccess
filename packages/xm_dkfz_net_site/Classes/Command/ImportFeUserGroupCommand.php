@@ -9,9 +9,4 @@ class ImportFeUserGroupCommand extends AbstractImportGroupCommand
         $this->setDescription('Import DKFZ user groups from phone book API');
         $this->setHelp('Reads groups from API and updates the corresponding fe_groups');
     }
-
-    protected function getSubGroup(): string
-    {
-        return $this->phoneBookUtility->getDkfzExtensionSetting('subgroup_for_imported_fe_groups');
-    }
 }
