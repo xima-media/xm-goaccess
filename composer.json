@@ -67,7 +67,8 @@
 		"xima/xm-goaccess": "*@dev",
 		"ext-dom": "*",
 		"ichhabrecht/content-defender": "^3.2",
-		"in2code/luxletter": "^14.0.0"
+		"in2code/luxletter": "^14.0.0",
+		"blueways/bw-static-template": "^2.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
