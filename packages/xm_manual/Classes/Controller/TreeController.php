@@ -5,7 +5,6 @@ namespace Xima\XmManual\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Tree\Repository\PageTreeRepository;
-use TYPO3\CMS\Core\Database\Query\Restriction\DocumentTypeExclusionRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmManual\Database\Query\Restriction\DocumentTypeExclusiveRestriction;
 
