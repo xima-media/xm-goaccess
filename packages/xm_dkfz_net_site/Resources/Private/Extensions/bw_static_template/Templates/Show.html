@@ -1,0 +1,202 @@
+<f:layout name="Default"/>
+
+<f:section name="Header"></f:section>
+
+<f:section name="Main">
+<f:if condition="{rowOne}">
+		<div class="row">
+			<f:for each="{rowOne}" as="block">
+				<div class="col-md-3 offset-lg-6 col-lg-3">
+					<div class="infobox
+								color-accent--primary
+								infobox--background-white
+								color__border">
+						<h4 class="infobox__title">{block.title}</h4>
+						<!-- Modal -->
+						<div class="d-none modal-detail">
+							<div class="modal-detail--close">
+								<f:render partial="Icon" arguments="{icon: 'close'}"/>
+							</div>
+							<div class="modal-detail--body">
+								<f:link.typolink parameter="{block.link}" class="h4"
+												 parts-as="parts" target="_blank"
+												 additionalAttributes="{aria-label: '{block.title}'}">
+									{block.title}
+									<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+								</f:link.typolink>
+
+								<ul>
+									<f:for each="{block.list}" as="list">
+										<li>
+											<h5>{list.headline}</h5>
+											<p>{list.description}</p>
+										</li>
+									</f:for>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+
+	<f:if condition="{rowTwo}">
+		<div class="row">
+			<f:for each="{rowTwo}" as="block">
+				<div class="col-lg-3 col-md-6">
+					<div class="infobox
+								color-accent--primary
+								infobox--background-white
+								color__border">
+						<h4 class="infobox__title">{block.title}</h4>
+						<!-- Modal -->
+						<div class="d-none modal-detail {f:if(condition: '{block.width}', then: 'modal-detail--full-right', else: '')}">
+							<div class="modal-detail--close">
+								<f:render partial="Icon" arguments="{icon: 'close'}"/>
+							</div>
+							<div class="modal-detail--body">
+								<f:link.typolink parameter="{block.link}" class="h4"
+												 parts-as="parts" target="_blank"
+												 additionalAttributes="{aria-label: '{block.title}'}">
+									{block.title}
+
+									<f:if condition="!{block.width}">
+										<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+									</f:if>
+								</f:link.typolink>
+
+								<f:if condition="{block.width}">
+									<f:then>
+										<div class="row">
+											<f:for each="{block.list}" as="list">
+												<f:if condition="{list.column}">
+													<div class="col-md-4">
+														<ul>
+															<f:for each="{list.column}" as="column">
+																<li>
+																	<h5>{column.headline}</h5>
+																	<p>{column.description}</p>
+																</li>
+															</f:for>
+														</ul>
+													</div>
+												</f:if>
+											</f:for>
+										</div>
+									</f:then>
+									<f:else>
+										<ul>
+											<f:for each="{block.list}" as="list">
+												<li>
+													<h5>{list.headline}</h5>
+													<p>{list.description}</p>
+												</li>
+											</f:for>
+										</ul>
+									</f:else>
+								</f:if>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+
+	<f:if condition="{rowThree}">
+		<div class="row">
+			<f:for each="{rowThree}" as="block">
+				<div class="{f:if(condition: '{block.width}', then: 'col-lg-6 col-md-6', else: 'col-md-3')}">
+					<div class="infobox
+								color-accent--primary
+								infobox--background-white
+								color__border">
+						<h4 class="infobox__title">{block.title}</h4>
+						<!-- Modal -->
+						<div class="d-none modal-detail {f:if(condition: '{block.width}', then: 'modal-detail--full-left', else: '')}">
+							<div class="modal-detail--close">
+								<f:render partial="Icon" arguments="{icon: 'close'}"/>
+							</div>
+							<div class="modal-detail--body">
+								<f:link.typolink parameter="{block.link}" class="h4"
+												 parts-as="parts" target="_blank"
+												 additionalAttributes="{aria-label: '{block.title}'}">
+									{block.title}
+
+									<f:if condition="!{block.width}">
+										<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+									</f:if>
+								</f:link.typolink>
+
+								<f:if condition="{block.width}">
+									<f:then>
+										<f:for each="{block.list}" as="list">
+											<div class="accordion__item">
+												<h3 class="accordion__items--subtitle" id="accordion{list.uid}">
+													<button class="accordion-button collapsed"
+															type="button"
+															aria-expanded="false"
+															data-bs-toggle="collapse"
+															data-bs-target="#accordionItem{list.uid}"
+															aria-controls="accordionItem{list.uid}">
+
+													<span class="accordion-button--description h6">
+														{list.headline}
+														<f:if condition="{list.description}">
+															<br/>
+															<span>
+																{list.description}
+															</span>
+														</f:if>
+													</span>
+													</button>
+												</h3>
+
+												<div class="accordion-collapse collapse"
+													 id="accordionItem{list.uid}"
+													 data-bs-parent="#accordion{list.uid}"
+													 aria-labelledby="accordion{list.uid}">
+													<div class="accordion-body accordion__panel">
+														<div class="row">
+															<f:for each="{list.text}" as="list">
+																<f:if condition="{list.column}">
+																	<div class="col-md-4">
+																		<ul>
+																			<f:for each="{list.column}" as="column">
+																				<li>
+																					<a href="#" class="h5">{column.headline}</a>
+																					<p>{column.description}</p>
+																				</li>
+																			</f:for>
+																		</ul>
+																	</div>
+																</f:if>
+															</f:for>
+														</div>
+													</div>
+												</div>
+											</div>
+										</f:for>
+									</f:then>
+									<f:else>
+										<ul>
+											<f:for each="{block.list}" as="list">
+												<li>
+													<h5>{list.headline}</h5>
+													<p>{list.description}</p>
+												</li>
+											</f:for>
+										</ul>
+									</f:else>
+								</f:if>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+
+
+</f:section>

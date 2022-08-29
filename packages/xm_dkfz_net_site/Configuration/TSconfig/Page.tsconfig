@@ -1,6 +1,8 @@
 @import 'EXT:xm_dkfz_net_jobs/Configuration/TSconfig/Page.tsconfig'
 @import 'EXT:xm_dkfz_net_events/Configuration/TSconfig/Page.tsconfig'
 @import 'EXT:bw_guild/Configuration/TSconfig/Page.tsconfig'
+@import 'EXT:bw_static_template/Configuration/PageTS/All.txt'
+
 
 TCEMAIN {
   permissions {
