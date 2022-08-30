@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Xima\XmTypo3Manual\Backend\ToolbarItems;
-
 
 use TYPO3\CMS\Backend\Toolbar\ToolbarItemInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -25,7 +23,6 @@ class DocumentationToolbarItem implements ToolbarItemInterface
         $this->extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
     }
 
-
     /**
      * Checks whether the user has access to this toolbar item
      *
@@ -33,7 +30,7 @@ class DocumentationToolbarItem implements ToolbarItemInterface
      */
     public function checkAccess()
     {
-        if(!array_key_exists('enableManual', $this->getBackendUser()->getTSConfig()['options.'])) {
+        if (!array_key_exists('enableManual', $this->getBackendUser()->getTSConfig()['options.'])) {
             return true;
         }
 
