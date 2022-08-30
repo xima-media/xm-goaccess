@@ -277,8 +277,9 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
+     * @param int[] $defaultUserGroups
      */
-    public function setUserGroupRelations(array $dbGroups): void
+    public function setUserGroupRelations(array $dbGroups, array $defaultUserGroups): void
     {
         $dbGroupUidsById = [];
         foreach ($dbGroups as $dbGroup) {
@@ -286,7 +287,7 @@ class PhoneBookUtility
         }
 
         foreach ($this->phoneBookEntries as $entry) {
-            $dbGroupsOfUser = [];
+            $dbGroupsOfUser = $defaultUserGroups;
             foreach ($entry->getNumbersOfAbteilungen() as $abteilungsId) {
                 if (isset($dbGroupUidsById[$abteilungsId])) {
                     $dbGroupsOfUser[] = $dbGroupUidsById[$abteilungsId];
