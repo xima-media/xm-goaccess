@@ -69,6 +69,15 @@ services:
     arguments:
       $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserGroupRepository'
 
+  Xima\XmDkfzNetSite\Command\ImportBeUserCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importBeUser'
+        schedulable: false
+    arguments:
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeUserRepository'
+      $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
+
   Xima\XmDkfzNetSite\Command\ImportBeGroupCommand:
     tags:
       - name: 'console.command'

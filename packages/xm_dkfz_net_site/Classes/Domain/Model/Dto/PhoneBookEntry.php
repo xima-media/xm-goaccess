@@ -88,4 +88,9 @@ class PhoneBookEntry
         }
         return $abteilungen;
     }
+
+    public function getCombinedName(): string
+    {
+        return $this->vorname . ' ' . $this->nachname;
+    }
 }

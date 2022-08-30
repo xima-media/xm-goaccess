@@ -128,6 +128,8 @@ return [
         'xm_dkfz_net_site' => [
             'phone_book_api_url' => 'https://info.dkfz-heidelberg.de/telefonbuch/api/db',
             'storage_identifier_for_imported_groups' => '1:Gruppen',
+            'default_be_user_group' => '1',
+            'default_fe_user_group' => '1',
         ],
     ],
     'FE' => [

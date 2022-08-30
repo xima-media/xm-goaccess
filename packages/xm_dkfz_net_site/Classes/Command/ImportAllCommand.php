@@ -44,7 +44,7 @@ class ImportAllCommand extends Command
 
         $output = $input->getOption('verbose') ? $output : new BufferedOutput();
 
-        $commandsToRun = ['dkfz:importFeUserGroup', 'dkfz:importBeUserGroup', 'dkfz:importFeUser', 'dkfz:importPlace'];
+        $commandsToRun = ['dkfz:importFeUserGroup', 'dkfz:importBeUserGroup', 'dkfz:importFeUser', 'dkfz:importPlace', 'dkfz:importBeUser'];
 
         foreach ($commandsToRun as $commandName) {
             $updateImmoCmd = $application ? $application->find($commandName) : $commandRegistry->getCommandByIdentifier($commandName);

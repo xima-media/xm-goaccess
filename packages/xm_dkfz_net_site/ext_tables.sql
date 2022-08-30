@@ -59,6 +59,12 @@ create table fe_users (
 	gender          int(11) unsigned default '0' not null,
 );
 
+create table be_users (
+	dkfz_id         int(11) unsigned default '0' not null,
+	ad_account_name varchar(255) default '' not null,
+	dkfz_hash       varchar(255) default '' not null,
+);
+
 create table fe_groups (
 	dkfz_number varchar(255) default '' not null,
 	title       varchar(255) default '' not null,

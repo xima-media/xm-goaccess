@@ -12,7 +12,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, dkfz_hash: string, uid: int}>
+     * @return array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}>
      * @throws \Doctrine\DBAL\DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
