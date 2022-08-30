@@ -16,6 +16,10 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/maikschneider/deployer-extended-database"
+		},
+		{
+			"type": "composer",
+			"url": "https://satis.xima.de"
 		}
 	],
 	"require": {
@@ -67,7 +71,9 @@
 		"xima/xm-goaccess": "*@dev",
 		"ext-dom": "*",
 		"ichhabrecht/content-defender": "^3.2",
-		"in2code/luxletter": "^14.0.0"
+		"in2code/luxletter": "^14.0.0",
+		"blueways/bw-static-template": "^2.0",
+		"xima/xm-typo3-manual": "dev-typo3-v11"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

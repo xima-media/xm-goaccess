@@ -52,6 +52,7 @@
  *       2.45 Userprofile
  *       2.46 Field checkbox
  *       2.51 Disruptor
+ *       2.52 Organigramm
  *       2.99 Debug
  *      3. Extensions javaScript
  *
@@ -217,6 +218,9 @@ import './_patterns/components/teaser/teaser'
 
 /** @section 2.51 Disruptor */
 import './_patterns/components/disruptor/disruptor'
+
+/** @section 2.52 Organigramm */
+import './_patterns/components/organigramm/organigramm'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

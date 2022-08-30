@@ -6,6 +6,7 @@
 @import 'EXT:news/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:luxletter/Configuration/TypoScript/Basic/constants.typoscript'
 @import 'EXT:luxletter/Configuration/TypoScript/FluidStyledMailContent/constants.typoscript'
+@import 'EXT:bw_static_template/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
@@ -98,6 +99,19 @@ plugin {
   tx_bwguild_userlist {
     settings {
       schema.enable = 0
+    }
+  }
+}
+
+##########################
+#### bw_static_template ####
+##########################
+plugin {
+  tx_bwstatictemplate {
+    view {
+      layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_static_template/Layouts/
+      partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_static_template/Partials/
+      templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_static_template/Templates/
     }
   }
 }

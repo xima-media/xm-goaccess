@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1273e238a53d4f52908e9d52e26c1f65",
+    "content-hash": "9fd4fdbc076894120c3f778d10fc83ab",
     "packages": [
         {
             "name": "b13/container",
@@ -224,6 +224,116 @@
             "transport-options": {
                 "relative": true
             }
+        },
+        {
+            "name": "blueways/bw-jsoneditor",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/blueways/bw_jsoneditor.git",
+                "reference": "bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/blueways/bw_jsoneditor/get/bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b.zip",
+                "reference": "bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^8.0 || ^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "typo3/cms-base-distribution": "^9.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": "public",
+                    "extension-key": "bw_jsoneditor"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwJsoneditor\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "m.schneider@blueways.de",
+                    "homepage": "https://www.blueways.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Adds a JSON Form Editor type to the TYPO3 Backend. View and edit JSON data with code formatting and syntax highlighting.",
+            "homepage": "https://blueways.de",
+            "keywords": [
+                "json",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/blueways/bw_jsoneditor/issues",
+                "source": "https://bitbucket.org/blueways/bw_jsoneditor/src/bf8718d84a2fa3087761ebc0ef48aac56e8f1d9b/?at=v1.0.4"
+            },
+            "time": "2022-04-26T04:47:00+00:00"
+        },
+        {
+            "name": "blueways/bw-static-template",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/blueways/bw_static_template.git",
+                "reference": "aa387a7c58dafbaee025a2e1f6d2759ef46ffa89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/blueways/bw_static_template/get/aa387a7c58dafbaee025a2e1f6d2759ef46ffa89.zip",
+                "reference": "aa387a7c58dafbaee025a2e1f6d2759ef46ffa89",
+                "shasum": ""
+            },
+            "require": {
+                "blueways/bw-jsoneditor": "^1.0",
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "typo3/cms-core": "^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "bk2k/bootstrap-package": "12.0.x-dev",
+                "typo3/cms-base-distribution": "^10.0",
+                "typo3/cms-lowlevel": "^10.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": "public",
+                    "extension-key": "bw_static_template"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwStaticTemplate\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "TYPO3 extension that adds a frontend plugin for rendering static fluid templates. Inject JSON and FAL data into the templates.",
+            "homepage": "https://blueways.de",
+            "keywords": [
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/blueways/bw_static_template/issues",
+                "source": "https://bitbucket.org/blueways/bw_static_template/src/aa387a7c58dafbaee025a2e1f6d2759ef46ffa89/?at=v2.0.0"
+            },
+            "time": "2021-10-29T18:08:00+00:00"
         },
         {
             "name": "blueways/deployer-recipes",
@@ -9550,6 +9660,46 @@
             "transport-options": {
                 "relative": true
             }
+        },
+        {
+            "name": "xima/xm-typo3-manual",
+            "version": "dev-typo3-v11",
+            "source": {
+                "type": "git",
+                "url": "git@git.xima.de:opensource/webs-typo3-redakteurshandbuch.git",
+                "reference": "f886f16801fb6e91eedeb79deed9eac3f67a8cb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.xima.de/dist/xima/xm-typo3-manual/xima-xm-typo3-manual-dev-typo3-v11-24a79e.zip",
+                "reference": "f886f16801fb6e91eedeb79deed9eac3f67a8cb8"
+            },
+            "require": {
+                "typo3/cms-core": "^11.0.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "xm_typo3_manual"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Xima\\XmTypo3Manual\\": "Classes/"
+                }
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Opensource Team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Basis Redakteurshandbuch für TYPO3-Projekte",
+            "homepage": "https://git.xima.de/opensource/webs-typo3-redakteurshandbuch",
+            "time": "2022-08-24T06:23:53+00:00"
         }
     ],
     "packages-dev": [
@@ -12994,6 +13144,7 @@
         "xima/xm-dkfz-net-events": 20,
         "blueways/bw-guild": 20,
         "xima/xm-goaccess": 20,
+        "xima/xm-typo3-manual": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },
