@@ -1,0 +1,9 @@
+#
+# Extension Configuration template
+#
+fileidentifiers {
+    # cat=Documentation; type=string; label=File identifier for custom HTML Editor Manual: Format <Storage-ID>:</Path/to/file>
+    manual-html =
+    # cat=Documentation; type=string; label=File identifier for custom PDF Editor Manual: Format <Storage-ID>:</Path/to/file>
+    manual-pdf =
+}
