@@ -3,7 +3,6 @@
 namespace Xima\XmDkfzNetSite\Command;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\MathUtility;
 
 class ImportBeUserCommand extends AbstractUserImportCommand
 {

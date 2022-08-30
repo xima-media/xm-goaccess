@@ -2,8 +2,6 @@
 
 namespace Xima\XmDkfzNetSite\Command;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 class ImportPlaceCommand extends AbstractUserImportCommand
 {
     protected function configure(): void
