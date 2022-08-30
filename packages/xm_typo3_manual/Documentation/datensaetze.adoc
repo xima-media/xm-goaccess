@@ -1,0 +1,87 @@
+
+=== Einen Artikel Datensatz anlegen
+
+NOTE: Voraussetzung ist, dass die Extension _news_ installiert ist.
+
+Artikel werden als gesonderte Datensätze im Ordner _News_ bzw. dessen Unterordner angelegt.
+
+*Gehen Sie wie folgt vor:*
+
+* Wechseln Sie in das Modul *Web* -> *Liste*.
+* Wählen Sie im Seitenbaum den Ordner *News* beziehungsweise den passenden Unterordner.
+* Klicken Sie im Kopfbereich der Newsdatensätze auf image:img/icons/actions/actions-add.svg[scaledwidth="12"].
+* Wählen Sie unter der Überschrift *News system* den Eintrag *Artikel*.
+
+*Bearbeitbare Felder:*
+
+_Tab: Allgemein_
+
+* *Überschrift:* Vergeben Sie einen Artikeltitel.
+* *Top-Nachrichten:* Legen Sie fest, ob der Artikel in der Listenansicht immer oben angezeigt werden soll.
+* *Typ:* Wählen Sie die Art der Nachricht aus.
+* *Teaser:* Vergeben Sie einen kurzen Teasertext für den Artikel. Dieser wird in der Listenvorschau angezeigt.
+* *Datum & Zeit:* Beim Anlegen eines Artikels wird das aktuelle Datum und die Uhrzeit automatisch gesetzt.
+* *Text:* Hier kann der komplette Text für den Artikel eingetragen werden.
+
+_Tab: Inhaltselemente_
+
+* Mit image:img/icons/actions/actions-add.svg[scaledwidth="12"] *Neu anlegen* können Sie hier ein zusätzliches Inhaltselement einfügen, welches unterhalb des eigentlichen Artikels erscheint.
+
+_Tab: Medien_
+
+* *Mediendatei:*
+** Sie können mittels image:img/icons/actions/actions-folder.svg[scaledwidth="12"] *Mediendatei hinzufügen* eine Datei hinzufügen oder eine bereits in der Dateiliste vorhandene Datei auswählen.
+** Alternativ können Sie mittels *Datei auswählen und hochladen* eine Datei von Ihrem Computer hochladen.
+** Weiterhin können Sie mittels *Medien nach URL hinzufügen* ein Datei über Ihre URL einbinden.
+
+_Tab: Relationen_
+
+* *Ähnliche Nachrichten*: Klicken Sie auf image:img/icons/actions/actions-folder.svg[scaledwidth="12"], um den Dateibrowser zu öffnen und in einem passenden Ordner nach Artikeln zu suchen, die Sie mit der neu angelegten Artikel verknüpfen möchten.
+* *Verwandete Links*: Klicken Sie auf image:img/icons/actions/actions-add.svg[scaledwidth="12"] *Neu anlegen*, um einen Link anzulegen, den Sie mit dem neu angelegten Artikel verknüpfen möchten.
+* *Tags* Ordnen Sie dem Artikel ein oder mehrere Tags zu.
+
+_Tab: Kategorien_
+
+* *Kategorien:* Wählen Sie hier die Kategorie(n), welche Sie dem Artikel zuordnen möchten.
+
+_Tab: Metadaten_
+
+* *Name des Autors* und *Email des Autors*: Tragen Sie den Namen und die E-Mail ein, wenn diese im Frontend angezeigt werden soll.
+* *Stichworte*: werden als Keywords in den Metadaten der Seite hinterlegt.
+* *Beschreibung*: wird als Seitenbeschreibung in den Metadaten der Seite hinterlegt.
+* *Alternativer Titel*
+
+_Tab: Sprache_
+
+* *Sprache:* Legen Sie Übersetzungen eines Artikels an und ändern Sie hier die Sprache.
+
+_Tab: Zugriff_
+
+* *Verbergen:* Stellen Sie hier die Sichtbarkeit des Artikels ein.
+* *Veröffentlichungsdatum:* Geben Sie ein Datum ein, ab welchem der Artikel im Frontend angezeigt werden soll.
+* *Ablaufdatum*: Geben Sie ein Datum ein, ab welchem der Artikel im Frontend nicht mehr angezeigt werden soll.
+
+Klicken Sie abschließend zuerst auf image:img/icons/actions/actions-document-save.svg[scaledwidth="12"] Speichern und dann auf image:img/icons/actions/actions-message-ok-close.svg[scaledwidth="12"] Schließen.
+
+=== Einen Nachrichten Tag anlegen
+
+Nachrichten Tags werden gesondert angelegt und können anschließend News zugeordnet werden.
+
+*Gehen Sie wie folgt vor:*
+
+* Wechseln Sie in das Modul *Web -> Liste*.
+* Wählen Sie im Seitenbaum den passenden Ordner aus.
+* Klicken Sie im Kopfbereich der Datensätze auf image:img/icons/actions/actions-add.svg[scaledwidth="12"].
+* Wählen Sie unter der Überschrift *News system* den Eintrag *Nachrichten-Tag*.
+
+_Tab: Allgemein_
+
+Vergeben Sie einen *Titel*.
+
+Unter *Verbergen* können Sie das Tag auf nicht sichtbar schalten.
+
+_Tab: SEO_
+
+Hier können weitere Felder bezüglich der Suchmaschinenoptimierung (SEO) bearbeitet werden.
+
+Klicken Sie abschließend zuerst auf image:img/icons/actions/actions-document-save.svg[scaledwidth="12"] Speichern und dann auf image:img/icons/actions/actions-message-ok-close.svg[scaledwidth="12"] Schließen.
