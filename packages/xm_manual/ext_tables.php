@@ -3,7 +3,7 @@
 (function () {
     $GLOBALS['PAGES_TYPES'][701] = [
         'type' => 'web',
-        'allowedTables' => 'pages,tt_content,sys_template',
+        'allowedTables' => 'pages,tt_content,sys_template,sys_file_reference',
     ];
 
     $GLOBALS['TBE_STYLES']['skins']['xm_manual']['stylesheetDirectories'][] = 'EXT:xm_manual/Resources/Public/Css/Backend/';

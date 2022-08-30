@@ -1,15 +1,17 @@
 mod.wizards.newContentElement.wizardItems {
+
   common.elements {
     tt_content_mtext {
       iconIdentifier = content-beside-text-img-below-center
       title = Text mit Bild
       description = Textelement mit Überschrift und Fließtext
       tt_content_defValues {
-        CType = tt_content_mtext
+        CType = mtext
       }
     }
   }
   common.show = tt_content_mtext
+
   forms.elements >
   special.elements >
   plugins.elements >

@@ -7,11 +7,16 @@ use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Context\LanguageAspectFactory;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Routing\UnableToLinkToPageException;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Type\Bitmask\Permission;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -72,6 +77,28 @@ class ManualController extends ActionController
             $pageinfo['title'] ?? ''
         );
 
+        $languageId = $this->getCurrentLanguage($pageId, $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
+        try {
+            $targetUrl = BackendUtility::getPreviewUrl(
+                $pageId,
+                '',
+                null,
+                '',
+                '',
+                $this->getTypeParameterIfSet($pageId) . '&L=' . $languageId
+            );
+        } catch (UnableToLinkToPageException $e) {
+            $flashMessage = GeneralUtility::makeInstance(
+                FlashMessage::class,
+                $this->getLanguageService()->getLL('noSiteConfiguration'),
+                '',
+                FlashMessage::WARNING
+            );
+            return $this->renderFlashMessage($flashMessage);
+        }
+
+        $this->view->assign('url', $targetUrl);
+
         $this->moduleTemplate->setContent($this->view->render());
         return new HtmlResponse($this->moduleTemplate->renderContent());
     }
@@ -90,5 +117,88 @@ class ManualController extends ActionController
     protected function getLanguageService(): LanguageService
     {
         return $GLOBALS['LANG'];
+    }
+
+    /**
+     * Returns the current language
+     *
+     * @param int $pageId
+     * @param string $languageParam
+     * @return int
+     */
+    protected function getCurrentLanguage(int $pageId, string $languageParam = null): int
+    {
+        $languageId = (int)$languageParam;
+        if ($languageParam === null) {
+            $states = $this->getBackendUser()->uc['moduleData']['web_view']['States'] ?? [];
+            $languages = $this->getPreviewLanguages($pageId);
+            if (isset($states['languageSelectorValue']) && isset($languages[$states['languageSelectorValue']])) {
+                $languageId = (int)$states['languageSelectorValue'];
+            }
+        } else {
+            $this->getBackendUser()->uc['moduleData']['web_view']['States']['languageSelectorValue'] = $languageId;
+            $this->getBackendUser()->writeUC();
+        }
+        return $languageId;
+    }
+
+    /**
+     * Returns the preview languages
+     *
+     * @param int $pageId
+     * @return array
+     */
+    protected function getPreviewLanguages(int $pageId): array
+    {
+        $languages = [];
+        $modSharedTSconfig = BackendUtility::getPagesTSconfig($pageId)['mod.']['SHARED.'] ?? [];
+        if (($modSharedTSconfig['view.']['disableLanguageSelector'] ?? false) === '1') {
+            return $languages;
+        }
+
+        try {
+            $site = $this->siteFinder->getSiteByPageId($pageId);
+            $siteLanguages = $site->getAvailableLanguages($this->getBackendUser(), false, $pageId);
+
+            foreach ($siteLanguages as $siteLanguage) {
+                $languageAspectToTest = LanguageAspectFactory::createFromSiteLanguage($siteLanguage);
+                $page = $this->pageRepository->getPageOverlay($this->pageRepository->getPage($pageId), $siteLanguage->getLanguageId());
+
+                if ($this->pageRepository->isPageSuitableForLanguage($page, $languageAspectToTest)) {
+                    $languages[$siteLanguage->getLanguageId()] = $siteLanguage->getTitle();
+                }
+            }
+        } catch (SiteNotFoundException $e) {
+            // do nothing
+        }
+        return $languages;
+    }
+
+    /**
+     * With page TS config it is possible to force a specific type id via mod.web_view.type
+     * for a page id or a page tree.
+     * The method checks if a type is set for the given id and returns the additional GET string.
+     *
+     * @param int $pageId
+     * @return string
+     */
+    protected function getTypeParameterIfSet(int $pageId): string
+    {
+        $typeParameter = '';
+        $typeId = (int)(BackendUtility::getPagesTSconfig($pageId)['mod.']['web_view.']['type'] ?? 0);
+        if ($typeId > 0) {
+            $typeParameter = '&type=' . $typeId;
+        }
+        return $typeParameter;
+    }
+
+    protected function renderFlashMessage(FlashMessage $flashMessage): HtmlResponse
+    {
+        $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
+        $defaultFlashMessageQueue = $flashMessageService->getMessageQueueByIdentifier();
+        $defaultFlashMessageQueue->enqueue($flashMessage);
+
+        $this->moduleTemplate->setContent($this->view->render());
+        return new HtmlResponse($this->moduleTemplate->renderContent());
     }
 }
