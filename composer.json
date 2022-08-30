@@ -122,6 +122,7 @@
 		"typo3-cms-scripts": [
 			"mkdir -p var/goaccess",
 			"mkdir -p var/debug",
+			"mkdir -p var/phonebook",
 			"php vendor/bin/typo3cms install:fixfolderstructure"
 		],
 		"post-autoload-dump": [

@@ -126,7 +126,7 @@ return [
             'html_path' => '../var/goaccess/goaccess.html',
         ],
         'xm_dkfz_net_site' => [
-            'phone_book_api_url' => 'https://info.dkfz-heidelberg.de/telefonbuch/api/db',
+            'phone_book_api_url' => '../var/phonebook/db-28072022.json',
             'storage_identifier_for_imported_groups' => '1:Gruppen',
             'default_be_user_group' => '1',
             'default_fe_user_group' => '1',

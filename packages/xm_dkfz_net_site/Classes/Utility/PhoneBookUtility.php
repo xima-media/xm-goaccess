@@ -6,6 +6,7 @@ use JsonMapper;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -144,6 +145,7 @@ class PhoneBookUtility
      */
     protected function fetchFileFromApi(string $url): string
     {
+        $url = str_starts_with('http', $url) ? $url : Environment::getPublicPath() . '/' . $url;
         $fileContent = file_get_contents($url);
 
         if (!$fileContent) {
