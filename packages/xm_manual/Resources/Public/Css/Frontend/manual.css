@@ -2,17 +2,35 @@
 	--space: 1rem;
 }
 
+@media (min-width: 800px) {
+	:root {
+		--space: 2rem;
+	}
+}
+
 main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	counter-reset: counter-level-1;
 }
 
-h2 {
+main > section > h2 {
 	margin-bottom: calc(1 * var(--space));
+	counter-increment: counter-level-1;
+	counter-reset: counter-level-2;
 }
 
-section {
+main > section > h2:before {
+	content: counter(counter-level-1) ". ";
+}
+
+main > section > section h2:before, main > section h3:before {
+	content: counter(counter-level-1) "." counter(counter-level-2) ". ";
+	counter-increment: counter-level-2;
+}
+
+section, .section {
 	margin-bottom: calc(3 * var(--space));
 	width: 100%;
 	max-width: 1200px;
