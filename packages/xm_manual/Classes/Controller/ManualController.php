@@ -3,6 +3,8 @@
 namespace Xima\XmManual\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
+use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -11,6 +13,7 @@ use TYPO3\CMS\Core\Context\LanguageAspectFactory;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Http\HtmlResponse;
+use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -96,6 +99,9 @@ class ManualController extends ActionController
             );
             return $this->renderFlashMessage($flashMessage);
         }
+
+        $languageId = $this->getCurrentLanguage($pageId, $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
+        $this->registerDocHeader($pageId, $languageId, $targetUrl, $this->request->getQueryParams()['route']);
 
         $this->view->assign('url', $targetUrl);
 
@@ -200,5 +206,72 @@ class ManualController extends ActionController
 
         $this->moduleTemplate->setContent($this->view->render());
         return new HtmlResponse($this->moduleTemplate->renderContent());
+    }
+
+    /**
+     * Register the doc header
+
+     * @param int $pageId
+     * @param int $languageId
+     * @param string $targetUrl
+     * @param string $route
+     */
+    protected function registerDocHeader(int $pageId, int $languageId, string $targetUrl, string $route)
+    {
+        $languages = $this->getPreviewLanguages($pageId);
+        if (count($languages) > 1) {
+            $languageMenu = $this->moduleTemplate->getDocHeaderComponent()->getMenuRegistry()->makeMenu();
+            $languageMenu->setIdentifier('_langSelector');
+            foreach ($languages as $value => $label) {
+                //$href = (string)$this->uriBuilder->buildUriFromRoute(
+                //    'web_ViewpageView',
+                //    [
+                //        'id' => $pageId,
+                //        'language' => (int)$value,
+                //    ]
+                //);
+                $href = '';
+                $menuItem = $languageMenu->makeMenuItem()
+                    ->setTitle($label)
+                    ->setHref($href);
+                if ($languageId === (int)$value) {
+                    $menuItem->setActive(true);
+                }
+                $languageMenu->addMenuItem($menuItem);
+            }
+            $this->moduleTemplate->getDocHeaderComponent()->getMenuRegistry()->addMenu($languageMenu);
+        }
+
+        $buttonBar = $this->moduleTemplate->getDocHeaderComponent()->getButtonBar();
+        $showButton = $buttonBar->makeLinkButton()
+            ->setHref($targetUrl)
+            ->setDataAttributes([
+                'dispatch-action' => 'TYPO3.WindowManager.localOpen',
+                'dispatch-args' => GeneralUtility::jsonEncodeForHtmlAttribute([
+                    $targetUrl,
+                    true, // switchFocus
+                    'newTYPO3frontendWindow', // windowName,
+                ]),
+            ])
+            ->setTitle($this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.showPage'))
+            ->setIcon($this->iconFactory->getIcon('actions-view-page', Icon::SIZE_SMALL));
+        $buttonBar->addButton($showButton);
+
+        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+        $downloadUrl = $uriBuilder->buildUriFromRoute('manual-download-pdf', ['id' => $pageId]);
+        $showButton = $buttonBar->makeLinkButton()
+            ->setHref($downloadUrl)
+            ->setClasses('xm-manual-download-pdf')
+            ->setTitle('Download')
+            ->setIcon($this->iconFactory->getIcon('actions-download', Icon::SIZE_SMALL));
+        $buttonBar->addButton($showButton);
+
+        $refreshButton = $buttonBar->makeLinkButton()
+            ->setHref('#')
+            ->setClasses('t3js-viewpage-refresh')
+            ->setTitle($this->getLanguageService()->sL('LLL:EXT:viewpage/Resources/Private/Language/locallang.xlf:refreshPage'))
+            ->setIcon($this->iconFactory->getIcon('actions-refresh', Icon::SIZE_SMALL));
+        $buttonBar->addButton($refreshButton, ButtonBar::BUTTON_POSITION_RIGHT, 1);
+
     }
 }

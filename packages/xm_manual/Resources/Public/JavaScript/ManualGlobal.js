@@ -26,6 +26,12 @@ define(['TYPO3/CMS/Core/DocumentService'], function (DocumentService) {
 
                 ManualGlobal.currentModule = currentModule;
             });
+
+            document.querySelector('.xm-manual-download-pdf').addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log(e.currentTarget);
+                //window.open(URL, "_blank");
+            });
         },
     }
 
