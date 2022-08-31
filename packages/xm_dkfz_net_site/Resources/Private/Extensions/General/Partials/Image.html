@@ -6,27 +6,32 @@
 	Arguments:
 	- image (FileInterface)
 	- size: sm (default: 970)
+	- cropVariant
 --></f:comment>
 
 
-<f:if condition="{size} == 'sm'">
-	<f:then>
+
+<f:switch expression="{size}">
+	<f:case value="sm">
 		<f:variable name='imageSize' value='440'></f:variable>
-	</f:then>
-	<f:else>
+	</f:case>
+	<f:case value="xl">
+		<f:variable name='imageSize' value='1146'></f:variable>
+	</f:case>
+	<f:defaultCase>
 		<f:variable name='imageSize' value='970'></f:variable>
-	</f:else>
-</f:if>
+	</f:defaultCase>
+</f:switch>
 <figure>
 	<div class="picture__item">
 		<span aria-hidden="true" class="picture__pattern pattern"></span>
 		<picture>
-			<source srcset="{f:uri.image(image:image, width:'{imageSize}', fileExtension: 'webp')}"
+			<source srcset="{f:uri.image(image:image, width:'{imageSize}', cropVariant: cropVariant, fileExtension: 'webp')}"
 					type="image/webp">
-			<source srcset="{f:uri.image(image:image, width:'{imageSize}', fileExtension: 'jpg')}"
+			<source srcset="{f:uri.image(image:image, width:'{imageSize}', cropVariant: cropVariant, fileExtension: 'jpg')}"
 					type="image/jpeg">
-			<img src="{f:uri.image(image:image, width:'970', fileExtension: 'jpg')}"
-				 alt="{file.originalResource.alternative}"
+			<img src="{f:uri.image(image:image, width:'970', cropVariant: cropVariant, fileExtension: 'jpg')}"
+				 alt="{file.properties.alternative}"
 				 class="picture__image image--responsive"
 				 loading="lazy"/>
 		</picture>
