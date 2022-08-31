@@ -55,7 +55,8 @@ abstract class AbstractUserImportCommand extends Command
 
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
         $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
-        $this->phoneBookUtility->setUserGroupRelations($dbGroups);
+        $defaultGroups = $this->getDefaultUserGroupUids();
+        $this->phoneBookUtility->setUserGroupRelations($dbGroups, $defaultGroups);
 
         $io->listing([
             '<success>' . $this->phoneBookUtility->getPhoneBookEntryCount() . '</success> found in XML',
@@ -171,4 +172,9 @@ abstract class AbstractUserImportCommand extends Command
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
+
+    /**
+     * @return int[]
+     */
+    abstract protected function getDefaultUserGroupUids(): array;
 }

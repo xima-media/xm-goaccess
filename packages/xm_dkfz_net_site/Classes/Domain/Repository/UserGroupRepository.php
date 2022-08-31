@@ -33,7 +33,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         return $result->fetchAllAssociative();
     }
 
-    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup, array $fileMounts): int
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, array $fileMounts): int
     {
         if (!count($phoneBookAbteilungen)) {
             return 0;

@@ -1,0 +1,14 @@
+manual = PAGE
+manual {
+  10 = FLUIDTEMPLATE
+  10 {
+    templateName = Default
+    layoutRootPaths.10 = EXT:mx_manual/Resources/Private/Layouts/Page/
+    partialRootPaths.10 = EXT:mx_manual/Resources/Private/Partials/Page/
+    templateRootPaths.10 = EXT:mx_manual/Resources/Private/Templates/Page/
+  }
+}
+
+module.tx_manual {
+
+}

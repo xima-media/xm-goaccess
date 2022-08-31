@@ -126,6 +126,16 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
@@ -141,17 +151,12 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, dkfz_hash\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableUserInterface\\:\\:findAllUsersWithDkfzId\\(\\)$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 

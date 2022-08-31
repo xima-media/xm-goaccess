@@ -40,14 +40,13 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
     public function bulkInsertPhoneBookAbteilungen(
         array $phoneBookAbteilungen,
         int $pid,
-        string $subgroup,
         array $fileMounts
     ): int {
         if (!count($phoneBookAbteilungen)) {
             return 0;
         }
 
-        $rows = array_map(function ($abteilung) use ($subgroup, $fileMounts) {
+        $rows = array_map(function ($abteilung) use ($fileMounts) {
             $mountPoints = array_filter($fileMounts, function ($fileMount) use ($abteilung) {
                 return $fileMount['title'] === $abteilung->nummer;
             });
@@ -59,7 +58,6 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
             return [
                 $abteilung->nummer,
                 $abteilung->bezeichnung,
-                $subgroup,
                 $mountPoints,
             ];
         }, $phoneBookAbteilungen);
@@ -71,11 +69,9 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
             [
                 'dkfz_number',
                 'title',
-                'subgroup',
                 'file_mountpoints',
             ],
             [
-                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,

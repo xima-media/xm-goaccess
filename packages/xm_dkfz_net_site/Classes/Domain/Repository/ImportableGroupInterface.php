@@ -14,11 +14,10 @@ interface ImportableGroupInterface
     /**
      * @param array<PhoneBookAbteilung> $phoneBookAbteilungen
      * @param int $pid
-     * @param string $subgroup
      * @param array<int, array{title: string, uid: int}> $fileMounts
      * @return int
      */
-    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, string $subgroup, array $fileMounts): int;
+    public function bulkInsertPhoneBookAbteilungen(array $phoneBookAbteilungen, int $pid, array $fileMounts): int;
 
     /**
      * @param array<string> $dkfzNumbers

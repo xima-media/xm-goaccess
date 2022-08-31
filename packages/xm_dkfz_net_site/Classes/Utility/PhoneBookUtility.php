@@ -6,6 +6,7 @@ use JsonMapper;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -139,16 +140,12 @@ class PhoneBookUtility
         return (int)$settings['plugin']['tx_bwguild']['persistence']['storagePid'];
     }
 
-    public function getSubGroupForGroups(Command $commandClass): string
-    {
-        return '';
-    }
-
     /**
      * @throws \TYPO3\CMS\Core\Exception
      */
     protected function fetchFileFromApi(string $url): string
     {
+        $url = str_starts_with('http', $url) ? $url : Environment::getPublicPath() . '/' . $url;
         $fileContent = file_get_contents($url);
 
         if (!$fileContent) {
@@ -282,8 +279,9 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
+     * @param int[] $defaultUserGroups
      */
-    public function setUserGroupRelations(array $dbGroups): void
+    public function setUserGroupRelations(array $dbGroups, array $defaultUserGroups): void
     {
         $dbGroupUidsById = [];
         foreach ($dbGroups as $dbGroup) {
@@ -291,7 +289,7 @@ class PhoneBookUtility
         }
 
         foreach ($this->phoneBookEntries as $entry) {
-            $dbGroupsOfUser = [];
+            $dbGroupsOfUser = $defaultUserGroups;
             foreach ($entry->getNumbersOfAbteilungen() as $abteilungsId) {
                 if (isset($dbGroupUidsById[$abteilungsId])) {
                     $dbGroupsOfUser[] = $dbGroupUidsById[$abteilungsId];
