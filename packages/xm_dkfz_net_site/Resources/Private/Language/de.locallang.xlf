@@ -355,6 +355,46 @@
 			<trans-unit id="tt_content.orientation.description" space="preserve">
 				<target>Wählen Sie in welcher Proportion den Container-Element dargestellt ist.</target>
 			</trans-unit>
+
+			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
+				<target>Seiteneigenschaften überschreiben</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item" space="preserve">
+				<target>Inhaltselement</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type" space="preserve">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
+				<target>Teaser</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.link" space="preserve">
+				<target>Link</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
+				<target>Teaser</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.title" space="preserve">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.text" space="preserve">
+				<target>Text</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.link" space="preserve">
+				<target>Link</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.image" space="preserve">
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.color" space="preserve">
+				<target>Farbe</target>
+			</trans-unit>
+			<trans-unit id="tt_content_teaser.items" space="preserve">
+				<target>Teaser-Kacheln</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.overrides" space="preserve">
+				<target>Alternative Metadaten</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
