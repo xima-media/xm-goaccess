@@ -66,7 +66,7 @@ tt_content {
 
   page_teaser =< lib.contentElement
   page_teaser {
-    templateName = Teaser
+    templateName = PageTeaser
     dataProcessing {
       10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
       10 {
