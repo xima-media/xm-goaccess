@@ -15,8 +15,18 @@ main {
 	counter-reset: counter-level-1;
 }
 
-main > section > h2 {
+h2 {
 	margin-bottom: calc(1 * var(--space));
+}
+
+h3 {
+	margin-bottom: calc(0.75 * var(--space));
+}
+
+/**
+	Counter-Stuff
+ */
+main > section > h2 {
 	counter-increment: counter-level-1;
 	counter-reset: counter-level-2;
 }
@@ -30,15 +40,31 @@ main > section > section h2:before, main > section h3:before {
 	counter-increment: counter-level-2;
 }
 
+/**
+	General spacing
+ */
 section, .section {
 	margin-bottom: calc(3 * var(--space));
 	width: 100%;
 	max-width: 1200px;
-	background: #FFF;
+	background: #fff;
 }
 
 .frame {
 	margin-bottom: calc(1.5 * var(--space));
 }
 
+/**
+	Content elements
+ */
+figure {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.ce-image {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space);
+}
 

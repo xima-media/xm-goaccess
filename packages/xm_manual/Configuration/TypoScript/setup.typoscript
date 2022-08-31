@@ -58,6 +58,7 @@ page {
 
 tt_content {
   mtext =< tt_content.textmedia
+  mtext.templateName = Mtext
   mbox =< tt_content.textmedia
   mbox.templateName = Mbox
 }
