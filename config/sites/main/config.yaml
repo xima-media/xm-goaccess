@@ -35,8 +35,8 @@ languages:
     navigationTitle: English
     hreflang: en-US
     direction: ''
-    fallbackType: fallback
-    fallbacks: '0'
+    fallbackType: strict
+    fallbacks: ''
     flag: en-us-gb
     languageId: 1
 luxletterUnsubscribePid: '115'

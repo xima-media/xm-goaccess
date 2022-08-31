@@ -3,13 +3,13 @@
 	<div class="header__meta background--expanded">
 		<div class="header__center">
 
-			<a class="logo" href="/">
+			<f:link.page class="logo" pageUid="1">
 				<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Images/logo/logo.svg')}"
 					 width="212"
 					 height="32"
 					 class="logo__image"
 					 alt="DKFZ Logo"/>
-			</a>
+			</f:link.page>
 
 		</div>
 		<div class="header__left">
@@ -17,11 +17,22 @@
 				<ul class="language-switcher__items">
 					<f:for each="{langNav}" as="langItem">
 						<li class="language-switcher__item">
-							<a class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}"
-							   href="{langItem.link}"
-							   data-tooltip="{langItem.title}"
-							   aria-expanded="false">{langItem.twoLetterIsoCode}
-							</a>
+							<f:if condition="{langItem.available}">
+								<f:then>
+									<a
+										class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}"
+										href="{langItem.link}"
+										data-tooltip="{langItem.title}"
+										aria-expanded="false"
+									>{langItem.twoLetterIsoCode}</a>
+								</f:then>
+								<f:else>
+									<span
+										class="language-switcher__link"
+										data-tooltip="No translation available for this page"
+									>{langItem.twoLetterIsoCode}</span>
+								</f:else>
+							</f:if>
 						</li>
 					</f:for>
 				</ul>
