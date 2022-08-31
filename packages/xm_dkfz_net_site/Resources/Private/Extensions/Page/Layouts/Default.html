@@ -17,11 +17,22 @@
 				<ul class="language-switcher__items">
 					<f:for each="{langNav}" as="langItem">
 						<li class="language-switcher__item">
-							<a class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}"
-							   href="{langItem.link}"
-							   data-tooltip="{langItem.title}"
-							   aria-expanded="false">{langItem.twoLetterIsoCode}
-							</a>
+							<f:if condition="{langItem.available}">
+								<f:then>
+									<a
+										class="language-switcher__link {f:if(condition: langItem.active, then:'fx--active')}"
+										href="{langItem.link}"
+										data-tooltip="{langItem.title}"
+										aria-expanded="false"
+									>{langItem.twoLetterIsoCode}</a>
+								</f:then>
+								<f:else>
+									<span
+										class="language-switcher__link"
+										data-tooltip="No translation available for this page"
+									>{langItem.twoLetterIsoCode}</span>
+								</f:else>
+							</f:if>
 						</li>
 					</f:for>
 				</ul>
