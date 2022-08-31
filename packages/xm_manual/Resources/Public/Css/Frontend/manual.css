@@ -1,0 +1,26 @@
+:root {
+	--space: 1rem;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h2 {
+	margin-bottom: calc(1 * var(--space));
+}
+
+section {
+	margin-bottom: calc(3 * var(--space));
+	width: 100%;
+	max-width: 1200px;
+	background: #FFF;
+}
+
+.frame {
+	margin-bottom: calc(1.5 * var(--space));
+}
+
+

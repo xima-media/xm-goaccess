@@ -4,7 +4,7 @@
     'tt_content',
     'CType',
     [
-        'fwfwef',
+        'Standard',
         'mtext',
         'content-beside-text-img-below-center',
     ],
@@ -20,7 +20,7 @@ $GLOBALS['TCA']['tt_content']['palettes']['mtext'] = [
 
 $GLOBALS['TCA']['tt_content']['types']['mtext'] = [
     'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    --palette--;;mtext,CType,
+                    --palette--;;mtext,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
                     --palette--;;language,colPos',
     'columnsOverrides' => [

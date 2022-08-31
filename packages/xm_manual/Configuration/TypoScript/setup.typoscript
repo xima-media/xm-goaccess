@@ -1,14 +1,61 @@
-manual = PAGE
-manual {
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+
+config {
+  no_cache = 1
+  sendCacheHeaders = 0
+  debug = 1
+  contentObjectExceptionHandler = 0
+  compressJs = 0
+  compressCss = 0
+  concatenateJs = 0
+  concatenateCss = 0
+
+  # FeLogin
+  typolinkLinkAccessRestrictedPages = 2
+  typolinkLinkAccessRestrictedPages_addParams = &return_url=###RETURN_URL###
+}
+
+page = PAGE
+page {
   10 = FLUIDTEMPLATE
   10 {
     templateName = Default
-    layoutRootPaths.10 = EXT:mx_manual/Resources/Private/Layouts/Page/
-    partialRootPaths.10 = EXT:mx_manual/Resources/Private/Partials/Page/
-    templateRootPaths.10 = EXT:mx_manual/Resources/Private/Templates/Page/
+    layoutRootPaths.10 = EXT:xm_manual/Resources/Private/Layouts
+    partialRootPaths.10 = EXT:xm_manual/Resources/Private/Partials
+    templateRootPaths.10 = EXT:xm_manual/Resources/Private/Templates
+
+    dataProcessing {
+      # Main navigation
+      10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      10 {
+        as = pages
+        levels = 9
+        entryLevel = 0
+        expandAll = 1
+      }
+    }
+  }
+
+  includeCSS {
+    gutenberg = EXT:xm_manual/Resources/Public/Css/Frontend/gutenberg.min.css
+    theme = EXT:xm_manual/Resources/Public/Css/Frontend/gutenberg.modern.min.css
+    manual = EXT:xm_manual/Resources/Public/Css/Frontend/manual.css
   }
 }
 
-module.tx_manual {
+tt_content {
+  mtext =< tt_content.textmedia
+  mbox =< tt_content.textmedia
+}
 
+lib.dynamicContent = COA
+lib.dynamicContent {
+  20 = CONTENT
+  20 {
+    table = tt_content
+    select {
+      orderBy = sorting
+      pidInList.field = pid
+    }
+  }
 }

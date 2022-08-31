@@ -1,0 +1,12 @@
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript'
+
+##############################
+#### FLUID STYLED CONTENT ####
+##############################
+styles {
+  templates {
+    layoutRootPath = EXT:xm_manual/Resources/Private/fluid_styled_content/Layouts/
+    partialRootPath = EXT:xm_manual/Resources/Private/fluid_styled_content/Partials/
+    templateRootPath = EXT:xm_manual/Resources/Private/fluid_styled_content/Templates/
+  }
+}

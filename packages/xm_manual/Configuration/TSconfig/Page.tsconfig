@@ -9,8 +9,16 @@ mod.wizards.newContentElement.wizardItems {
         CType = mtext
       }
     }
+    tt_content_mbox {
+      iconIdentifier = content-idea
+      title = Infobox
+      description = Farblicher Hinweis mit Icon
+      tt_content_defValues {
+        CType = mbox
+      }
+    }
   }
-  common.show = tt_content_mtext
+  common.show = tt_content_mtext,tt_content_mbox
 
   forms.elements >
   special.elements >

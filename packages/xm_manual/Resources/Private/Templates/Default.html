@@ -1,0 +1,36 @@
+<main>
+	<section>
+		<h1>TYPO3-Handbuch</h1>
+	</section>
+
+	<section>
+		<h2>Inhaltsverzeichnis</h2>
+
+		<ol>
+			<f:for each="{pages}" as="page">
+				<f:render section="chapter" arguments="{page: page}"/>
+			</f:for>
+		</ol>
+	</section>
+
+	<f:for each="{pages}" as="page">
+		<section>
+			<h2>{page.title}</h2>
+			<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pid: page.data.uid, colPos: '0'}"/>
+		</section>
+	</f:for>
+</main>
+
+
+<f:section name="chapter">
+	<li>
+		{page.title}
+		<f:if condition="{page.hasSubpages}">
+			<ol>
+				<f:for each="{page.children}" as="subpage">
+					<f:render section="chapter" arguments="{page: subpage}"/>
+				</f:for>
+			</ol>
+		</f:if>
+	</li>
+</f:section>
