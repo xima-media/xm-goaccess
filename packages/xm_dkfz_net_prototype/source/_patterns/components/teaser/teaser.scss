@@ -1,4 +1,4 @@
-.frame-type-teaser {
+.frame-type-page_teaser {
     .picture {
         &--no-image {
             .picture__item {
@@ -13,7 +13,7 @@
             &::after {
                 z-index: 0;
             }
-    
+
             picture {
                 z-index: 1;
             }
@@ -34,6 +34,10 @@
             .card__image {
                 order: unset;
             }
+        }
+
+        &__header {
+            color: $color-black;
         }
 
 
