@@ -43,10 +43,7 @@
 								</f:if>
 							</figure>
 							<f:if condition="{file.properties.copyright}">
-								<div class="hero-teaser__copyright">
-									<f:render partial="Icon" arguments="{icon:'copyright'}"/>
-									{file.properties.copyright}
-								</div>
+								<f:render partial="Copyright" arguments="{text: file.properties.copyright}" />
 							</f:if>
 						</f:for>
 					</div>

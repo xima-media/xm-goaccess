@@ -74,15 +74,8 @@
             }
         }
 
-        &__copyright {
-            grid-column: 1/2;
-            grid-row: 1/2;
-            justify-self: flex-start;
-            align-self: flex-end;
-            padding: 0.5rem 1rem 0.5rem 1rem;
-            background-color: var(--color-gray-900);
-            color: #FFF;
-            margin: 0 0 4rem 1rem;
+        .copyright {
+            margin-left: 1.5rem;
         }
 
         &__image {

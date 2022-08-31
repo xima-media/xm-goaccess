@@ -2,10 +2,8 @@
 
 <f:if condition="{text}">
 	<div class="copyright">
-		<button class="copyright__button copyright__button--active" aria-expanded="false" aria-label="Urheber anzeigen">
-			<f:render partial="Icon" arguments="{icon: 'copyright'}"/>
-		</button>
 		<div class="copyright__content">
+			<f:render partial="Icon" arguments="{icon: 'copyright', size: 'sm'}"/>
 			<p class="copyright__text">
 				{text} </p>
 		</div>
