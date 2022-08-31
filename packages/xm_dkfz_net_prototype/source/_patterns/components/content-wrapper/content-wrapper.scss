@@ -220,7 +220,8 @@
     }
 
     &__content-text {
-        p  {
+        p,
+        li {
             padding-bottom: 1rem;
 
             > a {

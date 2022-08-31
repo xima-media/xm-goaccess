@@ -35,36 +35,6 @@ $table-alignments: left, right, center;
                 strong {
                     @include text-copy-standard(700);
                 }
-
-                a:first-child:nth-last-child(1) {
-                    color: inherit; // mit bootstrap lösen
-                    text-decoration: none;
-                
-                    &:hover {
-                        color: inherit;
-                        text-decoration: underline;
-                        cursor: pointer;
-                    }
-
-                    &::before {
-                        content: "";
-                        flex-shrink: 0;
-                        width: 0.75rem;
-                        height: 0.75rem;
-                        background-repeat: no-repeat;
-                        display: inline-block;
-                        margin-right: 0.625rem;
-                        vertical-align: baseline;
-                        @include svg-icon-arrow-right($color-black);
-                    }
-                
-                    // rotate Icon if Link extern
-                    &[href^="http"]{
-                        &::before {
-                            transform: rotate(-45deg);
-                        }
-                    }
-                }
             }
         }
 
@@ -72,7 +42,7 @@ $table-alignments: left, right, center;
             padding-left: 4rem;
         }
 
-        ul, 
+        ul,
         ol {
             font-family: var(--font-family-sans-serif);
             font-size: 18px;
@@ -112,7 +82,7 @@ $table-alignments: left, right, center;
             thead {
                 tr {
                     border-bottom: 1px solid var(--color-gray-900);
-    
+
                     th {
                         vertical-align: top;
                         text-align: center;
