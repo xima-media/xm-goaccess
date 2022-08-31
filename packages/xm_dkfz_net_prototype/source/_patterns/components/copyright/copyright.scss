@@ -16,13 +16,16 @@
     grid-row: 1/2;
     margin-bottom: 1rem;
     color: var(--color-white);
+    font-size: 14px;
+    letter-spacing: .6px;
+    margin-left: 0.5rem;
 
     &__content {
         display: flex;
         align-items: center;
         margin: 0;
-        padding: 0.5rem 1rem;
-        background-color: var(--color-gray-900);
+        padding: .2rem .5rem;
+        background-color: rgba(0, 0, 0, .5);
         z-index: 1;
     }
 
