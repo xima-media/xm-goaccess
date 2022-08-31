@@ -82,26 +82,27 @@
             display: grid;
             grid-column: 1/2;
             grid-row: 1/2;
+            margin-top: 1rem;
 
-            .picture__pattern {
+            picture {
                 grid-column: 1/2;
                 grid-row: 1/2;
-                width: 90%;
-                height: 90%;
             }
 
-            figure {
-                grid-column: 1/2;
-                grid-row: 1/2;
-                margin: 1rem 0 0 1rem;
-                display: grid;
+            .picture {
+                &__item {
+                    display: grid;
+                    position: relative;
+                    z-index: 1;
+                }
 
-                .picture__caption {
-                    max-width: var(--content-width);
-                    width: 100%;
-                    margin-bottom: 0;
+                &__pattern {
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                    width: 95%;
+                    height: 95%;
                     margin-left: -1rem;
-                    justify-self: center;
+                    margin-top: -1rem;
                 }
             }
         }
