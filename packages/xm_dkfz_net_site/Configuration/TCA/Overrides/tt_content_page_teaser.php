@@ -79,7 +79,7 @@ $GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
                                         ],
                                     ],
                                 ],
-                                'eval' => 'required'
+                                'eval' => 'required',
                             ],
                         ],
                         'tt_content_items' => [
