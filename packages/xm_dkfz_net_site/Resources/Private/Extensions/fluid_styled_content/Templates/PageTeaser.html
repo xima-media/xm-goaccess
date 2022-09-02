@@ -6,21 +6,23 @@
 			<div class="card__image">
 
 				<f:if condition="{teaser.files}">
-					<f:for each="{teaser.files}" as="file">
-						<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
-								data-pattern-color="transparent">
-							<div class="picture__item image-color--{teaser.data.color}">
-								<picture>
-									<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'webp')}"
-											type="image/webp">
-									<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
-											type="image/jpeg">
-									<img src="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
-										 alt="{file.originalResource.alternative}"
-										 loading="lazy"/>
-								</picture>
-							</div>
-						</figure>
+					<f:for each="{teaser.files}" as="file" iteration="teaserFileIterator">
+						<f:if condition="{teaserFileIterator.cycle} === 1">
+							<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
+									data-pattern-color="transparent">
+								<div class="picture__item image-color--{teaser.data.color}">
+									<picture>
+										<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'webp')}"
+												type="image/webp">
+										<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
+												type="image/jpeg">
+										<img src="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
+											 alt="{file.originalResource.alternative}"
+											 loading="lazy"/>
+									</picture>
+								</div>
+							</figure>
+						</f:if>
 					</f:for>
 				</f:if>
 

@@ -173,6 +173,9 @@
 			<trans-unit id="anchorNav.label">
 				<target>Ankernavigation</target>
 			</trans-unit>
+			<trans-unit id="link.more">
+				<target>Mehr erfahren</target>
+			</trans-unit>
 			<trans-unit id="button.back">
 				<target>Zurück</target>
 			</trans-unit>
