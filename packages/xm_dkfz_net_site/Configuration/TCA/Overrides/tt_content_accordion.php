@@ -13,22 +13,69 @@
                     'colPos' => 100,
                 ],
             ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 200,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 300,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 400,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 500,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 600,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 700,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 800,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 900,
+                ],
+            ],
+            [
+                [
+                    'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
+                    'colPos' => 1000,
+                ],
+            ],
         ]
     )
     )->setIcon('content-accordion')
-    ->setBackendTemplate('EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates/Accordion-Preview.html')
+        ->setBackendTemplate('EXT:xm_dkfz_net_site/Resources/Private/Extensions/container/Templates/Accordion-Preview.html')
 );
 
+$GLOBALS['TCA']['tt_content']['types']['container-accordion']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\AccordionContainerPreviewRenderer::class;
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_xmdkfznetsite_accordion_title' => [
-        'exclude' => 0,
-        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.title',
-        'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.title.description',
-        'config' => [
-            'type' => 'input',
-            'eval' => 'trim,required',
-        ],
-    ],
     'tx_xmdkfznetsite_accordion_group' => [
         'exclude' => 0,
         'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.group',
@@ -41,14 +88,14 @@
 
 $GLOBALS['TCA']['tt_content']['palettes']['accordion'] = [
     'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.palette',
-    'showitem' => 'tx_xmdkfznetsite_accordion_title,--linebreak--,tx_xmdkfznetsite_accordion_group',
+    'showitem' => 'tx_xmdkfznetsite_accordion_group,--linebreak--,tt_content_items',
 ];
 
 $GLOBALS['TCA']['tt_content']['types']['container-accordion']['showitem'] = '
     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
         --palette--;;general,
-        --palette--;;accordion,
         --palette--;;headers,
+        --palette--;;accordion,
     --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
         --palette--;;frames,
         --palette--;;appearanceLinks,
@@ -63,3 +110,27 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['showitem'] = '
         rowDescription,
     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
 ';
+
+$GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides']['tt_content_items'] = [
+    'label' => 'Elemente',
+    'config' => [
+        'overrideChildTca' => [
+            'columns' => [
+                'record_type' => [
+                    'config' => [
+                        'default' => 'accordion-item',
+                        'items' => [
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title',
+                                'accordion-item',
+                            ],
+                        ],
+                    ],
+                ],
+                'title' => [
+                    'label' => 'Accordion-Title',
+                ],
+            ],
+        ],
+    ],
+];

@@ -5,15 +5,16 @@
 <f:asset.css identifier="dkfz" href="EXT:xm_dkfz_net_site/Resources/Public/Css/Backend.css"/>
 <f:be.pageRenderer includeRequireJsModules="{0:'TYPO3/CMS/XmDkfzNetSite/Backend'}"/>
 
+
 <f:if condition="{tx_xmdkfznetsite_accordion_group}">
 	<p>{tx_xmdkfznetsite_accordion_group}</p>
 </f:if>
-<f:if condition="{tx_xmdkfznetsite_accordion_title}">
-	<a class="container-accordion-title" href="#">
+
+<div class="accordion-container-start">
+	<span class="chevron-icon">
 		<core:icon identifier="actions-chevron-up" size="small"/>
-		{tx_xmdkfznetsite_accordion_title}
-	</a>
-</f:if>
+	</span>
+</div>
 
 
 </html>

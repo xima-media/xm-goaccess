@@ -6,33 +6,37 @@
 		<h2 class="accordion__items--title h5">{data.tx_xmdkfznetsite_accordion_group}</h2>
 	</f:if>
 
+	<f:for each="{items}" as="item" iteration="i">
+		<f:if condition="{children_{i.cycle}00}">
 
-	<div class="accordion__item">
-		<h3 class="accordion__items--subtitle" id="accordion{data.uid}">
-			<button class="accordion-button collapsed"
-					type="button"
-					aria-expanded="false"
-					data-bs-toggle="collapse"
-					data-bs-target="#accordionItem{data.uid}"
-					aria-controls="accordionItem{data.uid}">
+			<div class="accordion__item">
+				<h3 class="accordion__items--subtitle" id="accordion-{i.index}-{data.uid}">
+					<button class="accordion-button collapsed"
+							type="button"
+							aria-expanded="false"
+							data-bs-toggle="collapse"
+							data-bs-target="#accordionItem-{i.index}-{data.uid}"
+							aria-controls="accordionItem-{i.index}-{data.uid}">
 
-				<span class="accordion-button--description h6">
-					{data.tx_xmdkfznetsite_accordion_title}
-				</span>
-			</button>
-		</h3>
-		<div class="accordion-collapse collapse"
-			 id="accordionItem{data.uid}"
-			 data-bs-parent="#accordion{data.uid}"
-			 aria-labelledby="accordion{data.uid}">
-			<div class="accordion-body accordion__panel background--expanded">
+						<span class="accordion-button--description h6">
+							{item.data.title}
+						</span>
+					</button>
+				</h3>
+				<div class="accordion-collapse collapse"
+					 id="accordionItem-{i.index}-{data.uid}"
+					 data-bs-parent="#accordion-{i.index}-{data.uid}"
+					 aria-labelledby="accordion-{i.index}-{data.uid}">
+					<div class="accordion-body accordion__panel background--expanded">
 
-				<f:for each="{children_100}" as="accordionItem">
-					<f:format.raw>{accordionItem.renderedContent}</f:format.raw>
-				</f:for>
+						<f:for each="{children_{i.cycle}00}" as="accordionItem">
+							<f:format.raw>{accordionItem.renderedContent}</f:format.raw>
+						</f:for>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
 
+		</f:if>
+	</f:for>
 
 </f:section>

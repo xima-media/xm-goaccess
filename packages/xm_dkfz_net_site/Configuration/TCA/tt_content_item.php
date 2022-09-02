@@ -20,6 +20,7 @@ return [
             'default' => 'content-extension',
             'teaser-item' => 'content-card',
             'link' => 'content-thumbtack',
+            'accordion-item' => 'content-accordion',
         ],
     ],
     'interface' => [
@@ -34,6 +35,9 @@ return [
         ],
         'link' => [
             'showitem' => 'record_type, link',
+        ],
+        'accordion-item' => [
+            'showitem' => 'record_type, title',
         ],
     ],
     'palettes' => [

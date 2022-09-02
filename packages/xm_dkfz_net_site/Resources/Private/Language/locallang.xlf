@@ -163,6 +163,9 @@
 			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
 				<source>Teaser</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.accordion-title" space="preserve">
+				<source>Accordion Item</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<source>Title</source>
 			</trans-unit>

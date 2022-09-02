@@ -374,6 +374,9 @@
 			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
 				<target>Teaser</target>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.accordion-title" space="preserve">
+				<target>Akkordion-Element</target>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<target>Titel</target>
 			</trans-unit>
