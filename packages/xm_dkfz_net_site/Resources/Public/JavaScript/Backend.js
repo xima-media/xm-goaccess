@@ -30,7 +30,7 @@ define(['jquery'], function ($) {
                         $(e.currentTarget).toggleClass('container-accordion--open');
                     });
                 $('.t3-page-column-header', tr).replaceWith(a);
-                
+
                 tr.addClass('visible');
             }
         }

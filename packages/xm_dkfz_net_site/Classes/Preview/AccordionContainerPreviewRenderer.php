@@ -12,21 +12,9 @@ namespace Xima\XmDkfzNetSite\Preview;
  * of the License, or any later version.
  */
 
-use B13\Container\Backend\Grid\ContainerGridColumn;
-use B13\Container\Backend\Grid\ContainerGridColumnItem;
-use B13\Container\ContentDefender\ContainerColumnConfigurationService;
-use B13\Container\Domain\Factory\Exception;
-use B13\Container\Domain\Factory\PageView\Backend\ContainerFactory;
-use B13\Container\Tca\Registry;
-use TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
-use TYPO3\CMS\Backend\View\BackendLayout\Grid\Grid;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
-use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridRow;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class AccordionContainerPreviewRenderer extends \B13\Container\Backend\Preview\ContainerPreviewRenderer
 {
