@@ -15,7 +15,7 @@ $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['mtext'] = 'content-be
 
 $GLOBALS['TCA']['tt_content']['palettes']['mtext'] = [
     'label' => 'LLL:EXT:xm_manual/Resources/Private/Language/locallang.xlf:mtext.palette',
-    'showitem' => 'header,--linebreak--,bodytext,--linebreak--,assets',
+    'showitem' => 'header,--linebreak--,bodytext,--linebreak--,assets,--linebreak--,imageorient',
 ];
 
 $GLOBALS['TCA']['tt_content']['types']['mtext'] = [

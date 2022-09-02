@@ -29,3 +29,4 @@ mod.wizards.newContentElement.wizardItems {
 }
 
 TCEFORM.tt_content.assets.config.maxitems = 1
+TCEFORM.tt_content.imageorient.removeItems = 1,2,9,10,17,18
