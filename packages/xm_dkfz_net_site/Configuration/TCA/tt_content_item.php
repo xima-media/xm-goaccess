@@ -145,6 +145,13 @@ return [
                 'enableRichtext' => false,
             ],
         ],
+        'link_title' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.link-title',
+            'config' => [
+                'placeholder' => '',
+                'type' => 'input',
+            ],
+        ],
         'link' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.link',
             'config' => [

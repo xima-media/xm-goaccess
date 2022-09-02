@@ -48,18 +48,25 @@
 					</div>
 
 
-					<f:link.typolink class="card__link card__link--more" parameter="{teaser.data.link}">Mehr erfahren</f:link.typolink>
-					<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-					</svg>
 					<f:if condition="{teaser.links -> f:count()} > 1">
-						<div class="list">
-							<ul>
-								<f:for each="{teaser.links}" as="link" iteration="i">
-									<f:render partial="Linklist" arguments="{link: link}" />
-								</f:for>
-							</ul>
-						</div>
+						<f:then>
+							<div class="list">
+								<ul>
+									<li class="list__link-item">
+										<f:link.typolink class="link--primary" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
+									</li>
+									<f:for each="{teaser.links}" as="link" iteration="i">
+										<f:render partial="Linklist" arguments="{link: link}" />
+									</f:for>
+								</ul>
+							</div>
+						</f:then>
+						<f:else>
+							<f:link.typolink class="card__link card__link--more" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
+							<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+							</svg>
+						</f:else>
 					</f:if>
 				</div>
 

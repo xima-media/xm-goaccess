@@ -33,6 +33,7 @@ create table tt_content_item (
 
 	title            varchar(255) default '' not null,
 	link             varchar(255) default '' not null,
+	link_title       varchar(255) default '' not null,
 	text             text,
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
