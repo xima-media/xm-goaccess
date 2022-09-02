@@ -188,6 +188,16 @@ parameters:
 		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/AccordionContainerPreviewRenderer.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function urlencode expects string, string\\|false given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/AccordionContainerPreviewRenderer.php
+
+		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
 
 		-
