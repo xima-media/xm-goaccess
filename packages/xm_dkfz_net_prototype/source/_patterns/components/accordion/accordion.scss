@@ -95,6 +95,10 @@
         max-width: $container-md-widths;
         margin: auto;
 
+        >.frame:first-child {
+            margin-top: var(--space-xl);
+        }
+
         // infobox in accordion
         .infobox {
             background-color: transparent;
