@@ -165,13 +165,6 @@ return [
                 ],
             ],
         ],
-        'writerConfiguration' => [
-            'debug' => [
-                'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
-                    'logFile' => 'var/log/typo3_debug.log',
-                ],
-            ],
-        ],
     ],
     'MAIL' => [
         'transport' => 'sendmail',
