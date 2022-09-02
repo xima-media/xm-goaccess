@@ -12,119 +12,166 @@
     width: 100%;
 
     @include media-breakpoint-up(xl) {
-        width: $container-default-widths;
-    }
-}
-
-.row + .row {
-    margin-top: 2.5rem;
-}
-
-.row {
-    [class*='col-md-'] {
-        @include media-breakpoint-down(lg){
-            margin-top: 2rem;
-        }
-
-        @include media-breakpoint-up(xl) {
-            padding-right: 2.8rem;
-            padding-left: 0;
-
-            &:last-child {
-                padding-right: 0;
-            }
-        }
+        width: $container-default-widths - 2rem;
     }
 
-    .infobox {
-        text-align: center;
-        position: relative;
-        padding: 2.5rem 1.5rem;
-        height: 100%;
-
-        &__title {
-            margin-bottom: 0;
-        }
-
-        &:hover {
-            //transform: scale(1.1);
-            cursor: pointer;
-            min-width: calc(100% + 10px);
-            min-height: calc(100% + 10px);
-            margin: -5px;
-        }
-
-        &.hide {
-            z-index: 0;
-        }
+    .row + .row {
+        margin-top: 2.5rem;
     }
 
-    .modal-detail {
-        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .2);
-        padding: 1rem;
-        position: absolute;
-        top: -2px;
-        left: -50%;
-        transform: translateX(10%);
-        background-color: $color-white;
-        text-align: left;
-
-        &--full {
-            &-right {
-                left: -50vw;
-                width: 52vw;
-                transform: translateX(21%);
-            }
-
-            &-left {
-                width: 48vw;
-                transform: translateX(23%);
-            }
-        }
-
-        &--close {
-            z-index: 2;
-            text-align: right;
-
-            .icon {
-                @include size(0.75rem)
-            }
-        }
-
-        &--body {
-            padding: 1.5rem 3rem 2rem 3rem;
-
-            .icon {
-                width: 14px;
-                margin-bottom: .5rem;
-            }
-
-            ul {
-                margin-top: 1rem;
-
-                li {
-                    h5 {
-                        @include text-copy-small(0.6px)
-                    }
-                }
-            }
-
-            a + .accordion__item {
+    .row {
+        [class*='col-md-']{
+            @include media-breakpoint-down(lg){
                 margin-top: 2rem;
             }
 
-            .accordion {
-                &-body {
-                    max-width: $container-md-widths + 6rem;
+            @include media-breakpoint-up(xl) {
+                padding-right: 0;
+                padding-left: 2.8rem;
+
+                &:first-child{
+                    padding-left: 0;
+                }
+            }
+        }
+
+        .offset-lg-6 {
+            @include media-breakpoint-up(xl) {
+                padding-right: 0;
+                padding-left: 2.8rem;
+            }
+        }
+
+        .infobox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2.5rem 1.5rem;
+            height: 100%;
+
+            &__title {
+                margin-bottom: 0;
+                letter-spacing: .5px;
+            }
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+                transition: transform .6s;
+            }
+        }
+
+        // bootstrap
+        .modal-dialog {
+            max-width: 100%;
+
+            @include media-breakpoint-up(xl) {
+                width: $container-default-widths - 2rem;
+            }
+
+            .modal {
+                &-content {
+                    padding: 1rem;
                 }
 
-                &-button--description {
-                    margin-left: 1rem;
+                &-header {
+                    border: none;
+                    padding-top: 0;
+                    padding-right: 0;
+
+                    .btn-close {
+                        border: none;
+                        background: transparent;
+
+                        .icon {
+                            @include size(12px);
+                        }
+                    }
+                }
+
+                &-body {
+                    padding: .5rem 1rem 2rem 1rem;
+
+                    @include media-breakpoint-up(xl) {
+                        padding: .5rem 3rem 2rem 3rem;
+                    }
+
+                    .row {
+                        [class*='col-md-'] {
+
+                            @include media-breakpoint-up(xl) {
+                                padding-right: 3.75rem;
+                                padding-left: calc(var(--bs-gutter-x) * 0.5);
+                            }
+                        }
+                    }
+
+                    .icon {
+                        width: 14px;
+                        margin-bottom: .5rem;
+                    }
+
+                    ul {
+                        margin-top: 1rem;
+
+                        li {
+                            h5 {
+                                @include text-copy-small(700, 0.6px);
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+
+                    a + .accordion__item {
+                        margin-top: 2rem;
+                    }
+
+                    .accordion {
+
+                        &-body {
+                            max-width: $container-md-widths + 4rem;
+
+                            ul {
+                                li {
+                                    a {
+                                        @include text-copy-small(700, 0.6px);
+
+                                    }
+                                    p {
+                                        font-weight: 200;
+                                        letter-spacing: normal;
+                                    }
+                                }
+                            }
+                        }
+
+                        &-button--description {
+                            margin-left: 1rem;
+                            line-height: 30px;
+                            letter-spacing: .3px;
+
+                            & > span {
+                                font-size: 1rem;
+                                line-height: 24px;
+                                letter-spacing: normal;
+                                font-weight: 200;
+                            }
+                        }
+
+                        &-collapse {
+                            margin-left: -4rem;
+                            margin-right: -4rem;
+                        }
+                    }
                 }
             }
         }
     }
 }
+
+
 
 
 

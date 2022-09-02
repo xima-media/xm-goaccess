@@ -1,4 +1,0 @@
----
-title: Organigramm
-state: incomplete
----
