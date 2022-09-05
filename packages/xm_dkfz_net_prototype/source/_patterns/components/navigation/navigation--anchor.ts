@@ -116,10 +116,10 @@ class NavigationAnchor {
         // Button show/hide
         btnScrollLeft.style.opacity = '0';
 
-        if(maxScroll <= 0) {
-            btnScrollRight.style.opacity = '1';
-        } else {
+        if(hScroll.scrollWidth === hScroll.offsetWidth) {
             btnScrollRight.style.opacity = '0';
+        } else {
+            btnScrollRight.style.opacity = '1';
         }
 
         function scrollHorizontally(val: number) {
