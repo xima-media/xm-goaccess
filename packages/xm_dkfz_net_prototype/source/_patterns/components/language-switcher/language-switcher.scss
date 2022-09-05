@@ -52,11 +52,16 @@
         &:focus,
         &.fx--active {
             color: inherit;
+            text-decoration: none;
 
             &::after {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
             }
+        }
+
+        &:not(.fx--active) {
+            cursor: not-allowed;
         }
 
         //&.fx--active {
