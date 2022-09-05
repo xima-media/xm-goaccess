@@ -34,8 +34,19 @@
 									<ul>
 										<f:for each="{block.list}" as="list">
 											<li>
-												<h5>{list.headline}</h5>
-												<p>{list.description}</p>
+												<f:if condition="{list.headline}">
+													<h5>{list.headline}</h5>
+												</f:if>
+												<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
+													<p>
+														{list.descriptionFirstLine}
+
+														<f:if condition="{list.descriptionSecondLine}">
+															<br>
+															{list.descriptionSecondLine}
+														</f:if>
+													</p>
+												</f:if>
 											</li>
 										</f:for>
 									</ul>
@@ -88,8 +99,14 @@
 															<ul>
 																<f:for each="{list.column}" as="column">
 																	<li>
-																		<h5>{column.headline}</h5>
-																		<p>{column.description}</p>
+																		<f:if condition="{column.headline}">
+																			<h5>{column.headline}</h5>
+																		</f:if>
+																		<f:if condition="{column.description}">
+																			<p>
+																				{column.description}
+																			</p>
+																		</f:if>
 																	</li>
 																</f:for>
 															</ul>
@@ -102,8 +119,19 @@
 											<ul>
 												<f:for each="{block.list}" as="list">
 													<li>
-														<h5>{list.headline}</h5>
-														<p>{list.description}</p>
+														<f:if condition="{list.headline}">
+															<h5>{list.headline}</h5>
+														</f:if>
+														<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
+															<p>
+																{list.descriptionFirstLine}
+
+																<f:if condition="{list.descriptionSecondLine}">
+																	<br>
+																	{list.descriptionSecondLine}
+																</f:if>
+															</p>
+														</f:if>
 													</li>
 												</f:for>
 											</ul>
@@ -207,8 +235,19 @@
 										<ul>
 											<f:for each="{block.list}" as="list">
 												<li>
-													<h5>{list.headline}</h5>
-													<p>{list.description}</p>
+													<f:if condition="{list.headline}">
+														<h5>{list.headline}</h5>
+													</f:if>
+													<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
+														<p>
+															{list.descriptionFirstLine}
+
+															<f:if condition="{list.descriptionSecondLine}">
+																<br>
+																{list.descriptionSecondLine}
+															</f:if>
+														</p>
+													</f:if>
 												</li>
 											</f:for>
 										</ul>
