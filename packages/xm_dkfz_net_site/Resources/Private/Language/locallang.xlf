@@ -178,6 +178,9 @@
 			<trans-unit id="tt_content_item.link-title" space="preserve">
 				<source>Link Title</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.link-title.description" space="preserve">
+				<source>Default: More</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.image" space="preserve">
 				<source>Image</source>
 			</trans-unit>

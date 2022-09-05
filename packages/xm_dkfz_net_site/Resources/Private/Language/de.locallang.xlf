@@ -392,6 +392,9 @@
 			<trans-unit id="tt_content_item.link-title" space="preserve">
 				<target>Alternativer Linktitel</target>
 			</trans-unit>
+			<trans-unit id="tt_content_item.link-title.description" space="preserve">
+				<target>Standard: Mehr erfahren</target>
+			</trans-unit>
 			<trans-unit id="tt_content_item.image" space="preserve">
 				<target>Bild</target>
 			</trans-unit>
