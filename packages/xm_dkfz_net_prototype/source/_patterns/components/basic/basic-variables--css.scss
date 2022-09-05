@@ -79,6 +79,11 @@
     --color-gray-white: var(--color-gray-100);
 }
 
+.frame-type-container-tabs,
+.frame-type-container-accordion {
+    --color-gray-white-reversed: var(--color-white);
+}
+
 // @TODO: Is this class needed anymore?
 .background--expanded {
     &::after {
