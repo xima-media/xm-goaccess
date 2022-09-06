@@ -48,11 +48,6 @@ class NavigationAnchor {
         const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
         const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
 
-
-        let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
-        let currentScrollPosition = 0;
-        let scrollAmount = hScroll.offsetWidth / 4;
-
         /**
          * menu desktop
          */
@@ -113,13 +108,19 @@ class NavigationAnchor {
         /**
          * menu laptop
          */
+        let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
+        let currentScrollPosition = 0;
+        let scrollAmount = hScroll.offsetWidth / 4;
+
         // Button show/hide
         btnScrollLeft.style.opacity = '0';
 
         if(hScroll.scrollWidth === hScroll.offsetWidth) {
             btnScrollRight.style.opacity = '0';
+            navItems.style.justifyContent = 'center'
         } else {
             btnScrollRight.style.opacity = '1';
+            navItems.style.justifyContent = 'flex-start'
         }
 
         function scrollHorizontally(val: number) {
