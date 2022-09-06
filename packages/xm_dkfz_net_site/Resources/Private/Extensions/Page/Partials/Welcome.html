@@ -1,15 +1,9 @@
 <f:variable name="cssVariables">
 	<f:for each="{files}" as="file" iteration="i">
 		<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
-		--background-image-{index}jpg: url({f:uri.image(image: file, width: 576)}); --background-image-{index}jpg-md:
-		url({f:uri.image(image: file, width: 768)}); --background-image-{index}jpg-lg: url({f:uri.image(image: file,
-		width: 992)}); --background-image-{index}jpg-xl: url({f:uri.image(image: file, width: 1200)});
-		--background-image-{index}jpg-xxl: url({f:uri.image(image: file, width: 2500)}); --background-image-{index}webp:
-		url({f:uri.image(image: file, width: 576, fileExtension: 'webp')}); --background-image-{index}webp-md:
-		url({f:uri.image(image: file, width: 768, fileExtension: 'webp')}); --background-image-{index}webp-lg:
-		url({f:uri.image(image: file, width: 992, fileExtension: 'webp')}); --background-image-{index}webp-xl:
-		url({f:uri.image(image: file, width: 1200, fileExtension: 'webp')}); --background-image-{index}webp-xxl:
-		url({f:uri.image(image: file, width: 2500, fileExtension: 'webp')});
+		--background-image-{index}jpg: url({f:uri.image(image: file, width: 576)});
+		--background-image-{index}jpg-md: url({f:uri.image(image: file,width: 992)});
+		--background-image-{index}jpg-xl: url({f:uri.image(image: file, width: 2500)});
 	</f:for>
 </f:variable>
 

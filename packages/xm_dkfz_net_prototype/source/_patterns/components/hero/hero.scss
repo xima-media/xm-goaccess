@@ -144,39 +144,15 @@
 
 
 .background--image-hero {
-    --background-image: var(--background-image-webp);
+    --background-image: var(--background-image-jpg);
     background-image: var(--background-image);
 
-    .no-webp & {
-        --background-image: var(--background-image-jpg);
-    }
-
     @include media-breakpoint-up(md) {
-        --background-image: var(--background-image-webp-md);
-        .no-webp & {
-            --background-image: var(--background-image-jpg-md);
-        }
-    }
-
-    @include media-breakpoint-up(lg) {
-        --background-image: var(--background-image-webp-lg);
-        .no-webp & {
-            --background-image: var(--background-image-jpg-md);
-        }
+        --background-image: var(--background-image-jpg-md);
     }
 
     @include media-breakpoint-up(xl) {
-        --background-image: var(--background-image-webp-xl);
-        .no-webp & {
-            --background-image: var(--background-image-jpg-xl);
-        }
-    }
-
-    @include media-breakpoint-up(xxl) {
-        --background-image: var(--background-image-webp-xxl);
-        .no-webp & {
-            --background-image: var(--background-image-jpg-xxl);
-        }
+        --background-image: var(--background-image-jpg-xl);
     }
 
     &.layout__item {
