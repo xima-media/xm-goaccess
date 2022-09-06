@@ -29,23 +29,33 @@ class Organigramm {
     constructor () {
         app.log('component "organigramm" loaded')
 
-        this.event()
+        if (document.querySelector<HTMLElement>('.frame-type-bw_static_template')) {
+            this.event()
+        }
+
     }
 
     event() {
         const container = document.querySelector<HTMLElement>('.frame-type-bw_static_template');
         const infoBox = container.querySelectorAll<HTMLElement>('.infobox');
+        const layout = document.querySelector<HTMLElement>('.layout')
 
         infoBox.forEach(box => {
-            box.addEventListener('click', (e) => {
-                const boxEl = box.nextElementSibling;
-                const boxElAttr = boxEl.getAttribute('aria-labelledby')
+            box.addEventListener('click', () => {
+                setTimeout(() => {
+                    const modal = box.nextElementSibling;
 
-                // add distance from modal to footer
-                if (boxElAttr === 'Forschungsschwerpunkte') {
-                    const footer = document.querySelector<HTMLElement>('footer');
-                    footer.style.marginTop = '20' + 'rem';
-                }
+                    if(modal.classList.contains('show')) {
+                        const modalContent = modal.querySelector<HTMLElement>('.modal-content');
+                        const modalContentHeight = modalContent.clientHeight;
+
+                        layout.style.paddingBottom = modalContentHeight + 'px';
+                    }
+                }, 1000)
+            })
+
+            box.nextElementSibling.addEventListener('hidden.bs.modal',  () => {
+                layout.style.paddingBottom = 0 + 'px'
             })
         })
     }

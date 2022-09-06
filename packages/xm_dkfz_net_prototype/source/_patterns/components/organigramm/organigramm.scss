@@ -65,8 +65,8 @@
 
         // bootstrap
         .modal-dialog {
-            max-width: 100%;
-            margin-top: 40vh;
+            max-width: 90%;
+            margin-top: 35vh;
 
             @include media-breakpoint-up(xl) {
                 width: fit-content;
@@ -178,8 +178,16 @@
     }
 }
 
-.modal-backdrop {
-    background: inherit;
+// bootstrap modal override
+.modal {
+    &-backdrop {
+        background: inherit;
+    }
+
+    &-open {
+        height: 100vh;
+        padding-right: 0 !important;
+    }
 }
 
 
