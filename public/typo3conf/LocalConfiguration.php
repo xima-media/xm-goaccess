@@ -181,30 +181,30 @@ return [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                 ],
                 'hash' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
                 ],
                 'imagesizes' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\SimpleFileBackend',
                     'options' => [
-                        'compression' => true,
+                        'compression' => '__UNSET',
                     ],
                 ],
                 'pages' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
                     'options' => [
-                        'compression' => true,
+                        'compression' => '__UNSET',
                     ],
                 ],
                 'pagesection' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
                     'options' => [
-                        'compression' => true,
+                        'compression' => '__UNSET',
                     ],
                 ],
                 'rootline' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
                     'options' => [
-                        'compression' => true,
+                        'compression' => '__UNSET',
                     ],
                 ],
             ],
