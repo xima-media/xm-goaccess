@@ -122,6 +122,9 @@ return [
         'xm_dkfz_net_jobs' => [
             'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
         ],
+        'xm_dkfz_net_events' => [
+            'api_url_override' => '',
+        ],
         'xm_goaccess' => [
             'html_path' => '../var/goaccess/goaccess.html',
         ],
