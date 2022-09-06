@@ -74,3 +74,10 @@ task('deploy:upload-dist', function () {
         '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/'
     );
 });
+
+task('typo3cms:cache:warmup', function () {
+    $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
+    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
+});
+
+before('deploy:symlink', 'typo3cms:cache:warmup');
