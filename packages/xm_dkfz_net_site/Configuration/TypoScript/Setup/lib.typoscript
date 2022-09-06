@@ -41,3 +41,14 @@ lib.videoPreviewImage {
     }
   }
 }
+
+lib.year = TEXT
+lib.year {
+  data = date:U
+  strftime = %Y
+}
+
+lib.copyright < lib.year
+lib.copyright {
+  noTrimWrap = |&copy;&nbsp;Copyright DKFZ |
+}

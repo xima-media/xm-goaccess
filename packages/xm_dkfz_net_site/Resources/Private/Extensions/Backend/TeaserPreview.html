@@ -2,10 +2,12 @@
 	<f:for each="{children}" as="item">
 		<div>
 			<f:if condition="{item.files}">
-				<f:for each="{item.files}" as="file">
-					<span class="color-border color--{item.color}">
+				<f:for each="{item.files}" as="file" iteration="fileIterator">
+					<f:if condition="{fileIterator.cycle} === 1">
+						<span class="color-border color--{item.color}">
 						<f:image image="{file}" maxWidth="80"/>
 					</span>
+					</f:if>
 				</f:for>
 			</f:if>
 			<f:if condition="!{item.files}">

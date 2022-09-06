@@ -175,6 +175,12 @@
 			<trans-unit id="tt_content_item.link" space="preserve">
 				<source>Link</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.link-title" space="preserve">
+				<source>Link Title</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.link-title.description" space="preserve">
+				<source>Default: More</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.image" space="preserve">
 				<source>Image</source>
 			</trans-unit>
@@ -213,6 +219,9 @@
 			</trans-unit>
 			<trans-unit id="anchorNav.label">
 				<source>Anchor navigation</source>
+			</trans-unit>
+			<trans-unit id="link.more">
+				<source>More</source>
 			</trans-unit>
 			<trans-unit id="button.back">
 				<source>Back</source>

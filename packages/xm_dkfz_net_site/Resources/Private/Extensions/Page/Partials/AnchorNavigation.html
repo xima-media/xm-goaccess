@@ -1,20 +1,22 @@
 <f:if condition="{anchorNavElements -> f:count()} > 1  && !{data.is_siteroot}">
-	<nav class="navigation navigation--anchor background--expanded"
+	<nav class="navigation--anchor"
 		 aria-label="{f:translate(key: 'anchorNav.label', extensionName: 'XmDkfzNetSite')}">
-		<button class="navigation__button left"
-				aria-label="{f:translate(key: 'button.back', extensionName: 'XmDkfzNetSite')}" disabled="disabled">
-			<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
-		</button>
-		<ul class="navigation__items">
-			<f:for each="{anchorNavElements}" as="item">
-				<li class="navigation__item">
-					<a class="navigation__link" href="#c{item.data.uid}">{item.data.header}</a>
-				</li>
-			</f:for>
-		</ul>
-		<button class="navigation__button right"
-				aria-label="{f:translate(key: 'button.next', extensionName: 'XmDkfzNetSite')}" disabled="disabled">
-			<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
-		</button>
+		<div class="horizontal-scroll">
+			<button class="navigation__button left"
+					aria-label="{f:translate(key: 'button.back', extensionName: 'XmDkfzNetSite')}">
+				<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
+			</button>
+			<ul class="navigation__items">
+				<f:for each="{anchorNavElements}" as="item">
+					<li class="navigation__item">
+						<a class="navigation__link" href="#c{item.data.uid}">{item.data.header}</a>
+					</li>
+				</f:for>
+			</ul>
+			<button class="navigation__button right"
+					aria-label="{f:translate(key: 'button.next', extensionName: 'XmDkfzNetSite')}">
+				<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+			</button>
+		</div>
 	</nav>
 </f:if>

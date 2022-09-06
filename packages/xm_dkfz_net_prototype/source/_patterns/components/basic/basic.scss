@@ -23,6 +23,19 @@ body {
     background-color: transparent; // @todo die bootstrap variable überschreiben
 }
 
+/* Only show focus on keyboard input */
+*:focus-visible {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+/* Hide focus if the user is using a mouse, stylus etc. */
+*:focus:not(:focus-visible) {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 // @todo eventuell auslagern
 .main {
     max-width: var(--content-width);

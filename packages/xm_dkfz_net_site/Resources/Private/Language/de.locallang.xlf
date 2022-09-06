@@ -87,7 +87,7 @@
 				<target>Dunkelgrau</target>
 			</trans-unit>
 			<trans-unit id="container.accordion">
-				<target>Akkordion</target>
+				<target>Akkordeon</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.description">
 				<target>Kann mehrere Content-Elemente beinhalten, die zusammengeklappt werden können</target>
@@ -96,19 +96,19 @@
 				<target>Inhalt</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.palette">
-				<target>Akkordion-Einstellungen</target>
+				<target>Akkordeon-Einstellungen</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.title">
 				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.title.description">
-				<target>Die klickbare Überschrift, die dieses Akkordion-Element öffnet</target>
+				<target>Die klickbare Überschrift, die dieses Akkordeon-Element öffnet</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.group">
 				<target>Abschnitt-Überschrift</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.group.description">
-				<target>Eine Überschrift, die die Akkordion-Elemente zu einer neuen Gruppe abgrenzt</target>
+				<target>Eine Überschrift, die die Akkordeon-Elemente zu einer neuen Gruppe abgrenzt</target>
 			</trans-unit>
 			<trans-unit id="container.tabs">
 				<target>Tabelement</target>
@@ -172,6 +172,9 @@
 			</trans-unit>
 			<trans-unit id="anchorNav.label">
 				<target>Ankernavigation</target>
+			</trans-unit>
+			<trans-unit id="link.more">
+				<target>Mehr erfahren</target>
 			</trans-unit>
 			<trans-unit id="button.back">
 				<target>Zurück</target>
@@ -375,7 +378,7 @@
 				<target>Teaser</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.accordion-title" space="preserve">
-				<target>Akkordion-Element</target>
+				<target>Akkordeon-Element</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<target>Titel</target>
@@ -385,6 +388,12 @@
 			</trans-unit>
 			<trans-unit id="tt_content_item.link" space="preserve">
 				<target>Link</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.link-title" space="preserve">
+				<target>Alternativer Linktitel</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.link-title.description" space="preserve">
+				<target>Standard: Mehr erfahren</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.image" space="preserve">
 				<target>Bild</target>

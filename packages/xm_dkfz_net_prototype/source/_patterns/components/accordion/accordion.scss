@@ -72,8 +72,7 @@
             font-family: $font-family-sans-serif;
         }
 
-        &:hover,
-        &:focus {
+        &:hover {
             background-color: #111;
             color: $color-white;
 
@@ -95,6 +94,10 @@
         padding: var(--space-doubled) 0;
         max-width: $container-md-widths;
         margin: auto;
+
+        >.frame:first-child {
+            margin-top: var(--space-xl);
+        }
 
         // infobox in accordion
         .infobox {
@@ -186,6 +189,10 @@
     .tab-item__wrapper {
         background: var(--color-white);
         margin: 0;
+    }
+
+    .content-wrapper__content-text {
+        display: inline-block;
     }
 }
 

@@ -35,6 +35,11 @@ $GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.items',
             'config' => [
                 'overrideChildTca' => [
+                    'types' => [
+                        'teaser-item' => [
+                            'showitem' => 'record_type, link, link_title, --linebreak--, overrides, --palette--;;teaser-override',
+                        ],
+                    ],
                     'columns' => [
                         'record_type' => [
                             'config' => [
@@ -74,6 +79,15 @@ $GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
                                         ],
                                     ],
                                 ],
+                                'eval' => 'required',
+                            ],
+                        ],
+                        'link_title' => [
+                            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.link-title',
+                            'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.link-title.description',
+                            'config' => [
+                                'placeholder' => '',
+                                'type' => 'input',
                             ],
                         ],
                         'tt_content_items' => [

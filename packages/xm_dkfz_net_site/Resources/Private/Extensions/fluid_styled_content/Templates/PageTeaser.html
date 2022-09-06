@@ -6,21 +6,23 @@
 			<div class="card__image">
 
 				<f:if condition="{teaser.files}">
-					<f:for each="{teaser.files}" as="file">
-						<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
-								data-pattern-color="transparent">
-							<div class="picture__item image-color--{teaser.data.color}">
-								<picture>
-									<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'webp')}"
-											type="image/webp">
-									<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
-											type="image/jpeg">
-									<img src="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
-										 alt="{file.originalResource.alternative}"
-										 loading="lazy"/>
-								</picture>
-							</div>
-						</figure>
+					<f:for each="{teaser.files}" as="file" iteration="teaserFileIterator">
+						<f:if condition="{teaserFileIterator.cycle} === 1">
+							<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
+									data-pattern-color="transparent">
+								<div class="picture__item image-color--{teaser.data.color}">
+									<picture>
+										<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'webp')}"
+												type="image/webp">
+										<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
+												type="image/jpeg">
+										<img src="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
+											 alt="{file.originalResource.alternative}"
+											 loading="lazy"/>
+									</picture>
+								</div>
+							</figure>
+						</f:if>
 					</f:for>
 				</f:if>
 
@@ -48,18 +50,25 @@
 					</div>
 
 
-					<f:link.typolink class="card__link card__link--more" parameter="{teaser.data.link}">Mehr erfahren</f:link.typolink>
-					<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
-						<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-					</svg>
 					<f:if condition="{teaser.links -> f:count()} > 1">
-						<div class="list">
-							<ul>
-								<f:for each="{teaser.links}" as="link" iteration="i">
-									<f:render partial="Linklist" arguments="{link: link}" />
-								</f:for>
-							</ul>
-						</div>
+						<f:then>
+							<div class="list">
+								<ul>
+									<li class="list__link-item">
+										<f:link.typolink class="link--primary" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
+									</li>
+									<f:for each="{teaser.links}" as="link" iteration="i">
+										<f:render partial="Linklist" arguments="{link: link}" />
+									</f:for>
+								</ul>
+							</div>
+						</f:then>
+						<f:else>
+							<f:link.typolink class="card__link card__link--more" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
+							<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
+								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+							</svg>
+						</f:else>
 					</f:if>
 				</div>
 

@@ -28,6 +28,26 @@ import 'bootstrap/js/src/modal'
 class Organigramm {
     constructor () {
         app.log('component "organigramm" loaded')
+
+        this.event()
+    }
+
+    event() {
+        const container = document.querySelector<HTMLElement>('.frame-type-bw_static_template');
+        const infoBox = container.querySelectorAll<HTMLElement>('.infobox');
+
+        infoBox.forEach(box => {
+            box.addEventListener('click', (e) => {
+                const boxEl = box.nextElementSibling;
+                const boxElAttr = boxEl.getAttribute('aria-labelledby')
+
+                // add distance from modal to footer
+                if (boxElAttr === 'Forschungsschwerpunkte') {
+                    const footer = document.querySelector<HTMLElement>('footer');
+                    footer.style.marginTop = '20' + 'rem';
+                }
+            })
+        })
     }
 }
 

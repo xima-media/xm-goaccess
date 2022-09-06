@@ -66,14 +66,17 @@
         // bootstrap
         .modal-dialog {
             max-width: 100%;
+            margin-top: 40vh;
 
             @include media-breakpoint-up(xl) {
-                width: $container-default-widths - 2rem;
+                width: fit-content;
             }
 
             .modal {
                 &-content {
                     padding: 1rem;
+                    border: 0;
+                    box-shadow: 0 0 16px rgba(0, 0, 0, .2);
                 }
 
                 &-header {
@@ -115,6 +118,7 @@
 
                     ul {
                         margin-top: 1rem;
+                        max-width: 26.5rem;
 
                         li {
                             h5 {
@@ -126,12 +130,16 @@
 
                     a + .accordion__item {
                         margin-top: 2rem;
+
+                        @include media-breakpoint-up(xl) {
+                            width: $container-default-widths - 2rem;
+                        }
                     }
 
                     .accordion {
 
                         &-body {
-                            max-width: $container-md-widths + 4rem;
+                            max-width: $container-default-widths - 2rem;
 
                             ul {
                                 li {
@@ -148,7 +156,6 @@
                         }
 
                         &-button--description {
-                            margin-left: 1rem;
                             line-height: 30px;
                             letter-spacing: .3px;
 
@@ -171,6 +178,9 @@
     }
 }
 
+.modal-backdrop {
+    background: inherit;
+}
 
 
 

@@ -20,6 +20,8 @@ page {
       pidLogin.value = {$pidLogin}
       pidUserDetail = TEXT
       pidUserDetail.value = {$pidUserDetail}
+      pidDisruptorStorage = TEXT
+      pidDisruptorStorage.value = {$pidDisruptorStorage}
     }
 
     dataProcessing {
