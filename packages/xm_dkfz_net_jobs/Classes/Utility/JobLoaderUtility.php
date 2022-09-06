@@ -51,7 +51,7 @@ class JobLoaderUtility
     protected function loadJobs(bool $useCache = true): bool
     {
         // download and cache json
-        if (!($jsonJobs = $this->cache->get('dkfz')) && $useCache) {
+        if (!($jsonJobs = $this->cache->get('dkfz')) || !$useCache) {
             $jsonJobs = $this->fetchRemoteJobs();
             $this->cache->set('dkfz', $jsonJobs);
         }
