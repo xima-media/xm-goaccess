@@ -73,7 +73,9 @@
 		"ichhabrecht/content-defender": "^3.2",
 		"in2code/luxletter": "^14.0.0",
 		"blueways/bw-static-template": "^2.0",
-		"xima/xm-typo3-manual": "*@dev"
+		"xima/xm-typo3-manual": "*@dev",
+		"tpwd/ke_search": "^4.5",
+		"xima/xm-kesearch-remote": "*@dev"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

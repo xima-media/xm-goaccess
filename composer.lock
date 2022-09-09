@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "905f490714e315622d108b2ec38f9dea",
+    "content-hash": "0e83f60a184e8a786f69c1953e146748",
     "packages": [
         {
             "name": "b13/container",
@@ -124,7 +124,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -1976,16 +1976,16 @@
         },
         {
             "name": "in2code/luxletter",
-            "version": "14.0.1",
+            "version": "14.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/in2code-de/luxletter.git",
-                "reference": "c910451c5c44219dd9b0581768c33c090d06cca9"
+                "reference": "9b6dcd7d91a837cb76bfe9b842cf797f74994132"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/in2code-de/luxletter/zipball/c910451c5c44219dd9b0581768c33c090d06cca9",
-                "reference": "c910451c5c44219dd9b0581768c33c090d06cca9",
+                "url": "https://api.github.com/repos/in2code-de/luxletter/zipball/9b6dcd7d91a837cb76bfe9b842cf797f74994132",
+                "reference": "9b6dcd7d91a837cb76bfe9b842cf797f74994132",
                 "shasum": ""
             },
             "require": {
@@ -2055,9 +2055,9 @@
             ],
             "support": {
                 "issues": "https://github.com/in2code-de/luxletter/issues",
-                "source": "https://github.com/in2code-de/luxletter/tree/14.0.1"
+                "source": "https://github.com/in2code-de/luxletter/tree/14.1.0"
             },
-            "time": "2022-08-19T17:59:58+00:00"
+            "time": "2022-08-30T16:24:22+00:00"
         },
         {
             "name": "league/oauth2-client",
@@ -2402,16 +2402,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.14.0",
+            "version": "v4.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1"
+                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/34bea19b6e03d8153165d8f30bba4c3be86184c1",
-                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
+                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
                 "shasum": ""
             },
             "require": {
@@ -2452,9 +2452,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.14.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.15.1"
             },
-            "time": "2022-05-31T20:59:12+00:00"
+            "time": "2022-09-04T07:30:47+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -7146,6 +7146,72 @@
             "time": "2021-12-08T09:12:39+00:00"
         },
         {
+            "name": "tpwd/ke_search",
+            "version": "v4.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tpwd/ke_search.git",
+                "reference": "12e928848be9cadeffc5cb77aff43bb4881e987b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tpwd/ke_search/zipball/12e928848be9cadeffc5cb77aff43bb4881e987b",
+                "reference": "12e928848be9cadeffc5cb77aff43bb4881e987b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": "^7.4 || ^8.0",
+                "symfony/polyfill-php80": "^1.23",
+                "typo3/cms-core": "^10.4.11 || ^11.0"
+            },
+            "replace": {
+                "teaminmedias-pluswerk/ke_search": "self.version",
+                "typo3-ter/ke_search": "self.version"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5 || ^9.5",
+                "typo3/cms-dashboard": "^10.4.11 || ^11.0"
+            },
+            "suggest": {
+                "typo3/cms-dashboard": "Use widgets in dashboard"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ke_search",
+                    "web-dir": ".Build/web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tpwd\\KeSearch\\": "Classes"
+                },
+                "classmap": [
+                    "Classes"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Search Extension for TYPO3, including faceting search functions.",
+            "homepage": "https://www.typo3-macher.de/en/facetted-search-ke-search/",
+            "keywords": [
+                "TYPO3 CMS",
+                "faceted search",
+                "faceting",
+                "ke_search",
+                "kesearch",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/tpwd/ke_search/issues",
+                "source": "https://github.com/tpwd/ke_search/tree/v4.5.0"
+            },
+            "time": "2022-09-02T09:48:44+00:00"
+        },
+        {
             "name": "typo3/class-alias-loader",
             "version": "v1.1.4",
             "source": {
@@ -9513,7 +9579,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -9548,7 +9614,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -9582,7 +9648,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-prototype",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_prototype",
@@ -9613,7 +9679,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -9644,7 +9710,7 @@
         },
         {
             "name": "xima/xm-goaccess",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_goaccess",
@@ -9674,8 +9740,43 @@
             }
         },
         {
+            "name": "xima/xm-kesearch-remote",
+            "version": "dev-feature/ke-search",
+            "dist": {
+                "type": "path",
+                "url": "./packages/xm_kesearch_remote",
+                "reference": "abe6a1e12cc1af13ac4f571fc7e064522380a596"
+            },
+            "require": {
+                "tpwd/ke_search": "^4.5",
+                "typo3/cms-core": "^11.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "xm_kesearch_remote"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Xima\\XmKesearchRemote\\": "Classes"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "maik.schneider@xima.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "ke_search indexer for remote websites",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "xima/xm-typo3-manual",
-            "version": "dev-master",
+            "version": "dev-feature/ke-search",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_typo3_manual",
@@ -10421,16 +10522,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.10.0",
+            "version": "v3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "76d7da666e66d83a1dc27a9d1c625c80cc4ac1fe"
+                "reference": "7dcdea3f2f5f473464e835be9be55283ff8cfdc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/76d7da666e66d83a1dc27a9d1c625c80cc4ac1fe",
-                "reference": "76d7da666e66d83a1dc27a9d1c625c80cc4ac1fe",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/7dcdea3f2f5f473464e835be9be55283ff8cfdc3",
+                "reference": "7dcdea3f2f5f473464e835be9be55283ff8cfdc3",
                 "shasum": ""
             },
             "require": {
@@ -10498,7 +10599,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.10.0"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.11.0"
             },
             "funding": [
                 {
@@ -10506,7 +10607,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-17T22:13:10+00:00"
+            "time": "2022-09-01T18:24:51+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -10796,16 +10897,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.2",
+            "version": "1.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c53312ecc575caf07b0e90dee43883fdf90ca67c"
+                "reference": "f6598a5ff12ca4499a836815e08b4d77a2ddeb20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c53312ecc575caf07b0e90dee43883fdf90ca67c",
-                "reference": "c53312ecc575caf07b0e90dee43883fdf90ca67c",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f6598a5ff12ca4499a836815e08b4d77a2ddeb20",
+                "reference": "f6598a5ff12ca4499a836815e08b4d77a2ddeb20",
                 "shasum": ""
             },
             "require": {
@@ -10829,9 +10930,13 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.2"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.5"
             },
             "funding": [
                 {
@@ -10843,15 +10948,11 @@
                     "type": "github"
                 },
                 {
-                    "url": "https://www.patreon.com/phpstan",
-                    "type": "patreon"
-                },
-                {
                     "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-20T09:57:31+00:00"
+            "time": "2022-09-07T16:05:32+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -11351,12 +11452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "813f344375ecb72990801961d3e6b969ee27e6c6"
+                "reference": "6d260392fad173d6ee6e3a93c875d9327db1109b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/813f344375ecb72990801961d3e6b969ee27e6c6",
-                "reference": "813f344375ecb72990801961d3e6b969ee27e6c6",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6d260392fad173d6ee6e3a93c875d9327db1109b",
+                "reference": "6d260392fad173d6ee6e3a93c875d9327db1109b",
                 "shasum": ""
             },
             "conflict": {
@@ -11492,8 +11593,9 @@
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
                 "getgrav/grav": "<1.7.34",
-                "getkirby/cms": "<3.5.8.1",
+                "getkirby/cms": "<3.5.8.1|>=3.6,<3.6.6.1|>=3.7,<3.7.4",
                 "getkirby/panel": "<2.5.14",
+                "getkirby/starterkit": "<=3.7.0.2",
                 "gilacms/gila": "<=1.11.4",
                 "globalpayments/php-sdk": "<2",
                 "google/protobuf": "<3.15",
@@ -11586,6 +11688,7 @@
                 "nette/application": ">=2,<2.0.19|>=2.1,<2.1.13|>=2.2,<2.2.10|>=2.3,<2.3.14|>=2.4,<2.4.16|>=3,<3.0.6",
                 "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
                 "nilsteampassnet/teampass": "<=2.1.27.36",
+                "notrinos/notrinos-erp": "<=0.7",
                 "noumo/easyii": "<=0.9",
                 "nukeviet/nukeviet": "<4.5.2",
                 "nystudio107/craft-seomatic": "<3.4.12",
@@ -11638,7 +11741,7 @@
                 "prestashop/contactform": ">1.0.1,<4.3",
                 "prestashop/gamification": "<2.3.2",
                 "prestashop/prestashop": ">=1.6.0.10,<1.7.8.7",
-                "prestashop/productcomments": ">=4,<4.2.1",
+                "prestashop/productcomments": "<5.0.2",
                 "prestashop/ps_emailsubscription": "<2.6.1",
                 "prestashop/ps_facetedsearch": "<3.4.1",
                 "prestashop/ps_linklist": "<3.1",
@@ -11689,7 +11792,7 @@
                 "simplito/elliptic-php": "<1.0.6",
                 "slim/slim": "<2.6",
                 "smarty/smarty": "<3.1.45|>=4,<4.1.1",
-                "snipe/snipe-it": "<=6.0.2|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
+                "snipe/snipe-it": "<6.0.10|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "spipu/html2pdf": "<5.2.4",
@@ -11860,7 +11963,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-29T18:04:39+00:00"
+            "time": "2022-08-31T22:04:18+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -12957,16 +13060,16 @@
         },
         {
             "name": "symplify/vendor-patches",
-            "version": "11.1.5",
+            "version": "11.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/vendor-patches.git",
-                "reference": "d8f5e25a6bcc0126ddab8f79a61d322c51b5df8b"
+                "reference": "3c34d5c99c0c278e22d7b91f0222898331c7ecad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/d8f5e25a6bcc0126ddab8f79a61d322c51b5df8b",
-                "reference": "d8f5e25a6bcc0126ddab8f79a61d322c51b5df8b",
+                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/3c34d5c99c0c278e22d7b91f0222898331c7ecad",
+                "reference": "3c34d5c99c0c278e22d7b91f0222898331c7ecad",
                 "shasum": ""
             },
             "require": {
@@ -12988,7 +13091,7 @@
             ],
             "description": "Generate vendor patches for packages with single command",
             "support": {
-                "source": "https://github.com/symplify/vendor-patches/tree/11.1.5"
+                "source": "https://github.com/symplify/vendor-patches/tree/11.1.9"
             },
             "funding": [
                 {
@@ -13000,7 +13103,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-16T08:52:12+00:00"
+            "time": "2022-09-02T10:08:47+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -13157,6 +13260,7 @@
         "blueways/bw-guild": 20,
         "xima/xm-goaccess": 20,
         "xima/xm-typo3-manual": 20,
+        "xima/xm-kesearch-remote": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },
