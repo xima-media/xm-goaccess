@@ -7,6 +7,7 @@
 @import 'EXT:luxletter/Configuration/TypoScript/Basic/constants.typoscript'
 @import 'EXT:luxletter/Configuration/TypoScript/FluidStyledMailContent/constants.typoscript'
 @import 'EXT:bw_static_template/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:ke_search/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
