@@ -5,7 +5,7 @@ namespace Xima\XmGoaccess\Widgets\Provider;
 use TYPO3\CMS\Dashboard\WidgetApi;
 use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 
-class DoughnutChartDataProvider extends AbstractGoaccessDataProvider implements ChartDataProviderInterface
+class OsChartDataProvider extends AbstractGoaccessDataProvider implements ChartDataProviderInterface
 {
 
     public function getChartData(): array
@@ -21,7 +21,7 @@ class DoughnutChartDataProvider extends AbstractGoaccessDataProvider implements 
     protected function getGoaccessChartData(): array
     {
         $data = $this->readJsonData();
-        $type = 'browsers';
+        $type = 'os';
 
         $chartData = [
             'labels' => [],

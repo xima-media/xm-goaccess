@@ -45,16 +45,32 @@ services:
     class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
     arguments:
       $view: '@dashboard.views.widget'
-      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\DoughnutChartDataProvider'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\BrowsersChartDataProvider'
       $options:
         refreshAvailable: true
-        goaccessType: 'browsers'
     tags:
       - name: dashboard.widget
         identifier: 'goaccessBrowsers'
         groupNames: 'goaccess'
         title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.browsers.title'
         description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.browsers.description'
+        iconIdentifier: 'content-widget-chart-pie'
+        height: 'medium'
+        width: 'small'
+
+  dashboard.widget.xm_goaccess_os:
+    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\OsChartDataProvider'
+      $options:
+        refreshAvailable: true
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessOs'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.os.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.os.description'
         iconIdentifier: 'content-widget-chart-pie'
         height: 'medium'
         width: 'small'
