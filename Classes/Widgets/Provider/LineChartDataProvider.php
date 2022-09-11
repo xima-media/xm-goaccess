@@ -7,6 +7,51 @@ use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 
 class LineChartDataProvider extends AbstractGoaccessDataProvider implements ChartDataProviderInterface
 {
+    /**
+     * @param string $type
+     * @param int $days
+     * @return array{labels: string[], hits: int[], visitors: int[], bytes: int[]}
+     * @throws \Exception
+     */
+    public function getGoaccessChartData(int $days = 31): array
+    {
+        $type = $this->goaccessType;
+        $data = $this->readJsonData();
+        $chartData = [
+            'labels' => [],
+            'hits' => [],
+            'visitors' => [],
+            'bytes' => [],
+        ];
+
+        if (!isset($data[$type])) {
+            return $chartData;
+        }
+
+        $rawData = array_slice($data[$type]->data, 0, $days);
+
+        $reverse = !is_string($rawData[0]?->data);
+
+        if ($reverse) {
+            $rawData = array_reverse($rawData);
+        }
+
+        foreach ($rawData as $day) {
+
+            try {
+                $date = (new \DateTime($day->data))->format('d.m.');
+            } catch (\Exception) {
+                $date = $day->data;
+            }
+
+            $chartData['labels'][] = $date;
+            foreach (['hits', 'visitors', 'bytes'] as $dataTypes) {
+                $chartData[$dataTypes][] = $day->$dataTypes->count;
+            }
+        }
+
+        return $chartData;
+    }
 
     /**
      * @return array{labels: string[], datasets: array<mixed>}
@@ -14,7 +59,7 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
      */
     public function getChartData(): array
     {
-        $data = $this->getChartDataForType();
+        $data = $this->getGoaccessChartData();
 
         return [
             'labels' => $data['labels'],
@@ -37,46 +82,5 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
                 ],
             ],
         ];
-    }
-
-    public static function hex2rgba(string $color, float $opacity): string
-    {
-
-        $default = 'rgb(0,0,0)';
-
-        //Return default if no color provided
-        if (empty($color)) {
-            return $default;
-        }
-
-        //Sanitize $color if "#" is provided
-        if ($color[0] == '#') {
-            $color = substr($color, 1);
-        }
-
-        //Check if color has 6 or 3 characters and get values
-        if (strlen($color) == 6) {
-            $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
-        } elseif (strlen($color) == 3) {
-            $hex = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
-        } else {
-            return $default;
-        }
-
-        //Convert hexadec to rgb
-        $rgb = array_map('hexdec', $hex);
-
-        //Check if opacity is set(rgba or rgb)
-        if ($opacity) {
-            if (abs($opacity) > 1) {
-                $opacity = 1.0;
-            }
-            $output = 'rgba(' . implode(",", $rgb) . ',' . $opacity . ')';
-        } else {
-            $output = 'rgb(' . implode(",", $rgb) . ')';
-        }
-
-        //Return rgb(a) color string
-        return $output;
     }
 }
