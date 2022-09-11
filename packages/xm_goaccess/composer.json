@@ -10,6 +10,8 @@
 		}
 	],
 	"require": {
+		"php": "^8.0",
+		"typo3/cms-dashboard": "^11.5"
 	},
 	"extra": {
 		"typo3/cms": {
