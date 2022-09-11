@@ -40,3 +40,21 @@ services:
         iconIdentifier: 'content-widget-chart'
         height: 'medium'
         width: 'medium'
+
+  dashboard.widget.xm_goaccess_browsers:
+    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\DoughnutChartDataProvider'
+      $options:
+        refreshAvailable: true
+        goaccessType: 'browsers'
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessBrowsers'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.browsers.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.browsers.description'
+        iconIdentifier: 'content-widget-chart-pie'
+        height: 'medium'
+        width: 'small'
