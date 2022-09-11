@@ -20,7 +20,7 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
             'labels' => $data['labels'],
             'datasets' => [
                 [
-                    'label' => 'Visitors',
+                    'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors'),
                     'borderColor' => WidgetApi::getDefaultChartColors()[0],
                     'backgroundColor' => self::hex2rgba(WidgetApi::getDefaultChartColors()[0], 0.1),
                     'parsing' => ['yAxisKey' => 'A'],
@@ -28,7 +28,7 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
                     'data' => $data['visitors'],
                 ],
                 [
-                    'label' => 'Hits',
+                    'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits'),
                     'borderColor' => WidgetApi::getDefaultChartColors()[1],
                     'backgroundColor' => self::hex2rgba(WidgetApi::getDefaultChartColors()[1], 0.1),
                     'yAxisID' => 'right',
