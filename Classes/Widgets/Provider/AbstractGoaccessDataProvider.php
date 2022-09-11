@@ -4,6 +4,8 @@ namespace Xima\XmGoaccess\Widgets\Provider;
 
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 
 abstract class AbstractGoaccessDataProvider
 {
@@ -11,9 +13,15 @@ abstract class AbstractGoaccessDataProvider
 
     protected string $goaccessType = '';
 
-    public function __construct(ExtensionConfiguration $extensionConfiguration)
-    {
+    protected LanguageService $languageService;
+
+
+    public function __construct(
+        ExtensionConfiguration $extensionConfiguration,
+        LanguageServiceFactory $languageServiceFactory
+    ) {
         $this->extensionConfiguration = $extensionConfiguration;
+        $this->languageService = $languageServiceFactory->createFromUserPreferences($GLOBALS['BE_USER']);
     }
 
     public function readJsonData(): array
