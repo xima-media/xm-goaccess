@@ -8,19 +8,35 @@ services:
     resource: '../Classes/Widgets/*'
 
   dashboard.widget.xm_goaccess_uniqueVisitors:
-    class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
+    class: 'Xima\XmGoaccess\Widgets\LineChartWidget'
     arguments:
       $view: '@dashboard.views.widget'
-      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\UniqueVisitorsDataProvider'
-      #$buttonProvider: '@Xima\XmGoaccess\Widgets\Provider\UniqueVisitorsButtonProvider'
       $options:
         refreshAvailable: true
+        goaccessType: 'visitors'
     tags:
       - name: dashboard.widget
         identifier: 'goaccessUniqueVisitors'
         groupNames: 'goaccess'
         title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.uniqueVisitors.title'
         description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.uniqueVisitors.description'
-        iconIdentifier: 'content-widget-rss'
+        iconIdentifier: 'content-widget-chart'
+        height: 'medium'
+        width: 'medium'
+
+  dashboard.widget.xm_goaccess_visitTime:
+    class: 'Xima\XmGoaccess\Widgets\LineChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $options:
+        refreshAvailable: true
+        goaccessType: 'visit_time'
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessVisitTime'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.visitTime.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.visitTime.description'
+        iconIdentifier: 'content-widget-chart'
         height: 'medium'
         width: 'medium'
