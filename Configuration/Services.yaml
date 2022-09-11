@@ -74,3 +74,21 @@ services:
         iconIdentifier: 'content-widget-chart-pie'
         height: 'medium'
         width: 'small'
+
+  dashboard.widget.xm_goaccess_requests:
+    class: 'Xima\XmGoaccess\Widgets\ListWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\RequestsListDataProvider'
+      $options:
+        refreshAvailable: true
+        goaccessType: 'requests'
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessRequests'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.requests.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.requests.description'
+        iconIdentifier: 'content-widget-list'
+        height: 'medium'
+        width: 'medium'
