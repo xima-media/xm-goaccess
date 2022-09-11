@@ -85,28 +85,6 @@ return [
         ],
         'oauth2_client' => [
             'providers' => [
-                'dkfz' => [
-                    'description' => 'DKFZ OAuth Login',
-                    'iconIdentifier' => 'dkfz-d',
-                    'label' => 'DKFZ',
-                    'implementationClassName' => \Xima\XmDkfzNetSite\Client\Provider\Dkfz::class,
-                    'options' => [
-                        'clientId' => '8086662d-c0d6-4daa-b154-8f6524bbf6a9',
-                        'clientSecret' => 'k_2XzWbsGYKaE2tgIUIOK6_FpQogkmZSVAKUYW3K',
-                        'scopeSeparator' => ' ',
-                        'scopes' => [
-                            'openid',
-                            'email',
-                            'profile',
-                        ],
-                        'urlAccessToken' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/token',
-                        'urlAuthorize' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/authorize',
-                    ],
-                    'scopes' => [
-                        'backend',
-                        'frontend',
-                    ],
-                ],
                 'xima' => [
                     'description' => 'Login with XIMA',
                     'iconIdentifier' => 'xima-x',
@@ -134,20 +112,30 @@ return [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
         ],
+        'xm_dkfz_net_events' => [
+            'api_url_override' => '/fileadmin/rss.ashx',
+        ],
         'xm_dkfz_net_jobs' => [
             'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
         ],
-        'xm_dkfz_net_events' => [
-            'api_url_override' => '',
+        'xm_dkfz_net_site' => [
+            'default_be_user_group' => '1',
+            'default_fe_user_group' => '1',
+            'phone_book_api_url' => '../var/phonebook/db-28072022.json',
+            'storage_identifier_for_imported_groups' => '1:Gruppen',
         ],
         'xm_goaccess' => [
             'html_path' => '../var/goaccess/goaccess.html',
+            'json_path' => '../var/goaccess/goaccess.json',
         ],
-        'xm_dkfz_net_site' => [
-            'phone_book_api_url' => '../var/phonebook/db-28072022.json',
-            'storage_identifier_for_imported_groups' => '1:Gruppen',
-            'default_be_user_group' => '1',
-            'default_fe_user_group' => '1',
+        'xm_kesearch_remote' => [
+            'cache_dir' => '../var/xm_kesearch_remote',
+        ],
+        'xm_typo3_manual' => [
+            'fileidentifiers' => [
+                'manual-html' => '',
+                'manual-pdf' => '',
+            ],
         ],
     ],
     'FE' => [
@@ -227,9 +215,6 @@ return [
                 ],
             ],
         ],
-        'fileCreateMask' => '0660',
-        'folderCreateMask' => '2770',
-        'lockSSL' => 2,
         'devIPmask' => '',
         'displayErrors' => 0,
         'encryptionKey' => 'c8485f56f13ae2690459c8bf7fc2c5dfa9f49d6ae5cf54ad0c66bf1f1a2f752f1c86269e1bfca18ef4fd69dbe5ec21bf',
@@ -238,6 +223,9 @@ return [
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
         ],
+        'fileCreateMask' => '0660',
+        'folderCreateMask' => '2770',
+        'lockSSL' => 2,
         'sitename' => 'DKFZ Intranet',
         'systemLocale' => 'de_DE.UTF-8',
         'systemMaintainers' => [
