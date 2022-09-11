@@ -27,6 +27,12 @@
 			<trans-unit id="widgets.browsers.description">
 				<source>Pie chart that displays the distribution of all browsers</source>
 			</trans-unit>
+			<trans-unit id="widgets.os.title">
+				<source>Operating systems</source>
+			</trans-unit>
+			<trans-unit id="widgets.os.description">
+				<source>Pie chart that displays the distribution of operating systems</source>
+			</trans-unit>
 			<trans-unit id="visitors">
 				<source>Visitors</source>
 			</trans-unit>
