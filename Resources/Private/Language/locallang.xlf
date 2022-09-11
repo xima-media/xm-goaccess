@@ -13,7 +13,13 @@
 				<source>Unique visitors</source>
 			</trans-unit>
 			<trans-unit id="widgets.uniqueVisitors.description">
-				<source>Bar chart that displays unique visitors over time</source>
+				<source>Line chart that displays unique visitors over time</source>
+			</trans-unit>
+			<trans-unit id="widgets.visitTime.title">
+				<source>Visits over time</source>
+			</trans-unit>
+			<trans-unit id="widgets.visitTime.description">
+				<source>Line chart that displays visitors during the day</source>
 			</trans-unit>
 		</body>
 	</file>

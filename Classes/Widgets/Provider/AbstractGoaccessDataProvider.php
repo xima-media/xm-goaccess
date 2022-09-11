@@ -9,6 +9,8 @@ abstract class AbstractGoaccessDataProvider
 {
     protected ExtensionConfiguration $extensionConfiguration;
 
+    protected string $goaccessType = '';
+
     public function __construct(ExtensionConfiguration $extensionConfiguration)
     {
         $this->extensionConfiguration = $extensionConfiguration;
@@ -38,8 +40,9 @@ abstract class AbstractGoaccessDataProvider
      * @return array{labels: string[], hits: int[], visitors: int[], bytes: int[]}
      * @throws \Exception
      */
-    public function getChartDataForType(string $type, int $days = 31): array
+    public function getChartDataForType(int $days = 31): array
     {
+        $type = $this->goaccessType;
         $data = $this->readJsonData();
         $chartData = [
             'labels' => [],
@@ -52,16 +55,45 @@ abstract class AbstractGoaccessDataProvider
             return $chartData;
         }
 
-        $rawData = array_reverse(array_slice($data[$type]->data, 0, $days));
+        $rawData = array_slice($data[$type]->data, 0, $days);
+
+        $reverse = !is_string($rawData[0]?->data);
+
+        if ($reverse) {
+            $rawData = array_reverse($rawData);
+        }
 
         foreach ($rawData as $day) {
-            $chartData['labels'][] = (new \DateTime($day->data))->format('d.m.y');
+
+            try {
+                $date = (new \DateTime($day->data))->format('d.m.');
+            } catch (\Exception) {
+                $date = $day->data;
+            }
+
+            $chartData['labels'][] = $date;
             foreach (['hits', 'visitors', 'bytes'] as $dataTypes) {
-                $chartData[$dataTypes][] = $day->$dataTypes->percent;
+                $chartData[$dataTypes][] = $day->$dataTypes->count;
             }
         }
 
         return $chartData;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoaccessType(): string
+    {
+        return $this->goaccessType;
+    }
+
+    /**
+     * @param string $goaccessType
+     */
+    public function setGoaccessType(string $goaccessType): void
+    {
+        $this->goaccessType = $goaccessType;
     }
 
 }
