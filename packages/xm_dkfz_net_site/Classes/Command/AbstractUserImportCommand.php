@@ -74,6 +74,7 @@ abstract class AbstractUserImportCommand extends Command
             '' . count($this->compareResult->dkfzIdsToSkip) . ' to skip',
         ]);
 
+        $this->checkUserAccess();
         $this->createUsers();
         $this->createContacts();
         $this->updateUsers();
@@ -177,4 +178,8 @@ abstract class AbstractUserImportCommand extends Command
      * @return int[]
      */
     abstract protected function getDefaultUserGroupUids(): array;
+
+    protected function checkUserAccess(): void
+    {
+    }
 }

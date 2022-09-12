@@ -28,6 +28,8 @@ class PhoneBookEntry
 
     public bool $deaktiviert = true;
 
+    public string $gruppen = '';
+
     /**
      * @var PhoneBookRufnummer[]
      */

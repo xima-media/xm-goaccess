@@ -8,7 +8,7 @@ class ImportBeUserCommand extends AbstractUserImportCommand
 {
     protected function configure(): void
     {
-        $this->setDescription('Import DKFZ user from phone book API');
+        $this->setDescription('Import DKFZ be_user from phone book API');
         $this->setHelp('Reads users from API and updates the corresponding be_users');
     }
 
@@ -31,5 +31,35 @@ class ImportBeUserCommand extends AbstractUserImportCommand
 
     protected function deleteContacts(): void
     {
+    }
+
+    protected function checkUserAccess(): void
+    {
+        $this->skipNewUsersWithoutIntranetGroup();
+        $this->deleteUpdateUsersWithoutIntranetGroup();
+    }
+
+    protected function skipNewUsersWithoutIntranetGroup(): void
+    {
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        foreach ($phoneBookEntriesToAdd as $entry) {
+            if ($entry->gruppen !== 'Intranet-Redakteure') {
+                $index = array_search($entry->id, $this->compareResult->dkfzIdsToCreate);
+                unset($this->compareResult->dkfzIdsToCreate[$index]);
+                $this->compareResult->dkfzIdsToSkip[] = $entry->id;
+            }
+        }
+    }
+
+    protected function deleteUpdateUsersWithoutIntranetGroup(): void
+    {
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
+        foreach ($phoneBookEntriesToUpdate as $entry) {
+            if ($entry->gruppen !== 'Intranet-Redakteure') {
+                $index = array_search($entry->id, $this->compareResult->dkfzIdsToUpdate);
+                unset($this->compareResult->dkfzIdsToUpdate[$index]);
+                $this->compareResult->dkfzIdsToDelete[] = $entry->id;
+            }
+        }
     }
 }
