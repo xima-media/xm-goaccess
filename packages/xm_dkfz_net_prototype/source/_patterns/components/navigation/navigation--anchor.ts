@@ -43,10 +43,7 @@ class NavigationAnchor {
         const nav = document.querySelector<HTMLElement>('.navigation--anchor');
         const navItems = nav.querySelector<HTMLElement>('.navigation__items');
         const navItem = navItems.querySelectorAll<HTMLElement>('.navigation__link');
-        const sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
-        const hScroll = nav.querySelector<HTMLElement>('.horizontal-scroll');
-        const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
-        const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
+        const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
 
         /**
          * menu desktop
@@ -108,18 +105,32 @@ class NavigationAnchor {
         /**
          * menu laptop
          */
+
+        const self = this;
+        window.addEventListener('resize', () => {
+            self.navItemsResize()
+        })
+        if (document.body.clientWidth <= 1800) {
+            self.navItemsResize()
+        }
+    }
+
+    navItemsResize() {
+        const nav = document.querySelector<HTMLElement>('.navigation--anchor');
+        const navItems = nav.querySelector<HTMLElement>('.navigation__items');
+        const hScroll = nav.querySelector<HTMLElement>('.horizontal-scroll');
+        const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
+        const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
         let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
         let currentScrollPosition = 0;
         let scrollAmount = hScroll.offsetWidth / 4;
 
         // Button show/hide
-        btnScrollLeft.style.opacity = '0';
-
         if(hScroll.scrollWidth === hScroll.offsetWidth) {
-            btnScrollRight.style.opacity = '0';
+            btnScrollRight.classList.remove('active')
             navItems.style.justifyContent = 'center'
         } else {
-            btnScrollRight.style.opacity = '1';
+            btnScrollRight.classList.add('active')
             navItems.style.justifyContent = 'flex-start'
         }
 
@@ -128,16 +139,16 @@ class NavigationAnchor {
 
             if (currentScrollPosition >= 0) {
                 currentScrollPosition = 0;
-                btnScrollLeft.style.opacity = '0'
+                btnScrollLeft.classList.remove('active')
             } else {
-                btnScrollLeft.style.opacity = '1'
+                btnScrollLeft.classList.add('active')
             }
 
             if (currentScrollPosition <= maxScroll) {
                 currentScrollPosition = maxScroll;
-                btnScrollRight.style.opacity = '0';
+                btnScrollRight.classList.remove('active')
             } else {
-                btnScrollRight.style.opacity = '1';
+                btnScrollRight.classList.add('active')
             }
 
             navItems.style.left = currentScrollPosition + 'px';
