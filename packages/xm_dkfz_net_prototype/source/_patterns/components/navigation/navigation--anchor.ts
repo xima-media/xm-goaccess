@@ -43,10 +43,7 @@ class NavigationAnchor {
         const nav = document.querySelector<HTMLElement>('.navigation--anchor');
         const navItems = nav.querySelector<HTMLElement>('.navigation__items');
         const navItem = navItems.querySelectorAll<HTMLElement>('.navigation__link');
-        const sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
-        const hScroll = nav.querySelector<HTMLElement>('.horizontal-scroll');
-        const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
-        const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
+        const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
 
         /**
          * menu desktop
@@ -108,54 +105,68 @@ class NavigationAnchor {
         /**
          * menu laptop
          */
-        if (document.body.clientWidth <= 1800) {
-            let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
-            let currentScrollPosition = 0;
-            let scrollAmount = hScroll.offsetWidth / 4;
 
-            // Button show/hide
-            if(hScroll.scrollWidth === hScroll.offsetWidth) {
+        const self = this;
+        window.addEventListener('resize', () => {
+            self.navItemsResize()
+        })
+        if (document.body.clientWidth <= 1800) {
+            self.navItemsResize()
+        }
+    }
+
+    navItemsResize() {
+        const nav = document.querySelector<HTMLElement>('.navigation--anchor');
+        const navItems = nav.querySelector<HTMLElement>('.navigation__items');
+        const hScroll = nav.querySelector<HTMLElement>('.horizontal-scroll');
+        const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
+        const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
+        let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
+        let currentScrollPosition = 0;
+        let scrollAmount = hScroll.offsetWidth / 4;
+
+        // Button show/hide
+        if(hScroll.scrollWidth === hScroll.offsetWidth) {
+            btnScrollRight.classList.remove('active')
+            navItems.style.justifyContent = 'center'
+        } else {
+            btnScrollRight.classList.add('active')
+            navItems.style.justifyContent = 'flex-start'
+        }
+
+        function scrollHorizontally(val: number) {
+            currentScrollPosition += (val * scrollAmount);
+
+            if (currentScrollPosition >= 0) {
+                currentScrollPosition = 0;
+                btnScrollLeft.classList.remove('active')
+            } else {
+                btnScrollLeft.classList.add('active')
+            }
+
+            if (currentScrollPosition <= maxScroll) {
+                currentScrollPosition = maxScroll;
                 btnScrollRight.classList.remove('active')
-                navItems.style.justifyContent = 'center'
             } else {
                 btnScrollRight.classList.add('active')
-                navItems.style.justifyContent = 'flex-start'
             }
 
-            function scrollHorizontally(val: number) {
-                currentScrollPosition += (val * scrollAmount);
-
-                if (currentScrollPosition >= 0) {
-                    currentScrollPosition = 0;
-                    btnScrollLeft.classList.remove('active')
-                } else {
-                    btnScrollLeft.classList.add('active')
-                }
-
-                if (currentScrollPosition <= maxScroll) {
-                    currentScrollPosition = maxScroll;
-                    btnScrollRight.classList.remove('active')
-                } else {
-                    btnScrollRight.classList.add('active')
-                }
-
-                navItems.style.left = currentScrollPosition + 'px';
-            }
-
-            btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
-            btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
-
-            // sticky menu
-            // window.addEventListener('scroll', () => {
-            //     const sticky = nav.offsetTop;
-            //
-            //     if (window.pageYOffset >= sticky) {
-            //         nav.classList.add("sticky")
-            //     } else {
-            //         nav.classList.remove("sticky");
-            //     }
-            // })
+            navItems.style.left = currentScrollPosition + 'px';
         }
+
+        btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
+        btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
+
+        // sticky menu
+        // window.addEventListener('scroll', () => {
+        //     const sticky = nav.offsetTop;
+        //
+        //     if (window.pageYOffset >= sticky) {
+        //         nav.classList.add("sticky")
+        //     } else {
+        //         nav.classList.remove("sticky");
+        //     }
+        // })
     }
 }
 
