@@ -125,6 +125,7 @@
 			"mkdir -p var/goaccess",
 			"mkdir -p var/debug",
 			"mkdir -p var/phonebook",
+			"mkdir -p var/xm_kesearch_remote",
 			"php vendor/bin/typo3cms install:fixfolderstructure"
 		],
 		"post-autoload-dump": [
