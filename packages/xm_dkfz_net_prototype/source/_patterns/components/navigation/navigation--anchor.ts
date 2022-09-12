@@ -108,54 +108,54 @@ class NavigationAnchor {
         /**
          * menu laptop
          */
-        let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
-        let currentScrollPosition = 0;
-        let scrollAmount = hScroll.offsetWidth / 4;
+        if (document.body.clientWidth <= 1800) {
+            let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
+            let currentScrollPosition = 0;
+            let scrollAmount = hScroll.offsetWidth / 4;
 
-        // Button show/hide
-        btnScrollLeft.style.opacity = '0';
-
-        if(hScroll.scrollWidth === hScroll.offsetWidth) {
-            btnScrollRight.style.opacity = '0';
-            navItems.style.justifyContent = 'center'
-        } else {
-            btnScrollRight.style.opacity = '1';
-            navItems.style.justifyContent = 'flex-start'
-        }
-
-        function scrollHorizontally(val: number) {
-            currentScrollPosition += (val * scrollAmount);
-
-            if (currentScrollPosition >= 0) {
-                currentScrollPosition = 0;
-                btnScrollLeft.style.opacity = '0'
+            // Button show/hide
+            if(hScroll.scrollWidth === hScroll.offsetWidth) {
+                btnScrollRight.classList.remove('active')
+                navItems.style.justifyContent = 'center'
             } else {
-                btnScrollLeft.style.opacity = '1'
+                btnScrollRight.classList.add('active')
+                navItems.style.justifyContent = 'flex-start'
             }
 
-            if (currentScrollPosition <= maxScroll) {
-                currentScrollPosition = maxScroll;
-                btnScrollRight.style.opacity = '0';
-            } else {
-                btnScrollRight.style.opacity = '1';
+            function scrollHorizontally(val: number) {
+                currentScrollPosition += (val * scrollAmount);
+
+                if (currentScrollPosition >= 0) {
+                    currentScrollPosition = 0;
+                    btnScrollLeft.classList.remove('active')
+                } else {
+                    btnScrollLeft.classList.add('active')
+                }
+
+                if (currentScrollPosition <= maxScroll) {
+                    currentScrollPosition = maxScroll;
+                    btnScrollRight.classList.remove('active')
+                } else {
+                    btnScrollRight.classList.add('active')
+                }
+
+                navItems.style.left = currentScrollPosition + 'px';
             }
 
-            navItems.style.left = currentScrollPosition + 'px';
+            btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
+            btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
+
+            // sticky menu
+            // window.addEventListener('scroll', () => {
+            //     const sticky = nav.offsetTop;
+            //
+            //     if (window.pageYOffset >= sticky) {
+            //         nav.classList.add("sticky")
+            //     } else {
+            //         nav.classList.remove("sticky");
+            //     }
+            // })
         }
-
-        btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
-        btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
-
-        // sticky menu
-        // window.addEventListener('scroll', () => {
-        //     const sticky = nav.offsetTop;
-        //
-        //     if (window.pageYOffset >= sticky) {
-        //         nav.classList.add("sticky")
-        //     } else {
-        //         nav.classList.remove("sticky");
-        //     }
-        // })
     }
 }
 
