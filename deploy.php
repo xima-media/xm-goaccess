@@ -81,3 +81,15 @@ task('typo3cms:cache:warmup', function () {
 });
 
 before('deploy:symlink', 'typo3cms:cache:warmup');
+
+option('DKFZ_ACCESS_TOKEN', null, \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, 'Gitlab token of DKFZ production repo.');
+
+task('reset:from_production_artifact', function () {
+    run('cd {{deploy_path}}/current && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
+    if (test('[ -f {{deploy_path}}/current/artifacts.zip ]')) {
+        run('cd {{deploy_path}}/current && unzip -o artifacts.zip');
+        run('mv -f {{deploy_path}}/current/.dep/database/dumps/* {{deploy_path}}/.dep/database/dumps/');
+        run('cd {{deploy_path}}/current && vendor/bin/dep db:decompress --options=dumpcode:BackupProductionDkfz --no-interaction -vvv');
+        run('cd {{deploy_path}}/current && vendor/bin/dep db:import --options=dumpcode:BackupProductionDkfz --no-interaction -vvv');
+    }
+});
