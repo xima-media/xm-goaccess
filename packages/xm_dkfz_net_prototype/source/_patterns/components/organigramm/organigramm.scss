@@ -9,7 +9,11 @@
 //
 
 .frame-type-bw_static_template {
-    width: $container-default-widths;
+    width: 100%;
+
+    @include media-breakpoint-up(xl) {
+        width: $container-default-widths;
+    }
 }
 
 .organigram {
@@ -19,8 +23,18 @@
         grid-column: 1 / 2;
         grid-row: 1 / 2;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 2.8rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        align-items: center;
+        grid-gap: 2rem;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2.8rem;
+        }
+    }
+
+    &__boxes {
+        height: 100%;
     }
 
     &__overlays {
@@ -62,23 +76,27 @@
         }
 
         &-2 {
-            grid-column-start: 1;
-            grid-column-end: 3;
+            @include media-breakpoint-up(lg) {
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
         }
 
         &-3 {
-            grid-column: 3;
+            @include media-breakpoint-up(lg) {
+                grid-column: 3;
+            }
         }
 
         &-4 {
-            grid-column: 4;
+            @include media-breakpoint-up(lg) {
+                grid-column: 4;
+            }
         }
     }
 
     &__detail {
         display: none;
-        align-self: baseline;
-        justify-self: center;
         padding: 1rem;
         border: 0;
         background: $white;
@@ -102,7 +120,11 @@
         }
 
         &--content {
-            padding: 1rem 3rem 2rem 3rem;
+            padding: 1rem;
+
+            @include media-breakpoint-up(lg) {
+                padding: 1rem 3rem 2rem 3rem;
+            }
 
             .icon {
                 width: 14px;
@@ -124,6 +146,10 @@
             a + .accordion__item {
                 margin-top: 2rem;
 
+                @include media-breakpoint-up(lg) {
+                    width: $container-md-widths - 8rem;
+                }
+
                 @include media-breakpoint-up(xl) {
                     width: $container-md-widths + 7rem;
                 }
@@ -132,7 +158,9 @@
             .accordion {
 
                 &-body {
-                    max-width: $container-md-widths + 7rem;
+                    @include media-breakpoint-up(xl) {
+                        width: $container-md-widths + 7rem;
+                    }
 
                     ul {
                         li {
@@ -161,8 +189,13 @@
                 }
 
                 &-collapse {
-                    margin-left: -5rem;
-                    margin-right: -5rem;
+                    margin-left: 0;
+                    margin-right: 0;
+
+                    @include media-breakpoint-up(xl) {
+                        margin-left: -5rem;
+                        margin-right: -5rem;
+                    }
                 }
             }
         }
