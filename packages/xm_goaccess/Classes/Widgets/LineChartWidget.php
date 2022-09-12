@@ -93,7 +93,7 @@ class LineChartWidget implements WidgetInterface, EventDataInterface, Additional
                         'display' => true,
                     ],
                     'tooltips' => [
-                        'mode' => 'index'
+                        'mode' => 'index',
                     ],
                     'scales' => [
                         'yAxes' => [
@@ -110,7 +110,7 @@ class LineChartWidget implements WidgetInterface, EventDataInterface, Additional
                                 'ticks' => [
                                     'beginAtZero' => true,
                                     'sampleSize' => 4,
-                                    'autoSkip' => true
+                                    'autoSkip' => true,
                                 ],
                             ],
                         ],
