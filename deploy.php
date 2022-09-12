@@ -83,8 +83,12 @@ task('typo3cms:cache:warmup', function () {
 before('deploy:symlink', 'typo3cms:cache:warmup');
 
 // Reset xima intern staging in pipeline
-option('DKFZ_ACCESS_TOKEN', null, \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL,
-    'Gitlab token of DKFZ production repo.');
+option(
+    'DKFZ_ACCESS_TOKEN',
+    null,
+    \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL,
+    'Gitlab token of DKFZ production repo.'
+);
 task('reset:from_production_artifact', function () {
     run('cd {{deploy_path}}/current && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
     if (test('[ -f {{deploy_path}}/current/artifacts.zip ]')) {
@@ -106,6 +110,6 @@ set('shared_dirs', function () {
         'var/transient',
         'var/goaccess',
         'var/phonebook',
-        'var/xm_kesearch_remote'
+        'var/xm_kesearch_remote',
     ];
 });
