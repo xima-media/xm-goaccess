@@ -12,184 +12,195 @@
     width: 100%;
 
     @include media-breakpoint-up(xl) {
-        width: $container-default-widths - 2rem;
+        width: $container-default-widths;
+    }
+}
+
+.organigram {
+    display: grid;
+
+    &__wrapper {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        align-items: center;
+        grid-gap: 2rem;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2.8rem;
+        }
     }
 
-    .row + .row {
-        margin-top: 2.5rem;
+    &__boxes {
+        height: 100%;
     }
 
-    .row {
-        [class*='col-md-']{
-            @include media-breakpoint-down(lg){
-                margin-top: 2rem;
-            }
+    &__overlays {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        justify-self: center;
+    }
 
-            @include media-breakpoint-up(xl) {
-                padding-right: 0;
-                padding-left: 2.8rem;
 
-                &:first-child{
-                    padding-left: 0;
-                }
+    .infobox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        padding: 2.5rem 1.5rem;
+        height: 100%;
+
+        &__title {
+            margin-bottom: 0;
+            letter-spacing: .5px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            transition: transform .6s;
+        }
+
+        &.active {
+            z-index: -1;
+            height: 0;
+        }
+    }
+
+    .grid-column {
+        &-1 {
+            grid-column: 1;
+        }
+
+        &-2 {
+            @include media-breakpoint-up(lg) {
+                grid-column-start: 1;
+                grid-column-end: 3;
             }
         }
 
-        .offset-lg-6 {
-            @include media-breakpoint-up(xl) {
-                padding-right: 0;
-                padding-left: 2.8rem;
+        &-3 {
+            @include media-breakpoint-up(lg) {
+                grid-column: 3;
             }
         }
 
-        .infobox {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        &-4 {
+            @include media-breakpoint-up(lg) {
+                grid-column: 4;
+            }
+        }
+    }
+
+    &__detail {
+        display: none;
+        padding: 1rem;
+        border: 0;
+        background: $white;
+        box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+
+
+        &.show {
+            display: grid;
+            z-index: 3;
             position: relative;
-            padding: 2.5rem 1.5rem;
-            height: 100%;
+        }
 
-            &__title {
-                margin-bottom: 0;
-                letter-spacing: .5px;
-            }
+        .btn-close {
+            border: none;
+            background: transparent;
+            text-align: right;
 
-            &:hover {
-                cursor: pointer;
-                transform: scale(1.05);
-                transition: transform .6s;
+            .icon {
+                @include size(12px);
             }
         }
 
-        // bootstrap
-        .modal-dialog {
-            max-width: 90%;
-            margin-top: 35vh;
+        &--content {
+            padding: 1rem;
 
-            @include media-breakpoint-up(xl) {
-                width: fit-content;
+            @include media-breakpoint-up(lg) {
+                padding: 1rem 3rem 2rem 3rem;
             }
 
-            .modal {
-                &-content {
-                    padding: 1rem;
-                    border: 0;
-                    box-shadow: 0 0 16px rgba(0, 0, 0, .2);
-                }
+            .icon {
+                width: 14px;
+                margin-bottom: .5rem;
+            }
 
-                &-header {
-                    border: none;
-                    padding-top: 0;
-                    padding-right: 0;
+            ul {
+                margin-top: 1rem;
+                max-width: 26.5rem;
 
-                    .btn-close {
-                        border: none;
-                        background: transparent;
-
-                        .icon {
-                            @include size(12px);
-                        }
+                li {
+                    h5 {
+                        @include text-copy-small(700, 0.6px);
+                        margin-bottom: 0;
                     }
                 }
+            }
+
+            a + .accordion__item {
+                margin-top: 2rem;
+
+                @include media-breakpoint-up(lg) {
+                    width: $container-md-widths - 8rem;
+                }
+
+                @include media-breakpoint-up(xl) {
+                    width: $container-md-widths + 7rem;
+                }
+            }
+
+            .accordion {
 
                 &-body {
-                    padding: .5rem 1rem 2rem 1rem;
-
                     @include media-breakpoint-up(xl) {
-                        padding: .5rem 3rem 2rem 3rem;
-                    }
-
-                    .row {
-                        [class*='col-md-'] {
-
-                            @include media-breakpoint-up(xl) {
-                                padding-right: 3.75rem;
-                                padding-left: calc(var(--bs-gutter-x) * 0.5);
-                            }
-                        }
-                    }
-
-                    .icon {
-                        width: 14px;
-                        margin-bottom: .5rem;
+                        width: $container-md-widths + 7rem;
                     }
 
                     ul {
-                        margin-top: 1rem;
-                        max-width: 26.5rem;
-
                         li {
-                            h5 {
+                            a {
                                 @include text-copy-small(700, 0.6px);
-                                margin-bottom: 0;
                             }
-                        }
-                    }
 
-                    a + .accordion__item {
-                        margin-top: 2rem;
-
-                        @include media-breakpoint-up(xl) {
-                            width: $container-default-widths - 2rem;
-                        }
-                    }
-
-                    .accordion {
-
-                        &-body {
-                            max-width: $container-default-widths - 2rem;
-
-                            ul {
-                                li {
-                                    a {
-                                        @include text-copy-small(700, 0.6px);
-
-                                    }
-                                    p {
-                                        font-weight: 200;
-                                        letter-spacing: normal;
-                                    }
-                                }
-                            }
-                        }
-
-                        &-button--description {
-                            line-height: 30px;
-                            letter-spacing: .3px;
-
-                            & > span {
-                                font-size: 1rem;
-                                line-height: 24px;
-                                letter-spacing: normal;
+                            p {
                                 font-weight: 200;
+                                letter-spacing: normal;
                             }
                         }
+                    }
+                }
 
-                        &-collapse {
-                            margin-left: -4rem;
-                            margin-right: -4rem;
-                        }
+                &-button--description {
+                    line-height: 30px;
+                    letter-spacing: .3px;
+
+                    & > span {
+                        font-size: 1rem;
+                        line-height: 24px;
+                        letter-spacing: normal;
+                        font-weight: 200;
+                    }
+                }
+
+                &-collapse {
+                    margin-left: 0;
+                    margin-right: 0;
+
+                    @include media-breakpoint-up(xl) {
+                        margin-left: -5rem;
+                        margin-right: -5rem;
                     }
                 }
             }
         }
     }
 }
-
-// bootstrap modal override
-.modal {
-    &-backdrop {
-        background: inherit;
-    }
-
-    &-open {
-        height: 100vh;
-        padding-right: 0 !important;
-    }
-}
-
 
 
 

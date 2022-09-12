@@ -3,207 +3,86 @@
 <f:section name="Header"></f:section>
 
 <f:section name="Main">
-<f:if condition="{rowOne}">
-		<div class="row">
-			<f:for each="{rowOne}" as="block">
-				<div class="offset-lg-6 col-lg-3">
+	<div class="organigram">
+		<div class="organigram__wrapper">
+			<f:for each="{boxes}" as="block" iteration="i">
+				<div data-box-id="{i.index}" class="organigram__boxes {f:if(condition: '{block.columnNumber}', then: 'grid-column-{block.columnNumber}', else: '')}">
 					<div class="infobox
-								color-accent--primary
-								infobox--background-white
-								color__border" data-bs-toggle="modal" data-bs-target="#rowOne">
+						color-accent--primary
+						infobox--background-white
+						color__border">
 						<h5 class="infobox__title">{block.title}</h5>
 					</div>
+				</div>
+			</f:for>
+		</div>
+		<div class="organigram__overlays">
+			<f:for each="{boxes}" as="block" iteration="i">
+				<div data-box-target-id="{i.index}" class="organigram__detail">
+						<button type="button" class="btn-close" aria-label="Close">
+							<f:render partial="Icon" arguments="{icon: 'close'}"/>
+						</button>
+						<div class="organigram__detail--content">
+							<f:link.typolink parameter="{block.link}" class="h4"
+											 parts-as="parts" target="_blank"
+											 additionalAttributes="{aria-label: '{block.title}'}">
+								{block.title}
+								<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+							</f:link.typolink>
 
-					<!-- Modal -->
-					<div class="modal fade" id="rowOne" tabindex="-1" aria-labelledby="{block.title}" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-										<f:render partial="Icon" arguments="{icon: 'close'}"/>
-									</button>
-								</div>
-								<div class="modal-body">
-									<f:link.typolink parameter="{block.link}" class="h4"
-													 parts-as="parts" target="_blank"
-													 additionalAttributes="{aria-label: '{block.title}'}">
-										{block.title}
-										<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-									</f:link.typolink>
-
-									<ul>
+							<f:if condition="{block.fullWidth}">
+								<f:then>
+									<div class="row">
 										<f:for each="{block.list}" as="list">
-											<li>
-												<f:if condition="{list.headline}">
-													<h5>{list.headline}</h5>
-												</f:if>
-												<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
-													<p>
-														{list.descriptionFirstLine}
-
-														<f:if condition="{list.descriptionSecondLine}">
-															<br>
-															{list.descriptionSecondLine}
-														</f:if>
-													</p>
-												</f:if>
-											</li>
-										</f:for>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</f:for>
-		</div>
-	</f:if>
-
-	<f:if condition="{rowTwo}">
-		<div class="row">
-			<f:for each="{rowTwo}" as="block">
-				<div class="col-lg-3 col-md-6">
-					<div class="infobox
-								color-accent--primary
-								infobox--background-white
-								color__border" data-bs-toggle="modal" data-bs-target="#{block.uid}two">
-						<h5 class="infobox__title">{block.title}</h5>
-					</div>
-
-					<!-- Modal -->
-					<div class="modal fade" id="{block.uid}two" tabindex="-1" aria-labelledby="{block.title}" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-										<f:render partial="Icon" arguments="{icon: 'close'}"/>
-									</button>
-								</div>
-								<div class="modal-body">
-									<f:link.typolink parameter="{block.link}" class="h4"
-													 parts-as="parts" target="_blank"
-													 additionalAttributes="{aria-label: '{block.title}'}">
-										{block.title}
-
-										<f:if condition="!{block.width}">
-											<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-										</f:if>
-									</f:link.typolink>
-
-									<f:if condition="{block.width}">
-										<f:then>
-											<div class="row">
-												<f:for each="{block.list}" as="list">
-													<f:if condition="{list.column}">
-														<div class="col-md-4">
-															<ul>
-																<f:for each="{list.column}" as="column">
-																	<li>
-																		<f:if condition="{column.headline}">
-																			<h5>{column.headline}</h5>
-																		</f:if>
-																		<f:if condition="{column.description}">
-																			<p>
-																				{column.description}
-																			</p>
-																		</f:if>
-																	</li>
-																</f:for>
-															</ul>
-														</div>
-													</f:if>
-												</f:for>
-											</div>
-										</f:then>
-										<f:else>
-											<ul>
-												<f:for each="{block.list}" as="list">
-													<li>
-														<f:if condition="{list.headline}">
-															<h5>{list.headline}</h5>
-														</f:if>
-														<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
-															<p>
-																{list.descriptionFirstLine}
-
-																<f:if condition="{list.descriptionSecondLine}">
-																	<br>
-																	{list.descriptionSecondLine}
+											<f:if condition="{list.column}">
+												<div class="col-md-4">
+													<ul>
+														<f:for each="{list.column}" as="column">
+															<li>
+																<f:if condition="{column.headline}">
+																	<h5>{column.headline}</h5>
 																</f:if>
-															</p>
-														</f:if>
-													</li>
-												</f:for>
-											</ul>
-										</f:else>
-									</f:if>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</f:for>
-		</div>
-	</f:if>
-
-	<f:if condition="{rowThree}">
-		<div class="row">
-			<f:for each="{rowThree}" as="block">
-				<div class="{f:if(condition: '{block.width}', then: 'col-lg-6 col-md-6', else: 'col-md-3')}">
-					<div class="infobox
-								color-accent--primary
-								infobox--background-white
-								color__border" data-bs-toggle="modal" data-bs-target="#{block.uid}three">
-						<h5 class="infobox__title">{block.title}</h5>
-					</div>
-
-					<!-- Modal -->
-					<div class="modal fade" id="{block.uid}three" tabindex="-1" aria-labelledby="{block.title}" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-										<f:render partial="Icon" arguments="{icon: 'close'}"/>
-									</button>
-								</div>
-								<div class="modal-body">
-									<f:link.typolink parameter="{block.link}" class="h4"
-													 parts-as="parts" target="_blank"
-													 additionalAttributes="{aria-label: '{block.title}'}">
-										{block.title}
-
-										<f:if condition="!{block.width}">
-											<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-										</f:if>
-									</f:link.typolink>
-
-									<f:if condition="{block.width}">
+																<f:if condition="{column.description}">
+																	<p>
+																		{column.description}
+																	</p>
+																</f:if>
+															</li>
+														</f:for>
+													</ul>
+												</div>
+											</f:if>
+										</f:for>
+									</div>
+								</f:then>
+								<f:else>
+									<f:if condition="{block.widthAccordion}">
 										<f:then>
-											<f:for each="{block.list}" as="list">
+											<f:for each="{block.list}" as="list" iteration="i">
 												<div class="accordion__item">
-													<h3 class="accordion__items--subtitle" id="accordion{list.uid}">
+													<h3 class="accordion__items--subtitle" id="accordion{i.index}">
 														<button class="accordion-button collapsed"
 																type="button"
 																aria-expanded="false"
 																data-bs-toggle="collapse"
-																data-bs-target="#accordionItem{list.uid}"
-																aria-controls="accordionItem{list.uid}">
-														<span class="accordion-button--description h6">
-															{list.headline}
-															<f:if condition="{list.description}">
-																<br/>
-																<span>
-																	{list.description}
-																</span>
-															</f:if>
-														</span>
+																data-bs-target="#accordionItem{i.index}"
+																aria-controls="accordionItem{i.index}">
+    														<span class="accordion-button--description h6">
+    															{list.headline}
+    															<f:if condition="{list.description}">
+    																<br/>
+    																<span>
+    																	{list.description}
+    																</span>
+    															</f:if>
+    														</span>
 														</button>
 													</h3>
 
 													<div class="accordion-collapse collapse"
-														 id="accordionItem{list.uid}"
-														 data-bs-parent="#accordion{list.uid}"
-														 aria-labelledby="accordion{list.uid}">
+														 id="accordionItem{i.index}"
+														 data-bs-parent="#accordion{i.index}"
+														 aria-labelledby="accordion{i.index}">
 														<div class="accordion-body accordion__panel">
 															<div class="row">
 																<f:for each="{list.text}" as="list">
@@ -252,12 +131,11 @@
 											</ul>
 										</f:else>
 									</f:if>
-								</div>
-							</div>
+								</f:else>
+							</f:if>
 						</div>
 					</div>
-				</div>
 			</f:for>
 		</div>
-	</f:if>
+	</div>
 </f:section>

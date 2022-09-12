@@ -27,35 +27,43 @@ import 'bootstrap/js/src/modal'
 
 class Organigramm {
     constructor () {
+        const self = this
+
         app.log('component "organigramm" loaded')
 
         if (document.querySelector<HTMLElement>('.frame-type-bw_static_template')) {
-            this.event()
+            self.init()
+            self.closeAllOverlays()
         }
-
     }
 
-    event() {
-        const container = document.querySelector<HTMLElement>('.frame-type-bw_static_template');
-        const infoBox = container.querySelectorAll<HTMLElement>('.infobox');
-        const layout = document.querySelector<HTMLElement>('.layout')
+    closeAllOverlays() {
+        document.querySelectorAll('.organigram__detail').forEach(detail => {
+            detail.classList.remove('show');
+        })
+    }
 
-        infoBox.forEach(box => {
-            box.addEventListener('click', () => {
-                setTimeout(() => {
-                    const modal = box.nextElementSibling;
+    init() {
+        const self = this
 
-                    if(modal.classList.contains('show')) {
-                        const modalContent = modal.querySelector<HTMLElement>('.modal-content');
-                        const modalContentHeight = modalContent.clientHeight;
+        const boxes = document.querySelectorAll('.organigram__boxes');
 
-                        layout.style.paddingBottom = modalContentHeight + 'px';
-                    }
-                }, 1000)
+        document.querySelectorAll('.organigram__detail .btn-close').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                self.closeAllOverlays()
             })
+        })
 
-            box.nextElementSibling.addEventListener('hidden.bs.modal',  () => {
-                layout.style.paddingBottom = 0 + 'px'
+        boxes.forEach(box => {
+            box.addEventListener('click', (e) => {
+
+                self.closeAllOverlays()
+
+                const box = e.currentTarget as HTMLElement;
+                const boxId = box.getAttribute('data-box-id')
+
+                const overlay = document.querySelector('.organigram__detail[data-box-target-id="'+boxId+'"]')
+                overlay.classList.add('show')
             })
         })
     }
