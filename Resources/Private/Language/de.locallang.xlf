@@ -28,10 +28,10 @@
 				<target>Zeigt die Verteilung der Browser in einem Kreisdiagramm</target>
 			</trans-unit>
 			<trans-unit id="widgets.os.title">
-				<target>Betriebssyteme</target>
+				<target>Betriebssysteme</target>
 			</trans-unit>
 			<trans-unit id="widgets.os.description">
-				<target>Zeigt der verteilung der Betriebssysteme in einem Kreisdiagramm</target>
+				<target>Zeigt die Verteilung der Betriebssysteme in einem Kreisdiagramm</target>
 			</trans-unit>
 			<trans-unit id="widgets.requests.title">
 				<target>Anfragen</target>
