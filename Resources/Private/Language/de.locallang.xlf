@@ -21,11 +21,32 @@
 			<trans-unit id="widgets.visitTime.description">
 				<target>Zeigt zeitliche Verteilung der täglichen Besucher in einem Liniendiagramm an</target>
 			</trans-unit>
+			<trans-unit id="widgets.browsers.title">
+				<target>Browser</target>
+			</trans-unit>
+			<trans-unit id="widgets.browsers.description">
+				<target>Zeigt die Verteilung der Browser in einem Kreisdiagramm</target>
+			</trans-unit>
+			<trans-unit id="widgets.os.title">
+				<target>Betriebssyteme</target>
+			</trans-unit>
+			<trans-unit id="widgets.os.description">
+				<target>Zeigt der verteilung der Betriebssysteme in einem Kreisdiagramm</target>
+			</trans-unit>
+			<trans-unit id="widgets.requests.title">
+				<target>Anfragen</target>
+			</trans-unit>
+			<trans-unit id="widgets.requests.description">
+				<target>Liste von Pfaden, die am meisten angefragt wurden</target>
+			</trans-unit>
 			<trans-unit id="visitors">
 				<target>Besucher</target>
 			</trans-unit>
 			<trans-unit id="hits">
 				<target>Anfragen</target>
+			</trans-unit>
+			<trans-unit id="path">
+				<target>Pfad</target>
 			</trans-unit>
 		</body>
 	</file>

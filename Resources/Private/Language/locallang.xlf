@@ -45,6 +45,9 @@
 			<trans-unit id="hits">
 				<source>Hits</source>
 			</trans-unit>
+			<trans-unit id="path">
+				<source>Path</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
