@@ -113,3 +113,21 @@ set('shared_dirs', function () {
         'var/xm_kesearch_remote',
     ];
 });
+
+// set writable dirs
+set('writable_dirs', function () {
+    return [
+        get('web_path') . 'typo3conf',
+        get('web_path') . 'typo3temp',
+        get('web_path') . 'typo3temp/assets',
+        get('web_path') . 'typo3temp/assets/images',
+        get('web_path') . 'typo3temp/assets/_processed_',
+        get('web_path') . 'uploads',
+        get('web_path') . 'fileadmin',
+        get('web_path') . '../var',
+        get('web_path') . '../var/log',
+        get('web_path') . '../var/transient',
+        get('deploy_path') . '/shared/var/xm_kesearch_remote',
+        get('web_path') . 'fileadmin/_processed_',
+    ];
+});
