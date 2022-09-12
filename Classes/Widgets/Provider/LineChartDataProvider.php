@@ -37,7 +37,6 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
         }
 
         foreach ($rawData as $day) {
-
             try {
                 $date = (new \DateTime($day->data))->format('d.m.');
             } catch (\Exception) {

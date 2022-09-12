@@ -7,7 +7,6 @@ use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 
 class BrowsersChartDataProvider extends AbstractGoaccessDataProvider implements ChartDataProviderInterface
 {
-
     public function getChartData(): array
     {
         $data = $this->getGoaccessChartData();

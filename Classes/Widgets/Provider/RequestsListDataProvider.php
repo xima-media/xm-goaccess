@@ -2,13 +2,10 @@
 
 namespace Xima\XmGoaccess\Widgets\Provider;
 
-use TYPO3\CMS\Dashboard\WidgetApi;
-use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 
 class RequestsListDataProvider extends AbstractGoaccessDataProvider implements ListDataProviderInterface
 {
-
     public function getItems(): array
     {
         $data = $this->readJsonData();
