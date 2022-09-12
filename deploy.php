@@ -66,8 +66,8 @@ host('feature')
     ->set('public_urls', ['https://fbd.dkfz-typo3-dev.xima.local'])
     ->set('deploy_path', '/var/www/html/fbd.dkfz-typo3-dev.xima.local');
 
+// Upload of dist files
 after('deploy:update_code', 'deploy:upload-dist');
-
 task('deploy:upload-dist', function () {
     upload(
         'packages/xm_dkfz_net_prototype/Resources/Public/',
@@ -75,15 +75,16 @@ task('deploy:upload-dist', function () {
     );
 });
 
+// Cache warmup
 task('typo3cms:cache:warmup', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
 });
-
 before('deploy:symlink', 'typo3cms:cache:warmup');
 
-option('DKFZ_ACCESS_TOKEN', null, \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, 'Gitlab token of DKFZ production repo.');
-
+// Reset xima intern staging in pipeline
+option('DKFZ_ACCESS_TOKEN', null, \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL,
+    'Gitlab token of DKFZ production repo.');
 task('reset:from_production_artifact', function () {
     run('cd {{deploy_path}}/current && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
     if (test('[ -f {{deploy_path}}/current/artifacts.zip ]')) {
@@ -93,4 +94,18 @@ task('reset:from_production_artifact', function () {
         run('cd {{deploy_path}}/current && vendor/bin/dep db:decompress --options=dumpcode:BackupProductionDkfz --no-interaction -vvv');
         run('cd {{deploy_path}}/current && vendor/bin/dep db:import --options=dumpcode:BackupProductionDkfz --no-interaction -vvv');
     }
+});
+
+// set shared dirs
+set('shared_dirs', function () {
+    return [
+        'public/fileadmin',
+        'public/uploads',
+        'public/typo3temp/assets',
+        'var/log',
+        'var/transient',
+        'var/goaccess',
+        'var/phonebook',
+        'var/xm_kesearch_remote'
+    ];
 });
