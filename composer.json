@@ -95,6 +95,9 @@
 	},
 	"extra": {
 		"patches": {
+			"tpwd/ke_search": [
+				"patches/tpwd-ke-search-classes-indexer-types-page-php.patch"
+			],
 			"league/oauth2-client": [
 				"patches/league-oauth2-client-src-provider-genericresourceowner-php.patch"
 			],

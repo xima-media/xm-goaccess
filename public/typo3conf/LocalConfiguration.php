@@ -143,7 +143,7 @@ return [
         'xm_dkfz_net_site' => [
             'default_be_user_group' => '1',
             'default_fe_user_group' => '1',
-            'phone_book_api_url' => '../var/phonebook/db-28072022.json',
+            'phone_book_api_url' => '../var/phonebook/db.json',
             'storage_identifier_for_imported_groups' => '1:Gruppen',
         ],
         'xm_goaccess' => [
