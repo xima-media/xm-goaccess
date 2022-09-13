@@ -29,7 +29,6 @@ pidNewsDetail = 102
 pidNewsStorage = 101
 pidUserDetail = 103
 pidUserList = 8
-# cat=content/cHeader/h0; type=int; label=Disruptor Storage type: Enter the number of the disruptor storage to be used by default
 pidDisruptorStorage = 101
 
 ##############################
