@@ -16,10 +16,6 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/maikschneider/deployer-extended-database"
-		},
-		{
-			"type": "composer",
-			"url": "https://satis.xima.de"
 		}
 	],
 	"require": {
