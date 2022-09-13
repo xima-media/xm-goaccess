@@ -30,7 +30,12 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
 
         $rawData = array_slice($data[$type]->data, 0, $days);
 
-        $reverse = !is_string($rawData[0]?->data);
+        try {
+            new \DateTime($rawData[0]?->data);
+            $reverse = true;
+        } catch (\Exception) {
+            $reverse = false;
+        }
 
         if ($reverse) {
             $rawData = array_reverse($rawData);
