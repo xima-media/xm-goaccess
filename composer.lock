@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e83f60a184e8a786f69c1953e146748",
+    "content-hash": "bb86ab24e61b4280055c7f8b4e0f2d2b",
     "packages": [
         {
             "name": "b13/container",
@@ -341,12 +341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "860f5b0b3522d55081cc49cce7f6a76be3381ca8"
+                "reference": "ec98a8408df77e939b85e97e8ddd60221d66debe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/860f5b0b3522d55081cc49cce7f6a76be3381ca8.zip",
-                "reference": "860f5b0b3522d55081cc49cce7f6a76be3381ca8",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/ec98a8408df77e939b85e97e8ddd60221d66debe.zip",
+                "reference": "ec98a8408df77e939b85e97e8ddd60221d66debe",
                 "shasum": ""
             },
             "require": {
@@ -377,9 +377,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/860f5b0b3522d55081cc49cce7f6a76be3381ca8/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/ec98a8408df77e939b85e97e8ddd60221d66debe/?at=feature/fb-deployment"
             },
-            "time": "2022-08-04T07:50:44+00:00"
+            "time": "2022-09-12T14:43:57+00:00"
         },
         {
             "name": "christian-riesen/base32",
