@@ -9,22 +9,24 @@
 //
 
 .footer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    width: 100%;
-    max-width: $container-default-widths;
-    margin: auto auto 0;
-    padding: 1.5rem 0;
     color: var(--color-white);
     background: var(--color-primary);
     z-index: 1;
 
-    @include media-breakpoint-up(md) {
-        flex-direction: row;
+    &__wrapper {
+        margin: 0 auto;
+        width: 100%;
+        max-width: $container-default-widths;
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
     }
 
     &__items {
@@ -51,5 +53,4 @@
         margin-bottom: 0;
     }
 }
-
 // end of footer.scss file
