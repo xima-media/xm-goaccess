@@ -42,10 +42,10 @@ $tempFields = [
 // Add all fields to tt_content
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempFields);
 
-// Add color to appearance tab of selected CTypes
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+// Add color to frame tab of all CTypes
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
-    'color',
-    'textmedia',
-    'before:sectionIndex'
+    'frames',
+    'color,--linebreak--',
+    'before:layout'
 );
