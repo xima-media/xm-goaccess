@@ -10,6 +10,10 @@
 
 .content-wrapper {
 
+    &--expanded {
+        --content-width: 1500px;
+    }
+
     &__header {
         position: relative;
         justify-content: space-between;

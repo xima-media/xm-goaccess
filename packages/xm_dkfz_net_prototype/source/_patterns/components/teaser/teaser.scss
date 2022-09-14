@@ -20,19 +20,26 @@
         }
     }
 
-    .card {
-        gap: 3.75rem;
-        justify-content: flex-end;
+    .page-teaser {
+        display: flex;
+        gap: 1.5rem;
+        flex-direction: column;
+        padding-top: calc(1.5 * var(--content-padding));
+        padding-bottom: calc(1.25 * var(--content-padding));
 
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
+            gap: 3.75rem;
             flex-direction: row;
         }
 
         &:nth-child(2n-1) {
             justify-content: flex-start;
 
-            .card__image {
+            .page-teaser__image {
                 order: unset;
+                @include media-breakpoint-up(lg) {
+                    margin: 0 0 0 -2rem;
+                }
             }
         }
 
@@ -43,12 +50,15 @@
 
         &__image {
             order: 1;
-            flex: 0 0 28.626rem;
-            width: 28.625rem;
+            width: 100%;
+            max-width: 450px;
+            @include media-breakpoint-up(lg) {
+                margin: 0 -2rem 0 0;
+            }
         }
 
         &__content {
-            max-width: 33.75rem;
+            max-width: 30rem;
         }
     }
 

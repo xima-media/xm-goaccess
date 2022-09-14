@@ -18,12 +18,11 @@
     height: auto;
 }
 
-
 .frame-type-textmedia,
 .frame-type-image {
 
     .carousel {
-        
+
         @include media-breakpoint-up(md) {
             margin: 0 var(--default-overflow-margin-negative);
         }
@@ -43,26 +42,6 @@
         .picture__pattern {
             display: none;
         }
-    }
-
-    .picture {
-        &__item {
-            display: grid;
-            position: relative;
-            z-index: 1;
-
-            picture {
-                grid-column: 1/2;
-                grid-row: 1/2;
-            }
-        }
-    }
-
-    .picture__pattern {
-        grid-column: 1/2;
-        grid-row: 1/2;
-        max-height: 100%;
-        margin: -1.5rem -1.5rem 0;
     }
 
     &.image-orient {
@@ -148,186 +127,65 @@
     }
 }
 
-
-//
-//   @section 2. Picture defaults
-//
-
 .picture {
-    position: relative;
-    margin: auto;
+
+    &--round {
+        overflow: hidden;
+        display: block;
+        border-radius: 50%;
+    }
+
+    &__item {
+        display: grid;
+        position: relative;
+        z-index: 1;
+
+        picture {
+            grid-column: 1/2;
+            grid-row: 1/2;
+        }
+    }
+
+    &__item--no-image {
+        background: var(--color-accent);
+        aspect-ratio: 3 / 2;
+    }
 
     &__caption {
         margin-top: .625rem;
     }
-}
 
+    &__pattern {
+        grid-column: 1/2;
+        grid-row: 1/2;
 
-//
-//   @section 3. Picture - no image
-//
+        &.pattern {
+            max-height: 100%;
+            margin: 0 -1.5rem 1.5rem -1.5rem;
 
-.picture--no-image {
-    .picture {
-        &__item {
-            position: relative;
-            //aspect-ratio: 16 / 9;
-            aspect-ratio: 1 / 1;
-            //margin-left: 1.5rem;
-
-            &::after {
-                content: '';
-                opacity: .3;
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background-color: $color-white;
+            & + picture {
+                margin-top: 1.5rem;
             }
         }
 
-        &__pattern {
-            display: block;
-            position: absolute;
-            right: 50%;
-            bottom: -.75rem;
-            width: calc(50% + .75rem);
+        &.color {
+            background-color: var(--color-accent);
+            width: calc(50% + .875rem); // @todo variable
             aspect-ratio: 1;
-        }
-    }
-}
-
-
-//
-//   @section 4. Picture - with image
-//
-
-.picture--with-image {
-    &.picture--with-pattern {
-        margin-top: 0;
-    }
-
-    .picture {
-        //&__item {
-        //    padding: 6rem 1rem 1.5rem 0;
-        //}
-
-        &__pattern {
-            position: absolute;
-            top: -1rem;
-            bottom: 1.5rem;
-            left: -7rem;
-            right: -7rem;
-            //top: 0;
-            //bottom: 0;
-            //left: 1.5rem;
-            z-index: -1;
-            //width: 100%;
-        }
-    }
-}
-
-
-//
-//   @section 5. Picture - round
-//
-
-.picture--round {
-    overflow: hidden;
-    display: block;
-    border-radius: 50%;
-}
-
-//
-//   @section 6. Picture - orientation
-//
-.picture--orientation {
-    &-md {
-        &-square {
-            .picture {
-                &__pattern {
-                    left: -1.875rem;
-                    right: -1.875rem;
-                    bottom: 1.5rem;
-                }
+            align-self: flex-end;
+            margin: -0.5rem;
+            @include media-breakpoint-up(lg) {
+                margin: -1rem;
             }
         }
 
-        &-rectangle {
-            .picture {
-                &__pattern {
-                    left: -6.5rem;
-                    right: -6.5rem;
-                }
-            }
-        }
-    }
-
-    &-sm {
-        &-square {
-            .picture {
-                &__pattern {
-                    left: -6.25rem;
-                    right: -6.25rem;
-                }
-            }
+        &.no-image {
+            aspect-ratio: 1;
+            max-width: 50%;
+            align-self: flex-end;
+            margin: 0 0 -1.5rem -1.5rem;
         }
 
-        &-rectangle {
-            .picture {
-                &__pattern {
-                    left: -9.375rem;
-                    right: -9.375rem;
-                }
-            }
-        }
     }
 }
-
-.pattern-left {
-    .picture__pattern {
-        left: -1rem;
-        right: 2.5rem;
-        bottom: 2.5rem;
-    }
-}
-
-//
-//   @section 4. Image color
-//
-
-[class*='image-color-'] {
-    position: relative;
-    background-color: var(--color-gray-100);
-
-    // @todo mixin zusammen mit .picture--no-image ::after erstellen
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -.875rem; // @todo variable 0.375
-        left: -.875rem; // @todo variable
-        z-index: -1;
-        width: calc(50% + .875rem); // @todo variable
-        aspect-ratio: 1;
-    }
-
-    &::before {
-        background-color: $color-white;
-    }
-
-    &::after {
-        opacity: .7;
-        background-color: var(--color-accent);
-    }
-}
-
-.image-color--transparent {
-    &::before,
-    &::after {
-        content: none;
-    }
-}
-
 // end of image.scss file

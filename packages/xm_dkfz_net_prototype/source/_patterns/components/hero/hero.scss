@@ -20,14 +20,14 @@
         padding-bottom: 1rem;
     }
 
-    &+.navigation--anchor {
+    & + .navigation--anchor {
         margin-top: var(--space-lg);
     }
 
     &--with-image {
         margin: 0 var(--default-overflow-margin-negative);
 
-        &+.navigation--anchor {
+        & + .navigation--anchor {
             margin: 0;
         }
     }
@@ -74,33 +74,9 @@
             display: grid;
             grid-column: 1/2;
             grid-row: 1/2;
-            margin-top: 1rem;
 
-            picture {
-                grid-column: 1/2;
-                grid-row: 1/2;
-            }
-
-            .picture {
-                &__item {
-                    display: grid;
-                    position: relative;
-                }
-
-                &__pattern {
-                    grid-column: 1/2;
-                    grid-row: 1/2;
-                    width: 95%;
-                    height: 95%;
-                    margin-left: -1rem;
-                    margin-top: -1rem;
-                }
-
-                &__caption {
-                    max-width: var(--content-width);
-                    margin-left: auto;
-                    margin-right: auto;
-                }
+            .picture__pattern {
+                width: 95%;
             }
         }
 
