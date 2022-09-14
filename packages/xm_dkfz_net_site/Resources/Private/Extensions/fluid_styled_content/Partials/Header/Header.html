@@ -1,43 +1,34 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{link} && {subheader}">
+	<f:variable name="marginClass">m-b-0</f:variable>
+</f:if>
+
 <f:if condition="{header}">
 	<f:switch expression="{layout}">
 		<f:case value="1">
-			<h1 class="{positionClass}">
-				{header}
-			</h1>
-			<f:if condition="{link} && {subheader}">
-				<f:render section="MoreLink" arguments="{_all}"/>
-			</f:if>
+			<h1 class="{positionClass} {marginClass}">{header}</h1>
+			<f:render section="MoreLink" arguments="{_all}"/>
 		</f:case>
 		<f:case value="2">
-			<h2 class="{positionClass} h3">{header}</h2>
-			<f:if condition="{link} && {subheader}">
-				<f:render section="MoreLink" arguments="{_all}"/>
-			</f:if>
+			<h2 class="{positionClass} {marginClass} h3">{header}</h2>
+			<f:render section="MoreLink" arguments="{_all}"/>
 		</f:case>
 		<f:case value="3">
-			<h3 class="{positionClass}">{header}</h3>
-			<f:if condition="{link} && {subheader}">
-				<f:render section="MoreLink" arguments="{_all}"/>
-			</f:if>
+			<h3 class="{positionClass} {marginClass}">{header}</h3>
+			<f:render section="MoreLink" arguments="{_all}"/>
 		</f:case>
 		<f:case value="4">
-			<h4 class="{positionClass}">{header}</h4>
-			<f:if condition="{link} && {subheader}">
-				<f:render section="MoreLink" arguments="{_all}"/>
-			</f:if>
+			<h4 class="{positionClass} {marginClass}">{header}</h4>
+			<f:render section="MoreLink" arguments="{_all}"/>
 		</f:case>
 		<f:case value="5">
-			<h5 class="{positionClass}">{header}</h5>
-			<f:if condition="{link} && {subheader}">
-				<f:render section="MoreLink" arguments="{_all}"/>
-			</f:if>
+			<h5 class="{positionClass} {marginClass}">{header}</h5>
+			<f:render section="MoreLink" arguments="{_all}"/>
 		</f:case>
 		<f:case value="6">
-			<h6 class="{positionClass}">{header}</h6>
-			<f:if condition="{link} && {subheader}">
-				<f:render section="MoreLink" arguments="{_all}"/>
-			</f:if>
+			<h6 class="{positionClass} {marginClass}">{header}</h6>
+			<f:render section="MoreLink" arguments="{_all}"/>
 		</f:case>
 		<f:case value="100">
 			<f:comment> -- do not show header --</f:comment>
@@ -56,11 +47,13 @@
 </f:if>
 
 <f:section name="MoreLink">
-	<f:link.typolink class="content-wrapper__link" parameter="{link}">{subheader}
-		<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
-			<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-		</svg>
-	</f:link.typolink>
-	<span class="content-wrapper__pattern pattern color-accent--gray-900"></span>
+	<f:if condition="{link} && {subheader}">
+		<f:link.typolink class="content-wrapper__link" parameter="{link}">{subheader}
+			<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
+			</svg>
+		</f:link.typolink>
+		<span class="content-wrapper__pattern pattern color-accent--gray-900 h{layout}"></span>
+	</f:if>
 </f:section>
 </html>

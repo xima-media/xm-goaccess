@@ -126,16 +126,23 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .h5, h5 {
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 0.5rem;
 
     @include media-breakpoint-up(md) {
         font-size: 20px;
         line-height: 26px;
+        margin-bottom: 1rem;
     }
 }
 
 .h6, h6 {
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 0.25rem;
+}
+
+.m-b-0 {
+    margin-bottom: 0;
 }
 
 
