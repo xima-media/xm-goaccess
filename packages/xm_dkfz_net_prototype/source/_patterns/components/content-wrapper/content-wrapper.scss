@@ -10,18 +10,13 @@
 
 .content-wrapper {
 
-    &:not(:first-of-type) {
-        margin-top: var(--space-xxl);
-    }
-
     &__header {
         position: relative;
-        display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: $container-default-widths;
-        margin: 0 auto 2.5rem; // .75rem;
+        margin-bottom: 2.5rem;
         padding-bottom: .375rem;
+        display: grid;
     }
 
     &__title {
@@ -29,10 +24,8 @@
     }
 
     &__pattern {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        grid-column: 1 / 3;
+        width: 100%;
         height: .5rem;
     }
 
@@ -235,52 +228,6 @@
 
         }
     }
-
-    &.frame-type-textmedia {
-        +.frame-type-textmedia {
-            margin-top: var(--space-xl);
-            margin-bottom: 0;
-        }
-    }
-
-    &.frame-type-infobox {
-        +.frame-type-infobox {
-            margin-top: var(--space-lg);
-            margin-bottom: 0;
-        }
-    }
-
-    &.frame-type-heroteaser {
-        margin-bottom: var(--space-md);
-    }
-
-    &.frame-type-serviceSlider {
-        background-color: rgba($color-cyan, .75);
-        width: 100vw;
-
-        +.frame-type-serviceSlider {
-            margin-top: 0;
-            padding-top: 0;
-        }
-
-        .content-wrapper {
-            &__content {
-                max-width: $container-default-widths + 2rem;
-
-                .card {
-                    &__header,
-                    &__text {
-                        color: $black;
-                    }
-                }
-            }
-
-            &__header {
-                margin: 0 auto .75rem;
-                padding: 0;
-            }
-        }
-    }
 }
 
 .head-area {
@@ -292,73 +239,49 @@
 
 .frame {
     width: 100%;
-    background-color: var(--color-white);
-    box-shadow: 0 var(--space-xl) 0 var(--space-xxl) var(--color-white);
+    position: relative;
+    backdrop-filter: blur(27px);
+    padding-bottom: var(--content-padding);
+    padding-top: var(--content-padding);
+    display: grid;
 
-    .background--image + & {
-        box-shadow: 0 var(--space-xxl) 0 var(--space-xxl) var(--color-white);
-        margin-top: 0;
-        padding-top: var(--space-xxl);
+    > * {
+        width: 100%;
+        max-width: var(--content-width);
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    &.frame-type-container-accordion {
-        box-shadow: none;
-    }
+    &.background--color {
+        background-color: var(--color-accent);
 
-    &.background--yellow {
-        position: relative;
-        background-color: transparent;
-
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 10rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            background-color: rgba($color-yellow, .75);
-            z-index: -1;
+        & + .background--color {
+            padding-top: 0
         }
+    }
 
-        .content-wrapper__content {
-            max-width: $container-default-widths;
+    &.frame-type-heroteaser {
+        margin-bottom: var(--space-md);
+    }
 
-            .content-wrapper {
-                padding: 3.625rem 2.5rem;
+    &.frame-type-serviceSlider {
+
+        --content-width: #{$container-default-widths};
+
+
+        .content-wrapper {
+            &__content {
+
+                .card {
+                    &__header,
+                    &__text {
+                        color: $black;
+                    }
+                }
             }
         }
     }
 
-    &.background--cyan {
-        background-color: rgba($color-cyan, .75) !important;
-    }
 
-    &.background--orange {
-        background-color: rgba($color-orange, .75) !important;
-    }
-}
-
-.main--default {
-
-    .frame-type-heroteaser {
-       width: 1200px;
-        max-width: 1200px;
-    }
-
-    .frame-type-textmedia {
-        width: 1200px;
-        max-width: 1200px;
-    }
-
-    .frame-type-accordion {
-        width: 1200px;
-        max-width: 1200px;
-    }
-
-    .frame-type-table {
-        width: 1200px;
-        max-width: 1200px;
-    }
 }
 // end of content-wrapper.scss file
