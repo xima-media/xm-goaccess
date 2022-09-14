@@ -165,14 +165,6 @@ page {
   page.10.templateName = Login
 [end]
 
-[tree.level < 1]
-  page.10.variables.mainClass = TEXT
-  page.10.variables.mainClass.value = main--expanded
-[else]
+[tree.level > 1]
   config.htmlTag.attributes.class = background--white
-[end]
-
-[page["uid"] == {$pidUserList}]
-  page.10.variables.mainClass = TEXT
-  page.10.variables.mainClass.value = main--expanded
 [end]
