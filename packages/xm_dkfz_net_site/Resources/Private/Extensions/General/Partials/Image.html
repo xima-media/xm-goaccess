@@ -32,10 +32,7 @@
 						type="image/webp">
 				<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
 						type="image/jpeg">
-				<img src="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
-					 alt="{image.properties.alternative}"
-					 class="picture__image image--responsive"
-					 loading="lazy"/>
+				<f:image image="{image}" width="{imageSize}" cropVariant="{cropVariant}" fileExtension="jpg" class="picture__image image--responsive" loading="{f:if(condition: noLazy, else: 'lazy')}" />
 			</picture>
 		</f:if>
 		<f:if condition="{image.properties.copyright}">

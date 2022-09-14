@@ -23,7 +23,7 @@
 				<f:if condition="{files}">
 					<div class="hero-teaser__image">
 						<f:for each="{files}" as="file">
-							<f:render partial="Image" arguments="{image: file, size: 'xl', cropVariant: 'teaser'}"/>
+							<f:render partial="Image" arguments="{image: file, size: 'xl', cropVariant: 'teaser', noLazy: 1}"/>
 						</f:for>
 					</div>
 				</f:if>
