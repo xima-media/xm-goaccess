@@ -34,9 +34,6 @@
 			<trans-unit id="tt_content.layout.2">
 				<source>Full width</source>
 			</trans-unit>
-			<trans-unit id="tt_content.palette.infoboxAppearance">
-				<source>Color and frame</source>
-			</trans-unit>
 			<trans-unit id="tt_content.color">
 				<source>Color</source>
 			</trans-unit>
