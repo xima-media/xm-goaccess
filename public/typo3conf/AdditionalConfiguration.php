@@ -44,3 +44,9 @@ function setGlobalsFromStrings(array $from, array $allowedVariables)
  * in the environment at this stage.
  */
 setGlobalsFromStrings($_SERVER, ['TYPO3_CONF_VARS']);
+
+use TYPO3\CMS\Core\Locking\FileLockStrategy;
+use TYPO3\CMS\Core\Locking\SemaphoreLockStrategy;
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['locking']['strategies'][FileLockStrategy::class]['priority'] = 10;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['locking']['strategies'][SemaphoreLockStrategy::class]['priority'] = 80;
