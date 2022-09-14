@@ -109,8 +109,9 @@
 @include media-breakpoint-up(md) {
 
     .image-orient {
+
         // Above, center
-        &--0 .picture__pattern {
+        &--0 > div > .content-wrapper__content-image .picture__pattern {
             margin-left: -7rem;
             margin-right: -7rem;
         }
