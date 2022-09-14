@@ -43,88 +43,6 @@
             display: none;
         }
     }
-
-    &.image-orient {
-        // Above, center
-        &--0 {
-            .content-wrapper__content-image {
-                display: grid;
-                //margin: 0 var(--default-overflow-margin-negative);
-                max-height: fit-content;
-                height: fit-content;
-
-                .picture__pattern {
-                    margin: -2rem -7rem 0;
-                }
-            }
-        }
-
-        // In text, right
-        &--17 {
-            .content-wrapper__content-image {
-                display: grid;
-                max-width: 400px;
-                float: right;
-                margin: 0 var(--default-overflow-margin-negative) 0 4rem;
-                max-height: fit-content;
-                height: fit-content;
-            }
-        }
-
-        // In text, left
-        &--18 {
-            .content-wrapper__content-image {
-                display: grid;
-                max-width: 400px;
-                float: left;
-                margin: 0 4rem 0 var(--default-overflow-margin-negative);
-                max-height: fit-content;
-                height: fit-content;
-            }
-        }
-
-        // Beside text, right
-        &--25 {
-            .content-wrapper__content {
-                display: flex;
-                flex-direction: row;
-                gap: 47px;
-            }
-
-            .content-wrapper__content-image {
-                display: grid;
-                margin-right: var(--default-overflow-margin-negative);
-                max-height: fit-content;
-                height: fit-content;
-                flex: 1;
-            }
-
-            .content-wrapper__content-text {
-                flex: 1;
-            }
-        }
-
-        // Beside text, left
-        &--26 {
-            .content-wrapper__content {
-                display: flex;
-                flex-direction: row;
-                gap: 47px;
-            }
-
-            .content-wrapper__content-image {
-                display: grid;
-                margin-left: var(--default-overflow-margin-negative);
-                max-height: fit-content;
-                height: fit-content;
-                flex: 1;
-            }
-
-            .content-wrapper__content-text {
-                flex: 1;
-            }
-        }
-    }
 }
 
 .picture {
@@ -161,16 +79,16 @@
 
         &.pattern {
             max-height: 100%;
-            margin: 0 -1.5rem 1.5rem -1.5rem;
+            margin: 0 -1.5rem 2.5rem -1.5rem;
 
             & + picture {
-                margin-top: 1.5rem;
+                margin-top: 1rem;
             }
         }
 
         &.color {
             background-color: var(--color-accent);
-            width: calc(50% + .875rem); // @todo variable
+            width: calc(50% + .875rem);
             aspect-ratio: 1;
             align-self: flex-end;
             margin: -0.5rem;
@@ -185,7 +103,65 @@
             align-self: flex-end;
             margin: 0 0 -1.5rem -1.5rem;
         }
-
     }
 }
+
+@include media-breakpoint-up(md) {
+
+    .image-orient {
+        // Above, center
+        &--0 .picture__pattern {
+            margin-left: -7rem;
+            margin-right: -7rem;
+        }
+
+        // In text, right
+        &--17 .content-wrapper__content-image {
+            max-width: 400px;
+            float: right;
+            margin: 0 var(--default-overflow-margin-negative) 0 4rem;
+        }
+
+        // In text, left
+        &--18 .content-wrapper__content-image {
+            max-width: 400px;
+            float: left;
+            margin: 0 4rem 0 var(--default-overflow-margin-negative);
+            max-height: fit-content;
+            height: fit-content;
+        }
+
+        // Beside text, right
+        // Beside text, left
+        &--25, &--26 {
+            .content-wrapper__content {
+                display: flex;
+                flex-direction: row;
+                gap: 47px;
+            }
+
+            .content-wrapper__content-image {
+                display: grid;
+                margin-right: var(--default-overflow-margin-negative);
+                max-height: fit-content;
+                height: fit-content;
+                flex: 1;
+            }
+
+            .content-wrapper__content-text {
+                flex: 1;
+            }
+        }
+
+        // Beside text, left
+        &--26 {
+            .content-wrapper__content-image {
+                margin-right: 0;
+                margin-left: var(--default-overflow-margin-negative);
+            }
+        }
+    }
+
+}
+
 // end of image.scss file
