@@ -177,29 +177,6 @@ body {
     }
 }
 
-
-//
-//   @section 2. Startpage layout
-//
-
-.layout {
-    padding-top: var(--space-xxl);
-    padding-bottom: var(--space-xxl);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include media-breakpoint-down(lg) {
-        padding-left: var(--space-unit);
-        padding-right: var(--space-unit);
-    }
-
-    @include media-breakpoint-up(lg) {
-        padding: var(--space-xxl) 0;
-    }
-
-}
-
 // @todo in eigene Komponente auslagern
 a {
     color: inherit; // mit bootstrap lösen
