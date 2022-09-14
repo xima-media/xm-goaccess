@@ -1,68 +1,45 @@
-.frame-type-page_teaser {
-    .picture {
-        &--no-image {
-            .picture__item {
-                aspect-ratio: 3 / 2;
-            }
-        }
+.page-teaser {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    padding-top: calc(1.5 * var(--content-padding));
+    padding-bottom: calc(1.25 * var(--content-padding));
 
-        &__item {
-            display: grid;
-
-            &::before,
-            &::after {
-                z-index: 0;
-            }
-
-            picture {
-                z-index: 1;
-            }
-        }
+    @include media-breakpoint-up(lg) {
+        gap: 3.75rem;
+        flex-direction: row;
     }
 
-    .page-teaser {
-        display: flex;
-        gap: 1.5rem;
-        flex-direction: column;
-        padding-top: calc(1.5 * var(--content-padding));
-        padding-bottom: calc(1.25 * var(--content-padding));
+    &:nth-child(2n-1) {
+        justify-content: flex-start;
 
-        @include media-breakpoint-up(lg) {
-            gap: 3.75rem;
-            flex-direction: row;
-        }
-
-        &:nth-child(2n-1) {
-            justify-content: flex-start;
-
-            .page-teaser__image {
-                order: unset;
-                @include media-breakpoint-up(lg) {
-                    margin: 0 0 0 -2rem;
-                }
-            }
-        }
-
-        &__header {
-            color: $color-black;
-        }
-
-
-        &__image {
-            order: 1;
-            width: 100%;
-            max-width: 450px;
+        .page-teaser__image {
+            order: unset;
             @include media-breakpoint-up(lg) {
-                margin: 0 -2rem 0 0;
+                margin: 0 0 0 -2rem;
             }
-        }
-
-        &__content {
-            max-width: 30rem;
         }
     }
 
-    .list {
-        margin-top: 1.5rem;
+    &__header {
+        color: $color-black;
+    }
+
+
+    &__image {
+        order: 1;
+        width: 100%;
+        max-width: 450px;
+        @include media-breakpoint-up(lg) {
+            margin: 0 -2rem 0 0;
+        }
+    }
+
+    &__content {
+        max-width: 30rem;
+    }
+
+    p:last-child {
+        margin-bottom: 1rem;
     }
 }
