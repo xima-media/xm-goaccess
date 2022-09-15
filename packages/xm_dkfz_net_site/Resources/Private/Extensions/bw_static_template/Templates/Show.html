@@ -18,7 +18,7 @@
 		</div>
 		<div class="organigram__overlays">
 			<f:for each="{boxes}" as="block" iteration="i">
-				<div data-box-target-id="{i.index}" class="organigram__detail">
+				<div data-box-target-id="{i.index}" class="organigram__detail {f:if(condition: block.widthAccordion, then: 'organigram__detail--with-accordion')}">
 						<button type="button" class="btn-close" aria-label="Close">
 							<f:render partial="Icon" arguments="{icon: 'close'}"/>
 						</button>
