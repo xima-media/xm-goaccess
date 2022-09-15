@@ -120,6 +120,7 @@
 
 
 .background--image-hero {
+    background-size: cover;
     --background-image: var(--background-image-jpg);
     background-image: var(--background-image);
 
