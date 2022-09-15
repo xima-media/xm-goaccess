@@ -14,7 +14,7 @@ TCEMAIN {
 TCEFORM {
   tt_content {
     CType {
-      removeItems = html, textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div
+      removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div
       altLabels {
         image = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.title
       }
