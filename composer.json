@@ -72,7 +72,8 @@
 		"xima/xm-typo3-manual": "*@dev",
 		"tpwd/ke_search": "^4.5",
 		"xima/xm-kesearch-remote": "*@dev",
-		"tomasnorre/crawler": "^11.0"
+		"tomasnorre/crawler": "^11.0",
+		"xima/xm-manual": "*@dev"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
