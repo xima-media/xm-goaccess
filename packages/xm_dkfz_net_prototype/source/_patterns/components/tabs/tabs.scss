@@ -42,6 +42,9 @@
 }
 
 .frame-type-container-tabs {
+    &:last-child {
+        padding-bottom: 0;
+    }
     .tab-item__wrapper {
         background: var(--color-white);
         margin: 0;

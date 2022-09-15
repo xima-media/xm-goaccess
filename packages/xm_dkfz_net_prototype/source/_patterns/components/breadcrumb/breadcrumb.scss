@@ -16,12 +16,16 @@
     flex-wrap: wrap;
 
     &__wrapper {
-        margin-top: var(--space-unit);
-        margin-bottom: var(--space-unit);
+        margin-top: 3rem;
+        margin-bottom: 1rem;
         display: none;
 
         @include media-breakpoint-up(md) {
             display: block;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: 5rem;
         }
     }
 
