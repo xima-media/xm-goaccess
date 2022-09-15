@@ -8,6 +8,7 @@ use JsonMapper;
 use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Core\Environment;
 use Xima\XmDkfzNetJobs\Domain\Model\Dto\Job;
 
 class JobLoaderUtility
@@ -94,9 +95,15 @@ class JobLoaderUtility
         }
 
         try {
-            $client = new Client(['verify' => false]);
-            $response = $client->request('GET', $extConf['api_url']);
-            $jsonJobs = $response->getBody()->getContents();
+            $url = $extConf['api_url'];
+            if (!str_starts_with($url, '/')) {
+                $client = new Client(['verify' => false]);
+                $response = $client->request('GET', $url);
+                $jsonJobs = $response->getBody()->getContents();
+            } else {
+                $filePath = Environment::getPublicPath() . $url;
+                $jsonJobs = file_exists($filePath) ? file_get_contents(Environment::getPublicPath() . $url) : '';
+            }
         } catch (GuzzleException $e) {
             $this->logger->error('Could not fetch job postings', ['error' => $e->getMessage(), 'code' => 1658818306]);
             return '';

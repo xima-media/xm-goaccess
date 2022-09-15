@@ -45,17 +45,19 @@ class EventLoaderUtility
     public function requestRssEvents(string $url): void
     {
         try {
+            $xml = '';
             if (!str_starts_with($url, '/')) {
                 $client = new Client(['verify' => false]);
                 $response = $client->request('GET', $url);
-                $xml = $response->getBody()->getContents();
+                $xml = $response->getBody()->getContents() ?: '';
             } else {
-                $xml = file_get_contents(Environment::getPublicPath() . $url);
+                $filePath = Environment::getPublicPath() . $url;
+                $xml = file_exists($filePath) ? file_get_contents($filePath) : '';
             }
         } catch (GuzzleException $e) {
         }
 
-        $this->convertXmlToEvents($xml ?? '');
+        $this->convertXmlToEvents($xml ?: '');
     }
 
     protected function convertXmlToEvents(string $xml): void
