@@ -90,6 +90,10 @@
         }
     }
 
+    .accordion-body {
+        max-width: none;
+    }
+
     &__detail {
         display: none;
         padding: 1rem;
@@ -132,7 +136,6 @@
 
             ul {
                 margin-top: 1rem;
-                max-width: 26.5rem;
 
                 li {
                     h5 {
@@ -150,7 +153,7 @@
 
                 &-body {
                     padding: 1rem 1.5rem;
-                    
+
                     ul {
                         li {
                             a {
