@@ -63,8 +63,7 @@
         display: grid;
         align-items: center;
         grid-template-columns: 1fr 1fr;
-        max-width: $container-default-widths + 2rem;
-        margin: 0 auto 3.625rem;
+        margin: 0;
         padding-right: 1rem;
         padding-left: 1rem;
         color: var(--color-white);
@@ -72,6 +71,11 @@
 
         @include media-breakpoint-up(md) {
             grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include media-breakpoint-up(xl) {
+            padding-left: calc(50vw - 38rem);
+            padding-right: calc(50vw - 38rem);
         }
     }
 
