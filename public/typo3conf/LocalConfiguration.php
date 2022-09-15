@@ -2,6 +2,7 @@
 
 return [
     'BE' => [
+        'compressionLevel' => 9,
         'cookieSameSite' => 'lax',
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
@@ -161,6 +162,7 @@ return [
         ],
     ],
     'FE' => [
+        'compressionLevel' => 9,
         'cookieSameSite' => 'lax',
         'debug' => false,
         'disableNoCacheParameter' => true,
