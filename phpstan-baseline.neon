@@ -21,11 +21,6 @@ parameters:
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
 		-
-			message: "#^Parameter \\#1 \\$xml of method Xima\\\\XmDkfzNetEvents\\\\Utility\\\\EventLoaderUtility\\:\\:convertXmlToEvents\\(\\) expects string, string\\|false given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
-
-		-
 			message: "#^Property Xima\\\\XmDkfzNetEvents\\\\Utility\\\\EventLoaderUtility\\:\\:\\$events \\(array\\<Xima\\\\XmDkfzNetEvents\\\\Domain\\\\Model\\\\Dto\\\\Event\\>\\) does not accept mixed\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
