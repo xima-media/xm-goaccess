@@ -81,7 +81,7 @@ task('deploy:upload-dist', function () {
 task('typo3cms:cache:warmup', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
-    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 1 --depth=2 --mode=exec');
+    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup --depth=1 --mode=exec');
 });
 before('deploy:symlink', 'typo3cms:cache:warmup');
 
