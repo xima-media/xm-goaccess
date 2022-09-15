@@ -133,12 +133,12 @@
             }
         }
 
-        // @todo bitv beachten
         @include media-breakpoint-down(lg) {
             //display: none;
             opacity: 1;
             position: fixed;
-            top: 3.875rem; // header height
+            top: 6.1rem;
+            width: calc(50vw - 34px);
             right: 0;
             bottom: 0;
             z-index: 100;
@@ -150,6 +150,11 @@
                 // display: block;
                 transform: translate3d(0, 0, 0);
             }
+        }
+
+        @include media-breakpoint-down(md) {
+            top: 4.4rem;
+            width: calc(100vw - 5rem);
         }
     }
 
