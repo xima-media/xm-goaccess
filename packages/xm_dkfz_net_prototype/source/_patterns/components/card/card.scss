@@ -61,15 +61,7 @@
     }
 
     &__title {
-        @include h5;
         @include hyphens;
-
-        margin-bottom: 0;
-    }
-
-    &__sub-title {
-        order: -1;
-        margin-bottom: .25rem;
     }
 
     &__link {
@@ -295,10 +287,6 @@
                 width: 28.625rem; // @todo variable
             }
 
-            &__title {
-                @include h3;
-            }
-
             &__content {
                 max-width: 33.75rem;
             }
@@ -356,40 +344,9 @@
             font-size: 28px; // @todo font-style?
             line-height: 28px; // @todo font-style?
         }
-
-        &__title {
-            @include h3;
-        }
-
-        &__text {
-            @include h6;
-        }
     }
 }
 
-
-//
-//   @section 9. Card - employee
-//
-
-.card--employee {
-    .card {
-        &__sub-title {
-            order: 0;
-            margin-bottom: 0;
-        }
-
-        &__title {
-            @include h6;
-
-            margin-bottom: .5rem;
-        }
-
-        &__text {
-            font-weight: 700;
-        }
-    }
-}
 
 .card--employee-contact {
     margin-top: 3rem;
@@ -404,10 +361,7 @@
         }
 
         &__title {
-            @include h6;
-
             order: -1;
-            margin-bottom: .625rem;
         }
 
         &__text {
@@ -488,8 +442,6 @@
         }
 
         &__title {
-            @include h5;
-
             margin-bottom: 0;
         }
     }
@@ -505,9 +457,6 @@
     padding-top: .25rem;
 
     .card {
-        &__title {
-            @include h6;
-        }
 
         &__sub-title {
             order: 0;

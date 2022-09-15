@@ -29,7 +29,7 @@
     --space-doubled: calc(2 * var(--space-unit));
 
     --content-width: 970px;
-    --content-padding: 5rem;
+    --content-padding: 2rem;
     --dimension-default: calc(1.25 * var(--space-unit));
     --default-overflow-margin:  calc(7.188 * var(--space-unit));
     --default-overflow-margin-negative: 0;
@@ -46,28 +46,11 @@
         --color-accent: #{$value};
         --pattern-url: url('data:image/svg+xml;utf8,<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M-1.646,8.354L8.354,-1.646L7.646,-2.354L-2.354,7.646L-1.646,8.354ZM5.354,7.354L7.354,5.354L6.646,4.646L4.646,6.646L5.354,7.354ZM-0.646,1.354L1.354,-0.646L0.646,-1.354L-1.354,0.646L-0.646,1.354Z" style="fill:#{$value};"/></svg>');
     }
-
-    // NOTE: AVOID THESE CLASSES
-    .color--#{$name} {
-        color: var(--color-#{$name});
-    }
-
-    .background--#{$name} {
-        background-color: var(--color-#{$name});
-    }
-
-    .corner--#{$name}::after {
-        background-color: var(--color-#{$name});
-    }
 }
 
 // NOTE: BETTER USE THESE CLASSES
 .color {
     color: var(--color-accent);
-}
-
-.background-color {
-    background-color: var(--color-accent);
 }
 
 .background-pattern, .pattern {
@@ -84,47 +67,4 @@
     --color-gray-white-reversed: var(--color-white);
 }
 
-// @TODO: Is this class needed anymore?
-.background--expanded {
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        z-index: -1;
-        width: calc(100vw - var(--scrollbar-width)); // @todo minus
-        background-color: inherit;
-        transform: translateX(-50%);
-    }
-}
 
-// @TODO: Is there a better location for this class?
-[class*="corner-"] {
-    position: relative;
-
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: var(--color-white);
-    }
-
-    &::before {
-        z-index: -1;
-    }
-
-    &::after {
-        z-index: -2;
-        transform: translate3d(-1rem, 1rem, 0);
-        background-color: var(--color-accent);
-    }
-
-    &.corner--right::after {
-        transform: translate3d(1rem, 1rem, 0);
-    }
-}

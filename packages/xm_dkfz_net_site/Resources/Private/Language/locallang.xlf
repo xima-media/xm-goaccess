@@ -25,23 +25,14 @@
 			<trans-unit id="tt_content.header_layout.5">
 				<source><![CDATA[Headline 5 <h5>]]></source>
 			</trans-unit>
-			<trans-unit id="tt_content.frame_class.cyan">
-				<source>Cyan Background</source>
-			</trans-unit>
-			<trans-unit id="tt_content.frame_class.yellow">
-				<source>Yellow Background</source>
-			</trans-unit>
-			<trans-unit id="tt_content.frame_class.orange">
-				<source>Orange Background</source>
+			<trans-unit id="tt_content.frame_class.color">
+				<source>Color</source>
 			</trans-unit>
 			<trans-unit id="tt_content.layout.1">
 				<source>Wide</source>
 			</trans-unit>
 			<trans-unit id="tt_content.layout.2">
 				<source>Full width</source>
-			</trans-unit>
-			<trans-unit id="tt_content.palette.infoboxAppearance">
-				<source>Color and frame</source>
 			</trans-unit>
 			<trans-unit id="tt_content.color">
 				<source>Color</source>

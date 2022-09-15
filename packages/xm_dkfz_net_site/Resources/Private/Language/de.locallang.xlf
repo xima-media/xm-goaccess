@@ -26,14 +26,8 @@
 			<trans-unit id="tt_content.header_layout.5">
 				<target><![CDATA[Überschrift 5 <h5>]]></target>
 			</trans-unit>
-			<trans-unit id="tt_content.frame_class.cyan">
-				<target>Cyan Hintergrund</target>
-			</trans-unit>
-			<trans-unit id="tt_content.frame_class.yellow">
-				<target>Gelb Hintergrund</target>
-			</trans-unit>
-			<trans-unit id="tt_content.palette.infoboxAppearance">
-				<target>Farbe und Rahmen</target>
+			<trans-unit id="tt_content.frame_class.color">
+				<target>Farbig</target>
 			</trans-unit>
 			<trans-unit id="tt_content.color">
 				<target>Farbe</target>
@@ -46,9 +40,6 @@
 			</trans-unit>
 			<trans-unit id="tt_content.color.transparent">
 				<target>Keine Farbe anzeigen</target>
-			</trans-unit>
-			<trans-unit id="tt_content.frame_class.orange">
-				<target>Orange Hintergrund</target>
 			</trans-unit>
 			<trans-unit id="tt_content.layout.1">
 				<target>Breit</target>

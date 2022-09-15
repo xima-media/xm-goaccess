@@ -55,7 +55,7 @@
 // Icons
 
 @mixin svg-icon-plus($color: $color-black) {
-    background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path style="fill:#{$color};" d="M10.5,10.5L10.5,1.5C10.5,0.672 11.172,0 12,0C12.828,0 13.5,0.672 13.5,1.5L13.5,10.5L22.5,10.5C23.328,10.5 24,11.172 24,12C24,12.828 23.328,13.5 22.5,13.5L13.5,13.5L13.5,22.5C13.5,23.328 12.828,24 12,24C11.172,24 10.5,23.328 10.5,22.5L10.5,13.5L1.5,13.5C0.672,13.5 0,12.828 0,12C0,11.172 0.672,10.5 1.5,10.5L10.5,10.5Z"/></svg>'); 
+    background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path style="fill:#{$color};" d="M10.5,10.5L10.5,1.5C10.5,0.672 11.172,0 12,0C12.828,0 13.5,0.672 13.5,1.5L13.5,10.5L22.5,10.5C23.328,10.5 24,11.172 24,12C24,12.828 23.328,13.5 22.5,13.5L13.5,13.5L13.5,22.5C13.5,23.328 12.828,24 12,24C11.172,24 10.5,23.328 10.5,22.5L10.5,13.5L1.5,13.5C0.672,13.5 0,12.828 0,12C0,11.172 0.672,10.5 1.5,10.5L10.5,10.5Z"/></svg>');
 }
 
 @mixin svg-icon-minus($color: $color-black) {
@@ -66,40 +66,6 @@
     background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"><path style="fill:#{$color};" d="M18.879,10.5L10.939,2.56C10.354,1.975 10.354,1.024 10.939,0.439C11.525,-0.146 12.475,-0.146 13.061,0.439L23.561,10.939C23.718,11.096 23.833,11.28 23.906,11.476L23.907,11.48C23.967,11.642 24,11.817 24,12C24,12.183 23.967,12.358 23.907,12.52L23.906,12.524C23.833,12.72 23.718,12.904 23.561,13.061L13.061,23.561C12.475,24.146 11.525,24.146 10.939,23.561C10.354,22.976 10.354,22.025 10.939,21.44L18.879,13.5L1.5,13.5C0.672,13.5 0,12.828 0,12C0,11.172 0.672,10.5 1.5,10.5L18.879,10.5Z"/></svg>');
 }
 
-
-//
-//    @section 4. Styled scrollbars
-//
-
-//@mixin styled-scrollbars($size: .25em) {
-//    // firefox
-//    scrollbar-color: var(--color-opacity-black-2) var(--color-opacity-black-1);
-//    scrollbar-width: thin;
-//
-//    // webkit
-//    &::-webkit-scrollbar {
-//        @include size($size, 0);
-//    }
-//
-//    //&::-webkit-scrollbar-track {}
-//
-//    &::-webkit-scrollbar-thumb {
-//        background-color: $color-black-opacity-2;
-//        outline: 0;
-//    }
-//}
-
-
-//
-//    @section 5. Styled slider
-//
-
-// @todo aufräumen
-
-
-//
-//    @section 6. Hyphens
-//
 
 @mixin hyphens($status: true) {
     @if $status {
@@ -120,54 +86,56 @@
 
 // @section 7.1 H1
 @mixin h1 {
-    font-family: $font-family-serif;
-    font-size: map-get($h3, 'font-size');
-    line-height: map-get($h3, 'line-height');
-
-    @include media-breakpoint-up(md) {
-        font-size: map-get($h1, 'font-size');
-        line-height: map-get($h1, 'line-height');
+    &:after{
+        content: 'PLEASE USE .h1 CLASS';
+        background: #FF0000;
+        padding: 2px;
     }
 }
 
 // @section 7.2 H2
 @mixin h2 {
-    font-family: $font-family-serif;
-    font-size: map-get($h2, 'font-size');
-    line-height: map-get($h2, 'line-height');
+    &:after{
+        content: 'PLEASE USE .h2 CLASS';
+        background: #FF0000;
+        padding: 2px;
+    }
 }
 
 // @section 7.3 H3
 @mixin h3 {
-    font-family: $font-family-serif;
-    font-size: map-get($h3, 'font-size');
-    line-height: map-get($h3, 'line-height');
+    &:after{
+        content: 'PLEASE USE .h3 CLASS';
+        background: #FF0000;
+        padding: 2px;
+    }
 }
 
 // @section 7.4 H4
 @mixin h4 {
-    font-family: $font-family-serif;
-    font-size: map-get($h5, 'font-size');
-    line-height: map-get($h5, 'line-height');
-
-    @include media-breakpoint-up(md) {
-        font-size: map-get($h4, 'font-size');
-        line-height: map-get($h4, 'line-height');
+    &:after{
+        content: 'PLEASE USE .h4 CLASS';
+        background: #FF0000;
+        padding: 2px;
     }
 }
 
 // @section 7.5 H5
 @mixin h5 {
-    font-family: $font-family-serif;
-    font-size: map-get($h5, 'font-size');
-    line-height: map-get($h5, 'line-height');
+    &:after{
+        content: 'PLEASE USE .h5 CLASS';
+        background: #FF0000;
+        padding: 2px;
+    }
 }
 
 // @section 7.6 H6
 @mixin h6 {
-    font-family: $font-family-serif;
-    font-size: map-get($h6, 'font-size');
-    line-height: map-get($h6, 'line-height');
+    &:after{
+        content: 'PLEASE USE .h6 CLASS';
+        background: #FF0000;
+        padding: 2px;
+    }
 }
 
 

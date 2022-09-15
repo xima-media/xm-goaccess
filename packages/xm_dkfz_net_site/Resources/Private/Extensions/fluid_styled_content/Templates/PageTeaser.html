@@ -2,50 +2,29 @@
 
 <f:section name="Main">
 	<f:for each="{children}" as="teaser" iteration="i">
-		<div class="card card--xl card--image-size-md color-accent--{teaser.data.color}">
-			<div class="card__image">
+		<div class="page-teaser color-accent--{teaser.data.color}">
+			<div class="page-teaser__image">
 
 				<f:if condition="{teaser.files}">
 					<f:for each="{teaser.files}" as="file" iteration="teaserFileIterator">
-						<f:if condition="{teaserFileIterator.cycle} === 1">
-							<figure class="picture picture--with-image picture--with-color picture--orientation-md-"
-									data-pattern-color="transparent">
-								<div class="picture__item image-color--{teaser.data.color}">
-									<picture>
-										<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'webp')}"
-												type="image/webp">
-										<source srcset="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
-												type="image/jpeg">
-										<img src="{f:uri.image(image:file, width:'458', fileExtension: 'jpg')}"
-											 alt="{file.originalResource.alternative}"
-											 loading="lazy"/>
-									</picture>
-								</div>
-							</figure>
-						</f:if>
+						<f:render partial="Image" arguments="{image: file, patternStyle: 'color', size: 'sm', noCaption: 1}" />
 					</f:for>
 				</f:if>
 
 				<f:if condition="!{teaser.files}">
-					<figure class="picture picture--no-image picture--with-color picture--orientation-md-"
-							data-color="{teaser.data.color}"
-							data-pattern-color="transparent">
-						<div class="picture__item background--{teaser.data.color}">
-							<span class="picture__pattern pattern color-accent--gray-900"></span>
-						</div>
-					</figure>
+					<f:render partial="Image" arguments="" />
 				</f:if>
 
 			</div>
-			<div class="card__content">
+			<div class="page-teaser__content">
 
 				<div>
 					<h3 >{teaser.data.title}</h3>
 				</div>
 
-				<div class="card__body">
+				<div class="page-teaser__body">
 
-					<div class="card__text">
+					<div class="page-teaser__text">
 						<p>{teaser.data.text}</p>
 					</div>
 
@@ -64,10 +43,7 @@
 							</div>
 						</f:then>
 						<f:else>
-							<f:link.typolink class="card__link card__link--more" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
-							<svg class="icon icon--arrow-right icon--size-xl" width="12" height="12" aria-hidden="true">
-								<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-							</svg>
+							<f:link.typolink class="page-teaser__link page-teaser__link--more link--primary" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
 						</f:else>
 					</f:if>
 				</div>
