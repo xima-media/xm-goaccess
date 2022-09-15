@@ -71,8 +71,10 @@ after('deploy:update_code', 'deploy:upload-dist');
 task('deploy:upload-dist', function () {
     upload(
         'packages/xm_dkfz_net_prototype/Resources/Public/',
-        '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/'
+        '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/',
     );
+    run('find {{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/ -type d -exec chmod 2770 {} \;');
+    run('find {{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/ -type f -exec chmod 0640 {} \;');
 });
 
 // Cache warmup
