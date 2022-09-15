@@ -18,6 +18,11 @@
     &__wrapper {
         margin-top: var(--space-unit);
         margin-bottom: var(--space-unit);
+        display: none;
+
+        @include media-breakpoint-up(md) {
+            display: block;
+        }
     }
 
     li {
