@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use ReflectionClass;
 use Symfony\Component\DomCrawler\Crawler;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Core\Environment;
 use Xima\XmDkfzNetEvents\Domain\Model\Dto\Event;
 
 class EventLoaderUtility
@@ -43,12 +44,14 @@ class EventLoaderUtility
 
     public function requestRssEvents(string $url): void
     {
-        $client = new Client(['verify' => false]);
-
         try {
-            $url = str_starts_with($url, '/') ? 'https://' . $_SERVER['SERVER_NAME'] . $url : $url;
-            $response = $client->request('GET', $url);
-            $xml = $response->getBody()->getContents();
+            if (!str_starts_with($url, '/')) {
+                $client = new Client(['verify' => false]);
+                $response = $client->request('GET', $url);
+                $xml = $response->getBody()->getContents();
+            } else {
+                $xml = file_get_contents(Environment::getPublicPath() . $url);
+            }
         } catch (GuzzleException $e) {
         }
 
