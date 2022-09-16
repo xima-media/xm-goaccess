@@ -74,3 +74,8 @@ lib.dynamicContent {
     }
   }
 }
+
+tt_content.bw_focuspoint_images_svg.variables {
+  color = TEXT
+  color.value = #ff8700
+}

@@ -11,61 +11,106 @@
 </f:section>
 
 <f:section name="Main">
+	<f:debug>{_all}</f:debug>
 
 	<div class="focuspoint" style="width:{image.properties.width}px">
 
 		<f:image image="{image}"/>
 
 		<svg class="focuspoint__svg" xmlns="http://www.w3.org/2000/svg">
+
+			<defs>
+				<filter x="-0.1" y="-0.1" width="1.2" height="1.2" id="solid">
+					<feFlood  flood-color="{color}" result="bg" />
+					<feMerge>
+						<feMergeNode in="bg"/>
+						<feMergeNode in="SourceGraphic"/>
+					</feMerge>
+				</filter>
+			</defs>
+
+
 			<f:for each="{points}" as="point" iteration="i">
-				<f:if condition="{point.link}">
-					<a xlink:href="{f:uri.typolink(parameter: point.link)}" target="{point.linkTarget}">
-				</f:if>
-				<rect x="{point.x}%"
-					  y="{point.y}%"
-					  id="focuspoint-{image.uid}-{i.cycle}"
-					  stroke="{point.color}"
-					  stroke-width="2px"
-					  class="focuspoint__svg__rect"
-					  width="{point.width}%"
-					  height="{point.height}%"
-					  opacity="0.7"
-					  fill="{point.color}"/>
-				<f:if condition="{point.link}">
+
+				<a href="#focuspoint-{data.uid}-{i.cycle}">
+					<f:if condition="{point.type}=='marking'">
+						<rect x="{point.x}%"
+							  y="{point.y}%"
+							  stroke="{color}"
+							  stroke-width="2px"
+							  class="focuspoint__svg__rect marking"
+							  width="{point.width}%"
+							  height="{point.height}%"
+							  fill="transparent"/>
+					</f:if>
+				</a>
+
+				<f:if condition="{point.type}!='marking'">
+					<a href="#focuspoint-{data.uid}-{i.cycle}">
+
+					<text x="{point.textX}%"
+						  y="{point.textY}%"
+						  class="default"
+						  fill="#FFF"
+						  font-size="13"
+						  filter="url(#solid)"
+						  alignment-baseline="middle"
+						  text-anchor="middle">
+						{point.title}
+					</text>
 					</a>
 				</f:if>
-				<text x="{point.textX}%"
-					  fill="#FFF"
-					  y="{point.textY}%"
-					  alignment-baseline="middle"
-					  text-anchor="middle">
-					{point.name}
-				</text>
-			</f:for>
-		</svg>
 
-		<f:for each="{points}" as="point" iteration="i">
-			<div class="focuspoint__description" id="focuspoint-{image.uid}-{i.cycle}-description">
-				<strong>{point.title}</strong>
-				<p>
-					<f:format.nl2br>{point.description}</f:format.nl2br>
-				</p>
-			</div>
-		</f:for>
+				<f:if condition="{point.type}=='marking'">
+					<f:if condition="{point.x} < 10">
+						<f:then>
+							<circle class="right"
+									r="13"
+									cx="{point.x}%"
+									cy="{point.textY}%"
+									fill="{color}"
+									style="--margin:{point.width}%"/>
+							<text style="--margin:{point.width}%"
+								  class="marking right"
+								  x="{point.x}%"
+								  y="{point.textY}%"
+								  fill="#FFF"
+								  font-weight="bold"
+								  alignment-baseline="middle"
+								  text-anchor="middle">
+								{i.cycle}
+							</text>
+						</f:then>
+						<f:else>
+							<circle r="13" cx="{point.x}%" cy="{point.textY}%" fill="{color}"/>
+							<text x="{point.x}%"
+								  y="{point.textY}%"
+								  fill="#FFF"
+								  class="marking"
+								  font-weight="bold"
+								  alignment-baseline="middle"
+								  text-anchor="middle">
+								{i.cycle}
+							</text>
+						</f:else>
+					</f:if>
+				</f:if>
+
+
+			</f:for>
+
+		</svg>
 
 	</div>
 
-	<script>
-		const rects = document.getElementsByClassName('focuspoint__svg__rect');
-		for (let i = 0; i < rects.length; i++) {
-			rects[i].addEventListener('mouseover', function () {
-				document.getElementById(this.getAttribute('id') + '-description').setAttribute('style', 'display:inherit');
-			});
-			rects[i].addEventListener('mouseout', function () {
-				document.getElementById(this.getAttribute('id') + '-description').setAttribute('style', '');
-			});
-		}
-	</script>
+	<f:for each="{points}" as="point" iteration="i">
+		<div class="focuspoint__description" id="focuspoint-{data.uid}-{i.cycle}">
+			<strong>{f:if(condition: '{point.type}==marking', then: '{i.cycle}. ')}{point.title}</strong>
+			<p>
+				<f:format.nl2br>{point.description}</f:format.nl2br>
+			</p>
+		</div>
+	</f:for>
 
 	<style type="text/css">
 		.focuspoint {
@@ -75,40 +120,58 @@
 			max-width: 100%;
 		}
 
+		.focuspoint * {
+			text-decoration: none !important;
+		}
+
+		.focuspoint text.default {
+			transform: translate3d(0, 1px, 0);
+			border-radius: 3px;
+		}
+
+		.focuspoint text.marking {
+			transform: translate3d(-20px, 1px, 0);
+		}
+
+		.focuspoint text.marking.right {
+			transform: translate3d(calc(var(--margin) + 20px), 1px, 0);
+		}
+
+		.focuspoint circle {
+			transform: translate3d(-20px, 0, 0);
+		}
+
+		.focuspoint circle.right {
+			transform: translate3d(calc(var(--margin) + 20px), 0, 0);
+		}
+
 		.focuspoint img {
 			grid-column: 1 / 2;
-			grid-row: 1 / 3;
+			grid-row: 1 / 2;
 			max-width: 100%;
 			height: auto;
 		}
 
 		.focuspoint__svg {
 			grid-column: 1 / 2;
-			grid-row: 1 / 3;
+			grid-row: 1 / 2;
 			align-self: stretch;
 			justify-self: stretch;
 			width: 100%;
 		}
 
-		.focuspoint__svg rect:hover {
-			opacity: 1;
-			fill: transparent;
-			stroke-dasharray: 2px;
-		}
-
-		.focuspoint__svg rect:hover + text {
-			display: none;
-		}
-
 		.focuspoint__description {
-			grid-column: 1 / 2;
-			grid-row: 2 / 3;
-			background: rgba(0, 0, 0, 0.6);
-			color: #fff;
-			padding: 12px 12px 0 12px;
-			display: none;
+			padding-top: var(--space);
 		}
 
+		.focuspoint__description strong {
+			display: block;
+			margin-bottom: calc(0.25 * var(--space));
+		}
+
+		.focuspoint__description p {
+			padding-left: calc(0.5 * var(--space));
+		}
 	</style>
 
 
