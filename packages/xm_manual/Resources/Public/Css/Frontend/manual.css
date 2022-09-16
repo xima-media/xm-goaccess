@@ -33,6 +33,10 @@ h3 {
 	margin-bottom: calc(0.75 * var(--space));
 }
 
+img {
+	height: auto !important;
+}
+
 /**
 	Counter-Stuff
  */
@@ -71,15 +75,32 @@ figure {
 	margin: 0.25rem 0;
 }
 
+figcaption {
+	font-style: italic;
+	opacity: 0.6;
+	margin: .5rem 0 0 0;
+}
+
 .ce-image {
 	display: grid;
 	gap: var(--space);
 }
 
+.ce-image.ce-center .ce-gallery {
+	justify-self: center;
+}
+
+.ce-image.ce-right, .ce-image.ce-left {
+	grid-template-columns: 1fr 1fr;
+}
+
+.ce-image.ce-below .ce-gallery {
+	order: 1;
+}
+
 @media (min-width: 800px) {
 	.ce-image {
 		gap: calc(2 * var(--space));
-		grid-template-columns: 1fr 1fr;
 	}
 }
 

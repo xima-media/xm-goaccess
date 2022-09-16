@@ -11,6 +11,9 @@ styles {
   }
 }
 
+styles.content.textmedia.maxW = 640
+styles.content.textmedia.maxWInText = 640
+
 ##############################
 #### BW_FOCUSPOINT_IMAGES ####
 ##############################
