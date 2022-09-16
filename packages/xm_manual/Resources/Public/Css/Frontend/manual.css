@@ -88,3 +88,6 @@ figure {
 	grid-column: 1 / 2;
 }
 
+.ce-focuspoint-bodytext {
+	margin-bottom: var(--space);
+}
