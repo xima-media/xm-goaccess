@@ -11,7 +11,7 @@ styles {
   }
 }
 
-styles.content.textmedia.maxW = 640
+styles.content.textmedia.maxW = 1200
 styles.content.textmedia.maxWInText = 640
 
 ##############################

@@ -1,0 +1,20 @@
+# Load default processing options
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+
+editor:
+  config:
+    toolbar:
+      - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Styles' ] }
+      - { name: 'clipboard', items: ['Undo', 'Redo'] }
+      - { name: 'format', items: ['Paste', 'RemoveFormat'] }
+    stylesSet:
+      - { name: "Grün", element: "span", styles: { background-color: "#c4f3c6", font-size: "75%", padding: ".25em .5em", color: "#215023", border-radius: ".25rem" } }
+      - { name: "Blau", element: "span", styles: { background-color: "#c4e8f3", font-size: "75%", padding: ".25em .5em", color: "#214550", border-radius: ".25rem" } }
+      - { name: "Rot", element: "span", styles: { background-color: "#f2cece", font-size: "75%", padding: ".25em .5em", color: "#502121", border-radius: ".25rem" } }
+    removeButtons:
+      - Anchor
+      - Superscript
+      - Subscript
+      - Underline
+      - Strike

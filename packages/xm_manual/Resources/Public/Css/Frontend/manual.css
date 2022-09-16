@@ -90,15 +90,14 @@ figcaption {
 	justify-self: center;
 }
 
-.ce-image.ce-right, .ce-image.ce-left {
-	grid-template-columns: 1fr 1fr;
-}
-
 .ce-image.ce-below .ce-gallery {
 	order: 1;
 }
 
 @media (min-width: 800px) {
+	.ce-image.ce-right, .ce-image.ce-left {
+		grid-template-columns: 1fr 1fr;
+	}
 	.ce-image {
 		gap: calc(2 * var(--space));
 	}

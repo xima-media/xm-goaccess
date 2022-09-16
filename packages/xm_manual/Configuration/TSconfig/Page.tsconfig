@@ -1,14 +1,6 @@
 mod.wizards.newContentElement.wizardItems {
 
   common.elements {
-    tt_content_mtext {
-      iconIdentifier = content-beside-text-img-below-center
-      title = Text mit Bild
-      description = Textelement mit Überschrift und Fließtext
-      tt_content_defValues {
-        CType = mtext
-      }
-    }
     tt_content_mbox {
       iconIdentifier = content-idea
       title = Infobox
@@ -17,8 +9,16 @@ mod.wizards.newContentElement.wizardItems {
         CType = mbox
       }
     }
+    tt_content_mtext {
+      iconIdentifier = content-beside-text-img-below-center
+      title = Text mit Bild
+      description = Textelement mit Überschrift und Fließtext
+      tt_content_defValues {
+        CType = mtext
+      }
+    }
   }
-  common.show = tt_content_mtext,tt_content_mbox
+  common.show = tt_content_mbox,tt_content_mtext,bw_focuspoint_images_svg
 
   forms.elements >
   special.elements >
