@@ -190,6 +190,65 @@
             "time": "2021-12-16T21:41:27+00:00"
         },
         {
+            "name": "blueways/bw-focuspoint-images",
+            "version": "v3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/blueways/bw_focuspoint_images.git",
+                "reference": "6bf9ab416106073eb5a5ff4affb16c775702ec8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/blueways/bw_focuspoint_images/get/6bf9ab416106073eb5a5ff4affb16c775702ec8c.zip",
+                "reference": "6bf9ab416106073eb5a5ff4affb16c775702ec8c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "typo3/cms-core": "^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "bk2k/bootstrap-package": "dev-master",
+                "helhum/typo3-console": "^7.1",
+                "roave/security-advisories": "dev-master",
+                "typo3/cms-base-distribution": "^11.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "web-dir": "public",
+                    "extension-key": "bw_focuspoint_images"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwFocuspointImages\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "m.schneider@blueways.de",
+                    "homepage": "https://blueways.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Image Editor for adding focus points to images",
+            "homepage": "https://blueways.de",
+            "keywords": [
+                "TYPO3 CMS"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/blueways/bw_focuspoint_images/issues",
+                "source": "https://bitbucket.org/blueways/bw_focuspoint_images/src/6bf9ab416106073eb5a5ff4affb16c775702ec8c/?at=v3.0.3"
+            },
+            "time": "2022-09-15T16:01:13+00:00"
+        },
+        {
             "name": "blueways/bw-guild",
             "version": "dev-master",
             "dist": {
@@ -1402,12 +1461,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "7b0ae96c75eacdfec3934a711b8f3abf675f84ad"
+                "reference": "8b09c684fc26143f4cff892d21f05f1af82f5396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/7b0ae96c75eacdfec3934a711b8f3abf675f84ad",
-                "reference": "7b0ae96c75eacdfec3934a711b8f3abf675f84ad",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/8b09c684fc26143f4cff892d21f05f1af82f5396",
+                "reference": "8b09c684fc26143f4cff892d21f05f1af82f5396",
                 "shasum": ""
             },
             "require": {
@@ -1476,7 +1535,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-30T07:29:30+00:00"
+            "time": "2022-09-15T13:00:27+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -10190,10 +10249,12 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
-                "reference": "5e123cae77cee491bce8fead6f4089a5b581143c"
+                "reference": "e7e7ce3daee1c21c14a7238f62646d0940ee27fb"
             },
             "require": {
-                "dompdf/dompdf": "^2.0"
+                "blueways/bw-focuspoint-images": "^3.0",
+                "dompdf/dompdf": "^2.0",
+                "typo3/cms-rte-ckeditor": "^11.5"
             },
             "type": "typo3-cms-extension",
             "extra": {

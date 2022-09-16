@@ -30,3 +30,32 @@ mod.wizards.newContentElement.wizardItems {
 
 TCEFORM.tt_content.assets.config.maxitems = 1
 TCEFORM.tt_content.imageorient.removeItems = 1,2,9,10,17,18
+
+mod.tx_bwfocuspointimages.settings.fields {
+
+  title {
+    title = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.name
+    type = text
+  }
+
+  description {
+    title = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.description
+    type = textarea
+  }
+
+  color {
+    title = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.color
+    type = select
+    options {
+      red = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.color.red
+      green = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.color.green
+      blue = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.color.blue
+    }
+  }
+
+  link {
+    title = LLL:EXT:bw_focuspoint_images/Resources/Private/Language/locallang_db.xlf:wizard.fields.link
+    type = link
+  }
+
+}

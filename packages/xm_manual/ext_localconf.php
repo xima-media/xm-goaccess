@@ -13,3 +13,5 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Backend\Controller\Page
 
 $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 $pageRenderer->loadRequireJsModule('TYPO3/CMS/XmManual/ManualGlobal');
+
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['manual'] = 'EXT:xm_manual/Configuration/RTE/Manual.yaml';
