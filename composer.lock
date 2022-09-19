@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bc1569689b878b0d762bdc0c3fd77f3",
+    "content-hash": "fbb257dd71a65ee2948f9d7a62b603a7",
     "packages": [
         {
             "name": "b13/container",
@@ -2744,6 +2744,59 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.15.1"
             },
             "time": "2022-09-04T07:30:47+00:00"
+        },
+        {
+            "name": "nitsan/ns-instagram",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nitsan-technologies/ns_instagram.git",
+                "reference": "c72a23e3236bbfd40aff93649d3edaff16a5b90e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nitsan-technologies/ns_instagram/zipball/c72a23e3236bbfd40aff93649d3edaff16a5b90e",
+                "reference": "c72a23e3236bbfd40aff93649d3edaff16a5b90e",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^8.0  || ^9.0 || ^10.0  || ^11.0 "
+            },
+            "replace": {
+                "typo3-ter/ns-instagram": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/public",
+                    "extension-key": "ns_instagram"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NITSAN\\NsInstagram\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Plugin to display gallery, feeds and phototile with clean, customizable and responsive feeds from multiple Instagram accounts. Live-Demo:https://demo.t3planet.com//t3t-extensions/instagram You can download PRO version for more-features & free-support at https://t3planet.com/instagram-typo3-extension-free",
+            "homepage": "https://extensions.typo3.org/extension/ns_instagram/",
+            "keywords": [
+                "TYPO3 CMS",
+                "gallery",
+                "instagram",
+                "nitsan",
+                "photos",
+                "t3terminal"
+            ],
+            "support": {
+                "issues": "https://github.com/nitsan-technologies/ns_instagram/issues",
+                "source": "https://github.com/nitsan-technologies/ns_instagram/tree/3.0.3"
+            },
+            "time": "2022-08-17T13:09:46+00:00"
         },
         {
             "name": "paragonie/random_compat",
