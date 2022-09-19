@@ -90,10 +90,6 @@
         }
     }
 
-    .accordion-body {
-        max-width: none;
-    }
-
     &__detail {
         display: none;
         padding: 1rem;
@@ -156,6 +152,7 @@
             .accordion {
 
                 &-body {
+                    max-width: $container-md-widths - 5;
                     padding: 1rem 1.5rem;
 
                     ul {
