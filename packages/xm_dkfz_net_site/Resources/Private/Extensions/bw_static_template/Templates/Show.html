@@ -39,9 +39,17 @@
 													<ul>
 														<f:for each="{list.column}" as="column">
 															<li>
-																<f:if condition="{column.headline}">
-																	<h5>{column.headline}</h5>
+																<f:if condition="!{column.description}">
+																	<f:then>
+																		<h5>{column.headline}</h5>
+																	</f:then>
+																	<f:else>
+																		<f:if condition="{column.headline}">
+																			<h5 class="organigram__detail--content__headline">{column.headline}</h5>
+																		</f:if>
+																	</f:else>
 																</f:if>
+
 																<f:if condition="{column.description}">
 																	<p>
 																		{column.description}
@@ -114,7 +122,7 @@
 												<f:for each="{block.list}" as="list">
 													<li>
 														<f:if condition="{list.headline}">
-															<h5>{list.headline}</h5>
+															<h5 class="organigram__detail--content__headline">{list.headline}</h5>
 														</f:if>
 														<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
 															<p>
