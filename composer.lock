@@ -353,16 +353,16 @@
         },
         {
             "name": "blueways/bw-icons",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/bw_icons.git",
-                "reference": "03693e75780b2d1100c8df4d17fb50b806bce3f7"
+                "reference": "9689f7d6abf6e7f05b683463ea46f9016fe35d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/bw_icons/get/03693e75780b2d1100c8df4d17fb50b806bce3f7.zip",
-                "reference": "03693e75780b2d1100c8df4d17fb50b806bce3f7",
+                "url": "https://bitbucket.org/blueways/bw_icons/get/9689f7d6abf6e7f05b683463ea46f9016fe35d3b.zip",
+                "reference": "9689f7d6abf6e7f05b683463ea46f9016fe35d3b",
                 "shasum": ""
             },
             "require": {
@@ -440,9 +440,9 @@
             ],
             "support": {
                 "issues": "https://bitbucket.org/blueways/bw_icons/issues",
-                "source": "https://bitbucket.org/blueways/bw_icons/src/03693e75780b2d1100c8df4d17fb50b806bce3f7/?at=v2.0.0"
+                "source": "https://bitbucket.org/blueways/bw_icons/src/9689f7d6abf6e7f05b683463ea46f9016fe35d3b/?at=v2.0.1"
             },
-            "time": "2022-09-18T15:20:56+00:00"
+            "time": "2022-09-18T16:27:49+00:00"
         },
         {
             "name": "blueways/bw-jsoneditor",
