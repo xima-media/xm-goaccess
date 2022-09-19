@@ -37,6 +37,11 @@ return [
             'loginLogo' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/backend_login_logo.svg',
             'loginLogoAlt' => '',
         ],
+        'bw_icons' => [
+            'pages' => '0',
+            'sys_category' => '0',
+            'tt_content' => '0',
+        ],
         'crawler' => [
             'cleanUpOldQueueEntries' => '1',
             'cleanUpProcessedAge' => '2',

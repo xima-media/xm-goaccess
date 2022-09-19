@@ -352,6 +352,99 @@
             }
         },
         {
+            "name": "blueways/bw-icons",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/blueways/bw_icons.git",
+                "reference": "9689f7d6abf6e7f05b683463ea46f9016fe35d3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/blueways/bw_icons/get/9689f7d6abf6e7f05b683463ea46f9016fe35d3b.zip",
+                "reference": "9689f7d6abf6e7f05b683463ea46f9016fe35d3b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "phenx/php-font-lib": "0.5.4",
+                "sabberworm/php-css-parser": "8.4.0",
+                "typo3/cms-core": "^9.0 || ^10.0 || ^11.0"
+            },
+            "require-dev": {
+                "bk2k/bootstrap-package": "dev-master",
+                "clue/phar-composer": "^1.0",
+                "helhum/typo3-console": "^7.0",
+                "typo3/cms-about": "^11.5",
+                "typo3/cms-backend": "^11.5",
+                "typo3/cms-belog": "^11.5",
+                "typo3/cms-beuser": "^11.5",
+                "typo3/cms-dashboard": "^11.5",
+                "typo3/cms-extbase": "^11.5",
+                "typo3/cms-extensionmanager": "^11.5",
+                "typo3/cms-felogin": "^11.5",
+                "typo3/cms-filelist": "^11.5",
+                "typo3/cms-fluid": "^11.5",
+                "typo3/cms-fluid-styled-content": "^11.5",
+                "typo3/cms-form": "^11.5",
+                "typo3/cms-frontend": "^11.5",
+                "typo3/cms-impexp": "^11.5",
+                "typo3/cms-indexed-search": "^11.5",
+                "typo3/cms-info": "^11.5",
+                "typo3/cms-install": "^11.5",
+                "typo3/cms-linkvalidator": "^11.5",
+                "typo3/cms-lowlevel": "^11.5",
+                "typo3/cms-opendocs": "^11.5",
+                "typo3/cms-recordlist": "^11.5",
+                "typo3/cms-redirects": "^11.5",
+                "typo3/cms-reports": "^11.5",
+                "typo3/cms-rte-ckeditor": "^11.5",
+                "typo3/cms-scheduler": "^11.5",
+                "typo3/cms-seo": "^11.5",
+                "typo3/cms-setup": "^11.5",
+                "typo3/cms-styleguide": "^11.5",
+                "typo3/cms-tstemplate": "^11.5"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": "public",
+                    "extension-key": "bw_icons"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueways\\BwIcons\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "m.schneider@blueways.de",
+                    "homepage": "https://www.blueways.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3-Extension that adds a icon form element",
+            "homepage": "https://bitbucket.org/blueways/bw_icons",
+            "keywords": [
+                "extension",
+                "icons",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/blueways/bw_icons/issues",
+                "source": "https://bitbucket.org/blueways/bw_icons/src/9689f7d6abf6e7f05b683463ea46f9016fe35d3b/?at=v2.0.1"
+            },
+            "time": "2022-09-18T16:27:49+00:00"
+        },
+        {
             "name": "blueways/bw-jsoneditor",
             "version": "v1.0.4",
             "source": {
@@ -10249,10 +10342,11 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
-                "reference": "e7e7ce3daee1c21c14a7238f62646d0940ee27fb"
+                "reference": "66379698e15f7801a978a5ba8f966c43fa843f49"
             },
             "require": {
                 "blueways/bw-focuspoint-images": "^3.0",
+                "blueways/bw-icons": "^2.0",
                 "dompdf/dompdf": "^2.0",
                 "typo3/cms-rte-ckeditor": "^11.5"
             },
@@ -11957,12 +12051,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "2481df8dc4eed2f379e486ad9c9435371a378f96"
+                "reference": "264a5085afd6e127daba3f47751fa971d3c29c3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/2481df8dc4eed2f379e486ad9c9435371a378f96",
-                "reference": "2481df8dc4eed2f379e486ad9c9435371a378f96",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/264a5085afd6e127daba3f47751fa971d3c29c3d",
+                "reference": "264a5085afd6e127daba3f47751fa971d3c29c3d",
                 "shasum": ""
             },
             "conflict": {
@@ -12055,6 +12149,8 @@
                 "enshrined/svg-sanitize": "<0.15",
                 "erusev/parsedown": "<1.7.2",
                 "ether/logs": "<3.0.4",
+                "exceedone/exment": "<4.4.3|>=5,<5.0.3",
+                "exceedone/laravel-admin": "= 3.0.0|<2.2.3",
                 "ezsystems/demobundle": ">=5.4,<5.4.6.1",
                 "ezsystems/ez-support-tools": ">=2.2,<2.2.3",
                 "ezsystems/ezdemo-ls-extension": ">=5.4,<5.4.2.1",
@@ -12093,7 +12189,7 @@
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
                 "friendsoftypo3/mediace": ">=7.6.2,<7.6.5",
                 "froala/wysiwyg-editor": "<3.2.7",
-                "froxlor/froxlor": "<=0.10.22",
+                "froxlor/froxlor": "<0.10.38",
                 "fuel/core": "<1.8.1",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
@@ -12237,7 +12333,7 @@
                 "phpwhois/phpwhois": "<=4.2.5",
                 "phpxmlrpc/extras": "<0.6.1",
                 "pimcore/data-hub": "<1.2.4",
-                "pimcore/pimcore": "<10.4.4",
+                "pimcore/pimcore": "<10.5.6",
                 "pocketmine/bedrock-protocol": "<8.0.2",
                 "pocketmine/pocketmine-mp": "<4.7.2|>= 4.0.0-BETA5, < 4.4.2",
                 "pressbooks/pressbooks": "<5.18",
@@ -12258,6 +12354,8 @@
                 "pusher/pusher-php-server": "<2.2.1",
                 "pwweb/laravel-core": "<=0.3.6-beta",
                 "rainlab/debugbar-plugin": "<3.1",
+                "rankmath/seo-by-rank-math": "<=1.0.95",
+                "react/http": ">=0.7,<1.7",
                 "remdex/livehelperchat": "<3.99",
                 "rmccue/requests": ">=1.6,<1.8",
                 "robrichards/xmlseclibs": "<3.0.4",
@@ -12272,7 +12370,7 @@
                 "shopware/core": "<=6.4.9",
                 "shopware/platform": "<=6.4.9",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<=5.7.13",
+                "shopware/shopware": "<=5.7.14",
                 "shopware/storefront": "<=6.4.8.1",
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
@@ -12296,8 +12394,8 @@
                 "simplesamlphp/simplesamlphp-module-infocard": "<1.0.1",
                 "simplito/elliptic-php": "<1.0.6",
                 "slim/slim": "<2.6",
-                "smarty/smarty": "<3.1.45|>=4,<4.1.1",
-                "snipe/snipe-it": "<6.0.10|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
+                "smarty/smarty": "<3.1.47|>=4,<4.2.1",
+                "snipe/snipe-it": "<6.0.11|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "spipu/html2pdf": "<5.2.4",
@@ -12359,7 +12457,7 @@
                 "thinkcmf/thinkcmf": "<=5.1.7",
                 "tinymce/tinymce": "<5.10",
                 "titon/framework": ">=0,<9.9.99",
-                "topthink/framework": "<=6.0.12",
+                "topthink/framework": "<=6.0.13",
                 "topthink/think": "<=6.0.9",
                 "topthink/thinkphp": "<=3.2.3",
                 "tribalsystems/zenario": "<9.2.55826",
@@ -12367,7 +12465,7 @@
                 "twig/twig": "<1.38|>=2,<2.14.11|>=3,<3.3.8",
                 "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.38|>=9,<9.5.29|>=10,<10.4.32|>=11,<11.5.16",
                 "typo3/cms-backend": ">=7,<=7.6.50|>=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
-                "typo3/cms-core": ">=6.2,<=6.2.56|>=7,<=7.6.57|>=8,<=8.7.47|>=9,<=9.5.36|>=10,<10.4.32|>=11,<11.5.16",
+                "typo3/cms-core": ">=6.2,<=6.2.56|>=7,<7.6.58|>=8,<8.7.48|>=9,<9.5.37|>=10,<10.4.32|>=11,<11.5.16",
                 "typo3/cms-form": ">=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.12|>=3.1,<3.1.10|>=3.2,<3.2.13|>=3.3,<3.3.13|>=4,<4.0.6",
                 "typo3/html-sanitizer": ">=1,<1.0.7|>=2,<2.0.16",
@@ -12376,7 +12474,7 @@
                 "typo3/swiftmailer": ">=4.1,<4.1.99|>=5.4,<5.4.5",
                 "typo3fluid/fluid": ">=2,<2.0.8|>=2.1,<2.1.7|>=2.2,<2.2.4|>=2.3,<2.3.7|>=2.4,<2.4.4|>=2.5,<2.5.11|>=2.6,<2.6.10",
                 "ua-parser/uap-php": "<3.8",
-                "unisharp/laravel-filemanager": "<=2.3",
+                "unisharp/laravel-filemanager": "<=2.5.1",
                 "userfrosting/userfrosting": ">=0.3.1,<4.6.3",
                 "usmanhalalit/pixie": "<1.0.3|>=2,<2.0.2",
                 "vanilla/safecurl": "<0.9.2",
@@ -12469,7 +12567,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-15T04:37:09+00:00"
+            "time": "2022-09-16T22:04:31+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",

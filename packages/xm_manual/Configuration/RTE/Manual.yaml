@@ -1,13 +1,16 @@
 # Load default processing options
 imports:
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml' }
+  - { resource: 'EXT:bw_icons/Configuration/RTE/IconPicker.yaml' }
 
 editor:
   config:
     toolbar:
       - { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Styles' ] }
+      - { name: 'lists', items: [ 'NumberedList', 'BulletedList' ] }
       - { name: 'clipboard', items: ['Undo', 'Redo'] }
       - { name: 'format', items: ['Paste', 'RemoveFormat'] }
+      - { name: 'icon', items: ['IconPicker'] }
     stylesSet:
       - { name: "Grün", element: "span", styles: { background-color: "#c4f3c6", font-size: "75%", padding: ".25em .5em", color: "#215023", border-radius: ".25rem" } }
       - { name: "Blau", element: "span", styles: { background-color: "#c4e8f3", font-size: "75%", padding: ".25em .5em", color: "#214550", border-radius: ".25rem" } }
