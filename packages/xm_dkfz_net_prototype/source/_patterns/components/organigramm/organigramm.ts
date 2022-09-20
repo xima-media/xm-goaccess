@@ -19,7 +19,6 @@ import './organigramm.scss'
 
 /** @section 1.2 Import js */
 import app from '../basic/basic'
-import 'bootstrap/js/src/modal'
 
 /**
  *     @section 2. Class
@@ -47,14 +46,12 @@ class Organigramm {
         const self = this
 
         const boxes = document.querySelectorAll('.organigram__boxes');
-        const body = document.querySelector<HTMLElement>('body')
-        const frame = document.querySelector('.frame-type-bw_static_template')
+        const overlayContainer = document.querySelector('.organigram__overlays');
 
         document.querySelectorAll('.organigram__detail .btn-close').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 self.closeAllOverlays()
-                body.classList.remove('backdrop')
-                frame.classList.remove('active')
+                overlayContainer.classList.remove('active')
             })
         })
 
@@ -68,8 +65,7 @@ class Organigramm {
 
                 const overlay = document.querySelector('.organigram__detail[data-box-target-id="'+boxId+'"]')
                 overlay.classList.add('show')
-                body.classList.add('backdrop')
-                frame.classList.add('active')
+                overlayContainer.classList.add('active')
             })
         })
     }
