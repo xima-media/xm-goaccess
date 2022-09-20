@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bc1569689b878b0d762bdc0c3fd77f3",
+    "content-hash": "0ec35cf3d46c6995af35fb5252e68377",
     "packages": [
         {
             "name": "b13/container",
@@ -1554,12 +1554,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "8b09c684fc26143f4cff892d21f05f1af82f5396"
+                "reference": "6b604382b7a27e7000c507bbf4cb98a335291cef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/8b09c684fc26143f4cff892d21f05f1af82f5396",
-                "reference": "8b09c684fc26143f4cff892d21f05f1af82f5396",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/6b604382b7a27e7000c507bbf4cb98a335291cef",
+                "reference": "6b604382b7a27e7000c507bbf4cb98a335291cef",
                 "shasum": ""
             },
             "require": {
@@ -1628,7 +1628,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-09-15T13:00:27+00:00"
+            "time": "2022-09-20T19:23:08+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -9994,16 +9994,16 @@
         },
         {
             "name": "waldhacker/typo3-oauth2-client",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/waldhacker/ext-oauth2-client.git",
-                "reference": "69f3077ab88ee73034ff49a42e93c5e6c79cc8d3"
+                "reference": "c2cf9ddad72a74c17d8eee6231a5999f94232e91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waldhacker/ext-oauth2-client/zipball/69f3077ab88ee73034ff49a42e93c5e6c79cc8d3",
-                "reference": "69f3077ab88ee73034ff49a42e93c5e6c79cc8d3",
+                "url": "https://api.github.com/repos/waldhacker/ext-oauth2-client/zipball/c2cf9ddad72a74c17d8eee6231a5999f94232e91",
+                "reference": "c2cf9ddad72a74c17d8eee6231a5999f94232e91",
                 "shasum": ""
             },
             "require": {
@@ -10073,9 +10073,9 @@
             "homepage": "https://github.com/waldhacker/ext-oauth2-client",
             "support": {
                 "issues": "https://github.com/waldhacker/ext-oauth2-client/issues",
-                "source": "https://github.com/waldhacker/ext-oauth2-client/tree/2.0.0"
+                "source": "https://github.com/waldhacker/ext-oauth2-client/tree/2.0.1"
             },
-            "time": "2022-04-02T09:39:31+00:00"
+            "time": "2022-09-20T19:05:17+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -12051,12 +12051,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "264a5085afd6e127daba3f47751fa971d3c29c3d"
+                "reference": "8bcd37ce39f3ef1e9d5206223b3cf693b48f9cf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/264a5085afd6e127daba3f47751fa971d3c29c3d",
-                "reference": "264a5085afd6e127daba3f47751fa971d3c29c3d",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/8bcd37ce39f3ef1e9d5206223b3cf693b48f9cf9",
+                "reference": "8bcd37ce39f3ef1e9d5206223b3cf693b48f9cf9",
                 "shasum": ""
             },
             "conflict": {
@@ -12118,7 +12118,7 @@
                 "contao/core-bundle": "<4.9.18|>=4.10,<4.11.7|>=4.13,<4.13.3|= 4.10.0",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "contao/managed-edition": "<=1.5",
-                "craftcms/cms": "<3.7.36",
+                "craftcms/cms": "<4.2.1",
                 "croogo/croogo": "<3.0.7",
                 "cuyz/valinor": "<0.12",
                 "czproject/git-php": "<4.0.3",
@@ -12254,7 +12254,7 @@
                 "league/commonmark": "<0.18.3",
                 "league/flysystem": "<1.1.4|>=2,<2.1.1",
                 "lexik/jwt-authentication-bundle": "<2.10.7|>=2.11,<2.11.3",
-                "librenms/librenms": "<22.4",
+                "librenms/librenms": "<=22.8",
                 "limesurvey/limesurvey": "<3.27.19",
                 "livehelperchat/livehelperchat": "<=3.91",
                 "livewire/livewire": ">2.2.4,<2.2.6",
@@ -12567,7 +12567,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-16T22:04:31+00:00"
+            "time": "2022-09-20T19:05:22+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",

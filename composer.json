@@ -99,11 +99,6 @@
 			"league/oauth2-client": [
 				"patches/league-oauth2-client-src-provider-genericresourceowner-php.patch"
 			],
-			"waldhacker/typo3-oauth2-client": [
-				"patches/waldhacker-typo3-oauth2-client-ext-localconf-php.patch",
-				"patches/waldhacker-typo3-oauth2-client-classes-authentication-frontendauthenticationservice-php.patch",
-				"patches/waldhacker-typo3-oauth2-client-classes-authentication-backendauthenticationservice-php.patch"
-			],
 			"m4tthumphrey/php-gitlab-api": [
 				"patches/m4tthumphrey-php-gitlab-api-src-client-php.patch"
 			]
