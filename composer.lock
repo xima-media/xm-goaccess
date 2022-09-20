@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fbb257dd71a65ee2948f9d7a62b603a7",
+    "content-hash": "6293c548523006feb403ecf341e2f612",
     "packages": [
         {
             "name": "b13/container",
@@ -2797,6 +2797,56 @@
                 "source": "https://github.com/nitsan-technologies/ns_instagram/tree/3.0.3"
             },
             "time": "2022-08-17T13:09:46+00:00"
+        },
+        {
+            "name": "nitsan/ns-twitter",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nitsan-technologies/ns_twitter.git",
+                "reference": "37a9aee104238114d7603f66daad3241433f03cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nitsan-technologies/ns_twitter/zipball/37a9aee104238114d7603f66daad3241433f03cb",
+                "reference": "37a9aee104238114d7603f66daad3241433f03cb",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^7.0 || ^8.0  || ^9.0 || ^10.0  || ^11.0 "
+            },
+            "replace": {
+                "typo3-ter/ns-twitter": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/public",
+                    "extension-key": "ns_twitter"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nitsan\\NsTwitter\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Twitter extension brings all your recent tweets to your TYPO3 site. Live-Demo: https://demo.t3terminal.com/t3t-extensions/twitter Pro version: You can download PRO version for more-features & free-support at https://t3terminal.com/twitter-display-plugin-free/",
+            "homepage": "https://extensions.typo3.org/extension/ns_twitter/",
+            "keywords": [
+                "TYPO3 CMS",
+                "nitsan",
+                "twitter"
+            ],
+            "support": {
+                "issues": "https://github.com/nitsan-technologies/ns_twitter/issues",
+                "source": "https://github.com/nitsan-technologies/ns_twitter/tree/3.0.3"
+            },
+            "time": "2022-02-25T07:03:23+00:00"
         },
         {
             "name": "paragonie/random_compat",
