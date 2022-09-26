@@ -9,6 +9,8 @@
 @import 'EXT:luxletter/Configuration/TypoScript/FluidStyledMailContent/setup.typoscript'
 @import 'EXT:bw_static_template/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:ke_search/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:ns_instagram/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:ns_twitter/Configuration/TypoScript/setup.typoscript'
 
 // own
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/config.typoscript'

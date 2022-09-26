@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ec35cf3d46c6995af35fb5252e68377",
+    "content-hash": "a84a69c6e31f9c5074704c3144851b20",
     "packages": [
         {
             "name": "b13/container",
@@ -1367,24 +1367,24 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "79573d8b8a141ec8a17312515de8740eed014fa9"
+                "reference": "c5310df0e22c758c85ea5288175fc6cd777bc085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/79573d8b8a141ec8a17312515de8740eed014fa9",
-                "reference": "79573d8b8a141ec8a17312515de8740eed014fa9",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/c5310df0e22c758c85ea5288175fc6cd777bc085",
+                "reference": "c5310df0e22c758c85ea5288175fc6cd777bc085",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-mbstring": "*",
                 "masterminds/html5": "^2.0",
-                "phenx/php-font-lib": "^0.5.4",
-                "phenx/php-svg-lib": "^0.3.3 || ^0.4.0",
+                "phenx/php-font-lib": ">=0.5.4 <1.0.0",
+                "phenx/php-svg-lib": ">=0.3.3 <1.0.0",
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
@@ -1415,25 +1415,17 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Ménager",
-                    "email": "fabien.menager@gmail.com"
-                },
-                {
-                    "name": "Brian Sweeney",
-                    "email": "eclecticgeek@gmail.com"
-                },
-                {
-                    "name": "Gabriel Bull",
-                    "email": "me@gabrielbull.com"
+                    "name": "The Dompdf Community",
+                    "homepage": "https://github.com/dompdf/dompdf/blob/master/AUTHORS.md"
                 }
             ],
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "support": {
                 "issues": "https://github.com/dompdf/dompdf/issues",
-                "source": "https://github.com/dompdf/dompdf/tree/v2.0.0"
+                "source": "https://github.com/dompdf/dompdf/tree/v2.0.1"
             },
-            "time": "2022-06-21T21:14:57+00:00"
+            "time": "2022-09-22T13:43:41+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1554,12 +1546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "6b604382b7a27e7000c507bbf4cb98a335291cef"
+                "reference": "d175a273ce2be454524f218d5685e39d8d92cdcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/6b604382b7a27e7000c507bbf4cb98a335291cef",
-                "reference": "6b604382b7a27e7000c507bbf4cb98a335291cef",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/d175a273ce2be454524f218d5685e39d8d92cdcb",
+                "reference": "d175a273ce2be454524f218d5685e39d8d92cdcb",
                 "shasum": ""
             },
             "require": {
@@ -1628,7 +1620,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-09-20T19:23:08+00:00"
+            "time": "2022-09-22T18:22:16+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2746,6 +2738,109 @@
             "time": "2022-09-04T07:30:47+00:00"
         },
         {
+            "name": "nitsan/ns-instagram",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nitsan-technologies/ns_instagram.git",
+                "reference": "c72a23e3236bbfd40aff93649d3edaff16a5b90e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nitsan-technologies/ns_instagram/zipball/c72a23e3236bbfd40aff93649d3edaff16a5b90e",
+                "reference": "c72a23e3236bbfd40aff93649d3edaff16a5b90e",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^8.0  || ^9.0 || ^10.0  || ^11.0 "
+            },
+            "replace": {
+                "typo3-ter/ns-instagram": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/public",
+                    "extension-key": "ns_instagram"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NITSAN\\NsInstagram\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Plugin to display gallery, feeds and phototile with clean, customizable and responsive feeds from multiple Instagram accounts. Live-Demo:https://demo.t3planet.com//t3t-extensions/instagram You can download PRO version for more-features & free-support at https://t3planet.com/instagram-typo3-extension-free",
+            "homepage": "https://extensions.typo3.org/extension/ns_instagram/",
+            "keywords": [
+                "TYPO3 CMS",
+                "gallery",
+                "instagram",
+                "nitsan",
+                "photos",
+                "t3terminal"
+            ],
+            "support": {
+                "issues": "https://github.com/nitsan-technologies/ns_instagram/issues",
+                "source": "https://github.com/nitsan-technologies/ns_instagram/tree/3.0.3"
+            },
+            "time": "2022-08-17T13:09:46+00:00"
+        },
+        {
+            "name": "nitsan/ns-twitter",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nitsan-technologies/ns_twitter.git",
+                "reference": "37a9aee104238114d7603f66daad3241433f03cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nitsan-technologies/ns_twitter/zipball/37a9aee104238114d7603f66daad3241433f03cb",
+                "reference": "37a9aee104238114d7603f66daad3241433f03cb",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^7.0 || ^8.0  || ^9.0 || ^10.0  || ^11.0 "
+            },
+            "replace": {
+                "typo3-ter/ns-twitter": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/public",
+                    "extension-key": "ns_twitter"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nitsan\\NsTwitter\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Twitter extension brings all your recent tweets to your TYPO3 site. Live-Demo: https://demo.t3terminal.com/t3t-extensions/twitter Pro version: You can download PRO version for more-features & free-support at https://t3terminal.com/twitter-display-plugin-free/",
+            "homepage": "https://extensions.typo3.org/extension/ns_twitter/",
+            "keywords": [
+                "TYPO3 CMS",
+                "nitsan",
+                "twitter"
+            ],
+            "support": {
+                "issues": "https://github.com/nitsan-technologies/ns_twitter/issues",
+                "source": "https://github.com/nitsan-technologies/ns_twitter/tree/3.0.3"
+            },
+            "time": "2022-02-25T07:03:23+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.100",
             "source": {
@@ -2841,21 +2936,21 @@
         },
         {
             "name": "phenx/php-svg-lib",
-            "version": "0.4.1",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/php-svg-lib.git",
-                "reference": "4498b5df7b08e8469f0f8279651ea5de9626ed02"
+                "reference": "76876c6cf3080bcb6f249d7d59705108166a6685"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/php-svg-lib/zipball/4498b5df7b08e8469f0f8279651ea5de9626ed02",
-                "reference": "4498b5df7b08e8469f0f8279651ea5de9626ed02",
+                "url": "https://api.github.com/repos/dompdf/php-svg-lib/zipball/76876c6cf3080bcb6f249d7d59705108166a6685",
+                "reference": "76876c6cf3080bcb6f249d7d59705108166a6685",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": "^7.1 || ^7.2 || ^7.3 || ^7.4 || ^8.0",
+                "php": "^7.1 || ^8.0",
                 "sabberworm/php-css-parser": "^8.4"
             },
             "require-dev": {
@@ -2881,9 +2976,9 @@
             "homepage": "https://github.com/PhenX/php-svg-lib",
             "support": {
                 "issues": "https://github.com/dompdf/php-svg-lib/issues",
-                "source": "https://github.com/dompdf/php-svg-lib/tree/0.4.1"
+                "source": "https://github.com/dompdf/php-svg-lib/tree/0.5.0"
             },
-            "time": "2022-03-07T12:52:04+00:00"
+            "time": "2022-09-06T12:16:56+00:00"
         },
         {
             "name": "php-http/cache-plugin",
@@ -11496,16 +11591,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.5",
+            "version": "1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "f6598a5ff12ca4499a836815e08b4d77a2ddeb20"
+                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f6598a5ff12ca4499a836815e08b4d77a2ddeb20",
-                "reference": "f6598a5ff12ca4499a836815e08b4d77a2ddeb20",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c386ab2741e64cc9e21729f891b28b2b10fe6618",
+                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618",
                 "shasum": ""
             },
             "require": {
@@ -11535,7 +11630,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.5"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.6"
             },
             "funding": [
                 {
@@ -11551,7 +11646,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-07T16:05:32+00:00"
+            "time": "2022-09-23T09:54:39+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -11873,16 +11968,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.24",
+            "version": "9.5.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d0aa6097bef9fd42458a9b3c49da32c6ce6129c5"
+                "reference": "3e6f90ca7e3d02025b1d147bd8d4a89fd4ca8a1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d0aa6097bef9fd42458a9b3c49da32c6ce6129c5",
-                "reference": "d0aa6097bef9fd42458a9b3c49da32c6ce6129c5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3e6f90ca7e3d02025b1d147bd8d4a89fd4ca8a1d",
+                "reference": "3e6f90ca7e3d02025b1d147bd8d4a89fd4ca8a1d",
                 "shasum": ""
             },
             "require": {
@@ -11904,14 +11999,14 @@
                 "phpunit/php-timer": "^5.0.2",
                 "sebastian/cli-parser": "^1.0.1",
                 "sebastian/code-unit": "^1.0.6",
-                "sebastian/comparator": "^4.0.5",
+                "sebastian/comparator": "^4.0.8",
                 "sebastian/diff": "^4.0.3",
                 "sebastian/environment": "^5.1.3",
-                "sebastian/exporter": "^4.0.3",
+                "sebastian/exporter": "^4.0.5",
                 "sebastian/global-state": "^5.0.1",
                 "sebastian/object-enumerator": "^4.0.3",
                 "sebastian/resource-operations": "^3.0.3",
-                "sebastian/type": "^3.1",
+                "sebastian/type": "^3.2",
                 "sebastian/version": "^3.0.2"
             },
             "suggest": {
@@ -11955,7 +12050,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.24"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.25"
             },
             "funding": [
                 {
@@ -11965,9 +12060,13 @@
                 {
                     "url": "https://github.com/sebastianbergmann",
                     "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpunit/phpunit",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2022-08-30T07:42:16+00:00"
+            "time": "2022-09-25T03:44:45+00:00"
         },
         {
             "name": "psy/psysh",
@@ -12051,12 +12150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "8bcd37ce39f3ef1e9d5206223b3cf693b48f9cf9"
+                "reference": "50a6bc0d820c35aab4d7818208f5ec815dff1fe1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/8bcd37ce39f3ef1e9d5206223b3cf693b48f9cf9",
-                "reference": "8bcd37ce39f3ef1e9d5206223b3cf693b48f9cf9",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/50a6bc0d820c35aab4d7818208f5ec815dff1fe1",
+                "reference": "50a6bc0d820c35aab4d7818208f5ec815dff1fe1",
                 "shasum": ""
             },
             "conflict": {
@@ -12118,7 +12217,7 @@
                 "contao/core-bundle": "<4.9.18|>=4.10,<4.11.7|>=4.13,<4.13.3|= 4.10.0",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "contao/managed-edition": "<=1.5",
-                "craftcms/cms": "<4.2.1",
+                "craftcms/cms": "<3.7.55.2|>= 4.0.0-RC1, < 4.2.1",
                 "croogo/croogo": "<3.0.7",
                 "cuyz/valinor": "<0.12",
                 "czproject/git-php": "<4.0.3",
@@ -12270,7 +12369,7 @@
                 "mautic/core": "<4.3|= 2.13.1",
                 "mediawiki/core": ">=1.27,<1.27.6|>=1.29,<1.29.3|>=1.30,<1.30.2|>=1.31,<1.31.9|>=1.32,<1.32.6|>=1.32.99,<1.33.3|>=1.33.99,<1.34.3|>=1.34.99,<1.35",
                 "mezzio/mezzio-swoole": "<3.7|>=4,<4.3",
-                "microweber/microweber": "<1.3.1",
+                "microweber/microweber": "<=1.3.1",
                 "miniorange/miniorange-saml": "<1.4.3",
                 "mittwald/typo3_forum": "<1.2.1",
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
@@ -12333,7 +12432,7 @@
                 "phpwhois/phpwhois": "<=4.2.5",
                 "phpxmlrpc/extras": "<0.6.1",
                 "pimcore/data-hub": "<1.2.4",
-                "pimcore/pimcore": "<10.5.6",
+                "pimcore/pimcore": "<=10.5.6",
                 "pocketmine/bedrock-protocol": "<8.0.2",
                 "pocketmine/pocketmine-mp": "<4.7.2|>= 4.0.0-BETA5, < 4.4.2",
                 "pressbooks/pressbooks": "<5.18",
@@ -12493,7 +12592,7 @@
                 "wpanel/wpanel4-cms": "<=4.3.1",
                 "wwbn/avideo": "<=11.6",
                 "yeswiki/yeswiki": "<4.1",
-                "yetiforce/yetiforce-crm": "<6.4",
+                "yetiforce/yetiforce-crm": "<=6.4",
                 "yidashi/yii2cmf": "<=2",
                 "yii2mod/yii2-cms": "<1.9.2",
                 "yiisoft/yii": ">=1.1.14,<1.1.15",
@@ -12567,7 +12666,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-20T19:05:22+00:00"
+            "time": "2022-09-23T21:04:15+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",

@@ -73,7 +73,9 @@
 		"tpwd/ke_search": "^4.5",
 		"xima/xm-kesearch-remote": "*@dev",
 		"tomasnorre/crawler": "^11.0",
-		"xima/xm-manual": "*@dev"
+		"xima/xm-manual": "*@dev",
+		"nitsan/ns-instagram": "^3.0",
+		"nitsan/ns-twitter": "^3.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

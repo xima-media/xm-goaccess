@@ -8,6 +8,8 @@
 @import 'EXT:luxletter/Configuration/TypoScript/FluidStyledMailContent/constants.typoscript'
 @import 'EXT:bw_static_template/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:ke_search/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:ns_instagram/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:ns_twitter/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
@@ -113,6 +115,35 @@ plugin {
       layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_static_template/Layouts/
       partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_static_template/Partials/
       templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_static_template/Templates/
+    }
+  }
+}
+
+##########################
+#### ns_instagram ####
+##########################
+plugin {
+  tx_nsinstagram_instagramfeeds {
+    view {
+      layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ns_instagram/Layouts/
+      partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ns_instagram/Partials/
+      templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ns_instagram/Templates/
+    }
+    settings {
+      graphapi = IGQVJWUzJKNEEtR3Ruc1c2a1dMRDFkUjQ3WGlqM3kxWmJvQ0xnM1ZAub2ZAuUnFLcGJOaHBRWnpkdWYxSXp0SDgxQkg3aThJSmJLaGJCRHRpQzVLWkp1czRGYWo3TkpBeGd3aFJLMWJBVG9odzFxSEFGdwZDZD
+    }
+  }
+}
+
+##########################
+#### ns_twitter ####
+##########################
+plugin {
+  tx_nstwitter {
+    view {
+      layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ns_twitter/Layouts/
+      partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ns_twitter/Partials/
+      templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ns_twitter/Templates/
     }
   }
 }

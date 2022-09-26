@@ -36,6 +36,11 @@
         grid-row: 1 / 2;
         justify-items: center;
         align-items: center;
+
+        &.active {
+            background-color: rgba(255, 255, 255, .7);
+            z-index: 1;
+        }
     }
 
 
@@ -57,11 +62,6 @@
             cursor: pointer;
             transform: scale(1.05);
             transition: transform .6s;
-        }
-
-        &.active {
-            z-index: -1;
-            height: 0;
         }
     }
 
@@ -90,16 +90,12 @@
         }
     }
 
-    .accordion-body {
-        max-width: none;
-    }
-
     &__detail {
         display: none;
         padding: 1rem;
         border: 0;
         background: $white;
-        box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 16px rgba(0, 0, 0, .3);
 
         &--with-accordion {
             width: 100%;
@@ -138,9 +134,13 @@
                 margin-top: 1rem;
 
                 li {
-                    h5 {
+                    .organigram__detail--content__headline {
                         @include text-copy-small(700, 0.6px);
                         margin-bottom: 0;
+                    }
+
+                    h4 {
+                        @include text-copy-standard(700, 0.6px);
                     }
                 }
             }
@@ -152,6 +152,7 @@
             .accordion {
 
                 &-body {
+                    max-width: $container-md-widths - 5;
                     padding: 1rem 1.5rem;
 
                     ul {
@@ -193,6 +194,5 @@
         }
     }
 }
-
 
 // end of organigramm.scss file
