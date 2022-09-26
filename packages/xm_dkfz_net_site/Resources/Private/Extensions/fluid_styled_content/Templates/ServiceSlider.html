@@ -17,9 +17,7 @@
 							<f:link.typolink parameter="{service.data.link}" class="card__link card__link--hidden" parts-as="parts" target="_blank"
 											 additionalAttributes="{aria-label: '{service.data.title}'}">
 								<div class="card__link--background">
-									<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
-										<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-									</svg>
+									<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
 								</div>
 							</f:link.typolink>
 
@@ -41,14 +39,10 @@
 		<div class="carousel__pagination swiper-pagination"></div>
 
 		<button class="carousel__button swiper-button-prev" aria-label="Zurück">
-			<svg class="icon icon--chevron-left icon--size-md" role="img" width="20" height="20" aria-hidden="true">
-				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-chevron-left')}"></use>
-			</svg>
+			<f:render partial="Icon" arguments="{icon: 'chevron-left'}" />
 		</button>
 		<button class="carousel__button swiper-button-next" aria-label="Vor">
-			<svg class="icon icon--chevron-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
-				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-chevron-right')}"></use>
-			</svg>
+			<f:render partial="Icon" arguments="{icon: 'chevron-right'}" />
 		</button>
 	</div>
 </f:section>
