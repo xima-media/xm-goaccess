@@ -42,7 +42,7 @@ class ImportAllCommand extends Command
         $application = $this->getApplication();
         $commandRegistry = GeneralUtility::makeInstance(CommandRegistry::class);
 
-        $output = $input->getOption('verbose') ? $output : new BufferedOutput();
+        $output = $input->hasOption('verbose') ? $output : new BufferedOutput();
 
         $commandsToRun = ['dkfz:importFeUserGroup', 'dkfz:importBeUserGroup', 'dkfz:importFeUser', 'dkfz:importPlace', 'dkfz:importBeUser'];
 
