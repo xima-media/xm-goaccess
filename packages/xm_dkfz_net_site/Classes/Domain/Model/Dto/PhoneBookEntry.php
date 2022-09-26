@@ -24,10 +24,6 @@ class PhoneBookEntry
 
     public string $adAccountName = '';
 
-    public bool $adAccountGesperrt = true;
-
-    public bool $deaktiviert = true;
-
     public string $gruppen = '';
 
     /**
@@ -49,7 +45,7 @@ class PhoneBookEntry
 
     public function getDisable(): bool
     {
-        return $this->adAccountGesperrt || $this->deaktiviert;
+        return false;
     }
 
     public function getHash(): string
