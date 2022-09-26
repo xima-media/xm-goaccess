@@ -50,7 +50,6 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
         $rows = array_map(function ($user) use ($pid, $defaultPassword) {
             return [
                 $user->getHash(),
-                $user->getDisable(),
                 $user->id,
                 $user->vorname,
                 $user->titel,
@@ -90,7 +89,6 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
             $rows,
             [
                 'dkfz_hash',
-                'disable',
                 'dkfz_id',
                 'first_name',
                 'title',
@@ -107,7 +105,6 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
             ],
             [
                 Connection::PARAM_STR,
-                Connection::PARAM_BOOL,
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
@@ -134,6 +131,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 [
                     'dkfz_hash' => $entry->getHash(),
                     'disable' => $entry->getDisable(),
+                    'deleted' => 0,
                     'first_name' => $entry->vorname,
                     'title' => $entry->titel,
                     'last_name' => $entry->nachname,
@@ -147,6 +145,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 ['dkfz_id' => $entry->id],
                 [
                     Connection::PARAM_STR,
+                    Connection::PARAM_BOOL,
                     Connection::PARAM_BOOL,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,

@@ -65,7 +65,6 @@ class BeUserRepository extends Repository implements ImportableUserInterface
         $rows = array_map(function ($user) use ($defaultPassword) {
             return [
                 $user->getHash(),
-                1,
                 $user->id,
                 $user->getCombinedName(),
                 $user->mail,
@@ -101,7 +100,6 @@ class BeUserRepository extends Repository implements ImportableUserInterface
             $rows,
             [
                 'dkfz_hash',
-                'disable',
                 'dkfz_id',
                 'realName',
                 'email',
@@ -114,7 +112,6 @@ class BeUserRepository extends Repository implements ImportableUserInterface
             ],
             [
                 Connection::PARAM_STR,
-                Connection::PARAM_BOOL,
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
@@ -141,6 +138,8 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                     'ad_account_name' => $entry->adAccountName,
                     'username' => $entry->getUsername(),
                     'usergroup' => $entry->usergroup,
+                    'deleted' => 0,
+                    'disable' => 0,
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -150,6 +149,8 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
+                    Connection::PARAM_BOOL,
+                    Connection::PARAM_BOOL,
                 ]
             );
     }
