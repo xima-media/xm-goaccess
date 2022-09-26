@@ -91,16 +91,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
 
 		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Place\\:\\:\\$contacts \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Contact\\>\\|null\\) does not accept TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
-
-		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Place\\:\\:\\$feGroups \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\|null\\) does not accept TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Place.php
-
-		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllFileMounts\\(\\) should return array\\<int, array\\{title\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
