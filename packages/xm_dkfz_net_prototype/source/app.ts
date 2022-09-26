@@ -222,6 +222,8 @@ import './_patterns/components/disruptor/disruptor'
 /** @section 2.52 Organigramm */
 import './_patterns/components/organigramm/organigramm'
 
+import './_patterns/components/topnews/topnews'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

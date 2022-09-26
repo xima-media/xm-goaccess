@@ -2,87 +2,76 @@
 	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
 
-<div class="carousel carousel--pagination-right"
-	 data-cols="{&quot;xs&quot;: &quot;1&quot;, &quot;sm&quot;: &quot;1&quot;, &quot;md&quot;: &quot;1&quot;, &quot;lg&quot;: &quot;1&quot;}"
-	 data-pagination-style="{&quot;xs&quot;: &quot;fraction&quot;, &quot;sm&quot;: &quot;bullets&quot;, &quot;md&quot;: &quot;bullets&quot;, &quot;lg&quot;: &quot;bullets&quot;}"
-	 data-pagination-colored="true"
-	 data-count="3">
+<div class="topnews" style="--count:{news->f:count()}; --current:0">
 
-	<div class="carousel__content swiper">
-		<div class="carousel__body swiper-wrapper">
+	<button class="" aria-label="Zurück">
+		<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
+	</button>
+
+	<div class="topnews__container">
+		<div class="topnews__wrapper">
 			<f:for each="{news}" as="newsItem" iteration="i">
 				<n:excludeDisplayedNews newsItem="{newsItem}"/>
 				<f:render section="NewsItem" arguments="{newsItem: newsItem, i: i}"/>
 			</f:for>
 		</div>
 	</div>
-	<div class="carousel__pagination swiper-pagination"></div>
-	<button class="carousel__button swiper-button-prev" aria-label="Zurück">
-		<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
-	</button>
-	<button class="carousel__button swiper-button-next" aria-label="Vor">
+
+
+	<button class="next" aria-label="Vor">
 		<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
 	</button>
+
+	<div class="topnews__bullets">
+		<f:for each="{news}" as="newsItem" iteration="i">
+			<a href="#" class=""></a>
+		</f:for>
+	</div>
 
 </div>
 
 
 <f:section name="NewsItem">
-	<div class="swiper-slide">
-		<div class="card card--main-news color-accent--{newsItem.txXmdkfznetsiteColor}">
-			<div class="card__image">
-				<figure class="picture picture--with-image picture--with-pattern picture--orientation-md-">
-					<div class="picture__item image-color--transparent">
-						<f:for each="{newsItem.falMedia}" as="file" iteration="i">
-							<f:if condition="{i.isFirst}">
-								<picture>
-									<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'webp', cropVariant: 'preview')}"
-											type="image/webp">
-									<source srcset="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
-											type="image/jpeg">
-									<img src="{f:uri.image(image:file, width:'400', fileExtension: 'jpg', cropVariant: 'preview')}"
-										 alt="{file.originalResource.alternative}"
-										 class="picture__image image--responsive"
-										 loading="lazy"/>
-								</picture>
-							</f:if>
-						</f:for>
-						<span class="picture__pattern pattern color-accent--magenta"></span>
-					</div>
-				</figure>
+	<div class="topnews__item color-accent--{newsItem.txXmdkfznetsiteColor}">
+
+		<f:for each="{newsItem.falMedia}" as="file" iteration="i">
+			<f:if condition="{i.isFirst}">
+				<f:render partial="Image" arguments="{image: file}"/>
+			</f:if>
+		</f:for>
+
+		<f:if condition="!{newsItem.falMedia}">
+			<f:render partial="Image" arguments=""/>
+		</f:if>
+
+		<div class="topnews__text">
+			<h3>{newsItem.title}</h3>
+
+			<div class="topnews__text-main">
+				<p>
+					<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+					<f:if condition="{newsItem.firstCategory}">
+						| {newsItem.firstCategory.title}
+					</f:if>
+				</p>
+				<f:if condition="{newsItem.teaser}">
+					<f:then>
+						{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
+						respectWordBoundaries:'1') -> f:format.html()}
+					</f:then>
+					<f:else>
+						{newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
+						respectWordBoundaries:'1') -> f:format.html()}
+					</f:else>
+				</f:if>
 			</div>
-			<div class="card__content">
-				<div class="card__header">
-					<h3>{newsItem.title}</h3>
-					<p>
-						<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
-						|
-						<f:if condition="{newsItem.firstCategory}">
-							{newsItem.firstCategory.title}
-						</f:if>
-					</p>
-				</div>
-				<div class="card__body">
-					<div class="card__text">
-						<f:if condition="{newsItem.teaser}">
-							<f:then>
-								{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
-								respectWordBoundaries:'1') -> f:format.html()}
-							</f:then>
-							<f:else>
-								{newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}',
-								respectWordBoundaries:'1') -> f:format.html()}
-							</f:else>
-						</f:if>
-					</div>
-					<n:link newsItem="{newsItem}"
-							settings="{settings}"
-							class="card__link card__link--more"
-							title="{newsItem.title}">
-						<f:translate key="more-link"/>
-					</n:link>
-				</div>
-			</div>
+
+			<n:link newsItem="{newsItem}"
+					settings="{settings}"
+					class="card__link--more"
+					title="{newsItem.title}">
+				<f:translate key="more-link"/> <f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
+			</n:link>
 		</div>
 	</div>
 </f:section>

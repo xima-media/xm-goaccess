@@ -1,0 +1,122 @@
+.topnews {
+
+    display: grid;
+    grid-template-columns: 2rem auto 2rem;
+    padding: 0 .5rem;
+    --current: 0;
+    --count: 0;
+    --space: 10rem;
+
+    @include media-breakpoint-up(md) {
+        grid-template-columns: 4rem auto 4rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        grid-template-columns: 8rem auto 8rem;
+        margin: calc(3 * var(--content-padding)) 0;
+    }
+
+    h3 {
+        color: var(--color-accent);
+    }
+
+    &__container {
+        overflow: hidden;
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+
+        @include media-breakpoint-up(md) {
+            grid-column: unset;
+        }
+    }
+
+    picture {
+        text-align: center;
+    }
+
+    img {
+        max-width: 80%;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transition: clip-path 0.3s ease;
+    }
+
+    .topnews__text-main, h3, .card__link--more {
+        transition: transform 0.4s ease 0.3s, opacity 0.3s ease 0.4s;
+    }
+
+    .topnews__text-main {
+        transition-delay: 0.35s, 0.45s;
+    }
+
+    .card__link--more {
+        display: inline-block;
+        transition-delay: 0.4s, 0.5s;
+    }
+
+    &.animation {
+        img {
+            clip-path: polygon(75% 0%, 75% 0%, 25% 100%, 25% 100%);
+        }
+
+        .topnews__text-main, h3, .card__link--more {
+            transform: translate3d(-100px, 0px, 0);
+            opacity: 0;
+            transition: transform 0.6s ease 0.1s, opacity 0.4s ease 0s;
+        }
+    }
+
+    button {
+        background: none;
+        border: 0;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        z-index: 2;
+        transform: translate3d(-1rem, 0, 0);
+
+        &.next {
+            grid-column: 3 / 4;
+            transform: translate3d(1rem, 0, 0);
+        }
+    }
+
+    &__wrapper {
+        --gap: calc(var(--count) * var(--space) - var(--space));
+        width: calc(100% * var(--count) + var(--gap));
+        column-gap: var(--space);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        --translateX: calc((-100% - (var(--gap) / 2)) / var(--count) * var(--current));
+        transform: translate3d(var(--translateX), 0, 0);
+    }
+
+    &__item {
+        display: grid;
+        align-content: flex-start;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+
+            h3 {
+                margin: 3rem 0;
+                margin-left: -15rem;
+            }
+
+            .picture__pattern.pattern {
+                margin: 0;
+                margin-left: 2rem;
+            }
+
+            .picture__pattern.pattern + picture {
+                margin-top: 12rem;
+                text-align: left;
+                margin-bottom: 5rem;
+            }
+        }
+    }
+
+    &__text {
+        max-width: 80%;
+        justify-self: center;
+    }
+}
