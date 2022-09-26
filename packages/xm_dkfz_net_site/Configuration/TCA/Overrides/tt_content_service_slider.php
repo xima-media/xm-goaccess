@@ -37,7 +37,7 @@ $GLOBALS['TCA']['tt_content']['types']['serviceSlider'] = [
                 'overrideChildTca' => [
                     'types' => [
                         'teaser-item' => [
-                            'showitem' => 'link, --linebreak--, overrides, --palette--;;slider-override',
+                            'showitem' => 'record_type, --linebreak--, link, --linebreak--, overrides, --palette--;;slider-override',
                         ],
                     ],
                     'columns' => [
