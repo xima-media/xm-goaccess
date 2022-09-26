@@ -38,7 +38,7 @@
         align-items: center;
 
         &.active {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, .7);
             z-index: 1;
         }
     }
@@ -95,7 +95,7 @@
         padding: 1rem;
         border: 0;
         background: $white;
-        box-shadow: 0 0 32px rgba(0, 0, 0, .5);
+        box-shadow: 0 0 16px rgba(0, 0, 0, .3);
 
         &--with-accordion {
             width: 100%;
