@@ -111,7 +111,7 @@
         .btn-close {
             border: none;
             background: transparent;
-            text-align: right;
+            justify-self: flex-end;
 
             .icon {
                 @include size(12px);
