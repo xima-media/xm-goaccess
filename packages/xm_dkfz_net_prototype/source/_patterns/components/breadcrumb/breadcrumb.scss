@@ -16,7 +16,7 @@
     flex-wrap: wrap;
 
     &__wrapper {
-        margin-top: 3rem;
+        margin-top: 1rem;
         margin-bottom: 1rem;
         display: none;
 
@@ -25,7 +25,7 @@
         }
 
         @include media-breakpoint-up(lg) {
-            margin-top: 5rem;
+
         }
     }
 

@@ -9,15 +9,18 @@
 //
 
 .header {
-    position: sticky;
-    top: -12rem;
+    position: relative;
     z-index: 99;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     background-color: var(--color-primary);
 
     @include media-breakpoint-up(md) {
+        margin-bottom: 1rem;
         padding-top: 6rem;
-        margin-bottom: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 4rem;
     }
 
     // mobile background
