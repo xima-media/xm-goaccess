@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Header">
+	<div class="content-wrapper__header">
+		<f:render partial="Header/Header" arguments="{
+                header: 'Neue Seiten',
+                layout: data.header_layout,
+				positionClass: 'm-b-0{positionClass}',
+                default: settings.defaultHeaderType}" />
+		<span class="content-wrapper__pattern pattern color-accent--gray-900 h2"></span>
+	</div>
+
+</f:section>
+<f:section name="Main">
+	<div class="jobs jobs--latest">
+		<f:for each="{pages}" as="page">
+			<f:link.page pageUid="{page.data.uid}" additionalAttributes="{aria-label: '{page.data.title}', title: '{page.data.title}'}">
+				<f:render partial="Icon" arguments="{icon:'arrow-right'}"/>
+				<h3 class="h6">{f:if(condition: page.data.nav_title, then: '{page.data.nav_title}', else: '{page.data.title}')}</h3>
+				<f:if condition="{page.data.description}">
+					<p class="card__tags">{page.data.description -> f:format.crop(maxCharacters: 50)}</p>
+				</f:if>
+			</f:link.page>
+		</f:for>
+	</div>
+</f:section>
+</html>

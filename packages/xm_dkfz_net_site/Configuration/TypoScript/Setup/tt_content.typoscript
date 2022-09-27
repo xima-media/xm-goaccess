@@ -158,4 +158,19 @@ tt_content {
       20 >
     }
   }
+
+  bw_static_template {
+    dataProcessing {
+      30 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      30 {
+        table = pages
+        pidInList = 1
+        recursive = 99
+        where = doktype=1
+        orderBy = crdate DESC
+        max = 3
+        as = pages
+      }
+    }
+  }
 }
