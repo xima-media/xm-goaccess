@@ -224,7 +224,7 @@ import './_patterns/components/organigramm/organigramm'
 
 import './_patterns/components/topnews/topnews'
 
-import './_patterns/components/topnews/news'
+import './_patterns/components/news/news'
 
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'

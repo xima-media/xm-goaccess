@@ -13,14 +13,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0 5rem;
+    margin: 2rem 0;
     text-align: center;
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
+        margin-bottom: 3.5rem;
     }
 
-    @include media-breakpoint-up(xxl) {
-
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 5rem;
     }
 
     & + .navigation--anchor {
@@ -36,7 +37,11 @@
     }
 
     &__info {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 2rem;
+        }
     }
 
     &__sub-title {
@@ -84,6 +89,7 @@
 
             .picture__pattern {
                 width: 95%;
+                --pattern-size: 1rem;
             }
         }
 

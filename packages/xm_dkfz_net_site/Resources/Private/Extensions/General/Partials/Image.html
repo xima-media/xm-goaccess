@@ -22,23 +22,26 @@
 	</f:defaultCase>
 </f:switch>
 
-<figure>
-	<div class="picture__item {f:if(condition: image, else: 'picture__item--no-image')}">
-		<span aria-hidden="true"
-			  class="picture__pattern {f:if(condition: patternStyle, then: patternStyle, else: 'pattern')}  {f:if(condition: image, else:'no-image color-accent--gray-900')}"></span>
-		<f:if condition="{image}">
-			<picture>
-				<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
-						type="image/webp">
-				<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
-						type="image/jpeg">
-				<f:image image="{image}" width="{imageSize}" cropVariant="{cropVariant}" fileExtension="jpg" class="picture__image image--responsive" loading="{f:if(condition: noLazy, else: 'lazy')}" />
-			</picture>
-		</f:if>
-		<f:if condition="{image.properties.copyright}">
-			<f:render partial="Copyright" arguments="{text: image.properties.copyright}"/>
-		</f:if>
-	</div>
+<figure class="picture__item {f:if(condition: image, else: 'picture__item--no-image')}">
+	<span aria-hidden="true"
+		  class="picture__pattern {f:if(condition: patternStyle, then: patternStyle, else: 'pattern')}  {f:if(condition: image, else:'no-image color-accent--gray-900')}"></span>
+	<f:if condition="{image}">
+		<picture>
+			<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
+					type="image/webp">
+			<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
+					type="image/jpeg">
+			<f:image image="{image}"
+					 width="{imageSize}"
+					 cropVariant="{cropVariant}"
+					 fileExtension="jpg"
+					 class="picture__image image--responsive"
+					 loading="{f:if(condition: noLazy, else: 'lazy')}"/>
+		</picture>
+	</f:if>
+	<f:if condition="{image.properties.copyright}">
+		<f:render partial="Copyright" arguments="{text: image.properties.copyright}"/>
+	</f:if>
 	<f:if condition="{image.properties.description} && !{noCaption}">
 		<figcaption class="picture__caption">
 			{image.properties.description}
