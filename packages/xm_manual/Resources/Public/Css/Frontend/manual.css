@@ -63,6 +63,10 @@ main > section > section > section > h2:first-child, main > section > section > 
 	counter-reset: counter-level-4;
 }
 
+main > section > section > section > section > h2:first-child, main > section > section > section > div > header > h3 {
+	counter-increment: counter-level-4;
+}
+
 main > section > h2:before {
 	content: counter(counter-level-1) ". ";
 }
