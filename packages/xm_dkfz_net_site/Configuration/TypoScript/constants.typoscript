@@ -27,8 +27,8 @@ page {
 pidJobList = 25
 pidLogin = 2
 pidFeUserStorage = 91
-pidNewsDetail = 102
-pidNewsStorage = 101
+pidNewsDetail = 119
+pidNewsStorage = 118
 pidUserDetail = 103
 pidUserList = 8
 pidDisruptorStorage = 101
