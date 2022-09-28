@@ -36,7 +36,9 @@
 
 		<f:for each="{newsItem.falMedia}" as="file" iteration="i">
 			<f:if condition="{i.isFirst}">
-				<f:render partial="Image" arguments="{image: file}"/>
+				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+					<f:render partial="Image" arguments="{image: file}"/>
+				</n:link>
 			</f:if>
 		</f:for>
 
@@ -45,7 +47,9 @@
 		</f:if>
 
 		<div class="topnews__text">
-			<h3>{newsItem.title}</h3>
+			<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+				<h3>{newsItem.title}</h3>
+			</n:link>
 
 			<div class="topnews__text-main">
 				<p>
@@ -66,11 +70,9 @@
 				</f:if>
 			</div>
 
-			<n:link newsItem="{newsItem}"
-					settings="{settings}"
-					class="card__link--more"
-					title="{newsItem.title}">
-				<f:translate key="more-link"/> <f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
+			<n:link newsItem="{newsItem}" settings="{settings}" class="card__link--more" title="{newsItem.title}">
+				<f:translate key="more-link"/>
+				<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
 			</n:link>
 		</div>
 	</div>
