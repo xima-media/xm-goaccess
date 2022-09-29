@@ -192,7 +192,7 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['showitem'] = '
 ';
 
 $GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides']['tt_content_items'] = [
-    'label' => 'Elemente',
+    'label' => 'Elemente (max. 20)',
     'config' => [
         'overrideChildTca' => [
             'columns' => [
