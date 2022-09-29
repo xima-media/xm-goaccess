@@ -35,18 +35,52 @@
 	<div class="news-content">
 
 		<f:if condition="{newsItem.mediaNonPreviews.0}">
-			<f:render partial="Image" arguments="{image: newsItem.mediaNonPreviews.0}" />
+			<f:render partial="Image" arguments="{image: newsItem.mediaNonPreviews.0}"/>
 		</f:if>
 
 		<f:if condition="{newsItem.teaser}">
-			<p class="text-intro" itemprop="description">
-				<f:format.html>{newsItem.teaser}</f:format.html>
-			</p>
+			<p class="news-intro h5" itemprop="description">{newsItem.teaser}</p>
 		</f:if>
 
 		<div class="news-text-wrap" itemprop="articleBody">
 			<f:format.html>{newsItem.bodytext}</f:format.html>
 		</div>
+
+		<f:if condition="{newsItem.mediaNonPreviews.1}">
+			<div class="image-slider" data-current="1">
+
+				<button class="prev" aria-label="zurück">
+					<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
+				</button>
+
+				<button class="next" aria-label="Vor">
+					<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+				</button>
+
+				<div class="image-slider__images">
+					<div class="image-slider__wrapper">
+						<f:for as="image" iteration="i" each="{newsItem.mediaNonPreviews}">
+							<f:if condition="!{i.isFirst}">
+								<div class="image-slider__item {f:if(condition: '{i.index} === 1', then: 'current')}" data-item="{i.index}">
+									<picture>
+										<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
+												type="image/webp">
+										<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
+												type="image/jpeg">
+										<f:image image="{image}"
+												 width="970"
+												 cropVariant="{cropVariant}"
+												 fileExtension="jpg"
+												 class=""
+												 loading="lazy"/>
+									</picture>
+								</div>
+							</f:if>
+						</f:for>
+					</div>
+				</div>
+			</div>
+		</f:if>
 	</div>
 
 </f:if>

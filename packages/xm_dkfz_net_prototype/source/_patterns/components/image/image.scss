@@ -131,6 +131,12 @@
             margin-right: -7rem;
         }
 
+        &--17, &--18, &--25, &--26 {
+            .pattern {
+                --pattern-size: 2rem;
+            }
+        }
+
         // In text, right
         &--17 .content-wrapper__content-image {
             max-width: 400px;

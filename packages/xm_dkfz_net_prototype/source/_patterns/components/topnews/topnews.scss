@@ -16,6 +16,10 @@
         margin: calc(3 * var(--content-padding)) 0;
     }
 
+    a:hover {
+        text-decoration: none;
+    }
+
     h3 {
         color: var(--color-accent);
     }
