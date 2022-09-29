@@ -193,6 +193,12 @@
 			<trans-unit id="tt_content_page_teaser.description" space="preserve">
 				<source>Shows a preview of pages with links</source>
 			</trans-unit>
+			<trans-unit id="tt_content_employeeSlider" space="preserve">
+				<source>Employee-Slider</source>
+			</trans-unit>
+			<trans-unit id="tt_content.employee" space="preserve">
+				<source>Employees</source>
+			</trans-unit>
 			<trans-unit id="linktext.readMore">
 				<source>Read more</source>
 			</trans-unit>

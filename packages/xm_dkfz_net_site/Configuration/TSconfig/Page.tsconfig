@@ -251,9 +251,18 @@ mod.wizards.newContentElement.wizardItems {
           CType = page_teaser
         }
       }
+
+      tt_content_employeeSlider {
+        iconIdentifier = content-carousel
+        title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_employeeSlider
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.slider.description
+        tt_content_defValues {
+          CType = employeeSlider
+        }
+      }
     }
 
-    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_serviceSlider,tt_content_page_teaser)
+    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_serviceSlider,tt_content_page_teaser, tt_content_employeeSlider)
   }
 }
 
