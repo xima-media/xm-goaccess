@@ -173,4 +173,44 @@ tt_content {
       }
     }
   }
+
+  employeeSlider =< lib.contentElement
+  employeeSlider {
+    templateName = EmployeeSlider
+    dataProcessing {
+      30 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      30 {
+        table = fe_users
+        where =
+        where.dataWrap = uid IN ({field:employees})
+        if.isTrue.field = employees
+        pidInList = {$pidFeUserStorage}
+        as = users
+        orderBy = reclist_sortby
+        selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:employees}') AS reclist_sortby
+
+        dataProcessing {
+          30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+          30 {
+            references.fieldName = logo
+            max = 1
+            as = logo
+          }
+
+          40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+          40 {
+            table = tx_xmdkfznetsite_domain_model_contact
+            where =
+            where.dataWrap = foreign_uid=({field:uid}) AND foreign_table='fe_users'
+            pidInList = {$pidFeUserStorage}
+            as = contacts
+          }
+        }
+      }
+    }
+    variables {
+      pidUserDetail = TEXT
+      pidUserDetail.value = {$pidUserDetail}
+    }
+  }
 }
