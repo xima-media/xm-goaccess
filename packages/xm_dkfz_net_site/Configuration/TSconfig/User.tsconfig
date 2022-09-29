@@ -3,3 +3,5 @@
     pageTree.showPageIdWithTitle = 1
   }
 [GLOBAL]
+
+setup.override.edit_docModuleUpload = 0
