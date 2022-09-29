@@ -205,6 +205,15 @@ tt_content {
             pidInList = {$pidFeUserStorage}
             as = contacts
           }
+
+          50 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+          50 {
+            table = fe_groups
+            where =
+            where.dataWrap = uid IN ({field:usergroup})
+            pidInList = {$pidFeUserStorage}
+            as = userGroups
+          }
         }
       }
     }
