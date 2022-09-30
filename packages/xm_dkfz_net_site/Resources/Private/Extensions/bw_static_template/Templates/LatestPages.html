@@ -12,16 +12,19 @@
 
 </f:section>
 <f:section name="Main">
-	<div class="jobs jobs--latest">
-		<f:for each="{pages}" as="page">
-			<f:link.page pageUid="{page.data.uid}" additionalAttributes="{aria-label: '{page.data.title}', title: '{page.data.title}'}">
+	<f:for each="{pages}" as="page">
+		<div class="card card--image-top card--md card--image-size-md card--new-page">
+			<f:link.page class="card__link card__link--hidden" pageUid="{page.data.uid}"
+						 additionalAttributes="{aria-label: '{page.data.title}', title: '{page.data.title}'}">
 				<f:render partial="Icon" arguments="{icon:'arrow-right'}"/>
-				<h3 class="h6">{f:if(condition: page.data.nav_title, then: '{page.data.nav_title}', else: '{page.data.title}')}</h3>
-				<f:if condition="{page.data.description}">
-					<p class="card__tags">{page.data.description -> f:format.crop(maxCharacters: 50)}</p>
-				</f:if>
 			</f:link.page>
-		</f:for>
-	</div>
+			<div class="card__content">
+				<div class="card__header ">
+					<h3 class="card__title h6">{f:if(condition: page.data.nav_title, then: '{page.data.nav_title}', else: '{page.data.title}')}</h3>
+					<p class="card__sub-title">{page.data.description -> f:format.crop(maxCharacters: 50)}</p>
+				</div>
+			</div>
+		</div>
+	</f:for>
 </f:section>
 </html>

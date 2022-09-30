@@ -37,6 +37,18 @@ $tempFields = [
             'default' => '',
         ],
     ],
+    'employees' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.employee',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectMultipleSideBySide',
+            'foreign_table' => 'fe_users',
+            'foreign_table_where' => 'ORDER BY fe_users.crdate',
+            'size' => 5,
+            'minitems' => 1,
+        ],
+    ],
 ];
 
 // Add all fields to tt_content

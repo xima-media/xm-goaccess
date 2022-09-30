@@ -1,0 +1,102 @@
+<f:layout name="Default"/>
+<f:section name="Header">
+	<div class="content-wrapper__header">
+		<f:render partial="Header/Header" arguments="{
+                header: data.header,
+                layout: data.header_layout,
+				positionClass: 'm-b-0{positionClass}',
+                default: settings.defaultHeaderType}"/>
+		<span class="content-wrapper__pattern pattern color-accent--gray-900 h2"></span>
+	</div>
+</f:section>
+
+<f:section name="Main">
+	<div class="carousel carousel--color-primary carousel__content-teaser"
+		 data-cols="{&quot;xs&quot;: &quot;1&quot;, &quot;sm&quot;: &quot;2&quot;, &quot;md&quot;: &quot;3&quot;, &quot;lg&quot;: &quot;4&quot;}"
+		 data-pagination-style="{&quot;xs&quot;: &quot;fraction&quot;, &quot;sm&quot;: &quot;bullets&quot;, &quot;md&quot;: &quot;bullets&quot;, &quot;lg&quot;: &quot;bullets&quot;}"
+		 data-pagination-colored="false"
+		 data-count="{users -> f:count()}">
+		<div class="carousel__content swiper">
+			<div class="carousel__body swiper-wrapper">
+				<f:for each="{users}" as="user" iteration="i">
+					<f:variable name="employeeFunction" value=""/>
+					<f:for each="{user.contacts}" as="contact">
+						<f:if condition="!{employeeFunction}">
+							<f:variable name="employeeFunction" value="{contact.data.function}"/>
+						</f:if>
+					</f:for>
+
+					<f:variable name="employeeGroup" value=""/>
+					<f:for each="{user.userGroups}" as="userGroup">
+						<f:if condition="!{employeeGroup} && {userGroup.data.uid} != 1">
+							<f:variable name="employeeGroup" value="{userGroup.data.dkfz_number}&nbsp;-&nbsp;{userGroup.data.title}"/>
+						</f:if>
+					</f:for>
+
+					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
+						<div class="card card--image-top card--md card--image-size-xs card--employee">
+							<f:link.action action="show"
+										   class="card__link card__link--hidden"
+										   additionalAttributes="{aria-label: '{user.data.last_name},&nbsp;{user.data.first_name}'}"
+										   pageUid="{pidUserDetail}"
+										   pluginName="Usershow"
+										   controller="User"
+										   arguments="{user: user.data.uid}">
+								<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
+								Mehr erfahren
+							</f:link.action>
+							<div class="card__image">
+								<figure class="picture picture--with-image picture--with-color picture--orientation-xs-" data-color="primary" data-pattern-color="transparent">
+									<div class="picture__item image-color--primary">
+										<f:if condition="{user.logo.0}">
+											<f:then>
+												<picture>
+													<source srcset="{f:uri.image(image:user.logo.0, width:'150', fileExtension: 'webp')}"
+															type="image/webp">
+													<source srcset="{f:uri.image(image:user.logo.0, width:'150', fileExtension: 'jpg')}"
+															type="image/jpeg">
+													<img src="{f:uri.image(image:user.logo.0, width:'150', fileExtension: 'jpg')}"
+														 alt="{user.logo.0.alternative}"
+														 class="picture__image image--responsive"
+														 loading="lazy"/>
+												</picture>
+											</f:then>
+											<f:else>
+												<img width="150" class="picture__image image--responsive"
+													 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
+													 alt="No profile picture"/>
+											</f:else>
+										</f:if>
+									</div>
+								</figure>
+							</div>
+							<div class="card__content">
+								<div class="card__header">
+									<h3 class="card__title">{user.data.last_name},&nbsp;{user.data.first_name}</h3>
+									<p class="card__sub-title">{employeeFunction}</p>
+								</div>
+								<div class="card__body">
+									<div class="card__text">
+										<p><f:format.html>{employeeGroup}</f:format.html></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</f:for>
+			</div>
+		</div>
+		<div class="carousel__pagination swiper-pagination"></div>
+
+		<button class="carousel__button swiper-button-prev" aria-label="Zurück">
+			<svg class="icon icon--chevron-left icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-chevron-left')}"></use>
+			</svg>
+		</button>
+		<button class="carousel__button swiper-button-next" aria-label="Vor">
+			<svg class="icon icon--chevron-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
+				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-chevron-right')}"></use>
+			</svg>
+		</button>
+	</div>
+</f:section>
