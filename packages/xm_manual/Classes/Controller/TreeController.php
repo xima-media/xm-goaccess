@@ -25,6 +25,7 @@ class TreeController extends \TYPO3\CMS\Backend\Controller\Page\TreeController
         $referer = $params->getHttpReferer();
 
         if (str_contains($referer, 'help/XmManual')) {
+            $this->hiddenRecords = [];
             return $this->getPageTreeRepositoryForManualModule();
         }
 

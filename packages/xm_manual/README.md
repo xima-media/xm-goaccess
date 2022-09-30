@@ -11,3 +11,18 @@ This extension provides a new page type for generating a editor manual that can 
    3. Include static PageTS template
 3. Create new TypoScript template
    1. Include static TypoScript template
+
+
+## Export
+
+To export the pagetree of the manual, you could use the following command:
+
+```
+typo3cms impexp:export --type t3d_compressed --levels 999 --table _ALL --include-related --include-static sys_file_storage _ALL --pid <UID>
+```
+
+## Import
+
+```
+typo3cms impexp:import --update-records  fileadmin/user_upload/_temp_/importexport/<FILENAME>.t3d
+```
