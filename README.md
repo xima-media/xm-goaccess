@@ -1,6 +1,6 @@
 # TYPO3 goaccess.io integration
 
-This TYPO3 extensions shipps Dashboard widgets and a backend module to display various [goaccess.io](https://goaccess.io) metrics.
+This TYPO3 extensions ships Dashboard widgets and a backend module to display various [goaccess.io](https://goaccess.io) metrics.
 
 ![backend_dashboard](Documentation/backend-goaccess.jpg)
 
