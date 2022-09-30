@@ -167,6 +167,43 @@ TCEFORM {
     showinpreview.disabled = 1
   }
 
+  sys_file_metadata {
+    description.disabled = 1
+    keywords.disabled = 1
+    ranking.disabled = 1
+    download_name.disabled = 1
+    #		Reiter Acess
+    access.disabled = 0
+    visibility.disabled = 0
+    visible.disabled = 1
+    status.disabled = 1
+    fe_groups.disabled = 1
+    #		Reiter Categories
+    categories.disabled = 1
+    #		Reiter Metadata
+    creator.disabled = 1
+    creator_tool.disabled = 1
+    publisher.disabled = 1
+    source.disabled = 1
+    copyright.disabled = 0
+    language.disabled = 1
+    location_country.disabled = 1
+    location_region.disabled = 1
+    location_city.disabled = 1
+    geo_location.disabled = 1
+    gps.disabled = 1
+    latitude.disabled = 1
+    longitude.disabled = 1
+    content_creation_date.disabled = 1
+    content_modification_date.disabled = 1
+    #		Reiter Camera
+    color_space.disabled = 1
+    metrics.disabled = 1
+    width.disabled = 1
+    height.disabled = 1
+    unit.disabled = 1
+  }
+
   fe_users {
     member_nr.disabled = 1
     company.disabled = 1
