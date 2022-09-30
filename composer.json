@@ -13,6 +13,13 @@
 		"php": "^8.0",
 		"typo3/cms-dashboard": "^11.5"
 	},
+	"require-dev": {
+		"phpmd/phpmd": "^2.6.0",
+		"squizlabs/php_codesniffer": "^3.4",
+		"friendsofphp/php-cs-fixer": "^3.3",
+		"vimeo/psalm": "^4.0",
+		"phpstan/phpstan": "^1.6"
+	},
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "xm_goaccess"
@@ -21,6 +28,19 @@
 	"autoload": {
 		"psr-4": {
 			"Xima\\XmGoaccess\\": "Classes"
+		}
+	},
+	"scripts": {
+		"php:fixer": "vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
+		"php:stan": "php vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
+		"ci:php:lint": "find *.php Classes Configuration -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+		"ci:php:fixer": "vendor/bin/php-cs-fixer --config=Configuration/php-cs-fixer.php fix --dry-run -v --show-progress=dots Classes Configuration",
+		"ci:php:stan": "vendor/bin/phpstan --no-progress"
+	},
+	"config": {
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
 		}
 	}
 }
