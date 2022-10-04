@@ -12,9 +12,9 @@ editor:
       - { name: 'format', items: ['Paste', 'RemoveFormat'] }
       - { name: 'icon', items: ['IconPicker'] }
     stylesSet:
-      - { name: "Grün", element: "span", styles: { background-color: "#c4f3c6", font-size: "75%", padding: ".25em .5em", color: "#215023", border-radius: ".25rem" } }
-      - { name: "Blau", element: "span", styles: { background-color: "#c4e8f3", font-size: "75%", padding: ".25em .5em", color: "#214550", border-radius: ".25rem" } }
-      - { name: "Rot", element: "span", styles: { background-color: "#f2cece", font-size: "75%", padding: ".25em .5em", color: "#502121", border-radius: ".25rem" } }
+      - { name: "Grün", element: "span", styles: { background-color: "#c4f3c6", font-size: "75%", padding: ".25em .5em", color: "#215023", border-radius: ".25rem", white-space: "nowrap" } }
+      - { name: "Blau", element: "span", styles: { background-color: "#c4e8f3", font-size: "75%", padding: ".25em .5em", color: "#214550", border-radius: ".25rem", white-space: "nowrap" } }
+      - { name: "Rot", element: "span", styles: { background-color: "#f2cece", font-size: "75%", padding: ".25em .5em", color: "#502121", border-radius: ".25rem", white-space: "nowrap" } }
     removeButtons:
       - Anchor
       - Superscript
