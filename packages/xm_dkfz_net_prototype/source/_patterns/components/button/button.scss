@@ -112,16 +112,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .375rem;
+    padding: 2px;
     border-width: 0;
 
     .picture {
         margin: -.375rem;
     }
 
-    //[class*='icon-'] {
-    //    color: inherit;
-    //}
+    figure {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 100%;
+    }
+
+    img {
+        max-width: 100%;
+    }
 
     &.fx--hover,
     &:hover {
