@@ -53,6 +53,9 @@ page {
   }
 }
 
+pdf < page
+pdf.typeNum = 1664618986
+
 tt_content {
   mtext =< tt_content.textmedia
   mtext.templateName = Mtext

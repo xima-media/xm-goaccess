@@ -13,7 +13,8 @@
 		"dompdf/dompdf": "^2.0",
 		"typo3/cms-rte-ckeditor": "^11.5",
 		"blueways/bw-focuspoint-images": "^3.0",
-		"blueways/bw-icons": "^2.0"
+		"blueways/bw-icons": "^2.0",
+		"ext-fileinfo": "*"
 	},
 	"extra": {
 		"typo3/cms": {

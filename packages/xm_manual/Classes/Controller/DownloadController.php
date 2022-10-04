@@ -21,7 +21,7 @@ class DownloadController
             null,
             '',
             '',
-            '',
+            '&type=1664618986',
         );
 
         $html = file_get_contents($targetUrl);
