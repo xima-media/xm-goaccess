@@ -73,7 +73,7 @@
 		"xima/xm-kesearch-remote": "*@dev",
 		"tomasnorre/crawler": "^11.0",
 		"xima/xm-manual": "*@dev"
-	},
+    },
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"friendsofphp/php-cs-fixer": "^3.6.0",
