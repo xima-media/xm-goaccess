@@ -29,7 +29,7 @@
 					</div>
 
 
-					<f:if condition="{teaser.links -> f:count()} > 1">
+					<f:if condition="{teaser.links}">
 						<f:then>
 							<div class="list">
 								<ul>
@@ -37,7 +37,9 @@
 										<f:link.typolink class="link--primary" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
 									</li>
 									<f:for each="{teaser.links}" as="link" iteration="i">
-										<f:render partial="Linklist" arguments="{link: link}" />
+										<f:if condition="{link.data.uid}">
+											<f:render partial="Linklist" arguments="{link: link}" />
+										</f:if>
 									</f:for>
 								</ul>
 							</div>
@@ -47,7 +49,6 @@
 						</f:else>
 					</f:if>
 				</div>
-
 			</div>
 		</div>
 	</f:for>
