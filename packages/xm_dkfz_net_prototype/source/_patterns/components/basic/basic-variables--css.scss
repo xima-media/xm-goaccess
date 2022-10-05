@@ -10,6 +10,7 @@
     @each $name, $value in $colors {
         --color-#{$name}: #{$value};
     }
+    --color-gray-white-reversed: rgba(0, 0, 0, 0.05);
 
     // Typography
     --font-family-serif: #{$font-family-serif};
