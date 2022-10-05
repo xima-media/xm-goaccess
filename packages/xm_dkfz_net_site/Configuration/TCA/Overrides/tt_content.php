@@ -58,6 +58,6 @@ $tempFields = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'frames',
-    'color,--linebreak--',
+    'color',
     'before:layout'
 );

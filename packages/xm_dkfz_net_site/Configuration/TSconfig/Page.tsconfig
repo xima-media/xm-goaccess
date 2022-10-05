@@ -48,24 +48,14 @@ TCEFORM {
     subheader.types.list.disabled = 0
 
     frame_class {
-      removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
-      addItems {
-        color = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.frame_class.color
-      }
+      disabled = 1
+      removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none
 
-      types.infobox.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,none,cyan,yellow,orange
       types.infobox.addItems.box = Box
-
-      types.quote.removeItems = ruler-before,ruler-after,indent,indent-left,indent-right,cyan,yellow,orange
+      types.infobox.disabled = 0
     }
 
-    layout {
-      removeItems = 3
-      altLabels.1 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.1
-      altLabels.2 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.layout.2
-
-      types.image.removeItems = 0,1,3
-    }
+    layout.disabled = 1
 
     image {
       types {
