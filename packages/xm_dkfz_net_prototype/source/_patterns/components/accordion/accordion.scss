@@ -91,12 +91,11 @@
 
     &-body {
         position: relative;
-        padding: var(--space-doubled) 0;
         max-width: $container-md-widths;
         margin: auto;
 
-        >.frame:first-child {
-            margin-top: var(--space-xl);
+        > .frame:first-child .content-wrapper__header {
+            margin-top: 1rem;
         }
 
         // infobox in accordion
