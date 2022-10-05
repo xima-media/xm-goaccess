@@ -105,6 +105,7 @@ deploy-dkfz-production:
 
 reset-staging-dkfz:
   extends: .deploy-prepare
+  needs: [ "build-php" ]
   stage: sync
   only:
     variables:
