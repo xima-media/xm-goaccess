@@ -44,6 +44,8 @@ class NavigationAnchor {
         const navItems = nav.querySelector<HTMLElement>('.navigation__items');
         const navItem = navItems.querySelectorAll<HTMLElement>('.navigation__link');
         const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
+        const observerThreshold: number = 0.75
+        let calculatedObserverThreshold: number;
 
         /**
          * menu desktop
@@ -67,6 +69,7 @@ class NavigationAnchor {
         // change the active class on anchor menu item
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
+              calculatedObserverThreshold = this.calculateObserverThresholdByViewport(entry, observerThreshold);
                 if(entry.isIntersecting) {
                   let entryTarget = entry.target;
                   let entryTargetId = '#' + entryTarget.getAttribute('id')
@@ -85,7 +88,7 @@ class NavigationAnchor {
                 }
             })
         }, {
-            threshold: 0.75
+            threshold: calculatedObserverThreshold
         })
 
         // filter the section for observe
@@ -167,6 +170,15 @@ class NavigationAnchor {
         //         nav.classList.remove("sticky");
         //     }
         // })
+    }
+
+  /**
+   * @param observerEntry
+   * @param threshold
+   * @protected
+   */
+    protected calculateObserverThresholdByViewport(observerEntry: IntersectionObserverEntry, threshold: number) {
+      return ((window.innerHeight * threshold) / observerEntry.target.getBoundingClientRect().height) * threshold;
     }
 }
 
