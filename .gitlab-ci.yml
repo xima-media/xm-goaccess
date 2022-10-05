@@ -112,10 +112,11 @@ reset-staging-dkfz:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - apk add --quiet php
-    - vendor/bin/dep db:rmdump staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
-    - vendor/bin/dep db:upload staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
-    - vendor/bin/dep db:decompress staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
-    - vendor/bin/dep db:import  staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - vendor/bin/dep db:upload staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:rmdump staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:decompress staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:import  staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep media:push  staging-dkfz --no-interaction -vvv
   when: manual
 
 backup-production-dkfz:
