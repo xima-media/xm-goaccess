@@ -110,6 +110,7 @@ reset-staging-dkfz:
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
+    - apk add --quiet php
     - vendor/bin/dep db:copy production-dkfz --options=target:staging-dkfz --no-interaction -vvv
     - vendor/bin/dep media:copy production-dkfz --options=target:staging-dkfz --no-interaction
   when: manual
