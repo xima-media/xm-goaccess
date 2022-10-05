@@ -114,7 +114,7 @@ return [
                 'dkfz' => [
                     'description' => 'DKFZ OAuth Login',
                     'iconIdentifier' => 'dkfz-d',
-                    'label' => 'DKFZ',
+                    'label' => 'Im Backend anmelden',
                     'implementationClassName' => \Xima\XmDkfzNetSite\Client\Provider\Dkfz::class,
                     'options' => [
                         'clientId' => '8086662d-c0d6-4daa-b154-8f6524bbf6a9',
