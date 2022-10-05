@@ -19,32 +19,8 @@
 		<div class="carousel__content swiper">
 			<div class="carousel__body swiper-wrapper">
 				<f:for each="{users}" as="user" iteration="i">
-					<f:variable name="employeeFunction" value=""/>
-					<f:for each="{user.contacts}" as="contact">
-						<f:if condition="!{employeeFunction}">
-							<f:variable name="employeeFunction" value="{contact.data.function}"/>
-						</f:if>
-					</f:for>
-
-					<f:variable name="employeeGroup" value=""/>
-					<f:for each="{user.userGroups}" as="userGroup">
-						<f:if condition="!{employeeGroup} && {userGroup.data.uid} != 1">
-							<f:variable name="employeeGroup" value="{userGroup.data.dkfz_number}&nbsp;-&nbsp;{userGroup.data.title}"/>
-						</f:if>
-					</f:for>
-
 					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 						<div class="card card--image-top card--md card--image-size-xs card--employee">
-							<f:link.action action="show"
-										   class="card__link card__link--hidden"
-										   additionalAttributes="{aria-label: '{user.data.last_name},&nbsp;{user.data.first_name}'}"
-										   pageUid="{pidUserDetail}"
-										   pluginName="Usershow"
-										   controller="User"
-										   arguments="{user: user.data.uid}">
-								<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
-								Mehr erfahren
-							</f:link.action>
 							<div class="card__image">
 								<figure class="picture picture--with-image picture--with-color picture--orientation-xs-" data-color="primary" data-pattern-color="transparent">
 									<div class="picture__item image-color--primary">
@@ -72,14 +48,31 @@
 							</div>
 							<div class="card__content">
 								<div class="card__header">
-									<h3 class="card__title">{user.data.last_name},&nbsp;{user.data.first_name}</h3>
-									<p class="card__sub-title">{employeeFunction}</p>
+									<f:link.action action="show"
+												   additionalAttributes="{aria-label: '{user.data.last_name},&nbsp;{user.data.first_name}'}"
+												   pageUid="{pidUserDetail}"
+												   pluginName="Usershow"
+												   controller="User"
+												   arguments="{user: user.data.uid}">
+										<h3 class="card__title h5">{user.data.last_name},&nbsp;{user.data.first_name}</h3>
+									</f:link.action>
 								</div>
-								<div class="card__body">
-									<div class="card__text">
-										<p><f:format.html>{employeeGroup}</f:format.html></p>
-									</div>
-								</div>
+							</div>
+							<div class="card__contact">
+								<f:if condition="{user.data.email}">
+									<p class="contact__item">
+										<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+										<f:link.email email="{user.data.email}">{user.data.email}</f:link.email>
+									</p>
+								</f:if>
+								<f:for each="{user.contacts}" as="contact">
+									<f:if condition="{contact.data.recordType} == 0">
+										<p class="contact__item">
+											<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+											<a href="tel:{contact.data.number}">{contact.data.number}</a>
+										</p>
+									</f:if>
+								</f:for>
 							</div>
 						</div>
 					</div>
