@@ -252,6 +252,11 @@ class PhoneBookUtility
         });
     }
 
+    public function updatePhoneBookEntry(PhoneBookEntry $entry): void
+    {
+        $this->phoneBookEntries[$entry->id] = $entry;
+    }
+
     /**
      * @param array<string> $numbers
      * @return array<PhoneBookAbteilung>

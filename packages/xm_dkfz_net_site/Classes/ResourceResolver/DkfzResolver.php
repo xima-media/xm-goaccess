@@ -27,7 +27,7 @@ class DkfzResolver extends AbstractResolver
         }
 
         $beUser['disable'] =  0;
-        $beUser['admin'] = 1;
+        $beUser['admin'] = 0;
 
         if (!$beUser['realName']) {
             $beUser['realName'] = $remoteUser['unique_name'];

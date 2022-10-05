@@ -35,6 +35,7 @@ class ImportBeUserCommand extends AbstractUserImportCommand
 
     protected function checkUserAccess(): void
     {
+        $this->fakeIntranetGroupForUsers();
         $this->skipNewUsersWithoutIntranetGroup();
         $this->deleteUpdateUsersWithoutIntranetGroup();
     }
@@ -59,6 +60,37 @@ class ImportBeUserCommand extends AbstractUserImportCommand
                 $index = array_search($entry->id, $this->compareResult->dkfzIdsToUpdate);
                 unset($this->compareResult->dkfzIdsToUpdate[$index]);
                 $this->compareResult->dkfzIdsToDelete[] = $entry->id;
+            }
+        }
+    }
+
+    protected function fakeIntranetGroupForUsers(): void
+    {
+        $usersToFakeGroupFor = [
+            'm.ferg@dkfz-heidelberg.de',
+            'm.steiner@dkfz-heidelberg.de',
+            'h.metzger@dkfz-heidelberg.de',
+            'a.wenskus@dkfz-heidelberg.de',
+            'hollyn.hartlep@dkfz-heidelberg.de',
+            'larissa.fritzenschaf@kitz-heidelberg.de',
+            'emre.turpcu@dkfz-heidelberg.de',
+            's.latzko@dkfz-heidelberg.de',
+            'j.kapeller@dkfz-heidelberg.de'
+        ];
+
+        $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        foreach ($phoneBookEntriesToAdd as $entry) {
+            if (in_array($entry->mail, $usersToFakeGroupFor)) {
+                $entry->gruppen = 'Intranet-Redakteure';
+                $this->phoneBookUtility->updatePhoneBookEntry($entry);
+            }
+        }
+
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        foreach ($phoneBookEntriesToUpdate as $entry) {
+            if (in_array($entry->mail, $usersToFakeGroupFor)) {
+                $entry->gruppen = 'Intranet-Redakteure';
+                $this->phoneBookUtility->updatePhoneBookEntry($entry);
             }
         }
     }
