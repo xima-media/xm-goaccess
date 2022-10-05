@@ -8,8 +8,6 @@
 @import 'EXT:luxletter/Configuration/TypoScript/FluidStyledMailContent/constants.typoscript'
 @import 'EXT:bw_static_template/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:ke_search/Configuration/TypoScript/constants.typoscript'
-@import 'EXT:ns_instagram/Configuration/TypoScript/constants.typoscript'
-@import 'EXT:ns_twitter/Configuration/TypoScript/constants.typoscript'
 
 // own
 page {
