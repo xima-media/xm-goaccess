@@ -12,7 +12,7 @@
 		<div class="topnews__wrapper">
 			<f:for each="{news}" as="newsItem" iteration="i">
 				<n:excludeDisplayedNews newsItem="{newsItem}"/>
-				<f:render section="NewsItem" arguments="{newsItem: newsItem, i: i}"/>
+				<f:render section="NewsItem" arguments="{newsItem: newsItem, k:i}"/>
 			</f:for>
 		</div>
 	</div>
@@ -21,12 +21,6 @@
 	<button class="next" aria-label="Vor">
 		<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
 	</button>
-
-	<div class="topnews__bullets">
-		<f:for each="{news}" as="newsItem" iteration="i">
-			<a href="#" class=""></a>
-		</f:for>
-	</div>
 
 </div>
 
@@ -45,6 +39,15 @@
 		<f:if condition="!{newsItem.falMedia}">
 			<f:render partial="Image" arguments=""/>
 		</f:if>
+
+		<div class="topnews__bullets">
+			<f:variable name="numbers" value="{0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7}"/>
+			<f:for each="{numbers}" as="nr" iteration="j">
+				<f:if condition="{j.index} < {k.total}">
+					<a href="#" class="{f:if(condition: '{j.index} == {k.index}', then: 'active')}"></a>
+				</f:if>
+			</f:for>
+		</div>
 
 		<div class="topnews__text">
 			<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
