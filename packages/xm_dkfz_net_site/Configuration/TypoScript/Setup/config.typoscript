@@ -9,15 +9,5 @@ config {
   concatenateCss = 1
   admPanel = 1
 
-  htmlTag.attributes.class = background--gray-100
   htmlTag.attributes.style = --scrollbar-width:17px;
-
-  # FeLogin
-  typolinkLinkAccessRestrictedPages = 2
-  typolinkLinkAccessRestrictedPages_addParams = &return_url=###RETURN_URL###
 }
-
-# Just for the styleguide
-[page["uid"] == 93]
-  config.htmlTag.attributes.class = background--white
-[end]

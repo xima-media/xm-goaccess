@@ -7,6 +7,10 @@ page {
     extbase.controllerExtensionName = XmDkfzNetSite
   }
 
+  bodyTag >
+  bodyTagCObject = TEXT
+  bodyTagCObject.dataWrap = <body id="p{field:uid}">
+
   10 = FLUIDTEMPLATE
   10 {
     templateName = Default
