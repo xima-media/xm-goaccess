@@ -226,6 +226,8 @@ import './_patterns/components/topnews/topnews'
 
 import './_patterns/components/news/news'
 
+import './_patterns/components/homepage/homepage'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

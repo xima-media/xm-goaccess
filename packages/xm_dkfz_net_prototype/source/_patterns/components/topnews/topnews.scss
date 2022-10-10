@@ -13,8 +13,9 @@
 
     @include media-breakpoint-up(lg) {
         grid-template-columns: 8rem auto 8rem;
-        margin: calc(3 * var(--content-padding)) 0;
+        margin: calc(1 * var(--content-padding)) 0;
     }
+
 
     a:hover {
         text-decoration: none;
@@ -31,6 +32,10 @@
 
         @include media-breakpoint-up(md) {
             grid-column: unset;
+        }
+
+        @include media-breakpoint-up(xxl) {
+            grid-column: 1 / 4;
         }
     }
 
@@ -77,10 +82,25 @@
         z-index: 2;
         transform: translate3d(-1rem, 0, 0);
 
+        @include media-breakpoint-up(xxl) {
+            transform: translate3d(-8rem, 0, 0);
+
+            svg {
+                width: 3rem;
+                height: auto;
+            }
+        }
+
         &.next {
             grid-column: 3 / 4;
             transform: translate3d(1rem, 0, 0);
+
+            @include media-breakpoint-up(xxl) {
+                transform: translate3d(8rem, 0, 0);
+            }
         }
+
+
     }
 
     &__wrapper {

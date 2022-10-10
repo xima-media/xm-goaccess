@@ -10,10 +10,6 @@
 
 .content-wrapper {
 
-    &--expanded {
-        --content-width: 1230px;
-    }
-
     &__header {
         position: relative;
         justify-content: space-between;
@@ -288,9 +284,6 @@
     }
 
     &.frame-type-serviceSlider {
-
-        --content-width: #{$container-default-widths};
-
 
         .content-wrapper {
             &__content {

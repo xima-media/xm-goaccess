@@ -1,0 +1,71 @@
+/*
+Homepage structure:
+    1. Welcome message
+    2. Topnews
+    3.1. More news
+    3.2. Short news
+    4. Service slider
+    5. Service slider
+    6. Events
+    7. Newest Employee
+    8.1. Jobs
+    8.2. Newest Pages
+    9. Offer
+    10.1. Twitter
+    10.2. Instagram
+    11. More
+ */
+
+@mixin expandContent {
+    --content-width: 1170px;
+
+    & > * {
+        background: #FFF;
+        box-shadow: 0 0 0 2rem #FFF, 10rem 0 0 2rem #FFF, -10rem 0 0 2rem #FFF;
+    }
+}
+
+#p1 {
+    background-color: var(--color-gray-100);
+}
+
+#cwelcome {
+    --content-width: 1170px;
+}
+
+// Topnews
+#c105 {
+    @include expandContent;
+
+    & > * {
+        margin-top: -16rem;
+    }
+}
+
+// Events
+#c5 {
+    @include expandContent;
+}
+
+// 4. & 5. Service slider
+#c103, #c104 {
+    --content-width: 1170px;
+    background-color: $color-cyan;
+}
+#c103 {
+    --content-padding: 4rem;
+}
+
+// 8. Jobs
+#c113 {
+    --content-width: 1170px;
+    background-color: $color-yellow;
+
+    .frame {
+        background: rgba(255,255,255,0.8);
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+}
