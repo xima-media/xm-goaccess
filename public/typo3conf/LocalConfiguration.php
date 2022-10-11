@@ -179,12 +179,6 @@ return [
         'xm_kesearch_remote' => [
             'cache_dir' => '../var/xm_kesearch_remote',
         ],
-        'xm_typo3_manual' => [
-            'fileidentifiers' => [
-                'manual-html' => '',
-                'manual-pdf' => '',
-            ],
-        ],
     ],
     'FE' => [
         'compressionLevel' => 9,
