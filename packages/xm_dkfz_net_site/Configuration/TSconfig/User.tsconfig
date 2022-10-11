@@ -4,4 +4,43 @@
   }
 [GLOBAL]
 
+# Hide fields in usersettings for users of usergroup 1 (Base-Redakteur)
+[1 in backend.user.userGroupIds]
+  # Allow recursive copy and disable field
+  setup.fields.copyLevels.disabled = 1
+  setup.override.copyLevels = 1
+
+  # Allow upload but disable field
+  setup.fields.edit_docModuleUpload.disabled = 1
+
+  setup.fields.edit_RTE.disabled = 1
+  setup.override.edit_RTE = 1
+
+  setup.fields.resizeTextareas.disabled = 1
+  setup.override.resizeTextareas = 1
+
+  setup.fields.resizeTextareas_MaxHeight.disabled = 1
+  setup.override.resizeTextareas_MaxHeight = 600
+
+  setup.fields.titleLen.disabled = 1
+  setup.override.titleLen = 50
+
+  # Specific setting for news extension
+  setup.fields.newsoverlay.disabled = 1
+  setup.override.newsoverlay = 0
+
+  setup.fields.showHiddenFilesAndFolders.disabled = 1
+  setup.override.showHiddenFilesAndFolders = 0
+
+  # Title format is [title] : [sitename]
+  setup.fields.backendTitleFormat.disabled = 1
+  setup.override.backendTitleFormat = titleFirst
+
+  setup.fields.tx_oauth2_client_configs.disabled = 1
+
+  # Users should not be able to change the password as they login with oAuth
+  setup.fields.password.disabled = 1
+[end]
+
+
 setup.override.edit_docModuleUpload = 0
