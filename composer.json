@@ -92,6 +92,9 @@
 	},
 	"extra": {
 		"patches": {
+			"tomasnorre/crawler": [
+				"patches/tomasnorre-crawler-classes-service-urlservice-php.patch"
+			],
 			"tpwd/ke_search": [
 				"patches/tpwd-ke-search-classes-indexer-types-page-php.patch"
 			],

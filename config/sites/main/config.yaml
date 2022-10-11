@@ -1,9 +1,9 @@
 base: '%env("TYPO3_BASE_URL")%'
 baseVariants:
   -
-    base: '%env("TYPO3_BASE")%'
-    condition: 'applicationContext == "Testing/Staging"'
-enabled_oauth2_providers: gitlab
+    base: '%env("TYPO3_RELEASE_URL")%'
+    condition: 'getenv("IS_RELEASE_REQUEST")'
+enabled_oauth2_providers: xima
 languages:
   -
     title: Deutsch
