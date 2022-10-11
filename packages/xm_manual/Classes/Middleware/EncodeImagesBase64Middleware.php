@@ -11,10 +11,6 @@ use TYPO3\CMS\Core\Http\NullResponse;
 use TYPO3\CMS\Core\Http\Stream;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-/**
- * prefix all links and src with $GLOBALS['TSFE']->absRefPrefix
- * Class GenerateAbsoluteLinksMiddleware
- */
 class EncodeImagesBase64Middleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -30,7 +26,7 @@ class EncodeImagesBase64Middleware implements MiddlewareInterface
             $body = $response->getBody();
             $body->rewind();
             $contents = $response->getBody()->getContents();
-            $content = $this->parseRelativeToAbsoluteUrls($contents);
+            $content = $this->parseImageUrlsAndEncodeBase64($contents);
             $body = new Stream('php://temp', 'rw');
             $body->write($content);
             $response = $response->withBody($body);
@@ -39,10 +35,9 @@ class EncodeImagesBase64Middleware implements MiddlewareInterface
         return $response;
     }
 
-    protected function parseRelativeToAbsoluteUrls(string $input = ''): string
+    protected function parseImageUrlsAndEncodeBase64(string $input = ''): string
     {
         $pattern = '/<img[^>]+src="([^">]+)"/';
-        //preg_match_all($pattern, $input, $images);
 
         return preg_replace_callback($pattern, function ($img) {
             if (!is_array($img)) {
@@ -64,6 +59,6 @@ class EncodeImagesBase64Middleware implements MiddlewareInterface
             $fileType = mime_content_type($path);
             $newSrc = 'data:' . $fileType . ';base64,' . base64_encode($fileContent);
             return str_replace($img[1], $newSrc, $img[0]);
-        }, $input);
+        }, $input) ?? '';
     }
 }
