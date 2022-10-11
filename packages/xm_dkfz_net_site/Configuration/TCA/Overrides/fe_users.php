@@ -4,6 +4,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3_MODE') || die();
 
+$GLOBALS['TCA']['fe_users']['ctrl']['label_userFunc'] = \Xima\XmDkfzNetSite\Userfuncs\Tca::class . '->feUserLabel';
 $GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = ['first_name', 'last_name', 'name'];
 $GLOBALS['TCA']['fe_users']['columns']['bookmarks']['config']['allowed'] = 'pages,fe_users,sys_file,tx_news_domain_model_news';
 
