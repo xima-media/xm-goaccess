@@ -10,7 +10,7 @@ use Xima\XmManual\Database\Query\Restriction\DocumentTypeExclusiveRestriction;
 
 class TreeController extends \TYPO3\CMS\Backend\Controller\Page\TreeController
 {
-    protected ServerRequestInterface $request;
+    protected ?ServerRequestInterface $request = null;
 
     public function fetchDataAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -20,6 +20,10 @@ class TreeController extends \TYPO3\CMS\Backend\Controller\Page\TreeController
 
     protected function getPageTreeRepository(): PageTreeRepository
     {
+        if (!$this->request) {
+            return parent::getPageTreeRepository();
+        }
+
         /** @var \TYPO3\CMS\Core\Http\NormalizedParams $params */
         $params = $this->request->getAttribute('normalizedParams');
         $referer = $params->getHttpReferer();
