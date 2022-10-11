@@ -8,6 +8,7 @@ router_https_port: "443"
 xdebug_enabled: false
 additional_hostnames:
   - "manual.xm-dkfz-net"
+  - "release.xm-dkfz-net"
 additional_fqdns: []
 database:
   type: mariadb

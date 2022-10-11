@@ -1,11 +1,4 @@
-base: 'https://manual.xm-dkfz-net.ddev.site/'
-baseVariants:
-  -
-    base: 'https://manual.xm-dkfz-net.ddev.site/'
-    condition: 'getenv("DDEV_PROJECT") == "xm-dkfz-net"'
-  -
-    base: 'https://handbuch.dkfz-typo3-dev.xima.local/'
-    condition: 'applicationContext == "Production/Staging"'
+base: '%env("TYPO3_ALIAS_URL_1")%'
 enabled_oauth2_providers: ''
 languages:
   -
