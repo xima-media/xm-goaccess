@@ -13,3 +13,11 @@ plugin.tx_bwguild {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
 }
+
+plugin.tx_form {
+  settings {
+    yamlConfigurations {
+      100 = EXT:xm_dkfz_net_site/Configuration/Form/CustomFormSetup.yaml
+    }
+  }
+}

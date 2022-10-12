@@ -1,0 +1,15 @@
+prototypes:
+  standard:
+    formElementsDefinition:
+      Form:
+        renderingOptions:
+          templateRootPaths:
+            20: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Templates/'
+          partialRootPaths:
+            20: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Partials/'
+          layoutRootPaths:
+            20: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Layouts/'
+
+persistenceManager:
+  allowedExtensionPaths:
+    10: EXT:xm_dkfz_net_site/Resources/Private/Forms/
