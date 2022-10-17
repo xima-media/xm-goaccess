@@ -1,22 +1,3 @@
 <f:if condition="{images.0}">
-	<div class="video-player__interactables">
-		<button class="video-player__button video-player__button--play button button--round button--large --play-video">
-			<f:render partial="Icon" arguments="{icon: 'play'}" />
-		</button>
-	</div>
-	<figure class="video-player__preview-image">
-		<div class="picture__item">
-			<span aria-hidden="true" class="picture__pattern pattern"></span>
-			<picture>
-				<source srcset="{f:uri.image(image: images.0, width:'970', fileExtension: 'webp')}"
-						type="image/webp">
-				<source srcset="{f:uri.image(image: images.0, width:'970', fileExtension: 'jpg')}"
-						type="image/jpeg">
-				<img src="{f:uri.image(image: images.0, width:'970', fileExtension: 'jpg')}"
-					 alt="{images.0.originalResource.alternative}"
-					 class="picture__image image--responsive"
-					 loading="lazy"/>
-			</picture>
-		</div>
-	</figure>
+	{f:uri.image(image: images.0, width:'970', fileExtension: 'jpg')}
 </f:if>

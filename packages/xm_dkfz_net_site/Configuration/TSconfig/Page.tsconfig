@@ -155,13 +155,16 @@ TCEFORM {
   sys_file_reference {
     link.disabled = 1
     showinpreview.disabled = 1
+    description.description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:sys_file.description.description
   }
 
   sys_file_metadata {
-    description.disabled = 1
+    description.disabled = 0
+    description.description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:sys_file.description.description
     keywords.disabled = 1
     ranking.disabled = 1
     download_name.disabled = 1
+    caption.disabled = 1
     #		Reiter Acess
     access.disabled = 0
     visibility.disabled = 0

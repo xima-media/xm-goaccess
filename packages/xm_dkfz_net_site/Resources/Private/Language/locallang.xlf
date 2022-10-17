@@ -429,6 +429,10 @@
 			<trans-unit id="tt_content.orientation.description" space="preserve">
 				<source>Choose in what proportion the container element is displayed.</source>
 			</trans-unit>
+
+			<trans-unit id="sys_file.description.description" space="preserve">
+				<source>This description can be displayed below the image.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
