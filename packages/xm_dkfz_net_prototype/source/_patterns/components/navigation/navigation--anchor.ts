@@ -117,28 +117,6 @@ class NavigationAnchor {
     btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
     btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
   }
-
-  scrollStop (callback: () => void, refresh = 66) {
-
-    // Make sure a valid callback was provided
-    if (!callback || typeof callback !== 'function') return;
-
-    // Setup scrolling variable
-    let isScrolling: number | NodeJS.Timeout;
-
-    // Listen for scroll events
-    window.addEventListener('scroll', function (event) {
-
-      // Clear our timeout throughout the scroll
-      // @ts-ignore
-      window.clearTimeout(isScrolling);
-
-      // Set a timeout to run after scrolling ends
-      isScrolling = setTimeout(callback, refresh);
-
-    }, false);
-
-  }
 }
 
 /**
