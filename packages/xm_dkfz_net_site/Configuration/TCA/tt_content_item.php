@@ -35,10 +35,10 @@ return [
             'showitem' => 'record_type',
         ],
         'teaser-item' => [
-            'showitem' => 'record_type, link, --linebreak--, overrides, --palette--;;teaser-override',
+            'showitem' => 'record_type, link, link_title, overrides, --palette--;;teaser-override',
         ],
         'link' => [
-            'showitem' => 'record_type, link',
+            'showitem' => 'record_type, title;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link.title, link',
         ],
         'accordion-item' => [
             'showitem' => 'record_type, title',
@@ -60,6 +60,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
+                'readOnly' => true,
                 'items' => [
                     [
                         'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
@@ -68,6 +69,10 @@ return [
                     [
                         'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link',
                         'link',
+                    ],
+                    [
+                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title',
+                        'accordion-item',
                     ],
                 ],
             ],

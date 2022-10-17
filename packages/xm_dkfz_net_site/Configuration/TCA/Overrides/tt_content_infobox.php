@@ -48,19 +48,11 @@ $GLOBALS['TCA']['tt_content']['types']['infobox'] = [
             'label' => 'Links',
             'config' => [
                 'overrideChildTca' => [
-                    'types' => [
-                        'link' => [
-                            'showitem' => 'record_type, title, link',
-                        ],
-                    ],
                     'columns' => [
                         'record_type' => [
                             'config' => [
                                 'default' => 'link',
                             ],
-                        ],
-                        'title' => [
-                            'label' => 'Linktext',
                         ],
                     ],
                 ],

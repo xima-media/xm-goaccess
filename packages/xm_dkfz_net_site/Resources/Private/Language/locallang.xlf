@@ -151,6 +151,9 @@
 			<trans-unit id="tt_content_item.record_type.link" space="preserve">
 				<source>Link</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.link.title" space="preserve">
+				<source>Link text</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
 				<source>Teaser</source>
 			</trans-unit>

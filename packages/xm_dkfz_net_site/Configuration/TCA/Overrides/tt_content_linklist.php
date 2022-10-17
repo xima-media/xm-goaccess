@@ -41,25 +41,11 @@ $GLOBALS['TCA']['tt_content']['types']['linklist'] = [
             'label' => 'Links',
             'config' => [
                 'overrideChildTca' => [
-                    'types' => [
-                        'link' => [
-                            'showitem' => 'record_type, title, link',
-                        ],
-                    ],
                     'columns' => [
                         'record_type' => [
                             'config' => [
                                 'default' => 'link',
-                                'items' => [
-                                    [
-                                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link',
-                                        'link',
-                                    ],
-                                ],
                             ],
-                        ],
-                        'title' => [
-                            'label' => 'Linktext',
                         ],
                     ],
                 ],

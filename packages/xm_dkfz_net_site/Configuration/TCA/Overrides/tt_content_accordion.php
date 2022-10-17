@@ -199,12 +199,6 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides'
                 'record_type' => [
                     'config' => [
                         'default' => 'accordion-item',
-                        'items' => [
-                            [
-                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title',
-                                'accordion-item',
-                            ],
-                        ],
                     ],
                 ],
                 'title' => [
