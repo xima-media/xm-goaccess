@@ -49,6 +49,7 @@ class NavigationAnchor {
   }
 
   observerCallback(entries: any[]) {
+    
     entries.forEach((entry) => {
       let sectionId = entry.target.id;
       const nav = document.querySelector<HTMLElement>('.navigation--anchor');
@@ -61,6 +62,7 @@ class NavigationAnchor {
         currentLink[0].classList.remove("active");
       } else {
         currentLink[0].classList.add("active");
+        currentLink[0].scrollIntoView();
       }
     });
   }
