@@ -22,6 +22,10 @@ return [
             'link' => 'content-thumbtack',
             'accordion-item' => 'content-accordion',
         ],
+        'transOrigPointerField' => 'l18n_parent',
+        'transOrigDiffSourceField' => 'l18n_diffsource',
+        'languageField' => 'sys_language_uid',
+        'translationSource' => 'l10n_source',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, text',
@@ -69,23 +73,12 @@ return [
             ],
         ],
         'sys_language_uid' => [
-            'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    0 => [
-                        0 => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        1 => -1,
-                        2 => 'flags-multiple',
-                    ],
-                ],
-                'special' => 'languages',
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
-        'l10n_parent' => [
+        'l18n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
@@ -93,19 +86,25 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    0 => [
-                        0 => '',
-                        1 => 0,
+                    [
+                        '',
+                        0,
                     ],
                 ],
-                'foreign_table' => 'tt_content_faq_elem',
-                'foreign_table_where' => 'AND tt_content_faq_elem.pid=###CURRENT_PID### AND tt_content_faq_elem.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tt_content_item',
+                'foreign_table_where' => 'AND tt_content_item.pid=###CURRENT_PID### AND tt_content_item.sys_language_uid IN (-1,0)',
                 'default' => 0,
             ],
         ],
-        'l10n_diffsource' => [
+        'l10n_source' => [
             'config' => [
                 'type' => 'passthrough',
+            ],
+        ],
+        'l18n_diffsource' => [
+            'config' => [
+                'type' => 'passthrough',
+                'default' => '',
             ],
         ],
         'hidden' => [
