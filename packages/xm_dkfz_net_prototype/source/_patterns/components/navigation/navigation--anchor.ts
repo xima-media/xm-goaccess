@@ -41,21 +41,11 @@ class NavigationAnchor {
   events () {
     // variables
     const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
-    const self = this;
 
     const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 });
     sections.forEach((section) => observer.observe(section));
 
-
-    /**
-     * menu laptop
-     */
-    window.addEventListener('resize', () => {
-      self.navItemsResize()
-    })
-    if (document.body.clientWidth <= 1800) {
-      self.navItemsResize()
-    }
+    this.scrollableNavigation();
   }
 
   observerCallback(entries: any[]) {
@@ -75,47 +65,38 @@ class NavigationAnchor {
     });
   }
 
-  navItemsResize() {
-    const nav = document.querySelector<HTMLElement>('.navigation--anchor');
-    const navItems = nav.querySelector<HTMLElement>('.navigation__items');
-    const hScroll = nav.querySelector<HTMLElement>('.horizontal-scroll');
-    const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
-    const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
-    let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
-    let currentScrollPosition = 0;
-    let scrollAmount = hScroll.offsetWidth / 4;
+  scrollableNavigation() {
+    const horizontalScrollItemsWrapper = document.querySelector('.horizontal-scroll .navigation__items');
+    const navButtonRight = document.querySelector('.horizontal-scroll .navigation__button.right')
+    const navButtonLeft = document.querySelector('.horizontal-scroll .navigation__button.left')
 
-    // Button show/hide
-    if(hScroll.scrollWidth === hScroll.offsetWidth) {
-      btnScrollRight.classList.remove('active')
-      navItems.style.justifyContent = 'center'
-    } else {
-      btnScrollRight.classList.add('active')
-      navItems.style.justifyContent = 'flex-start'
-    }
+    horizontalScrollItemsWrapper.addEventListener('scroll', (e) => {
+      let scroll = horizontalScrollItemsWrapper.scrollLeft
 
-    function scrollHorizontally(val: number) {
-      currentScrollPosition += (val * scrollAmount);
-
-      if (currentScrollPosition >= 0) {
-        currentScrollPosition = 0;
-        btnScrollLeft.classList.remove('active')
+      if(scroll + horizontalScrollItemsWrapper.getBoundingClientRect().width >= horizontalScrollItemsWrapper.scrollWidth) {
+        navButtonRight.classList.remove('active')
       } else {
-        btnScrollLeft.classList.add('active')
+        navButtonRight.classList.add('active')
       }
 
-      if (currentScrollPosition <= maxScroll) {
-        currentScrollPosition = maxScroll;
-        btnScrollRight.classList.remove('active')
+      if(scroll === 0) {
+        navButtonLeft.classList.remove('active')
       } else {
-        btnScrollRight.classList.add('active')
+        navButtonLeft.classList.add('active')
       }
+    })
 
-      navItems.style.left = currentScrollPosition + 'px';
-    }
+    this.scrollHorizontallyByClick(horizontalScrollItemsWrapper, navButtonRight, navButtonLeft)
+  }
 
-    btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
-    btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
+  scrollHorizontallyByClick(scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
+    navButtonRight.addEventListener('click', () => {
+      scrollWrapper.scrollLeft += scrollValue;
+    })
+
+    navButtonLeft.addEventListener('click', () => {
+      scrollWrapper.scrollLeft -= scrollValue;
+    })
   }
 }
 
