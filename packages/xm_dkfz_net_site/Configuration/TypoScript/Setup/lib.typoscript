@@ -52,3 +52,18 @@ lib.copyright < lib.year
 lib.copyright {
   noTrimWrap = |&copy;&nbsp;Copyright DKFZ |
 }
+
+# @link https://wiki.sebkln.de/doku.php?id=typo3:form
+lib.generalFeedbackForm = FLUIDTEMPLATE
+lib.generalFeedbackForm {
+  template = TEXT
+  template {
+    value = <formvh:render persistenceIdentifier="EXT:xm_dkfz_net_site/Resources/Private/Forms/generalfeedbackform.form.yaml" />
+  }
+  extbase {
+    pluginName = Formframework
+    controllerExtensionName = Form
+    controllerName = FormFrontend
+    controllerActionName = perform
+  }
+}

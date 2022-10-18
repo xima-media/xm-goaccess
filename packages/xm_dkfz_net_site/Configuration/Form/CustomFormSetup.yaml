@@ -1,15 +1,18 @@
-prototypes:
-  standard:
-    formElementsDefinition:
-      Form:
-        renderingOptions:
-          templateRootPaths:
-            20: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Templates/'
-          partialRootPaths:
-            20: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Partials/'
-          layoutRootPaths:
-            20: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Layouts/'
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Templates/'
+                partialRootPaths:
+                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Partials/'
+                layoutRootPaths:
+                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Layouts/'
 
-persistenceManager:
-  allowedExtensionPaths:
-    10: EXT:xm_dkfz_net_site/Resources/Private/Forms/
+      persistenceManager:
+        allowedExtensionPaths:
+          100: 'EXT:xm_dkfz_net_site/Resources/Private/Forms/'

@@ -21,3 +21,10 @@ plugin.tx_form {
     }
   }
 }
+module.tx_form {
+  settings {
+    yamlConfigurations {
+      100 = EXT:xm_dkfz_net_site/Configuration/Form/CustomFormSetup.yaml
+    }
+  }
+}
