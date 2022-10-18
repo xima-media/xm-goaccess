@@ -202,7 +202,8 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides'
                     ],
                 ],
                 'title' => [
-                    'label' => 'Accordion-Title',
+                    'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title',
+                    'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title.description',
                 ],
             ],
         ],

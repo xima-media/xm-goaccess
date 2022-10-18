@@ -380,6 +380,12 @@
 			<trans-unit id="tt_content_item.record_type.accordion-title" space="preserve">
 				<target>Akkordeon-Element</target>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.accordion-title.description" space="preserve">
+				<target>Titel des aufklappbaren Akkordeon-Elements</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.accordion-item" space="preserve">
+				<source>Akkordeon</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<target>Titel</target>
 			</trans-unit>
