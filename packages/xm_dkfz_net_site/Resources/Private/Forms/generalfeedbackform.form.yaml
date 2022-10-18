@@ -8,9 +8,9 @@ prototypeName: standard
 finishers:
   -
     options:
-      subject: 'Your message: {subject}'
+      subject: 'Intranet Feedback: {subject}'
       recipients:
-        your.company@example.com: 'Your Company name'
+        feedback@dkfz-heidelberg.de: 'DKFZ Intranet Team'
       senderAddress: '{email}'
       senderName: '{name}'
       format: html
@@ -18,7 +18,7 @@ finishers:
       translation:
         language: default
       useFluidEmail: true
-      title: 'Confirmation of your message'
+      title: 'Message from intranet user'
     identifier: EmailToReceiver
 renderables:
   -
@@ -26,11 +26,10 @@ renderables:
       previousButtonLabel: 'Previous step'
       nextButtonLabel: 'Next step'
     identifier: page-1
-    label: 'Contact Form'
+    label: 'Contact & Feedback Form'
     type: Page
     renderables:
       -
-        defaultValue: ''
         identifier: name
         label: Name
         type: Text
@@ -41,18 +40,6 @@ renderables:
           -
             identifier: NotEmpty
       -
-        defaultValue: ''
-        identifier: subject
-        label: Subject
-        type: Text
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: Subject
-        validators:
-          -
-            identifier: NotEmpty
-      -
-        defaultValue: ''
         identifier: email
         label: Email
         type: Text
@@ -65,7 +52,16 @@ renderables:
           -
             identifier: EmailAddress
       -
-        defaultValue: ''
+        identifier: subject
+        label: Subject
+        type: Text
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: Subject
+        validators:
+          -
+            identifier: NotEmpty
+      -
         identifier: message
         label: Message
         type: Textarea
