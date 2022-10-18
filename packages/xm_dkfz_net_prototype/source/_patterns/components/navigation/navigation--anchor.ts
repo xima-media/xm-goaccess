@@ -25,14 +25,24 @@ import app from '../basic/basic'
  */
 
 class NavigationAnchor {
+  public nav: HTMLElement;
+  public navItems: HTMLElement;
+  public navLinks: Array<any>;
+
   constructor() {
     app.log('component "anchor navigation" loaded')
-
     // only if element on the page
     if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
       // methods
+      this.cacheDom()
       this.events()
     }
+  }
+
+  public cacheDom() {
+    this.nav = document.querySelector<HTMLElement>('.navigation--anchor');
+    this.navItems = this.nav.querySelector<HTMLElement>('.navigation__items');
+    this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'));
   }
 
   /**
@@ -44,11 +54,8 @@ class NavigationAnchor {
     const self = this;
 
     const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 });
-    const nav = document.querySelector<HTMLElement>('.navigation--anchor');
-    const navItems = nav.querySelector<HTMLElement>('.navigation__items');
-    const navLink = Array.from(navItems.querySelectorAll<HTMLElement>('.navigation__link'));
 
-    navLink.forEach(link => {
+    this.navLinks.forEach(link => {
       link.addEventListener('click', () => {
         sections.forEach((section) => observer.unobserve(section));
         self.scrollStop(() => {
@@ -62,24 +69,27 @@ class NavigationAnchor {
   }
 
   protected observerCallback(entries: any[]) {
-
+    const navListItems = Array.from(document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__link'))
     entries.forEach((entry) => {
       let sectionId = entry.target.id;
-      const nav = document.querySelector<HTMLElement>('.navigation--anchor');
-      const navItems = nav.querySelector<HTMLElement>('.navigation__items');
-      const navLinks = Array.from(navItems.querySelectorAll<HTMLElement>('.navigation__link'));
-      let currentLink = navLinks.filter(
+      let currentLink = navListItems.filter(
         (link) => link.getAttribute("href").substr(1) === sectionId
       );
       if(currentLink.length > 0) {
         if (!entry.isIntersecting) {
-          currentLink[0].classList.remove("active");
+          currentLink[0].classList.remove("active")
         } else {
           currentLink[0].classList.add("active");
-          // currentLink[0].scrollIntoView();
+          scrollNavItemIntoView(currentLink[0])
         }
       }
     });
+
+    function scrollNavItemIntoView(activeLink: HTMLElement) {
+      if (document.body.clientWidth >= 1800) {
+        activeLink.scrollIntoView()
+      }
+    }
   }
 
   protected scrollableNavigation() {
@@ -118,20 +128,14 @@ class NavigationAnchor {
 
   protected scrollStop (callback: () => void, refresh = 66) {
 
-    // Make sure a valid callback was provided
     if (!callback || typeof callback !== 'function') return;
 
-    // Setup scrolling variable
-    let isScrolling: number | NodeJS.Timeout;
+    let isScrolling: NodeJS.Timeout;
 
-    // Listen for scroll events
     window.addEventListener('scroll', function (event) {
 
       // Clear our timeout throughout the scroll
-      // @ts-ignore
       window.clearTimeout(isScrolling);
-
-      // Set a timeout to run after scrolling ends
       isScrolling = setTimeout(callback, refresh);
 
     }, false);
