@@ -18,9 +18,10 @@
 	</f:if>
 	<f:if condition="{video.properties.mime_type} === 'video/mp4'">
 		<f:then>
-			<f:cObject typoscriptObjectPath="lib.videoPreviewImage" data="{video.properties}" currentValueKey="pid" />
+			<f:variable name="poster"> {f:cObject(typoscriptObjectPath: 'lib.videoPreviewImage', data: video.properties, currentValueKey: pid)}</f:variable>
 			<f:media
 				class="video-player__internal"
+				additionalAttributes="{poster: poster}"
 				file="{video}"
 				alt="{file.alternative}"
 				title="{file.title}"

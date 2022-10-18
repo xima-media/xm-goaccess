@@ -25,161 +25,81 @@ import app from '../basic/basic'
  */
 
 class NavigationAnchor {
-    constructor() {
-        app.log('component "anchor navigation" loaded')
+  constructor() {
+    app.log('component "anchor navigation" loaded')
 
-        // only if element on the page
-        if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
-            // methods
-            this.events()
-        }
+    // only if element on the page
+    if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
+      // methods
+      this.events()
     }
-
-    /**
-     * Events
-     */
-    events () {
-        // variables
-        const nav = document.querySelector<HTMLElement>('.navigation--anchor');
-        const navItems = nav.querySelector<HTMLElement>('.navigation__items');
-        const navItem = navItems.querySelectorAll<HTMLElement>('.navigation__link');
-        const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
-        const observerThreshold: number = 0.75
-        let calculatedObserverThreshold: number;
-
-        /**
-         * menu desktop
-         */
-        // active links
-        navItem.forEach(el => {
-            el.addEventListener('click', function(){
-                navItem.forEach(nav=> {
-                  nav.classList.remove('active')
-                  nav.parentElement.classList.remove('active')
-                  }
-                );
-
-                this.classList.add('active')
-                if(this.classList.contains('active')) {
-                  this.parentElement.classList.add('active')
-                }
-            })
-        })
-
-        // change the active class on anchor menu item
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              calculatedObserverThreshold = this.calculateObserverThresholdByViewport(entry, observerThreshold);
-                if(entry.isIntersecting) {
-                  let entryTarget = entry.target;
-                  let entryTargetId = '#' + entryTarget.getAttribute('id')
-
-                    navItem.forEach(li => {
-                        let liHref = li.getAttribute('href')
-
-                        li.classList.remove('active')
-                        li.parentElement.classList.remove('active')
-
-                        if(liHref === entryTargetId) {
-                            li.classList.add('active')
-                            li.parentElement.classList.add('active')
-                        }
-                    })
-                }
-            })
-        }, {
-            threshold: calculatedObserverThreshold
-        })
-
-        // filter the section for observe
-        Array.from(sections).filter(section => {
-            const sectionId = '#' + section.getAttribute('id')
-
-            navItem.forEach(li => {
-                let liHref = li.getAttribute('href')
-
-                if(liHref === sectionId) {
-                    observer.observe(section)
-                }
-            })
-        })
-
-
-        /**
-         * menu laptop
-         */
-
-        const self = this;
-        window.addEventListener('resize', () => {
-            self.navItemsResize()
-        })
-        if (document.body.clientWidth <= 1800) {
-            self.navItemsResize()
-        }
-    }
-
-    navItemsResize() {
-        const nav = document.querySelector<HTMLElement>('.navigation--anchor');
-        const navItems = nav.querySelector<HTMLElement>('.navigation__items');
-        const hScroll = nav.querySelector<HTMLElement>('.horizontal-scroll');
-        const btnScrollLeft = hScroll.querySelector<HTMLButtonElement>('.navigation__button.left');
-        const btnScrollRight = hScroll.querySelector<HTMLButtonElement>('.navigation__button.right');
-        let maxScroll = -hScroll.scrollWidth + navItems.offsetWidth;
-        let currentScrollPosition = 0;
-        let scrollAmount = hScroll.offsetWidth / 4;
-
-        // Button show/hide
-        if(hScroll.scrollWidth === hScroll.offsetWidth) {
-            btnScrollRight.classList.remove('active')
-            navItems.style.justifyContent = 'center'
-        } else {
-            btnScrollRight.classList.add('active')
-            navItems.style.justifyContent = 'flex-start'
-        }
-
-        function scrollHorizontally(val: number) {
-            currentScrollPosition += (val * scrollAmount);
-
-            if (currentScrollPosition >= 0) {
-                currentScrollPosition = 0;
-                btnScrollLeft.classList.remove('active')
-            } else {
-                btnScrollLeft.classList.add('active')
-            }
-
-            if (currentScrollPosition <= maxScroll) {
-                currentScrollPosition = maxScroll;
-                btnScrollRight.classList.remove('active')
-            } else {
-                btnScrollRight.classList.add('active')
-            }
-
-            navItems.style.left = currentScrollPosition + 'px';
-        }
-
-        btnScrollLeft.addEventListener('click', () => scrollHorizontally(1))
-        btnScrollRight.addEventListener('click', () => scrollHorizontally(-1))
-
-        // sticky menu
-        // window.addEventListener('scroll', () => {
-        //     const sticky = nav.offsetTop;
-        //
-        //     if (window.pageYOffset >= sticky) {
-        //         nav.classList.add("sticky")
-        //     } else {
-        //         nav.classList.remove("sticky");
-        //     }
-        // })
-    }
+  }
 
   /**
-   * @param observerEntry
-   * @param threshold
-   * @protected
+   * Events
    */
-    protected calculateObserverThresholdByViewport(observerEntry: IntersectionObserverEntry, threshold: number) {
-      return ((window.innerHeight * threshold) / observerEntry.target.getBoundingClientRect().height) * threshold;
-    }
+  events () {
+    // variables
+    const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
+
+    const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 });
+    sections.forEach((section) => observer.observe(section));
+
+    this.scrollableNavigation();
+  }
+
+  observerCallback(entries: any[]) {
+    
+    entries.forEach((entry) => {
+      let sectionId = entry.target.id;
+      const nav = document.querySelector<HTMLElement>('.navigation--anchor');
+      const navItems = nav.querySelector<HTMLElement>('.navigation__items');
+      const navLinks = Array.from(navItems.querySelectorAll<HTMLElement>('.navigation__link'));
+      let currentLink = navLinks.filter(
+        (link) => link.getAttribute("href").substr(1) === sectionId
+      );
+      if (!entry.isIntersecting) {
+        currentLink[0].classList.remove("active");
+      } else {
+        currentLink[0].classList.add("active");
+        currentLink[0].scrollIntoView();
+      }
+    });
+  }
+
+  scrollableNavigation() {
+    const horizontalScrollItemsWrapper = document.querySelector('.horizontal-scroll .navigation__items');
+    const navButtonRight = document.querySelector('.horizontal-scroll .navigation__button.right')
+    const navButtonLeft = document.querySelector('.horizontal-scroll .navigation__button.left')
+
+    horizontalScrollItemsWrapper.addEventListener('scroll', (e) => {
+      let scroll = horizontalScrollItemsWrapper.scrollLeft
+
+      if(scroll + horizontalScrollItemsWrapper.getBoundingClientRect().width >= horizontalScrollItemsWrapper.scrollWidth) {
+        navButtonRight.classList.remove('active')
+      } else {
+        navButtonRight.classList.add('active')
+      }
+
+      if(scroll === 0) {
+        navButtonLeft.classList.remove('active')
+      } else {
+        navButtonLeft.classList.add('active')
+      }
+    })
+
+    this.scrollHorizontallyByClick(horizontalScrollItemsWrapper, navButtonRight, navButtonLeft)
+  }
+
+  scrollHorizontallyByClick(scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
+    navButtonRight.addEventListener('click', () => {
+      scrollWrapper.scrollLeft += scrollValue;
+    })
+
+    navButtonLeft.addEventListener('click', () => {
+      scrollWrapper.scrollLeft -= scrollValue;
+    })
+  }
 }
 
 /**
@@ -189,3 +109,4 @@ class NavigationAnchor {
 export default (new NavigationAnchor())
 
 // end of navigation--anchor.js
+

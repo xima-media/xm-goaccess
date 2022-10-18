@@ -11,49 +11,49 @@
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 100,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 200,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 300,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 400,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 500,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 600,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
                 [
                     'name' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.accordion.content',
                     'colPos' => 700,
-                    'disallowed' => ['CType' => 'container-accordion'],
+                    'disallowed' => ['CType' => 'container-accordion, page_teaser'],
                 ],
             ],
             [
@@ -199,12 +199,6 @@ $GLOBALS['TCA']['tt_content']['types']['container-accordion']['columnsOverrides'
                 'record_type' => [
                     'config' => [
                         'default' => 'accordion-item',
-                        'items' => [
-                            [
-                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title',
-                                'accordion-item',
-                            ],
-                        ],
                     ],
                 ],
                 'title' => [

@@ -371,6 +371,9 @@
 			<trans-unit id="tt_content_item.record_type.link" space="preserve">
 				<target>Link</target>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.link.title" space="preserve">
+				<source>Linktext</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
 				<target>Teaser</target>
 			</trans-unit>
@@ -403,6 +406,10 @@
 			</trans-unit>
 			<trans-unit id="tt_content_item.overrides" space="preserve">
 				<target>Alternative Metadaten</target>
+			</trans-unit>
+
+			<trans-unit id="sys_file.description.description" space="preserve">
+				<target>Diese Beschreibung kann unterhalb des Bildes angezeigt werden.</target>
 			</trans-unit>
 		</body>
 	</file>
