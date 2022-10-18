@@ -36,12 +36,48 @@ return [
         ],
         'teaser-item' => [
             'showitem' => 'record_type, link, link_title, overrides, --palette--;;teaser-override',
+            'columnsOverrides' => [
+                'record_type' => [
+                    'config' => [
+                        'items' => [
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
+                                'teaser-item',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ],
         'link' => [
             'showitem' => 'record_type, title;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link.title, link',
+            'columnsOverrides' => [
+                'record_type' => [
+                    'config' => [
+                        'items' => [
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link',
+                                'link',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ],
         'accordion-item' => [
             'showitem' => 'record_type, title',
+            'columnsOverrides' => [
+                'record_type' => [
+                    'config' => [
+                        'items' => [
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-item',
+                                'accordion-item',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
     'palettes' => [
@@ -60,21 +96,6 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'readOnly' => true,
-                'items' => [
-                    [
-                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
-                        'teaser-item',
-                    ],
-                    [
-                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.link',
-                        'link',
-                    ],
-                    [
-                        'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.accordion-title',
-                        'accordion-item',
-                    ],
-                ],
             ],
         ],
         'sys_language_uid' => [
