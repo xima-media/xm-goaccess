@@ -5,7 +5,10 @@ export interface UserData {
   uid: number,
   username: string,
   logo: string,
-  url: string
+  url: string,
+  first_name: string,
+  last_name: string,
+  email: string,
 }
 
 export interface UserOffer {
