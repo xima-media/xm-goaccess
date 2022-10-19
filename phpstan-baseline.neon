@@ -161,6 +161,41 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Form/Element/OverrideToggleElement.php
 
 		-
+			message: "#^Call to an undefined method TYPO3\\\\CMS\\\\Form\\\\Domain\\\\Model\\\\Renderable\\\\RenderableInterface\\:\\:getUniqueIdentifier\\(\\)\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
+			message: "#^Call to an undefined method TYPO3\\\\CMS\\\\Form\\\\Domain\\\\Model\\\\Renderable\\\\RenderableInterface\\:\\:setDefaultValue\\(\\)\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\FormHook\\:\\:getFrontendUserNameString\\(\\) has parameter \\$frontendUserRecord with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\FormHook\\:\\:getLoggedInFrontendUserRecord\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\FormHook\\:\\:isFrontendUserLoggedIn\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
+			message: "#^Parameter \\#1 \\$frontendUserRecord of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\FormHook\\:\\:getFrontendUserNameString\\(\\) expects array, array\\|null given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
+			message: "#^Parameter \\#2 \\$uid of static method TYPO3\\\\CMS\\\\Backend\\\\Utility\\\\BackendUtility\\:\\:getRecord\\(\\) expects int\\|string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/FormHook.php
+
+		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/AccordionContainerPreviewRenderer.php
