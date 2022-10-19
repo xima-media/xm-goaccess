@@ -41,10 +41,12 @@ renderables:
         identifier: introtext
         label: ''
       -
+        defaultValue: ''
         type: Hidden
         identifier: name
         label: Name
       -
+        defaultValue: ''
         type: Hidden
         identifier: email
         label: Email
