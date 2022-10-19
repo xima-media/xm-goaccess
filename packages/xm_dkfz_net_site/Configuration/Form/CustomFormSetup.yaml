@@ -7,11 +7,14 @@ TYPO3:
             Form:
               renderingOptions:
                 templateRootPaths:
-                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Templates/'
+                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Frontend/Templates/'
                 partialRootPaths:
-                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Partials/'
+                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Frontend/Partials/'
                 layoutRootPaths:
-                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Layouts/'
+                  100: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Frontend/Layouts/'
+                translation:
+                  translationFiles:
+                    100: 'EXT:xm_dkfz_net_site/Resources/Private/Language/Form/locallang.xlf'
 
       persistenceManager:
         allowedExtensionPaths:
