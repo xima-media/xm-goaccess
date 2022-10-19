@@ -18,46 +18,44 @@ finishers:
       translation:
         language: default
       useFluidEmail: true
-      title: 'Message from intranet user'
+      title: 'Message from intranet user {name}'
     identifier: EmailToReceiver
+  -
+    options:
+      message: 'Thanks for your message!'
+      contentElementUid: ''
+    identifier: Confirmation
 renderables:
   -
     renderingOptions:
       previousButtonLabel: 'Previous step'
       nextButtonLabel: 'Next step'
     identifier: page-1
-    label: 'Contact & Feedback Form'
+    label: 'Your Feedback'
     type: Page
     renderables:
       -
+        properties:
+          text: 'Use this opportunity to tell us what you think about the intranet, point out errors or make suggestions for improvement.'
+        type: StaticText
+        identifier: introtext
+        label: ''
+      -
+        type: Hidden
         identifier: name
         label: Name
-        type: Text
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: Name
-        validators:
-          -
-            identifier: NotEmpty
       -
+        type: Hidden
         identifier: email
         label: Email
-        type: Text
-        properties:
-          fluidAdditionalAttributes:
-            placeholder: 'Email address'
-        validators:
-          -
-            identifier: NotEmpty
-          -
-            identifier: EmailAddress
       -
         identifier: subject
         label: Subject
         type: Text
         properties:
           fluidAdditionalAttributes:
-            placeholder: Subject
+            placeholder: 'Subject *'
+            required: required
         validators:
           -
             identifier: NotEmpty
@@ -67,14 +65,14 @@ renderables:
         type: Textarea
         properties:
           fluidAdditionalAttributes:
-            placeholder: ''
+            placeholder: 'Your message *'
+            required: required
         validators:
           -
             identifier: NotEmpty
-  -
-    renderingOptions:
-      previousButtonLabel: 'Previous step'
-      nextButtonLabel: 'Next step'
-    identifier: summarypage
-    label: 'Summary page'
-    type: SummaryPage
+      -
+        properties:
+          text: '* Required fields'
+        type: StaticText
+        identifier: hintrequired
+        label: ''
