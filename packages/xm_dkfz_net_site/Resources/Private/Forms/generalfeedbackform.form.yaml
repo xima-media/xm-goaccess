@@ -10,7 +10,7 @@ finishers:
     options:
       subject: 'Intranet Feedback: {subject}'
       recipients:
-        feedback@dkfz-heidelberg.de: 'DKFZ Intranet Team'
+        intranet@dkfz.de: 'DKFZ Intranet Team'
       senderAddress: '{email}'
       senderName: '{name}'
       format: html
