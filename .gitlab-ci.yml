@@ -115,7 +115,7 @@ deploy-dkfz-production:
     - if: $CI_COMMIT_BRANCH == "master" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - vendor/bin/dep deploy:unlock production-dkfz
-    - vendor/bin/dep deploy production-dkfz
+    - vendor/bin/dep deploy production-dkfz -vvv
 
 reset-staging-dkfz:
   extends: .deploy-prepare
