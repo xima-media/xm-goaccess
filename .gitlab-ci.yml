@@ -152,7 +152,17 @@ backup-production-dkfz:
       - public/uploads
     expire_in: 1 day
 
-reset-staging-xima:
+reset:dev-t3-debian11-01:
+  extends: .deploy-prepare
+  stage: sync
+  only:
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
+  when: manual
+  script:
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01 --no-interaction
+
+reset:staging-xima:
   extends: .deploy-prepare
   stage: sync
   only:
@@ -161,7 +171,6 @@ reset-staging-xima:
   when: manual
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging --no-interaction
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01 --no-interaction
 
 provision-environment:
   stage: provision
