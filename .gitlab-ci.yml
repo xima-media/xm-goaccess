@@ -90,6 +90,7 @@ deploy-xima-dev:
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
+    - vendor/bin/dep deploy:unlock dev-xima
     - vendor/bin/dep deploy-fast dev-xima
 
 deploy-dkfz-staging:
