@@ -67,7 +67,7 @@ host('feature')
 
 host('dev-xima')
     ->hostname('192.168.97.133')
-    ->stage('staging')
+    ->stage('dev')
     ->user('xima')
     ->set('branch', 'master')
     ->set('public_urls', ['https://dev.xm-dkfz-net.xima.dev'])
