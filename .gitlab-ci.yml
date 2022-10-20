@@ -80,7 +80,7 @@ deploy-xima-staging:
   script:
     - vendor/bin/dep deploy-fast staging
 
-deploy-xima-dev:
+deploy-dev-t3-debian11-01:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
   stage: deploy
@@ -90,8 +90,8 @@ deploy-xima-dev:
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
-    - vendor/bin/dep deploy:unlock dev-xima
-    - vendor/bin/dep deploy-fast dev-xima
+    - vendor/bin/dep deploy:unlock dev-t3-debian11-01
+    - vendor/bin/dep deploy-fast dev-t3-debian11-01
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
@@ -161,7 +161,7 @@ reset-staging-xima:
   when: manual
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging --no-interaction
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-xima --no-interaction
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01 --no-interaction
 
 provision-environment:
   stage: provision
