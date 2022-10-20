@@ -21,20 +21,29 @@ class Feedbackform {
 
   protected onFeedbackLinkClick(e: Event) {
     e.preventDefault()
+    const form = document.getElementById('generalfeedbackform') as HTMLElement
 
-    app.lightbox.startLoading()
-    app.lightbox.open()
+    if (form) {
+      let displayContent = form.outerHTML
+      const email = form.querySelector('#generalfeedbackform-email') as HTMLInputElement
 
-    let form = document.getElementById('generalfeedbackform') as HTMLElement
+      if (email.value.length === 0) {
+        displayContent = '<p>You have to be logged in to send feedback!</p>'
+      }
 
-    app.lightbox.displayContent(form.outerHTML)
-    this.bindFeedbackFormEvents()
-    app.lightbox.stopLoading()
+      app.lightbox.startLoading()
+      app.lightbox.open()
+      app.lightbox.displayContent(displayContent)
+      this.bindFeedbackFormEvents()
+      app.lightbox.stopLoading()
+    }
   }
 
   protected bindFeedbackFormEvents() {
     const form = app.lightbox.content.querySelector('form')
-    form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
+    if (form) {
+      form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
+    }
   }
 
   protected onFeedbackFormSubmit(e: Event) {
@@ -62,6 +71,7 @@ class Feedbackform {
         let doc = document.createRange().createContextualFragment(html);
         const feedbackform = doc.querySelector('#generalfeedbackform')
         app.lightbox.displayContent(feedbackform.outerHTML)
+        this.bindFeedbackFormEvents()
         app.lightbox.stopLoading()
       })
       .catch(error => {
