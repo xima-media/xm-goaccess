@@ -1,0 +1,79 @@
+
+renderingOptions:
+  submitButtonLabel: Submit
+identifier: generalfeedbackform
+label: 'General feedback form'
+type: Form
+prototypeName: standard
+finishers:
+  -
+    options:
+      subject: 'Intranet Feedback: {subject}'
+      recipients:
+        intranet@dkfz.de: 'DKFZ Intranet Team'
+      senderAddress: '{email}'
+      senderName: '{name}'
+      format: html
+      attachUploads: true
+      translation:
+        language: default
+      useFluidEmail: true
+      title: 'Message from intranet user {name}'
+    identifier: EmailToReceiver
+  -
+    options:
+      message: 'Thanks for your message!'
+      contentElementUid: ''
+    identifier: Confirmation
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    identifier: page-1
+    label: 'Your Feedback'
+    type: Page
+    renderables:
+      -
+        properties:
+          text: 'Use this opportunity to tell us what you think about the intranet, point out errors or make suggestions for improvement.'
+        type: StaticText
+        identifier: introtext
+        label: ''
+      -
+        defaultValue: ''
+        type: Hidden
+        identifier: name
+        label: Name
+      -
+        defaultValue: ''
+        type: Hidden
+        identifier: email
+        label: Email
+      -
+        identifier: subject
+        label: Subject
+        type: Text
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        identifier: message
+        label: Message
+        type: Textarea
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        properties:
+          text: '* Required fields'
+          elementClassAttribute: 'hint-required'
+        type: StaticText
+        identifier: hintrequired
+        label: ''
