@@ -65,6 +65,19 @@ host('feature')
     ->set('public_urls', ['https://fbd.dkfz-typo3-dev.xima.local'])
     ->set('deploy_path', '/var/www/html/fbd.dkfz-typo3-dev.xima.local');
 
+host('dev-xima')
+    ->hostname('192.168.97.133')
+    ->stage('staging')
+    ->user('xima')
+    ->set('branch', 'master')
+    ->set('public_urls', ['https://dev.xm-dkfz-net.xima.dev'])
+    ->set('http_user', 'www-data')
+    ->set('writable_mode', 'chmod')
+    ->set('writable_chmod_recursive', false)
+    ->set('writable_chmod_mode', '2770')
+    ->set('bin/php', '/usr/bin/php8.1')
+    ->set('deploy_path', '/var/www/html/xm-dkfz-net_dev');
+
 // Upload of dist files
 after('deploy:update_code', 'deploy:upload-dist');
 task('deploy:upload-dist', function () {
