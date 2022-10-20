@@ -1,0 +1,25 @@
+#generalfeedbackform {
+
+    .input {
+        display: flex;
+        flex-direction: column;
+
+        &:only-child {
+            width: 100%;
+        }
+    }
+
+    .hint-required {
+        margin-top: var(--space-md);
+        font-size: 0.8rem;
+    }
+
+    .form-navigation {
+        div.btn-group {
+            margin-top: var(--space-md);
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+}

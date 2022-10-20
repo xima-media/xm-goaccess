@@ -13,14 +13,11 @@
 			<trans-unit id="generalfeedbackform.element.subject.properties.label">
 				<source>Subject</source>
 			</trans-unit>
-			<trans-unit id="generalfeedbackform.element.subject.properties.placeholder">
-				<source>Subject *</source>
-			</trans-unit>
 			<trans-unit id="generalfeedbackform.element.message.properties.label">
 				<source>Your message</source>
 			</trans-unit>
-			<trans-unit id="generalfeedbackform.element.message.properties.placeholder">
-				<source>Your message *</source>
+			<trans-unit id="generalfeedbackform.element.hintrequired.properties.text">
+				<source>* Required fields</source>
 			</trans-unit>
 			<trans-unit id="generalfeedbackform.element.generalfeedbackform.renderingOptions.submitButtonLabel">
 				<source>Submit</source>

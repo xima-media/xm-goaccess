@@ -56,6 +56,7 @@ lib.copyright {
 # @link https://wiki.sebkln.de/doku.php?id=typo3:form
 lib.generalFeedbackForm = FLUIDTEMPLATE
 lib.generalFeedbackForm {
+  stdWrap.wrap = <div class="feedbackform d-none">|</div>
   template = TEXT
   template {
     value = <formvh:render persistenceIdentifier="EXT:xm_dkfz_net_site/Resources/Private/Forms/generalfeedbackform.form.yaml" />
