@@ -164,7 +164,7 @@ reset-staging-xima:
 provision-environment:
   stage: provision
   variables:
-    project_server: "t3-debian11-01"
+    project_webserver: "t3-debian11-01"
     project_database: "t3-mariadb10-5-01"
     project_name: $CI_PROJECT_NAME
     project_environment: "dev"
