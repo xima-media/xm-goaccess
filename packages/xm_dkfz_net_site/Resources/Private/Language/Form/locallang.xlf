@@ -1,0 +1,30 @@
+<?xml version="1.2" encoding="UTF-8" ?>
+<xliff version="1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-10-19T10:43:45Z" product-name="xm_dkfz_net_site">
+		<header>
+		</header>
+		<body>
+			<trans-unit id="generalfeedbackform.element.page-1.properties.label">
+				<source>Your Feedback</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.introtext.properties.text">
+				<source>Use this opportunity to tell us what you think about the intranet, point out errors or make suggestions for improvement.</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.subject.properties.label">
+				<source>Subject</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.message.properties.label">
+				<source>Your message</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.hintrequired.properties.text">
+				<source>* Required fields</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.generalfeedbackform.renderingOptions.submitButtonLabel">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.finisher.Confirmation.message">
+				<source>Thanks for your message!</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

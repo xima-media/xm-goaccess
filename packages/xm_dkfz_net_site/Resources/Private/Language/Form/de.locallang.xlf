@@ -1,0 +1,31 @@
+<?xml version="1.2" encoding="UTF-8" ?>
+<xliff version="1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-10-19T10:43:45Z"
+		  product-name="xm_dkfz_net_site">
+		<header>
+		</header>
+		<body>
+			<trans-unit id="generalfeedbackform.element.page-1.properties.label">
+				<target>Ihr Feedback</target>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.introtext.properties.text">
+				<target>Nutzen Sie hier die Möglichkeit uns Ihre Meinung zum Intranet mitzuteilen, auf Fehler hinzuweisen oder Verbesserungsvorschläge anzubringen.</target>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.subject.properties.label">
+				<target>Thema</target>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.message.properties.label">
+				<target>Ihre Nachricht</target>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.hintrequired.properties.text">
+				<target>* Pflichtfelder</target>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.generalfeedbackform.renderingOptions.submitButtonLabel">
+				<target>Senden</target>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.finisher.Confirmation.message">
+				<target>Vielen Dank für Ihre Nachricht!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

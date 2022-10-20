@@ -5,7 +5,10 @@ export interface UserData {
   uid: number,
   username: string,
   logo: string,
-  url: string
+  url: string,
+  first_name: string,
+  last_name: string,
+  email: string,
 }
 
 export interface UserOffer {
@@ -41,6 +44,7 @@ class Userinfo {
       this.modifyUserNav()
       this.modifyBookmarkLinks()
       this.modifyWelcomeMessage()
+      this.setFeedbackFormUserValues()
     });
 
     this.bindEvents()
@@ -137,6 +141,20 @@ class Userinfo {
       }
       button.classList.add('fx--hover', 'js--checked')
     })
+  }
+
+  protected setFeedbackFormUserValues() {
+    const nameField = document.getElementById('generalfeedbackform-name') as HTMLInputElement
+    const emailField = document.getElementById('generalfeedbackform-email') as HTMLInputElement
+
+    if (nameField && emailField && this.userinfo) {
+      if (this.userinfo.user.first_name && this.userinfo.user.last_name) {
+        nameField.value = this.userinfo.user.first_name + ' ' + this.userinfo.user.last_name
+      } else {
+        nameField.value = this.userinfo.user.username
+      }
+      emailField.value = this.userinfo.user.email
+    }
   }
 
   protected async loadUserinfo() {
