@@ -65,7 +65,7 @@ host('feature')
     ->set('public_urls', ['https://fbd.dkfz-typo3-dev.xima.local'])
     ->set('deploy_path', '/var/www/html/fbd.dkfz-typo3-dev.xima.local');
 
-host('dev-xima')
+host('dev-t3-debian11-01')
     ->hostname('192.168.97.133')
     ->stage('dev')
     ->user('xima')
