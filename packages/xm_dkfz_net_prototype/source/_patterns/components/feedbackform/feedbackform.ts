@@ -25,10 +25,48 @@ class Feedbackform {
     app.lightbox.startLoading()
     app.lightbox.open()
 
-    let formHtml = document.getElementById('generalfeedbackform') as HTMLElement
+    let form = document.getElementById('generalfeedbackform') as HTMLElement
 
-    app.lightbox.displayContent(formHtml.outerHTML)
+    app.lightbox.displayContent(form.outerHTML)
+    this.bindFeedbackFormEvents()
     app.lightbox.stopLoading()
+  }
+
+  protected bindFeedbackFormEvents() {
+    const form = app.lightbox.content.querySelector('form')
+    form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
+  }
+
+  protected onFeedbackFormSubmit(e: Event) {
+    e.preventDefault()
+
+    const form = e.currentTarget as HTMLFormElement
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    let formData = new FormData(form)
+    formData.append(submitButton.name, submitButton.value)
+    const requestInit = {
+      method: 'POST',
+      body: formData
+    }
+
+    app.lightbox.startLoading()
+    app.lightbox.clear()
+    fetch(form.action, requestInit)
+      .then((response) => {
+        if (!response.ok) {
+          console.error('Submitting feedback failed', response)
+        }
+        return response.text()
+      })
+      .then((html) => {
+        let doc = document.createRange().createContextualFragment(html);
+        const feedbackform = doc.querySelector('#generalfeedbackform')
+        app.lightbox.displayContent(feedbackform.outerHTML)
+        app.lightbox.stopLoading()
+      })
+      .catch(error => {
+        console.error('Submitting feedback failed', error)
+      })
   }
 }
 
