@@ -177,7 +177,7 @@ provision-environment:
     project_goaccess: "true"
   trigger:
     project: systemadministration/sys-t3-ansible-management
-    branch: main
+    branch: dev
     strategy: depend
 
 #deploy-feature:
