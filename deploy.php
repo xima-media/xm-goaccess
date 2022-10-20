@@ -96,6 +96,11 @@ task('typo3cms:cache:warmup', function () {
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup --depth=1 --mode=exec');
 });
 before('deploy:symlink', 'typo3cms:cache:warmup');
+after('success', 'request:frontend');
+task('request:frontend', function () {
+    $urls = get('public_urls');
+    run('curl -sf ' . $urls[0]);
+});
 
 // Reset xima intern staging in pipeline
 option(
