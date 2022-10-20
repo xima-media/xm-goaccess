@@ -99,7 +99,7 @@ before('deploy:symlink', 'typo3cms:cache:warmup');
 after('success', 'request:frontend');
 task('request:frontend', function () {
     $urls = get('public_urls');
-    run('curl -sf ' . $urls[0]);
+    run('curl -sfk ' . $urls[0] . ' > /dev/null 2>& 1');
 });
 
 // Reset xima intern staging in pipeline
