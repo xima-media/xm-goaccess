@@ -8,6 +8,7 @@ before_script:
 stages:
   - build
   - test
+  - provision
   - deploy
   - sync
 
@@ -79,6 +80,19 @@ deploy-xima-staging:
   script:
     - vendor/bin/dep deploy-fast staging
 
+deploy-xima-dev:
+  extends: .deploy-prepare
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
+  stage: deploy
+  only:
+    refs:
+      - "master"
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
+  script:
+    - vendor/bin/dep deploy:unlock dev-xima
+    - vendor/bin/dep deploy-fast dev-xima
+
 deploy-dkfz-staging:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node" ]
@@ -147,6 +161,24 @@ reset-staging-xima:
   when: manual
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging --no-interaction
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-xima --no-interaction
+
+provision-environment:
+  stage: provision
+  variables:
+    project_webserver: "t3-debian11-01"
+    project_database: "t3-mariadb10-5-01"
+    project_name: $CI_PROJECT_NAME
+    project_environment: "dev"
+    project_branch: "master"
+    project_aliases: "handbuch"
+    project_php_version: "8.1"
+    project_is_fbd: "false"
+    project_goaccess: "true"
+  trigger:
+    project: systemadministration/sys-t3-ansible-management
+    branch: main
+    strategy: depend
 
 #deploy-feature:
 #  extends: .deploy-prepare

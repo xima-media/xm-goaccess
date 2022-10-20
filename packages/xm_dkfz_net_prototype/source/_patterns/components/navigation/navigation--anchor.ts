@@ -25,49 +25,74 @@ import app from '../basic/basic'
  */
 
 class NavigationAnchor {
+  public nav: HTMLElement;
+  public navItems: HTMLElement;
+  public navLinks: Array<any>;
+
   constructor() {
     app.log('component "anchor navigation" loaded')
-
     // only if element on the page
     if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
       // methods
+      this.cacheDom()
       this.events()
     }
+  }
+
+  public cacheDom() {
+    this.nav = document.querySelector<HTMLElement>('.navigation--anchor');
+    this.navItems = this.nav.querySelector<HTMLElement>('.navigation__items');
+    this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'));
   }
 
   /**
    * Events
    */
-  events () {
+  protected events () {
     // variables
     const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
+    const self = this;
 
     const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 });
+
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sections.forEach((section) => observer.unobserve(section));
+        self.scrollStop(() => {
+          sections.forEach((section) => observer.observe(section));
+        })
+      })
+    })
     sections.forEach((section) => observer.observe(section));
 
     this.scrollableNavigation();
   }
 
-  observerCallback(entries: any[]) {
-    
+  protected observerCallback(entries: any[]) {
+    const navListItems = Array.from(document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__link'))
     entries.forEach((entry) => {
       let sectionId = entry.target.id;
-      const nav = document.querySelector<HTMLElement>('.navigation--anchor');
-      const navItems = nav.querySelector<HTMLElement>('.navigation__items');
-      const navLinks = Array.from(navItems.querySelectorAll<HTMLElement>('.navigation__link'));
-      let currentLink = navLinks.filter(
+      let currentLink = navListItems.filter(
         (link) => link.getAttribute("href").substr(1) === sectionId
       );
-      if (!entry.isIntersecting) {
-        currentLink[0].classList.remove("active");
-      } else {
-        currentLink[0].classList.add("active");
-        currentLink[0].scrollIntoView();
+      if(currentLink.length > 0) {
+        if (!entry.isIntersecting) {
+          currentLink[0].classList.remove("active")
+        } else {
+          currentLink[0].classList.add("active");
+          scrollNavItemIntoView(currentLink[0])
+        }
       }
     });
+
+    function scrollNavItemIntoView(activeLink: HTMLElement) {
+      if (document.body.clientWidth >= 1800) {
+        activeLink.scrollIntoView()
+      }
+    }
   }
 
-  scrollableNavigation() {
+  protected scrollableNavigation() {
     const horizontalScrollItemsWrapper = document.querySelector('.horizontal-scroll .navigation__items');
     const navButtonRight = document.querySelector('.horizontal-scroll .navigation__button.right')
     const navButtonLeft = document.querySelector('.horizontal-scroll .navigation__button.left')
@@ -91,7 +116,7 @@ class NavigationAnchor {
     this.scrollHorizontallyByClick(horizontalScrollItemsWrapper, navButtonRight, navButtonLeft)
   }
 
-  scrollHorizontallyByClick(scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
+  protected scrollHorizontallyByClick(scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
     navButtonRight.addEventListener('click', () => {
       scrollWrapper.scrollLeft += scrollValue;
     })
@@ -99,6 +124,22 @@ class NavigationAnchor {
     navButtonLeft.addEventListener('click', () => {
       scrollWrapper.scrollLeft -= scrollValue;
     })
+  }
+
+  protected scrollStop (callback: () => void, refresh = 66) {
+
+    if (!callback || typeof callback !== 'function') return;
+
+    let isScrolling: NodeJS.Timeout;
+
+    window.addEventListener('scroll', function (event) {
+
+      // Clear our timeout throughout the scroll
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(callback, refresh);
+
+    }, false);
+
   }
 }
 

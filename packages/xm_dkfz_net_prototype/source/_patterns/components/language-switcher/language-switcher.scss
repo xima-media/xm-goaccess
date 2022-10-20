@@ -60,19 +60,19 @@
             }
         }
 
-        &:not(.fx--active) {
+        &.fx--blocked {
             cursor: not-allowed;
         }
 
-        //&.fx--active {
-        //    &:hover,
-        //    &:focus {
-        //        &::after {
-        //            opacity: 0;
-        //            transform: translate3d(0, .25rem, 0);
-        //        }
-        //    }
-        //}
+        &.fx--active {
+            &:hover,
+            &:focus {
+                &::after {
+                    opacity: 0;
+                    transform: translate3d(0, .25rem, 0);
+                }
+            }
+        }
     }
 }
 

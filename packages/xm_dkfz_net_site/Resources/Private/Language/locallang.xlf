@@ -160,6 +160,12 @@
 			<trans-unit id="tt_content_item.record_type.accordion-title" space="preserve">
 				<source>Accordion Item</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.accordion-title.description" space="preserve">
+				<source>Title of the fold-out accordion element</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.accordion-item" space="preserve">
+				<source>Accordion</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<source>Title</source>
 			</trans-unit>
