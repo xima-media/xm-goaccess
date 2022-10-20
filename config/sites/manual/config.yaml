@@ -1,4 +1,4 @@
-base: '%env("TYPO3_ALIAS_URL_1")%'
+base: '%env("TYPO3_ALIAS_URL_0")%'
 enabled_oauth2_providers: ''
 languages:
   -
