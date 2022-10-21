@@ -8,7 +8,7 @@ prototypeName: standard
 finishers:
   -
     options:
-      subject: 'Intranet Feedback: {subject}'
+      subject: 'Intranet Feedback'
       recipients:
         intranet@dkfz.de: 'DKFZ Intranet Team'
       senderAddress: '{email}'
@@ -16,9 +16,12 @@ finishers:
       format: html
       attachUploads: true
       translation:
-        language: default
+        language: de
+        arguments:
+          title:
+            - '{name}'
       useFluidEmail: true
-      title: 'Message from intranet user {name}'
+      title: 'Message from intranet user %s'
     identifier: EmailToReceiver
   -
     options:
@@ -51,12 +54,21 @@ renderables:
         identifier: email
         label: Email
       -
-        identifier: subject
-        label: Subject
-        type: Text
         properties:
+          options:
+            error: Error
+            question: Question
+            comment: Comment
           fluidAdditionalAttributes:
             required: required
+          validationErrorMessages:
+            -
+              code: 1221560910
+              message: 'Please choose a subject!'
+          prependOptionLabel: ' '
+        type: SingleSelect
+        identifier: subject
+        label: Subject
         validators:
           -
             identifier: NotEmpty
