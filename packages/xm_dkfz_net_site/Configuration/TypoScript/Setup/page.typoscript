@@ -26,6 +26,8 @@ page {
       pidUserDetail.value = {$pidUserDetail}
       pidNewsDetail = TEXT
       pidNewsDetail.value = {$pidNewsDetail}
+      baseUrl = TEXT
+      baseUrl.data = site:base
     }
 
     dataProcessing {
