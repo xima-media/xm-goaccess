@@ -1,0 +1,9 @@
+###
+# These are the default TS-constants for ke_search_premium
+##
+# customsubcategory=settings=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:const.settings
+
+plugin.tx_kesearchpremium_pi1 {
+		# cat=plugin_kesearchpremium/settings; type=int+; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:const.amount
+	amount = 10
+}
