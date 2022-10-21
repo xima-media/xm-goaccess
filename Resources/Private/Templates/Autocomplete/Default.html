@@ -1,0 +1,26 @@
+<script>
+    const searchForms = document.querySelectorAll('input[name="tx_kesearch_pi1[sword]"]');
+    let keSearchPremiumAutocomplete = [];
+    searchForms.forEach(function (el) {
+        let fieldId = el.id;
+        keSearchPremiumAutocomplete.push(new autoComplete({
+            selector: 'input[id="' + fieldId + '"]',
+            minChars: 2,
+            source: function (term, response) {
+                term = term.toLowerCase();
+                httpRequest = new XMLHttpRequest();
+                if (!httpRequest) {
+                    alert('Giving up :( Cannot create an XMLHTTP instance');
+                    return false;
+                }
+                httpRequest.onreadystatechange = function () {
+                    if (httpRequest.readyState == 4) {
+                        response(JSON.parse(httpRequest.responseText))
+                    }
+                };
+                httpRequest.open('GET', '<f:format.raw>{BASEPATH}</f:format.raw>index.php?eID=keSearchPremiumAutoComplete&wordStartsWith=' + term + '&amount=<f:format.raw>{AMOUNT}</f:format.raw>&pid=<f:format.raw>{PID}</f:format.raw>');
+                httpRequest.send();
+            }
+        }));
+    });
+</script>

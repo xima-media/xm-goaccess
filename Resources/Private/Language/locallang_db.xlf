@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-19T11:05:17Z" product-name="ke_search_premium">
+		<header/>
+		<body>
+			<trans-unit id="tx_kesearch_index.boostkeywords" resname="tx_kesearch_index.boostkeywords" >
+				<source>Boost keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearch_index.customranking" resname="tx_kesearch_index.customranking" >
+				<source>Custom ranking</source>
+			</trans-unit>
+
+			<trans-unit id="tx_kesearchpremium_synonym" resname="tx_kesearchpremium_synonym" >
+				<source>Synonym</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_synonym.searchphrase" resname="tx_kesearchpremium_synonym.searchphrase" >
+				<source>Searchphrase</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_synonym.synonyms" resname="tx_kesearchpremium_synonym.synonyms" >
+				<source>Synonyms (one word / phrase per line)</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_synonym.hidden" resname="tx_kesearchpremium_synonym.hidden" >
+				<source>Hidden</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remote" resname="tx_kesearchpremium_remote" >
+				<source>Remote (Fetch index data from remote instance)</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remotesite" resname="tx_kesearchpremium_remotesite" >
+				<source>Remote site (eg. http://www.domain.com)</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remoteuid" resname="tx_kesearchpremium_remoteuid" >
+				<source>Remote site uid of page with index data</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remoteuser" resname="tx_kesearchpremium_remoteuser" >
+				<source>Remote site username</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remotepass" resname="tx_kesearchpremium_remotepass" >
+				<source>Remote site password</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remoteamount" resname="tx_kesearchpremium_remoteamount" >
+				<source>Remote: Number of records to fetch</source>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_customranking" resname="tx_kesearchpremium_customranking" >
+				<source>Custom ranking value</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
