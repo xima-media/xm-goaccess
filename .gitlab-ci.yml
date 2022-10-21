@@ -187,6 +187,7 @@ provision-environment:
     project_php_version: "8.1"
     project_is_fbd: "false"
     project_goaccess: "true"
+    project_mailhog: "true"
   trigger:
     project: systemadministration/sys-t3-ansible-management
     strategy: depend
