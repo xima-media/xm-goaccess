@@ -25,6 +25,12 @@
 			<trans-unit id="tt_content.header_layout.5">
 				<source><![CDATA[Headline 5 <h5>]]></source>
 			</trans-unit>
+			<trans-unit id="tt_content.header_layout.description" space="preserve">
+				<source>Configuration of headline structure. An H1 is followed by an H2 and then an H3 and so on.</source>
+			</trans-unit>
+			<trans-unit id="tt_content.sectionIndex.description" space="preserve">
+				<source>Determines whether the content item is displayed in the anchor navigation.</source>
+			</trans-unit>
 			<trans-unit id="tt_content.frame_class.color">
 				<source>Color</source>
 			</trans-unit>
@@ -76,6 +82,12 @@
 			<trans-unit id="pages.color.gray-500" space="preserve">
 				<source>Dark gray</source>
 			</trans-unit>
+			<trans-unit id="pages.media.label" space="preserve">
+				<source>Teaser-image</source>
+			</trans-unit>
+			<trans-unit id="pages.media.description" space="preserve">
+				<source>This image is used in the introduction of the page and for the content element "Teaser".</source>
+			</trans-unit>
 			<trans-unit id="container.accordion">
 				<source>Accordion</source>
 			</trans-unit>
@@ -124,14 +136,20 @@
 			<trans-unit id="container.tabs.tab3">
 				<source>Content tab 3 (optional)</source>
 			</trans-unit>
+			<trans-unit id="container.linklist.title">
+				<source>Linklist</source>
+			</trans-unit>
+			<trans-unit id="container.linklist.description">
+				<source>A collection of hyperlinks to external and internal web pages.</source>
+			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
-				<source>Display videos from YouTube or Vimeo</source>
+				<source>Embedding of an MP4, Vimeo or YouTube video.</source>
 			</trans-unit>
 			<trans-unit id="tt_content.infobox.description" space="preserve">
-				<source>Displays a highlighted message with border or inside a box</source>
+				<source>Highlight textual content as notes, warnings, or important messages.</source>
 			</trans-unit>
 			<trans-unit id="tt_content.quote.description" space="preserve">
-				<source>Displays a highlighted quote with colored border</source>
+				<source>Increased visual emphasis of a short quote.</source>
 			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
 				<source>Teaser settings</source>
@@ -188,10 +206,16 @@
 				<source>Color</source>
 			</trans-unit>
 			<trans-unit id="tt_content_item.overrides" space="preserve">
-				<source>Has overrides</source>
+				<source>Override metadata</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.overrides.description" space="preserve">
+				<source>Enable this option to override the teaser properties (metadata) of the linked page.</source>
 			</trans-unit>
 			<trans-unit id="tt_content_teaser.items" space="preserve">
 				<source>Teaser items</source>
+			</trans-unit>
+			<trans-unit id="tt_content_teaser.items.description" space="preserve">
+				<source>An unlimited number of page teasers can be created via "Create new".</source>
 			</trans-unit>
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
 				<source>Page overrides</source>
@@ -200,10 +224,19 @@
 				<source>Teaser</source>
 			</trans-unit>
 			<trans-unit id="tt_content_page_teaser.description" space="preserve">
-				<source>Shows a preview of pages with links</source>
+				<source>A preview of pages from the DKFZ intranet including a list of links.</source>
 			</trans-unit>
 			<trans-unit id="tt_content_employeeSlider" space="preserve">
 				<source>Employee-Slider</source>
+			</trans-unit>
+			<trans-unit id="tt_content_employeeSlider.description" space="preserve">
+				<source>Representation of multiple employees, side by side in one slider.</source>
+			</trans-unit>
+			<trans-unit id="tt_content_serviceSlider" space="preserve">
+				<source>Service-Slider</source>
+			</trans-unit>
+			<trans-unit id="tt_content_serviceSlider.description" space="preserve">
+				<source>Teaser slider to the service area and important tools</source>
 			</trans-unit>
 			<trans-unit id="tt_content.employee" space="preserve">
 				<source>Employees</source>
@@ -362,10 +395,10 @@
             	<source>Image Slider</source>
             </trans-unit>
             <trans-unit id="image.slider.description">
-                <source>From 2 to maximum 15 images aligned in a slider</source>
+                <source>A gallery with up to 15 images in the representation of a slider.</source>
             </trans-unit>
             <trans-unit id="image.slider.notification">
-                <source>Please add 2 to 15 images</source>
+                <source>An image slider must contain at least 2 images. Maximum 15 images can be added</source>
             </trans-unit>
 			<trans-unit id="place">
 				<source>Place</source>

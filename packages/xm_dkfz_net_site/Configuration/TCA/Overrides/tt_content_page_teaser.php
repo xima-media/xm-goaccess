@@ -33,6 +33,7 @@ $GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
     'columnsOverrides' => [
         'tt_content_items' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.items',
+            'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.items.description',
             'config' => [
                 'overrideChildTca' => [
                     'columns' => [
