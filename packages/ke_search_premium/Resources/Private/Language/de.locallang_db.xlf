@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2021-11-19T11:05:17Z" product-name="ke_search_premium">
+		<header/>
+		<body>
+			<trans-unit id="tx_kesearch_index.boostkeywords" resname="tx_kesearch_index.boostkeywords"  approved="yes">
+				<source>Boost keywords</source>
+				<target>Boost keywords</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearch_index.customranking" resname="tx_kesearch_index.customranking"  approved="yes">
+				<source>Custom ranking</source>
+				<target>Benutzerdefinierte Sortierung</target>
+			</trans-unit>
+
+			<trans-unit id="tx_kesearchpremium_synonym" resname="tx_kesearchpremium_synonym"  approved="yes">
+				<source>Synonym</source>
+				<target>Synonym</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_synonym.searchphrase" resname="tx_kesearchpremium_synonym.searchphrase"  approved="yes">
+				<source>Searchphrase</source>
+				<target>Suchwort</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_synonym.synonyms" resname="tx_kesearchpremium_synonym.synonyms"  approved="yes">
+				<source>Synonyms (one word / phrase per line)</source>
+				<target>Synonyme (ein Wort / eine Phrase pro Zeile)</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_synonym.hidden" resname="tx_kesearchpremium_synonym.hidden"  approved="yes">
+				<source>Hidden</source>
+				<target>Versteckt</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remote" resname="tx_kesearchpremium_remote"  approved="yes">
+				<source>Remote (Fetch index data from remote instance)</source>
+				<target>Remote (Indexdaten von entfernter Instanz holen)</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remotesite" resname="tx_kesearchpremium_remotesite"  approved="yes">
+				<source>Remote site (eg. http://www.domain.com)</source>
+				<target>Entfernte Website (z. B. http://www.domain.com)</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remoteuid" resname="tx_kesearchpremium_remoteuid"  approved="yes">
+				<source>Remote site uid of page with index data</source>
+				<target>Entfernte Website: UID der Seite mit Indexdaten</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remoteuser" resname="tx_kesearchpremium_remoteuser"  approved="yes">
+				<source>Remote site username</source>
+				<target>Entfernte Website: Username</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remotepass" resname="tx_kesearchpremium_remotepass"  approved="yes">
+				<source>Remote site password</source>
+				<target>Entfernte Website: Password</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_remoteamount" resname="tx_kesearchpremium_remoteamount"  approved="yes">
+				<source>Remote: Number of records to fetch</source>
+				<target>Entfernte Website: Anzahl der zu übertragenden Datensätze</target>
+			</trans-unit>
+			<trans-unit id="tx_kesearchpremium_customranking" resname="tx_kesearchpremium_customranking"  approved="yes">
+				<source>Custom ranking value</source>
+				<target>Wert für benutzerdefiniertes Ranking</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

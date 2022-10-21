@@ -1,0 +1,82 @@
+# customcategory=basic=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.basic
+# customcategory=sphinx=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.sphinx
+# customcategory=DoYouMean=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.DoYouMean
+# customcategory=distancesearch=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.distancesearch
+# customcategory=api=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.api
+# customcategory=ranking=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.ranking
+# customcategory=headless=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:customcategory.headless
+
+# cat=basic/enable/30; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.autocomplete
+enableAutocomplete = 0
+# cat=basic/enable/40; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.synonyms
+enableSynonyms = 0
+# cat=basic/enable/50; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.nativeInWordSearch
+enableNativeInWordSearch = 0
+
+# cat=sphinx//05; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.sphinxSearch
+enableSphinxSearch = 0
+# cat=sphinx//10; type=string; label=Sphinx indexer path: Insert the Path to the Sphinx indexer executable. Don't use http://. You have to insert the path of the OS. For exapmple: /usr/local/sphinx/bin/indexer
+sphinxIndexerPath = /usr/local/sphinx/bin/indexer
+# cat=sphinx//20; type=string; label=Sphinx searchd path: Insert the Path to the Sphinx searchd executable. Don't use http://. You have to insert the path of the OS. For exapmple: /usr/local/sphinx/bin/searchd
+sphinxSearchdPath = /usr/local/sphinx/bin/searchd
+# cat=sphinx//30; type=string; label=Indexer name: Insert the name of the indexer as you have configured in your sphinx.conf
+sphinxIndexerName = tx_kesearch_index
+# cat=sphinx//40; type=options[#,_]; label = Character for wrapping tags: With this character you can append and prepend tags. This is needed to find your exactly defined tag.
+prePostTagChar = #
+# cat=sphinx//50; type=boolean; label=Enable Sphinx-based "in word search" / partial word search: Allows the user to search for part of a word which is inside another word (not only at the beginning), for example this finds "tree" in "appletree". This works only with Sphinx. First: You have to configure sphinx to allow search within words, change your sphinx.conf like this: set "min_infix_len = 1" and "min_prefix_len = 0". Restart the sphinx daemon and reindex. Second: You have to enable "partial word search" for the ke_search main extension in the extension manager configuration.
+enableInWordSearch = 0
+# cat=sphinx//60; type=string; label = Server on which sphinx is running
+sphinxServer = localhost
+# cat=sphinx//70; type=string; label = Port sphinx is listening on:This value must match your sphinx.conf value (searchd --> listen).
+sphinxPort = 9312
+# cat=sphinx//80; type=string; label = Limit for number of results fetched by sphinx: This value must match your sphinx.conf value (searchd --> max_matches). In order to fetch all the tags in the index, this value must be greater than your number of index entries.
+sphinxLimit = 500000
+# cat=sphinx//80; type=string; label = Administrater email address: If an error with sphinx occurs, the administrator will receive an email.
+sphinxAdminEmail =
+
+# cat=DoYouMean//5; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.doYouMean
+enableDoYouMean = 0
+# cat=DoYouMean//10; type=wrap; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.linkForXml
+linkForXml = http://www.openthesaurus.de/synonyme/search?q=|&format=text/xml&similar=true
+# cat=DoYouMean//20; type=wrap; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.linkForJson
+linkForJson = http://www.openthesaurus.de/synonyme/search?q=|&format=application/json&similar=true
+# cat=DoYouMean//30; type=options[XML=xml,JSON=json]; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.apiFormat
+apiFormat = xml
+# cat=DoYouMean//40; type=options[1,2,3,4,5]; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.maxDistance
+maxDistance = 2
+
+# cat=distancesearch//5; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.distancesearch
+enableDistanceSearch = 0
+# cat=distancesearch//10; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:distancesearch.country
+country =
+# cat=distancesearch//20; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:distancesearch.addDistanceToDefaultTemplate
+addDistanceToDefaultTemplate = 1
+# cat=distancesearch//30; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:distancesearch.addMapToDefaultTemplate
+addMapToDefaultTemplate = 1
+# cat=distancesearch//40; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:distancesearch.googleapikeybrowser
+googleapikeybrowser =
+# cat=distancesearch//50; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:distancesearch.googleapikeyserver
+googleapikeyserver =
+
+# cat=api//05; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:extConf.api
+enableApi = 0
+# cat=api//10; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:api.user
+apiUsername =
+# cat=api//20; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:api.pass
+apiPassword =
+# cat=api//30; type=options[_blank,]; label = Target for link to external results: _blank means these results will open in a new window.
+apiExternalResultTarget = _blank
+
+# cat=ranking//10; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:ranking.enableBoostKeywords
+enableBoostKeywords = 0
+# cat=ranking//20; type=options[1,2,3,4,5,6,7,8,9,10]; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:ranking.boostKeywordsFactor
+boostKeywordsFactor = 5
+# cat=ranking//30; type=boolean; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:ranking.enableCustomRanking
+enableCustomRanking = 0
+
+# cat=headless//10; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:headless.contentElements
+headlessContentElements =
+# cat=headless//20; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:headless.ipMaskList
+headlessAllowedRemoteIpMaskList =
+# cat=headless//30; type=string; label=LLL:EXT:ke_search_premium/Resources/Private/Language/locallang.xlf:headless.fieldsWhitelist
+headlessFieldsWhitelist = page;searchword;searchwordDefault;sortByField;sortByDir;filters;filters:title,name,id,checkboxOptions;filters-checkboxOptions:title,tag,slug,key,id;isEmptySearch;wordsTooShort;resultrows;resultrows:title_text,content_text,title,teaser,type,number;numberofresults;queryTime;queryTimeText;pagebrowser;pagebrowser:current,pages_total,start,end

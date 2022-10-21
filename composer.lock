@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad78786faf69282c2d2a69b66a89f842",
+    "content-hash": "d8d8a12fa82f9ab18889ef320969e4d6",
     "packages": [
         {
             "name": "b13/container",
@@ -7830,6 +7830,53 @@
             "time": "2022-09-30T09:48:34+00:00"
         },
         {
+            "name": "tpwd/ke_search_premium",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./packages/ke_search_premium",
+                "reference": "aaea209089507b23b2787c9530bfd8c9dcd1fb67"
+            },
+            "require": {
+                "tpwd/ke_search": "^4.5.0",
+                "typo3/cms-core": "^10.4 || ^11.5"
+            },
+            "replace": {
+                "teaminmedias-pluswerk/ke_search_premium": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "ke_search_premium"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tpwd\\KeSearchPremium\\": "Classes"
+                },
+                "classmap": [
+                    "Classes",
+                    "Classes/Hooks",
+                    "Classes/Lib"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Additional functions for ke_search, the search extension for TYPO3.",
+            "keywords": [
+                "TYPO3 CMS",
+                "faceted search",
+                "faceting",
+                "ke_search",
+                "kesearch",
+                "search"
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "typo3/class-alias-loader",
             "version": "v1.1.4",
             "source": {
@@ -13850,6 +13897,7 @@
         "xima/xm-goaccess": 20,
         "xima/xm-kesearch-remote": 20,
         "xima/xm-manual": 20,
+        "tpwd/ke_search_premium": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },

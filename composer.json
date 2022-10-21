@@ -73,7 +73,8 @@
 		"xima/xm-kesearch-remote": "*@dev",
 		"tomasnorre/crawler": "^11.0",
 		"xima/xm-manual": "*@dev",
-		"cweagans/composer-patches": "^1.7"
+		"cweagans/composer-patches": "^1.7",
+		"tpwd/ke_search_premium": "*@dev"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
