@@ -3,7 +3,7 @@ baseVariants:
   -
     base: '%env("TYPO3_RELEASE_URL")%'
     condition: 'getenv("IS_RELEASE_REQUEST")'
-enabled_oauth2_providers: xima
+enabled_oauth2_providers: 'xima,dkfz'
 languages:
   -
     title: Deutsch
