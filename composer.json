@@ -94,6 +94,9 @@
 	"extra": {
 		"composer-exit-on-patch-failure": true,
 		"patches": {
+			"waldhacker/typo3-oauth2-client": [
+				"patches/waldhacker-typo3-oauth2-client-classes-backend-loginprovider-oauth2loginprovider-php.patch"
+			],
 			"tomasnorre/crawler": [
 				"patches/tomasnorre-crawler-classes-service-urlservice-php.patch"
 			],
