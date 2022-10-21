@@ -26,6 +26,12 @@
 			<trans-unit id="tt_content.header_layout.5">
 				<target><![CDATA[Überschrift 5 <h5>]]></target>
 			</trans-unit>
+			<trans-unit id="tt_content.header_layout.description" space="preserve">
+				<target>Aufbau der Überschriftenstruktur. Auf eine H1 folgt eine H2 und dann eine H3 etc.</target>
+			</trans-unit>
+			<trans-unit id="tt_content.sectionIndex.description" space="preserve">
+				<target>Legt fest, ob das Inhaltselement in der Ankernavigation angezeigt wird.</target>
+			</trans-unit>
 			<trans-unit id="tt_content.frame_class.color">
 				<target>Farbig</target>
 			</trans-unit>
@@ -77,6 +83,12 @@
 			<trans-unit id="pages.color.gray-500" space="preserve">
 				<target>Dunkelgrau</target>
 			</trans-unit>
+			<trans-unit id="pages.media.label" space="preserve">
+				<target>Teaserbild</target>
+			</trans-unit>
+			<trans-unit id="pages.media.description" space="preserve">
+				<target>Dieses Bild wird in der Einleitung der Seite und für das Inhaltselement "Teaser" verwendet.</target>
+			</trans-unit>
 			<trans-unit id="container.accordion">
 				<target>Akkordeon</target>
 			</trans-unit>
@@ -125,14 +137,20 @@
 			<trans-unit id="container.tabs.tab3">
 				<target>Inhalt Tab 3 (optional)</target>
 			</trans-unit>
+			<trans-unit id="container.linklist.title">
+				<target>Linkliste</target>
+			</trans-unit>
+			<trans-unit id="container.linklist.description">
+				<target>Eine Sammlung von Hyperlinks zu externen und internen Webseiten.</target>
+			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
-				<target>Zeigt Video von YouTube oder Vimeo an</target>
+				<target>Einbindung eines MP4-, Vimeo- oder YouTube-Videos.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.infobox.description" space="preserve">
-				<target>Zeigt eine hervorgehobene Nachricht in einer Box oder Rahmen an</target>
+				<target>Hervorhebung textueller Inhalte als Hinweise, Warnungen oder wichtige Meldungen.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.quote.description" space="preserve">
-				<target>Zeigt ein hervorgehobenes Zitat in einem Rahmen an</target>
+				<target>Verstärkte optische Hervorhebung eines kurzen Zitats.</target>
 			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
 				<target>Teaser-Einstellungen</target>
@@ -141,13 +159,22 @@
 				<target>Teaser</target>
 			</trans-unit>
 			<trans-unit id="tt_content_page_teaser.description" space="preserve">
-				<target>Zeit eine Vorschau von Seiten mit weiterführenden Links an</target>
+				<target>Eine Vorschau von Seiten des DKFZ-Intranets inklusive einer Linkliste.</target>
 			</trans-unit>
 			<trans-unit id="tt_content_employeeSlider" space="preserve">
 				<target>Mitarbeiter-Slider</target>
 			</trans-unit>
+			<trans-unit id="tt_content_employeeSlider.description" space="preserve">
+				<target>Darstellung mehrerer Mitarbeiter, nebeneinander in einem Slider.</target>
+			</trans-unit>
 			<trans-unit id="tt_content.employee" space="preserve">
 				<target>Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tt_content_serviceSlider" space="preserve">
+				<target>Service-Slider</target>
+			</trans-unit>
+			<trans-unit id="tt_content_serviceSlider.description" space="preserve">
+				<target>Teaser-Slider zum Servicebereich und zu wichtigen Tools</target>
 			</trans-unit>
 			<trans-unit id="pages.contacts" space="preserve">
 				<target>Kontaktpersonen</target>
@@ -252,10 +279,10 @@
                 <target>Bilder-Slider</target>
             </trans-unit>
             <trans-unit id="image.slider.description">
-                 <target>Von 2 bis maximal 15 Bilder in einem Schieberegler ausgerichtet</target>
+                 <target>Eine Galerie mit bis zu 15 Bildern in der Darstellung eines Sliders</target>
             </trans-unit>
             <trans-unit id="image.slider.notification">
-                 <target>Bitte 2 bis 15 Bilder hinzufügen</target>
+                 <target>Ein Bilder-Slider muss mindestens 2 Bilder enthalten. Maximal können 15 Bilder hinzugefügt werden</target>
             </trans-unit>
 			<trans-unit id="contact">
 				<target>Kontakt</target>
@@ -356,6 +383,7 @@
 				<target>Wählen Sie in welcher Proportion den Container-Element dargestellt ist.</target>
 			</trans-unit>
 
+
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
 				<target>Seiteneigenschaften überschreiben</target>
 			</trans-unit>
@@ -410,8 +438,14 @@
 			<trans-unit id="tt_content_teaser.items" space="preserve">
 				<target>Teaser-Kacheln</target>
 			</trans-unit>
+			<trans-unit id="tt_content_teaser.items.description" space="preserve">
+				<target>Über "Neu anlegen" kann eine unbegrenzte Anzahl an Seiten-Teasern angelegt werden.</target>
+			</trans-unit>
 			<trans-unit id="tt_content_item.overrides" space="preserve">
 				<target>Alternative Metadaten</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.overrides.description" space="preserve">
+				<target>Aktivieren Sie diese Option um die Teaser-Eigenschaften (Metadaten) der verlinkten Seite zu überschreiben.</target>
 			</trans-unit>
 
 			<trans-unit id="sys_file.description.description" space="preserve">

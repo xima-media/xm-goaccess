@@ -31,6 +31,8 @@ $GLOBALS['TCA']['pages']['palettes']['robots2'] = [
 
 $GLOBALS['TCA']['pages']['columns']['description']['config']['cols'] = 60;
 $GLOBALS['TCA']['pages']['columns']['description']['config']['rows'] = 10;
+$GLOBALS['TCA']['pages']['columns']['media']['label'] = 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.media.label';
+$GLOBALS['TCA']['pages']['columns']['media']['description'] = 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.media.description';
 $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants'] = [
     'teaser' => [
         'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.crop_variant.default',

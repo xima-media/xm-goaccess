@@ -240,6 +240,7 @@ return [
         ],
         'overrides' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides',
+            'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'overrideToggle',

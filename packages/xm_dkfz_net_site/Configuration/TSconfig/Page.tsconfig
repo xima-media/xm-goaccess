@@ -35,6 +35,8 @@ TCEFORM {
       altLabels.4 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.4
       altLabels.5 = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.5
 
+      description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.header_layout.description
+
       types {
         infobox.disabled = 1
         quote.removeItems = 0,1,2,3,4,5
@@ -46,6 +48,8 @@ TCEFORM {
 
     subheader.disabled = 1
     subheader.types.list.disabled = 0
+
+    sectionIndex.description = Legt fest, ob das Inhaltselement in der Ankernavigation angezeigt wird.
 
     frame_class {
       disabled = 1
@@ -221,8 +225,8 @@ mod.wizards.newContentElement.wizardItems {
 
       tt_content_linklist {
         iconIdentifier = content-listgroup
-        title = Linkliste
-        description = Das ist eine Linkliste
+        title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.linklist.title
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:container.linklist.description
         tt_content_defValues {
           CType = linklist
         }
@@ -230,8 +234,8 @@ mod.wizards.newContentElement.wizardItems {
 
       tt_content_serviceSlider {
         iconIdentifier = content-carousel
-        title = Service-Slider
-        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.slider.description
+        title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_serviceSlider
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_serviceSlider.description
         tt_content_defValues {
           CType = serviceSlider
         }
@@ -285,7 +289,7 @@ mod.wizards.newContentElement.wizardItems {
       tt_content_employeeSlider {
         iconIdentifier = content-carousel
         title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_employeeSlider
-        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.slider.description
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_employeeSlider.description
         tt_content_defValues {
           CType = employeeSlider
         }
