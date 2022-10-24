@@ -6,16 +6,16 @@
 
 RTE {
   extended {
-    buttons.link.options.removeItems = folder
+    buttons.link.options.removeItems = folder,file
   }
   default {
-    buttons.link.options.removeItems = folder
+    buttons.link.options.removeItems = folder,file
   }
   minimal {
-    buttons.link.options.removeItems = folder
+    buttons.link.options.removeItems = folder,file
   }
   disruptor {
-    buttons.link.options.removeItems = folder
+    buttons.link.options.removeItems = folder,file
   }
 }
 
