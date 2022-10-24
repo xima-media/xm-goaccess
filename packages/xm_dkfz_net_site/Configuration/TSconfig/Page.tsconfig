@@ -4,6 +4,21 @@
 @import 'EXT:bw_static_template/Configuration/PageTS/All.txt'
 
 
+RTE {
+  extended {
+    buttons.link.options.removeItems = folder
+  }
+  default {
+    buttons.link.options.removeItems = folder
+  }
+  minimal {
+    buttons.link.options.removeItems = folder
+  }
+  disruptor {
+    buttons.link.options.removeItems = folder
+  }
+}
+
 TCEMAIN {
   permissions {
     groupid = 1
