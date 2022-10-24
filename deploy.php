@@ -95,12 +95,8 @@ task('typo3cms:cache:warmup', function () {
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup --depth=1 --mode=exec');
 });
-//before('buffer:start', 'typo3cms:cache:warmup');
-//after('buffer:stop', 'request:frontend');
-task('request:frontend', function () {
-    $urls = get('public_urls');
-    run('curl -sfk ' . $urls[0] . ' > /dev/null 2>& 1');
-});
+before('buffer:start', 'typo3cms:cache:warmup');
+after('buffer:stop', 'typo3cms:cache:warmup');
 
 // Reset xima intern staging in pipeline
 option(
