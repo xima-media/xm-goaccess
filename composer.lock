@@ -254,13 +254,14 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
-                "reference": "fd0e573ca0af812c962ed3de6af36e6686a28bac"
+                "reference": "205c5df85093a944fe56f83abfda042d2419eadd"
             },
             "require": {
                 "ext-gd": "*",
                 "ext-iconv": "*",
                 "ext-json": "*",
                 "ext-pdo": "*",
+                "georgringer/numbered-pagination": "^1.0",
                 "typo3/cms-core": "^9.0 || ^10.0 || ^11.0"
             },
             "require-dev": {
@@ -1683,6 +1684,78 @@
                 }
             ],
             "time": "2022-10-19T10:29:28+00:00"
+        },
+        {
+            "name": "georgringer/numbered-pagination",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/numbered_pagination.git",
+                "reference": "ce4b4fcaf0ecd4282399b1f402a510db304d425a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/numbered_pagination/zipball/ce4b4fcaf0ecd4282399b1f402a510db304d425a",
+                "reference": "ce4b4fcaf0ecd4282399b1f402a510db304d425a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "typo3/cms-core": "^9 || ^10 || ^11"
+            },
+            "replace": {
+                "typo3-ter/numbered-pagination": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "numbered_pagination"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\NumberedPagination\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Improved pagination for TYPO3",
+            "homepage": "https://github.com/georgringer/numbered_pagination",
+            "keywords": [
+                "pagination",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/georgringer/numbered_pagination/issues",
+                "source": "https://github.com/georgringer/numbered_pagination/tree/1.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/GeorgRinger/10",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.amazon.de/hz/wishlist/ls/8F573K08TSDG",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/georgringer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/georgringer",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-02-10T10:42:44+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -13691,16 +13764,16 @@
         },
         {
             "name": "symplify/vendor-patches",
-            "version": "11.1.10",
+            "version": "11.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/vendor-patches.git",
-                "reference": "b758280d81955c4591faddd8fb9b7a2cda69873d"
+                "reference": "dad634f1f1298961a1279f45801d89966310916a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/b758280d81955c4591faddd8fb9b7a2cda69873d",
-                "reference": "b758280d81955c4591faddd8fb9b7a2cda69873d",
+                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/dad634f1f1298961a1279f45801d89966310916a",
+                "reference": "dad634f1f1298961a1279f45801d89966310916a",
                 "shasum": ""
             },
             "require": {
@@ -13722,7 +13795,7 @@
             ],
             "description": "Generate vendor patches for packages with single command",
             "support": {
-                "source": "https://github.com/symplify/vendor-patches/tree/11.1.10"
+                "source": "https://github.com/symplify/vendor-patches/tree/11.1.11"
             },
             "funding": [
                 {
@@ -13734,7 +13807,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-29T10:40:49+00:00"
+            "time": "2022-10-23T14:56:38+00:00"
         },
         {
             "name": "theseer/tokenizer",

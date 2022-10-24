@@ -100,6 +100,7 @@ plugin {
   tx_bwguild_userlist {
     settings {
       schema.enable = 0
+      maximumLinks = 6
     }
   }
 }
