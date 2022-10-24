@@ -58,7 +58,7 @@ test-php-stan:
   stage: deploy
   needs: [ "build-php" ]
   before_script:
-    - apk add --quiet rsync gzip
+    - apk add --update --quiet rsync gzip
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
@@ -125,7 +125,7 @@ reset-staging-dkfz:
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - apk add --quiet php
+    - apk add --update --quiet php
     - vendor/bin/dep db:rmdump staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep db:upload staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep db:decompress staging-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
