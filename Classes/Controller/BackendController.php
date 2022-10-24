@@ -31,7 +31,7 @@ class BackendController extends ActionController
             return $this->htmlResponse($content);
         }
 
-        $filePath = Environment::getPublicPath() . '/' . $extConf['html_path'];
+        $filePath = str_starts_with($extConf['html_path'], '/') ? $extConf['html_path'] : Environment::getPublicPath() . '/' . $extConf['html_path'];
         if (!file_exists($filePath)) {
             $content = 'File "' . $filePath . '" not found';
             return $this->htmlResponse($content);
