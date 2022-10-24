@@ -3,6 +3,7 @@
 	"description": "Integrates goaccess.io into TYPO3",
 	"type": "typo3-cms-extension",
 	"version": "11.0.0",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Maik Schneider",
