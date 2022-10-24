@@ -75,6 +75,26 @@
         }
     }
 
+    ul:not(.infobox__items),
+    ol:not(.infobox__items) {
+        max-width: 60.625rem;
+        margin: auto;
+        letter-spacing: 0.6px;
+        margin-left: 0.375rem;
+        padding-left: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    ul:not(.infobox__items) {
+        > li {
+            list-style: disc;
+
+            strong {
+                @include text-copy-standard(700);
+            }
+        }
+    }
+
     &.color__border {
         border-width: 1px;
         border-style: solid;

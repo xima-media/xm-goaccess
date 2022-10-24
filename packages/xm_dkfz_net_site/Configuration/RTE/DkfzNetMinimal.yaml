@@ -7,5 +7,4 @@ editor:
     removeButtons:
       - Link
       - Unlink
-      - NumberedList
-      - BulletedList
+      - Source

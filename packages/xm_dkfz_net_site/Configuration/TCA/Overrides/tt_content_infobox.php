@@ -54,6 +54,18 @@ $GLOBALS['TCA']['tt_content']['types']['infobox'] = [
                                 'default' => 'link',
                             ],
                         ],
+                        'link' => [
+                            'config' => [
+                                'fieldControl' => [
+                                    'linkPopup' => [
+                                        'options' => [
+                                            'blindLinkFields' => 'class,params,target,title',
+                                            'blindLinkOptions' => 'file,folder,mail,telephone',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                 ],
             ],
