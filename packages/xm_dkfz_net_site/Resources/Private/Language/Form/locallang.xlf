@@ -13,6 +13,18 @@
 			<trans-unit id="generalfeedbackform.element.subject.properties.label">
 				<source>Subject</source>
 			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.subject.properties.options.error">
+				<source>Error</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.subject.properties.options.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.subject.properties.options.comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="generalfeedbackform.validation.error.subject.1221560910">
+				<source>Please choose a subject!</source>
+			</trans-unit>
 			<trans-unit id="generalfeedbackform.element.message.properties.label">
 				<source>Your message</source>
 			</trans-unit>
@@ -22,8 +34,11 @@
 			<trans-unit id="generalfeedbackform.element.generalfeedbackform.renderingOptions.submitButtonLabel">
 				<source>Submit</source>
 			</trans-unit>
+			<trans-unit id="generalfeedbackform.finisher.EmailToReceiver.title">
+				<source>Message from intranet user %s</source>
+			</trans-unit>
 			<trans-unit id="generalfeedbackform.finisher.Confirmation.message">
-				<source>Thanks for your message!</source>
+				<source>Thank you for your message!</source>
 			</trans-unit>
 		</body>
 	</file>
