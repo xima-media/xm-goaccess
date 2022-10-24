@@ -7,6 +7,9 @@ services:
   Xima\XmGoaccess\Widgets\:
     resource: '../Classes/Widgets/*'
 
+  Xima\XmGoaccess\Controller\BackendController:
+    tags: [ 'backend.controller' ]
+
   dashboard.widget.xm_goaccess_uniqueVisitors:
     class: 'Xima\XmGoaccess\Widgets\LineChartWidget'
     arguments:
