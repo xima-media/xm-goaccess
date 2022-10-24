@@ -5,8 +5,8 @@
 				<f:for each="{item.files}" as="file" iteration="fileIterator">
 					<f:if condition="{fileIterator.cycle} === 1">
 						<span class="color-border color--{item.color}">
-						<f:image image="{file}" maxWidth="80"/>
-					</span>
+							<f:image image="{file}" maxWidth="80"/>
+						</span>
 					</f:if>
 				</f:for>
 			</f:if>
@@ -24,9 +24,16 @@
 			<f:if condition="{item.links}">
 				<p><strong>Links</strong></p>
 				<ul>
-					<f:for each="{item.links}" as="link">
+					<f:for each="{item.links}" as="linkItem">
 						<li>
-							<f:link.typolink parameter="{link}"/>
+							<f:if condition="{linkItem.title}">
+								<f:then>
+									<f:link.typolink parameter="{linkItem.link}">{linkItem.title}</f:link.typolink>
+								</f:then>
+								<f:else>
+									<f:link.typolink parameter="{linkItem.link}"/>
+								</f:else>
+							</f:if>
 						</li>
 					</f:for>
 				</ul>

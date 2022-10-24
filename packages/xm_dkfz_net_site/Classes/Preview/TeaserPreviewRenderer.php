@@ -68,7 +68,11 @@ class TeaserPreviewRenderer extends TextmediaPreviewRenderer
         $links = $qb->select('*')
             ->from('tt_content_item')
             ->where(
-                $qb->expr()->eq('foreign_uid', $qb->createNamedParameter($item['uid'], \PDO::PARAM_INT))
+                $qb->expr()->andX(
+                    $qb->expr()->eq('deleted', 0),
+                    $qb->expr()->eq('pid', $item['pid']),
+                    $qb->expr()->eq('foreign_uid', $qb->createNamedParameter($item['uid'], \PDO::PARAM_INT))
+                )
             )
             ->execute()
             ->fetchAllAssociative();
@@ -78,7 +82,7 @@ class TeaserPreviewRenderer extends TextmediaPreviewRenderer
         }
 
         $item['links'] = array_map(function ($link) {
-            return $link['link'];
+            return ['link' => $link['link'], 'title' => $link['title']];
         }, $links);
     }
 
