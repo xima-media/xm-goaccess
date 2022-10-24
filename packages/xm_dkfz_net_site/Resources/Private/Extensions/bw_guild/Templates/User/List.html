@@ -1,6 +1,6 @@
 <f:form action="list" name="demand" controller="User" object="{demand}" class="hero-form">
 	<div class="hero-form__header">
-		<h2 class="hero-form__title">Mitarbeiter suchen</h2>
+		<h2 class="hero-form__title h4">Mitarbeiter suchen</h2>
 	</div>
 
 	<div class="hero-form__content">
@@ -58,7 +58,7 @@
 
 <div class="results">
 
-	<h2 class="results__title">Es wurden {users->f:count()} Mitarbeiter gefunden</h2>
+	<h2 class="results__title h6">Es wurden {users->f:count()} Mitarbeiter gefunden</h2>
 
 	<div class="results__items">
 		<f:for each="{pagination.paginator.paginatedItems}" as="user">

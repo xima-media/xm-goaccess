@@ -306,8 +306,8 @@ ul > li {
         margin-left: auto;
     }
 
-    &__title {
-        @include h6;
+    &__title.h6 {
+        margin-bottom: var(--content-padding);
     }
 
     &__items {
