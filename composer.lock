@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a377e629fb802fb33aec95e1d3a1f76d",
+    "content-hash": "fcde63d5acec305296c579ba59de7924",
     "packages": [
         {
             "name": "b13/container",
@@ -1601,12 +1601,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
-                "reference": "3799160ba23249249825d6f6009f5c2dc8c01a36"
+                "reference": "964ccb0f2fa689770a6152c53f41ac94b9391039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/georgringer/news/zipball/3799160ba23249249825d6f6009f5c2dc8c01a36",
-                "reference": "3799160ba23249249825d6f6009f5c2dc8c01a36",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/964ccb0f2fa689770a6152c53f41ac94b9391039",
+                "reference": "964ccb0f2fa689770a6152c53f41ac94b9391039",
                 "shasum": ""
             },
             "require": {
@@ -1683,7 +1683,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-10-19T10:29:28+00:00"
+            "time": "2022-10-24T08:56:41+00:00"
         },
         {
             "name": "georgringer/numbered-pagination",
@@ -10444,15 +10444,29 @@
         },
         {
             "name": "xima/xm-goaccess",
-            "version": "dev-master",
+            "version": "v11.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xima-media/xm-goaccess.git",
+                "reference": "d0d3e8482b82baeed68befc5c856294495bad441"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/xm_goaccess",
-                "reference": "d7eb644c9ea0fd1bbded61e15c3a776ec689b7d1"
+                "type": "zip",
+                "url": "https://api.github.com/repos/xima-media/xm-goaccess/zipball/d0d3e8482b82baeed68befc5c856294495bad441",
+                "reference": "d0d3e8482b82baeed68befc5c856294495bad441",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.0",
-                "typo3/cms-dashboard": "^11.5"
+                "typo3/cms-dashboard": "^11.5 || ^12.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.3",
+                "phpmd/phpmd": "^2.6.0",
+                "phpstan/phpstan": "^1.6",
+                "squizlabs/php_codesniffer": "^3.4",
+                "typo3/cms-base-distribution": "^12.0",
+                "vimeo/psalm": "^4.0"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -10465,6 +10479,10 @@
                     "Xima\\XmGoaccess\\": "Classes"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Maik Schneider",
@@ -10473,9 +10491,11 @@
                 }
             ],
             "description": "Integrates goaccess.io into TYPO3",
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/xima-media/xm-goaccess/issues",
+                "source": "https://github.com/xima-media/xm-goaccess/tree/v11.0.1"
+            },
+            "time": "2022-10-24T15:04:15+00:00"
         },
         {
             "name": "xima/xm-kesearch-remote",
@@ -11585,16 +11605,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.10",
+            "version": "1.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "0c4459dc42c568b818b3f25186589f3acddc1823"
+                "reference": "46e223dd68a620da18855c23046ddb00940b4014"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0c4459dc42c568b818b3f25186589f3acddc1823",
-                "reference": "0c4459dc42c568b818b3f25186589f3acddc1823",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/46e223dd68a620da18855c23046ddb00940b4014",
+                "reference": "46e223dd68a620da18855c23046ddb00940b4014",
                 "shasum": ""
             },
             "require": {
@@ -11624,7 +11644,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.10"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.11"
             },
             "funding": [
                 {
@@ -11640,7 +11660,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-17T14:23:35+00:00"
+            "time": "2022-10-24T15:45:13+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -13967,7 +13987,6 @@
         "sourcebroker/deployer-extended-database": 20,
         "xima/xm-dkfz-net-events": 20,
         "blueways/bw-guild": 20,
-        "xima/xm-goaccess": 20,
         "xima/xm-kesearch-remote": 20,
         "xima/xm-manual": 20,
         "tpwd/ke_search_premium": 20,

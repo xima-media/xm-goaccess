@@ -1,4 +1,0 @@
-# cat=basic/enable; type=string; label=Relative path of the generated HTML file
-html_path =
-# cat=basic/enable; type=string; label=Relative path of the generated JSON file
-json_path =
