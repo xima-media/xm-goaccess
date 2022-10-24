@@ -3,4 +3,5 @@ public
 !Resources/Public
 var
 vendor
-Documentation-GENERATED-temp
+Documentation-*
+.idea
