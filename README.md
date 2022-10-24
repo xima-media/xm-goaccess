@@ -47,7 +47,7 @@ creates a new dashboard with all available goaccess integrations.
 
 The application is written in go and available from the standard repositories of
 multiple Linux distributions. A repository for Debian/Ubuntu is also provided.
-See the [official goaccess.io documentation[(https://goaccess.io/get-started)
+See the [official goaccess.io documentation](https://goaccess.io/get-started)
 for a complete guide.
 
 ```
