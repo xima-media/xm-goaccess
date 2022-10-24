@@ -2,10 +2,10 @@
 
 This TYPO3 extensions ships Dashboard widgets and a backend module to display various [goaccess.io](https://goaccess.io) metrics.
 
-![backend_dashboard](Documentation/backend-goaccess.jpg)
+![backend_dashboard](Documentation/Images/backend-goaccess.jpg)
 
 
-![backend_module](Documentation/goaccess-module.jpg)
+![backend_module](Documentation/Images/goaccess-module.jpg)
 
 
 ## Installation
