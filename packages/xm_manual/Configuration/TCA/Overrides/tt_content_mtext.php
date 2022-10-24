@@ -32,3 +32,5 @@ $GLOBALS['TCA']['tt_content']['types']['mtext'] = [
         ],
     ],
 ];
+
+$GLOBALS['TCA']['tt_content']['types']['mtext']['previewRenderer'] = \Xima\XmManual\Preview\MtextPreviewRenderer::class;
