@@ -37,3 +37,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Blueways\BwGuild\Domain\Model\Use
         Blueways\BwGuild\Domain\Model\User::class,
         \Xima\XmDkfzNetSite\Domain\Model\User::class
     );
+
+// change order of backend login provider
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders']['1616569531']['sorting'] = 75;
