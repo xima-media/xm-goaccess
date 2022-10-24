@@ -3,7 +3,6 @@
 namespace Xima\XmManual\Preview;
 
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -21,7 +20,6 @@ class MtextPreviewRenderer extends TextmediaPreviewRenderer
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
         $row = $item->getRecord();
-
 
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename('EXT:xm_manual/Resources/Private/Backend/MboxPreview.html');
