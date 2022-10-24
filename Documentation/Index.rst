@@ -12,7 +12,7 @@ This TYPO3 extensions ships Dashboard widgets and a backend module to display va
     ..  container:: card px-0 h-100
 
         ..  container:: card-body
-        ..  image:: /Images/backend-goaccess.jpg
+        ..  image:: ./Images/backend-goaccess.jpg
             :class: with-shadow
             :alt: Plugin in the TYPO3 Backend
 
@@ -21,7 +21,7 @@ This TYPO3 extensions ships Dashboard widgets and a backend module to display va
     ..  container:: card px-0 h-100
 
         ..  container:: card-body
-        ..  image:: /Images/goaccess-module.jpg
+        ..  image:: ./Images/goaccess-module.jpg
             :class: with-shadow
             :alt: Plugin in the TYPO3 Backend
 
