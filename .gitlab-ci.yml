@@ -103,7 +103,7 @@ deploy-dkfz-staging:
     - if: $CI_COMMIT_BRANCH == "master" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - vendor/bin/dep deploy:unlock staging-dkfz
-    - vendor/bin/dep deploy-fast staging-dkfz
+    - vendor/bin/dep deploy-fast staging-dkfz -vvv
 
 deploy-dkfz-production:
   extends: .deploy-prepare
