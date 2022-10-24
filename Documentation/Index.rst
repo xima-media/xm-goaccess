@@ -69,11 +69,11 @@ Html and json exports for the TYPO3 extension can be generated from Apache logs 
 
 
     usr/bin/zcat --force /var/log/apache2/access_example.org.log* | \ # You usually want to parse rotated nd gzipped logs as well.
-        /usr/bin/goaccess -
+        /usr/bin/goaccess -                                         \
         -o goaccess.html -o goaccess.json                           \ # Export processed metrics as html and json.
         --log-format=COMBINED                                       \ # Apache Combined Log Format. Custom log formats are supported, too.
         --ignore-crawlers                                           \ # Ignore web crawlers.
-        --exclude-ip ::1 --exclude-ip 127.0.0.1                     \ # Exclude status checks originating from local ip addresses.
+        --exclude-ip ::1 --exclude-ip 127.0.0.1                       # Exclude status checks originating from local ip addresses.
 
 To refresh these files periodically, you might use a cronjob.
 
