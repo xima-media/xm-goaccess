@@ -27,6 +27,8 @@ finishers:
     options:
       message: 'Thanks for your message!'
       contentElementUid: ''
+      templateRootPaths:
+        50: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Frontend/Templates/Finishers/Confirmation/FeedbackForm/'
     identifier: Confirmation
 renderables:
   -
