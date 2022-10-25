@@ -475,6 +475,10 @@
 			<trans-unit id="sys_file.description.description" space="preserve">
 				<source>This description can be displayed below the image.</source>
 			</trans-unit>
+
+			<trans-unit id="searchForm.sword.label" space="preserve">
+				<source>Search for name, first name, phone number</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -30,6 +30,7 @@ pidNewsStorage = 118
 pidUserDetail = 159
 pidUserList = 8
 pidDisruptorStorage = 101
+pidSearch = 111
 
 ##############################
 #### FLUID STYLED CONTENT ####
@@ -156,4 +157,13 @@ plugin.tx_oauth2client {
     partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Partials/
     layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Layouts/
   }
+}
+
+#################
+### ke_search ###
+#################
+plugin.tx_kesearch {
+  templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ke_search/Templates/
+  partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ke_search/Partials/
+  layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ke_search/Layouts/
 }

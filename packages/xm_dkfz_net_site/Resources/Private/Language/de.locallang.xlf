@@ -451,6 +451,10 @@
 			<trans-unit id="sys_file.description.description" space="preserve">
 				<target>Diese Beschreibung kann unterhalb des Bildes angezeigt werden.</target>
 			</trans-unit>
+
+			<trans-unit id="searchForm.sword.label" space="preserve">
+				<target>Suche nach Name, Vorname, Telefonnummer</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
