@@ -4,7 +4,7 @@
 			<li class="previous">
 				<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.previousPageNumber})}"
 				   title="{f:translate(key:'pagination.previous')}">
-					{f:translate(key:'widget.pagination.previous', extensionName: 'fluid')}
+					<f:render partial="Icon" arguments="{icon: 'arrow-left'}" />
 				</a>
 			</li>
 			<li class="first">
@@ -47,7 +47,7 @@
 			<li class="next">
 				<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.nextPageNumber})}"
 				   title="{f:translate(key:'pagination.next')}">
-					{f:translate(key:'widget.pagination.next', extensionName: 'fluid')}
+					<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
 				</a>
 			</li>
 		</f:then>
