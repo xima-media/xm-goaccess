@@ -102,6 +102,7 @@ plugin {
     settings {
       schema.enable = 0
       maximumLinks = 6
+      hideFullResultList = 1
     }
   }
 }

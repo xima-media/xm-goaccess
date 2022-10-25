@@ -1,0 +1,57 @@
+<f:form extensionName="BwGuild" action="list" name="demand" controller="User" object="{demand}" class="hero-form">
+	<div class="hero-form__header">
+		<h2 class="hero-form__title h4">Mitarbeiter suchen</h2>
+	</div>
+
+	<div class="hero-form__content">
+
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="field field--text">
+					<label class="field__label" for="search">Suche nach Name, Vorname, Telefonnummer</label>
+					<f:form.textfield id="search"
+									  class="field__input"
+									  placeholder="Suche nach Name, Vorname, Telefonnummer"
+									  property="search"/>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="field field--text">
+					<label class="field__label" for="feature">Suche nach Kompetenz, Thema, Interesse</label>
+					<f:form.textfield id="feature"
+									  class="field__input"
+									  placeholder="Suche nach Kompetenz, Thema, Interesse"
+									  property="feature"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="field field--text">
+					<label class="field__label" for="feGroup">Abteilung</label>
+					<f:form.textfield id="feGroup" class="field__input" placeholder="Abteilung" property="feGroup"/>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="field field--text">
+					<label class="field__label" for="function">Funktion</label>
+					<f:form.textfield id="function" class="field__input" placeholder="Funktion" property="function"/>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="field field--text">
+					<label class="field__label" for="gremium">Gremium</label>
+					<f:form.textfield id="gremium" class="field__input" placeholder="Funktion" property="gremium"/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="hero-form__footer">
+		<button type="submit" class="button button--white">
+			<f:render partial="Icon" arguments="{icon:'search'}"/>
+			Suchen
+		</button>
+	</div>
+</f:form>
