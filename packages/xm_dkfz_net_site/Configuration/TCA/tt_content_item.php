@@ -81,7 +81,7 @@ return [
             ],
         ],
         'user-contact' => [
-            'showitem' => 'record_type, fe_user, overrides, --palette--;;fe_user-override',
+            'showitem' => 'record_type, fe_user, overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override;, --palette--;;fe_user-override',
             'columnsOverrides' => [
                 'record_type' => [
                     'config' => [
@@ -106,7 +106,7 @@ return [
             'showitem' => 'title,--linebreak--,text,--linebreak--',
         ],
         'fe_user-override' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_usertable.palette.override',
             'showitem' => 'contacts, --linebreak--, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.text'
         ],
     ],
@@ -260,7 +260,6 @@ return [
         ],
         'overrides' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides',
-            'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides.description',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'overrideToggle',
@@ -308,7 +307,7 @@ return [
             ],
         ],
         'contacts' => [
-            'label' => 'Contacts',
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.contacts',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',

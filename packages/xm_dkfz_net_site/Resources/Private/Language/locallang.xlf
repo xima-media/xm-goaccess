@@ -220,6 +220,9 @@
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
 				<source>Page overrides</source>
 			</trans-unit>
+			<trans-unit id="tt_content_usertable.palette.override" space="preserve">
+				<source>User overrides</source>
+			</trans-unit>
 			<trans-unit id="tt_content_page_teaser" space="preserve">
 				<source>Teaser</source>
 			</trans-unit>
@@ -486,6 +489,9 @@
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.text" space="preserve">
 				<source>Responsibilities</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
+				<source>Override user data</source>
 			</trans-unit>
 		</body>
 	</file>

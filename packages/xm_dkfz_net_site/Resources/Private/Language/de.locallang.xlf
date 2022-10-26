@@ -329,6 +329,9 @@
 			<trans-unit id="place.contacts">
 				<target>Kontakte</target>
 			</trans-unit>
+			<trans-unit id="user.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
 			<trans-unit id="place.fe_group">
 				<target>Abteilung</target>
 			</trans-unit>
@@ -350,7 +353,6 @@
 			<trans-unit id="quote.palette">
 				<target>Informationen über den Autor</target>
 			</trans-unit>
-
 			<trans-unit id="disruptor">
 				<target>Störer</target>
 			</trans-unit>
@@ -463,7 +465,13 @@
 				<target>Mitarbeiter</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.text" space="preserve">
-				<source>Verantwortlichkeiten</source>
+				<target>Verantwortlichkeiten</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
+				<target>Benutzerangaben überschreiben</target>
+			</trans-unit>
+			<trans-unit id="tt_content_usertable.palette.override" space="preserve">
+				<target>Benutzer Überschreibungen</target>
 			</trans-unit>
 		</body>
 	</file>

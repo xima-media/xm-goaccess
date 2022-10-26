@@ -65,6 +65,9 @@ $GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
                                 ],
                             ],
                         ],
+                        'overrides' => [
+                            'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides.description',
+                        ],
                         'link' => [
                             'config' => [
                                 'fieldControl' => [
