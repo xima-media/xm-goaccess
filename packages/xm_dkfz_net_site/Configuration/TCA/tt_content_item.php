@@ -107,7 +107,7 @@ return [
         ],
         'fe_user-override' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_usertable.palette.override',
-            'showitem' => 'contacts, --linebreak--, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities'
+            'showitem' => 'contacts, --linebreak--, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
         ],
     ],
     'columns' => [
@@ -301,6 +301,11 @@ return [
                 'maxitems' => 1,
                 'fieldControl' => [
                     'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
                         'disabled' => true,
                     ],
                 ],

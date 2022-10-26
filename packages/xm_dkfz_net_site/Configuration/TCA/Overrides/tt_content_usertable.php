@@ -50,7 +50,7 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
                         'text' => [
                             'config' => [
                                 'placeholder' => '__row|fe_user|responsibilities',
-                                'mode' => 'useOrOverridePlaceholder'
+                                'mode' => 'useOrOverridePlaceholder',
                             ],
                         ],
                     ],

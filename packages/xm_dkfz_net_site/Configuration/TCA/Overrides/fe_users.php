@@ -9,7 +9,7 @@ $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = true;
 $GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = [
     'first_name',
     'last_name',
-    'name'
+    'name',
 ];
 $GLOBALS['TCA']['fe_users']['columns']['bookmarks']['config']['allowed'] = 'pages,fe_users,sys_file,tx_news_domain_model_news';
 
@@ -105,7 +105,7 @@ call_user_func(function () {
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
             'config' => [
                 'type' => 'text',
-            ]
+            ],
         ],
         'representative' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.representative',
@@ -122,8 +122,8 @@ call_user_func(function () {
                 'fieldWizard' => [
                     'recordsOverview' => [
                         'disabled' => true,
-                    ]
-                ]
+                    ],
+                ],
             ],
         ],
     ];
