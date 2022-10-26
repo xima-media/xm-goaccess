@@ -13,6 +13,9 @@
 			<trans-unit id="generalfeedbackform.element.subject.properties.label">
 				<source>Subject</source>
 			</trans-unit>
+			<trans-unit id="generalfeedbackform.element.subject.properties.prependOptionLabel">
+				<source>-- Please choose --</source>
+			</trans-unit>
 			<trans-unit id="generalfeedbackform.element.subject.properties.options.error">
 				<source>Error</source>
 			</trans-unit>

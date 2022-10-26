@@ -27,6 +27,8 @@ finishers:
     options:
       message: 'Thanks for your message!'
       contentElementUid: ''
+      templateRootPaths:
+        50: 'EXT:xm_dkfz_net_site/Resources/Private/Extensions/form/Frontend/Templates/Finishers/Confirmation/FeedbackForm/'
     identifier: Confirmation
 renderables:
   -
@@ -65,7 +67,7 @@ renderables:
             -
               code: 1221560910
               message: 'Please choose a subject!'
-          prependOptionLabel: ' '
+          prependOptionLabel: '-- Please choose --'
         type: SingleSelect
         identifier: subject
         label: Subject
