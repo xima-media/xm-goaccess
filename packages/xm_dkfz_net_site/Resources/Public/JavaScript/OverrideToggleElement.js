@@ -16,14 +16,13 @@ define(['jquery'], function ($) {
 
             // bind event
             this.$checkbox.on('change', () => {
-                console.log('change')
                 OverrideToggleElement.togglePalette();
             });
         },
 
         togglePalette: () => {
             const doShow = parseInt($('input[type="hidden"][name="' + this.$checkbox.attr('data-formengine-input-name') + '"]').val());
-            
+
             if (doShow) {
                 this.$palette.show();
             } else {
