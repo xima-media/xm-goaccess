@@ -447,13 +447,23 @@
 			<trans-unit id="tt_content_item.overrides.description" space="preserve">
 				<target>Aktivieren Sie diese Option um die Teaser-Eigenschaften (Metadaten) der verlinkten Seite zu überschreiben.</target>
 			</trans-unit>
-
 			<trans-unit id="sys_file.description.description" space="preserve">
 				<target>Diese Beschreibung kann unterhalb des Bildes angezeigt werden.</target>
 			</trans-unit>
-
 			<trans-unit id="searchForm.sword.label" space="preserve">
 				<target>Suche nach Name, Vorname, Telefonnummer</target>
+			</trans-unit>
+			<trans-unit id="tt_content_usertable.title" space="preserve">
+				<target>Mitarbeiter-Tabelle</target>
+			</trans-unit>
+			<trans-unit id="tt_content_usertable.description" space="preserve">
+				<target>Zeigt Kontaktdaten ausgewählter Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact" space="preserve">
+				<target>Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact.text" space="preserve">
+				<source>Verantwortlichkeiten</source>
 			</trans-unit>
 		</body>
 	</file>

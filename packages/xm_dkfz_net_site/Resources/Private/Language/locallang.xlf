@@ -439,7 +439,6 @@
 			<trans-unit id="quote.palette">
 				<source>Information about the author</source>
 			</trans-unit>
-
 			<trans-unit id="disruptor">
 				<source>Disturber</source>
 			</trans-unit>
@@ -461,7 +460,6 @@
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<source>Video preview image for mp4 videos.</source>
 			</trans-unit>
-
 			<trans-unit id="tt_content.slider.description" space="preserve">
 				<source>This is a slider</source>
 			</trans-unit>
@@ -471,13 +469,23 @@
 			<trans-unit id="tt_content.orientation.description" space="preserve">
 				<source>Choose in what proportion the container element is displayed.</source>
 			</trans-unit>
-
 			<trans-unit id="sys_file.description.description" space="preserve">
 				<source>This description can be displayed below the image.</source>
 			</trans-unit>
-
 			<trans-unit id="searchForm.sword.label" space="preserve">
 				<source>Search for name, first name, phone number</source>
+			</trans-unit>
+			<trans-unit id="tt_content_usertable.title" space="preserve">
+				<source>User table</source>
+			</trans-unit>
+			<trans-unit id="tt_content_usertable.description" space="preserve">
+				<source>Table that shows selected users with info</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact" space="preserve">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact.text" space="preserve">
+				<source>Responsibilities</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -309,9 +309,18 @@ mod.wizards.newContentElement.wizardItems {
           CType = employeeSlider
         }
       }
+
+      tt_content_usertable {
+        iconIdentifier = content-user
+        title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_usertable.title
+        description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_usertable.description
+        tt_content_defValues {
+          CType = usertable
+        }
+      }
     }
 
-    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_serviceSlider,tt_content_page_teaser, tt_content_employeeSlider)
+    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_serviceSlider,tt_content_page_teaser,tt_content_employeeSlider,tt_content_usertable)
   }
 }
 

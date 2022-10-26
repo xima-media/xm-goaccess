@@ -213,4 +213,13 @@ tt_content {
       pidUserDetail.value = {$pidUserDetail}
     }
   }
+
+  usertable =< lib.contentElement
+  usertable {
+    templateName = Usertable
+    dataProcessing {
+
+    }
+  }
+
 }

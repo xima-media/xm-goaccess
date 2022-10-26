@@ -11,10 +11,10 @@ create table tt_content (
 	tx_xmdkfznetsite_tabs_tab1       varchar(255) not null default '',
 	tx_xmdkfznetsite_tabs_tab2       varchar(255) not null default '',
 	tx_xmdkfznetsite_tabs_tab3       varchar(255) not null default '',
-	tx_xmdkfznetsite_author					 varchar(255) not null default '',
-	tx_xmdkfznetsite_function				 varchar(255) not null default '',
-  viewColumn				         			 varchar(255) not null default '',
-	employees												 varchar(255) not null default '',
+	tx_xmdkfznetsite_author          varchar(255) not null default '',
+	tx_xmdkfznetsite_function        varchar(255) not null default '',
+	viewColumn                       varchar(255) not null default '',
+	employees                        varchar(255) not null default '',
 );
 
 create table tt_content_item (
@@ -38,6 +38,8 @@ create table tt_content_item (
 	text             text,
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
+	fe_user          varchar(64)             not null default '',
+	contacts         int(11) unsigned default '0' not null,
 	overrides        int(11) unsigned default '0' not null,
 	tt_content_items int(11) unsigned default '0' not null,
 
@@ -121,26 +123,25 @@ create table tx_xmdkfznetsite_domain_model_place (
 );
 
 create table tx_xmdkfznetsite_domain_model_disruptor (
-	uid              int(11) not null auto_increment,
-	pid              int(11) default '0' not null,
-	tstamp           int(11) unsigned default 0 not null,
-	crdate           int(11) unsigned default 0 not null,
-	deleted          tinyint(4) unsigned default 0 not null,
-	hidden           tinyint(4) unsigned default 0 not null,
-	headline				 varchar(255) default  '' not null,
-	text             text      default  '' not null,
-	starttime				 int(11) unsigned default '0' not null,
-	endtime				   int(11) unsigned default '0' not null,
+	uid       int(11) not null auto_increment,
+	pid       int(11) default '0' not null,
+	tstamp    int(11) unsigned default 0 not null,
+	crdate    int(11) unsigned default 0 not null,
+	deleted   tinyint(4) unsigned default 0 not null,
+	hidden    tinyint(4) unsigned default 0 not null,
+	headline  varchar(255) default '' not null,
+	text      text         default '' not null,
+	starttime int(11) unsigned default '0' not null,
+	endtime   int(11) unsigned default '0' not null,
 
 
 	primary key (uid),
-	KEY              parent (pid),
+	KEY       parent (pid),
 );
 
 #
-# Table structure for table 'sys_file_reference'
+# table structure for table 'sys_file_reference'
 #
-CREATE TABLE sys_file_reference
-(
-	video_preview_image       int(11) unsigned DEFAULT '0' NOT NULL,
+create table sys_file_reference (
+	video_preview_image int(11) unsigned default '0' not null,
 );

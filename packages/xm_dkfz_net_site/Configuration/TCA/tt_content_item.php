@@ -4,7 +4,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item',
         'label' => 'title',
-        'label_alt' => 'link',
+        'label_alt' => 'link,fe_user',
         'delete' => 'deleted',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -21,6 +21,7 @@ return [
             'teaser-item' => 'content-card',
             'link' => 'content-thumbtack',
             'accordion-item' => 'content-accordion',
+            'user-contact' => 'content-user',
         ],
         'transOrigPointerField' => 'l18n_parent',
         'transOrigDiffSourceField' => 'l18n_diffsource',
@@ -79,6 +80,21 @@ return [
                 ],
             ],
         ],
+        'user-contact' => [
+            'showitem' => 'record_type, fe_user, overrides, --palette--;;fe_user-override',
+            'columnsOverrides' => [
+                'record_type' => [
+                    'config' => [
+                        'items' => [
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact',
+                                'user-contact',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
     ],
     'palettes' => [
         'teaser-override' => [
@@ -88,6 +104,10 @@ return [
         'slider-override' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
             'showitem' => 'title,--linebreak--,text,--linebreak--',
+        ],
+        'fe_user-override' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
+            'showitem' => 'contacts, --linebreak--, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.text'
         ],
     ],
     'columns' => [
@@ -270,6 +290,32 @@ return [
                         'info' => false,
                     ],
                 ],
+            ],
+        ],
+        'fe_user' => [
+            'label' => 'User',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 1,
+                'minitems' => 1,
+                'maxitems' => 1,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
+        'contacts' => [
+            'label' => 'Contacts',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_xmdkfznetsite_domain_model_contact',
+                'foreign_table_where' => '{#tx_xmdkfznetsite_domain_model_contact}.{#foreign_uid} = ###REC_FIELD_fe_user### AND {#tx_xmdkfznetsite_domain_model_contact}.{#foreign_table} = "fe_users"',
+                'size' => 3,
+                'default' => 0,
             ],
         ],
     ],
