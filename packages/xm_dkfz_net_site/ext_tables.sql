@@ -39,7 +39,7 @@ create table tt_content_item (
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
 	fe_user          varchar(64)             not null default '',
-	contacts         int(11) unsigned default '0' not null,
+	contacts         varchar(255) default '' not null,
 	overrides        int(11) unsigned default '0' not null,
 	tt_content_items int(11) unsigned default '0' not null,
 
@@ -53,14 +53,16 @@ create table tx_news_domain_model_news (
 );
 
 create table fe_users (
-	location        varchar(255) default '' not null,
-	member_since    int(11) unsigned default '0' not null,
-	birthday        int(11) unsigned default '0' not null,
-	dkfz_id         int(11) unsigned default '0' not null,
-	ad_account_name varchar(255) default '' not null,
-	contacts        int(11) unsigned default '0' not null,
-	dkfz_hash       varchar(255) default '' not null,
-	gender          int(11) unsigned default '0' not null,
+	location         varchar(255) default '' not null,
+	member_since     int(11) unsigned default '0' not null,
+	birthday         int(11) unsigned default '0' not null,
+	dkfz_id          int(11) unsigned default '0' not null,
+	ad_account_name  varchar(255) default '' not null,
+	contacts         int(11) unsigned default '0' not null,
+	dkfz_hash        varchar(255) default '' not null,
+	gender           int(11) unsigned default '0' not null,
+	responsibilities text,
+	representative   varchar(64)             not null default '',
 );
 
 create table be_users (

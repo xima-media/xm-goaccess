@@ -6,7 +6,11 @@ defined('TYPO3_MODE') || die();
 
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name, first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = true;
-$GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = ['first_name', 'last_name', 'name'];
+$GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = [
+    'first_name',
+    'last_name',
+    'name'
+];
 $GLOBALS['TCA']['fe_users']['columns']['bookmarks']['config']['allowed'] = 'pages,fe_users,sys_file,tx_news_domain_model_news';
 
 call_user_func(function () {
@@ -96,12 +100,38 @@ call_user_func(function () {
                 'default' => 0,
             ],
         ],
+        'responsibilities' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
+            'config' => [
+                'type' => 'text',
+            ]
+        ],
+        'representative' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.representative',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 1,
+                'maxitems' => 1,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ]
+                ]
+            ],
+        ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative',
         '',
         'after:email'
     );

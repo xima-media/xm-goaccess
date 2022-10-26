@@ -464,8 +464,11 @@
 			<trans-unit id="tt_content_item.record_type.user-contact" space="preserve">
 				<target>Mitarbeiter</target>
 			</trans-unit>
-			<trans-unit id="tt_content_item.record_type.user-contact.text" space="preserve">
+			<trans-unit id="user.responsibilities" space="preserve">
 				<target>Verantwortlichkeiten</target>
+			</trans-unit>
+			<trans-unit id="user.representative" space="preserve">
+				<target>Vertretung</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
 				<target>Benutzerangaben überschreiben</target>

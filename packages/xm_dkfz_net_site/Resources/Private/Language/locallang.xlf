@@ -487,8 +487,14 @@
 			<trans-unit id="tt_content_item.record_type.user-contact" space="preserve">
 				<source>User</source>
 			</trans-unit>
-			<trans-unit id="tt_content_item.record_type.user-contact.text" space="preserve">
+			<trans-unit id="user.responsibilities" space="preserve">
 				<source>Responsibilities</source>
+			</trans-unit>
+			<trans-unit id="user.representative" space="preserve">
+				<source>Representative</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
+				<source>Override user data</source>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
 				<source>Override user data</source>

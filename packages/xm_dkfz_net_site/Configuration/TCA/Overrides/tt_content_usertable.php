@@ -49,22 +49,10 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
                         ],
                         'text' => [
                             'config' => [
-                                'placeholder' => '__row|fe_user|username',
+                                'placeholder' => '__row|fe_user|responsibilities',
                                 'mode' => 'useOrOverridePlaceholder'
-                            ]
-                        ]
-                        //'link' => [
-                        //    'config' => [
-                        //        'fieldControl' => [
-                        //            'linkPopup' => [
-                        //                'options' => [
-                        //                    'blindLinkFields' => 'class,params,target,title',
-                        //                    'blindLinkOptions' => 'file,folder,mail,telephone',
-                        //                ],
-                        //            ],
-                        //        ],
-                        //    ],
-                        //],
+                            ],
+                        ],
                     ],
                 ],
             ],
