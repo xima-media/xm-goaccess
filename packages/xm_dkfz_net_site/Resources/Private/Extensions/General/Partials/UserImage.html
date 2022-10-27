@@ -1,0 +1,23 @@
+<f:if condition="!{width}">
+	<f:variable name="width">150</f:variable>
+</f:if>
+
+<f:if condition="{user.logo.0}">
+	<f:then>
+		<picture>
+			<source srcset="{f:uri.image(image:user.logo.0, width:width, fileExtension: 'webp')}"
+					type="image/webp">
+			<source srcset="{f:uri.image(image:user.logo.0, width:width, fileExtension: 'jpg')}"
+					type="image/jpeg">
+			<img src="{f:uri.image(image:user.logo.0, width:width, fileExtension: 'jpg')}"
+				 alt="{user.logo.0.alternative}"
+				 class="picture__image image--responsive"
+				 loading="lazy"/>
+		</picture>
+	</f:then>
+	<f:else>
+		<img width="{width}" class=""
+			 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
+			 alt="No profile picture"/>
+	</f:else>
+</f:if>

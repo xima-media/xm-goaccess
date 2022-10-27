@@ -2,9 +2,129 @@
 
 
 <f:section name="Main">
-    <div class="list">
-        <ul>
-            <li>@TODO</li>
-        </ul>
-    </div>
+
+	<f:if condition="!{users}">
+		<div class="callout">
+			<div class="infobox color-accent--magenta infobox--background-white">
+				<div class="infobox--wrapper">
+					<h4 class="infobox__title">No users found</h4>
+					<p>You have not selected any user.</p>
+				</div>
+			</div>
+		</div>
+	</f:if>
+
+	<f:if condition="{users}">
+		<div class="table">
+			<div class="show-for-xl">
+				<div class="table__header">
+					<div></div>
+					<div class="label">Name</div>
+					<div class="label">
+						<f:translate extensionName="XmDkfzNetSite" key="contactData"/>
+					</div>
+					<div class="label">
+						<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
+					</div>
+					<div class="label">
+						<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
+					</div>
+				</div>
+			</div>
+			<div class="table__body">
+				<f:for each="{users}" as="userItem">
+					<f:if condition="{userItem.user}">
+						<div class="table__row">
+							<div class="username">
+								<f:link.action action="show"
+											   title="{userItem.user.0.data.first_name} {userItem.user.0.data.last_name}"
+											   controller="User"
+											   pluginName="Usershow"
+											   pageUid="{settings.pidUserDetail}"
+											   extensionName="BwGuild"
+											   arguments="{user: userItem.user.0.data.uid}">
+									{userItem.user.0.data.last_name}, {userItem.user.0.data.first_name}
+								</f:link.action>
+							</div>
+							<div class="picture">
+								<f:link.action action="show"
+											   controller="User"
+											   title="{userItem.user.0.data.first_name} {userItem.user.0.data.last_name}"
+											   pluginName="Usershow"
+											   pageUid="{settings.pidUserDetail}"
+											   extensionName="BwGuild"
+											   arguments="{user: userItem.user.0.data.uid}">
+									<f:render partial="UserImage" arguments="{user: userItem.user, width: 80}"/>
+								</f:link.action>
+							</div>
+							<div class="contact">
+								<ul>
+									<f:for each="{userItem.contacts}" as="contact">
+
+										<f:if condition="{contact.data.recordType} == 0">
+											<f:if condition="{contact.data.room}">
+												<li class="contact__item">
+													<f:render partial="Icon" arguments="{icon: 'location'}"/>
+													{contact.data.room}
+												</li>
+											</f:if>
+											<li class="contact__item">
+												<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+												<a title="Call now" href="tel:{contact.data.number}">{contact.data.number}</a>
+											</li>
+										</f:if>
+										<f:if condition="{contact.data.recordType} == 1">
+											<li class="contact__item">
+												<f:render partial="Icon" arguments="{icon: 'printer'}"/>
+												{contact.data.number}
+											</li>
+										</f:if>
+									</f:for>
+									<f:if condition="{userItem.user.0.data.email}">
+										<li>
+											<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+											<f:link.email title="{userItem.user.0.data.email}" email="{userItem.user.0.data.email}">
+												{userItem.user.0.data.email}
+											</f:link.email>
+										</li>
+									</f:if>
+								</ul>
+							</div>
+							<div class="responsibilities">
+								<p class="label hide-for-xl">
+									<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
+								</p>
+								<f:if condition="{userItem.user.0.data.responsibilities}">
+									<p>{userItem.user.0.data.responsibilities}</p>
+								</f:if>
+								<f:if condition="!{userItem.user.0.data.responsibilities}">
+									<p>-</p>
+								</f:if>
+							</div>
+							<div class="representative">
+								<p class="label hide-for-xl">
+									<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
+								</p>
+								<f:if condition="{userItem.user.0.representative}">
+									<f:link.action action="show"
+												   controller="User"
+												   pluginName="Usershow"
+												   pageUid="{settings.pidUserDetail}"
+												   extensionName="BwGuild"
+												   arguments="{user: userItem.user.0.representative.0.data.uid}">
+										{userItem.user.0.representative.0.data.last_name},
+										{userItem.user.0.representative.0.data.first_name}
+									</f:link.action>
+								</f:if>
+								<f:if condition="!{userItem.user.0.representative}">
+									<p>-</p>
+								</f:if>
+							</div>
+						</div>
+					</f:if>
+				</f:for>
+			</div>
+		</div>
+	</f:if>
+
 </f:section>

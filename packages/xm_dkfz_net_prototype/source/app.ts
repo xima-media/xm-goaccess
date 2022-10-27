@@ -230,6 +230,8 @@ import './_patterns/components/homepage/homepage'
 
 import './_patterns/components/feedbackform/feedbackform'
 
+import './_patterns/components/usertable/usertable'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

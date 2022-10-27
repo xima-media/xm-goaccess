@@ -499,6 +499,9 @@
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
 				<source>Override user data</source>
 			</trans-unit>
+			<trans-unit id="contactData" space="preserve">
+				<source>Contact data</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

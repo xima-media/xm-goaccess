@@ -465,16 +465,19 @@
 				<target>Mitarbeiter</target>
 			</trans-unit>
 			<trans-unit id="user.responsibilities" space="preserve">
-				<target>Verantwortlichkeiten</target>
+				<target>Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="user.representative" space="preserve">
-				<target>Vertretung</target>
+				<target>Vertreter</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
 				<target>Benutzerangaben überschreiben</target>
 			</trans-unit>
 			<trans-unit id="tt_content_usertable.palette.override" space="preserve">
 				<target>Benutzer Überschreibungen</target>
+			</trans-unit>
+			<trans-unit id="contactData" space="preserve">
+				<target>Kontaktdaten</target>
 			</trans-unit>
 		</body>
 	</file>
