@@ -476,7 +476,10 @@
 				<source>This description can be displayed below the image.</source>
 			</trans-unit>
 			<trans-unit id="searchForm.sword.label" space="preserve">
-				<source>Search for name, first name, phone number</source>
+				<source>Search term</source>
+			</trans-unit>
+			<trans-unit id="searchResults" space="preserve">
+				<source>Search results</source>
 			</trans-unit>
 			<trans-unit id="tt_content_usertable.title" space="preserve">
 				<source>User table</source>

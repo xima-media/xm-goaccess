@@ -1,0 +1,33 @@
+<li class="list-view__item">
+	<div class="card card--image-top card--md card--image-size-md">
+		<f:if condition="{resultrow.url}">
+			<a href="{resultrow.url}" class="card__link card__link--hidden" aria-label="{resultrow.title_text}">
+				<f:render partial="Icon" arguments="{icon: 'arrow-right'}"></f:render>
+				<f:translate key="linktext.readMore" extensionName="XmDkfzNetSite " />
+			</a>
+		</f:if>
+		<div class="card__content">
+			<div class="card__header">
+				<h3 class="card__title"><f:format.raw>{resultrow.title}</f:format.raw></h3>
+				<f:if condition="{resultrow.date_timestamp} > 0">
+					<p class="card__sub-title">{resultrow.date_timestamp -> f:format.date(format: 'd.m.Y')}</p>
+				</f:if>
+			</div>
+			<f:if condition="{resultrow.teaser}">
+				<div class="card__body">
+					<div class="card__text">
+						<p><f:format.raw>{resultrow.teaser}</f:format.raw></p>
+					</div>
+				</div>
+			</f:if>
+		</div>
+		<f:comment><!-- Tags (design rather looks like a breadcrumb) --></f:comment>
+		<f:if condition="{resultrow.tags}">
+			<div class="card__footer">
+				<ul class="card__tags">
+					<li class="card__tag">{resultrow.tags}</li>
+				</ul>
+			</div>
+		</f:if>
+	</div>
+</li>
