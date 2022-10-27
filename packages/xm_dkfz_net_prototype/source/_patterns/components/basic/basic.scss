@@ -329,6 +329,20 @@ ul > li {
     display: none !important;
 }
 
+*[class*="show-for-"] {
+    display: none;
+}
+
+@each $size, $px in $grid-breakpoints {
+    @include media-breakpoint-up($size) {
+        .show-for-#{$size} {
+            display: block;
+        }
+        .hide-for-#{$size} {
+            display: none;
+        }
+    }
+}
 
 
 // end of basic.scss file
