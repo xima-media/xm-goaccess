@@ -61,4 +61,4 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
 ];
 
 // Register custom Preview
-//$GLOBALS['TCA']['tt_content']['types']['usertable']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\InfoboxPreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types']['usertable']['previewRenderer'] = \Xima\XmDkfzNetSite\Preview\UsertablePreviewRenderer::class;
