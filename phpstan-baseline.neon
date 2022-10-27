@@ -226,6 +226,16 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
 
 		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/UsertablePreviewRenderer.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Preview/UsertablePreviewRenderer.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
