@@ -3,6 +3,10 @@
 
 <f:section name="Main">
 
+	<f:if condition="{data.bodytext}">
+		<f:format.html>{data.bodytext}</f:format.html>
+	</f:if>
+
 	<f:if condition="!{users}">
 		<div class="callout">
 			<div class="infobox color-accent--magenta infobox--background-white">
