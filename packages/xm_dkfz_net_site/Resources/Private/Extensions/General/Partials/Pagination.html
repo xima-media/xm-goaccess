@@ -2,7 +2,7 @@
 	<f:if condition="{pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
 		<f:then>
 			<li class="previous">
-				<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.previousPageNumber})}"
+				<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.previousPageNumber}, addQueryString: '1')}"
 				   title="{f:translate(key:'pagination.previous')}">
 					<f:render partial="Icon" arguments="{icon: 'arrow-left'}" />
 				</a>
@@ -14,16 +14,6 @@
 				</a>
 			</li>
 		</f:then>
-		<f:else>
-			<f:comment>
-				<li class="disabled">
-					<span><i class="material-icons">first_page</i></span>
-				</li>
-				<li class="disabled">
-					<span>{f:translate(key:'widget.pagination.previous', extensionName: 'fluid')}</span>
-				</li>
-			</f:comment>
-		</f:else>
 	</f:if>
 	<f:if condition="{pagination.hasLessPages}">
 		<li>…</li>
@@ -45,21 +35,11 @@
 				</a>
 			</li>
 			<li class="next">
-				<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.nextPageNumber})}"
+				<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.nextPageNumber, demand: {search: demand.search}})}"
 				   title="{f:translate(key:'pagination.next')}">
 					<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
 				</a>
 			</li>
 		</f:then>
-		<f:else>
-			<f:comment>
-				<li class="disabled">
-					<span>{f:translate(key:'widget.pagination.next', extensionName: 'fluid')}</span>
-				</li>
-				<li class="disabled">
-					<span>last page</span>
-				</li>
-			</f:comment>
-		</f:else>
 	</f:if>
 </ul>
