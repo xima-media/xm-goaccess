@@ -2,9 +2,11 @@
 
 namespace Xima\XmDkfzNetSite\Preview;
 
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Frontend\Preview\TextmediaPreviewRenderer;
 
 class UsertablePreviewRenderer extends TextmediaPreviewRenderer
@@ -27,16 +29,15 @@ class UsertablePreviewRenderer extends TextmediaPreviewRenderer
             ->execute()
             ->fetchAllAssociative();
 
-        if (!$users || !is_array($users) || !count($users)) {
-            return '';
-        }
+        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+        $returnUrl = (string)$uriBuilder->buildUriFromRoute('web_layout', ['id' => $row['pid']]);
 
-        $content = '<ul>';
-        foreach ($users as $user) {
-            $content .= '<li>' . $user['first_name'] . ' ' . $user['last_name'] . ' (' . $user['username'] . ')</li>';
-        }
-        $content .= '</ul>';
+        $view = GeneralUtility::makeInstance(StandaloneView::class);
+        $view->setTemplatePathAndFilename('EXT:xm_dkfz_net_site/Resources/Private/Extensions/Backend/Usertable.html');
+        $view->assign('row', $row);
+        $view->assign('users', $users);
+        $view->assign('returnUrl', $returnUrl);
 
-        return $content;
+        return $view->render();
     }
 }

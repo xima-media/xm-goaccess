@@ -17,6 +17,7 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
     'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;general,
                     --palette--;;header,
+                    bodytext,
                     tt_content_items,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
                     --palette--;;frames,
@@ -32,9 +33,10 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
                     rowDescription,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,',
     'columnsOverrides' => [
-        'sectionIndex' => [
+        'bodytext' => [
             'config' => [
-                'default' => 0,
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'minimal',
             ],
         ],
         'tt_content_items' => [
