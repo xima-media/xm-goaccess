@@ -1,39 +1,57 @@
-/**
- *    Hero form
- *
- *    @tableofcontent
- *      1. Dependencies
- *       1.1 Import css
- *       1.2 Import js
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-/** @section 1.1 Import css */
 import './hero-form.scss'
+import autocomplete from "autocompleter";
 
-/** @section 1.2 Import js */
-import app from '../basic/basic'
-
-/**
- *     @section 2. Class
- */
-
-class HeroForm {
-    constructor () {
-            app.log('component "hero form" loaded')
-        }
+type AutocomleterItem = {
+  label: string,
+  value: string
 }
 
-/**
- *     @section 3. Export class
- */
+class HeroForm {
+  constructor() {
+    this.initAutocompleter()
+  }
+
+  protected initAutocompleter() {
+    const autocompleteInputs = document.querySelectorAll('.hero-form input.autocomplete') as HTMLInputElement[]
+
+    if (autocompleteInputs) {
+      autocompleteInputs.forEach(inputElement => this.initAutocompleterForInput(inputElement))
+    }
+  }
+
+  protected initAutocompleterForInput(inputElement: HTMLInputElement) {
+    
+    let allItems = JSON.parse(inputElement.getAttribute('data-autocomplete'))
+
+    allItems = allItems.map(item => {
+      return {label: item, value: item}
+    });
+
+    autocomplete({
+      input: inputElement,
+      preventSubmit: true,
+      minLength: 1,
+      disableAutoSelect: true,
+      fetch: this.onAutocompleteFetch.bind(this, allItems),
+      onSelect: this.onAutocompleteSelect.bind(this, inputElement)
+    })
+  }
+
+  protected onAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any) {
+
+    text = text.toLowerCase()
+
+    const filteredFeatures = allItems.filter((item) => {
+      return item.value.toLowerCase().indexOf(text) >= 0
+    })
+
+    update(filteredFeatures)
+  }
+
+  protected onAutocompleteSelect(input: HTMLInputElement, item: AutocomleterItem) {
+    input.value = item.value;
+  }
+
+}
 
 export default (new HeroForm())
-
-// end of hero-form.js

@@ -1,4 +1,10 @@
-<f:form extensionName="BwGuild" action="list" pluginName="Userlist" name="demand" controller="User" object="{demand}" class="hero-form">
+<f:form extensionName="BwGuild"
+		action="list"
+		pluginName="Userlist"
+		name="demand"
+		controller="User"
+		object="{demand}"
+		class="hero-form">
 	<div class="hero-form__header">
 		<h2 class="hero-form__title h4">Mitarbeiter suchen</h2>
 	</div>
@@ -10,8 +16,9 @@
 				<div class="field field--text">
 					<label class="field__label" for="search">Suche nach Name, Vorname, Telefonnummer</label>
 					<f:form.textfield id="search"
-									  class="field__input"
+									  class="field__input autocomplete"
 									  placeholder="Suche nach Name, Vorname, Telefonnummer"
+									  data="{autocomplete: '{autocompleter.search->f:format.json()}' }"
 									  property="search"/>
 				</div>
 			</div>
@@ -19,7 +26,8 @@
 				<div class="field field--text">
 					<label class="field__label" for="feature">Suche nach Kompetenz, Thema, Interesse</label>
 					<f:form.textfield id="feature"
-									  class="field__input"
+									  class="field__input autocomplete"
+									  data="{autocomplete: '{autocompleter.features->f:format.json()}' }"
 									  placeholder="Suche nach Kompetenz, Thema, Interesse"
 									  property="feature"/>
 				</div>
@@ -28,26 +36,29 @@
 
 		<f:comment>
 
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="field field--text">
-					<label class="field__label" for="feGroup">Abteilung</label>
-					<f:form.textfield id="feGroup" class="field__input" placeholder="Abteilung" property="feGroup"/>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="field field--text">
+						<label class="field__label" for="feGroup">Abteilung</label>
+						<f:form.textfield id="feGroup" class="field__input" placeholder="Abteilung" property="feGroup"/>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="field field--text">
+						<label class="field__label" for="function">Funktion</label>
+						<f:form.textfield id="function"
+										  class="field__input"
+										  placeholder="Funktion"
+										  property="function"/>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="field field--text">
+						<label class="field__label" for="gremium">Gremium</label>
+						<f:form.textfield id="gremium" class="field__input" placeholder="Funktion" property="gremium"/>
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-4">
-				<div class="field field--text">
-					<label class="field__label" for="function">Funktion</label>
-					<f:form.textfield id="function" class="field__input" placeholder="Funktion" property="function"/>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="field field--text">
-					<label class="field__label" for="gremium">Gremium</label>
-					<f:form.textfield id="gremium" class="field__input" placeholder="Funktion" property="gremium"/>
-				</div>
-			</div>
-		</div>
 		</f:comment>
 	</div>
 
