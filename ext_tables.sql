@@ -41,8 +41,8 @@ CREATE TABLE tx_bwguild_domain_model_offer (
 	country varchar(255) DEFAULT '' NOT NULL,
 	description mediumtext,
 	start_date varchar(255) DEFAULT '' NOT NULL,
-	latitude decimal(10, 8) DEFAULT 0 NOT NULL,
-	longitude decimal(11, 8) DEFAULT 0 NOT NULL,
+    latitude decimal(10,8) default NULL,
+    longitude decimal(11,8) default NULL,
 	fe_user int(11) DEFAULT 0 NOT NULL,
 	fe_users int(11) unsigned DEFAULT '0' NOT NULL,
 	conditions mediumtext,
@@ -67,6 +67,6 @@ CREATE TABLE tx_bwguild_offer_feuser_mm (
 	KEY uid_foreign (uid_foreign)
 );
 
-CREATE TABLE tx_bwguild_domain_model_abstractbookmark (
+/*CREATE TABLE tx_bwguild_domain_model_abstractbookmark (
 
-);
+);*/

@@ -56,12 +56,23 @@ defined('TYPO3_MODE') || die();
 );
 
 // Define state cache, if not already defined
-if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['bwguild'])) {
+if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['bwguild'])){
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['bwguild'] ??= [];
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['bwguild'] = [
         'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
         'backend' => \TYPO3\CMS\Core\Cache\Backend\Typo3DatabaseBackend::class,
     ];
 }
+
+/* ===========================================================================
+  Hooks
+=========================================================================== */
+// Add wizard with map for setting geo location
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1546531781] = [
+    'nodeName' => 'locationMapWizard',
+    'priority' => 30,
+    'class' => \Blueways\BwGuild\FormEngine\FieldControl\LocationMapWizard::class
+];
 
 // Register geo coding task
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Blueways\BwGuild\Task\GeocodingTask::class] = [
@@ -69,6 +80,10 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Blueways\BwGuil
     'title' => 'Geocoding of fe_user & offer records',
     'description' => 'Check all fe_user and offer records for geocoding information and write them into the fields',
 ];
+
+// Register evaluations for TCA
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Blueways\BwGuild\Evaluation\LatitudeEvaluation::class] = '';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Blueways\BwGuild\Evaluation\LongitudeEvaluation::class] = '';
 
 // Register hook to set sorting field
 $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['bw_guild'] = 'Blueways\\BwGuild\\Hooks\\TCEmainHook';
