@@ -18,6 +18,11 @@ services:
       - name: event.listener
         identifier: 'oauthFeUserRegistration'
 
+  Xima\XmDkfzNetSite\EventListener\UserSearchEvent:
+    tags:
+      - name: event.listener
+        identifier: 'userSearchEvent'
+
   querybuilder.beUsers:
     class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
     factory:
