@@ -12,6 +12,7 @@ class UserSearchEvent
     protected QueryBuilder $queryBuilder;
 
     protected UserDemand $userDemand;
+
     public function __invoke(ModifyQueryBuilderEvent $event): void
     {
         if (!$event->getDemand() instanceof UserDemand) {
@@ -31,6 +32,20 @@ class UserSearchEvent
         if (!$this->userDemand->function) {
             return;
         }
+
+        $this->queryBuilder->join($this->userDemand::TABLE, 'tx_xmdkfznetsite_domain_model_contact', 'c',
+            $this->queryBuilder->expr()->andX(
+                $this->queryBuilder->expr()->eq($this->userDemand::TABLE . '.uid',
+                    $this->queryBuilder->quoteIdentifier('c.foreign_uid')),
+                $this->queryBuilder->expr()->eq('c.foreign_table',
+                    $this->queryBuilder->createNamedParameter($this->userDemand::TABLE, \PDO::PARAM_STR))
+            )
+        );
+
+        $this->queryBuilder->andWhere(
+            $this->queryBuilder->expr()->like('c.function',
+                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%'))
+        );
     }
 
 }
