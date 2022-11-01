@@ -385,6 +385,9 @@
 			<trans-unit id="user.gender.2">
 				<source>Mrs</source>
 			</trans-unit>
+			<trans-unit id="user.committee">
+				<source>Committee</source>
+			</trans-unit>
 			<trans-unit id="label.download">
 				<source>Download</source>
 			</trans-unit>

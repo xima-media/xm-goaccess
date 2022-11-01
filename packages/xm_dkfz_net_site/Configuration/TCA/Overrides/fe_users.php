@@ -126,12 +126,21 @@ call_user_func(function () {
                 ],
             ],
         ],
+        'committee' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.committee',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'max' => 255,
+            ],
+        ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,committee',
         '',
         'after:email'
     );

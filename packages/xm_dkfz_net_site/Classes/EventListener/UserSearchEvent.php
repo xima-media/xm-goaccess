@@ -24,10 +24,11 @@ class UserSearchEvent
         $this->userDemand = $demand;
         $this->queryBuilder = $event->getQueryBuilder();
 
-        $this->addConstrainForFunction();
+        $this->addConstraintForFunction();
+        $this->addConstraintForCommittee();
     }
 
-    protected function addConstrainForFunction(): void
+    protected function addConstraintForFunction(): void
     {
         if (!$this->userDemand->function) {
             return;
@@ -45,6 +46,18 @@ class UserSearchEvent
         $this->queryBuilder->andWhere(
             $this->queryBuilder->expr()->like('c.function',
                 $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%'))
+        );
+    }
+
+    protected function addConstraintForCommittee(): void
+    {
+        if (!$this->userDemand->committee) {
+            return;
+        }
+
+        $this->queryBuilder->andWhere(
+            $this->queryBuilder->expr()->like($this->userDemand::TABLE . '.committee',
+                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->committee . '%'))
         );
     }
 

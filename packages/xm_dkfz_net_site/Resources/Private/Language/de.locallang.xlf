@@ -266,6 +266,9 @@
 			<trans-unit id="user.gender.2">
 				<target>Frau</target>
 			</trans-unit>
+			<trans-unit id="user.committee">
+				<target>Gremium</target>
+			</trans-unit>
 			<trans-unit id="label.download">
 				<target>Herunterladen</target>
 			</trans-unit>
