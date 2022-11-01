@@ -32,10 +32,18 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\GeorgRinger\News\Domain\Repositor
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Blueways\BwGuild\Domain\Model\User::class] = [
     'className' => Xima\XmDkfzNetSite\Domain\Model\User::class,
 ];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Blueways\BwGuild\Domain\Model\Dto\UserDemand::class] = [
+    'className' => Xima\XmDkfzNetSite\Domain\Model\Dto\UserDemand::class,
+];
 \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
     ->registerImplementation(
         Blueways\BwGuild\Domain\Model\User::class,
         \Xima\XmDkfzNetSite\Domain\Model\User::class
+    );
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+    ->registerImplementation(
+        Blueways\BwGuild\Domain\Model\Dto\UserDemand::class,
+        \Xima\XmDkfzNetSite\Domain\Model\Dto\UserDemand::class
     );
 
 // change order of backend login provider
