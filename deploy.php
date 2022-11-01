@@ -12,18 +12,6 @@ host('local')
     ->set('deploy_path', getcwd())
     ->set('public_urls', ['https://xm-dkfz-net.ddev.site']);
 
-host('staging')
-    ->hostname('192.168.2.41')
-    ->stage('staging')
-    ->user('xima')
-    ->set('branch', 'master')
-    ->set('public_urls', ['https://stage.dkfz-typo3-dev.xima.local'])
-    ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod')
-    ->set('writable_chmod_recursive', false)
-    ->set('writable_chmod_mode', '2770')
-    ->set('deploy_path', '/var/www/html/stage.dkfz-typo3-dev.xima.local');
-
 host('staging-dkfz')
     ->hostname('intracmsstage')
     ->stage('staging-dkfz')

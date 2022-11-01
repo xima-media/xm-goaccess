@@ -68,18 +68,6 @@ test-php-stan:
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
 
-deploy-xima-staging:
-  extends: .deploy-prepare
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
-  stage: deploy
-  only:
-    refs:
-      - "master"
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-  script:
-    - vendor/bin/dep deploy-fast staging
-
 deploy-dev-t3-debian11-01:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
@@ -161,16 +149,6 @@ reset:dev-t3-debian11-01:
   when: manual
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01 --no-interaction
-
-reset:staging-xima:
-  extends: .deploy-prepare
-  stage: sync
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-  when: manual
-  script:
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging --no-interaction
 
 provision-environment:
   stage: provision
