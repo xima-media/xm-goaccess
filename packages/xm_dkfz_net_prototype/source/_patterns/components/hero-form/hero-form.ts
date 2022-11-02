@@ -9,6 +9,7 @@ type AutocomleterItem = {
 class HeroForm {
   constructor() {
     this.initAutocompleter()
+    this.bindSearchFormEvents()
   }
 
   protected initAutocompleter() {
@@ -20,7 +21,7 @@ class HeroForm {
   }
 
   protected initAutocompleterForInput(inputElement: HTMLInputElement) {
-    
+
     let allItems = JSON.parse(inputElement.getAttribute('data-autocomplete'))
 
     allItems = allItems.map(item => {
@@ -50,6 +51,46 @@ class HeroForm {
 
   protected onAutocompleteSelect(input: HTMLInputElement, item: AutocomleterItem) {
     input.value = item.value;
+  }
+
+  protected bindSearchFormEvents() {
+    this.bindResultListCheckbox()
+    this.bindResultListResetButton()
+  }
+
+  protected bindResultListCheckbox() {
+    document.querySelectorAll('.filter--results input[type="checkbox"]').forEach((checkbox) => {
+      checkbox.addEventListener('change', this.onResultListCheckboxChange.bind(this))
+    });
+  }
+
+  protected onResultListCheckboxChange(e: Event) {
+    const resultListCheckbox = e.currentTarget as HTMLInputElement
+    const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
+    const searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
+
+    searchFormCheckbox.checked = resultListCheckbox.checked
+
+    form.submit()
+  }
+
+  protected bindResultListResetButton() {
+    document.querySelectorAll('.filter--remove').forEach((resetButton) => {
+      resetButton.addEventListener('click', this.onResultListResetButtonClick.bind(this))
+    });
+  }
+
+  protected onResultListResetButtonClick(e: Event) {
+    const resetButton = e.currentTarget as HTMLButtonElement
+    const filterList = document.getElementById(resetButton.dataset.filterlistId) as HTMLUListElement
+    const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
+
+    filterList.querySelectorAll('input[type="checkbox"]').forEach((resultListCheckbox: HTMLInputElement) => {
+      let searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
+      resultListCheckbox.checked = searchFormCheckbox.checked = false;
+    });
+
+    form.submit()
   }
 
 }

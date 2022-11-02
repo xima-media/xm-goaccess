@@ -7,61 +7,61 @@ Settings are available via
 --></f:comment>
 
 <div class="layout color-accent--white">
-	<div class="layout__item">
-		<div class="content-wrapper__content">
-			<div class="layout__item--two color-accent--gray-900">
+	<div class="layout__item--two color-accent--gray-900">
 
-				<div class="filter color-accent--primary-opacity-10">
-					<p style="background-color: yellow">ToDo: Filterbox</p>
+		<div class="filter filter--results color-accent--primary-opacity-10">
+			<f:if condition="{filters}">
+				<h3 class="filter--title h5"><f:translate key="searchFilter.header" extensionName="XmDkfzNetSite" /></h3>
+				<f:render partial="Filters"
+						  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, filters: filters, prefix: 'results-'}"/>
+			</f:if>
+		</div>
+
+		<div class="results results--search">
+
+			<f:if condition="{wordsTooShort}">
+				<div class="messsage">{f:translate(key:
+					'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:searchword_length_error',
+					arguments: {0: extConf.searchWordLength})}
 				</div>
+			</f:if>
 
-				<div class="results results--search">
+			<f:if condition="{resultListAdditionalRawContent}">
+				<f:format.raw>{resultListAdditionalRawContent}</f:format.raw>
+			</f:if>
 
-					<f:if condition="{wordsTooShort}">
-						<div class="messsage">{f:translate(key:
-							'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:searchword_length_error',
-							arguments: {0: extConf.searchWordLength})}
-						</div>
-					</f:if>
-
-					<f:if condition="{resultListAdditionalRawContent}">
-						<f:format.raw>{resultListAdditionalRawContent}</f:format.raw>
-					</f:if>
-
-					<f:if condition="{isEmptySearch}">
+			<f:if condition="{isEmptySearch}">
+				<f:then>
+					<f:if condition="{conf.showTextInsteadOfResults}">
 						<f:then>
-							<f:if condition="{conf.showTextInsteadOfResults}">
-								<f:then>
-									<f:format.raw>{conf.textForResults}</f:format.raw>
-								</f:then>
-								<f:else>
-									<f:render partial="ResultRows"
-											  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, sortingLinks: sortingLinks, pagebrowser:pagebrowser, queryTime:queryTime, queryTimeText:queryTimeText}"/>
-								</f:else>
-							</f:if>
+							<f:format.raw>{conf.textForResults}</f:format.raw>
 						</f:then>
 						<f:else>
-							<f:if condition="{numberofresults} == 0">
-								<f:then>
-									<f:render partial="NoResults"
-											  arguments="{conf: conf, noResultsText: noResultsText}"/>
-								</f:then>
-								<f:else>
-									<f:render partial="ResultRows"
-											  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, sortingLinks: sortingLinks, pagebrowser:pagebrowser, queryTime:queryTime, queryTimeText:queryTimeText}"/>
-								</f:else>
-							</f:if>
+							<f:render partial="ResultRows"
+									  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, sortingLinks: sortingLinks, pagebrowser:pagebrowser, queryTime:queryTime, queryTimeText:queryTimeText}"/>
 						</f:else>
 					</f:if>
-					<f:if condition="errors">
-						<f:for each="{errors}" as="error">
-							<div class="ke_search-error">{error}</div>
-						</f:for>
+				</f:then>
+				<f:else>
+					<f:if condition="{numberofresults} == 0">
+						<f:then>
+							<f:render partial="NoResults"
+									  arguments="{conf: conf, noResultsText: noResultsText}"/>
+						</f:then>
+						<f:else>
+							<f:render partial="ResultRows"
+									  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, sortingLinks: sortingLinks, pagebrowser:pagebrowser, queryTime:queryTime, queryTimeText:queryTimeText}"/>
+						</f:else>
 					</f:if>
+				</f:else>
+			</f:if>
+			<f:if condition="errors">
+				<f:for each="{errors}" as="error">
+					<div class="ke_search-error">{error}</div>
+				</f:for>
+			</f:if>
 
-				</div>
-
-			</div>
 		</div>
+
 	</div>
 </div>

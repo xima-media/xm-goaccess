@@ -484,6 +484,12 @@
 			<trans-unit id="searchResults" space="preserve">
 				<source>Search results</source>
 			</trans-unit>
+			<trans-unit id="searchFilter.header" space="preserve">
+				<source>Filter results</source>
+			</trans-unit>
+			<trans-unit id="searchFilter.reset" space="preserve">
+				<source>Reset filters</source>
+			</trans-unit>
 			<trans-unit id="tt_content_usertable.title" space="preserve">
 				<source>User table</source>
 			</trans-unit>
