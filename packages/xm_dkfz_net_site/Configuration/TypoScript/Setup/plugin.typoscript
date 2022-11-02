@@ -8,9 +8,22 @@ plugin.tx_news {
   }
 }
 
-plugin.tx_bwguild {
-  view {
-    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
+plugin {
+
+  tx_bwguild {
+    view {
+      partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
+    }
+  }
+
+  tx_bwguild_usersearch {
+    settings {
+      autocompleter {
+        feGroup = fe_groups.title,fe_groups.dkfz_number
+        function = tx_xmdkfznetsite_domain_model_contact.function
+        committee = fe_users.committee
+      }
+    }
   }
 }
 
@@ -21,6 +34,7 @@ plugin.tx_form {
     }
   }
 }
+
 module.tx_form {
   settings {
     yamlConfigurations {
@@ -37,12 +51,15 @@ plugin.tx_kesearch_pi1 {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
 }
+
 plugin.tx_kesearch_pi2 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
+
   highlightedWord_stdWrap.wrap = <mark class="color-accent--primary">|</mark>
 }
+
 plugin.tx_kesearch_pi3 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
