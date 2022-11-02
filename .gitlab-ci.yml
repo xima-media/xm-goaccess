@@ -79,7 +79,7 @@ deploy-dev-t3-debian11-01:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
     - vendor/bin/dep deploy:unlock dev-t3-debian11-01
-    - vendor/bin/dep deploy-fast dev-t3-debian11-01 -vvv
+    - vendor/bin/dep deploy dev-t3-debian11-01 -vvv
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
