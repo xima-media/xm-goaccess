@@ -43,25 +43,25 @@ module.tx_form {
   }
 }
 
-plugin.tx_kesearch_pi1.cssFile >
-plugin.tx_kesearch_pi2.cssFile >
-plugin.tx_kesearch_pi3.cssFile >
 plugin.tx_kesearch_pi1 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
+  cssFile >
 }
 
 plugin.tx_kesearch_pi2 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
-
+  cssFile >
   highlightedWord_stdWrap.wrap = <mark class="color-accent--primary">|</mark>
+  includeFilters = 1
 }
 
 plugin.tx_kesearch_pi3 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
+  cssFile >
 }
