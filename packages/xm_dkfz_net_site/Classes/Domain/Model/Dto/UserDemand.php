@@ -8,6 +8,8 @@ class UserDemand extends \Blueways\BwGuild\Domain\Model\Dto\UserDemand
 
     public string $committee = '';
 
+    public const SEARCH_FIELDS = 'first_name,last_name';
+
     public const FEGROUP_SEARCH_FIELDS = 'title,dkfz_number';
 
     public function __construct(

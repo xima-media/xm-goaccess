@@ -1,9 +1,8 @@
 <div class="results">
-
-	<h2 class="results__title h6">Es wurden {users->f:count()} Mitarbeiter gefunden</h2>
+	<h2 class="results__title h6">Es wurden {pagination.numberOfResults} Mitarbeiter gefunden</h2>
 
 	<div class="results__items">
-		<f:for each="{pagination.paginator.paginatedItems}" as="user">
+		<f:for each="{users}" as="user">
 			<div class="card card--image-top card--md card--image-size-md card--employee-contact">
 				<f:link.action action="show"
 							   class="card__link card__link--hidden"
