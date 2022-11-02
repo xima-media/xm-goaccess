@@ -4,10 +4,8 @@ namespace Xima\XmDkfzNetSite\EventListener;
 
 use Blueways\BwGuild\Event\ModifyQueryBuilderEvent;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\UserDemand;
-use function PHPUnit\Framework\isInstanceOf;
 
 class UserSearchEvent
 {
@@ -39,14 +37,21 @@ class UserSearchEvent
             return;
         }
 
-        $this->queryBuilder->leftjoin($this->userDemand::TABLE, 'tx_xmdkfznetsite_domain_model_contact', 'c',
-            $this->queryBuilder->expr()->eq($this->userDemand::TABLE . '.uid',
-                $this->queryBuilder->quoteIdentifier('c.foreign_uid'))
+        $this->queryBuilder->leftjoin(
+            $this->userDemand::TABLE,
+            'tx_xmdkfznetsite_domain_model_contact',
+            'c',
+            $this->queryBuilder->expr()->eq(
+                $this->userDemand::TABLE . '.uid',
+                $this->queryBuilder->quoteIdentifier('c.foreign_uid')
+            )
         );
 
         $this->queryBuilder->andWhere(
-            $this->queryBuilder->expr()->eq('c.foreign_table',
-                $this->queryBuilder->createNamedParameter($this->userDemand::TABLE, \PDO::PARAM_STR))
+            $this->queryBuilder->expr()->eq(
+                'c.foreign_table',
+                $this->queryBuilder->createNamedParameter($this->userDemand::TABLE, \PDO::PARAM_STR)
+            )
         );
 
         $this->contactTableJoined = true;
@@ -61,8 +66,10 @@ class UserSearchEvent
         $this->addJoinOnContacts();
 
         $this->queryBuilder->andWhere(
-            $this->queryBuilder->expr()->like('c.function',
-                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%'))
+            $this->queryBuilder->expr()->like(
+                'c.function',
+                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%')
+            )
         );
     }
 
@@ -73,8 +80,10 @@ class UserSearchEvent
         }
 
         $this->queryBuilder->andWhere(
-            $this->queryBuilder->expr()->like($this->userDemand::TABLE . '.committee',
-                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->committee . '%'))
+            $this->queryBuilder->expr()->like(
+                $this->userDemand::TABLE . '.committee',
+                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->committee . '%')
+            )
         );
     }
 
@@ -92,9 +101,10 @@ class UserSearchEvent
         $this->addJoinOnContacts();
 
         $this->queryBuilder->andWhere(
-            $this->queryBuilder->expr()->like('c.number',
-                $this->queryBuilder->createNamedParameter('%' . $searchTerm . '%', \PDO::PARAM_STR))
+            $this->queryBuilder->expr()->like(
+                'c.number',
+                $this->queryBuilder->createNamedParameter('%' . $searchTerm . '%', \PDO::PARAM_STR)
+            )
         );
     }
-
 }
