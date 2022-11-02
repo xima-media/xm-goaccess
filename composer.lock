@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "930984038ea733a88eabcc6549441ffe",
+    "content-hash": "57e5755c1151736a77ad66abd819e3c7",
     "packages": [
         {
             "name": "b13/container",
@@ -566,17 +566,16 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/blueways/deployer-recipes.git",
-                "reference": "4dfbe47d0579322a57a0e182abba78b7e04b172b"
+                "reference": "d8b9e8a7ec7e364bae3fcd9a5454e9a381426ef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/deployer-recipes/get/4dfbe47d0579322a57a0e182abba78b7e04b172b.zip",
-                "reference": "4dfbe47d0579322a57a0e182abba78b7e04b172b",
+                "url": "https://bitbucket.org/blueways/deployer-recipes/get/d8b9e8a7ec7e364bae3fcd9a5454e9a381426ef9.zip",
+                "reference": "d8b9e8a7ec7e364bae3fcd9a5454e9a381426ef9",
                 "shasum": ""
             },
             "require": {
-                "sourcebroker/deployer-extended-database": "dev-fix/use-php-executable as 13.0.2",
-                "sourcebroker/deployer-extended-typo3": "17.0.0",
+                "sourcebroker/deployer-extended-typo3": "19.0.0",
                 "spooner/deployer-information": "1.3.0"
             },
             "type": "library",
@@ -602,9 +601,9 @@
                 "rsync"
             ],
             "support": {
-                "source": "https://bitbucket.org/blueways/deployer-recipes/src/4dfbe47d0579322a57a0e182abba78b7e04b172b/?at=feature/fb-deployment"
+                "source": "https://bitbucket.org/blueways/deployer-recipes/src/d8b9e8a7ec7e364bae3fcd9a5454e9a381426ef9/?at=feature/fb-deployment"
             },
-            "time": "2022-10-20T15:53:42+00:00"
+            "time": "2022-11-02T14:31:24+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -4305,16 +4304,16 @@
         },
         {
             "name": "sourcebroker/deployer-extended-database",
-            "version": "dev-fix/use-php-executable",
+            "version": "14.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/maikschneider/deployer-extended-database.git",
-                "reference": "c219228e4be3d7ef89a7d96791303b70faa4c9d3"
+                "url": "https://github.com/sourcebroker/deployer-extended-database.git",
+                "reference": "b96bc1b39ca16c8942201500e9548bc20dfe49d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maikschneider/deployer-extended-database/zipball/c219228e4be3d7ef89a7d96791303b70faa4c9d3",
-                "reference": "c219228e4be3d7ef89a7d96791303b70faa4c9d3",
+                "url": "https://api.github.com/repos/sourcebroker/deployer-extended-database/zipball/b96bc1b39ca16c8942201500e9548bc20dfe49d5",
+                "reference": "b96bc1b39ca16c8942201500e9548bc20dfe49d5",
                 "shasum": ""
             },
             "require": {
@@ -4329,6 +4328,7 @@
                     "SourceBroker\\DeployerExtendedDatabase\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4346,9 +4346,10 @@
                 "synchronization"
             ],
             "support": {
-                "source": "https://github.com/maikschneider/deployer-extended-database/tree/fix/use-php-executable"
+                "issues": "https://github.com/sourcebroker/deployer-extended-database/issues",
+                "source": "https://github.com/sourcebroker/deployer-extended-database/tree/14.0.0"
             },
-            "time": "2022-11-02T13:59:14+00:00"
+            "time": "2022-10-30T20:40:14+00:00"
         },
         {
             "name": "sourcebroker/deployer-extended-media",
@@ -4399,7 +4400,7 @@
         },
         {
             "name": "sourcebroker/deployer-extended-typo3",
-            "version": "dev-master",
+            "version": "19.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sourcebroker/deployer-extended-typo3.git",
@@ -4421,7 +4422,6 @@
                 "sourcebroker/deployer-loader": "^3.0.0",
                 "symfony/dotenv": "^3.3.0 || ^4.0 || ^5.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "typo3/cms": {
@@ -14020,18 +14020,6 @@
     ],
     "aliases": [
         {
-            "package": "sourcebroker/deployer-extended-database",
-            "version": "dev-fix/use-php-executable",
-            "alias": "14.0.0",
-            "alias_normalized": "14.0.0.0"
-        },
-        {
-            "package": "sourcebroker/deployer-extended-typo3",
-            "version": "9999999-dev",
-            "alias": "17.0.0",
-            "alias_normalized": "17.0.0.0"
-        },
-        {
             "package": "typo3/cms-composer-installers",
             "version": "5.0.0.0",
             "alias": "4.0.1",
@@ -14044,9 +14032,7 @@
         "xima/xm-dkfz-net-prototype": 20,
         "xima/xm-dkfz-net-jobs": 20,
         "blueways/deployer-recipes": 20,
-        "sourcebroker/deployer-extended-typo3": 20,
         "georgringer/news": 20,
-        "sourcebroker/deployer-extended-database": 20,
         "xima/xm-dkfz-net-events": 20,
         "blueways/bw-guild": 20,
         "xima/xm-kesearch-remote": 20,
