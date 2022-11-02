@@ -171,7 +171,7 @@ page {
 }
 
 # [!frontend.user.isLoggedIn]
-[page["uid"] == {$pidLogin}]
+[traverse(page, "uid") == {$pidLogin}]
   page.10.templateName = Login
 [end]
 

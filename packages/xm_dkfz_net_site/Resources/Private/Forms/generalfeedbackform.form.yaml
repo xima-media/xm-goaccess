@@ -11,8 +11,10 @@ finishers:
       subject: 'Intranet Feedback'
       recipients:
         intranet@dkfz.de: 'DKFZ Intranet Team'
-      senderAddress: '{email}'
-      senderName: '{name}'
+      replyToRecipients:
+        '{email}': '{name}'
+      senderAddress: 'noreply@intracmsprod.inet.dkfz-heidelberg.de'
+      senderName: 'DKFZ Intranet User'
       format: html
       attachUploads: true
       translation:

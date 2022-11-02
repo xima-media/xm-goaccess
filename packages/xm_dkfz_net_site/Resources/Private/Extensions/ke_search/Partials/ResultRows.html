@@ -1,0 +1,13 @@
+<h2 class="results__title h3">{numberofresults} {f:translate(key: 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:searchResults')}</h2>
+<ul>
+	<f:for each="{resultrows}" as="resultrow">
+		<f:render partial="ResultRow" arguments="{conf: conf, resultrow: resultrow}"/>
+	</f:for>
+</ul>
+
+<f:render partial="PageBrowser"
+		  arguments="{conf: conf, numberofresults:numberofresults, pagebrowser:pagebrowser}"/>
+
+<f:if condition="{conf.showQueryTime}">
+	<div id="kesearch_query_time">{queryTimeText}</div>
+</f:if>

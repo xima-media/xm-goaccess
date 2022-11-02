@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:kesearch="http://typo3.org/ns/Tpwd/KeSearch/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<nav aria-label="Pagination navigation">
+	<ul class="pagination">
+		<f:if condition="{pagination.previous}">
+			<f:then>
+				<li class="page-item">
+					<kesearch:link piVars="{page: pagination.previous}" keepPiVars="1"
+								   additionalAttributes="{aria-label: '{f:translate(key: \'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:pagebrowser_prev\')}'}"
+								   class="page-link page-link--previous">
+						<span aria-hidden="true"><f:render section="Icon" arguments="{icon: 'arrow-left'}"/></span>
+						<span class="sr-only">{f:translate(key: 'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:pagebrowser_prev')}</span>
+					</kesearch:link>
+				</li>
+			</f:then>
+		</f:if>
+		<f:for each="{pagination.pages}" as="page">
+			<li class="page-item">
+				<kesearch:link piVars="{page: page}" keepPiVars="1"
+							   class="page-link {f:if(condition: '{page} == {pagination.currentPage}', then:'active')}">
+					{page}
+				</kesearch:link>
+			</li>
+		</f:for>
+		<f:if condition="{pagination.next}">
+			<li class="page-item">
+				<kesearch:link piVars="{page: pagination.next}" keepPiVars="1"
+							   additionalAttributes="{aria-label: '{f:translate(key: \'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:pagebrowser_next\')}'}"
+							   class="page-link page-link--next">
+					<span aria-hidden="true"><f:render section="Icon" arguments="{icon: 'arrow-right'}"/></span>
+					<span class="sr-only">{f:translate(key: 'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:pagebrowser_next')}</span>
+				</kesearch:link>
+			</li>
+		</f:if>
+	</ul>
+</nav>
+
+<f:section name="Icon">
+	<svg
+		class="icon icon--{f:if(condition: icon, then: icon, else: 'info')} icon--size-{f:if(condition: size, then: size, else: 'md')}"
+		role="img"
+		width="20"
+		height="20"
+		aria-hidden="true"
+	>
+		<use
+			xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-')}{f:if(condition: icon, then: icon, else: 'info')}"></use>
+	</svg>
+</f:section>
