@@ -42,7 +42,7 @@ class HeroForm {
     text = text.toLowerCase()
 
     const filteredFeatures = allItems.filter((item) => {
-      return item.value.toLowerCase().indexOf(text) >= 0
+      return item.value.toString().toLowerCase().indexOf(text) >= 0
     })
 
     update(filteredFeatures)
