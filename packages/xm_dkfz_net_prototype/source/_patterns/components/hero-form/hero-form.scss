@@ -68,6 +68,10 @@
 //@todo auslagen
 
 .layout__item--two {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-xxl);
+
     .results {
         padding-top: 0;
         grid-template-columns: 1fr !important;
