@@ -180,6 +180,8 @@ return [
             'config' => [
                 'placeholder' => '',
                 'type' => 'input',
+                'eval' => 'trim',
+                'max' => 255,
             ],
         ],
         'text' => [

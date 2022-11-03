@@ -57,7 +57,7 @@ $GLOBALS['TCA']['tt_content']['types']['textmedia']['columnsOverrides'] = [
     'bodytext' => [
         'config' => [
             'enableRichtext' => true,
-            'richtextConfiguration' => 'extended',
+            'richtextConfiguration' => 'default',
         ],
     ],
 ];

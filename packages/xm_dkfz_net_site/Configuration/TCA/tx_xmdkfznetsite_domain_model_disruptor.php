@@ -24,8 +24,18 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'headline, text, starttime, endtime',
+            'showitem' => '--palette--;;general,--palette--;;date',
         ],
+    ],
+    'palettes' => [
+        'general' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.palette.general',
+            'showitem' => 'headline,--linebreak--, text'
+        ],
+        'date' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.palette.date',
+            'showitem' => ' starttime,endtime'
+        ]
     ],
     'columns' => [
         'headline' => [
@@ -35,6 +45,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'eval' => 'trim',
+                'max' => 255,
             ],
         ],
         'text' => [
@@ -62,9 +73,9 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'required' => true,
-                'eval'    => 'datetime,int',
+                'eval' => 'datetime,int',
                 'default' => 0,
-                'range'   => [
+                'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),
                 ],
             ],

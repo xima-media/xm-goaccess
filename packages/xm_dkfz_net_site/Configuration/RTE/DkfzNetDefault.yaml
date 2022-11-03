@@ -1,8 +1,44 @@
-# Load default processing options
 imports:
-  - { resource: "EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetExtended.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
 
 editor:
   config:
+    format_tags: "p;h2;h3;h4;h5;pre"
+
+    toolbarGroups:
+      - { name: 'styles', groups: [ 'styles' ] }
+      - { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+      - { name: 'links', groups: [ 'links' ] }
+      - { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] }
+      - { name: 'clipboard', groups: [ 'clipboard', 'undo' ] }
+      - { name: 'editing', groups: [ 'find', 'selection', 'editing' ] }
+      - { name: 'insert', groups: [ 'insert' ] }
+      - { name: 'forms', groups: [ 'forms' ] }
+      - { name: 'others', groups: [ 'others' ] }
+      - { name: 'document', groups: [ 'mode', 'document', 'doctools' ] }
+      - { name: 'tools', groups: [ 'tools' ] }
+      - { name: 'colors', groups: [ 'colors' ] }
+
+    justifyClasses:
+
+    extraPlugins:
+      - wordcount
+      - editorplaceholder
+
+    removePlugins:
+      - image
+
     removeButtons:
-      - Table
+      - Underline
+      - Strike
+      - Image
+      - HorizontalRule
+      - Anchor
+      - Blockquote
+      - Outdent
+      - Indent
+      - PasteFromWord
+      - SpecialChar
+

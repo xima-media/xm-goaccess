@@ -463,6 +463,12 @@
 			<trans-unit id="disruptor.endtime">
 				<source>End time</source>
 			</trans-unit>
+			<trans-unit id="disruptor.palette.general">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="disruptor.palette.date">
+				<source>Dates</source>
+			</trans-unit>
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<source>Video preview image for mp4 videos.</source>
 			</trans-unit>

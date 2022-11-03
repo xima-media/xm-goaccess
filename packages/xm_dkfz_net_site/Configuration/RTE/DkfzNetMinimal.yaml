@@ -1,10 +1,8 @@
-# Load default processing options
 imports:
   - { resource: "EXT:xm_dkfz_net_site/Configuration/RTE/DkfzNetDefault.yaml" }
 
 editor:
   config:
+    height: 150
     removeButtons:
-      - Link
-      - Unlink
-      - Source
+      - Table
