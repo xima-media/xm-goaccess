@@ -64,8 +64,7 @@
 								<div class="contact">
 									<ul>
 										<f:for each="{userItem.contacts}" as="contact" iteration="i">
-
-											<f:if condition="{contact.data.recordType} == 0">
+											<f:if condition="{contact.data.record_type} == 0">
 												<f:if condition="{contact.data.room} && {i.isFirst}">
 													<li class="contact__item">
 														<f:render partial="Icon" arguments="{icon: 'location'}"/>
@@ -79,7 +78,7 @@
 													</a>
 												</li>
 											</f:if>
-											<f:if condition="{contact.data.recordType} == 1">
+											<f:if condition="{contact.data.record_type} == 1">
 												<li class="contact__item">
 													<f:render partial="Icon" arguments="{icon: 'printer'}"/>
 													{contact.data.number}
