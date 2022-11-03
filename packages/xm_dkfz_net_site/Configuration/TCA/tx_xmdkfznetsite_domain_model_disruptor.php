@@ -30,12 +30,12 @@ return [
     'palettes' => [
         'general' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.palette.general',
-            'showitem' => 'headline,--linebreak--, text'
+            'showitem' => 'headline,--linebreak--, text',
         ],
         'date' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:disruptor.palette.date',
-            'showitem' => ' starttime,endtime'
-        ]
+            'showitem' => ' starttime,endtime',
+        ],
     ],
     'columns' => [
         'headline' => [
