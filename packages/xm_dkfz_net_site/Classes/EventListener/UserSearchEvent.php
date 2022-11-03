@@ -54,6 +54,8 @@ class UserSearchEvent
             )
         );
 
+        $this->queryBuilder->groupBy($this->userDemand::TABLE . '.uid');
+
         $this->contactTableJoined = true;
     }
 
