@@ -16,6 +16,10 @@ div.table {
         margin: 0;
     }
 
+    p:empty:after {
+        content: '-';
+    }
+
     &__header {
         display: grid;
         grid-template-columns: 80px 150px 250px auto 120px;
