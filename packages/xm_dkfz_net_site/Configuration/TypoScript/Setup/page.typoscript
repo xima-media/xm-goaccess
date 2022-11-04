@@ -30,6 +30,8 @@ page {
       pidSearch.value = {$pidSearch}
       baseUrl = TEXT
       baseUrl.data = site:base
+      currentPid = TEXT
+      currentPid.data = field:uid
     }
 
     dataProcessing {
