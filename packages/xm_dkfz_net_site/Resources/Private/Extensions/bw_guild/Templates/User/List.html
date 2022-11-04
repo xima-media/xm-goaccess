@@ -55,10 +55,10 @@
 
 				</div>
 				<div class="card__contact">
-					<f:for each="{user.contacts}" as="contact">
+					<f:for each="{user.contacts}" as="contact" iteration="i">
 
 						<f:if condition="{contact.recordType} == 0">
-							<f:if condition="{contact.room}">
+							<f:if condition="{contact.room} && {i.isFirst}">
 								<li class="contact__item">
 									<f:render partial="Icon" arguments="{icon: 'location'}"/>
 									{contact.room}
