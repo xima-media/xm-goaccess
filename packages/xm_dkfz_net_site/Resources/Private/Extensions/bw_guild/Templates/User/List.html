@@ -1,5 +1,20 @@
 <div class="results">
-	<h2 class="results__title h6">Es wurden {pagination.numberOfResults} Mitarbeiter gefunden</h2>
+
+	<f:if condition="{pagination.numberOfResults}">
+		<f:then>
+			<h2 class="results__title h6"><f:translate extensionName="XmDkfzNetSite" key="usersearch.found" arguments="{0: pagination.numberOfResults}"/></h2>
+		</f:then>
+		<f:else>
+			<div class="callout">
+				<div class="infobox color-accent--cyan infobox--background-white">
+					<div class="infobox--wrapper">
+						<h4 class="infobox__title"><f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound"/></h4>
+						<p><f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound.description"/></p>
+					</div>
+				</div>
+			</div>
+		</f:else>
+	</f:if>
 
 	<div class="results__items">
 		<f:for each="{users}" as="user">

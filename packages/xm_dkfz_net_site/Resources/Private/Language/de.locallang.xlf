@@ -497,6 +497,15 @@
 			<trans-unit id="contactData" space="preserve">
 				<target>Kontaktdaten</target>
 			</trans-unit>
+			<trans-unit id="usersearch.notfound" space="preserve">
+				<target>Keine Benutzer gefunden</target>
+			</trans-unit>
+			<trans-unit id="usersearch.notfound.description" space="preserve">
+				<target>Zu den gewählten Suchfiltern wurden keine Benutzer gefunden</target>
+			</trans-unit>
+			<trans-unit id="usersearch.found" space="preserve">
+				<target>Es wurden %s Benutzer gefunden</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
