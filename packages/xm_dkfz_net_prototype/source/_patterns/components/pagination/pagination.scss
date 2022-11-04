@@ -38,6 +38,7 @@
             &--previous,
             &--next {
                 padding: 5px 10px;
+
                 &:hover {
                     color: var(--color-white);
                     background: var(--color-gray-900);
@@ -48,6 +49,44 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.f3-widget-paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    a {
+        padding: 0.5rem;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px solid;
+        }
+
+        &.current {
+            font-weight: bold;
+            border-bottom: 2px solid;
+        }
+    }
+
+    a.arrow {
+        border-radius: 100%;
+        padding: 6px 8px;
+        line-height: 0;
+
+        &:hover {
+            background: var(--color-gray-900);
+            color: #FFF;
+            border: 0;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
         }
     }
 }
