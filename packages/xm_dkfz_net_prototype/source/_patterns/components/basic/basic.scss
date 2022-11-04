@@ -14,6 +14,13 @@ html {
     overflow-y: scroll;
     scroll-padding-top: 4.375rem; // offset for anchor navigation
 
+    @include media-breakpoint-up(xxl) {
+        &.background--gradient body {
+            background-image: linear-gradient(0deg, $color-gray-100, $color-gray-100), linear-gradient(90deg, $color-gray-100, $color-gray-100 calc(50vw - 790px), #FFF calc(50vw - 790px), #FFF calc(50vw + 790px), $color-gray-100 calc(50vw + 790px));;
+            background-size: 100% 550px, 100% 100%;
+            background-repeat: no-repeat;
+        }
+    }
 }
 
 body {
@@ -327,6 +334,10 @@ ul > li {
 
 .d-none {
     display: none !important;
+}
+
+.text-center {
+    text-align: center;
 }
 
 *[class*="show-for-"] {

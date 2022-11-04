@@ -28,6 +28,8 @@ page {
       pidNewsDetail.value = {$pidNewsDetail}
       pidSearch = TEXT
       pidSearch.value = {$pidSearch}
+      pidUserList = TEXT
+      pidUserList.value = {$pidUserList}
       baseUrl = TEXT
       baseUrl.data = site:base
     }
@@ -175,6 +177,6 @@ page {
   page.10.templateName = Login
 [end]
 
-[tree.level > 1]
-  config.htmlTag.attributes.class = background--white
+[traverse(page, "uid") == {$pidUserList}]
+  config.htmlTag.attributes.class = background--gradient
 [end]
