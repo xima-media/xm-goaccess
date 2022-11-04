@@ -1,10 +1,13 @@
 <f:if condition="{pagination.allPageNumbers->f:count()} > 1">
+
+	<f:variable name="demandArguments" value="{search: demand.search, feature: demand.feature, feGroup: demand.feGroup, function: demand.function, committee: demand.committee}"></f:variable>
+
 	<ul class="f3-widget-paginator">
 		<f:if condition="{pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
 			<f:then>
 				<li class="previous">
 					<a class="arrow"
-					   href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.previousPageNumber}, addQueryString: '1')}"
+					   href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.previousPageNumber, demand: demandArguments})}"
 					   title="{f:translate(key:'pagination.previous')}">
 						<f:render partial="Icon" arguments="{icon: 'arrow-left'}"/>
 					</a>
@@ -13,7 +16,7 @@
 		</f:if>
 		<f:if condition="{pagination.hasLessPages}">
 			<li class="first">
-				<a href="{f:uri.action(action:actionName, arguments:{currentPage: 1})}"
+				<a href="{f:uri.action(action:actionName, arguments:{currentPage: 1, demand: demandArguments})}"
 				   title="{f:translate(key:'pagination.first')}">
 					1
 				</a>
@@ -23,7 +26,7 @@
 		<f:for each="{pagination.allPageNumbers}" as="page">
 			<li>
 				<a class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'current')}"
-				   href="{f:uri.action(action:actionName, arguments:{currentPage: page})}">{page}
+				   href="{f:uri.action(action:actionName, arguments:{currentPage: page, demand: demandArguments})}">{page}
 				</a>
 			</li>
 		</f:for>
@@ -33,14 +36,14 @@
 		<f:if condition="{pagination.nextPageNumber} && {pagination.nextPageNumber} <= {pagination.lastPageNumber}">
 			<f:then>
 				<li class="last">
-					<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.lastPageNumber})}"
+					<a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.lastPageNumber, demand: demandArguments})}"
 					   title="{f:translate(key:'pagination.last')}">
 						{pagination.lastPageNumber}
 					</a>
 				</li>
 				<li class="next">
 					<a class="arrow"
-					   href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.nextPageNumber, demand: {search: demand.search}})}"
+					   href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.nextPageNumber, demand: demandArguments})}"
 					   title="{f:translate(key:'pagination.next')}">
 						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
 					</a>
