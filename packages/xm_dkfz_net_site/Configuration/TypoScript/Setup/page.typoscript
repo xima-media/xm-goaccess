@@ -32,6 +32,8 @@ page {
       pidUserList.value = {$pidUserList}
       baseUrl = TEXT
       baseUrl.data = site:base
+      currentPid = TEXT
+      currentPid.data = field:uid
     }
 
     dataProcessing {

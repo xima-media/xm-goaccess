@@ -2,67 +2,113 @@
 	  xmlns:kesearch="http://typo3.org/ns/Tpwd/KeSearch/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
 
-<form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" action="{f:uri.page(pageUid: targetpage)}"
-	  class="hero-form hero-form--search">
-	<f:comment><!-- Replace the URL with the speaking URL --></f:comment>
-	<f:if condition="{isEmptySearch} == FALSE">
-		<f:format.raw>
-			<script>history.replaceState(null, '', '</f:format.raw><kesearch:link keepPiVars="1" uriOnly="1" /><f:format.raw>');</script>
-		</f:format.raw>
+<f:if condition="{conf.templateLayout}">
+	<f:if condition="{conf.templateLayout} == 10">
+		<f:render section="default" arguments="{_all}"/>
 	</f:if>
+	<f:if condition="{conf.templateLayout} == 20">
+		<f:render section="quickSearch" arguments="{_all}"/>
+	</f:if>
+</f:if>
 
-	<f:if condition="{lparam}">
-		<input type="hidden" name="L" value="{lparam}"/>
-	</f:if>
-	<f:if condition="{mpparam}">
-		<input type="hidden" name="MP" value="{mpparam}"/>
-	</f:if>
-	<f:if condition="{typeparam}">
-		<input type="hidden" name="type" value="{typeparam}"/>
-	</f:if>
+<f:section name="default">
+	<form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" action="{f:uri.page(pageUid: targetpage)}"
+		  class="hero-form hero-form--search">
+		<f:comment><!-- Replace the URL with the speaking URL --></f:comment>
+		<f:if condition="{isEmptySearch} == FALSE">
+			<f:format.raw>
+				<script>history.replaceState(null, '', '</f:format.raw><kesearch:link keepPiVars="1" uriOnly="1" /><f:format.raw>');</script>
+			</f:format.raw>
+		</f:if>
 
-	<div class="hero-form__content">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="field field--text {f:if(condition: '{searchword}', then: 'fx--filled')}">
-					<label class="field__label" for="ke_search_sword">{f:translate(key: 'searchForm.sword.label',
-						extensionName: 'XmDkfzNetSite')}</label>
-					<input
-						type="search"
-						class="field__input"
-						id="ke_search_sword"
-						name="tx_kesearch_pi1[sword]"
-						value="{searchword -> f:format.raw()}"
-						placeholder="{searchwordDefault}"
-						{f:if(condition: '{extConf.allowEmptySearch} == 0', then: 'required')}
+		<f:if condition="{lparam}">
+			<input type="hidden" name="L" value="{lparam}"/>
+		</f:if>
+		<f:if condition="{mpparam}">
+			<input type="hidden" name="MP" value="{mpparam}"/>
+		</f:if>
+		<f:if condition="{typeparam}">
+			<input type="hidden" name="type" value="{typeparam}"/>
+		</f:if>
+
+		<div class="hero-form__content">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="field field--text {f:if(condition: '{searchword}', then: 'fx--filled')}">
+						<label class="field__label" for="ke_search_sword">{f:translate(key: 'searchForm.sword.label',
+							extensionName: 'XmDkfzNetSite')}</label>
+						<input
+							type="search"
+							class="field__input"
+							id="ke_search_sword"
+							name="tx_kesearch_pi1[sword]"
+							value="{searchword -> f:format.raw()}"
+							placeholder="{searchwordDefault}"
+							{f:if(condition: '{extConf.allowEmptySearch} == 0', then: 'required')}
 						minlength="{extConf.searchWordLength}"
-					/>
-				</div>
+						/>
+					</div>
 
-				<button type="submit" class="search__button button button--icon-only">
-					<f:render partial="Icon" arguments="{icon: 'search'}"/>
-				</button>
+					<button type="submit" class="search__button button button--icon-only">
+						<f:render partial="Icon" arguments="{icon: 'search'}"/>
+					</button>
+				</div>
 			</div>
 		</div>
+
+		<f:if condition="{page}">
+			<input id="kesearchpagenumber" type="hidden" name="tx_kesearch_pi1[page]" value="{page}"/>
+		</f:if>
+		<input id="resetFilters" type="hidden" name="tx_kesearch_pi1[resetFilters]" value="0"/>
+		<f:if condition="{sortByField}">
+			<input id="sortByField" type="hidden" name="tx_kesearch_pi1[sortByField]" value="{sortByField}"/>
+		</f:if>
+		<f:if condition="{sortByDir}">
+			<input id="sortByDir" type="hidden" name="tx_kesearch_pi1[sortByDir]" value="{sortByDir}"/>
+		</f:if>
+
+		<f:if condition="{filters}">
+			<div class="d-none">
+				<f:render partial="Filters"
+						  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, filters: filters}"/>
+			</div>
+		</f:if>
+	</form>
+</f:section>
+
+<f:section name="quickSearch">
+	<div class="quick-search">
+		<button type="button"
+				class="quick-search__button quick-search__button--toggle button button--icon-only button--white"
+				aria-label="{f:translate(key: 'quickSearch.button.arialabel', extensionName: 'XmDkfzNetSite')}"
+				aria-expanded="false">
+
+			<f:render partial="Icon" arguments="{icon: 'search'}"/>
+
+		</button>
+		<form method="get" id="form_kesearch_pi3" name="form_kesearch_pi3" action="{f:uri.page(pageUid: targetpage)}"
+			  class="quick-search__form">
+
+			<div class="field field--text">
+				<label class="field__label visually-hidden"
+					   for="ke_search_pi3_sword">{f:translate(key: 'quickSearch.sword.label', extensionName:
+					'XmDkfzNetSite')}</label>
+				<input
+					type="search"
+					class="field__input"
+					id="ke_search_pi3_sword"
+					name="tx_kesearch_pi1[sword]"
+					value="{searchword -> f:format.raw()}"
+					placeholder="{searchwordDefault}"
+				/>
+			</div>
+
+			<button type="button"
+					class="quick-search__button quick-search__button--submit button button--icon-only button--white">
+				<f:render partial="Icon" arguments="{icon: 'search'}"/>
+			</button>
+		</form>
 	</div>
-
-	<f:if condition="{page}">
-		<input id="kesearchpagenumber" type="hidden" name="tx_kesearch_pi1[page]" value="{page}"/>
-	</f:if>
-	<input id="resetFilters" type="hidden" name="tx_kesearch_pi1[resetFilters]" value="0"/>
-	<f:if condition="{sortByField}">
-		<input id="sortByField" type="hidden" name="tx_kesearch_pi1[sortByField]" value="{sortByField}"/>
-	</f:if>
-	<f:if condition="{sortByDir}">
-		<input id="sortByDir" type="hidden" name="tx_kesearch_pi1[sortByDir]" value="{sortByDir}"/>
-	</f:if>
-
-	<f:if condition="{filters}">
-		<div class="d-none">
-			<f:render partial="Filters"
-					  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, filters: filters}"/>
-		</div>
-	</f:if>
-</form>
+</f:section>
 
 </html>

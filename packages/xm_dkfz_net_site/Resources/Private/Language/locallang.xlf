@@ -487,6 +487,12 @@
 			<trans-unit id="searchForm.sword.label" space="preserve">
 				<source>Search term</source>
 			</trans-unit>
+			<trans-unit id="quickSearch.button.arialabel" space="preserve">
+				<source>Open fulltext search</source>
+			</trans-unit>
+			<trans-unit id="quickSearch.sword.label" space="preserve">
+				<target>Search</target>
+			</trans-unit>
 			<trans-unit id="searchResults" space="preserve">
 				<source>Search results</source>
 			</trans-unit>

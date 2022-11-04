@@ -113,35 +113,11 @@
 						</li>
 
 
-					<li class="navigation__item navigation__item--quick-search">
-
-						<div class="quick-search">
-							<button type="button"
-									class="quick-search__button quick-search__button--toggle button button--icon-only button--white"
-									aria-label="Volltextsuche öffnen"
-									aria-expanded="false">
-
-								<f:render partial="Icon" arguments="{icon: 'search'}"/>
-
-							</button>
-							<form class="quick-search__form" action="#">
-
-								<div class="field field--text">
-									<label class="field__label visually-hidden"
-										   for="field__input--495632666">Suche</label> <input type="text"
-																							  class="field__input"
-																							  id="field__input--495632666"
-																							  placeholder="Platzhaltertext">
-								</div>
-
-								<button type="button"
-										class="quick-search__button quick-search__button--submit button button--icon-only button--white">
-									<f:render partial="Icon" arguments="{icon: 'search'}"/>
-								</button>
-							</form>
-						</div>
-
-					</li>
+					<f:if condition="{currentPid} != {pidSearch}">
+						<li class="navigation__item navigation__item--quick-search">
+							<f:cObject typoscriptObjectPath="lib.quickSearch"/>
+						</li>
+					</f:if>
 					<li class="navigation__item navigation__item--menu-toggle">
 						<button class="navigation__link button button--icon-only button--white fx--toggle-main-menu"
 								type="button"

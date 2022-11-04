@@ -65,3 +65,12 @@ plugin.tx_kesearch_pi3 {
   }
   cssFile >
 }
+
+lib.quickSearch = COA
+lib.quickSearch {
+  10 < plugin.tx_kesearch_pi3
+  10 {
+    templateLayout = 20
+    resultPage = 111
+  }
+}
