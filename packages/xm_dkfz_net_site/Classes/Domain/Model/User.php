@@ -197,4 +197,66 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         }
         return $this->username;
     }
+
+    public function getContactRoom(): string
+    {
+        foreach ($this->contacts ?? [] as $contact) {
+            if ($contact->getRoom()) {
+                return $contact->getRoom();
+            }
+        }
+        return '';
+    }
+
+    public function getContactFunction(): string
+    {
+        foreach ($this->contacts ?? [] as $contact) {
+            if ($contact->getFunction()) {
+                return $contact->getFunction();
+            }
+        }
+        return '';
+    }
+
+    /**
+     * @return \Xima\XmDkfzNetSite\Domain\Model\Contact[]
+     */
+    public function getPhoneContacts(): array
+    {
+        $phones = [];
+        foreach ($this->contacts ?? [] as $contact) {
+            if ($contact->getRecordType() === '0' && $contact->getNumber()) {
+                $phones[] = $contact;
+            }
+        }
+        return $phones;
+    }
+
+    /**
+     * @return \Xima\XmDkfzNetSite\Domain\Model\Contact[]
+     */
+    public function getFaxContacts(): array
+    {
+        $faxes = [];
+        foreach ($this->contacts ?? [] as $contact) {
+            if ($contact->getRecordType() === '1' && $contact->getNumber()) {
+                $faxes[] = $contact;
+            }
+        }
+        return $faxes;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup[]
+     */
+    public function getGroups()
+    {
+        $groups = [];
+        foreach ($this->getUsergroup() as $group) {
+            if ($group->getUid() !== 1) {
+                $groups[] = $group;
+            }
+        }
+        return $groups;
+    }
 }

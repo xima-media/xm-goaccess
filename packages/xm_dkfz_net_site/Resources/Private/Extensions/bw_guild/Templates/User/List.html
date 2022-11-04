@@ -1,105 +1,111 @@
-<div class="results">
+<f:spaceless>
+	<div class="results">
 
-	<f:if condition="{pagination.numberOfResults}">
-		<f:then>
-			<h2 class="results__title h6">
-				<f:translate extensionName="XmDkfzNetSite"
-							 key="usersearch.found"
-							 arguments="{0: pagination.numberOfResults}"/>
-			</h2>
-		</f:then>
-		<f:else>
-			<div class="callout">
-				<div class="infobox color-accent--cyan infobox--background-white">
-					<div class="infobox--wrapper">
-						<h4 class="infobox__title">
-							<f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound"/>
-						</h4>
-						<p>
-							<f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound.description"/>
-						</p>
+		<f:if condition="{pagination.numberOfResults}">
+			<f:then>
+				<h2 class="results__title h6">
+					<f:translate extensionName="XmDkfzNetSite"
+								 key="usersearch.found"
+								 arguments="{0: pagination.numberOfResults}"/>
+				</h2>
+			</f:then>
+			<f:else>
+				<div class="callout">
+					<div class="infobox color-accent--cyan infobox--background-white">
+						<div class="infobox--wrapper">
+							<h4 class="infobox__title">
+								<f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound"/>
+							</h4>
+							<p>
+								<f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound.description"/>
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		</f:else>
-	</f:if>
+			</f:else>
+		</f:if>
+		<div class="results__items">
+			<f:for each="{users}" as="user">
+				<div class="card card--image-top card--md card--image-size-md card--employee-contact">
+					<f:link.action action="show"
+								   class="card__link card__link--hidden"
+								   pageUid="{settings.showPid}"
+								   pluginName="Usershow"
+								   controller="User"
+								   arguments="{user: user.uid}">
+						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+					</f:link.action>
+					<div class="card__image">
+						<f:if condition="{user.logo}">
+							<picture>
+								<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'webp')}"
+										type="image/webp">
+								<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
+										type="image/jpeg">
+								<img src="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
+									 alt="{file.originalResource.alternative}"
+									 class="picture__image image--responsive"
+									 loading="lazy"/>
+							</picture>
+						</f:if>
+						<f:if condition="!{user.logo}">
+							<img width="80"
+								 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
+								 alt="No profile picture"/>
+						</f:if>
+					</div>
+					<div class="card__content">
+						<h3 class="card__title h6">{user.displayName}</h3>
 
-	<div class="results__items">
-		<f:for each="{users}" as="user">
-			<div class="card card--image-top card--md card--image-size-md card--employee-contact">
-				<f:link.action action="show"
-							   class="card__link card__link--hidden"
-							   pageUid="{settings.showPid}"
-							   pluginName="Usershow"
-							   controller="User"
-							   arguments="{user: user.uid}">
-					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-				</f:link.action>
-				<div class="card__image">
-					<f:if condition="{user.logo}">
-						<picture>
-							<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'webp')}"
-									type="image/webp">
-							<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
-									type="image/jpeg">
-							<img src="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
-								 alt="{file.originalResource.alternative}"
-								 class="picture__image image--responsive"
-								 loading="lazy"/>
-						</picture>
-					</f:if>
-					<f:if condition="!{user.logo}">
-						<img width="80"
-							 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-							 alt="No profile picture"/>
-					</f:if>
-				</div>
-				<div class="card__content">
-					<h3 class="card__title h6">{user.displayName}</h3>
+						<f:if condition="{user.contactFunction}">
+							<p class="card__function">{user.contactFunction}</p>
+						</f:if>
 
-					<f:for each="{user.usergroup}" as="group" iteration="i">
-						<p>
-							<f:if condition="{group.uid}!=1">
-								{group.title}{f:if(condition: i.isLast, else: ', ')}
-							</f:if>
-						</p>
-					</f:for>
+						<f:if condition="{user.groups}">
+							<p class="card__subtitle"><strong>
+								<f:for each="{user.groups}" as="group" iteration="i">
+									{group.title}{f:if(condition: i.isLast, else: ', ')}
+								</f:for>
+							</strong></p>
+						</f:if>
 
-				</div>
-				<ul class="card__contact">
-					<f:for each="{user.contacts}" as="contact" iteration="i">
+					</div>
+					<ul class="card__contact">
 
-						<f:if condition="{contact.recordType} == 0">
-							<f:if condition="{contact.room} && {i.isFirst}">
-								<li class="contact__item">
-									<f:render partial="Icon" arguments="{icon: 'location'}"/>
-									{contact.room}
-								</li>
-							</f:if>
+						<f:if condition="{user.contactRoom}">
 							<li class="contact__item">
-								<f:render partial="Icon" arguments="{icon: 'phone'}"/>
-								<a href="tel:{contact.number}">{contact.number}</a>
+								<f:render partial="Icon" arguments="{icon: 'location'}"/>
+								{user.contactRoom}
 							</li>
 						</f:if>
-						<f:if condition="{contact.recordType} == 1">
+
+						<f:for each="{user.phoneContacts}" as="contact" iteration="i">
+							<li class="contact__item">
+								<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+								<a href="tel:{contact.cleanNumber}">{contact.number}</a>
+							</li>
+						</f:for>
+
+						<f:for each="{user.faxContacts}" as="contact" iteration="i">
 							<li class="contact__item">
 								<f:render partial="Icon" arguments="{icon: 'printer'}"/>
 								{contact.number}
 							</li>
+						</f:for>
+
+						<f:if condition="{user.email}">
+							<li class="contact__item">
+								<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+								{user.email}
+							</li>
 						</f:if>
-					</f:for>
-					<f:if condition="{user.email}">
-						<li class="contact__item">
-							<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-							{user.email}
-						</li>
-					</f:if>
-				</ul>
-			</div>
-		</f:for>
+					</ul>
+				</div>
+			</f:for>
+		</div>
+
 	</div>
 
-</div>
-
-<f:render partial="Pagination"
-		  arguments="{pagination: pagination.pagination, paginator: pagination.paginator, actionName: 'list', demand: demand}"/>
+	<f:render partial="Pagination"
+			  arguments="{pagination: pagination.pagination, paginator: pagination.paginator, actionName: 'list', demand: demand}"/>
+</f:spaceless>

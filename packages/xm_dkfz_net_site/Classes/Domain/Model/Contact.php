@@ -9,7 +9,7 @@ class Contact extends AbstractEntity
 {
     protected string $recordType = '';
 
-    protected string $position = '';
+    protected string $function = '';
 
     protected string $room = '';
 
@@ -30,9 +30,9 @@ class Contact extends AbstractEntity
     /**
      * @return string
      */
-    public function getPosition(): string
+    public function getFunction(): string
     {
-        return $this->position;
+        return $this->function;
     }
 
     /**
@@ -65,5 +65,10 @@ class Contact extends AbstractEntity
     public function getFeGroup(): ?FrontendUserGroup
     {
         return $this->feGroup;
+    }
+
+    public function getCleanNumber(): string
+    {
+        return str_replace(' ', '', $this->number);
     }
 }

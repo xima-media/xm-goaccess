@@ -6,13 +6,13 @@ return [
         'label' => 'number',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'searchFields' => 'position,phone_number,room',
+        'searchFields' => 'function,phone_number,room',
         'hideTable' => true,
         'type' => 'record_type',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-contact.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'position,phone_number,room',
+        'showRecordFieldList' => 'function,phone_number,room',
     ],
     'types' => [
         0 => [

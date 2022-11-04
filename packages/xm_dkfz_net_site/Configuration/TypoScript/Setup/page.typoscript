@@ -180,3 +180,8 @@ page {
 [traverse(page, "uid") == {$pidUserList}]
   config.htmlTag.attributes.class = background--gradient
 [end]
+
+[traverse(page, "uid") == {$pidUserDetail}]
+  config.htmlTag.attributes.class = background--gradient
+  config.htmlTag.attributes.style = --gradient-offset:800px
+[end]
