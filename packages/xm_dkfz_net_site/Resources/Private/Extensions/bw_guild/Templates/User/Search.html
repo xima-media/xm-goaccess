@@ -14,7 +14,7 @@
 
 		<div class="row">
 			<div class="col-lg-6">
-				<div class="field field--text">
+				<div class="field field--text {f:if(condition: demand.search, then: 'fx--filled')}">
 					<label class="field__label" for="search">Suche nach Name, Vorname, Telefonnummer</label>
 					<f:form.textfield id="search"
 									  class="field__input autocomplete"
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<div class="field field--text">
+				<div class="field field--text {f:if(condition: demand.feature, then: 'fx--filled')}">
 					<label class="field__label" for="feature">Suche nach Kompetenz, Thema, Interesse</label>
 					<f:form.textfield id="feature"
 									  class="field__input autocomplete"
@@ -38,13 +38,13 @@
 
 			<div class="row">
 				<div class="col-lg-4">
-					<div class="field field--text">
+					<div class="field field--text {f:if(condition: demand.feGroup, then: 'fx--filled')}">
 						<label class="field__label" for="feGroup">Abteilung</label>
 						<f:form.textfield id="feGroup" class="field__input autocomplete" placeholder="Abteilung" property="feGroup" data="{autocomplete: '{autocompleter.feGroup->f:format.json()}' }" />
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="field field--text">
+					<div class="field field--text {f:if(condition: demand.function, then: 'fx--filled')}">
 						<label class="field__label" for="function">Funktion</label>
 						<f:form.textfield id="function"
 										  class="field__input autocomplete"
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4">
-					<div class="field field--text">
+					<div class="field field--text {f:if(condition: demand.committee, then: 'fx--filled')}">
 						<label class="field__label" for="committee">Gremium</label>
 						<f:form.textfield id="committee" class="field__input autocomplete" placeholder="Funktion" property="committee" data="{autocomplete: '{autocompleter.committee->f:format.json()}' }"/>
 					</div>

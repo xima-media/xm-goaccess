@@ -30,7 +30,6 @@ class HeroForm {
 
     autocomplete({
       input: inputElement,
-      preventSubmit: true,
       minLength: 1,
       disableAutoSelect: true,
       fetch: this.onAutocompleteFetch.bind(this, allItems),
