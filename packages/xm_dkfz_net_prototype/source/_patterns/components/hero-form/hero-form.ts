@@ -44,7 +44,7 @@ class HeroForm {
 
     const filteredFeatures = allItems.filter((item) => {
       return item.value.toString().toLowerCase().indexOf(text) >= 0
-    })
+    }).slice(0, 10)
 
     update(filteredFeatures)
   }

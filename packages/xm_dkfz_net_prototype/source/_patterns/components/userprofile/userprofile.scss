@@ -60,24 +60,28 @@ form.userprofile {
     overflow: auto;
     box-sizing: border-box;
     border: 1px solid rgba(50, 50, 50, 0.6);
-}
 
-.autocomplete * {
-    font: inherit;
-}
+    * {
+        font: inherit;
+    }
 
-.autocomplete > div {
-    padding: 0 4px;
-}
+    .group {
+        background: var(--color-gray-200)
+    }
 
-.autocomplete .group {
-    background: var(--color-gray-200)
-}
+    & > div {
+        padding: 1px 5px;
+    }
 
-.autocomplete > div:hover:not(.group),
-.autocomplete > div.selected {
-    background: var(--color-primary);
-    color: var(--color-white);
-    cursor: pointer;
-}
+    & > div:not(:last-child) {
+        border-bottom: 1px solid rgba(#000, 0.1);
+    }
 
+    & > div:hover:not(.group),
+    & > div.selected {
+        background: var(--color-primary);
+        color: var(--color-white);
+        cursor: pointer;
+    }
+
+}
