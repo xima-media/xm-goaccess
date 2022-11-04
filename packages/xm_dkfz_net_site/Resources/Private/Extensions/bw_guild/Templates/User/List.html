@@ -2,14 +2,22 @@
 
 	<f:if condition="{pagination.numberOfResults}">
 		<f:then>
-			<h2 class="results__title h6"><f:translate extensionName="XmDkfzNetSite" key="usersearch.found" arguments="{0: pagination.numberOfResults}"/></h2>
+			<h2 class="results__title h6">
+				<f:translate extensionName="XmDkfzNetSite"
+							 key="usersearch.found"
+							 arguments="{0: pagination.numberOfResults}"/>
+			</h2>
 		</f:then>
 		<f:else>
 			<div class="callout">
 				<div class="infobox color-accent--cyan infobox--background-white">
 					<div class="infobox--wrapper">
-						<h4 class="infobox__title"><f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound"/></h4>
-						<p><f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound.description"/></p>
+						<h4 class="infobox__title">
+							<f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound"/>
+						</h4>
+						<p>
+							<f:translate extensionName="XmDkfzNetSite" key="usersearch.notfound.description"/>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -49,12 +57,16 @@
 				<div class="card__content">
 					<h3 class="card__title h6">{user.displayName}</h3>
 
-					<f:for each="{user.usergroup}" as="group">
-						<p>{group.title}</p>
+					<f:for each="{user.usergroup}" as="group" iteration="i">
+						<p>
+							<f:if condition="{group.uid}!=1">
+								{group.title}{f:if(condition: i.isLast, else: ', ')}
+							</f:if>
+						</p>
 					</f:for>
 
 				</div>
-				<div class="card__contact">
+				<ul class="card__contact">
 					<f:for each="{user.contacts}" as="contact" iteration="i">
 
 						<f:if condition="{contact.recordType} == 0">
@@ -76,7 +88,13 @@
 							</li>
 						</f:if>
 					</f:for>
-				</div>
+					<f:if condition="{user.email}">
+						<li class="contact__item">
+							<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+							{user.email}
+						</li>
+					</f:if>
+				</ul>
 			</div>
 		</f:for>
 	</div>
