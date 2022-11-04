@@ -15,6 +15,7 @@ Settings are available via
 				<f:render partial="Filters"
 						  arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, filters: filters, prefix: 'results-'}"/>
 			</f:if>
+			<f:render partial="Sorting" arguments="{conf: conf, numberofresults: numberofresults, sortingLinks: sortingLinks}" />
 		</div>
 
 		<div class="results results--search">

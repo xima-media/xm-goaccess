@@ -55,6 +55,7 @@ class HeroForm {
   protected bindSearchFormEvents() {
     this.bindResultListCheckbox()
     this.bindResultListResetButton()
+    this.bindResultListSortingSelect()
   }
 
   protected bindResultListCheckbox() {
@@ -90,6 +91,23 @@ class HeroForm {
     });
 
     form.submit()
+  }
+
+  protected bindResultListSortingSelect() {
+    document.querySelectorAll('select[name="field__input--name-sorting"]').forEach((sortingSelect: HTMLSelectElement) => {
+      sortingSelect.addEventListener('change', this.onResultListSortingSelectChange.bind(this))
+    });
+  }
+
+  protected onResultListSortingSelectChange(e: Event) {
+    const selectField = e.currentTarget as HTMLSelectElement
+    const selectedOption = selectField.selectedOptions[0] as HTMLOptionElement
+
+    console.log(selectedOption)
+
+    if (selectedOption) {
+      location.href = selectedOption.value
+    }
   }
 
 }
