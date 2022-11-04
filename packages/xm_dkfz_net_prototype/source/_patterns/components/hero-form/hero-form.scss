@@ -39,28 +39,20 @@
         padding-top: 13rem;
     }
 
-    &--search {
-        max-width: $container-md-widths - 10rem;
-        background-color: var(--color-primary-opacity-15);
+    .field:not(.fx--focus) {
 
-        @include media-breakpoint-up(md) {
-            padding: 3.5rem 6rem;
-        }
+        position: relative;
 
-        .field--text {
-            .field__label {
-                opacity: 1;
-            }
-        }
-
-        .search {
-            &__button {
-                position: absolute;
-                top: 5rem;
-                right: 6rem;
-                background: transparent;
-                color: var(--color-white);
-            }
+        &:after {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 100%;
+            background-image: linear-gradient(90deg, transparent, var(--color-primary));
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1000;
         }
     }
 }
@@ -84,6 +76,7 @@
                     border-bottom: 0;
                 }
             }
+
             .card {
                 padding: 2rem 0;
 
