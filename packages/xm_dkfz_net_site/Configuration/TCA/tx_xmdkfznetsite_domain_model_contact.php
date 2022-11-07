@@ -4,6 +4,8 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact',
         'label' => 'number',
+        'label_alt' => 'record_type',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'searchFields' => 'function,phone_number,room',
