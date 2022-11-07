@@ -4,7 +4,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3_MODE') || die();
 
-$GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name, first_name';
+$GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'title, last_name, first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = true;
 $GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fields'] = [
     'first_name',
