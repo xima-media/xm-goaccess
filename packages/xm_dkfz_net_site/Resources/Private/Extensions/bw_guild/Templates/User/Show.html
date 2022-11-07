@@ -1,48 +1,134 @@
-<div class="layout__item">
-	<div class="employee-header">
-		<div class="employee-header__body">
-			<h1 class="employee-header__title h3">{user.displayName}</h1>
-			<f:for each="{user.usergroup}" as="group">
-				<div class="employee-header__text">
-					<p>{group.title}</p>
-				</div>
-			</f:for>
-			<div class="employee-header__text">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa dicta dolor, dolorem ducimus
-					facere.</p>
-				<p>###GROUPS###</p>
-			</div>
-			<button type="button" class="button button--primary" data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
-				<span data-onload><f:render partial="Icon" arguments="{icon: 'person-add'}" />
+<div class="userprofile">
+
+	<div class="userprofile__header">
+
+		<div class="image">
+			<f:render partial="UserImage" arguments="{user: user}"/>
+		</div>
+
+
+		<h1 class="employee-header__title h3">{user.displayName}</h1>
+
+		<div>
+			<f:if condition="{user.contactFunction}">
+				<p>{user.contactFunction}</p>
+			</f:if>
+			<f:if condition="{user.groups}">
+				<p><strong>
+					<f:for each="{user.groups}" as="group" iteration="i">
+						{group.title}{f:if(condition: i.isLast, else: ', ')}
+					</f:for>
+				</strong></p>
+			</f:if>
+		</div>
+
+		<button type="button"
+				class="button button--primary"
+				data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
+			<span data-onload>
+				<f:render partial="Icon" arguments="{icon: 'person-add'}"/>
 				Mitarbeiter merken
-				</span>
-				<span data-checked><f:render partial="Icon" arguments="{icon: 'person-remove'}" />
-					Mitarbeiter gemerkt
-				</span>
-			</button>
+			</span>
+			<span data-checked>
+				<f:render partial="Icon" arguments="{icon: 'person-remove'}"/>
+				Mitarbeiter gemerkt
+			</span>
+		</button>
+
+	</div>
+
+	<div class="userprofile__contact">
+		<div class="box">
+			<h6>Kontakt</h6>
+			<ul>
+				<f:for each="{user.phoneContacts}" as="contact" iteration="i">
+					<li class="contact__item">
+						<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+						<a href="tel:{contact.cleanNumber}">{contact.number}</a>
+					</li>
+				</f:for>
+				<f:if condition="{user.email}">
+					<li class="contact__item">
+						<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+						<f:link.email email="{user.email}">{user.email}</f:link.email>
+					</li>
+				</f:if>
+			</ul>
 		</div>
-		<div class="employee-header__image">
-			<figure class="">
-				<div class="picture__item color-accent--primary">
-					<f:if condition="{user.logo}">
-						<picture>
-							<source srcset="{f:uri.image(image:user.logo, width:'150', fileExtension: 'webp')}"
-									type="image/webp">
-							<source srcset="{f:uri.image(image:user.logo, width:'150', fileExtension: 'jpg')}"
-									type="image/jpeg">
-							<img src="{f:uri.image(image:user.logo, width:'150', fileExtension: 'jpg')}"
-								 alt="{file.originalResource.alternative}"
-								 class="picture__image image--responsive"
-								 loading="lazy"/>
-						</picture>
-					</f:if>
-					<f:if condition="!{user.logo}">
-						<img width="150"
-							 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-							 alt="No profile picture"/>
-					</f:if>
-				</div>
-			</figure>
+
+		<div class="box box--groups">
+			<h6>Kontakt Abteilung</h6>
+
+			<f:for each="{user.groups}" as="group" iteration="i">
+				<p>{group.title}</p>
+
+			</f:for>
+
 		</div>
+	</div>
+
+	<div class="userprofile__facts">
+		<ul class="employee-info">
+			<f:if condition="{user.location}">
+				<li>
+					<span>
+						<f:render partial="Icon" arguments="{icon: 'map'}"/>
+					</span>
+					<p>
+						<strong>
+							<f:translate extensionName="XmDkfzNetSite" key="user.location"/>
+						</strong> {user.location}
+					</p>
+				</li>
+			</f:if>
+			<f:if condition="{user.contactRoom}">
+				<li>
+					<span>
+						<f:render partial="Icon" arguments="{icon: 'location'}"/>
+					</span>
+					<p>
+						<strong>
+							<f:translate extensionName="XmDkfzNetSite" key="place.room"/>
+						</strong> {user.contactRoom}
+					</p>
+				</li>
+			</f:if>
+			<f:if condition="{user.memberSince}">
+				<li>
+					<span>
+						<f:render partial="Icon" arguments="{icon: 'calendar'}"/>
+					</span>
+					<p>
+						<strong>
+							<f:translate extensionName="XmDkfzNetSite" key="user.member_since"/>
+						</strong> {user.memberSince->f:format.date(format:'d.m.Y')}
+					</p>
+				</li>
+			</f:if>
+			<f:if condition="{user.representative}">
+				<li>
+					<span>
+						<f:render partial="Icon" arguments="{icon: 'user-plus'}"/>
+					</span>
+					<p>
+						<strong>
+							<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
+						</strong>
+						<f:link.action action="show" arguments="{user: user.representative}">
+							{user.representative.displayName}
+						</f:link.action>
+					</p>
+				</li>
+			</f:if>
+			<f:if condition="{user.responsibilities}">
+				<li>
+					<span>
+						<f:render partial="Icon" arguments="{icon: 'location'}"/>
+					</span>
+					<p>
+						<strong><f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/></strong> {user.responsibilities} </p>
+				</li>
+			</f:if>
+		</ul>
 	</div>
 </div>

@@ -317,6 +317,15 @@
 			<trans-unit id="contact.primary_number">
 				<target>Ist Primärnummer</target>
 			</trans-unit>
+			<trans-unit id="user.location">
+				<target>Standard</target>
+			</trans-unit>
+			<trans-unit id="user.member_since">
+				<target>Im DKFZ seit</target>
+			</trans-unit>
+			<trans-unit id="user.birthday">
+				<target>Geburtstag</target>
+			</trans-unit>
 			<trans-unit id="place">
 				<target>Kontaktstelle</target>
 			</trans-unit>

@@ -24,6 +24,36 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected int $gender = 0;
 
+    protected ?User $representative = null;
+
+    protected string $committee = '';
+
+    protected string $responsibilities = '';
+
+    /**
+     * @return \Xima\XmDkfzNetSite\Domain\Model\User|null
+     */
+    public function getRepresentative(): ?User
+    {
+        return $this->representative;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommittee(): string
+    {
+        return $this->committee;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponsibilities(): string
+    {
+        return $this->responsibilities;
+    }
+
     /**
      * @return int
      */
