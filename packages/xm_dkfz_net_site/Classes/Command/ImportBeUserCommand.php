@@ -89,6 +89,9 @@ class ImportBeUserCommand extends AbstractUserImportCommand
             's.kreimeyer@dkfz-heidelberg.de',
             'h.lenz@dkfz-heidelberg.de',
             'a.krauss@dkfz-heidelberg.de',
+            'laura.pelz@dkfz-heidelberg.de',
+            'b.janssens@dkfz-heidelberg.de',
+            'm.guerth@dkfz-heidelberg.de',
         ];
 
         $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
