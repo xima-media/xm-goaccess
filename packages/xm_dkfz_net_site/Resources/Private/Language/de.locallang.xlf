@@ -504,10 +504,10 @@
 				<target>Vertreter</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
-				<target>Benutzerangaben überschreiben</target>
+				<target>Kontaktdaten überschreiben</target>
 			</trans-unit>
-			<trans-unit id="tt_content_usertable.palette.override" space="preserve">
-				<target>Benutzer Überschreibungen</target>
+			<trans-unit id="tt_content_item.record_type.user-contact.override2" space="preserve">
+				<target>Verantwortlichkeiten überschreiben</target>
 			</trans-unit>
 			<trans-unit id="contactData" space="preserve">
 				<target>Kontaktdaten</target>

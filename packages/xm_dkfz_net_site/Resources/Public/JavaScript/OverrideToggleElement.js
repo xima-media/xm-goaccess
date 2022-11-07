@@ -1,36 +1,35 @@
 define(['jquery'], function ($) {
 
-    const OverrideToggleElement = {
+    return function () {
 
-        $checkbox: null,
-        $palette: null,
+        this.$checkbox = null;
+        this.$nextTcaElement = null;
 
-        init: (inputName) => {
+        this.init = function(inputName) {
 
             // cache elements
             this.$checkbox = $('input[type="checkbox"][data-formengine-input-name="' + inputName + '"]');
-            this.$palette = this.$checkbox.closest('.form-section').next();
+            this.$nextTcaElement = this.$checkbox.closest('.form-section').next();
 
             // initial display
-            OverrideToggleElement.togglePalette();
+            this.togglePalette();
 
             // bind event
             this.$checkbox.on('change', () => {
-                OverrideToggleElement.togglePalette();
+                this.togglePalette();
             });
-        },
+        }
 
-        togglePalette: () => {
+        this.togglePalette = function() {
             const doShow = parseInt($('input[type="hidden"][name="' + this.$checkbox.attr('data-formengine-input-name') + '"]').val());
 
             if (doShow) {
-                this.$palette.show();
+                this.$nextTcaElement.show();
             } else {
-                this.$palette.hide();
+                this.$nextTcaElement.hide();
             }
         }
 
     }
 
-    return OverrideToggleElement;
 });

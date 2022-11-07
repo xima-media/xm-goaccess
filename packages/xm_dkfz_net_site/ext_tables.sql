@@ -41,6 +41,7 @@ create table tt_content_item (
 	fe_user          int(11) unsigned default '0' not null,
 	contacts         varchar(255) default '' not null,
 	overrides        int(11) unsigned default '0' not null,
+	overrides2       int(11) unsigned default '0' not null,
 	tt_content_items int(11) unsigned default '0' not null,
 
 	primary key (uid),

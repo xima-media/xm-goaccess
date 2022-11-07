@@ -12,7 +12,7 @@ class OverrideToggleElement extends CheckboxToggleElement
 
         $data = $this->data['parameterArray'];
 
-        $resultArray['requireJsModules'][] = ['TYPO3/CMS/XmDkfzNetSite/OverrideToggleElement' => 'function(OverrideToggleElement) { OverrideToggleElement.init("' . $data['itemFormElName'] . '"); }'];
+        $resultArray['requireJsModules'][] = ['TYPO3/CMS/XmDkfzNetSite/OverrideToggleElement' => 'function(OverrideToggleElement) { const element = new OverrideToggleElement(); element.init("' . $data['itemFormElName'] . '"); }'];
 
         return $resultArray;
     }

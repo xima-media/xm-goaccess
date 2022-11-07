@@ -81,7 +81,7 @@ return [
             ],
         ],
         'user-contact' => [
-            'showitem' => 'record_type, fe_user, overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override;, --palette--;;fe_user-override',
+            'showitem' => 'record_type, fe_user, overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override;, contacts, overrides2;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override2;, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
             'columnsOverrides' => [
                 'record_type' => [
                     'config' => [
@@ -261,6 +261,19 @@ return [
             ],
         ],
         'overrides' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'overrideToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ],
+                ],
+            ],
+        ],
+        'overrides2' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides',
             'config' => [
                 'type' => 'check',
