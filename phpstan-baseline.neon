@@ -161,6 +161,31 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Form/Element/OverrideToggleElement.php
 
 		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:isValidTtContentRow\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:modifyContentFromContentElement\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+
+		-
+			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:addTtContentItemContent\\(\\) expects int, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+
+		-
+			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:ttContentItemHasChildren\\(\\) expects int, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$abstract with no type specified\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php

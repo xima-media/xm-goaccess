@@ -13,6 +13,8 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/db_layout.php']['drawHeade
 
 // Register ke_search Hook
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyFileIndexEntryFromContentIndexer'][1667832752] = \Xima\XmDkfzNetSite\Hook\KeSearchModifyFileIndexEntryHook::class;
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyPageContentFields'][1667922623] = \Xima\XmDkfzNetSite\Hook\KeSearchModifyContentFromContentElementHook::class;
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyContentFromContentElement'][1667905089] = \Xima\XmDkfzNetSite\Hook\KeSearchModifyContentFromContentElementHook::class;
 
 // Register Form Element
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1657005026] = [
