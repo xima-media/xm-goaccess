@@ -24,7 +24,8 @@ export interface UserinfoResponse {
   user: UserData
   offers: Array<UserOffer>,
   bookmarks: UserBookmarks,
-  html: string
+  html: string,
+  validUntil: number,
 }
 
 class Userinfo {
@@ -170,10 +171,17 @@ class Userinfo {
       return false;
     }
     try {
-      this.userinfo = JSON.parse(storedUserinfo);
+      const userInfo: UserinfoResponse = JSON.parse(storedUserinfo)
+
+      if (new Date(userInfo.validUntil * 1000) > new Date()) {
+        return false
+      }
+
+      this.userinfo = userInfo
     } catch (e) {
       return false;
     }
+
     return true;
   }
 
