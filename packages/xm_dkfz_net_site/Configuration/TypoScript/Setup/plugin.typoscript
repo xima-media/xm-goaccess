@@ -21,7 +21,7 @@ plugin {
       autocompleter {
         feGroup = fe_groups.title,fe_groups.dkfz_number
         function = tx_xmdkfznetsite_domain_model_contact.function
-        committee = fe_users.committee
+        committee = tx_xmdkfznetsite_domain_model_committee.name
       }
     }
   }

@@ -130,9 +130,13 @@ call_user_func(function () {
             'exclude' => false,
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.committee',
             'config' => [
-                'type' => 'input',
-                'eval' => 'trim',
-                'max' => 255,
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['', 0]
+                ],
+                'default' => 0,
+                'foreign_table' => 'tx_xmdkfznetsite_domain_model_committee',
             ],
         ],
     ];
