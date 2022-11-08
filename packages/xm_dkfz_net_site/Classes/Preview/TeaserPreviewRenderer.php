@@ -30,7 +30,12 @@ class TeaserPreviewRenderer extends TextmediaPreviewRenderer
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content_item');
         $children = $queryBuilder->select('*')
             ->from('tt_content_item')
-            ->where($queryBuilder->expr()->eq('foreign_uid', (int)$row['uid']))
+            ->where(
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq('foreign_uid', (int)$row['uid']),
+                    $queryBuilder->expr()->eq('foreign_table', $queryBuilder->createNamedParameter('tt_content'))
+                )
+            )
             ->orderBy('sorting')
             ->execute()
             ->fetchAllAssociative();
