@@ -23,7 +23,7 @@ build-php:
 
 build-node:
   stage: build
-  image: misterio92/ci-php-node
+  image: misterio92/ci-php-node:6.0
   cache:
     paths:
       - .npm/
