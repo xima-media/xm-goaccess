@@ -133,7 +133,7 @@ call_user_func(function () {
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0]
+                    ['', 0],
                 ],
                 'default' => 0,
                 'foreign_table' => 'tx_xmdkfznetsite_domain_model_committee',
