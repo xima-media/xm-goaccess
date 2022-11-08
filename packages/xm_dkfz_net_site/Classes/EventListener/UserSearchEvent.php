@@ -81,9 +81,19 @@ class UserSearchEvent
             return;
         }
 
+        $this->queryBuilder->join(
+            $this->userDemand::TABLE,
+            'tx_xmdkfznetsite_domain_model_committee',
+            'cm',
+            $this->queryBuilder->expr()->eq(
+                $this->userDemand::TABLE . '.committee',
+                $this->queryBuilder->quoteIdentifier('cm.uid')
+            )
+        );
+
         $this->queryBuilder->andWhere(
             $this->queryBuilder->expr()->like(
-                $this->userDemand::TABLE . '.committee',
+                'cm.name',
                 $this->queryBuilder->createNamedParameter('%' . $this->userDemand->committee . '%')
             )
         );

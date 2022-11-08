@@ -9,8 +9,9 @@ return [
         'cruser_id' => 'cruser_id',
         'searchFields' => 'name',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-committee.svg',
-        'languageField' => 'sys_language',
-        'transOrigPointerField' => 'l10n_parent',
+        'transOrigPointerField' => 'l18n_parent',
+        'languageField' => 'sys_language_uid',
+        'translationSource' => 'l10n_source',
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
@@ -26,14 +27,38 @@ return [
     'palettes' => [
         'general' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:committee.palettes.general',
-            'showitem' => 'sys_language, --linebreak--, name',
+            'showitem' => 'sys_language_uid, --linebreak--, name',
         ],
     ],
     'columns' => [
-        'sys_language' => [
+        'sys_language_uid' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:committee.language',
             'config' => [
                 'type' => 'language',
+            ],
+        ],
+        'l18n_parent' => [
+            'displayCond' => 'FIELD:sys_language_uid:>:0',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        '',
+                        0,
+                    ],
+                ],
+                'foreign_table' => 'tx_xmdkfznetsite_domain_model_committee',
+                'foreign_table_where' =>
+                    'AND {#tx_xmdkfznetsite_domain_model_committee}.{#pid}=###CURRENT_PID###'
+                    . ' AND {#tx_xmdkfznetsite_domain_model_committee}.{#sys_language_uid} IN (-1,0)',
+                'default' => 0,
+            ],
+        ],
+        'l10n_source' => [
+            'config' => [
+                'type' => 'passthrough',
             ],
         ],
         'name' => [

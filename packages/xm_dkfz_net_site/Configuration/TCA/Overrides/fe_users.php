@@ -137,6 +137,7 @@ call_user_func(function () {
                 ],
                 'default' => 0,
                 'foreign_table' => 'tx_xmdkfznetsite_domain_model_committee',
+                'foreign_table_where' => ' AND {#tx_xmdkfznetsite_domain_model_committee}.{#sys_language_uid} IN (-1,0)',
             ],
         ],
     ];
