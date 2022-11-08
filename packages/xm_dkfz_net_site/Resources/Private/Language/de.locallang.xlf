@@ -521,6 +521,15 @@
 			<trans-unit id="usersearch.found" space="preserve">
 				<target>Es wurden %s Benutzer gefunden</target>
 			</trans-unit>
+			<trans-unit id="usersearch.demand.search" space="preserve">
+				<target>Suche nach Name, Vorname, Telefonnummer</target>
+			</trans-unit>
+			<trans-unit id="usersearch.demand.feature" space="preserve">
+				<target>Suche nach Kompetenz, Thema, Interesse</target>
+			</trans-unit>
+			<trans-unit id="usersearch.button" space="preserve">
+				<target>Suchen</target>
+			</trans-unit>
 			<trans-unit id="committee" space="preserve">
 				<target>Gremium</target>
 			</trans-unit>

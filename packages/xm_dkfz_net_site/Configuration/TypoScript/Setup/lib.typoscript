@@ -68,3 +68,6 @@ lib.generalFeedbackForm {
     controllerActionName = perform
   }
 }
+
+lib.pageTitle = TEXT
+lib.pageTitle.data = page:title

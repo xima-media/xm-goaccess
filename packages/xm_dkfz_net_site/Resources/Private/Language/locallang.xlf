@@ -535,6 +535,15 @@
 			<trans-unit id="usersearch.found" space="preserve">
 				<source>Found %s users</source>
 			</trans-unit>
+			<trans-unit id="usersearch.demand.search" space="preserve">
+				<source>Search for first name, last name, phone number</source>
+			</trans-unit>
+			<trans-unit id="usersearch.demand.feature" space="preserve">
+				<source>Search for skill, interest, hobby</source>
+			</trans-unit>
+			<trans-unit id="usersearch.button" space="preserve">
+				<source>Search</source>
+			</trans-unit>
 			<trans-unit id="committee" space="preserve">
 				<source>Committee</source>
 			</trans-unit>

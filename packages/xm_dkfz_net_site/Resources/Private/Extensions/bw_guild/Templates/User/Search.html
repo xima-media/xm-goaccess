@@ -1,4 +1,4 @@
-<h1 class="text-center">Mitarbeiterverzeichnis</h1>
+<h1 class="text-center"><f:cObject typoscriptObjectPath="lib.pageTitle" /></h1>
 
 <f:form extensionName="BwGuild"
 		action="list"
@@ -9,7 +9,7 @@
 		additionalAttributes="{autocomplete: 'off'}"
 		class="hero-form">
 	<div class="hero-form__header">
-		<h2 class="hero-form__title h4">Mitarbeiter suchen</h2>
+		<h2 class="hero-form__title h4">{header}</h2>
 	</div>
 
 	<div class="hero-form__content">
@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="field field--text {f:if(condition: demand.search, then: 'fx--filled')}">
-					<label class="field__label" for="search">Suche nach Name, Vorname, Telefonnummer</label>
+					<label class="field__label" for="search"><f:translate extensionName="XmDkfzNetSite" key="usersearch.demand.search"/></label>
 					<f:form.textfield id="search"
 									  class="field__input autocomplete"
 									  placeholder="Suche nach Name, Vorname, Telefonnummer"
@@ -27,7 +27,7 @@
 			</div>
 			<div class="col-lg-6">
 				<div class="field field--text {f:if(condition: demand.feature, then: 'fx--filled')}">
-					<label class="field__label" for="feature">Suche nach Kompetenz, Thema, Interesse</label>
+					<label class="field__label" for="feature"><f:translate extensionName="XmDkfzNetSite" key="usersearch.demand.search"/></label>
 					<f:form.textfield id="feature"
 									  class="field__input autocomplete"
 									  data="{autocomplete: '{autocompleter.features->f:format.json()}' }"
@@ -41,7 +41,7 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="field field--text {f:if(condition: demand.feGroup, then: 'fx--filled')}">
-					<label class="field__label" for="feGroup">Abteilung</label>
+					<label class="field__label" for="feGroup"><f:translate extensionName="XmDkfzNetSite" key="contact.fe_group"/></label>
 					<f:form.textfield id="feGroup"
 									  class="field__input autocomplete"
 									  placeholder="Abteilung"
@@ -51,7 +51,7 @@
 			</div>
 			<div class="col-lg-4">
 				<div class="field field--text {f:if(condition: demand.function, then: 'fx--filled')}">
-					<label class="field__label" for="function">Funktion</label>
+					<label class="field__label" for="function"><f:translate extensionName="XmDkfzNetSite" key="contact.function"/></label>
 					<f:form.textfield id="function"
 									  class="field__input autocomplete"
 									  data="{autocomplete: '{autocompleter.function->f:format.json()}' }"
@@ -61,7 +61,7 @@
 			</div>
 			<div class="col-lg-4">
 				<div class="field field--text {f:if(condition: demand.committee, then: 'fx--filled')}">
-					<label class="field__label" for="committee">Gremium</label>
+					<label class="field__label" for="committee"><f:translate extensionName="XmDkfzNetSite" key="committee"/></label>
 					<f:form.textfield id="committee"
 									  class="field__input autocomplete"
 									  placeholder="Funktion"
@@ -75,7 +75,7 @@
 	<div class="hero-form__footer">
 		<button type="submit" class="button button--white">
 			<f:render partial="Icon" arguments="{icon:'search'}"/>
-			Suchen
+			<f:translate extensionName="XmDkfzNetSite" key="usersearch.button"/>
 		</button>
 	</div>
 </f:form>
