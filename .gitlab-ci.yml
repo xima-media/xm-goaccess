@@ -1,4 +1,4 @@
-image: composer:latest
+image: composer:2.4.4
 cache:
   paths:
     - .composer-cache/
