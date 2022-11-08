@@ -103,7 +103,7 @@ class ImportBeUserCommand extends AbstractUserImportCommand
             }
         }
 
-        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        $phoneBookEntriesToUpdate = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToUpdate);
         foreach ($phoneBookEntriesToUpdate as $entry) {
             if (in_array($entry->mail, $usersToFakeGroupFor)) {
                 $entry->gruppen = 'Intranet-Redakteure';

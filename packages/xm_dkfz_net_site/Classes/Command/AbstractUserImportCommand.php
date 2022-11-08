@@ -67,6 +67,8 @@ abstract class AbstractUserImportCommand extends Command
         $this->compareResult = $this->phoneBookUtility->compareDbUsersWithPhoneBookEntries($dbUsers);
         $this->io->newLine(1);
 
+        $this->checkUserAccess();
+
         $io->listing([
             '<success>' . count($this->compareResult->dkfzIdsToCreate) . '</success> to create',
             '<warning>' . count($this->compareResult->dkfzIdsToUpdate) . '</warning> to update',
@@ -74,7 +76,7 @@ abstract class AbstractUserImportCommand extends Command
             '' . count($this->compareResult->dkfzIdsToSkip) . ' to skip',
         ]);
 
-        $this->checkUserAccess();
+
         $this->createUsers();
         $this->createContacts();
         $this->updateUsers();

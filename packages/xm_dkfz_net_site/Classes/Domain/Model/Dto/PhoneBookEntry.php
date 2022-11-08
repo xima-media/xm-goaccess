@@ -38,6 +38,8 @@ class PhoneBookEntry
 
     public string $usergroup = '';
 
+    public string $cachedHash = '';
+
     public function isUser(): bool
     {
         return $this->adAccountName !== '';
@@ -50,7 +52,11 @@ class PhoneBookEntry
 
     public function getHash(): string
     {
-        return md5(serialize($this));
+        if (!$this->cachedHash) {
+            $this->cachedHash = md5(serialize($this));
+        }
+
+        return $this->cachedHash;
     }
 
     public function getGender(): int
