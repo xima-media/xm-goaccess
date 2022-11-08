@@ -76,7 +76,6 @@ abstract class AbstractUserImportCommand extends Command
             '' . count($this->compareResult->dkfzIdsToSkip) . ' to skip',
         ]);
 
-
         $this->createUsers();
         $this->createContacts();
         $this->updateUsers();
