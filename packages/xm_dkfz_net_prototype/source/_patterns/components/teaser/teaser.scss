@@ -1,13 +1,13 @@
 .page-teaser {
-    display: flex;
+    display: grid;
     gap: 1.5rem;
-    flex-direction: column;
     padding-top: calc(1.5 * var(--content-padding));
     padding-bottom: calc(1.25 * var(--content-padding));
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
         gap: 3.75rem;
         flex-direction: row;
+        grid-template-columns: 1fr 1fr;
     }
 
     &:nth-child(2n-1) {

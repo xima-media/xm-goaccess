@@ -18,6 +18,10 @@
 
     &__link-item {
         margin-bottom: .4rem;
+
+        a {
+            word-break: break-all;
+        }
     }
 }
 
