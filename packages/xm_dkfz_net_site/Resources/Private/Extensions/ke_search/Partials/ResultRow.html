@@ -1,14 +1,30 @@
 <li class="list-view__item">
 	<div class="card card--image-top card--md card--image-size-md">
 		<f:if condition="{resultrow.url}">
-			<a href="{resultrow.url}" class="card__link card__link--hidden" aria-label="{resultrow.title_text}">
-				<f:render partial="Icon" arguments="{icon: 'arrow-right'}"></f:render>
+			<a href="{resultrow.url}" {f:if(condition: '{resultrow.type} == \'xmkesearchremote\'', then: 'target="_blank"')}
+				class="card__link card__link--hidden"
+				aria-label="{resultrow.title_text}"
+			>
+				<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
 				<f:translate key="linktext.readMore" extensionName="XmDkfzNetSite " />
 			</a>
 		</f:if>
 		<div class="card__content">
 			<div class="card__header">
-				<h3 class="card__title"><f:format.raw>{resultrow.title}</f:format.raw></h3>
+				<h3 class="card__title">
+					<f:switch expression="{resultrow.type}">
+						<f:case value="news">
+							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">news</span>
+						</f:case>
+						<f:case value="file">
+							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">{resultrow.orig_row.extension}</span>
+						</f:case>
+						<f:case value="xmkesearchremote">
+							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">dkfz.de <f:render partial="Icon" arguments="{icon: 'external-link'}" /></span>
+						</f:case>
+					</f:switch>
+					<f:format.raw>{resultrow.title}</f:format.raw>
+				</h3>
 				<f:if condition="{resultrow.date_timestamp} > 0">
 					<p class="card__sub-title">{resultrow.date_timestamp -> f:format.date(format: 'd.m.Y')}</p>
 				</f:if>

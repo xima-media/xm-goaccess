@@ -8,8 +8,11 @@
 //   @section 1. Hero form
 //
 
-body#p8 {
+body#p8, body#p111 {
     --content-width: 1200px;
+}
+#c175 {
+    --content-width: 800px;
 }
 
 .hero-form {
@@ -64,6 +67,18 @@ body#p8 {
             z-index: 1000;
         }
     }
+}
+
+.hero-form--search {
+
+    .search__button {
+        position: absolute;
+        top: 7rem;
+        right: 7.5rem;
+        background: transparent;
+        color: var(--color-white);
+    }
+
 }
 
 //@todo auslagen
