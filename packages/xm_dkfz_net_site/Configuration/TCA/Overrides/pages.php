@@ -59,6 +59,7 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
         'exclude' => 1,
         'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.color',
         'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.color.description',
+        'l10n_mode' => 'exclude',
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',

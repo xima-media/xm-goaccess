@@ -42,6 +42,7 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['fal_media']['config']['
     'tx_xmdkfznetsite_color' => [
         'exclude' => 1,
         'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.color',
+        'l10n_mode' => 'exclude',
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',
