@@ -521,6 +521,15 @@
 			<trans-unit id="usersearch.found" space="preserve">
 				<target>Es wurden %s Benutzer gefunden</target>
 			</trans-unit>
+			<trans-unit id="committee" space="preserve">
+				<target>Gremium</target>
+			</trans-unit>
+			<trans-unit id="committee.palette.general" space="preserve">
+				<target>Allgemein</target>
+			</trans-unit>
+			<trans-unit id="committee.name" space="preserve">
+				<target>Name</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

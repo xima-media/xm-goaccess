@@ -149,3 +149,7 @@ create table tx_xmdkfznetsite_domain_model_disruptor (
 create table sys_file_reference (
 	video_preview_image int(11) unsigned default '0' not null,
 );
+
+create table tx_xmdkfznetsite_domain_model_committee (
+	name varchar(255) default '' not null,
+);

@@ -337,3 +337,9 @@ tx_news.templateLayouts {
   latestnews = Latest News
   shortnews = Short News
 }
+
+[traverse(page, "module") == "cm"]
+  mod.web_list {
+    allowedNewTables = tx_xmdkfznetsite_domain_model_committee
+  }
+[GLOBAL]
