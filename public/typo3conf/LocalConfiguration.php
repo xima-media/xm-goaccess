@@ -171,6 +171,11 @@ return [
                 ],
             ],
         ],
+        'pxa_social_feed' => [
+            'editorRestriction' => '0',
+            'editorRestrictionIsRequired' => '0',
+            'excludeBackendUserGroups' => '',
+        ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
