@@ -161,6 +161,21 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Form/Element/OverrideToggleElement.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:additionalResultMarker\\(\\) has parameter \\$row with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:additionalResultMarker\\(\\) has parameter \\$tempMarkerArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:getRootlineArrayForPage\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php

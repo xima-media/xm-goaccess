@@ -37,11 +37,12 @@
 				</div>
 			</f:if>
 		</div>
-		<f:comment><!-- Tags (design rather looks like a breadcrumb) --></f:comment>
-		<f:if condition="{resultrow.tags}">
+		<f:if condition="{resultrow.rootline}">
 			<div class="card__footer">
 				<ul class="card__tags">
-					<li class="card__tag">{resultrow.tags}</li>
+					<f:for each="{resultrow.rootline}" as="rootlineItem">
+						<li class="card__tag">{f:if(condition: rootlineItem.nav_title, then: rootlineItem.nav_title, else: rootlineItem.title)}</li>
+					</f:for>
 				</ul>
 			</div>
 		</f:if>
