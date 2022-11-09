@@ -163,77 +163,77 @@ parameters:
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:isValidTtContentRow\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:isValidTtContentRow\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:modifyContentFromContentElement\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:modifyContentFromContentElement\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
 
 		-
-			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:addTtContentItemContent\\(\\) expects int, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:addTtContentItemContent\\(\\) expects int, mixed given\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
 
 		-
-			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyContentFromContentElementHook\\:\\:ttContentItemHasChildren\\(\\) expects int, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:ttContentItemHasChildren\\(\\) expects int, mixed given\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyContentFromContentElementHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$abstract with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$abstract with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$additionalFields with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$additionalFields with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$content with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$content with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$feGroups with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$feGroups with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$fileIndexerObject with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$fileIndexerObject with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$fileObject with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$fileObject with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$storagePid with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$storagePid with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$tags with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$tags with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$title with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$title with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearchModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$ttContentRow with no type specified\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$ttContentRow with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearchModifyFileIndexEntryHook.php
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
 
 		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"

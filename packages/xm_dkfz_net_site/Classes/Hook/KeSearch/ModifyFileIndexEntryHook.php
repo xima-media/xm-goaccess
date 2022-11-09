@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xima\XmDkfzNetSite\Hook;
+namespace Xima\XmDkfzNetSite\Hook\KeSearch;
 
 use Tpwd\KeSearch\Lib\SearchHelper;
 
-class KeSearchModifyFileIndexEntryHook
+class ModifyFileIndexEntryHook
 {
     public function modifyFileIndexEntryFromContentIndexer(
         $fileObject,
