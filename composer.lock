@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b26b9608c80a16d0805b2f0b137f4684",
+    "content-hash": "167734c4779ce3b78290cef03eaaad2d",
     "packages": [
         {
             "name": "b13/container",
@@ -2388,6 +2388,55 @@
                 "source": "https://github.com/IchHabRecht/content_defender/tree/3.2.3"
             },
             "time": "2022-08-29T14:23:22+00:00"
+        },
+        {
+            "name": "in2code/instagram",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/josefglatz/instagram.git",
+                "reference": "fcb3bf95ed13a06c50531f4dc374187bb3caaf04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/josefglatz/instagram/zipball/fcb3bf95ed13a06c50531f4dc374187bb3caaf04",
+                "reference": "fcb3bf95ed13a06c50531f4dc374187bb3caaf04",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "typo3/cms-core": "^11.5"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "instagram"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "In2code\\Instagram\\": "Classes/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Kellner",
+                    "email": "alexander.kellner@in2code.de"
+                }
+            ],
+            "description": "Show images and posts from instagram profiles",
+            "homepage": "https://github.com/in2code-de/instagram",
+            "keywords": [
+                "instagram"
+            ],
+            "support": {
+                "source": "https://github.com/josefglatz/instagram/tree/develop"
+            },
+            "time": "2022-10-12T20:34:53+00:00"
         },
         {
             "name": "in2code/luxletter",
@@ -14151,6 +14200,7 @@
         "xima/xm-kesearch-remote": 20,
         "xima/xm-manual": 20,
         "tpwd/ke_search_premium": 20,
+        "in2code/instagram": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5
     },
