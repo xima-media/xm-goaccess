@@ -222,10 +222,16 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     public function getDisplayName(): string
     {
-        if ($this->lastName && $this->firstName) {
-            return $this->lastName . ', ' . $this->firstName;
+        if (!$this->lastName || !$this->firstName) {
+            return $this->username;
         }
-        return $this->username;
+        $name = $this->lastName . ', ' . $this->firstName;
+
+        if ($this->title) {
+            $name = $this->title . ' ' . $name;
+        }
+
+        return $name;
     }
 
     public function getContactRoom(): string
