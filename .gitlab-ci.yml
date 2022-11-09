@@ -1,4 +1,6 @@
-image: composer:2.4.4
+image:
+  name: composer:2.4.4
+  pull_policy: if-not-present
 cache:
   paths:
     - .composer-cache/
@@ -23,7 +25,9 @@ build-php:
 
 build-node:
   stage: build
-  image: misterio92/ci-php-node:6.0
+  image:
+    name: misterio92/ci-php-node:6.0
+    pull_policy: if-not-present
   cache:
     paths:
       - .npm/
