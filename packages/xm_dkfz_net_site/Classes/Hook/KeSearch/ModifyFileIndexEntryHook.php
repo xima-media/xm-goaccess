@@ -20,6 +20,7 @@ class ModifyFileIndexEntryHook
         $abstract,
         $additionalFields
     ): void {
+        $tags = SearchHelper::addTag('file', $tags);
         $tags = SearchHelper::addTag('intranet', $tags);
     }
 }
