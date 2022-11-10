@@ -79,7 +79,7 @@ return [
             'pathCatdoc' => '/usr/bin/',
             'pathPdfinfo' => '/usr/bin/',
             'pathPdftotext' => '/usr/bin/',
-            'searchWordLength' => '4',
+            'searchWordLength' => '3',
         ],
         'ke_search_premium' => [
             'addDistanceToDefaultTemplate' => '1',
@@ -91,7 +91,7 @@ return [
             'boostKeywordsFactor' => '5',
             'country' => '',
             'enableApi' => '0',
-            'enableAutocomplete' => '0',
+            'enableAutocomplete' => '1',
             'enableBoostKeywords' => '0',
             'enableCustomRanking' => '0',
             'enableDistanceSearch' => '0',
@@ -170,6 +170,11 @@ return [
                     ],
                 ],
             ],
+        ],
+        'pxa_social_feed' => [
+            'editorRestriction' => '0',
+            'editorRestrictionIsRequired' => '0',
+            'excludeBackendUserGroups' => '',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',

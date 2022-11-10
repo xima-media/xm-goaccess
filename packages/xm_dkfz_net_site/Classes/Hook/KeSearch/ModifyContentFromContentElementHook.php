@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xima\XmDkfzNetSite\Hook;
+namespace Xima\XmDkfzNetSite\Hook\KeSearch;
 
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
@@ -12,7 +12,7 @@ use Tpwd\KeSearch\Indexer\Types\Page;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class KeSearchModifyContentFromContentElementHook
+class ModifyContentFromContentElementHook
 {
     protected const TABLENAME_TT_CONTENT_ITEMS = 'tt_content_item';
 
