@@ -170,6 +170,7 @@ provision-environment:
     project_feature_branch_deployment: "false"
     project_goaccess: "true"
     project_mailhog: "true"
+    project_scheduler_frequency_minutes: "15"
   trigger:
     project: systemadministration/sys-t3-ansible-management
     strategy: depend
