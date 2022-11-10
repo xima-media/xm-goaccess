@@ -27,12 +27,31 @@ class EncodeImagesBase64Middleware implements MiddlewareInterface
             $body->rewind();
             $contents = $response->getBody()->getContents();
             $content = $this->parseImageUrlsAndEncodeBase64($contents);
+            $content = $this->convertSvgsToImage($content);
             $body = new Stream('php://temp', 'rw');
             $body->write($content);
             $response = $response->withBody($body);
         }
 
         return $response;
+    }
+
+    protected function convertSvgsToImage(string $input = ''): string
+    {
+        $doc = new \DOMDocument();
+        @$doc->loadHTML($input);
+        $svgs = $doc->getElementsByTagName('svg');
+
+        /** @var \DOMNode $svg */
+        foreach ($svgs as $svg) {
+            $svgMarkup = $svg->ownerDocument->saveHTML($svg);
+            $img = $doc->createElement('img', '');
+            $img->setAttribute('src', 'data:image/svg+xml;base64,' . base64_encode($svgMarkup));
+            $svg->parentNode->insertBefore($img);
+        }
+
+        $html = $doc->saveHTML();
+        return $html;
     }
 
     protected function parseImageUrlsAndEncodeBase64(string $input = ''): string
