@@ -91,7 +91,7 @@ return [
             'boostKeywordsFactor' => '5',
             'country' => '',
             'enableApi' => '0',
-            'enableAutocomplete' => '0',
+            'enableAutocomplete' => '1',
             'enableBoostKeywords' => '0',
             'enableCustomRanking' => '0',
             'enableDistanceSearch' => '0',

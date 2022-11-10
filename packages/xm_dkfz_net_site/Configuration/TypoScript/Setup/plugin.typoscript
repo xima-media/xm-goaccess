@@ -74,3 +74,10 @@ lib.quickSearch {
     resultPage = 111
   }
 }
+
+page.includeCSS {
+  keSearchPremiumAutocompleteCss = EXT:ke_search_premium/Resources/Public/Css/auto-complete.css
+}
+page.includeJSFooterlibs {
+  keSearchPremiumAutocompleteJs = EXT:ke_search_premium/Resources/Public/Javascript/auto-complete.min.js
+}
