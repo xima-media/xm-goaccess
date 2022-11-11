@@ -55,6 +55,7 @@ class Autocomplete
         $amountValue = intval(GeneralUtility::_GP('amount'));
         $amount = $amountValue > 0 ? $amountValue : 10;
         $pid = intval(GeneralUtility::_GP('pid'));
+        $words = [];
 
         if (!empty($begin)) {
             $rows = $this->getWords($begin, $amount);
@@ -67,14 +68,14 @@ class Autocomplete
         }
 
         // hook for custom modifications of autocomplete words
-        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search_premium']['modifyAutocompleWordList'])) {
-            foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search_premium']['modifyAutocompleWordList'] as $_classRef) {
+        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['ke_search_premium']['modifyAutocompleWordList'])) {
+            foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['ke_search_premium']['modifyAutocompleWordList'] as $_classRef) {
                 $_procObj = GeneralUtility::makeInstance($_classRef);
                 $_procObj->modifyAutocompleWordList($words, $begin, $amount, $pid);
             }
         }
 
-        if (is_array($words) && count($words)) {
+        if (count($words)) {
             $this->content = json_encode($words);
         } else {
             $this->content = json_encode('');
