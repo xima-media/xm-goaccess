@@ -7,7 +7,7 @@ class PartialWordsService
     public static function createPartialWordsFromContent(string $content, int $searchWordLength): string
     {
         $content = preg_replace("/[^[:alnum:][:space:]]/u", ' ', $content);
-        $allWords = explode(' ', $content);
+        $allWords = explode(' ', $content ?? '');
         $indexWords = [];
         foreach ($allWords as $word) {
             $word = str_replace("\n", '', $word);
