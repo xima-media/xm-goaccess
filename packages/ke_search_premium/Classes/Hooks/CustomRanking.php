@@ -63,7 +63,7 @@ class CustomRanking
             // differentiate at this point for which language we want to set the additionalFields.
             $customrankings = [];
             foreach ($cachedPageRecords as $language => $pageRecords) {
-                if ($pageRecords[$uid]['tx_kesearchpremium_customranking']) {
+                if (isset($pageRecords[$uid]['tx_kesearchpremium_customranking']) && $pageRecords[$uid]['tx_kesearchpremium_customranking']) {
                     $customrankings[$language] = $pageRecords[$uid]['tx_kesearchpremium_customranking'];
                 }
             }
