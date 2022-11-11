@@ -118,3 +118,4 @@ The pipelines are configured to run tests before deploying to staging.
 * Codeception (currently disabled in pipeline)
 
 To run the tests locally, run `ddev composer run php:stan` and `ddev composer run php:fixer`.
+

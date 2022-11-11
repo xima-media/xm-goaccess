@@ -150,10 +150,10 @@ class Fetchremote
 
                     // hook for custom modifications of the indexed data, e. g. the tags
                     if (
-                        isset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyRemoteIndexEntry']) &&
-                        is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyRemoteIndexEntry'])
+                        isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSION']['ke_search']['modifyRemoteIndexEntry']) &&
+                        is_array($GLOBALS['TYPO3_CONF_VARS']['EXTENSION']['ke_search']['modifyRemoteIndexEntry'])
                     ) {
-                        foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyRemoteIndexEntry'] as $_classRef) {
+                        foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTENSION']['ke_search']['modifyRemoteIndexEntry'] as $_classRef) {
                             $_procObj = GeneralUtility::makeInstance($_classRef);
                             $_procObj->modifyRemoteIndexEntry(
                                 $record, $indexerConfig, $additionalFields
@@ -204,7 +204,7 @@ class Fetchremote
                 'trace' => 1
             )
         );
-        
+
         $authHeader = new AuthHeader();
         $authHeader->username = $indexerConfig['remoteuser'];
         $authHeader->password = $indexerConfig['remotepass'];
