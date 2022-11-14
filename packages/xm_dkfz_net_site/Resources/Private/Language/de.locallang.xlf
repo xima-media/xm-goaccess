@@ -434,6 +434,12 @@
 			<trans-unit id="tt_content_item.record_type.accordion-item" space="preserve">
 				<source>Akkordeon</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.related-page" space="preserve">
+				<target>Verwandte Seite</target>
+			</trans-unit>
+			<trans-unit id="pages.palette.related-page-override" space="preserve">
+				<target>Felder überschreiben</target>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<target>Titel</target>
 			</trans-unit>

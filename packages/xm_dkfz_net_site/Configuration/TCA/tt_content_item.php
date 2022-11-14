@@ -22,6 +22,7 @@ return [
             'link' => 'content-thumbtack',
             'accordion-item' => 'content-accordion',
             'user-contact' => 'content-user',
+            'related-page' => 'content-menu-sitemap-pages',
         ],
         'transOrigPointerField' => 'l18n_parent',
         'transOrigDiffSourceField' => 'l18n_diffsource',
@@ -95,6 +96,21 @@ return [
                 ],
             ],
         ],
+        'related-page' => [
+            'showitem' => 'record_type, link, overrides, --palette--;;related-page-override',
+            'columnsOverrides' => [
+                'record_type' => [
+                    'config' => [
+                        'items' => [
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.related-page',
+                                'related-page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
     ],
     'palettes' => [
         'teaser-override' => [
@@ -109,6 +125,10 @@ return [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_usertable.palette.override',
             'showitem' => 'contacts, --linebreak--, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
         ],
+        'related-page-override' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.palette.related-page-override',
+            'showitem' => 'title, --linebreak--, link_title'
+        ]
     ],
     'columns' => [
         'record_type' => [
@@ -197,6 +217,8 @@ return [
             'config' => [
                 'placeholder' => '',
                 'type' => 'input',
+                'eval' => 'trim',
+                'max' => 255,
             ],
         ],
         'link' => [

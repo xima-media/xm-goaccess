@@ -184,6 +184,12 @@
 			<trans-unit id="tt_content_item.record_type.accordion-item" space="preserve">
 				<source>Accordion</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.related-page" space="preserve">
+				<source>Related page</source>
+			</trans-unit>
+			<trans-unit id="pages.palette.related-page-override" space="preserve">
+				<source>Override fields</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<source>Title</source>
 			</trans-unit>

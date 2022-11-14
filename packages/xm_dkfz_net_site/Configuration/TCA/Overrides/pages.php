@@ -84,6 +84,27 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             ],
         ],
     ],
+    'tt_content_items' => [
+        'label' => 'ITEMS',
+        'config' => [
+            'foreign_field' => 'foreign_uid',
+            'foreign_sortby' => 'sorting',
+            'foreign_table' => 'tt_content_item',
+            'foreign_table_field' => 'foreign_table',
+            'type' => 'inline',
+            'minitems' => 0,
+            'maxitems' => 3,
+            'appearance' => [
+                'collapseAll' => true,
+                'expandSingle' => true,
+                'useSortable' => true,
+                'enabledControls' => [
+                    'dragdrop' => true,
+                    'info' => false,
+                ],
+            ],
+        ],
+    ],
 ]);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
@@ -91,6 +112,13 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
     'tx_xmdkfznetsite_color',
     '',
     'after:title'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    'pages',
+    'tt_content_items',
+    (string)\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT,
+    'after:tx_xmdkfznetsite_color'
 );
 
 $GLOBALS['TCA']['pages']['columns']['module']['config']['items'][] = [
@@ -105,3 +133,19 @@ $GLOBALS['TCA']['pages']['columns']['module']['config']['items'][] = [
     2 => 'folder-contains-committee',
 ];
 $GLOBALS['TCA']['pages']['ctrl']['typeicon_classes']['contains-cm'] = 'folder-contains-committee';
+$GLOBALS['TCA']['pages']['types'][(string)\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT]['columnsOverrides'] = [
+    'tt_content_items' => [
+        'label' => 'Related pages',
+        'config' => [
+            'overrideChildTca' => [
+                'columns' => [
+                    'record_type' => [
+                        'config' => [
+                            'default' => 'related-page',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+];
