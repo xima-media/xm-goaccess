@@ -114,6 +114,15 @@ page {
                 references.fieldName = media
                 as = files
               }
+              20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+              20 {
+                table = pages
+                where =
+                where.dataWrap = uid=({field:pid})
+                pidInList = 1
+                recursive = 9
+                as = parent
+              }
             }
           }
         }
