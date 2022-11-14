@@ -31,7 +31,7 @@ class DrawHeaderHook
         }
 
         $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setTemplatePathAndFilename('EXT:xm_dkfz_net_site/Resources/Private/Extensions/Backend/PageInfo.html');
+        $view->setTemplatePathAndFilename('EXT:xm_dkfz_net_site/Resources/Private/Extensions/Backend/PageHeaderInfo.html');
         $view->assign('data', $pageInfo);
 
         if ($pageInfo['media']) {
