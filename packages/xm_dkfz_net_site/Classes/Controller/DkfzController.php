@@ -34,7 +34,7 @@ class DkfzController extends ActionController
         $entries = $this->phoneBookUtility->getPhoneBookEntries();
         $this->view->assign('entries', $entries);
 
-        $this->phoneBookUtility->setFilterEntriesForPlaces(true );
+        $this->phoneBookUtility->setFilterEntriesForPlaces(true);
         $this->phoneBookUtility->loadJson();
         $places = $this->phoneBookUtility->getPhoneBookEntries();
         $this->view->assign('places', $places);
