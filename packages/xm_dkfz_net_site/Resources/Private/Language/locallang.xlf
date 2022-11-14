@@ -196,6 +196,9 @@
 			<trans-unit id="pages.palette.related-page-override.title" space="preserve">
 				<source>Parent title</source>
 			</trans-unit>
+			<trans-unit id="related-pages-headline" space="preserve">
+				<source>The following topics may also interest you</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<source>Title</source>
 			</trans-unit>
