@@ -11,6 +11,10 @@
 	background-color: var(--color, #0047b9);
 }
 
+.page-info-bottom .text {
+	margin-top: 10px;
+}
+
 .color-stripe {
 	height: 10px;
 	background-image: linear-gradient(45deg, var(--color, #0047b9) 10%, transparent 10%, transparent 50%, var(--color, #0047b9) 50%, var(--color, #0047b9) 60%, transparent 60%, transparent 100%);

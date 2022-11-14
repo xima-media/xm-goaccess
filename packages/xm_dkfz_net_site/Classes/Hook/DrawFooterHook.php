@@ -32,15 +32,17 @@ class DrawFooterHook
         }
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content_item');
-        $children = $queryBuilder->select('*')
+        $children = $queryBuilder->select('tt_content_item.overrides', 'tt_content_item.link_title', 'p.media', 'p.uid', 'p.title', 'tt_content_item.title as title_override', 'p2.title as parent_title')
             ->from('tt_content_item')
+            ->join('tt_content_item', 'pages', 'p', $queryBuilder->expr()->eq('tt_content_item.page', $queryBuilder->quoteIdentifier('p.uid')))
+            ->leftjoin('p', 'pages', 'p2',$queryBuilder->expr()->eq('p.pid', $queryBuilder->quoteIdentifier('p2.uid')))
             ->where(
                 $queryBuilder->expr()->andX(
                     $queryBuilder->expr()->eq('foreign_uid', (int)$pageInfo['uid']),
-                    $queryBuilder->expr()->eq('foreign_table', $queryBuilder->createNamedParameter('tt_content'))
+                    $queryBuilder->expr()->eq('foreign_table', $queryBuilder->createNamedParameter('pages'))
                 )
             )
-            ->orderBy('sorting')
+            ->orderBy('tt_content_item.sorting')
             ->execute()
             ->fetchAllAssociative();
 
@@ -50,15 +52,14 @@ class DrawFooterHook
 
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename('EXT:xm_dkfz_net_site/Resources/Private/Extensions/Backend/PageFooterInfo.html');
-        $view->assign('data', $pageInfo);
 
         foreach ($children as &$child) {
             // add content from selected page
             //$this->fillChildFromLink($child);
 
             // resolve image
-            if ($child['image']) {
-                $child['files'] = $this->fileRepository->findByRelation('tt_content_item', 'image', $child['uid']);
+            if ($child['media']) {
+                $child['files'] = $this->fileRepository->findByRelation('pages', 'media', $child['uid']);
             }
 
             // resolve link items
