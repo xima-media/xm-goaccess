@@ -1,0 +1,32 @@
+<f:asset.css identifier="dkfz" href="EXT:xm_dkfz_net_site/Resources/Public/Css/Backend.css"/>
+
+<div class="color-stripe color--gray-500"></div>
+<f:if condition="{files} || {users} || {data.description}">
+	<div class="d-flex mt-3 mb-3 page-info-top">
+		<f:if condition="{files}">
+			<div class="me-5">
+				<f:for each="{files}" as="file">
+					<f:image image="{file}" maxHeight="120"/>
+				</f:for>
+			</div>
+		</f:if>
+		<f:if condition="{users.fe_users} || {users.tx_xmdkfznetsite_domain_model_place}">
+			<div class="me-5">
+				<h5>Ansprechpartner</h5>
+				<f:for each="{users.fe_users}" as="user">
+					<p><strong>{user.username}</strong></p>
+				</f:for>
+				<f:for each="{users.tx_xmdkfznetsite_domain_model_place}" as="contact">
+					<p><strong>{contact.name}</strong></p>
+				</f:for>
+			</div>
+		</f:if>
+		<f:if condition="{data.description}">
+			<div>
+				<h5>Teaser</h5>
+				<p>{data.description}</p>
+			</div>
+		</f:if>
+	</div>
+</f:if>
+<f:debug>{_all}</f:debug>

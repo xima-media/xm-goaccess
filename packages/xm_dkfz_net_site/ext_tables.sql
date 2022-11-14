@@ -40,6 +40,7 @@ create table tt_content_item (
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
 	fe_user          int(11) unsigned default '0' not null,
+	page             int(11) unsigned default '0' not null,
 	contacts         varchar(255) default '' not null,
 	overrides        int(11) unsigned default '0' not null,
 	overrides2       int(11) unsigned default '0' not null,

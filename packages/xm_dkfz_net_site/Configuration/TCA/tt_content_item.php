@@ -97,7 +97,7 @@ return [
             ],
         ],
         'related-page' => [
-            'showitem' => 'record_type, link, overrides, --palette--;;related-page-override',
+            'showitem' => 'record_type, page, overrides, --palette--;;related-page-override',
             'columnsOverrides' => [
                 'record_type' => [
                     'config' => [
@@ -357,6 +357,26 @@ return [
                 'foreign_table_where' => '{#tx_xmdkfznetsite_domain_model_contact}.{#foreign_uid} = ###REC_FIELD_fe_user### AND {#tx_xmdkfznetsite_domain_model_contact}.{#foreign_table} = "fe_users"',
                 'size' => 3,
                 'default' => 0,
+            ],
+        ],
+        'page' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'pages',
+                'size' => 1,
+                'minitems' => 1,
+                'maxitems' => 1,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ],
+                ],
             ],
         ],
     ],

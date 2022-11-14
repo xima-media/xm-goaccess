@@ -10,6 +10,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['proc
 
 // Register DrawHeader Hook
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/db_layout.php']['drawHeaderHook'][] = \Xima\XmDkfzNetSite\Hook\DrawHeaderHook::class . '->addPageInfos';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/db_layout.php']['drawFooterHook'][] = \Xima\XmDkfzNetSite\Hook\DrawFooterHook::class . '->addPageInfos';
 
 // Register ke_search Hooks
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyFileIndexEntryFromContentIndexer'][1667832752] = \Xima\XmDkfzNetSite\Hook\KeSearch\ModifyFileIndexEntryHook::class;

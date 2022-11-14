@@ -440,8 +440,11 @@
 			<trans-unit id="pages.palette.related-page-override" space="preserve">
 				<target>Felder überschreiben</target>
 			</trans-unit>
+			<trans-unit id="page" space="preserve">
+				<source>Page</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
-				<target>Titel</target>
+				<target>Seite</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.text" space="preserve">
 				<target>Text</target>
