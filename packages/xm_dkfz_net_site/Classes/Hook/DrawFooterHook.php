@@ -32,7 +32,7 @@ class DrawFooterHook
         }
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content_item');
-        $children = $queryBuilder->select('tt_content_item.overrides', 'tt_content_item.link_title', 'p.media', 'p.uid', 'p.title', 'tt_content_item.title as title_override', 'p2.title as parent_title')
+        $children = $queryBuilder->select('tt_content_item.overrides', 'tt_content_item.link_title', 'p.media', 'p.tx_xmdkfznetsite_color', 'p.uid', 'p.title', 'tt_content_item.title as title_override', 'p2.title as parent_title')
             ->from('tt_content_item')
             ->join('tt_content_item', 'pages', 'p', $queryBuilder->expr()->eq('tt_content_item.page', $queryBuilder->quoteIdentifier('p.uid')))
             ->leftjoin('p', 'pages', 'p2',$queryBuilder->expr()->eq('p.pid', $queryBuilder->quoteIdentifier('p2.uid')))
