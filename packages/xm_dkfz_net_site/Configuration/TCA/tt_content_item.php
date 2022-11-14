@@ -127,8 +127,8 @@ return [
         ],
         'related-page-override' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.palette.related-page-override',
-            'showitem' => 'title, --linebreak--, link_title'
-        ]
+            'showitem' => 'title, --linebreak--, link_title',
+        ],
     ],
     'columns' => [
         'record_type' => [
