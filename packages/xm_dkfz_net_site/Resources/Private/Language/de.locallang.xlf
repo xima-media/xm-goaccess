@@ -446,6 +446,9 @@
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<target>Seite</target>
 			</trans-unit>
+			<trans-unit id="pages.palette.related-page-override.title" space="preserve">
+				<target>Dachzeile</target>
+			</trans-unit>
 			<trans-unit id="tt_content_item.text" space="preserve">
 				<target>Text</target>
 			</trans-unit>

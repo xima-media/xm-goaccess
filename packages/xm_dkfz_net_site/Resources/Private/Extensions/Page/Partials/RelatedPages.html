@@ -1,0 +1,80 @@
+<f:if condition="{relatedPages}">
+	<div class="frame frame-content-wrapper">
+
+		<div class="releated-pages">
+
+			<div>
+				<h5>Folgende Themen könnten Sie auch interessieren</h5>
+				<div class="pattern-divider color-accent--gray-700"></div>
+			</div>
+
+
+			<div class="releated-pages__elements">
+
+				<f:for each="{relatedPages}" as="item" iteration="i">
+
+					<div class="related-page color-accent--{item.page.0.data.tx_xmdkfznetsite_color}">
+						<div class="related-page__image">
+
+							<f:if condition="{item.page.0.files}">
+								<f:for each="{item.page.0.files}" as="file" iteration="teaserFileIterator">
+									<f:render partial="Image"
+											  arguments="{image: file, patternStyle: 'color', size: 'sm', noCaption: 1}"/>
+								</f:for>
+							</f:if>
+
+							<f:if condition="!{item.page.0.files}">
+								<f:render partial="Image" arguments=""/>
+							</f:if>
+
+						</div>
+						<div class="related-page__content">
+
+							<div>
+								<h3>{item.page.0.data.title}</h3>
+							</div>
+
+							<div class="related-page__body">
+
+								<div class="related-page__text">
+									<p>{item.page.0.data.text}</p>
+								</div>
+
+
+								<f:if condition="{item.page.links}">
+									<f:then>
+										<div class="list">
+											<ul>
+												<li class="list__link-item">
+													<f:link.typolink class="link--primary"
+																	 parameter="{item.page.0.data.link}">
+														{f:if(condition: item.page.0.data.link_title, then:
+														item.page.0.data.link_title, else: '{f:translate(key: \'link.more\',
+														extensionName: \'XmDkfzNetSite\')}')}
+													</f:link.typolink>
+												</li>
+												<f:for each="{item.page.links}" as="link" iteration="i">
+													<f:if condition="{link.data.uid}">
+														<f:render partial="Linklist" arguments="{link: link}"/>
+													</f:if>
+												</f:for>
+											</ul>
+										</div>
+									</f:then>
+									<f:else>
+										<f:link.typolink class="related-page__link related-page__link--more link--primary"
+														 parameter="{item.page.0.data.link}">{f:if(condition:
+											item.page.0.data.link_title, then: item.page.0.data.link_title, else:
+											'{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}
+										</f:link.typolink>
+									</f:else>
+								</f:if>
+							</div>
+						</div>
+					</div>
+				</f:for>
+
+			</div>
+		</div>
+	</div>
+</f:if>

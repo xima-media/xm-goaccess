@@ -1,0 +1,28 @@
+.releated-pages {
+    h5 {
+        margin-bottom: 0;
+    }
+
+    &__elements {
+        display: grid;
+        gap: calc(var(--content-padding) * 1.5);
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    .picture__pattern.no-image {
+        margin: 0 0 -.5rem -.5rem;
+    }
+
+    .picture__pattern.color {
+        margin: -.5rem;
+    }
+}
+
+.pattern-divider {
+    height: 10px;
+    background: var(--pattern-url);
+    margin-bottom: var(--content-padding);
+}

@@ -114,7 +114,7 @@ import './_patterns/components/quote/quote'
 import './_patterns/components/card/card'
 
 /** @section 2.17 Related content */
-import './_patterns/components/related-content/related-content'
+import './_patterns/components/related-pages/related-pages'
 
 /** @section 2.18 Tag */
 import './_patterns/components/tag/tag'

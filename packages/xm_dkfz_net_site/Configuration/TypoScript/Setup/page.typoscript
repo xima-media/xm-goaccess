@@ -89,6 +89,36 @@ page {
         orderBy = sorting
         as = disruptor
       }
+
+      # Related pages
+      80 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      80 {
+        table = tt_content_item
+        pidInList.data = page:uid
+        where = foreign_uid=###uid### AND foreign_table='pages' AND deleted=0 AND hidden=0
+        orderBy = sorting
+        markers.uid.field = uid
+        as = relatedPages
+        dataProcessing {
+          40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+          40 {
+            table = pages
+            where =
+            where.dataWrap = uid=({field:page})
+            pidInList = 1
+            recursive = 9
+            as = page
+            dataProcessing {
+              10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+              10 {
+                references.fieldName = media
+                as = files
+              }
+            }
+          }
+        }
+      }
+
     }
   }
 
