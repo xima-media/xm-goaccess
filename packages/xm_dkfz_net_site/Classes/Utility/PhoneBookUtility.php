@@ -327,4 +327,12 @@ class PhoneBookUtility
         }
         return $extConf[$settingName];
     }
+
+    /**
+     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry[]
+     */
+    public function getPhoneBookEntries(): array
+    {
+        return $this->phoneBookEntries;
+    }
 }

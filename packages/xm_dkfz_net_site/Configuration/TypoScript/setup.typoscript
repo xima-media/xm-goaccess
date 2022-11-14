@@ -17,4 +17,5 @@
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/lib.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/plugin.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/tt_content.typoscript'
+@import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/module.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/dev.typoscript'

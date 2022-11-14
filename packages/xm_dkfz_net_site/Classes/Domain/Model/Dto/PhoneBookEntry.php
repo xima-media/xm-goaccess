@@ -97,4 +97,9 @@ class PhoneBookEntry
     {
         return $this->vorname . ' ' . $this->nachname;
     }
+
+    public function isIntranetRedakteur(): bool
+    {
+        return $this->gruppen === 'Intranet-Redakteure';
+    }
 }
