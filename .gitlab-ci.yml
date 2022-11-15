@@ -166,7 +166,7 @@ provision-environment:
     project_environment: "dev"
     project_branch: "master"
     project_aliases: "handbuch"
-    project_php_version: "8.1"
+    project_php_version: "7.4"
     project_feature_branch_deployment: "false"
     project_goaccess: "true"
     project_mailhog: "true"
