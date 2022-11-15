@@ -335,4 +335,16 @@ class PhoneBookUtility
     {
         return $this->phoneBookEntries;
     }
+
+    /**
+     * @return array<string|int, int>
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
+     */
+    public function getApiStat(): array
+    {
+        $url = $this->getApiUrl();
+        $filePath = realpath(Environment::getPublicPath() . '/' . $url) ?: '';
+        return stat($filePath) ?: [];
+    }
 }

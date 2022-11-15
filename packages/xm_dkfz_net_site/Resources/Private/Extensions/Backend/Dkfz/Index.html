@@ -6,6 +6,51 @@
 
 <f:be.pageRenderer includeRequireJsModules="{0: 'TYPO3/CMS/XmDkfzNetSite/BackendModuleDkfz'}" />
 
+<div class="card-container">
+	<div class="card card-size-fixed-small">
+		<div class="card-header">
+			<div class="card-icon">
+				<core:icon identifier="content-clock" size="large"  />
+			</div>
+			<div class="card-header-body">
+				<h1 class="card-title">Last update</h1>
+				<span class="card-subtitle"><f:format.date format="d.m.Y H:i">{stat.mtime}</f:format.date></span>
+			</div>
+		</div>
+		<div class="card-body">
+			<p>This is the modification date of the cached API response file <code>db.json</code>. This file is updated by a crontab every 15 minutes.</p>
+		</div>
+	</div>
+	<div class="card card-size-fixed-small">
+		<div class="card-header">
+			<div class="card-icon">
+				<core:icon identifier="install-database-analyze" size="large"  />
+			</div>
+			<div class="card-header-body">
+				<h1 class="card-title">Last Import</h1>
+				<span class="card-subtitle"><f:format.date format="d.m.Y H:i">{schedulerInfos.lastexecution_time}</f:format.date></span>
+			</div>
+		</div>
+		<div class="card-body">
+			<p>This is the time of the last <code>dkfz:importer</code> run. This task was run from the {schedulerInfos.lastexecution_context} context.</p>
+		</div>
+	</div>
+	<div class="card card-size-fixed-small">
+		<div class="card-header">
+			<div class="card-icon">
+				<core:icon identifier="mimetypes-compressed" size="large"  />
+			</div>
+			<div class="card-header-body">
+				<h1 class="card-title">Data size</h1>
+				<span class="card-subtitle"><f:format.bytes decimals="2">{stat.size}</f:format.bytes></span>
+			</div>
+		</div>
+		<div class="card-body">
+			<p>This data contains <code>{entries->f:count()} user</code> entries and <code>{places->f:count()} places</code></p>
+		</div>
+	</div>
+</div>
+
 <form class="mb-1" id="dkfz-search">
 	<div class="input-group">
 		<button class="btn btn-default" type="submit" name="search">
