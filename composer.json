@@ -2,7 +2,7 @@
 	"name": "xima/xm-goaccess",
 	"description": "Integrates goaccess.io into TYPO3",
 	"type": "typo3-cms-extension",
-	"license": "MIT",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Maik Schneider",
