@@ -4,7 +4,9 @@
 		<div class="releated-pages">
 
 			<div>
-				<h5><f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:related-pages-headline"/></h5>
+				<h5>
+					<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:related-pages-headline"/>
+				</h5>
 				<div class="pattern-divider color-accent--gray-700"></div>
 			</div>
 
@@ -12,17 +14,16 @@
 
 				<f:for each="{relatedPages}" as="item" iteration="i">
 
-					<f:link.typolink parameter="{item.page.0.data.uid}" class="related-page color-accent--{item.page.0.data.tx_xmdkfznetsite_color}">
+					<f:link.typolink parameter="{item.page.0.data.uid}"
+									 class="related-page color-accent--{item.page.0.data.tx_xmdkfznetsite_color}">
 						<div class="related-page__image">
 
-							<f:if condition="{item.page.0.files}">
-								<f:for each="{item.page.0.files}" as="file" iteration="teaserFileIterator">
-									<f:render partial="Image"
-											  arguments="{image: file, patternStyle: 'color', size: 'sm', noCaption: 1}"/>
-								</f:for>
+							<f:if condition="{item.page.0.files.0}">
+								<f:render partial="Image"
+										  arguments="{image: item.page.0.files.0, patternStyle: 'color', size: 'sm', noCaption: 1}"/>
 							</f:if>
 
-							<f:if condition="!{item.page.0.files}">
+							<f:if condition="!{item.page.0.files.0}">
 								<f:render partial="Image" arguments=""/>
 							</f:if>
 

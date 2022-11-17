@@ -125,6 +125,12 @@ page {
               }
             }
           }
+
+          50 < .40
+          50.pidInList = root
+          50.uidInList = 1,143
+          50.if.value = 1,143
+          50.if.isInList.field = page
         }
       }
 
