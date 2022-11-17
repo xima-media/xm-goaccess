@@ -28,6 +28,10 @@
         margin-bottom: .2rem;
     }
 
+    a:hover p {
+        text-decoration: none;
+    }
+
     .text {
         margin-left: 1rem;
         @include media-breakpoint-up(md) {
