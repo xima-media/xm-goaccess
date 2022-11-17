@@ -35,7 +35,7 @@ div.table {
         padding: .5rem;
 
         &:nth-child(2n-1) {
-            background: var(--bs-gray-100);
+            background: var(--color-gray-white-reversed);
         }
 
         @include media-breakpoint-up(sm) {
