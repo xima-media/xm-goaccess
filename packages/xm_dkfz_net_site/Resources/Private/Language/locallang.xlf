@@ -568,6 +568,9 @@
 			<trans-unit id="committee.name" space="preserve">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="pages.tt_content_items" space="preserve">
+				<source>Related pages</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

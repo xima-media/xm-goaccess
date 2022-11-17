@@ -554,6 +554,9 @@
 			<trans-unit id="committee.name" space="preserve">
 				<target>Name</target>
 			</trans-unit>
+			<trans-unit id="pages.tt_content_items" space="preserve">
+				<target>Seiten für Related Content Teaser</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
