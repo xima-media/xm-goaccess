@@ -84,6 +84,7 @@
 			<th>Nachname</th>
 			<th>Username</th>
 			<th>E-Mail</th>
+			<th>Abteilungen</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -95,6 +96,11 @@
 				<td>{entry.nachname}</td>
 				<td>{entry.adAccountName}</td>
 				<td>{entry.mail}</td>
+				<td>
+					<f:for each="{entry.abteilung}" as="abt" iteration="i">
+						{abt.nummer} ({abt.bezeichnung}) {f:if(condition: i.isLast, else: '<br />')}
+					</f:for>
+				</td>
 			</tr>
 			<f:if condition="{entry.intranetRedakteur}">
 				<tr data-type="backend">
@@ -104,6 +110,11 @@
 					<td>{entry.nachname}</td>
 					<td>{entry.adAccountName}</td>
 					<td>{entry.mail}</td>
+					<td>
+						<f:for each="{entry.abteilung}" as="abt" iteration="i">
+							{abt.nummer} ({abt.bezeichnung}) {f:if(condition: i.isLast, else: '<br />')}
+						</f:for>
+					</td>
 				</tr>
 			</f:if>
 		</f:for>
@@ -115,6 +126,11 @@
 				<td>{entry.nachname}</td>
 				<td>{entry.adAccountName}</td>
 				<td>{entry.mail}</td>
+				<td>
+					<f:for each="{entry.abteilung}" as="abt" iteration="i">
+						{abt.nummer} ({abt.bezeichnung}) {f:if(condition: i.isLast, else: '<br />')}
+					</f:for>
+				</td>
 			</tr>
 		</f:for>
 	</tbody>
