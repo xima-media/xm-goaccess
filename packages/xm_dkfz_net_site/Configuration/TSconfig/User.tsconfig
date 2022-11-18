@@ -4,8 +4,14 @@
   }
 [GLOBAL]
 
+# Show whole page tree for all users
+options.pageTree.altElementBrowserMountPoints = 1
+
 # Hide fields in usersettings for users of usergroup 1 (Base-Redakteur)
 [1 in backend.user.userGroupIds]
+  # hide Handbuch
+  options.hideRecords.pages = 114
+
   # Allow recursive copy and disable field
   setup.fields.copyLevels.disabled = 1
   setup.override.copyLevels = 1
