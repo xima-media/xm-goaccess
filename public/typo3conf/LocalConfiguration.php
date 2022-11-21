@@ -181,7 +181,7 @@ return [
             'showSampleTasks' => '1',
         ],
         'xm_dkfz_net_events' => [
-            'api_url_override' => '/fileadmin/rss.ashx',
+            'api_url_override' => '',
         ],
         'xm_dkfz_net_jobs' => [
             'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
