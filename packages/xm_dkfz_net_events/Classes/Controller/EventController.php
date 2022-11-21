@@ -25,8 +25,8 @@ class EventController extends ActionController
         $apiUrl = $this->getApiUrl();
         $events = $this->eventLoaderUtility->getEvents($apiUrl);
 
-        if ($this->settings['latestEventCount'] && MathUtility::canBeInterpretedAsInteger($this->settings['latestEventCount'])) {
-            $events = array_slice($events, 0, (int)$this->settings['latestEventCount']);
+        if ($this->settings['maxItems'] && MathUtility::canBeInterpretedAsInteger($this->settings['maxItems'])) {
+            $events = array_slice($events, 0, (int)$this->settings['maxItems']);
         }
 
         $this->view->assign('events', $events);
@@ -39,6 +39,13 @@ class EventController extends ActionController
         $apiUrl = $this->getApiUrl();
         $events = $this->eventLoaderUtility->getEvents($apiUrl);
 
+        if ($this->settings['maxItems'] && MathUtility::canBeInterpretedAsInteger($this->settings['maxItems'])) {
+            $events = array_slice($events, 0, (int)$this->settings['maxItems']);
+        }
+
+        $header = $this->configurationManager->getContentObject()?->data['header'] ?? '';
+
+        $this->view->assign('header', $header);
         $this->view->assign('events', $events);
 
         return $this->htmlResponse();

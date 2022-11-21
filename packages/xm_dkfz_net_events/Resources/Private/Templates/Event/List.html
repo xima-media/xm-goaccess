@@ -1,23 +1,26 @@
-<f:for each="{events}" as="event" iteration="i">
+<div class="events">
 
-	<div class="card card--md card--image-size-md card--short-message">
-		<a href="{event.link}" class="card__link card__link--hidden" aria-label="{event.title}">
-			<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
-				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_prototype/Resources/Public/Icon/icon.min.svg#icon-arrow-right')}"></use>
-			</svg>
-			Mehr erfahren
-		</a>
-		<div class="card__content">
-			<div class="card__header">
-				<p class="h3 color"><strong>{event.eventdate->f:format.date(format: 'd. M')}</strong> <small>{event.eventtime}</small></p>
-				<h4 class="h6">{event.title}</h4>
-				<ul class="card__tags">
-					<li class="card__tag">{event.eventlanguage}</li>
-					<li class="card__tag">{event.description}</li>
-				</ul>
+	<h2 class="m-b-0 h3 show-for-lg">{header}</h2>
+
+	<div class="events__items">
+
+		<f:for each="{events}" as="event" iteration="i">
+			<div class="event">
+				<a href="{event.link}" title="{event.title}">
+					<h5 class="h3 color">
+						{event.eventdate->f:format.date(format: 'd. M')}
+						<span>{event.eventtime}</span>
+					</h5>
+
+					<p><strong>{event.title}</strong></p>
+					<ul class="card__tags">
+						<li class="card__tag">{event.eventlanguage}</li>
+						<li class="card__tag">{event.description}</li>
+					</ul>
+				</a>
 			</div>
-		</div>
+		</f:for>
+
 	</div>
 
-
-</f:for>
+</div>

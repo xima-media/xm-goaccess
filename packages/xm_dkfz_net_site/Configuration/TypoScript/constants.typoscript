@@ -57,10 +57,12 @@ plugin.tx_xmdkfznetjobs {
 #####################
 #### DKFZ Events ####
 #####################
-plugin.tx_xmdkfznetevents {
-  settings {
-    latestEventCount = 9
-  }
+plugin.tx_xmdkfznetevents_latestevents.settings {
+  maxItems = 9
+}
+
+plugin.tx_xmdkfznetevents_listevents.settings {
+  maxItems = 4
 }
 
 ##############
@@ -92,9 +94,11 @@ plugin {
       partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Partials/
       templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Templates/
     }
+
     settings {
       showPid = {$pidUserDetail}
     }
+
     persistence.storagePid = {$pidFeUserStorage}
   }
 

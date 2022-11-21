@@ -232,6 +232,8 @@ import './_patterns/components/feedbackform/feedbackform'
 
 import './_patterns/components/usertable/usertable'
 
+import './_patterns/components/events/events'
+
 /** @section 2.99 Debug */
 import './_patterns/components/debug/debug-menu'
 import './_patterns/components/debug/debug-gridlines'

@@ -2,7 +2,7 @@
 <f:if condition="{data.frame_class} != none">
 	<f:then>
 		<div id="c{data.uid}"
-			 class="frame content-wrapper color-accent--{data.color} image-orient--{data.imageorient} frame-type-{data.CType} {f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
+			 class="frame content-wrapper color-accent--{data.color} image-orient--{data.imageorient} frame-type-{data.CType} {f:if(condition: data.list_type, then: 'frame-{data.list_type}')} {f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
 			<f:if condition="{data._LOCALIZED_UID}">
 				<a id="c{data._LOCALIZED_UID}"></a>
 			</f:if>

@@ -4,8 +4,12 @@ plugin.tx_xmdkfznetevents {
     templateRootPath =
     partialRootPath =
   }
+}
 
-  settings {
-    latestEventCount =
-  }
+plugin.tx_xmdkfznetevents_latestevents.settings {
+  maxItems =
+}
+
+plugin.tx_xmdkfznetevents_listevents.settings {
+  maxItems =
 }

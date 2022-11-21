@@ -1,0 +1,42 @@
+@include media-breakpoint-up(lg) {
+    .frame-xmdkfznetevents_listevents .content-wrapper__header h2 {
+        visibility: hidden;
+    }
+}
+
+.events {
+    
+    @include media-breakpoint-up(lg) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: flex-start;
+        gap: calc(2 * var(--content-padding));
+    }
+
+    a:hover {
+        text-decoration: none;
+
+        h5 {
+            text-decoration: underline;
+        }
+    }
+
+    h5 {
+        margin-bottom: .5rem;
+
+        span {
+            font-family: $font-family-sans-serif;
+            font-weight: 200;
+        }
+    }
+
+    p {
+        margin-bottom: .3rem;
+    }
+
+    .event:not(:last-child) {
+        border-bottom: 1px solid var(--color-gray-200);
+        padding-bottom: calc(.5 * var(--content-padding));
+        margin-bottom: calc(.5 * var(--content-padding));
+    }
+}
