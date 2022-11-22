@@ -56,6 +56,19 @@ class HeroForm {
     this.bindResultListCheckbox()
     this.bindResultListResetButton()
     this.bindResultListSortingSelect()
+    this.bindFilterExpandButton()
+  }
+
+  protected bindFilterExpandButton() {
+    const filterExpandButton = document.querySelector('#form_kesearch_pi1 + .hero-form__filter-button')
+    const filterContainer = document.querySelector('.frame-ke_search_pi2 .filter.filter--results')
+
+    if(filterExpandButton && filterContainer) {
+      filterExpandButton.addEventListener('click', () => {
+        ['show-for-md'].map(classes=> filterContainer.classList.toggle(classes) )
+        filterExpandButton.querySelector('svg').classList.toggle('icon--rotated')
+      })
+    }
   }
 
   protected bindResultListCheckbox() {

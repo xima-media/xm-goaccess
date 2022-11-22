@@ -1,50 +1,43 @@
 <li class="list-view__item">
 	<div class="card card--image-top card--md card--image-size-md">
-		<f:if condition="{resultrow.url}">
-			<a href="{resultrow.url}" {f:if(condition: '{resultrow.type} == \'xmkesearchremote\'', then: 'target="_blank"')}
-				class="card__link card__link--hidden"
-				aria-label="{resultrow.title_text}"
-			>
-				<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
-				<f:translate key="linktext.readMore" extensionName="XmDkfzNetSite " />
-			</a>
-		</f:if>
-		<div class="card__content">
-			<div class="card__header">
-				<h3 class="card__title">
-					<f:switch expression="{resultrow.type}">
-						<f:case value="news">
-							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">news</span>
-						</f:case>
-						<f:case value="file">
-							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">{resultrow.orig_row.extension}</span>
-						</f:case>
-						<f:case value="xmkesearchremote">
-							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">dkfz.de <f:render partial="Icon" arguments="{icon: 'external-link'}" /></span>
-						</f:case>
-					</f:switch>
-					<f:format.raw>{resultrow.title}</f:format.raw>
-				</h3>
-				<f:if condition="{resultrow.date_timestamp} > 0">
-					<p class="card__sub-title">{resultrow.date_timestamp -> f:format.date(format: 'd.m.Y')}</p>
+		<a href="{resultrow.url}" {f:if(condition: '{resultrow.type} == \'xmkesearchremote\'', then: 'target="_blank"')}>
+			<div class="card__content">
+				<div class="card__header">
+					<h3 class="card__title">
+						<f:switch expression="{resultrow.type}">
+							<f:case value="news">
+								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">news</span>
+							</f:case>
+							<f:case value="file">
+								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">{resultrow.orig_row.extension}</span>
+							</f:case>
+							<f:case value="xmkesearchremote">
+								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">dkfz.de <f:render partial="Icon" arguments="{icon: 'external-link'}" /></span>
+							</f:case>
+						</f:switch>
+						{resultrow.title_text}
+					</h3>
+					<f:if condition="{resultrow.date_timestamp} > 0">
+						<p class="card__sub-title">{f:format.date(format: ' d.F.Y', date: resultrow.date_timestamp)}</p>
+					</f:if>
+				</div>
+				<f:if condition="{resultrow.teaser}">
+					<div class="card__body">
+						<div class="card__text">
+							<p><f:format.htmlentitiesDecode>{resultrow.teaser}</f:format.htmlentitiesDecode></p>
+						</div>
+					</div>
 				</f:if>
 			</div>
-			<f:if condition="{resultrow.teaser}">
-				<div class="card__body">
-					<div class="card__text">
-						<p><f:format.raw>{resultrow.teaser}</f:format.raw></p>
-					</div>
+			<f:if condition="{resultrow.rootline}">
+				<div class="card__footer">
+					<ul class="card__tags">
+						<f:for each="{resultrow.rootline}" as="rootlineItem">
+							<li class="card__tag">{f:if(condition: rootlineItem.nav_title, then: rootlineItem.nav_title, else: rootlineItem.title)}</li>
+						</f:for>
+					</ul>
 				</div>
 			</f:if>
-		</div>
-		<f:if condition="{resultrow.rootline}">
-			<div class="card__footer">
-				<ul class="card__tags">
-					<f:for each="{resultrow.rootline}" as="rootlineItem">
-						<li class="card__tag">{f:if(condition: rootlineItem.nav_title, then: rootlineItem.nav_title, else: rootlineItem.title)}</li>
-					</f:for>
-				</ul>
-			</div>
-		</f:if>
+		</a>
 	</div>
 </li>

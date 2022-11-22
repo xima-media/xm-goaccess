@@ -13,6 +13,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: var(--space-unit);
 
     .icon {
         width: 12px;
