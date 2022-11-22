@@ -1,0 +1,36 @@
+<form class="hero-form">
+	<div class="hero-form__header">
+		<h2 class="hero-form__title h4">{header}</h2>
+	</div>
+	<div class="hero-form__content">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="field field--text ">
+					<label class="field__label" for="category">
+						Kategorie
+					</label>
+					<select class="field__input" id="category">
+						<option selected="selected" value=""></option>
+						<f:for each="{categories}" as="category">
+							<option value="{category}">{category}</option>
+						</f:for>
+					</select>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="field field--text ">
+					<label class="field__label" for="place">
+						Einsatzort
+					</label>
+					<select class="field__input" id="place">
+						<option selected="selected" value=""></option>
+						<f:for each="{places}" as="place">
+							<option value="{place}">{place}</option>
+						</f:for>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+

@@ -37,4 +37,17 @@ class JobController extends ActionController
 
         return $this->htmlResponse();
     }
+
+    public function searchAction(): ResponseInterface
+    {
+        $categories = $this->jobLoaderUtility->getJobCategories();
+        $places = $this->jobLoaderUtility->getJobPlaces();
+        $header = $this->configurationManager->getContentObject()?->data['header'] ?? '';
+
+        $this->view->assign('categories', $categories);
+        $this->view->assign('places', $places);
+        $this->view->assign('header', $header);
+
+        return $this->htmlResponse();
+    }
 }

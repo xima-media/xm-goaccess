@@ -31,6 +31,12 @@
 			<trans-unit id="jobs">
 				<target>Stellenangebote</target>
 			</trans-unit>
+			<trans-unit id="searchJobs.title">
+				<target>Job-Suche</target>
+			</trans-unit>
+			<trans-unit id="searchJobs.description">
+				<target>Formular für die Filterung von Jobangeboten</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

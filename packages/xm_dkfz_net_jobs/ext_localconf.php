@@ -22,3 +22,12 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['xmdkfznetj
     ],
     []
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'XmDkfzNetJobs',
+    'SearchJobs',
+    [
+        Xima\XmDkfzNetJobs\Controller\JobController::class => 'search',
+    ],
+    []
+);

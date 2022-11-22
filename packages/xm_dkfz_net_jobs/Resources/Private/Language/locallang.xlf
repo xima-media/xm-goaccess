@@ -31,6 +31,12 @@
 			<trans-unit id="jobs">
 				<source>Jobs</source>
 			</trans-unit>
+			<trans-unit id="searchJobs.title">
+				<source>Job search</source>
+			</trans-unit>
+			<trans-unit id="searchJobs.description">
+				<source>Displays a form for job search</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

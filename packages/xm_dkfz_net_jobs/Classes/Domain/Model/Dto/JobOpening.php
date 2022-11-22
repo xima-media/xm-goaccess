@@ -18,4 +18,9 @@ class JobOpening
      * @var \Xima\XmDkfzNetJobs\Domain\Model\Dto\JobWorkingTimes[]
      */
     public array $workingTimes = [];
+
+    /**
+     * @var \Xima\XmDkfzNetJobs\Domain\Model\Dto\JobCategories[]
+     */
+    public array $categories = [];
 }

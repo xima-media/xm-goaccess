@@ -19,6 +19,16 @@ mod.wizards.newContentElement.wizardItems.plugins {
         list_type = xmdkfznetjobs_listjobs
       }
     }
+
+    xmdkfznetjobs_listjobs {
+      iconIdentifier = plugin-job-listing
+      title = LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:searchJobs.title
+      description = LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:searchJobs.description
+      tt_content_defValues {
+        CType = list
+        list_type = xmdkfznetjobs_searchjobs
+      }
+    }
   }
 
   show = *

@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use Xima\XmDkfzNetJobs\Domain\Model\Dto\Job;
+use Xima\XmDkfzNetJobs\Domain\Model\Dto\JobCategories;
 
 class JobLoaderUtility
 {
@@ -49,8 +50,43 @@ class JobLoaderUtility
         return $this->jobs;
     }
 
+    /**
+     * @return string[]
+     */
+    public function getJobCategories(): array
+    {
+        $this->loadJobs();
+
+        $jobCategories = [];
+        foreach ($this->jobs as $job) {
+            foreach ($job->jobOpening?->categories ?? [] as $category) {
+                $jobCategories[$category->id] = $category->name;
+            }
+        }
+
+        return $jobCategories;
+    }
+
+    public function getJobPlaces(): array
+    {
+        $this->loadJobs();
+
+        $jobPlaces = [];
+        foreach ($this->jobs as $job) {
+            if ($job->jobOpening?->location) {
+                $jobPlaces[md5($job->jobOpening->location)] = $job->jobOpening->location;
+            }
+        }
+
+        return $jobPlaces;
+    }
+
     protected function loadJobs(bool $useCache = true): bool
     {
+        if ($this->jobs) {
+            return true;
+        }
+
         // download and cache json
         if (!($jsonJobs = $this->cache->get('dkfz')) || !$useCache) {
             $jsonJobs = $this->fetchRemoteJobs();
