@@ -66,6 +66,9 @@ class JobLoaderUtility
         return $jobCategories;
     }
 
+    /**
+     * @return string[]
+     */
     public function getJobPlaces(): array
     {
         $this->loadJobs();
