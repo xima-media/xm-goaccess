@@ -29,16 +29,12 @@
         }
     }
 
-    .hidden-filter-place, .hidden-filter-category {
+    .hidden-filter-place, .hidden-filter-category, .hidden-pager {
         display: none;
     }
 
-    @for $i from 1 through 10 {
-        &[data-page="#{$i}"] {
-            a:nth-child(n+#{$i * 8}) {
-                display: none;
-            }
-        }
+    &--pager-not-loaded a:nth-child(n+9) {
+        display: none;
     }
 
     .job-badge {
@@ -55,13 +51,21 @@
 
 .jobs__nav {
 
-    div[data-page="-1"] + & {
+    div[data-page="-1"] + &, div[data-page="-2"] + & {
         display: none;
     }
 
     display: grid;
     justify-items: center;
     gap: 2rem;
+}
+
+.jobs__empty {
+    display: none;
+
+    div[data-page="-2"] ~ & {
+        display: block;
+    }
 }
 
 .jobs--latest {

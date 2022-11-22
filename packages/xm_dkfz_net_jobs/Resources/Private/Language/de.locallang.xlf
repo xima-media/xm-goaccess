@@ -37,6 +37,12 @@
 			<trans-unit id="searchJobs.description">
 				<target>Formular für die Filterung von Jobangeboten</target>
 			</trans-unit>
+			<trans-unit id="searchJobs.notfound">
+				<target>Keine Stellenangebote gefunden</target>
+			</trans-unit>
+			<trans-unit id="searchJobs.notfound.description">
+				<target>Zu den aktuellen Filtereinstellungen wurden keine Angebote gefunden</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

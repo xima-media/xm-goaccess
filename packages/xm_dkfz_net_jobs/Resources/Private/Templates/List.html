@@ -1,4 +1,4 @@
-<div class="jobs jobs--list" data-page="1" data-job-count="{jobs->f:count()}">
+<div class="jobs jobs--list jobs--list--pager-not-loaded" data-page="1" data-job-count="{jobs->f:count()}">
 	<f:for each="{jobs}" as="job" iteration="i">
 		<f:if condition="{job.jobOpening}">
 			<a href="{job.jobPublicationURL}"
@@ -32,9 +32,23 @@
 <div class="jobs jobs__nav">
 	<p>
 		<span data-job-count>8</span>
-		/ {jobs->f:count()} {f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:jobs')}
+		/ <span data-all-job-count>{jobs->f:count()}</span> {f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:jobs')}
 	</p>
 	<a class="button button--primary jobs__nav__button" href="#">
 		{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.more')}
 	</a>
+</div>
+<div class="jobs jobs__empty">
+	<div class="callout">
+		<div class="infobox color-accent--cyan infobox--background-white">
+			<div class="infobox--wrapper">
+				<h4 class="infobox__title">
+					<f:translate extensionName="XmDkfzNetJobs" key="searchJobs.notfound"/>
+				</h4>
+				<p>
+					<f:translate extensionName="XmDkfzNetJobs" key="searchJobs.notfound.description"/>
+				</p>
+			</div>
+		</div>
+	</div>
 </div>
