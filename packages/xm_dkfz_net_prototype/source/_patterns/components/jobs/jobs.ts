@@ -1,10 +1,7 @@
 import './jobs.scss'
 
-import app from '../basic/basic'
-
 class Jobs {
   constructor() {
-    app.log('component "job" loaded')
     this.bindEvents()
   }
 
@@ -12,6 +9,26 @@ class Jobs {
     document.querySelectorAll('.jobs__nav__button').forEach((btn) => {
       btn.addEventListener('click', this.onMoreButtonClick.bind(this));
     });
+
+    document.querySelectorAll('.job__search-select').forEach(select => {
+      select.addEventListener('change', this.onSearchSelectChange.bind(this));
+    })
+  }
+
+  onSearchSelectChange(e: Event) {
+    e.preventDefault();
+    const selectElement = e.currentTarget as HTMLSelectElement;
+    const filterFor = selectElement.getAttribute('id');
+    const filterValue = selectElement.value;
+
+    document.querySelectorAll('.jobs--list a').forEach(link => {
+      link.classList.remove('hidden-filter-' + filterFor);
+      const linkValue = link.getAttribute('data-' + filterFor);
+      if (filterValue && linkValue !== filterValue) {
+        link.classList.add('hidden-filter-' + filterFor);
+      }
+    })
+
   }
 
   onMoreButtonClick(e: Event) {

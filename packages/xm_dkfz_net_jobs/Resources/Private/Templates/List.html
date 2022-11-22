@@ -3,6 +3,8 @@
 		<f:if condition="{job.jobOpening}">
 			<a href="{job.jobPublicationURL}"
 			   aria-label="{job.position}"
+			   data-place="{job.jobOpening.location}"
+			   data-category="{job.jobOpening.categories.0.name}"
 			   title="{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.headline')}">
 				<h3 class="h6">{job.position}</h3>
 				<div class="job-badge">

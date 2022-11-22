@@ -29,6 +29,10 @@
         }
     }
 
+    .hidden-filter-place, .hidden-filter-category {
+        display: none;
+    }
+
     @for $i from 1 through 10 {
         &[data-page="#{$i}"] {
             a:nth-child(n+#{$i * 8}) {
