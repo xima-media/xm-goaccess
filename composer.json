@@ -72,9 +72,7 @@
 		"tomasnorre/crawler": "^11.0",
 		"xima/xm-manual": "*@dev",
 		"cweagans/composer-patches": "^1.7",
-		"tpwd/ke_search_premium": "*@dev",
-		"pixelant/pxa-social-feed": "^3.1",
-		"in2code/instagram": "dev-develop"
+		"tpwd/ke_search_premium": "*@dev"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
