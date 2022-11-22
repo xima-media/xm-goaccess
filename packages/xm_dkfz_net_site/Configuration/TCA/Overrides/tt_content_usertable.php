@@ -50,10 +50,20 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
                             ],
                         ],
                         'text' => [
+                            'displayCond' => 'FIELD:fe_user:REQ:true',
                             'config' => [
                                 'placeholder' => '__row|fe_user|responsibilities',
                                 'mode' => 'useOrOverridePlaceholder',
                             ],
+                        ],
+                        'overrides' => [
+                            'displayCond' => 'FIELD:fe_user:REQ:true',
+                        ],
+                        'contacts' => [
+                            'displayCond' => 'FIELD:fe_user:REQ:true',
+                        ],
+                        'overrides2' => [
+                            'displayCond' => 'FIELD:fe_user:REQ:true',
                         ],
                     ],
                 ],
