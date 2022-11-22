@@ -10,7 +10,6 @@ use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use Xima\XmDkfzNetJobs\Domain\Model\Dto\Job;
-use Xima\XmDkfzNetJobs\Domain\Model\Dto\JobCategories;
 
 class JobLoaderUtility
 {
