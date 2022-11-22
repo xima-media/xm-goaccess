@@ -1,3 +1,18 @@
+
+#p25 {
+    .hero {
+        margin-bottom: 0;
+    }
+
+    button[data-bookmark-url] {
+        display: none;
+    }
+}
+
+.frame-xmdkfznetjobs_searchjobs {
+    --content-width: 1200px;
+}
+
 .jobs--list {
 
     a {
@@ -20,10 +35,6 @@
                 display: none;
             }
         }
-    }
-
-    h3 {
-        @include h6;
     }
 
     .job-badge {

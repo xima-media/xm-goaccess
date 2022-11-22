@@ -237,3 +237,7 @@ page {
   config.htmlTag.attributes.class = background--gradient
   config.htmlTag.attributes.style = --gradient-offset:380px
 [end]
+
+[traverse(page, "uid") == {$pidJobList}]
+  config.htmlTag.attributes.class = background--gradient
+[end]
