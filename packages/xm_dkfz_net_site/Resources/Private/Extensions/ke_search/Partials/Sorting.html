@@ -7,7 +7,9 @@
 			<select name="field__input--name-sorting" id="ke_search__select-sorting"
 					class="field__input">
 				<f:for each="{sortingLinks}" as="sortingLink">
-				<option value="{sortingLink.urlOnly}" {f:if(condition: sortingLink.class, then: 'selected="selected"')}>{sortingLink.label}</option>
+					<option value="{sortingLink.urlOnly}" {f:if(condition: sortingLink.class, then: 'selected="selected"')}>
+					{f:translate(key:'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:ke_search.option.sorting.{sortingLink.label}')}
+					</option>
 				</f:for>
 			</select>
 		</div>

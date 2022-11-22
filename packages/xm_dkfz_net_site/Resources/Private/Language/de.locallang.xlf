@@ -557,6 +557,12 @@
 			<trans-unit id="pages.tt_content_items" space="preserve">
 				<target>Seiten für Related Content Teaser</target>
 			</trans-unit>
+			<trans-unit id="ke_search.option.sorting.Relevance" space="preserve">
+				<target>Relevanz</target>
+			</trans-unit>
+			<trans-unit id="ke_search.option.sorting.Date" space="preserve">
+				<target>Datum</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

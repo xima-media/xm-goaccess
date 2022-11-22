@@ -571,6 +571,12 @@
 			<trans-unit id="pages.tt_content_items" space="preserve">
 				<source>Related pages</source>
 			</trans-unit>
+			<trans-unit id="ke_search.option.sorting.Relevance" space="preserve">
+				<source>Relevance</source>
+			</trans-unit>
+			<trans-unit id="ke_search.option.sorting.Date" space="preserve">
+				<source>Date</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
