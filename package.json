@@ -4,7 +4,7 @@
   "description": "Asset build for DKFZ Intranet",
   "scripts": {
     "postinstall": "cd packages/xm_dkfz_net_prototype && npm install",
-    "start": "cd packages/xm_dkfz_net_prototype && npm run start",
+    "start": "sass packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss packages/xm_dkfz_net_site/Public/Css/dist --watch –-load-path node_modules/bootstrap/scss",
     "build": "cd packages/xm_dkfz_net_prototype && npm run build",
     "build:patternlab": "cd packages/xm_dkfz_net_prototype && npm run build:patternlab",
     "init": "cd packages/xm_dkfz_net_prototype && npm run init",
@@ -13,5 +13,9 @@
     "serve": "cd packages/xm_dkfz_net_prototype && npm run serve"
   },
   "author": "Maik Schneider",
-  "license": "proprietary"
+  "license": "proprietary",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "sass": "^1.56.1"
+  }
 }
