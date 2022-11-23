@@ -109,8 +109,8 @@ $GLOBALS['TCA']['tt_content']['types']['page_teaser'] = [
                                                         ],
                                                     ],
                                                 ],
-                                            ]
-                                        ]
+                                            ],
+                                        ],
                                     ],
                                 ],
                             ],
