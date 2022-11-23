@@ -4,15 +4,15 @@ namespace Xima\XmDkfzNetSite\Domain\Repository;
 
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use Xima\XmDkfzNetSite\Domain\Model\User;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
+use Xima\XmDkfzNetSite\Domain\Model\User;
 
 class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository implements ImportableUserInterface
 {

@@ -2,17 +2,17 @@
 
 namespace Xima\XmDkfzNetSite\Utility;
 
-use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
-use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
-use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use JsonMapper;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;

@@ -3,9 +3,9 @@
 namespace Xima\XmDkfzNetSite\UserFactory;
 
 use Doctrine\DBAL\DBALException;
-use TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException;
 use Doctrine\DBAL\Driver\Exception;
 use JetBrains\PhpStorm\ArrayShape;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;

@@ -2,17 +2,17 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
-use Xima\XmDkfzNetSite\Domain\Model\Place;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
+use Xima\XmDkfzNetSite\Domain\Model\Place;
 
 /**
  * @extends Repository<Place>

@@ -2,7 +2,6 @@
 
 namespace Xima\XmDkfzNetSite\Command;
 
-use TYPO3\CMS\Core\Console\UnknownCommandException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,6 +9,7 @@ use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Console\CommandRegistry;
+use TYPO3\CMS\Core\Console\UnknownCommandException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ImportAllCommand extends Command

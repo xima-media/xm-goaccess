@@ -2,9 +2,9 @@
 
 namespace Xima\XmDkfzNetSite\DataProcessing;
 
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Resource\FileRepository;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository;
