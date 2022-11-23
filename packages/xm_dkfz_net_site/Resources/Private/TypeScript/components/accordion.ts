@@ -18,7 +18,7 @@
 import './accordion.scss'
 
 /** @section 1.2 Import js */
-import app from '../basic/basic'
+import app from './basic'
 import 'bootstrap/js/src/collapse'
 
 /**

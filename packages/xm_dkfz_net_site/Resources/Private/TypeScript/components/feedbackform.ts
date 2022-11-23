@@ -1,4 +1,4 @@
-import app from '../basic/basic'
+import app from './basic'
 import './feedbackform.scss'
 
 class Feedbackform {

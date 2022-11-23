@@ -1,6 +1,6 @@
 import './news.scss'
 
-import app from '../basic/basic'
+import app from './basic'
 
 class News {
   constructor() {

@@ -1,6 +1,6 @@
-import app from '../basic/basic'
+import app from './basic'
 import './disruptor.scss'
-import {LightboxStyle} from "../lightbox/lightbox";
+import {LightboxStyle} from "./lightbox";
 
 class Disruptor {
 

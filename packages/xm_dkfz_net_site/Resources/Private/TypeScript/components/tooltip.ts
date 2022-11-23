@@ -18,7 +18,7 @@
 import './tooltip.scss'
 
 /** @section 1.2 Import js */
-import app from '../basic/basic'
+import app from './basic'
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
 

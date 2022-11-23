@@ -1,7 +1,6 @@
-import app from '../basic/basic'
+import app from './basic'
 import './userprofile.scss'
 import autocomplete, {AutocompleteItem} from "autocompleter";
-import dropdown from "../dropdown/dropdown";
 
 interface FeatureItem extends AutocompleteItem {
   label: string,

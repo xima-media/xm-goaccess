@@ -1,5 +1,5 @@
-import app from '../basic/basic'
-import {LightboxStyle} from "../lightbox/lightbox";
+import app from './basic'
+import {LightboxStyle} from "./lightbox";
 
 export interface UserData {
   uid: number,

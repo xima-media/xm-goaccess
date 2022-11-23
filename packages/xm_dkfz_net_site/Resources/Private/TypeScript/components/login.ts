@@ -1,6 +1,6 @@
 import './login.scss'
 
-import app from '../basic/basic'
+import app from './basic'
 
 class Login {
   constructor() {

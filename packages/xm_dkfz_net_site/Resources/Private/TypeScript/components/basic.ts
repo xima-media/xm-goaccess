@@ -14,7 +14,7 @@
 
 // import css dependencies
 import './basic.scss'
-import Lightbox from "../lightbox/lightbox";
+import Lightbox from "./lightbox";
 
 /**
  *     @section 2. Class

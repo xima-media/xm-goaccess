@@ -16,7 +16,7 @@
 import './debug-screenshot.scss'
 
 // import js dependencies
-import app from '../basic/basic'
+import app from './basic'
 
 /**
  *     @section 2. Class

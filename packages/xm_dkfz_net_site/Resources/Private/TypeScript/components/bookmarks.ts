@@ -18,8 +18,8 @@
 import './bookmarks.scss'
 
 /** @section 1.2 Import js */
-import app from '../basic/basic'
-import {LightboxStyle} from "../lightbox/lightbox";
+import app from './basic'
+import {LightboxStyle} from "./lightbox";
 
 /**
  *     @section 2. Class

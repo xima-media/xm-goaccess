@@ -18,7 +18,7 @@
 import './video-player.scss'
 
 /** @section 1.2 Import js */
-import app from '../basic/basic'
+import app from './basic'
 
 /**
  *     @section 2. Class
