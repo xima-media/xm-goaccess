@@ -1,11 +1,12 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "sourceMap": true,
-    "module": "es6",
-    "target": "es6",
-    "allowJs": true,
-    "moduleResolution": "node"
-  }
+	"compilerOptions": {
+		"outDir": "packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist",
+		"noImplicitAny": false,
+		"sourceMap": true,
+		"module": "es6",
+		"target": "es6",
+		"allowJs": true,
+		"moduleResolution": "node"
+	},
+	"include": ["packages/xm_dkfz_net_site/Resources/Private/TypeScript/*"]
 }
