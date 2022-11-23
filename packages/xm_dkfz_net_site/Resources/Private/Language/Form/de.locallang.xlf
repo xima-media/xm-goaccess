@@ -15,7 +15,7 @@
 				<target>Thema</target>
 			</trans-unit>
 			<trans-unit id="generalfeedbackform.element.subject.properties.prependOptionLabel">
-				<target>-- Bitte wählen --</target>
+				<target> </target>
 			</trans-unit>
 			<trans-unit id="generalfeedbackform.element.subject.properties.options.error">
 				<target>Fehlermeldung</target>

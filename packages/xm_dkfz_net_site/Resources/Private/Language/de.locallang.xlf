@@ -563,6 +563,9 @@
 			<trans-unit id="ke_search.option.sorting.Date" space="preserve">
 				<target>Datum</target>
 			</trans-unit>
+			<trans-unit id="lightbox.close.title" space="preserve">
+				<target>Schließen</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

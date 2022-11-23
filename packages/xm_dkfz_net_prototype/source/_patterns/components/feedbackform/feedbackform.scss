@@ -22,4 +22,27 @@
         }
     }
 
+    .form-group {
+
+        margin-top: 48px;
+
+        .form-control {
+         background-color: #eeeeee80;
+        }
+
+        &.fx--focus {
+            .control-label {
+                font-weight: 300;
+                transform: translate3d(0, -1.5rem, 0);
+            }
+        }
+    }
+
+    .control-label {
+        position: absolute;
+        transform: translate3d(0.5rem, 0.5rem, 0);
+        transform-origin: 0 0;
+        transition: font-weight 300ms, transform 300ms;
+        pointer-events: none;
+    }
 }

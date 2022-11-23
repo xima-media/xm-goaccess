@@ -28,7 +28,11 @@ class Feedbackform {
       const email = form.querySelector('#generalfeedbackform-email') as HTMLInputElement
 
       if (email.value.length === 0) {
-        displayContent = '<p>You have to be logged in to send feedback!</p>'
+        if(document.documentElement.getAttribute('lang') === 'de-de') {
+          displayContent = '<p>Sie müssen eingeloggt sein, um Feedback zu senden!</p>'
+        } else {
+          displayContent = '<p>You have to be logged in to send feedback!</p>'
+        }
       }
 
       app.lightbox.startLoading()
@@ -43,7 +47,44 @@ class Feedbackform {
     const form = app.lightbox.content.querySelector('form')
     if (form) {
       form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
+
+      const formGroups = document.querySelectorAll('.form-group')
+
+      formGroups.forEach((formGroup: HTMLDivElement) => {
+        const select = formGroup.querySelector('select')
+        const textArea = formGroup.querySelector('textarea')
+
+        if (select) {
+          this.toggleLabelByChange(select, formGroup)
+        }
+
+        if (textArea) {
+          this.toggleLabelByFocus(textArea, formGroup)
+        }
+      })
     }
+  }
+
+  protected toggleLabelByChange(formElement: HTMLSelectElement, formGroup: HTMLDivElement) {
+    formElement.addEventListener('change', () => {
+      formGroup.classList.add('fx--focus')
+
+      if(!formElement.value) {
+        formGroup.classList.remove('fx--focus')
+      }
+    })
+  }
+
+  protected toggleLabelByFocus(formElement: HTMLInputElement|HTMLTextAreaElement, formGroup: HTMLDivElement) {
+    formElement.addEventListener('focus', () => {
+      formGroup.classList.add('fx--focus')
+    })
+
+    formElement.addEventListener('focusout', () => {
+      if(!formElement.value) {
+        formGroup.classList.remove('fx--focus')
+      }
+    })
   }
 
   protected onFeedbackFormSubmit(e: Event) {

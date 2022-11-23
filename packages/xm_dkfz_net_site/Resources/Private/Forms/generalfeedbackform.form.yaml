@@ -69,7 +69,7 @@ renderables:
             -
               code: 1221560910
               message: 'Please choose a subject!'
-          prependOptionLabel: '-- Please choose --'
+          prependOptionLabel: ' '
         type: SingleSelect
         identifier: subject
         label: Subject

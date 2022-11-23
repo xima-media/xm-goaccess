@@ -577,6 +577,9 @@
 			<trans-unit id="ke_search.option.sorting.Date" space="preserve">
 				<source>Date</source>
 			</trans-unit>
+			<trans-unit id="lightbox.close.title" space="preserve">
+				<source>Close</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
