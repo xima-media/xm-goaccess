@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class User extends \Blueways\BwGuild\Domain\Model\User
@@ -29,14 +31,6 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     protected string $committee = '';
 
     protected string $responsibilities = '';
-
-    /**
-     * @return \Xima\XmDkfzNetSite\Domain\Model\User|null
-     */
-    public function getRepresentative(): ?User
-    {
-        return $this->representative;
-    }
 
     /**
      * @return string
@@ -143,7 +137,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null $contacts
+     * @param ObjectStorage<Contact>|null $contacts
      */
     public function setContacts(?ObjectStorage $contacts): void
     {
@@ -207,7 +201,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
+     * @return ObjectStorage<Contact>|null
      */
     public function getContacts(): ?ObjectStorage
     {
@@ -215,8 +209,8 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @var ObjectStorage<Contact>|null
+     * @Lazy
      */
     protected ?ObjectStorage $contacts = null;
 
@@ -255,7 +249,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Contact[]
+     * @return Contact[]
      */
     public function getPhoneContacts(): array
     {
@@ -269,7 +263,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Contact[]
+     * @return Contact[]
      */
     public function getFaxContacts(): array
     {
@@ -283,9 +277,9 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup[]
+     * @return FrontendUserGroup[]
      */
-    public function getGroups()
+    public function getGroups(): array
     {
         $groups = [];
         foreach ($this->getUsergroup() as $group) {
@@ -294,5 +288,10 @@ class User extends \Blueways\BwGuild\Domain\Model\User
             }
         }
         return $groups;
+    }
+
+    public function getRepresentative(): ?User
+    {
+        return $this->representative;
     }
 }

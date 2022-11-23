@@ -2,6 +2,9 @@
 
 namespace Xima\XmDkfzNetSite\Utility;
 
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
+use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use JsonMapper;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -46,8 +49,8 @@ class PhoneBookUtility
 
     /**
      * @throws \TYPO3\CMS\Core\Exception
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
      * @throws \JsonException
      */
     public function loadJson(): void
@@ -131,7 +134,7 @@ class PhoneBookUtility
     }
 
     /**
-     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
+     * @throws InvalidConfigurationTypeException
      */
     public function getUserStoragePid(Command $commandClass): int
     {
@@ -159,8 +162,8 @@ class PhoneBookUtility
     }
 
     /**
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
      */
     protected function getApiUrl(): string
     {
@@ -173,7 +176,7 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_id: int, dkfz_hash: string}> $dbUsers
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
+     * @return PhoneBookCompareResult
      */
     public function compareDbUsersWithPhoneBookEntries(
         array $dbUsers
@@ -211,7 +214,7 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult
+     * @return PhoneBookCompareResult
      */
     public function compareDbGroupsWithJson(array $dbGroups): PhoneBookCompareResult
     {
@@ -329,7 +332,7 @@ class PhoneBookUtility
     }
 
     /**
-     * @return \Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry[]
+     * @return PhoneBookEntry[]
      */
     public function getPhoneBookEntries(): array
     {
@@ -338,8 +341,8 @@ class PhoneBookUtility
 
     /**
      * @return array<string|int, int>
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
      */
     public function getApiStat(): array
     {

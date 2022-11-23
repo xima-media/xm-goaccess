@@ -19,7 +19,7 @@ class Dkfz extends GenericProvider
     }
 
     /**
-     * @param \League\OAuth2\Client\Token\AccessToken $token
+     * @param AccessToken $token
      * @return array<mixed>
      */
     protected function fetchResourceOwnerDetails(AccessToken $token): array

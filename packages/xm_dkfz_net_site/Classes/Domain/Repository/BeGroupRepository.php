@@ -2,6 +2,9 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Xima\XmDkfzNetSite\Domain\Model\BeUser;
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -9,14 +12,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\BeUser>
+ * @extends Repository<BeUser>
  */
 class BeGroupRepository extends Repository implements ImportableGroupInterface
 {
     /**
      * @return array<int, array{dkfz_id: string, uid: int}>
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function findAllGroupsWithDkfzNumber(): array
     {
@@ -82,7 +85,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
     /**
      * @param array<string> $dkfzNumbers
      * @return int
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function deleteByDkfzNumbers(array $dkfzNumbers): int
     {
@@ -102,8 +105,8 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
 
     /**
      * @return array<int, array{title: string, uid: int}>
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function findAllFileMounts(): array
     {

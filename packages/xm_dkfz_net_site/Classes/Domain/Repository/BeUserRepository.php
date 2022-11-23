@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Xima\XmDkfzNetSite\Domain\Model\BeUser;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
@@ -11,7 +12,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 
 /**
- * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\BeUser>
+ * @extends Repository<BeUser>
  */
 class BeUserRepository extends Repository implements ImportableUserInterface
 {

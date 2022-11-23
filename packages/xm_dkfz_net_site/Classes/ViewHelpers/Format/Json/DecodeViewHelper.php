@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xima\XmDkfzNetSite\ViewHelpers\Format\Json;
 
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
@@ -11,7 +12,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderS
 /**
  * @link https://github.com/FluidTYPO3/vhs/blob/development/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
  */
-class DecodeViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
+class DecodeViewHelper extends AbstractViewHelper
 {
     use CompileWithContentArgumentAndRenderStatic;
 

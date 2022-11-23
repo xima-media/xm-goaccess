@@ -2,18 +2,20 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Xima\XmDkfzNetSite\Domain\Model\Contact;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * @extends Repository<\Xima\XmDkfzNetSite\Domain\Model\Contact>
+ * @extends Repository<Contact>
  */
 class ContactRepository extends Repository
 {
     /**
-     * @param array<\Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry> $entries
+     * @param array<PhoneBookEntry> $entries
      * @param int $pid
      * @param array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}> $dbUsers
      * @return int

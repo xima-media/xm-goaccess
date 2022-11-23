@@ -2,6 +2,11 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use Xima\XmDkfzNetSite\Domain\Model\User;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
@@ -13,8 +18,8 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
 {
     /**
      * @return array<int, array{dkfz_id: int, dkfz_hash: string, uid: int}>
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function findAllUsersWithDkfzId(): array
     {
@@ -161,7 +166,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function deleteUsersByDkfzIds(array $dkfzIds): int
     {
@@ -176,8 +181,8 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function findByDkfzIds(array $dkfzIds): array
     {
@@ -200,10 +205,10 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
 
     /**
      * @param array<int, int|string> $uids
-     * @return object[]|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\Xima\XmDkfzNetSite\Domain\Model\User>
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return object[]|QueryResultInterface<User>
+     * @throws InvalidQueryException
      */
-    public function findByUids(array $uids): array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+    public function findByUids(array $uids): array|QueryResultInterface
     {
         $query = $this->createQuery();
         $query->setQuerySettings($query->getQuerySettings()->setRespectStoragePage(false));

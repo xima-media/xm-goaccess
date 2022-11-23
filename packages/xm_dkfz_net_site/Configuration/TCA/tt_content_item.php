@@ -29,9 +29,6 @@ return [
         'languageField' => 'sys_language_uid',
         'translationSource' => 'l10n_source',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, text',
-    ],
     'types' => [
         0 => [
             'showitem' => 'record_type',
@@ -82,7 +79,7 @@ return [
             ],
         ],
         'user-contact' => [
-            'showitem' => 'record_type, fe_user, overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override;, contacts, overrides2;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override2;, text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
+            'showitem' => 'record_type,fe_user,overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override,--palette--,contacts,overrides2;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override2,--palette--,text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
             'columnsOverrides' => [
                 'record_type' => [
                     'config' => [
@@ -146,7 +143,6 @@ return [
         ],
         'l18n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',

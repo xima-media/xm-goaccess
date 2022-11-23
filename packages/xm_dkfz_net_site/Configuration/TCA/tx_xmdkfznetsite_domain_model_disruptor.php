@@ -19,9 +19,6 @@ return [
         'searchFields' => 'headline, text, starttime, endtime',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-info.svg',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'headline, text, starttime, endtime',
-    ],
     'types' => [
         0 => [
             'showitem' => '--palette--;;general,--palette--;;date',

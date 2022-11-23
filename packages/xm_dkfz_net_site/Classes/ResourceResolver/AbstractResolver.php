@@ -17,7 +17,7 @@ abstract class AbstractResolver
     protected string $providerId;
 
     /**
-     * @return \League\OAuth2\Client\Provider\GenericProvider
+     * @return GenericProvider
      */
     public function getProvider(): GenericProvider
     {
@@ -25,7 +25,7 @@ abstract class AbstractResolver
     }
 
     /**
-     * @return \League\OAuth2\Client\Provider\GenericResourceOwner
+     * @return GenericResourceOwner
      */
     public function getResourceOwner(): GenericResourceOwner
     {
@@ -33,7 +33,7 @@ abstract class AbstractResolver
     }
 
     /**
-     * @return \League\OAuth2\Client\Token\AccessToken
+     * @return AccessToken
      */
     public function getAccessToken(): AccessToken
     {
@@ -49,9 +49,9 @@ abstract class AbstractResolver
     }
 
     /**
-     * @param \League\OAuth2\Client\Provider\GenericProvider $provider
-     * @param \League\OAuth2\Client\Provider\GenericResourceOwner $resourceOwner
-     * @param \League\OAuth2\Client\Token\AccessToken $accessToken
+     * @param GenericProvider $provider
+     * @param GenericResourceOwner $resourceOwner
+     * @param AccessToken $accessToken
      * @param string $providerId
      */
     public function __construct(

@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -24,12 +25,12 @@ class Place extends AbstractEntity
     }
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
+     * @var ObjectStorage<Contact>|null
      */
     protected ?ObjectStorage $contacts = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup>|null
+     * @var ObjectStorage<FrontendUserGroup>|null
      */
     protected ?ObjectStorage $feGroups = null;
 
@@ -64,7 +65,7 @@ class Place extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Xima\XmDkfzNetSite\Domain\Model\Contact>|null
+     * @return ObjectStorage<Contact>|null
      */
     public function getContacts(): ?ObjectStorage
     {
@@ -72,7 +73,7 @@ class Place extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup>|null
+     * @return ObjectStorage<FrontendUserGroup>|null
      */
     public function getFeGroups(): ?ObjectStorage
     {

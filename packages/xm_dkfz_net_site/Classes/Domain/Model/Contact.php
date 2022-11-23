@@ -60,7 +60,7 @@ class Contact extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup|null
+     * @return FrontendUserGroup|null
      */
     public function getFeGroup(): ?FrontendUserGroup
     {

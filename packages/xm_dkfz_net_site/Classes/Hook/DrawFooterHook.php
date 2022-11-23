@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\Hook;
 
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Driver\Result;
 use TYPO3\CMS\Backend\Controller\PageLayoutController;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -20,9 +22,9 @@ class DrawFooterHook
 
     /**
      * @param array<int, mixed> $configuration
-     * @param \TYPO3\CMS\Backend\Controller\PageLayoutController $parentObject
+     * @param PageLayoutController $parentObject
      * @return string
-     * @throws \Doctrine\DBAL\DBALException|\Doctrine\DBAL\Driver\Exception
+     * @throws DBALException|Exception
      */
     public function addPageInfos(array $configuration, PageLayoutController $parentObject): string
     {

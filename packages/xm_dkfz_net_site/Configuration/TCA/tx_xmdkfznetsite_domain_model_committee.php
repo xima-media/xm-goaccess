@@ -16,9 +16,6 @@ return [
             'disabled' => 'hidden',
         ],
     ],
-    'interface' => [
-        'showRecordFieldList' => 'name',
-    ],
     'types' => [
         0 => [
             'showitem' => '--palette--;;general',

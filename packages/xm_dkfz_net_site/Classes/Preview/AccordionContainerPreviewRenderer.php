@@ -11,12 +11,12 @@ namespace Xima\XmDkfzNetSite\Preview;
  * the terms of the GNU General Public License, either version 2
  * of the License, or any later version.
  */
-
+use B13\Container\Backend\Preview\ContainerPreviewRenderer;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class AccordionContainerPreviewRenderer extends \B13\Container\Backend\Preview\ContainerPreviewRenderer
+class AccordionContainerPreviewRenderer extends ContainerPreviewRenderer
 {
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {

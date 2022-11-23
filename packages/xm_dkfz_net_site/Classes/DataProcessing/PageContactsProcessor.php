@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\DataProcessing;
 
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -32,12 +33,12 @@ class PageContactsProcessor implements DataProcessorInterface
     }
 
     /**
-     * @param \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj
+     * @param ContentObjectRenderer $cObj
      * @param array<int, mixed> $contentObjectConfiguration
      * @param array<int, mixed> $processorConfiguration
      * @param array<string, mixed> $processedData
      * @return array<string, mixed>
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @throws InvalidQueryException
      */
     public function process(
         ContentObjectRenderer $cObj,

@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\UserFactory;
 
+use Doctrine\DBAL\DBALException;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException;
 use Doctrine\DBAL\Driver\Exception;
 use JetBrains\PhpStorm\ArrayShape;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
@@ -20,7 +22,7 @@ class FrontendUserFactory
     protected AbstractResolver $resolver;
 
     /**
-     * @param \Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver $resolver
+     * @param AbstractResolver $resolver
      */
     public function setResolver(AbstractResolver $resolver): void
     {
@@ -128,8 +130,8 @@ class FrontendUserFactory
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function persistIdentityForUser($userRecord): bool
     {
@@ -173,8 +175,8 @@ class FrontendUserFactory
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function persistAndRetrieveUser($userRecord): ?array
     {
@@ -199,7 +201,10 @@ class FrontendUserFactory
     }
 
     /**
-     * @throws \TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException
+     * @throws InvalidPasswordHashException
+     */
+    /**
+     * @throws InvalidPasswordHashException
      */
     #[ArrayShape([
         'pid' => 'int',

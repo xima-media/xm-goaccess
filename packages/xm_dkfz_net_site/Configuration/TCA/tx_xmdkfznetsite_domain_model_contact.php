@@ -13,9 +13,6 @@ return [
         'type' => 'record_type',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-contact.svg',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'function,phone_number,room',
-    ],
     'types' => [
         0 => [
             'showitem' => 'record_type,number,fe_group,room,function,primary_number',

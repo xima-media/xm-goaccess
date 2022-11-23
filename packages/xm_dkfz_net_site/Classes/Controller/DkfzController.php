@@ -2,6 +2,10 @@
 
 namespace Xima\XmDkfzNetSite\Controller;
 
+use TYPO3\CMS\Core\Exception;
+use Doctrine\DBAL\DBALException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -32,12 +36,12 @@ class DkfzController extends ActionController
     }
 
     /**
-     * @throws \TYPO3\CMS\Core\Exception
+     * @throws Exception
      * @throws \Doctrine\DBAL\Driver\Exception
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      * @throws \JsonException
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
      */
     public function indexAction(): ResponseInterface
     {
@@ -92,7 +96,7 @@ class DkfzController extends ActionController
 
     /**
      * @return array<string, mixed>
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
     protected function getSchedulerInformation(): array

@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Command;
 
+use TYPO3\CMS\Core\Console\UnknownCommandException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -34,7 +35,7 @@ class ImportAllCommand extends Command
     }
 
     /**
-     * @throws \TYPO3\CMS\Core\Console\UnknownCommandException
+     * @throws UnknownCommandException
      * @throws \Exception
      */
     public function execute(InputInterface $input, OutputInterface $output): int

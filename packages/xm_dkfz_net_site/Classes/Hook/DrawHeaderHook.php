@@ -19,7 +19,7 @@ class DrawHeaderHook
 
     /**
      * @param array<int, mixed> $configuration
-     * @param \TYPO3\CMS\Backend\Controller\PageLayoutController $parentObject
+     * @param PageLayoutController $parentObject
      * @return string
      */
     public function addPageInfos(array $configuration, PageLayoutController $parentObject): string

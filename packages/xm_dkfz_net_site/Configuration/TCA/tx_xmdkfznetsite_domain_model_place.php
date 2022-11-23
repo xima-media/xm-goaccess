@@ -12,9 +12,6 @@ return [
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'position,phone_number,room',
-    ],
     'types' => [
         0 => [
             'showitem' => 'dkfz_id,name,function,room,mail,fe_group,contacts',

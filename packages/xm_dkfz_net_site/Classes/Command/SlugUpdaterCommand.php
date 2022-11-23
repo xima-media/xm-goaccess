@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\Command;
 
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,8 +28,8 @@ class SlugUpdaterCommand extends Command
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -80,10 +82,10 @@ class SlugUpdaterCommand extends Command
 
     /**
      * @param string $table
-     * @return \Doctrine\DBAL\Result|int
-     * @throws \Doctrine\DBAL\DBALException
+     * @return Result|int
+     * @throws DBALException
      */
-    private function getElementsForTable(string $table): int|\Doctrine\DBAL\Result
+    private function getElementsForTable(string $table): int|Result
     {
         $connection = $this->connectionPool->getConnectionForTable($table);
         $queryBuilder = $connection->createQueryBuilder();

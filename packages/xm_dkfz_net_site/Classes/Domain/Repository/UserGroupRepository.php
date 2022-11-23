@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -11,8 +13,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
 {
     /**
      * @return array<int, array{dkfz_number: string, uid: int}>
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     public function findAllGroupsWithDkfzNumber(): array
     {
@@ -65,7 +67,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function deleteByDkfzNumbers(array $dkfzNumbers): int
     {
