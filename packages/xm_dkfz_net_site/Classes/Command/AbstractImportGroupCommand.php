@@ -23,9 +23,6 @@ abstract class AbstractImportGroupCommand extends Command
 
     protected StorageRepository $storageRepository;
 
-    /**
-     * @var ImportableGroupInterface
-     */
     protected ImportableGroupInterface $groupRepository;
 
     public function __construct(

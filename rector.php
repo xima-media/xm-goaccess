@@ -84,6 +84,7 @@ return static function (RectorConfig $rectorConfig): void {
     ]); */
     // Add some general TYPO3 rules
     $rectorConfig->rule(ConvertImplicitVariablesToExplicitGlobalsRector::class);
+    $rectorConfig->rule(Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector::class);
     $rectorConfig->ruleWithConfiguration(ExtEmConfRector::class, [
         ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => [],
     ]);
