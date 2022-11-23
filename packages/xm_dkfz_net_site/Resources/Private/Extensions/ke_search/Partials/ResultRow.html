@@ -18,7 +18,7 @@
 						{resultrow.title_text}
 					</h3>
 					<f:if condition="{resultrow.date_timestamp} > 0">
-						<p class="card__sub-title">{f:format.date(format: ' d.F.Y', date: resultrow.date_timestamp)}</p>
+						<p class="card__sub-title">{f:format.date(format: '%d. %B %Y', date: resultrow.date_timestamp)}</p>
 					</f:if>
 				</div>
 				<f:if condition="{resultrow.teaser}">
