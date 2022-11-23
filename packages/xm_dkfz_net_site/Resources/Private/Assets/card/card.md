@@ -1,4 +1,0 @@
----
-title: Card
-state: incomplete
----

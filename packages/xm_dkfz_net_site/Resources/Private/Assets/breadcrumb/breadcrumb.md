@@ -1,4 +1,0 @@
----
-title: Breadcrumb
-state: incomplete
----
