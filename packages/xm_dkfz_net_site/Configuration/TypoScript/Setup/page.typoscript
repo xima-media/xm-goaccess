@@ -138,7 +138,7 @@ page {
   }
 
   includeCSS {
-    prototype = EXT:xm_dkfz_net_prototype/Resources/Public/Css/app.min.css
+    app = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/app.css
   }
 
   includeJSFooter {

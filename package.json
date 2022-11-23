@@ -4,7 +4,7 @@
   "description": "Asset build for DKFZ Intranet",
   "scripts": {
     "postinstall": "cd packages/xm_dkfz_net_prototype && npm install",
-    "start": "sass packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss packages/xm_dkfz_net_site/Public/Css/dist --watch –-load-path node_modules/bootstrap/scss",
+    "start": "sass --watch --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.css",
     "build": "cd packages/xm_dkfz_net_prototype && npm run build",
     "build:patternlab": "cd packages/xm_dkfz_net_prototype && npm run build:patternlab",
     "init": "cd packages/xm_dkfz_net_prototype && npm run init",
