@@ -324,6 +324,10 @@ mod.wizards.newContentElement.wizardItems {
   }
 }
 
+mod.web_layout {
+  localization.enableTranslate = 0
+}
+
 [traverse(page, "is_siteroot") == 1]
   TCEFORM.pages.media.config.maxitems >
 [GLOBAL]
