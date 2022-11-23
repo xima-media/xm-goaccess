@@ -1,10 +1,15 @@
 .idea
 
+node_modules
+
 public/_assets
 public/fileadmin
 public/typo3
 public/typo3temp
 public/index.php
+
+packages/xm_dkfz_net_site/Resources/Public/Css/dist
+packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
 
 Tests/Acceptance/Support/_generated
 
