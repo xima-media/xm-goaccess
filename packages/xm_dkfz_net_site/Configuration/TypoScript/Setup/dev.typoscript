@@ -12,5 +12,5 @@
   page.meta.robots = noindex,nofollow
 
   page.includeCSS.app = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/app.css
-  page.includeJSFooter.prototype = EXT:xm_dkfz_net_prototype/Resources/Public/JavaScript/app.js
+  page.includeJSFooter.app = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/app.js
 [global]

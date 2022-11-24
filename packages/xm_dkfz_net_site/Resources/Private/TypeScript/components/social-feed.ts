@@ -25,8 +25,6 @@ import app from './basic'
  */
 
 class SocialFeed {
-    copyrightButtonEL
-
     constructor () {
         app.log('component "social-feed" loaded')
     }

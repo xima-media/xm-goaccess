@@ -13,7 +13,7 @@ class HeroForm {
   }
 
   protected initAutocompleter() {
-    const autocompleteInputs = document.querySelectorAll('.hero-form input.autocomplete') as HTMLInputElement[]
+    const autocompleteInputs = document.querySelectorAll('.hero-form input.autocomplete') as NodeListOf<HTMLInputElement>
 
     if (autocompleteInputs) {
       autocompleteInputs.forEach(inputElement => this.initAutocompleterForInput(inputElement))
@@ -22,11 +22,11 @@ class HeroForm {
 
   protected initAutocompleterForInput(inputElement: HTMLInputElement) {
 
-    let allItems = JSON.parse(inputElement.getAttribute('data-autocomplete'))
+    const autocompleterData = JSON.parse(inputElement.getAttribute('data-autocomplete')) as String[]
 
-    allItems = allItems.map(item => {
+    const allItems = autocompleterData.map(item => {
       return {label: item, value: item}
-    });
+    }) as AutocomleterItem[];
 
     autocomplete({
       input: inputElement,

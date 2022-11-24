@@ -142,7 +142,8 @@ page {
   }
 
   includeJSFooter {
-    prototype = EXT:xm_dkfz_net_prototype/Resources/Public/JavaScript/app.min.js
+    app = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/app.js
+    app.type = module
   }
 
   meta {
