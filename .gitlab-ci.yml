@@ -101,6 +101,7 @@ deploy-dkfz-production:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   stage: deploy
+  when: manual
   rules:
     - if: $IS_SCHEDULED_BACKUP == "true"
       when: never
