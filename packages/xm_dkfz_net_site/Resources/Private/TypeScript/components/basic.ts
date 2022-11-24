@@ -1,29 +1,8 @@
-/**
- *    App
- *
- *    @tableofcontent
- *      1. Dependencies
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-// import css dependencies
-
 import Lightbox from './lightbox';
-
-/**
- *     @section 2. Class
- */
+import 'bootstrap/js/src/collapse'
 
 export default {
-  /**
-   * Variables
-   */
+
   debug: false,
   lang: document.documentElement.lang,
   prototype: document.body.classList.contains('prototype'),
@@ -129,7 +108,7 @@ export default {
 
   apiRequest: async function (url: string, method: string = 'GET', form: HTMLFormElement = null): Promise<any> {
 
-    let initConf = Object({ method: method});
+    let initConf = Object({method: method});
 
     if (form) {
       initConf['body'] = new FormData(form);
@@ -154,5 +133,3 @@ export default {
   }
 
 }
-
-// end of basic.js
