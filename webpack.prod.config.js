@@ -1,28 +1,20 @@
 const {merge} = require('webpack-merge');
 const devConfig = require('./webpack.config.js');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const {mergeWithCustomize, unique} = require("webpack-merge");
+const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = mergeWithCustomize(
-    {
-        customizeArray: unique(
-            "plugins",
-            ["MiniCssExtractPlugin"],
-            (plugin) => plugin.constructor && plugin.constructor.name
-        ),
-    })(
+module.exports = merge(
     devConfig,
     {
         mode: 'production',
         devtool: false,
         watch: false,
         output: {
-            filename: 'JavaScript/[name].min.js',
+            filename: '[name].min.js',
         },
-        plugins: [
-            new MiniCssExtractPlugin({
-                filename: 'Css/[name].min.css',
-            }),
-        ]
+        plugins: [],
+        optimization: {
+            minimize: true,
+            minimizer: [new TerserPlugin()],
+        },
     }
 );

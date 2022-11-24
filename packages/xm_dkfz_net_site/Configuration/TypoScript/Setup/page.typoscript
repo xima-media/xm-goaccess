@@ -143,7 +143,6 @@ page {
 
   includeJSFooter {
     app = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/app.js
-    app.type = module
   }
 
   meta {
