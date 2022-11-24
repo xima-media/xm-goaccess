@@ -54,7 +54,10 @@
 // 2.3 Utilities
 //@import 'bootstrap/scss/utilities/api';
 
-// 3. DKFZ
+// 3. Tippy
+@import "tippy.js/dist/tippy";
+
+// 4. DKFZ
 @import "components/_sprite";
 @import "components/basic-functions";
 @import "components/basic-mixins";
