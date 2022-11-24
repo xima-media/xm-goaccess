@@ -1,3 +1,9 @@
+// dependencies
+import 'bootstrap/js/src/collapse'
+import 'bootstrap/js/src/dropdown'
+import 'bootstrap/js/src/tab'
+
+// own
 import './components/basic'
 import './components/basic-init'
 import './components/header'
