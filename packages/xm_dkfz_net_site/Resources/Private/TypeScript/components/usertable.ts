@@ -1,4 +1,4 @@
-import './usertable.scss'
+
 
 class Usertable {
 

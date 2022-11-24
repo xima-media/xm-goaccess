@@ -1,4 +1,4 @@
-import './topnews.scss'
+
 
 class Topnews {
 

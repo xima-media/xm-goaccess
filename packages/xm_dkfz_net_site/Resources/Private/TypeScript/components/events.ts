@@ -1,4 +1,4 @@
-import './events.scss'
+
 
 class Events {
 }

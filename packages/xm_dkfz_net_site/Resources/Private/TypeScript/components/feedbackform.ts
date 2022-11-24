@@ -1,5 +1,5 @@
 import app from './basic'
-import './feedbackform.scss'
+
 
 class Feedbackform {
 

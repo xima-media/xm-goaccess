@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './tag.scss'
+
 
 /** @section 1.2 Import js */
 import app from './basic'

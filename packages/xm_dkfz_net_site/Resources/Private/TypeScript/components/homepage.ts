@@ -1,4 +1,4 @@
-import './homepage.scss'
+
 
 class Homepage {
   constructor() {

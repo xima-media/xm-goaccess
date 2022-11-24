@@ -1,4 +1,4 @@
-import './hero-form.scss'
+
 import autocomplete from "autocompleter";
 
 type AutocomleterItem = {

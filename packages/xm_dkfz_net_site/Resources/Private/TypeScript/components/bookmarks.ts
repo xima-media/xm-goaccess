@@ -15,7 +15,7 @@
  */
 
 /** @section 1.1 Import css */
-import './bookmarks.scss'
+
 
 /** @section 1.2 Import js */
 import app from './basic'

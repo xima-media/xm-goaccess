@@ -15,8 +15,8 @@
  */
 
 /** @section 1.1 Import css */
-import './field--select.scss'
-// import 'tom-select/dist/scss/tom-select.bootstrap5.scss'
+
+//
 
 /** @section 1.2 Import js */
 import app from './basic'

@@ -1,4 +1,4 @@
-import './jobs.scss'
+
 
 class Jobs {
   constructor() {
@@ -25,7 +25,7 @@ class Jobs {
           element.classList.add('hidden-pager')
         }
       })
-      
+
       // update counter
       document.querySelector('span[data-job-count]').innerHTML = (visibleCount).toString()
       document.querySelector('span[data-all-job-count]').innerHTML = count.toString()

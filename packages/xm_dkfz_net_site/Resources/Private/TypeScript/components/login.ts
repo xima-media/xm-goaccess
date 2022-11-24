@@ -1,4 +1,4 @@
-import './login.scss'
+
 
 import app from './basic'
 

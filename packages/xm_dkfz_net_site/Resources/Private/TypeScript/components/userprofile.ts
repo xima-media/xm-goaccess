@@ -1,5 +1,5 @@
 import app from './basic'
-import './userprofile.scss'
+
 import autocomplete, {AutocompleteItem} from "autocompleter";
 
 interface FeatureItem extends AutocompleteItem {

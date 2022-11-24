@@ -1,4 +1,4 @@
-import './related-pages.scss'
+
 
 class RelatedPages {
 }

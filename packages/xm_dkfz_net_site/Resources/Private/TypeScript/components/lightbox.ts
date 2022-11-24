@@ -1,4 +1,4 @@
-import './lightbox.scss'
+
 
 export enum LightboxStyle {
   default,

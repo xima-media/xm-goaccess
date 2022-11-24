@@ -1,4 +1,4 @@
-import './news.scss'
+
 
 import app from './basic'
 

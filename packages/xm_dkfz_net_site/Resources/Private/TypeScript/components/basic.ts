@@ -13,7 +13,7 @@
  */
 
 // import css dependencies
-import './basic.scss'
+
 import Lightbox from "./lightbox";
 
 /**

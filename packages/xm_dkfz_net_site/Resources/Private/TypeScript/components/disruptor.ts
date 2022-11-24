@@ -1,5 +1,5 @@
 import app from './basic'
-import './disruptor.scss'
+
 import {LightboxStyle} from "./lightbox";
 
 class Disruptor {
