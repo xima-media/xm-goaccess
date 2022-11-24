@@ -33,6 +33,18 @@ body#p8, body#p111 {
     @include media-breakpoint-down(md) {
         padding-top: 0;
     }
+
+    .list-view__item {
+        a {
+            &:hover {
+                text-decoration: none;
+
+                .card__title .tab__item__title {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
 
 .frame-ke_search_pi1 {
@@ -131,8 +143,6 @@ body#p8, body#p111 {
 
 }
 
-//@todo auslagen
-
 .layout__item--two {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -179,6 +189,8 @@ body#p8, body#p111 {
                     }
 
                     .card__title {
+                        hyphens: auto;
+                        word-break: break-word;
                         order: 2;
                     }
                 }
