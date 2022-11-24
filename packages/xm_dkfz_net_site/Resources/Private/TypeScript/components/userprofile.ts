@@ -1,4 +1,4 @@
-import app from './basic'
+import app from './basic.js'
 
 import autocomplete, {AutocompleteItem} from "autocompleter";
 

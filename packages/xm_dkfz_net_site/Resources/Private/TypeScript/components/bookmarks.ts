@@ -18,8 +18,8 @@
 
 
 /** @section 1.2 Import js */
-import app from './basic'
-import {LightboxStyle} from "./lightbox";
+import app from './basic.js'
+import {LightboxStyle} from './lightbox.js';
 
 /**
  *     @section 2. Class

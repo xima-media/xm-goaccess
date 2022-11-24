@@ -14,7 +14,7 @@
 
 // import css dependencies
 
-import Lightbox from "./lightbox";
+import Lightbox from './lightbox.js';
 
 /**
  *     @section 2. Class

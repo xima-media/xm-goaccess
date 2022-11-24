@@ -1,6 +1,6 @@
 
 
-import app from './basic'
+import app from './basic.js'
 
 class News {
   constructor() {

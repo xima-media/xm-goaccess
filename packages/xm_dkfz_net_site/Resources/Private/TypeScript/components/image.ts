@@ -16,7 +16,7 @@
 
 
 /** @section 1.2 Import js */
-import app from './basic'
+import app from './basic.js'
 
 /**
  *     @section 2. Class
