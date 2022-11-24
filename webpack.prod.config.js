@@ -11,7 +11,6 @@ module.exports = merge(
         output: {
             filename: '[name].min.js',
         },
-        plugins: [],
         optimization: {
             minimize: true,
             minimizer: [new TerserPlugin()],
