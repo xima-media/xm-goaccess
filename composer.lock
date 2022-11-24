@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53ba4c0b0c4f2ac2f5c5a5c74e5dea51",
+    "content-hash": "cb4f0253d7464f38123e742f752631f9",
     "packages": [
         {
             "name": "b13/container",
@@ -10377,37 +10377,6 @@
             }
         },
         {
-            "name": "xima/xm-dkfz-net-prototype",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "./packages/xm_dkfz_net_prototype",
-                "reference": "1346983240cb497858d3e8dc799fab4545b468b9"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "xm_dkfz_net_prototype"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Xima\\XmDkfzNetPrototype\\": "Classes"
-                }
-            },
-            "authors": [
-                {
-                    "name": "Maik Schneider",
-                    "email": "maik.schneider@xima.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Prototype extension",
-            "transport-options": {
-                "relative": true
-            }
-        },
-        {
             "name": "xima/xm-dkfz-net-site",
             "version": "dev-master",
             "dist": {
@@ -12422,12 +12391,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "a1e30f9773206c2740bdb26d564857fe8ee897ae"
+                "reference": "0399700d159e09b16645945758b65b921d3491fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a1e30f9773206c2740bdb26d564857fe8ee897ae",
-                "reference": "a1e30f9773206c2740bdb26d564857fe8ee897ae",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0399700d159e09b16645945758b65b921d3491fe",
+                "reference": "0399700d159e09b16645945758b65b921d3491fe",
                 "shasum": ""
             },
             "conflict": {
@@ -12659,7 +12628,7 @@
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
                 "mojo42/jirafeau": "<4.4",
                 "monolog/monolog": ">=1.8,<1.12",
-                "moodle/moodle": "<4.0.1",
+                "moodle/moodle": "<4.0.5",
                 "mustache/mustache": ">=2,<2.14.1",
                 "namshi/jose": "<2.2",
                 "neoan3-apps/template": "<1.1.1",
@@ -12955,7 +12924,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-22T19:04:21+00:00"
+            "time": "2022-11-23T23:04:03+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -14413,7 +14382,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "xima/xm-dkfz-net-site": 20,
-        "xima/xm-dkfz-net-prototype": 20,
         "xima/xm-dkfz-net-jobs": 20,
         "blueways/deployer-recipes": 20,
         "georgringer/news": 20,
