@@ -71,6 +71,7 @@ export default {
    */
   getUrlParamater(url: string, parameter: string) {
     const urlSearchParams = new URLSearchParams(url)
+    // @ts-ignore
     const params = Object.fromEntries(urlSearchParams.entries())
     const value = params[parameter]
 

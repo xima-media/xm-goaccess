@@ -30,10 +30,10 @@ class Header {
 
     constructor () {
         app.log('component "header" loaded')
-        this.headerEL = document.querySelector<HTMLElement>('.header')
+        this.headerEL = document.querySelector('.header')
 
         if (this.headerEL) {
-            this.headerStickyTriggerEL = this.headerEL.querySelector<HTMLElement>('.header__sticky-trigger')
+            this.headerStickyTriggerEL = this.headerEL.querySelector('.header__sticky-trigger')
 
             // methods
             this.stickyHeader()

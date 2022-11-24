@@ -30,7 +30,7 @@ class FieldText {
     constructor () {
         app.log('component "field text" loaded')
 
-        this.fieldEl = document.querySelectorAll<HTMLElement>('.field--text')
+        this.fieldEl = document.querySelectorAll('.field--text') as NodeListOf<HTMLElement>
 
         // methods
         this.events()
@@ -45,7 +45,7 @@ class FieldText {
 
         // event listener
         self.fieldEl.forEach(fieldEl => {
-            const fieldInputEl = fieldEl.querySelector<HTMLInputElement>('.field__input')
+            const fieldInputEl = fieldEl.querySelector('.field__input') as HTMLInputElement
             fieldInputEl.addEventListener('focus', () => self.focus(fieldEl, fieldInputEl))
             fieldInputEl.addEventListener('blur', () => self.blur(fieldEl, fieldInputEl))
         })

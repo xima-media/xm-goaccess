@@ -16,7 +16,7 @@ class News {
     slider.querySelector('button.next').addEventListener('click', this.onSliderButtonClick.bind(this, false, slider))
   }
 
-  onSliderButtonClick(isPrev, slider) {
+  onSliderButtonClick(isPrev: boolean, slider: HTMLElement) {
     const current = parseInt(slider.getAttribute('data-current'))
     const count = slider.querySelectorAll('img').length
     const next = isPrev ? (current + count + 1) % count + 1 : (current % count) + 1
@@ -24,7 +24,7 @@ class News {
     this.goSlide(slider, next, isPrev)
   }
 
-  goSlide(slider: Element, nextNumber: number, isPrev) {
+  goSlide(slider: Element, nextNumber: number, isPrev: boolean) {
     const animationClass = isPrev ? 'go-prev' : 'go-next'
 
     slider.querySelector('.image-slider__item:nth-child(' + nextNumber + ')').classList.add(animationClass)

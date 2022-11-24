@@ -46,8 +46,7 @@ class Carousel {
         self.carouselEl.forEach((element) => {
             const cols = JSON.parse(element.dataset.cols)
             const paginationStyle = JSON.parse(element.dataset.paginationStyle)
-            const paginationColored = JSON.parse(element.dataset.paginationColored)
-            const carouselEl = element.querySelector<HTMLElement>('.swiper')
+            const carouselEl = element.querySelector('.swiper') as HTMLElement
 
             // init
             const swiper = new Swiper(carouselEl, {
@@ -55,12 +54,12 @@ class Carousel {
                 loop: false,
                 speed: 600,
                 pagination: {
-                    el: element.querySelector<HTMLElement>('.swiper-pagination'),
+                    el: element.querySelector('.swiper-pagination') as HTMLElement,
                     clickable: true
                 },
                 navigation: {
-                    nextEl: element.querySelector<HTMLElement>('.swiper-button-next'),
-                    prevEl: element.querySelector<HTMLElement>('.swiper-button-prev'),
+                    nextEl: element.querySelector('.swiper-button-next') as HTMLElement,
+                    prevEl: element.querySelector('.swiper-button-prev') as HTMLElement,
                 },
                 breakpoints: {
                     0: {

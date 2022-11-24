@@ -84,7 +84,7 @@ class Organigramm {
     })
   }
 
-  protected onBoxClick(e) {
+  protected onBoxClick(e: Event) {
     this.close()
     this.bindEscKeyDown()
     const box = e.currentTarget as HTMLElement;
@@ -100,6 +100,7 @@ class Organigramm {
   }
 
   protected onBackgroundClick(e: PointerEvent) {
+    // @ts-ignore
     const isClickInsideContent = e.composedPath().includes(this.overlayContainer.querySelector('.organigram__detail.show'))
     if (!isClickInsideContent) {
       this.close()

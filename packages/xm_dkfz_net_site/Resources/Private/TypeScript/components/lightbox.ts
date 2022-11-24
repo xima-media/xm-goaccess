@@ -56,7 +56,9 @@ class Lightbox {
   }
 
   protected onBackgroundClick(e: PointerEvent) {
+    // @ts-ignore
     const isClickInsideContent = e.composedPath().includes(this.box.querySelector('.lightbox__content'))
+    // @ts-ignore
     const isClickInAutocomplete = e.composedPath().includes(document.querySelector('.autocomplete'))
     if (this.isCloseable && !(isClickInsideContent || isClickInAutocomplete)) {
       this.close()

@@ -25,8 +25,6 @@ import app from './basic'
  */
 
 class Table {
-    copyrightButtonEL
-
     constructor () {
         app.log('component "table" loaded')
 

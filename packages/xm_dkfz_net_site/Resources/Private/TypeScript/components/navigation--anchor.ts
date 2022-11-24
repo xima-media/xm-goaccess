@@ -130,6 +130,7 @@ class NavigationAnchor {
 
     if (!callback || typeof callback !== 'function') return;
 
+    // @ts-ignore
     let isScrolling: NodeJS.Timeout;
 
     window.addEventListener('scroll', function (event) {
