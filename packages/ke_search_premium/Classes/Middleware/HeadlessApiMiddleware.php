@@ -23,8 +23,8 @@ class HeadlessApiMiddleware implements MiddlewareInterface
         $contentElementUid = intval($request->getQueryParams()['tx_kesearch_pi1']['headless_ce']) ?? 0;
 
         // hook for custom modifications of the configuration
-        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTENSION']['ke_search_premium']['modifyHeadlessConfiguration'])) {
-            foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTENSION']['ke_search_premium']['modifyHeadlessConfiguration'] as $_classRef) {
+        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search_premium']['modifyHeadlessConfiguration'])) {
+            foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search_premium']['modifyHeadlessConfiguration'] as $_classRef) {
                 $_procObj = GeneralUtility::makeInstance($_classRef);
                 $_procObj->modifyHeadlessConfiguration($conf, $contentElementUid, $request, $handler);
             }
