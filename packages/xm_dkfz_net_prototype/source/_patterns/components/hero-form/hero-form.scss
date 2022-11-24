@@ -44,6 +44,10 @@ body#p8, body#p111 {
                 }
             }
         }
+
+        .card__tags {
+            margin-top: calc(.5 * var(--content-padding));
+        }
     }
 }
 
