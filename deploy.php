@@ -70,11 +70,15 @@ host('dev-t3-debian11-01')
 after('deploy:update_code', 'deploy:upload-dist');
 task('deploy:upload-dist', function () {
     upload(
-        'packages/xm_dkfz_net_prototype/Resources/Public/',
-        '{{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/',
+        'packages/xm_dkfz_net_site/Resources/Public/Css/dist/',
+        '{{release_path}}/packages/xm_dkfz_net_site/Resources/Public/Css/dist/',
     );
-    run('find {{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/ -type d -exec chmod 2770 {} \;');
-    run('find {{release_path}}/packages/xm_dkfz_net_prototype/Resources/Public/ -type f -exec chmod 0640 {} \;');
+    upload(
+        'packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist/',
+        '{{release_path}}/packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist/',
+    );
+    run('find {{release_path}}/packages/xm_dkfz_net_site/Resources/Public/ -type d -exec chmod 2770 {} \;');
+    run('find {{release_path}}/packages/xm_dkfz_net_site/Resources/Public/ -type f -exec chmod 0640 {} \;');
 });
 
 // Cache warmup
