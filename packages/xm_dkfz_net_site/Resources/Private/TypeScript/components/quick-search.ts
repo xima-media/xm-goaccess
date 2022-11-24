@@ -37,8 +37,8 @@ class QuickSearch {
 
         // main element existing?
         if (this.quickSearchEl) {
-            this.quickSearchInputEl = this.quickSearchEl.querySelector<HTMLInputElement>('.field__input')
-            this.quickSearchButtonToggleEl = this.quickSearchEl.querySelector<HTMLButtonElement>('.quick-search__button--toggle')
+            this.quickSearchInputEl = this.quickSearchEl.querySelector('.field__input') as HTMLInputElement
+            this.quickSearchButtonToggleEl = this.quickSearchEl.querySelector('.quick-search__button--toggle') as HTMLButtonElement
 
             // methods
             this.events()
@@ -84,9 +84,10 @@ class QuickSearch {
      */
     clickOutsideQuickSearch (event: MouseEvent) {
         const self = this
-        const targetParentEl = (<HTMLElement>event.target).closest('.quick-search')
+        const targetEl = event.target as HTMLElement
+        const targetParentEl = targetEl.closest('.quick-search') as HTMLElement
 
-        if (targetParentEl === null && !event.target.classList.contains('autocomplete-suggestion')) {
+        if (targetParentEl === null && !targetEl.classList.contains('autocomplete-suggestion')) {
             if (self.quickSearchEl.classList.contains('fx--open')) {
                 self.toggleQuickSearch()
             }
