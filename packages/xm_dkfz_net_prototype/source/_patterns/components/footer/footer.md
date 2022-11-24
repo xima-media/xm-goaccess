@@ -1,4 +1,0 @@
----
-title: Footer
-state: incomplete
----

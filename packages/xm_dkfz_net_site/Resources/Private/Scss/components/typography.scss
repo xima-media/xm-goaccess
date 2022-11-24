@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'The Serif';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../../Fonts/the-serif/the-serif--bold-subset.woff2') format('woff2');
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D, U+C4, U+D6, U+DC, U+DF, U+E4, U+F6, U+FC;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'The Sans';
+    font-weight: 200;
+    font-style: normal;
+    src: url('../../Fonts/the-sans/the-sans--light-subset.woff2') format('woff2');
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D, U+C4, U+D6, U+DC, U+DF, U+E4, U+F6, U+FC;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'The Sans';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../../Fonts/the-sans/the-sans--plain-subset.woff2') format('woff2');
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D, U+C4, U+D6, U+DC, U+DF, U+E4, U+F6, U+FC;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'The Sans';
+    font-weight: 500;
+    font-style: normal;
+    src: url('../../Fonts/the-sans/the-sans--semi-bold-subset.woff2') format('woff2');
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D, U+C4, U+D6, U+DC, U+DF, U+E4, U+F6, U+FC;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'The Sans';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../../Fonts/the-sans/the-sans--bold-subset.woff2') format('woff2');
+    unicode-range: U+22, U+25-3F, U+41-5F, U+61-7D, U+C4, U+D6, U+DC, U+DF, U+E4, U+F6, U+FC;
+    font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $font-family-serif;
+}
+
+.h1, h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+
+    + .text-sub-title {
+    }
+
+    @include media-breakpoint-up(md) {
+        font-size: 34px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 58px;
+        line-height: 70px;
+        margin-bottom: 2.5rem;
+
+        + .text-sub-title {
+        }
+    }
+}
+
+.h2, h2 {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 1.25rem;
+
+    + .text-sub-title {
+    }
+
+    @include media-breakpoint-up(md) {
+        font-size: 44px;
+        line-height: 50px;
+        margin-bottom: 2.5rem;
+
+        + .text-sub-title {
+        }
+    }
+}
+
+.h3, h3 {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 1rem;
+
+    + .text-sub-title {
+    }
+
+    @include media-breakpoint-up(md) {
+        font-size: 34px;
+        line-height: 42px;
+        margin-bottom: 1.5rem;
+
+        + .text-sub-title {
+        }
+    }
+}
+
+.h4, h4 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 0.75rem;
+
+    + .text-sub-title {
+    }
+
+    @include media-breakpoint-up(md) {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 1.25rem;
+
+        + .text-sub-title {
+        }
+    }
+}
+
+.h5, h5 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 0.5rem;
+
+    + .text-sub-title {
+    }
+
+    @include media-breakpoint-up(md) {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 1rem;
+
+        + .text-sub-title {
+            order: 0;
+            font-size: 28px;
+            line-height: 28px;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.h6, h6 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 0.25rem;
+}
+
+p {
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.m-b-0 {
+    margin-bottom: 0;
+}
+
+.font-family-serif {
+    font-family: var(--font-family-serif);
+}
+
+.font-family-sans-serif {
+    font-family: var(--font-family-sans-serif);
+}
+
+.text-intro {
+    font-family: var(--font-family-sans-serif);
+    font-weight: 200;
+    line-height: 1.6;
+}
+
+// @TODO: REMOVE THIS
+.text-copy-small {
+    @include text-copy-small;
+
+    &--bold {
+        @include text-copy-small(700, .6px);
+    }
+}

@@ -1,4 +1,0 @@
----
-title: Dropdown
-state: incomplete
----
