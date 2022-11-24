@@ -86,7 +86,7 @@ class QuickSearch {
         const self = this
         const targetParentEl = (<HTMLElement>event.target).closest('.quick-search')
 
-        if (targetParentEl === null) {
+        if (targetParentEl === null && !event.target.classList.contains('autocomplete-suggestion')) {
             if (self.quickSearchEl.classList.contains('fx--open')) {
                 self.toggleQuickSearch()
             }
