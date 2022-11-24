@@ -19,7 +19,7 @@
 
 /** @section 1.2 Import js */
 import app from './basic'
-import tippy from 'tippy.js/dist/tippy.esm'
+import tippy from 'tippy.js'
 
 /**
  *     @section 2. Class
