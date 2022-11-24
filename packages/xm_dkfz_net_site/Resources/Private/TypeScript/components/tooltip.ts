@@ -18,9 +18,8 @@
 
 
 /** @section 1.2 Import js */
-import app from './basic.js'
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
+import app from './basic'
+import tippy from 'tippy.js/dist/tippy.esm'
 
 /**
  *     @section 2. Class

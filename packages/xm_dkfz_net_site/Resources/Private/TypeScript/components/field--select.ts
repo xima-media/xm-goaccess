@@ -19,7 +19,7 @@
 //
 
 /** @section 1.2 Import js */
-import app from './basic.js'
+import app from './basic'
 import TomSelect from 'tom-select'
 
 /**

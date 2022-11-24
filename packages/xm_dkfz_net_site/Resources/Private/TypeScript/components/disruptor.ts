@@ -1,6 +1,6 @@
-import app from './basic.js'
+import app from './basic'
 
-import {LightboxStyle} from './lightbox.js';
+import {LightboxStyle} from './lightbox';
 
 class Disruptor {
 

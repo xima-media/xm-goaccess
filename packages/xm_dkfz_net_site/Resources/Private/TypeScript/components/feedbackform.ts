@@ -1,4 +1,4 @@
-import app from './basic.js'
+import app from './basic'
 
 
 class Feedbackform {
