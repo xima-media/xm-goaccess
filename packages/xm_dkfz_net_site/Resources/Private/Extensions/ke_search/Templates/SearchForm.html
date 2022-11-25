@@ -13,7 +13,7 @@
 
 <f:section name="default">
 	<div class="hero-form__wrapper">
-		<form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" action="{f:uri.page(pageUid: targetpage)}"
+		<form method="get" id="form_kesearch_pi3" name="form_kesearch_pi3" action="{f:uri.page(pageUid: targetpage)}"
 			  class="hero-form hero-form--search">
 			<f:comment><!-- Replace the URL with the speaking URL --></f:comment>
 			<f:if condition="{isEmptySearch} == FALSE">
@@ -42,6 +42,7 @@
 								type="search"
 								class="field__input"
 								id="ke_search_sword"
+								autocomplete="off"
 								name="tx_kesearch_pi1[sword]"
 								value="{searchword -> f:format.raw()}"
 								placeholder="{searchwordDefault}"
@@ -104,12 +105,13 @@
 					class="field__input"
 					id="ke_search_pi3_sword"
 					name="tx_kesearch_pi1[sword]"
+					autocomplete="off"
 					value="{searchword -> f:format.raw()}"
 					placeholder="{searchwordDefault}"
 				/>
 			</div>
 
-			<button type="button"
+			<button type="submit"
 					class="quick-search__button quick-search__button--submit button button--icon-only button--white">
 				<f:render partial="Icon" arguments="{icon: 'search'}"/>
 			</button>
