@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb4f0253d7464f38123e742f752631f9",
+    "content-hash": "b15de3a24c6606c09b2a8d355a58e69d",
     "packages": [
         {
             "name": "b13/container",
@@ -604,6 +604,88 @@
                 "source": "https://bitbucket.org/blueways/deployer-recipes/src/d8b9e8a7ec7e364bae3fcd9a5454e9a381426ef9/?at=feature/fb-deployment"
             },
             "time": "2022-11-02T14:31:24+00:00"
+        },
+        {
+            "name": "causal/image_autoresize",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xperseguers/t3ext-image_autoresize.git",
+                "reference": "9e5fed66f2ed3f82628c6cdcf32fba3a06bebf07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xperseguers/t3ext-image_autoresize/zipball/9e5fed66f2ed3f82628c6cdcf32fba3a06bebf07",
+                "reference": "9e5fed66f2ed3f82628c6cdcf32fba3a06bebf07",
+                "shasum": ""
+            },
+            "require": {
+                "ext-exif": "*",
+                "ext-json": "*",
+                "php": ">=7.4.0 <=7.4.99 || >=8.0.0 <=8.1.99",
+                "typo3/cms-core": "^10 || ^11 || ^12"
+            },
+            "replace": {
+                "typo3-ter/image-autoresize": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "image_autoresize"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Causal\\ImageAutoresize\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later",
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Xavier Perseguers",
+                    "email": "xavier@causal.ch",
+                    "homepage": "https://www.causal.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simplify the way your editors may upload their images: no complex local procedure needed, let TYPO3 automatically resize down their huge images/pictures on-the-fly during upload (or using a scheduler task for batch processing) and according to your own business rules (directory/groups). This will highly reduce the footprint on your server and speed-up response time if lots of images are rendered (e.g., in a gallery). Features an EXIF/IPTC extractor to ensure metadata may be used by the FAL indexer even if not preserved upon resizing.",
+            "homepage": "https://github.com/xperseguers/t3ext-image_autoresize",
+            "keywords": [
+                "IPTC",
+                "TYPO3 CMS",
+                "auto-resize",
+                "autoresize",
+                "batch",
+                "exif",
+                "fal",
+                "footprint",
+                "image",
+                "performance",
+                "picture",
+                "upload"
+            ],
+            "support": {
+                "issues": "https://github.com/xperseguers/t3ext-image_autoresize/issues",
+                "source": "https://github.com/xperseguers/t3ext-image_autoresize/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/xperseguers/10",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/xperseguers",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-10-25T08:45:48+00:00"
         },
         {
             "name": "christian-riesen/base32",
