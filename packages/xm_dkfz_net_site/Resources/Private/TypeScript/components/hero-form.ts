@@ -1,4 +1,3 @@
-
 import autocomplete from "autocompleter";
 
 type AutocomleterItem = {

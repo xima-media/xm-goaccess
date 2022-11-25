@@ -1,35 +1,8 @@
-/**
- *    Main navigation
- *
- *    @tableofcontent
- *      1. Dependencies
- *       1.1 Import css
- *       1.2 Import js
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-/** @section 1.1 Import css */
-
-
-/** @section 1.2 Import js */
-import app from './basic'
-
-/**
- *     @section 2. Class
- */
-
 class NavigationMain {
     buttonToggleMenuEl
     buttonToggleMenuItemsEl
 
     constructor () {
-        app.log('component "main navigation" loaded')
         this.buttonToggleMenuEl = document.querySelector<HTMLButtonElement>('.fx--toggle-main-menu')
         this.buttonToggleMenuItemsEl = document.querySelectorAll<HTMLButtonElement>('.navigation__button--toggle-items')
 
@@ -39,9 +12,6 @@ class NavigationMain {
         }
     }
 
-    /**
-     * Events
-     */
     events () {
         const self = this
 
@@ -54,9 +24,6 @@ class NavigationMain {
         ))
     }
 
-    /**
-     * Toggle mobile menu
-     */
     toggleMobileMenu () {
         // const self = this
 
@@ -66,10 +33,6 @@ class NavigationMain {
         document.documentElement.classList.toggle('fx--main-menu-open')
     }
 
-    /**
-     * Toggle mobile menu items
-     * @param button HTMLButtonElement
-     */
     toggleMobileMenuItems (button: HTMLButtonElement) {
         //self.buttonToggleMenuEl @todo togle aria-attributwe
 
@@ -81,10 +44,4 @@ class NavigationMain {
     }
 }
 
-/**
- *     @section 3. Export class
- */
-
 export default (new NavigationMain())
-
-// end of navigation--main.js

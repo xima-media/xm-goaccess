@@ -1,5 +1,4 @@
 
-
 class Jobs {
   constructor() {
     this.bindEvents()

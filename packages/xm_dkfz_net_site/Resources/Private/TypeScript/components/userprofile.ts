@@ -10,8 +10,6 @@ interface FeatureItem extends AutocompleteItem {
 class Userprofile {
 
   constructor() {
-    app.log('component "userinfo" loaded')
-
     this.bindEvents()
   }
 
@@ -91,7 +89,7 @@ class Userprofile {
           const optionElement = selectElement.querySelector('option[value="' + featureId + '"]') as HTMLOptionElement
           optionElement.removeAttribute('selected')
         } else {
-          container.querySelectorAll('input[name^="tx_bwguild_api[user][features]['+featureId+']"]').forEach(el => el.remove())
+          container.querySelectorAll('input[name^="tx_bwguild_api[user][features][' + featureId + ']"]').forEach(el => el.remove())
         }
         // delete element
         featureElement.remove()
@@ -152,12 +150,12 @@ class Userprofile {
         const hiddenElementRt = document.createElement('input')
         hiddenElementRt.value = recordType
         hiddenElementRt.setAttribute('type', 'hidden')
-        hiddenElementRt.setAttribute('name', 'tx_bwguild_api[user][features]['+newFeatureId+'][recordType]')
+        hiddenElementRt.setAttribute('name', 'tx_bwguild_api[user][features][' + newFeatureId + '][recordType]')
         container.append(hiddenElementRt)
         const hiddenElementNa = document.createElement('input')
         hiddenElementNa.value = newFeatureItem.label
         hiddenElementNa.setAttribute('type', 'hidden')
-        hiddenElementNa.setAttribute('name', 'tx_bwguild_api[user][features]['+newFeatureId+'][name]')
+        hiddenElementNa.setAttribute('name', 'tx_bwguild_api[user][features][' + newFeatureId + '][name]')
         container.append(hiddenElementNa)
 
         // clear input

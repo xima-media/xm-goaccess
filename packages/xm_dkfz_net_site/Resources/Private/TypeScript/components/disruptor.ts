@@ -5,8 +5,6 @@ import {LightboxStyle} from './lightbox';
 class Disruptor {
 
     constructor() {
-        app.log('component "disruptor" loaded')
-
         this.bindDisruptorLoad()
     }
 

@@ -1,36 +1,9 @@
-/**
- *    Anchor navigation
- *
- *    @tableOfContent
- *      1. Dependencies
- *       1.1 Import css
- *       1.2 Import js
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-/** @section 1.1 Import css */
-
-
-/** @section 1.2 Import js */
-import app from './basic'
-
-/**
- *     @section 2. Class
- */
-
 class NavigationAnchor {
   public nav: HTMLElement;
   public navItems: HTMLElement;
   public navLinks: Array<any>;
 
   constructor() {
-    app.log('component "anchor navigation" loaded')
     // only if element on the page
     if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
       // methods
@@ -45,9 +18,6 @@ class NavigationAnchor {
     this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'));
   }
 
-  /**
-   * Events
-   */
   protected events () {
     // variables
     const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
@@ -144,11 +114,4 @@ class NavigationAnchor {
   }
 }
 
-/**
- *     @section 3. Export class
- */
-
 export default (new NavigationAnchor())
-
-// end of navigation--anchor.js
-

@@ -1,34 +1,8 @@
-/**
- *    Tooltip
- *
- *    @tableofcontent
- *      1. Dependencies
- *       1.1 Import css
- *       1.2 Import js
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-/** @section 1.1 Import css */
-
-
-/** @section 1.2 Import js */
 import app from './basic'
 import tippy from 'tippy.js'
 
-/**
- *     @section 2. Class
- */
-
 class Tooltip {
     constructor () {
-        app.log('component "tooltip" loaded')
-
         document.querySelectorAll<HTMLElement>('[data-tooltip]').forEach((tooltip) => {
         const placement = tooltip.dataset.tooltipPlacement ? tooltip.dataset.tooltipPlacement : 'bottom'
         const content = tooltip.dataset.tooltip
@@ -61,10 +35,4 @@ class Tooltip {
     }
 }
 
-/**
- *     @section 3. Export class
- */
-
 export default (new Tooltip())
-
-// end of tooltip.js

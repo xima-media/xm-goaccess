@@ -1,11 +1,8 @@
 import app from './basic'
 
-
 class Feedbackform {
 
   constructor() {
-    app.log('component "feedbackform" loaded')
-
     this.bindEvents()
   }
 

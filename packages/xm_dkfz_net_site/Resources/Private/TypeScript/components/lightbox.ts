@@ -1,5 +1,3 @@
-
-
 export enum LightboxStyle {
   default,
   sidebar,

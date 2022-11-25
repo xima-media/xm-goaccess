@@ -33,8 +33,6 @@ class Userinfo {
   protected userinfo: UserinfoResponse;
 
   constructor() {
-    app.log('component "userinfo" loaded')
-
     this.bindStorageResetAtLogin()
 
     if (!document.querySelectorAll('#userinfoUri').length) {

@@ -1,29 +1,3 @@
-/**
- *    Quick search
- *
- *    @tableofcontent
- *      1. Dependencies
- *       1.1 Import css
- *       1.2 Import js
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-/** @section 1.1 Import css */
-
-
-/** @section 1.2 Import js */
-import app from './basic'
-
-/**
- *     @section 2. Class
- */
-
 class QuickSearch {
     quickSearchOpenState
     quickSearchEl
@@ -31,7 +5,6 @@ class QuickSearch {
     quickSearchButtonToggleEl
 
     constructor () {
-        app.log('component "quick search" loaded')
         this.quickSearchOpenState = false
         this.quickSearchEl = document.querySelector<HTMLElement>('.quick-search')
 
@@ -45,9 +18,6 @@ class QuickSearch {
         }
     }
 
-    /**
-     * Events
-     */
     events () {
         const self = this
 
@@ -58,9 +28,6 @@ class QuickSearch {
         document.addEventListener('mousedown', event => self.clickOutsideQuickSearch(event))
     }
 
-    /**
-     * Open/close quick search
-     */
     toggleQuickSearch () {
         const self = this
 
@@ -78,10 +45,6 @@ class QuickSearch {
         // @todo aria-expanden togglen
     }
 
-    /**
-     * click outside and close the quick search
-     * @param event MouseEvent
-     */
     clickOutsideQuickSearch (event: MouseEvent) {
         const self = this
         const targetEl = event.target as HTMLElement
@@ -97,10 +60,4 @@ class QuickSearch {
     }
 }
 
-/**
- *     @section 3. Export class
- */
-
 export default (new QuickSearch())
-
-// end of quick-search.js

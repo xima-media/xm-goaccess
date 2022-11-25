@@ -1,5 +1,3 @@
-
-
 class Topnews {
 
   protected slider: HTMLDivElement

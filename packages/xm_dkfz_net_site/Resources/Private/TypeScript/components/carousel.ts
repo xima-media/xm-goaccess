@@ -1,35 +1,9 @@
-/**
- *    Carousel
- *
- *    @tableofcontent
- *      1. Dependencies
- *       1.1 Import css
- *       1.2 Import js
- *      2. Class
- *      3. Export class
- *
- */
-
-/**
- *     @section 1. Dependencies
- */
-
-/** @section 1.1 Import css */
-
-
-/** @section 1.2 Import js */
-import app from './basic'
 import Swiper, { Navigation, Pagination } from 'swiper'
 
-
-/**
- *     @section 2. Class
- */
 
 class Carousel {
     carouselEl
     constructor () {
-        app.log('component "carousel" loaded')
         this.carouselEl = document.querySelectorAll<HTMLElement>('.carousel')
 
         // methods
@@ -101,19 +75,10 @@ class Carousel {
         })
     }
 
-    /**
-     * Print items count as data attribute
-     */
     printItemsCount (swiper: Swiper) {
         // print item counts as data attribute
         swiper.$el[0].parentElement.dataset.count = String(swiper.$el[0].querySelectorAll<HTMLElement>('.swiper-slide').length)
     }
 }
 
-/**
- *     @section 3. Export class
- */
-
 export default (new Carousel())
-
-// end of carousel.js

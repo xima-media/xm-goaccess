@@ -1,11 +1,5 @@
-
-
-import app from './basic'
-
 class News {
   constructor() {
-    app.log('component "news" loaded')
-
     if (document.querySelector('.image-slider')) {
       document.querySelectorAll('.image-slider').forEach(slider => this.initSlider(slider))
     }
