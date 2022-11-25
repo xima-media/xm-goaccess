@@ -139,10 +139,19 @@ page {
 
   includeCSS {
     app = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css
+    keSearchPremiumAutocompleteCss >
   }
 
   includeJSFooter {
     app = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/app.js
+  }
+
+  includeJSFooterlibs {
+    keSearchPremiumAutocompleteJs >
+  }
+
+  footerData {
+    1637328467 >
   }
 
   meta {

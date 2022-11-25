@@ -14,7 +14,7 @@
 <f:section name="default">
 	<div class="hero-form__wrapper">
 		<form method="get" id="form_kesearch_pi3" name="form_kesearch_pi3" action="{f:uri.page(pageUid: targetpage)}"
-			  class="hero-form hero-form--search">
+			  class="hero-form hero-form--search quick-search__wrapper">
 			<f:comment><!-- Replace the URL with the speaking URL --></f:comment>
 			<f:if condition="{isEmptySearch} == FALSE">
 				<f:format.raw>
@@ -84,7 +84,7 @@
 </f:section>
 
 <f:section name="quickSearch">
-	<div class="quick-search">
+	<div class="quick-search quick-search__wrapper">
 		<button type="button"
 				class="quick-search__button quick-search__button--toggle button button--icon-only button--white"
 				aria-label="{f:translate(key: 'quickSearch.button.arialabel', extensionName: 'XmDkfzNetSite')}"
