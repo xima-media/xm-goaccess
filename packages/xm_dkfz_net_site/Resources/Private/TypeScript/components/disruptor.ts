@@ -1,47 +1,46 @@
 import app from './basic'
 
-import {LightboxStyle} from './lightbox';
+import { LightboxStyle } from './lightbox'
 
 class Disruptor {
+  constructor () {
+    this.bindDisruptorLoad()
+  }
 
-    constructor() {
-        this.bindDisruptorLoad()
-    }
+  protected bindDisruptorLoad () {
+    document.addEventListener('DOMContentLoaded', () => {
+      const disruptorModal = Array.from(document.querySelectorAll('.disruptor-wrapper'))
 
-    protected bindDisruptorLoad() {
-        document.addEventListener('DOMContentLoaded', () => {
-            const disruptorModal = Array.from(document.querySelectorAll('.disruptor-wrapper'))
+      disruptorModal.forEach(modal => {
+        const disruptorModalFixed = modal.nextElementSibling
 
-            disruptorModal.forEach(modal => {
-                const disruptorModalFixed = modal.nextElementSibling
+        if (modal as HTMLElement && sessionStorage.getItem('disruptor') === null) {
+          app.lightbox.startLoading()
+          app.lightbox.open(LightboxStyle.warning, 'disruptor')
+          app.lightbox.displayContent(modal.innerHTML)
 
-                if(modal as HTMLElement && sessionStorage.getItem("disruptor") === null) {
-                    app.lightbox.startLoading()
-                    app.lightbox.open(LightboxStyle.warning, 'disruptor')
-                    app.lightbox.displayContent(modal.innerHTML)
+          document.addEventListener('lightboxClose', e => {
+            const target = e.target as HTMLButtonElement
+            const root = target.querySelector('html')
 
-                    document.addEventListener('lightboxClose', e => {
-                        const target = e.target as HTMLButtonElement
-                        const root = target.querySelector('html')
+            if (root.dataset.lightBoxType && root.dataset.lightBoxType === 'disruptor') {
+              disruptorModalFixed.classList.remove('d-none')
+              modal.classList.add('d-none')
 
-                        if (root.dataset.lightBoxType && root.dataset.lightBoxType === 'disruptor' ) {
-                            disruptorModalFixed.classList.remove('d-none')
-                            modal.classList.add('d-none')
+              sessionStorage.setItem('disruptor', 'close')
+            }
+          })
+          app.lightbox.stopLoading()
+        }
 
-                            sessionStorage.setItem('disruptor', 'close')
-                        }
-                      })
-                    app.lightbox.stopLoading()
-                }
-
-                if(sessionStorage.getItem("disruptor") !== null) {
-                    disruptorModalFixed.classList.remove('d-none')
-                    document.querySelector('html').classList.add('modal-disruptor-fixed')
-                    modal.classList.add('d-none')
-                }
-            })
-        });
-    }
+        if (sessionStorage.getItem('disruptor') !== null) {
+          disruptorModalFixed.classList.remove('d-none')
+          document.querySelector('html').classList.add('modal-disruptor-fixed')
+          modal.classList.add('d-none')
+        }
+      })
+    })
+  }
 }
 
 export default (new Disruptor())

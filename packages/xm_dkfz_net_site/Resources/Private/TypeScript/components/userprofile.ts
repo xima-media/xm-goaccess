@@ -1,29 +1,28 @@
 import app from './basic'
 
-import autocomplete, {AutocompleteItem} from "autocompleter";
+import autocomplete, { AutocompleteItem } from 'autocompleter'
 
 interface FeatureItem extends AutocompleteItem {
-  label: string,
+  label: string
   value: string
 }
 
 class Userprofile {
-
-  constructor() {
+  constructor () {
     this.bindEvents()
   }
 
-  protected bindEvents() {
+  protected bindEvents () {
     this.bindProfileEditLink()
   }
 
-  protected bindProfileEditLink() {
+  protected bindProfileEditLink () {
     document.querySelectorAll('a[data-user-edit-link]').forEach((link) => {
       link.addEventListener('click', this.onUserProfileEditLinkClick.bind(this))
-    });
+    })
   }
 
-  protected onUserProfileEditLinkClick(e: Event) {
+  protected onUserProfileEditLinkClick (e: Event) {
     e.preventDefault()
     const link = e.currentTarget as Element
     const url = link.getAttribute('data-user-edit-link')
@@ -38,45 +37,43 @@ class Userprofile {
     })
   }
 
-  protected async loadUserEditForm(url: string) {
-    return app.apiRequest(url).then(data => {
+  protected async loadUserEditForm (url: string) {
+    return await app.apiRequest(url).then(data => {
       return data.html
     })
   }
 
-  protected bindUserEditFormEvents() {
+  protected bindUserEditFormEvents () {
     const form = app.lightbox.content.querySelector('form')
     this.initUserFeatureInputs()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
   }
 
-  protected initUserFeatureInputs() {
-
-    const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]') as HTMLLinkElement
+  protected initUserFeatureInputs () {
+    const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]')
     const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
     app.lightbox.content.querySelectorAll('div[data-all-features]').forEach((container) => {
-
-      const inputElement = container.querySelector('input') as HTMLInputElement
-      const bubbleDropZoneElement = container.querySelector('ul.list') as HTMLDivElement
+      const inputElement = container.querySelector('input')
+      const bubbleDropZoneElement = container.querySelector('ul.list')
       const recordType = container.getAttribute('data-record-type')
       const allFeaturesJson = container.getAttribute('data-all-features')
       const allFeatures = allFeaturesJson ? JSON.parse(allFeaturesJson) as FeatureItem[] : []
       const selectedFeaturesJson = container.getAttribute('data-selected-features')
       let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
 
-      function hashCode(str: string) {
-        let hash = 0;
+      function hashCode (str: string) {
+        let hash = 0
         for (let i = 0, len = str.length; i < len; i++) {
-          let chr = str.charCodeAt(i);
-          hash = (hash << 5) - hash + chr;
-          hash |= 0; // Convert to 32bit integer
+          const chr = str.charCodeAt(i)
+          hash = (hash << 5) - hash + chr
+          hash |= 0 // Convert to 32bit integer
         }
-        return hash;
+        return hash
       }
 
-      function onBubbleClick(e: Event) {
+      function onBubbleClick (e: Event) {
         e.preventDefault()
         const featureElement = e.currentTarget as HTMLLinkElement
         const featureId = featureElement.getAttribute('data-feature')
@@ -84,9 +81,9 @@ class Userprofile {
         selectedFeatures = selectedFeatures.filter(feature => feature.value !== featureId)
 
         // remove from form selection OR remove created newly created hidden element
-        const isPersisted = parseInt(featureId) > 0;
+        const isPersisted = parseInt(featureId) > 0
         if (isPersisted) {
-          const optionElement = selectElement.querySelector('option[value="' + featureId + '"]') as HTMLOptionElement
+          const optionElement = selectElement.querySelector('option[value="' + featureId + '"]')
           optionElement.removeAttribute('selected')
         } else {
           container.querySelectorAll('input[name^="tx_bwguild_api[user][features][' + featureId + ']"]').forEach(el => el.remove())
@@ -95,12 +92,12 @@ class Userprofile {
         featureElement.remove()
       }
 
-      function addBubbleClickEvent(bubbleElement: Element) {
+      function addBubbleClickEvent (bubbleElement: Element) {
         bubbleElement.addEventListener('click', onBubbleClick)
       }
 
-      function addNewBubbleForFeature(feature: FeatureItem) {
-        let newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement;
+      function addNewBubbleForFeature (feature: FeatureItem) {
+        const newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement
         newFeatureBubble.setAttribute('data-feature', feature.value)
         newFeatureBubble.querySelector('span').innerHTML = feature.label
         newFeatureBubble.classList.remove('d-none')
@@ -108,11 +105,11 @@ class Userprofile {
         bubbleDropZoneElement.appendChild(newFeatureBubble)
       }
 
-      function onAutocompleteSelect(item: FeatureItem) {
+      function onAutocompleteSelect (item: FeatureItem) {
         // create new bubble
         addNewBubbleForFeature(item)
         // add as selected in form
-        const optionElement = selectElement.querySelector('option[value="' + item.value + '"]') as HTMLOptionElement
+        const optionElement = selectElement.querySelector('option[value="' + item.value + '"]')
         optionElement.setAttribute('selected', 'selected')
         // add to selected list
         selectedFeatures.push(item)
@@ -120,17 +117,17 @@ class Userprofile {
         inputElement.value = ''
       }
 
-      function onAutocompleteFetch(text: string, update: any) {
+      function onAutocompleteFetch (text: string, update: any) {
         text = text.toLowerCase()
         const filteredFeatures = allFeatures.filter((feature) => {
-          const isMatchedByTextSearch = feature.label.toLowerCase().indexOf(text) >= 0
+          const isMatchedByTextSearch = feature.label.toLowerCase().includes(text)
           const isNotAlreadySelected = selectedFeatures.find(f => f.value === feature.value) === undefined
-          return isMatchedByTextSearch && isNotAlreadySelected;
+          return isMatchedByTextSearch && isNotAlreadySelected
         })
         update(filteredFeatures)
       }
 
-      function onNewFeatureEntered() {
+      function onNewFeatureEntered () {
         const trimmedInputString = inputElement.value.trim()
         const newFeatureId = 'NEW' + hashCode(trimmedInputString)
         const isAlreadySelected = selectedFeatures.find(f => f.label === trimmedInputString) !== undefined
@@ -140,7 +137,7 @@ class Userprofile {
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
+        const newFeatureItem: FeatureItem = { label: trimmedInputString, value: newFeatureId }
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
@@ -185,7 +182,7 @@ class Userprofile {
     })
   }
 
-  protected onUserEditFormSubmit(e: Event) {
+  protected onUserEditFormSubmit (e: Event) {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
@@ -201,12 +198,10 @@ class Userprofile {
       .catch(e => app.handleRequestError.bind(this))
   }
 
-  protected onAbortButtonClick(e: Event) {
+  protected onAbortButtonClick (e: Event) {
     e.preventDefault()
     app.lightbox.close()
   }
-
-
 }
 
 export default (new Userprofile())

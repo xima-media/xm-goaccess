@@ -1,17 +1,17 @@
-import autocomplete from "autocompleter";
+import autocomplete from 'autocompleter'
 
-type AutocomleterItem = {
-  label: string,
+interface AutocomleterItem {
+  label: string
   value: string
 }
 
 class HeroForm {
-  constructor() {
+  constructor () {
     this.initAutocompleter()
     this.bindSearchFormEvents()
   }
 
-  protected initAutocompleter() {
+  protected initAutocompleter () {
     const autocompleteInputs = document.querySelectorAll('.hero-form input.autocomplete') as NodeListOf<HTMLInputElement>
 
     if (autocompleteInputs) {
@@ -19,13 +19,12 @@ class HeroForm {
     }
   }
 
-  protected initAutocompleterForInput(inputElement: HTMLInputElement) {
-
+  protected initAutocompleterForInput (inputElement: HTMLInputElement) {
     const autocompleterData = JSON.parse(inputElement.getAttribute('data-autocomplete')) as String[]
 
     const allItems = autocompleterData.map(item => {
-      return {label: item, value: item}
-    }) as AutocomleterItem[];
+      return { label: item, value: item }
+    }) as AutocomleterItem[]
 
     autocomplete({
       input: inputElement,
@@ -36,47 +35,46 @@ class HeroForm {
     })
   }
 
-  protected onAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any) {
-
+  protected onAutocompleteFetch (allItems: AutocomleterItem[], text: string, update: any) {
     text = text.toLowerCase()
 
     const filteredFeatures = allItems.filter((item) => {
-      return item.value.toString().toLowerCase().indexOf(text) >= 0
+      return item.value.toString().toLowerCase().includes(text)
     }).slice(0, 10)
 
     update(filteredFeatures)
   }
 
-  protected onAutocompleteSelect(input: HTMLInputElement, item: AutocomleterItem) {
-    input.value = item.value;
+  protected onAutocompleteSelect (input: HTMLInputElement, item: AutocomleterItem) {
+    input.value = item.value
   }
 
-  protected bindSearchFormEvents() {
+  protected bindSearchFormEvents () {
     this.bindResultListCheckbox()
     this.bindResultListResetButton()
     this.bindResultListSortingSelect()
     this.bindFilterExpandButton()
   }
 
-  protected bindFilterExpandButton() {
+  protected bindFilterExpandButton () {
     const filterExpandButton = document.querySelector('#form_kesearch_pi1 + .hero-form__filter-button')
     const filterContainer = document.querySelector('.frame-ke_search_pi2 .filter.filter--results')
 
-    if(filterExpandButton && filterContainer) {
+    if (filterExpandButton && filterContainer) {
       filterExpandButton.addEventListener('click', () => {
-        ['show-for-md'].map(classes=> filterContainer.classList.toggle(classes) )
+        ['show-for-md'].map(classes => filterContainer.classList.toggle(classes))
         filterExpandButton.querySelector('svg').classList.toggle('icon--rotated')
       })
     }
   }
 
-  protected bindResultListCheckbox() {
+  protected bindResultListCheckbox () {
     document.querySelectorAll('.filter--results input[type="checkbox"]').forEach((checkbox) => {
       checkbox.addEventListener('change', this.onResultListCheckboxChange.bind(this))
-    });
+    })
   }
 
-  protected onResultListCheckboxChange(e: Event) {
+  protected onResultListCheckboxChange (e: Event) {
     const resultListCheckbox = e.currentTarget as HTMLInputElement
     const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
     const searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
@@ -86,34 +84,34 @@ class HeroForm {
     form.submit()
   }
 
-  protected bindResultListResetButton() {
+  protected bindResultListResetButton () {
     document.querySelectorAll('.filter--remove').forEach((resetButton) => {
       resetButton.addEventListener('click', this.onResultListResetButtonClick.bind(this))
-    });
+    })
   }
 
-  protected onResultListResetButtonClick(e: Event) {
+  protected onResultListResetButtonClick (e: Event) {
     const resetButton = e.currentTarget as HTMLButtonElement
     const filterList = document.getElementById(resetButton.dataset.filterlistId) as HTMLUListElement
     const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
 
     filterList.querySelectorAll('input[type="checkbox"]').forEach((resultListCheckbox: HTMLInputElement) => {
-      let searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
-      resultListCheckbox.checked = searchFormCheckbox.checked = false;
-    });
+      const searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
+      resultListCheckbox.checked = searchFormCheckbox.checked = false
+    })
 
     form.submit()
   }
 
-  protected bindResultListSortingSelect() {
+  protected bindResultListSortingSelect () {
     document.querySelectorAll('select[name="field__input--name-sorting"]').forEach((sortingSelect: HTMLSelectElement) => {
       sortingSelect.addEventListener('change', this.onResultListSortingSelectChange.bind(this))
-    });
+    })
   }
 
-  protected onResultListSortingSelectChange(e: Event) {
+  protected onResultListSortingSelectChange (e: Event) {
     const selectField = e.currentTarget as HTMLSelectElement
-    const selectedOption = selectField.selectedOptions[0] as HTMLOptionElement
+    const selectedOption = selectField.selectedOptions[0]
 
     console.log(selectedOption)
 
@@ -121,7 +119,6 @@ class HeroForm {
       location.href = selectedOption.value
     }
   }
-
 }
 
 export default (new HeroForm())

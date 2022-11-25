@@ -1,4 +1,4 @@
-import Lightbox from './lightbox';
+import Lightbox from './lightbox'
 
 export default {
 
@@ -6,14 +6,13 @@ export default {
   transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
   lightbox: new Lightbox(),
 
-  inViewport(checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass: string = 'fx--visible', once: boolean = false) {
+  inViewport (checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass: string = 'fx--visible', once: boolean = false) {
     const app = this
 
     // observe
     new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-
           if (targetForCssClassEl === checkEl) {
             entry.target.classList.add(cssClass)
           } else {
@@ -21,10 +20,9 @@ export default {
           }
 
           // create custom: reset timeout
-          const event = new Event('viewport:in', {bubbles: true})
+          const event = new Event('viewport:in', { bubbles: true })
           entry.target.dispatchEvent(event)
         } else {
-
           if (!once) {
             if (targetForCssClassEl === checkEl) {
               entry.target.classList.remove(cssClass)
@@ -34,7 +32,7 @@ export default {
           }
 
           // create custom: reset timeout
-          const event = new Event('viewport:out', {bubbles: true})
+          const event = new Event('viewport:out', { bubbles: true })
           entry.target.dispatchEvent(event)
         }
       })
@@ -46,20 +44,19 @@ export default {
   },
 
   apiRequest: async function (url: string, method: string = 'GET', form: HTMLFormElement = null): Promise<any> {
-
-    let initConf = Object({method: method});
+    const initConf = Object({ method })
 
     if (form) {
-      initConf['body'] = new FormData(form);
+      initConf.body = new FormData(form)
     }
 
-    return fetch(url, initConf)
-      .then(response => {
+    return await fetch(url, initConf)
+      .then(async response => {
         if (!response.ok) {
           this.handleRequestError(response)
           return
         }
-        return response.json()
+        return await response.json()
       })
       .catch(error => {
         this.handleRequestError(error)
@@ -67,7 +64,7 @@ export default {
   },
 
   handleRequestError: function (error: any) {
-    localStorage.removeItem('userinfo');
+    localStorage.removeItem('userinfo')
     console.error('could not load data', error)
   }
 

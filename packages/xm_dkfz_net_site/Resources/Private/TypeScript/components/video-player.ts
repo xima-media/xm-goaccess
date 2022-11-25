@@ -1,7 +1,7 @@
 class VideoPlayer {
   playButtonEl: NodeListOf<HTMLButtonElement>
 
-  constructor() {
+  constructor () {
     // variables
     this.playButtonEl = document.querySelectorAll('.--play-video')
 
@@ -9,7 +9,7 @@ class VideoPlayer {
     this.events()
   }
 
-  events() {
+  events () {
     const self = this
 
     // click: play button
@@ -21,13 +21,13 @@ class VideoPlayer {
     })
   }
 
-  playAllExternalVideos() {
+  playAllExternalVideos () {
     const self = this
 
     self.playButtonEl.forEach((button) => self.playExternalVideo(button))
   }
 
-  playExternalVideo(button: HTMLButtonElement) {
+  playExternalVideo (button: HTMLButtonElement) {
     const videoPlayerEl: HTMLDivElement = button.closest('.video-player')
     const videoId: String = videoPlayerEl.dataset.videoId
     const videoMimeType: String = videoPlayerEl.dataset.videoMimeType
@@ -43,19 +43,18 @@ class VideoPlayer {
     }
   }
 
-  buildVideoUrlByMimetype(mimeType: String, videoId: String): String {
-
+  buildVideoUrlByMimetype (mimeType: String, videoId: String): String {
     let videoEmbedUrl
 
     switch (mimeType) {
       case 'video/youtube':
-        videoEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
-        break;
+        videoEmbedUrl = `https://www.youtube.com/embed/${videoId}`
+        break
       case 'video/vimeo':
-        videoEmbedUrl = `https://player.vimeo.com/video/${videoId}`;
-        break;
+        videoEmbedUrl = `https://player.vimeo.com/video/${videoId}`
+        break
       default:
-        break;
+        break
     }
 
     return videoEmbedUrl

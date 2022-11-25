@@ -1,18 +1,18 @@
 import app from './basic'
-import {LightboxStyle} from './lightbox';
+import { LightboxStyle } from './lightbox'
 
 export interface UserData {
-  uid: number,
-  username: string,
-  logo: string,
-  url: string,
-  first_name: string,
-  last_name: string,
-  email: string,
+  uid: number
+  username: string
+  logo: string
+  url: string
+  first_name: string
+  last_name: string
+  email: string
 }
 
 export interface UserOffer {
-  uid: number,
+  uid: number
   title: string
 }
 
@@ -22,17 +22,16 @@ export interface UserBookmarks {
 
 export interface UserinfoResponse {
   user: UserData
-  offers: Array<UserOffer>,
-  bookmarks: UserBookmarks,
-  html: string,
-  validUntil: number,
+  offers: UserOffer[]
+  bookmarks: UserBookmarks
+  html: string
+  validUntil: number
 }
 
 class Userinfo {
+  protected userinfo: UserinfoResponse
 
-  protected userinfo: UserinfoResponse;
-
-  constructor() {
+  constructor () {
     this.bindStorageResetAtLogin()
 
     if (!document.querySelectorAll('#userinfoUri').length) {
@@ -44,29 +43,29 @@ class Userinfo {
       this.modifyBookmarkLinks()
       this.modifyWelcomeMessage()
       this.setFeedbackFormUserValues()
-    });
+    })
 
     this.bindEvents()
   }
 
-  protected bindEvents() {
+  protected bindEvents () {
     this.bindBookmarkLinks()
     this.bindBookmarkSidebar()
   }
 
-  protected bindBookmarkLinks() {
+  protected bindBookmarkLinks () {
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
-      button.addEventListener('click', this.onBookmarkLinkClick.bind(this));
+      button.addEventListener('click', this.onBookmarkLinkClick.bind(this))
     })
   }
 
-  protected bindBookmarkSidebar() {
+  protected bindBookmarkSidebar () {
     document.querySelectorAll('.navigation__item--bookmark').forEach(link => {
       link.addEventListener('click', this.onBookmarkSidebarOpenClick.bind(this))
     })
   }
 
-  protected bindStorageResetAtLogin() {
+  protected bindStorageResetAtLogin () {
     const loginButton = document.querySelector('#login-link')
     if (loginButton) {
       loginButton.addEventListener('click', () => {
@@ -75,25 +74,24 @@ class Userinfo {
     }
   }
 
-  protected onBookmarkLinkClick(e: Event) {
+  protected onBookmarkLinkClick (e: Event) {
     e.preventDefault()
-    const button = e.currentTarget as Element;
-    const url = button.getAttribute('data-bookmark-url');
-    const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST';
+    const button = e.currentTarget as Element
+    const url = button.getAttribute('data-bookmark-url')
+    const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST'
     app.apiRequest(url, method).then((userinfo) => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
       button.classList.toggle('fx--hover')
       button.classList.toggle('js--checked')
-    });
+    })
   }
 
-  protected onBookmarkSidebarOpenClick() {
+  protected onBookmarkSidebarOpenClick () {
     this.modifyBookmarkSidebar()
   }
 
-  protected modifyBookmarkSidebar() {
-
+  protected modifyBookmarkSidebar () {
     if (!this.userinfo) {
       return
     }
@@ -103,15 +101,15 @@ class Userinfo {
     app.lightbox.open(LightboxStyle.sidebar)
   }
 
-  protected modifyUserNav() {
-    const userLinkElement = document.querySelector('[data-user-profile-link]');
+  protected modifyUserNav () {
+    const userLinkElement = document.querySelector('[data-user-profile-link]')
     if (!userLinkElement || !this.userinfo) {
-      return;
+      return
     }
     userLinkElement.setAttribute('href', this.userinfo.user.url)
   }
 
-  protected modifyWelcomeMessage() {
+  protected modifyWelcomeMessage () {
     const welcomeMessageBox = document.querySelector('.employee-welcome')
     if (!welcomeMessageBox || !this.userinfo) {
       return
@@ -120,14 +118,13 @@ class Userinfo {
     welcomeMessageBox.classList.remove('employee-welcome--onload-hidden')
   }
 
-  protected modifyBookmarkLinks() {
-
+  protected modifyBookmarkLinks () {
     if (!this.userinfo) {
       return
     }
 
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
-      const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)');
+      const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)')
       if (urlParts.length !== 3) {
         return
       }
@@ -142,7 +139,7 @@ class Userinfo {
     })
   }
 
-  protected setFeedbackFormUserValues() {
+  protected setFeedbackFormUserValues () {
     const nameField = document.getElementById('generalfeedbackform-name') as HTMLInputElement
     const emailField = document.getElementById('generalfeedbackform-email') as HTMLInputElement
 
@@ -156,17 +153,17 @@ class Userinfo {
     }
   }
 
-  protected async loadUserinfo() {
-    const loadedFromStorage = this.loadUserinfoFromStorage();
+  protected async loadUserinfo () {
+    const loadedFromStorage = this.loadUserinfoFromStorage()
     if (!loadedFromStorage) {
-      return await this.loadUserinfoFromApi();
+      return await this.loadUserinfoFromApi()
     }
   }
 
-  protected loadUserinfoFromStorage(): boolean {
-    const storedUserinfo = localStorage.getItem('userinfo');
+  protected loadUserinfoFromStorage (): boolean {
+    const storedUserinfo = localStorage.getItem('userinfo')
     if (!storedUserinfo) {
-      return false;
+      return false
     }
     try {
       const userInfo: UserinfoResponse = JSON.parse(storedUserinfo)
@@ -177,25 +174,24 @@ class Userinfo {
 
       this.userinfo = userInfo
     } catch (e) {
-      return false;
+      return false
     }
 
-    return true;
+    return true
   }
 
-  protected async loadUserinfoFromApi() {
+  protected async loadUserinfoFromApi () {
     const url = document.querySelector('#userinfoUri').getAttribute('data-user-info')
 
     if (!url) {
       return
     }
 
-    return app.apiRequest(url).then((userinfo) => {
+    return await app.apiRequest(url).then((userinfo) => {
       this.userinfo = userinfo
-      localStorage.setItem('userinfo', JSON.stringify(userinfo));
-    });
+      localStorage.setItem('userinfo', JSON.stringify(userinfo))
+    })
   }
-
 }
 
 export default (new Userinfo())

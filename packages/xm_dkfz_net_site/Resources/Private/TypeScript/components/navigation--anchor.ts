@@ -1,9 +1,9 @@
 class NavigationAnchor {
-  public nav: HTMLElement;
-  public navItems: HTMLElement;
-  public navLinks: Array<any>;
+  public nav: HTMLElement
+  public navItems: HTMLElement
+  public navLinks: any[]
 
-  constructor() {
+  constructor () {
     // only if element on the page
     if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
       // methods
@@ -12,71 +12,71 @@ class NavigationAnchor {
     }
   }
 
-  public cacheDom() {
-    this.nav = document.querySelector<HTMLElement>('.navigation--anchor');
-    this.navItems = this.nav.querySelector<HTMLElement>('.navigation__items');
-    this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'));
+  public cacheDom () {
+    this.nav = document.querySelector<HTMLElement>('.navigation--anchor')
+    this.navItems = this.nav.querySelector<HTMLElement>('.navigation__items')
+    this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'))
   }
 
   protected events () {
     // variables
-    const sections = document.querySelectorAll<HTMLElement>('.content-wrapper');
-    const self = this;
+    const sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
+    const self = this
 
-    const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 });
+    const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 })
 
     this.navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        sections.forEach((section) => observer.unobserve(section));
+        sections.forEach((section) => observer.unobserve(section))
         self.scrollStop(() => {
-          sections.forEach((section) => observer.observe(section));
+          sections.forEach((section) => observer.observe(section))
         })
       })
     })
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => observer.observe(section))
 
-    this.scrollableNavigation();
+    this.scrollableNavigation()
   }
 
-  protected observerCallback(entries: any[]) {
+  protected observerCallback (entries: any[]) {
     const navListItems = Array.from(document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__link'))
     entries.forEach((entry) => {
-      let sectionId = entry.target.id;
-      let currentLink = navListItems.filter(
-        (link) => link.getAttribute("href").substr(1) === sectionId
-      );
-      if(currentLink.length > 0) {
+      const sectionId = entry.target.id
+      const currentLink = navListItems.filter(
+        (link) => link.getAttribute('href').substr(1) === sectionId
+      )
+      if (currentLink.length > 0) {
         if (!entry.isIntersecting) {
-          currentLink[0].classList.remove("active")
+          currentLink[0].classList.remove('active')
         } else {
-          currentLink[0].classList.add("active");
+          currentLink[0].classList.add('active')
           scrollNavItemIntoView(currentLink[0])
         }
       }
-    });
+    })
 
-    function scrollNavItemIntoView(activeLink: HTMLElement) {
+    function scrollNavItemIntoView (activeLink: HTMLElement) {
       if (document.body.clientWidth >= 1800) {
         activeLink.scrollIntoView()
       }
     }
   }
 
-  protected scrollableNavigation() {
-    const horizontalScrollItemsWrapper = document.querySelector('.horizontal-scroll .navigation__items');
+  protected scrollableNavigation () {
+    const horizontalScrollItemsWrapper = document.querySelector('.horizontal-scroll .navigation__items')
     const navButtonRight = document.querySelector('.horizontal-scroll .navigation__button.right')
     const navButtonLeft = document.querySelector('.horizontal-scroll .navigation__button.left')
 
     horizontalScrollItemsWrapper.addEventListener('scroll', (e) => {
-      let scroll = horizontalScrollItemsWrapper.scrollLeft
+      const scroll = horizontalScrollItemsWrapper.scrollLeft
 
-      if(scroll + horizontalScrollItemsWrapper.getBoundingClientRect().width >= horizontalScrollItemsWrapper.scrollWidth) {
+      if (scroll + horizontalScrollItemsWrapper.getBoundingClientRect().width >= horizontalScrollItemsWrapper.scrollWidth) {
         navButtonRight.classList.remove('active')
       } else {
         navButtonRight.classList.add('active')
       }
 
-      if(scroll === 0) {
+      if (scroll === 0) {
         navButtonLeft.classList.remove('active')
       } else {
         navButtonLeft.classList.add('active')
@@ -86,31 +86,27 @@ class NavigationAnchor {
     this.scrollHorizontallyByClick(horizontalScrollItemsWrapper, navButtonRight, navButtonLeft)
   }
 
-  protected scrollHorizontallyByClick(scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
+  protected scrollHorizontallyByClick (scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
     navButtonRight.addEventListener('click', () => {
-      scrollWrapper.scrollLeft += scrollValue;
+      scrollWrapper.scrollLeft += scrollValue
     })
 
     navButtonLeft.addEventListener('click', () => {
-      scrollWrapper.scrollLeft -= scrollValue;
+      scrollWrapper.scrollLeft -= scrollValue
     })
   }
 
   protected scrollStop (callback: () => void, refresh = 66) {
-
-    if (!callback || typeof callback !== 'function') return;
+    if (!callback || typeof callback !== 'function') return
 
     // @ts-ignore
-    let isScrolling: NodeJS.Timeout;
+    let isScrolling: NodeJS.Timeout
 
     window.addEventListener('scroll', function (event) {
-
       // Clear our timeout throughout the scroll
-      window.clearTimeout(isScrolling);
-      isScrolling = setTimeout(callback, refresh);
-
-    }, false);
-
+      window.clearTimeout(isScrolling)
+      isScrolling = setTimeout(callback, refresh)
+    }, false)
   }
 }
 

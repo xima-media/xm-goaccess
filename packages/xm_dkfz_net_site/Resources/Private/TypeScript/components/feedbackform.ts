@@ -1,31 +1,30 @@
 import app from './basic'
 
 class Feedbackform {
-
-  constructor() {
+  constructor () {
     this.bindEvents()
   }
 
-  protected bindEvents() {
+  protected bindEvents () {
     this.bindFeedbackLink()
   }
 
-  protected bindFeedbackLink() {
+  protected bindFeedbackLink () {
     document.querySelectorAll('a[href="#message"]').forEach((link) => {
       link.addEventListener('click', this.onFeedbackLinkClick.bind(this))
-    });
+    })
   }
 
-  protected onFeedbackLinkClick(e: Event) {
+  protected onFeedbackLinkClick (e: Event) {
     e.preventDefault()
-    const form = document.getElementById('generalfeedbackform') as HTMLElement
+    const form = document.getElementById('generalfeedbackform')
 
     if (form) {
       let displayContent = form.outerHTML
       const email = form.querySelector('#generalfeedbackform-email') as HTMLInputElement
 
       if (email.value.length === 0) {
-        if(document.documentElement.getAttribute('lang') === 'de-de') {
+        if (document.documentElement.getAttribute('lang') === 'de-de') {
           displayContent = '<p>Sie müssen eingeloggt sein, um Feedback zu senden!</p>'
         } else {
           displayContent = '<p>You have to be logged in to send feedback!</p>'
@@ -40,7 +39,7 @@ class Feedbackform {
     }
   }
 
-  protected bindFeedbackFormEvents() {
+  protected bindFeedbackFormEvents () {
     const form = app.lightbox.content.querySelector('form')
     if (form) {
       form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
@@ -62,34 +61,34 @@ class Feedbackform {
     }
   }
 
-  protected toggleLabelByChange(formElement: HTMLSelectElement, formGroup: HTMLDivElement) {
+  protected toggleLabelByChange (formElement: HTMLSelectElement, formGroup: HTMLDivElement) {
     formElement.addEventListener('change', () => {
       formGroup.classList.add('fx--focus')
 
-      if(!formElement.value) {
+      if (!formElement.value) {
         formGroup.classList.remove('fx--focus')
       }
     })
   }
 
-  protected toggleLabelByFocus(formElement: HTMLInputElement|HTMLTextAreaElement, formGroup: HTMLDivElement) {
+  protected toggleLabelByFocus (formElement: HTMLInputElement | HTMLTextAreaElement, formGroup: HTMLDivElement) {
     formElement.addEventListener('focus', () => {
       formGroup.classList.add('fx--focus')
     })
 
     formElement.addEventListener('focusout', () => {
-      if(!formElement.value) {
+      if (!formElement.value) {
         formGroup.classList.remove('fx--focus')
       }
     })
   }
 
-  protected onFeedbackFormSubmit(e: Event) {
+  protected onFeedbackFormSubmit (e: Event) {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
     const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement
-    let formData = new FormData(form)
+    const formData = new FormData(form)
     formData.append(submitButton.name, submitButton.value)
     const requestInit = {
       method: 'POST',
@@ -99,14 +98,14 @@ class Feedbackform {
     app.lightbox.startLoading()
     app.lightbox.clear()
     fetch(form.action, requestInit)
-      .then((response) => {
+      .then(async (response) => {
         if (!response.ok) {
           console.error('Submitting feedback failed', response)
         }
-        return response.text()
+        return await response.text()
       })
       .then((html) => {
-        let doc = document.createRange().createContextualFragment(html);
+        const doc = document.createRange().createContextualFragment(html)
         const feedbackform = doc.querySelector('#generalfeedbackform')
         app.lightbox.displayContent(feedbackform.outerHTML)
         this.bindFeedbackFormEvents()
