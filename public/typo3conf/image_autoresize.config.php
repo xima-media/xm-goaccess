@@ -1,4 +1,5 @@
 <?php
+
 return [
     'directories' => '1:/',
     'file_types' => 'jpg,jpeg,png',
