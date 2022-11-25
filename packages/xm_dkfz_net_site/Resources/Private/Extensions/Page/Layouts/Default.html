@@ -88,23 +88,28 @@
 									<!-- Components End: image -->
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
-									<li>
+									<li class="show-for-loggedIn">
 										<a class="dropdown-item" href="#" data-user-profile-link>Mein Profil</a>
 									</li>
-									<li>
+									<li class="show-for-loggedIn">
 										<a class="dropdown-item"
 										   href="#"
 										   data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}">
 											Profil bearbeiten
 										</a>
 									</li>
-									<li>
+									<li class=" show-for-loggedIn">
 										<hr class="dropdown-divider">
 									</li>
-									<li>
+									<li class="show-for-loggedIn">
 										<f:link.page pageUid="{pidLogin}"
 													 class="dropdown-item"
 													 additionalParams="{logintype:'logout'}">Abmelden
+										</f:link.page>
+									</li>
+									<li class="hide-for-loggedIn">
+										<f:link.page pageUid="{pidLogin}"
+													 class="dropdown-item">Anmelden
 										</f:link.page>
 									</li>
 								</ul>
@@ -142,6 +147,10 @@
 </main>
 
 <f:render partial="Footer" arguments="{_all}" />
+
+<div id="hiddenLogin">
+	<f:render partial="LoginForm" arguments="{_all}" />
+</div>
 
 <div class="lightbox lightbox--loading">
 	<div class="lightbox__content">
