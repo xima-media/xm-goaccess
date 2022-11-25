@@ -155,7 +155,7 @@ TCEFORM {
   }
 
   tx_news_domain_model_news {
-    content_elements.disabled = 1
+    content_elements.disabled = 0
     fal_related_files.disabled = 1
     related_links.disabled = 1
     tags.disabled = 1
@@ -346,4 +346,9 @@ tx_news.templateLayouts {
   mod.web_list {
     allowedNewTables = tx_xmdkfznetsite_domain_model_committee
   }
+[GLOBAL]
+
+# CE elements for news
+[traverse(page, "uid") == 141]
+  TCEFORM.tt_content.CType.removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, image, serviceSlider, page_teaser, mtext, mbox, bw_focuspoint_images_svg, employeeSlider, form_framework, shortcut, list, html, bw_static_template, teaser, container-2cols, container-accordion, container-tabs
 [GLOBAL]

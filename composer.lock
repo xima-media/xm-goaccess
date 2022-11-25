@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b15de3a24c6606c09b2a8d355a58e69d",
+    "content-hash": "4b5278cfc21f580ec91b9d9ea4f87800",
     "packages": [
         {
             "name": "b13/container",
@@ -1678,7 +1678,7 @@
         },
         {
             "name": "georgringer/news",
-            "version": "dev-main",
+            "version": "10.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/georgringer/news.git",
@@ -1708,7 +1708,6 @@
                 "georgringer/numbered-pagination": "Improved pagination API",
                 "reelworx/rx-shariff": "GDPR compliant social sharing"
             },
-            "default-branch": true,
             "type": "typo3-cms-extension",
             "extra": {
                 "typo3/cms": {
@@ -14466,7 +14465,6 @@
         "xima/xm-dkfz-net-site": 20,
         "xima/xm-dkfz-net-jobs": 20,
         "blueways/deployer-recipes": 20,
-        "georgringer/news": 20,
         "xima/xm-dkfz-net-events": 20,
         "blueways/bw-guild": 20,
         "xima/xm-kesearch-remote": 20,

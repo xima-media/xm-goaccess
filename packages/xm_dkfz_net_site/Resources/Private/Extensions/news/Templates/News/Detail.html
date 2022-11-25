@@ -83,6 +83,10 @@
 		</f:if>
 	</div>
 
+	<f:if condition="{newsItem.contentElements}">
+		<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+	</f:if>
+
 </f:if>
 
 </html>
