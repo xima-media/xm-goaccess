@@ -39,6 +39,7 @@ class Userinfo {
     }
 
     this.loadUserinfo().then(() => {
+      this.modifyHtmlTag()
       this.modifyUserNav()
       this.modifyBookmarkLinks()
       this.modifyWelcomeMessage()
@@ -74,8 +75,20 @@ class Userinfo {
     }
   }
 
+  protected modifyHtmlTag() {
+    if (this.userinfo) {
+      document.querySelector('html').classList.add('loggedIn')
+    }
+  }
+
   protected onBookmarkLinkClick (e: Event) {
     e.preventDefault()
+
+    if (!this.userinfo) {
+      app.showLogin()
+      return
+    }
+
     const button = e.currentTarget as Element
     const url = button.getAttribute('data-bookmark-url')
     const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST'
@@ -88,6 +101,11 @@ class Userinfo {
   }
 
   protected onBookmarkSidebarOpenClick () {
+    if (!this.userinfo) {
+      app.showLogin()
+      return
+    }
+    
     this.modifyBookmarkSidebar()
   }
 

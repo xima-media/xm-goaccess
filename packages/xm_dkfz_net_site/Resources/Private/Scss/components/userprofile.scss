@@ -12,6 +12,14 @@ body#p159 {
     --content-width: 1200px;
 }
 
+html.loggedIn .show-for-loggedIn {
+    display: block;
+}
+
+html.loggedIn .hide-for-loggedIn {
+    display: none;
+}
+
 div.userprofile {
     display: grid;
     gap: 2rem;
@@ -145,7 +153,6 @@ form.userprofile {
         gap: 1rem;
     }
 }
-
 
 .autocomplete {
     background: var(--color-white);

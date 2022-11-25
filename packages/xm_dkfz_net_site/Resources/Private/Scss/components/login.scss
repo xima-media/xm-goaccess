@@ -53,3 +53,15 @@ main.login {
         width: 100%;
     }
 }
+
+body > #hiddenLogin {
+    display: none;
+}
+
+#hiddenLogin {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -66,6 +66,18 @@ export default {
   handleRequestError: function (error: any) {
     localStorage.removeItem('userinfo')
     console.error('could not load data', error)
+  },
+
+  showLogin: function () {
+    let loginForm = document.querySelector('#hiddenLogin').outerHTML
+
+    if (!loginForm) {
+      loginForm = 'Login form not found'
+    }
+
+    this.lightbox.displayContent(loginForm)
+    this.lightbox.stopLoading()
+    this.lightbox.open()
   }
 
 }
