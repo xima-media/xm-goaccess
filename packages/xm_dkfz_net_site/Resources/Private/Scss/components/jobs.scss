@@ -83,7 +83,10 @@
 
         &:hover {
             text-decoration: none;
-            color: var(--color-accent);
+
+            h3 {
+                text-decoration: underline;
+            }
         }
     }
 
