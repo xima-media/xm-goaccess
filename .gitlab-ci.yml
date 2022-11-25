@@ -29,8 +29,7 @@ build-node:
     name: node:16
     pull_policy: if-not-present
   cache:
-    paths:
-      - .npm/
+    paths: []
   before_script: [ ]
   script:
     - npm ci --unsafe-perm
