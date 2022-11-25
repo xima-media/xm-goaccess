@@ -21,7 +21,7 @@ class Feedbackform {
 
     if (form) {
       let displayContent = form.outerHTML
-      const email = form.querySelector('#generalfeedbackform-email') as HTMLInputElement
+      const email = form.querySelector<HTMLInputElement>('#generalfeedbackform-email')
 
       if (email.value.length === 0) {
         if (document.documentElement.getAttribute('lang') === 'de-de') {
@@ -87,7 +87,7 @@ class Feedbackform {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
-    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement
+    const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]')
     const formData = new FormData(form)
     formData.append(submitButton.name, submitButton.value)
     const requestInit = {

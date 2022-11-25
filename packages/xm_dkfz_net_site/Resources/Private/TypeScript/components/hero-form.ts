@@ -12,7 +12,7 @@ class HeroForm {
   }
 
   protected initAutocompleter () {
-    const autocompleteInputs = document.querySelectorAll('.hero-form input.autocomplete') as NodeListOf<HTMLInputElement>
+    const autocompleteInputs = document.querySelectorAll<HTMLInputElement>('.hero-form input.autocomplete')
 
     if (autocompleteInputs) {
       autocompleteInputs.forEach(inputElement => this.initAutocompleterForInput(inputElement))
@@ -77,7 +77,7 @@ class HeroForm {
   protected onResultListCheckboxChange (e: Event) {
     const resultListCheckbox = e.currentTarget as HTMLInputElement
     const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
-    const searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
+    const searchFormCheckbox = form.querySelector<HTMLInputElement>(`input[name="${resultListCheckbox.name}"]`)
 
     searchFormCheckbox.checked = resultListCheckbox.checked
 
@@ -96,7 +96,7 @@ class HeroForm {
     const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
 
     filterList.querySelectorAll('input[type="checkbox"]').forEach((resultListCheckbox: HTMLInputElement) => {
-      const searchFormCheckbox = form.querySelector(`input[name="${resultListCheckbox.name}"]`) as HTMLInputElement
+      const searchFormCheckbox = form.querySelector<HTMLInputElement>(`input[name="${resultListCheckbox.name}"]`)
       resultListCheckbox.checked = searchFormCheckbox.checked = false
     })
 

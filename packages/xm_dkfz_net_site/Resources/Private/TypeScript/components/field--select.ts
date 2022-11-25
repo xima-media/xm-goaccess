@@ -5,7 +5,7 @@ class FieldSelect {
   fieldEl
 
   constructor () {
-    this.fieldEl = document.querySelectorAll('.field--select') as NodeListOf<HTMLElement>
+    this.fieldEl = document.querySelectorAll<HTMLElement>('.field--select')
 
     // methods
     this.init()
@@ -17,7 +17,7 @@ class FieldSelect {
 
     // get every select
     self.fieldEl.forEach((fieldEl) => {
-      const fieldInputEl = fieldEl.querySelector('.field__input') as HTMLSelectElement
+      const fieldInputEl = fieldEl.querySelector<HTMLSelectElement>('.field__input')
 
       // init tom select
       new TomSelect(fieldInputEl, {
