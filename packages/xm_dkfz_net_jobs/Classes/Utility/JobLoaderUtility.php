@@ -63,6 +63,8 @@ class JobLoaderUtility
             }
         }
 
+        sort($jobCategories);
+
         return $jobCategories;
     }
 
@@ -79,6 +81,8 @@ class JobLoaderUtility
                 $jobPlaces[md5($job->jobOpening->location)] = $job->jobOpening->location;
             }
         }
+
+        sort($jobPlaces);
 
         return $jobPlaces;
     }
