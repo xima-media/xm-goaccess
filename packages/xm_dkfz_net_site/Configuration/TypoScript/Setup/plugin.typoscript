@@ -76,8 +76,8 @@ lib.quickSearch {
 }
 
 page.includeCSS {
-  keSearchPremiumAutocompleteCss = EXT:ke_search_premium/Resources/Public/Css/auto-complete.css
+  keSearchPremiumAutocompleteCss = >
 }
 page.includeJSFooterlibs {
-  keSearchPremiumAutocompleteJs = EXT:ke_search_premium/Resources/Public/Javascript/auto-complete.min.js
+  keSearchPremiumAutocompleteJs = >
 }
