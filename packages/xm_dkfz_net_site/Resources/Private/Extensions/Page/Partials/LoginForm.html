@@ -1,0 +1,14 @@
+<h1 class="h5">Willkommen beim DKFZ intern</h1>
+<f:variable name="loginProvider" value="xima"/>
+<f:if condition="{baseUrl} == 'https://intranetstage.dkfz.de' || {baseUrl} == 'https://intranet2.dkfz.de'">
+	<f:variable name="loginProvider" value="dkfz"/>
+</f:if>
+<f:link.page id="login-link"
+			 pageUid="1"
+			 additionalParams="{oauth2-provider: loginProvider, logintype: 'login'}"
+			 title="Login"
+			 class="button button--primary "
+			 additionalAttributes="{role: 'button'}"
+			 aria="{pressed: ariaPressed}">
+	Login with {loginProvider->f:format.case(mode: 'upper')}
+</f:link.page>
