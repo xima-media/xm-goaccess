@@ -10,9 +10,6 @@ class Carousel {
         this.init()
     }
 
-    /**
-     * Init carousels
-     */
     init () {
         const self = this
 

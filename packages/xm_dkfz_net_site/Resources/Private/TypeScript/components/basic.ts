@@ -2,27 +2,9 @@ import Lightbox from './lightbox';
 
 export default {
 
-  debug: false,
-  lang: document.documentElement.lang,
-  prototype: document.body.classList.contains('prototype'),
-  transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
   scrollbarWidth: window.innerWidth - document.documentElement.clientWidth,
-  color: {
-    white: getComputedStyle(document.documentElement).getPropertyValue('--color-white'),
-    black: getComputedStyle(document.documentElement).getPropertyValue('--color-black'),
-    primary: getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
-    secondary: getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')
-  },
+  transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
   lightbox: new Lightbox(),
-
-  getUrlParamater(url: string, parameter: string) {
-    const urlSearchParams = new URLSearchParams(url)
-    // @ts-ignore
-    const params = Object.fromEntries(urlSearchParams.entries())
-    const value = params[parameter]
-
-    return value
-  },
 
   inViewport(checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass: string = 'fx--visible', once: boolean = false) {
     const app = this
