@@ -9,7 +9,8 @@
     "sass:build": "sass --no-source-map --quiet --style=compressed --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css",
     "sass:postcss": "postcss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css --map false --use autoprefixer -d packages/xm_dkfz_net_site/Resources/Public/Css/dist/",
     "ts:watch": "webpack --config webpack.config.js --stats-children --stats-error-details",
-    "ts:build": "webpack --config webpack.prod.config.js "
+    "ts:build": "webpack --config webpack.prod.config.js",
+    "ts:fix": "npx eslint packages/xm_dkfz_net_site/Resources/Private/TypeScript --fix"
   },
   "author": "Maik Schneider",
   "license": "proprietary",
@@ -26,8 +27,14 @@
     "tippy.js": "^6.3.7",
     "tom-select": "^2.2.2",
     "ts-loader": "^9.4.1",
-    "typescript": "^4.9.3",
     "webpack-cli": "^5.0.0",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "eslint": "^8.28.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^4.9.3"
   }
 }
