@@ -4,7 +4,7 @@ namespace Deployer;
 
 require_once(__DIR__ . '/vendor/blueways/deployer-recipes/autoload.php');
 
-set('repository', 'git@git.xima.de:typo3/dkfz/xm-dkfz-net.git');
+set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
 //set('teams_webhook', 'https://ximamediagmbh.webhook.office.com/webhookb2/a14869ed-d90e-419d-849e-b185ac6e5636@890938ce-3232-42b7-981d-9a7cbe37a475/IncomingWebhook/49bc7a84cd024f79b74984417341520c/f0210cd8-c97d-4d14-b199-28af55f9215e');
 
 host('local')
@@ -58,13 +58,13 @@ host('dev-t3-debian11-01')
     ->stage('dev')
     ->user('xima')
     ->set('branch', 'master')
-    ->set('public_urls', ['https://dev.xm-dkfz-net.xima.dev'])
+    ->set('public_urls', ['https://dev.dkfz-intranet-typo3.xima.dev'])
     ->set('http_user', 'www-data')
     ->set('writable_mode', 'chmod')
     ->set('writable_chmod_recursive', false)
     ->set('writable_chmod_mode', '2770')
     ->set('bin/php', '/usr/bin/php8.1')
-    ->set('deploy_path', '/var/www/html/xm-dkfz-net_dev');
+    ->set('deploy_path', '/var/www/html/dkfz-intranet-typo3_dev');
 
 // Upload of dist files
 after('deploy:update_code', 'deploy:upload-dist');
