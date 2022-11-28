@@ -18,6 +18,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyPagesIndexEntry'][166
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyPageContentFields'][1667922623] = \Xima\XmDkfzNetSite\Hook\KeSearch\ModifyContentFromContentElementHook::class;
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyContentFromContentElement'][1667905089] = \Xima\XmDkfzNetSite\Hook\KeSearch\ModifyContentFromContentElementHook::class;
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['modifyExtNewsIndexEntry'][1668072533] = \Xima\XmDkfzNetSite\Hook\KeSearch\ModifyExtNewsIndexEntryHook::class;
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['getOrdering'][1669648378] = \Xima\XmDkfzNetSite\Hook\KeSearch\ResultOrderingHook::class;
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['additionalResultMarker'][1668005137] = \Xima\XmDkfzNetSite\Hook\KeSearch\AdditionalResultMarkerHook::class;
 
 // Register Form Element
