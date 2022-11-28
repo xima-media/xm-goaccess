@@ -26,8 +26,7 @@ hooks:
     - exec: vendor/bin/typo3cms database:updateschema
     - exec: chmod +x /var/www/html/.ddev/import-database.sh
     - exec: /var/www/html/.ddev/import-database.sh
-    - exec: if [ ! -d /var/www/html/packages/xm_dkfz_net_prototype/node_modules ]; then npm install; fi
-    - exec: if [ ! -d /var/www/html/packages/xm_dkfz_net_prototype/Resources/Public ]; then npm run init; fi
+    - exec: if [ ! -d /var/www/html/node_modules ]; then npm install && echo "Want assets? Run npm run start."; fi
 
 # Key features of ddev's config.yaml:
 
