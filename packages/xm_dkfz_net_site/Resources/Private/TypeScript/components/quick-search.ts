@@ -51,11 +51,11 @@ class QuickSearch {
   }
 
   protected async fetchAutocompleteItems (searchInput: HTMLInputElement): Promise<AutocomleterItem[] | any> {
-    const autoCompleteListUrl = `/index.php?eID=keSearchPremiumAutoComplete&wordStartsWith=${searchInput.value}&amount=10`
+    const autoCompleteListUrl = `${searchInput.closest('form').dataset.url}&wordStartsWith=${searchInput.value}`
     return await fetch(autoCompleteListUrl)
       .then(async (response) => await response.json())
-      .then((autoCompleteList) => {
-        if (autoCompleteList != null) {
+      .then((autoCompleteList: any[]) => {
+        if (autoCompleteList) {
           return autoCompleteList.map((item: any) => {
             return { label: item, value: item }
           }) as AutocomleterItem[]

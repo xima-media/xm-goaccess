@@ -93,7 +93,7 @@
 			<f:render partial="Icon" arguments="{icon: 'search'}"/>
 
 		</button>
-		<form method="get" id="form_kesearch_pi3" name="form_kesearch_pi3" action="{f:uri.page(pageUid: targetpage)}"
+		<form method="get" id="form_kesearch_pi3" name="form_kesearch_pi3" data-url="{f:uri.page(pageUid: '1', additionalParams: {eID: 'keSearchPremiumAutoComplete'})}" action="{f:uri.page(pageUid: targetpage)}"
 			  class="quick-search__form">
 
 			<div class="field field--text">
