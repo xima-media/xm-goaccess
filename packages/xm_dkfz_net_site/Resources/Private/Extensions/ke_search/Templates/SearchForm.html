@@ -13,8 +13,8 @@
 
 <f:section name="default">
 	<div class="hero-form__wrapper">
-		<form method="get" id="form_kesearch_pi3" name="form_kesearch_pi3" action="{f:uri.page(pageUid: targetpage)}"
-			  class="hero-form hero-form--search quick-search__wrapper">
+		<form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" action="{f:uri.page(pageUid: targetpage)}"
+			  class="hero-form hero-form--search quick-search__wrapper" data-url="{f:uri.page(pageUid: '1', additionalParams: {eID: 'keSearchPremiumAutoComplete'})}">
 			<f:comment><!-- Replace the URL with the speaking URL --></f:comment>
 			<f:if condition="{isEmptySearch} == FALSE">
 				<f:format.raw>
