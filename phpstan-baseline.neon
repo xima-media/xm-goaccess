@@ -411,6 +411,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/XimaResolver.php
 
 		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Service/SvgService.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) has parameter \\$items with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php

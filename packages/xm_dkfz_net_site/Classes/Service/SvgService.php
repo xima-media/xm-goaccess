@@ -8,7 +8,7 @@ class SvgService
 {
     /**
      * @param string $svgContent
-     * @param array $tags
+     * @param mixed[] $tags
      * @return string
      */
     public function getInlineSvg(

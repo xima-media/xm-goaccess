@@ -6,8 +6,8 @@ namespace Xima\XmDkfzNetSite\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\ImageService;
-use Xima\XmDkfzNetSite\Service\SvgService;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Xima\XmDkfzNetSite\Service\SvgService;
 
 class SvgInlineViewHelper extends AbstractViewHelper
 {
@@ -31,7 +31,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
      *
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('src', 'string', 'A path to a file', true);
