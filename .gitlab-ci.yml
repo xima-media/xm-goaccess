@@ -155,6 +155,9 @@ reset:dev-t3-debian11-01:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01 --no-interaction
 
 provision-environment:
+  environment:
+    name: $CI_COMMIT_BRANCH
+    url: https://dev.$CI_PROJECT_NAME.xima.dev
   stage: provision
   only:
     variables:
