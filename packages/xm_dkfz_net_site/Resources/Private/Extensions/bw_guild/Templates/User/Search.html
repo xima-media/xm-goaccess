@@ -32,7 +32,7 @@
 			<div class="col-lg-6">
 				<div class="field field--text {f:if(condition: demand.feature, then: 'fx--filled')}">
 					<label class="field__label" for="feature">
-						<f:translate extensionName="XmDkfzNetSite" key="usersearch.demand.search"/>
+						<f:translate extensionName="XmDkfzNetSite" key="usersearch.demand.feature"/>
 					</label>
 					<f:form.textfield id="feature"
 									  class="field__input autocomplete"
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="field field--text {f:if(condition: demand.committee, then: 'fx--filled')}">
+				<div class="field field--text field--select {f:if(condition: demand.committee, then: 'fx--filled')}">
 					<label class="field__label" for="committee">
 						<f:translate extensionName="XmDkfzNetSite" key="committee"/>
 					</label>

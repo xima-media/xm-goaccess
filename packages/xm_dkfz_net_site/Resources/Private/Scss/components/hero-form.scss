@@ -93,7 +93,7 @@ body#p8, body#p111 {
         padding-top: 13rem;
     }
 
-    .field:not(.fx--focus) {
+    .field:not(.fx--focus):not(.field--select) {
 
         position: relative;
 

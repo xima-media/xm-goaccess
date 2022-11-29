@@ -1,3 +1,5 @@
+{namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
+
 <h2>Merkliste</h2>
 
 <f:if condition="{bookmarks.fe_users}">
@@ -13,9 +15,7 @@
 									<figure class="picture picture--with-image picture--width-color"
 											data-color="primary" data-pattern-color="transparent">
 										<div class="picture__item color-accent--primary">
-											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-												 class="picture__image image--responsive"
-												 alt=""/>
+											<xm:svgInline src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg" />
 										</div>
 									</figure>
 								</div>
