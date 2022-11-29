@@ -49,9 +49,7 @@
 <f:section name="MoreLink">
 	<f:if condition="{link} && {subheader}">
 		<f:link.typolink class="content-wrapper__link" parameter="{link}">{subheader}
-			<svg class="icon icon--arrow-right icon--size-md" role="img" width="20" height="20" aria-hidden="true">
-				<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Icons/icon.min.svg#icon-arrow-right')}"></use>
-			</svg>
+			<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
 		</f:link.typolink>
 		<span class="content-wrapper__pattern pattern color-accent--gray-900 h{layout}"></span>
 	</f:if>

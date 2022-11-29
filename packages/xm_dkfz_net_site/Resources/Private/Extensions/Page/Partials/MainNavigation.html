@@ -14,9 +14,7 @@
 					 href="{level1Item.link}"
 					 title="{level1Item.title}">
 					<f:if condition="{i.isLast}">
-						<svg class="icon icon--bookmark" role="img" width="20" height="20" aria-hidden="true">
-							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Icons/icon.min.svg#icon-bookmark')}"></use>
-						</svg>
+						<f:render partial="Icon" arguments="{icon: 'bookmark'}"/>
 					</f:if>
 					{level1Item.title}
 				</a>
@@ -24,9 +22,7 @@
 				<f:if condition="{level1Item.hasSubpages}">
 
 					<button class="navigation__button navigation__button--toggle-items" type="button">
-						<svg class="icon icon--arrow-down" role="img" width="20" height="20" aria-hidden="true">
-							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Icons/icon.min.svg#icon-arrow-down')}"></use>
-						</svg>
+						<f:render partial="Icon" arguments="{icon: 'arrow-down'}"/>
 					</button>
 
 					<ul class="navigation__items fx--second corner--{color{i.cycle}} corner--right">

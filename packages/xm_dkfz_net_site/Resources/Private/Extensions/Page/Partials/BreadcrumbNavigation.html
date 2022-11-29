@@ -12,13 +12,7 @@
 						<a class="breadcrumb__link" href="{item.link}" aria-current="location">{item.title}</a>
 					</f:if>
 					<f:if condition="!{i.isLast}">
-						<svg class="icon icon--chevron-right icon--size-md"
-							 role="img"
-							 width="20"
-							 height="20"
-							 aria-hidden="true">
-							<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Icons/icon.min.svg#icon-chevron-right')}"></use>
-						</svg>
+						<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
 					</f:if>
 				</li>
 			</f:for>
