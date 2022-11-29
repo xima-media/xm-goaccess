@@ -1,13 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
 
-<svg
-	class="icon icon--{f:if(condition: icon, then: icon, else: 'info')} icon--size-{f:if(condition: size, then: size, else: 'md')}"
-	role="img"
-	width="20"
-	height="20"
-	aria-hidden="true"
->
-	<use xlink:href="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Icons/icon.min.svg#icon-')}{f:if(condition: icon, then: icon, else: 'info')}"></use>
-</svg>
+<xm:svgInline class="icon icon--{f:if(condition: icon, then: icon, else: 'info')} icon--size-{f:if(condition: size, then: size, else: 'md')}" width="20" height="20" src="EXT:xm_dkfz_net_site/Resources/Public/Icons/{icon}.svg" />
 
 </html>
