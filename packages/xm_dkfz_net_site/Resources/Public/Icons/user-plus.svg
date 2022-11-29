@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg width="19.999756px" height="16.666626px" viewBox="0 0 19.999756 16.666626" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
-  <g id="Group" transform="translate(0.83325195 0.833313)">
-    <path d="M12.5 15L12.5 13.3333C12.5 11.4924 11.0076 10 9.16667 10L3.33333 10C1.49238 10 1.85037e-16 11.4924 0 13.3333L0 15" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.6666666" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M6.25008 6.66667C8.09103 6.66667 9.58341 5.17428 9.58341 3.33333C9.58341 1.49238 8.09103 0 6.25008 0C4.40913 0 2.91675 1.49238 2.91675 3.33333C2.91675 5.17428 4.40913 6.66667 6.25008 6.66667Z" id="Oval" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.6666666" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M15.8334 4.16669L15.8334 9.16669" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.6666666" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M18.3333 6.66667L13.3333 6.66667" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.6666666" stroke-linecap="round" stroke-linejoin="round" />
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="16.67" viewBox="0 0 20 16.67"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.67"><path d="M13.33 15.83v-1.66c0-1.84-1.49-3.34-3.33-3.34H4.17a3.33 3.33 0 0 0-3.34 3.34v1.66M7.08 7.5a3.33 3.33 0 1 0 0-6.67 3.33 3.33 0 0 0 0 6.67ZM16.67 5v5M19.17 7.5h-5"/></g></svg>
