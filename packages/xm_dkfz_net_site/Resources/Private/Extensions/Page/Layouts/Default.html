@@ -1,3 +1,5 @@
+{namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
+
 <header class="header background--expanded">
 	<span class="header__sticky-trigger"></span>
 	<div class="header__meta background--expanded">
@@ -77,15 +79,9 @@
 										id="dropdown-menu-link"
 										data-bs-toggle="dropdown"
 										aria-expanded="false">
-									<!-- Component Start: image -->
 									<figure>
-											<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-												 width="35"
-												 class=""
-												 alt=""/>
+										<xm:svgInline width="30" height="30" src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg" />
 									</figure>
-
-									<!-- Components End: image -->
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
 									<li class="show-for-loggedIn">

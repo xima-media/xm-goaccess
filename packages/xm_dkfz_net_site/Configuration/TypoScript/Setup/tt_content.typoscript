@@ -249,7 +249,12 @@ tt_content {
                 markers.uid.field = representative
                 as = representative
               }
-            }
+
+              20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+              20 {
+                references.fieldName = logo
+                as = logo
+              }
           }
 
           30 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor

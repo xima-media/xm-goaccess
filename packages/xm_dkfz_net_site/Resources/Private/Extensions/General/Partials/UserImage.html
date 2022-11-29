@@ -1,3 +1,5 @@
+{namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
+
 <f:if condition="!{width}">
 	<f:variable name="width">150</f:variable>
 </f:if>
@@ -9,15 +11,13 @@
 					type="image/webp">
 			<source srcset="{f:uri.image(image:user.logo.0, width:width, fileExtension: 'jpg')}"
 					type="image/jpeg">
-			<img src="{f:uri.image(image:user.logo.0, width:width, fileExtension: 'jpg')}"
+			<img src="{f:uri.image(image:user.logo.0, width:width, fileExtension: 'jpg', width: width)}"
 				 alt="{user.logo.0.alternative}"
-				 class="picture__image image--responsive"
+				 width="{width}"
 				 loading="lazy"/>
 		</picture>
 	</f:then>
 	<f:else>
-		<img width="{width}" class=""
-			 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-			 alt="No profile picture"/>
+		<xm:svgInline width="{width}" height="{width}" src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg" />
 	</f:else>
 </f:if>
