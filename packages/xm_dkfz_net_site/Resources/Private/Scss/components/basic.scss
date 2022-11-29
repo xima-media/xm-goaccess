@@ -203,20 +203,6 @@ a {
 
     &--arrow-right {
         text-decoration: none;
-
-        // @todo siehe css icon in icon-Komponente
-        &::after {
-            @include size($css-icon-size);
-
-            content: '';
-            display: inline-block;
-            margin-left: .5rem;
-            background-image: url(map-get($sprites, 'arrow-right'));
-            background-position: 0 ($css-icon-size * -1);
-            background-repeat: no-repeat;
-            background-size: cover;
-            //filter: invert(1);
-        }
     }
 
     &--primary {

@@ -1,75 +1,16 @@
-//
-//    @tableOfContent
-//      1. Icon default
-//      2. Icon sizes
-//
-
-
-//
-//   @section 1. Icon default
-//
-
-// svg element
 .icon {
     fill: currentcolor;
 
-    //pointer-events: none;
-}
-
-// css pseudo element
-.icon {
-    &::before {
-        @include size(var(--css-icon-size));
-
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 5px;
-        background-color: var(--color-black);
-        mask-position: center;
-        mask-size: cover;
+    &--size-sm {
+        width: 12px;
+        height: 12px;
     }
 
-    @each $spriteKey, $spritePath in $sprites {
-        &--#{$spriteKey} {
-            &::before {
-                mask-image: url(map-get($sprites, '#{$spriteKey}'))
-            }
-        }
-    }
-
-    &--instagram {
-        &::before {
-            background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-        }
-    }
-
-    &--twitter {
-        &::before {
-            background-color: $color-twitter;
-        }
-    }
-
-    &--delete-bin {
-        &::before {
-            margin-right: 0;
-        }
-    }
-}
-
-
-//
-//   @section 2. Icon size
-//
-
-.icon--size {
-    &-xs {
+    &--size-xs {
         width: 9px;
         height: 9px;
     }
-    &-sm {
-        @include size(12px);
-    }
+
 }
 
-// end of icon.scss file
+
