@@ -124,6 +124,7 @@ set('shared_dirs', function () {
         'var/goaccess',
         'var/phonebook',
         'var/xm_kesearch_remote',
+        'var/cache/data/imagesizes',
     ];
 });
 

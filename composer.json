@@ -130,6 +130,7 @@
 			"mkdir -p var/debug",
 			"mkdir -p var/phonebook",
 			"mkdir -p var/xm_kesearch_remote",
+			"mkdir -p var/cache/data/imagesizes",
 			"php vendor/bin/typo3cms install:fixfolderstructure"
 		],
 		"post-autoload-dump": [
