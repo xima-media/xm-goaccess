@@ -65,7 +65,7 @@ export default {
 
   handleRequestError: function (error: any) {
     localStorage.removeItem('userinfo')
-    console.error('could not load data', error)
+    //console.error('could not load data', error)
   },
 
   showLogin: function () {
