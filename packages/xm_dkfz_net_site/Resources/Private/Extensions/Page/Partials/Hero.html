@@ -31,11 +31,11 @@
 				<f:if condition="{contacts}">
 					<div class="hero-teaser__contact">
 						<div class="contact ">
-							<h5 class="contact--title">Kontakt</h5>
+							<h2 class="h5 contact--title">Kontakt</h2>
 
 							<f:for each="{contacts.tx_xmdkfznetsite_domain_model_place}" as="place">
 								<div class="contact--person">
-									<h5 class="contact--subtitle">{place.name}</h5>
+									<h3 class="h5 contact--subtitle">{place.name}</h3>
 									<div class="contact--person-container">
 										<f:if condition="{place.contacts} || {place.mail}">
 											<ul>

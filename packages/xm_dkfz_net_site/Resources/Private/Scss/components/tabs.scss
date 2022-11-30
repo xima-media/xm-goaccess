@@ -102,11 +102,6 @@
             .icon {
                 margin-right: 1rem;
             }
-
-            h6 {
-                @include text-copy-small(200);
-                margin-bottom: 0;
-            }
         }
 
         &__detail {
