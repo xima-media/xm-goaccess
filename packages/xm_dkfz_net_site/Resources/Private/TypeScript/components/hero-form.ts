@@ -113,8 +113,6 @@ class HeroForm {
     const selectField = e.currentTarget as HTMLSelectElement
     const selectedOption = selectField.selectedOptions[0]
 
-    console.log(selectedOption)
-
     if (selectedOption) {
       location.href = selectedOption.value
     }

@@ -38,8 +38,6 @@ class NavigationMain {
 
     // document.documentElement.classList.toggle('fx--main-menu-open')
 
-    console.log(button)
-
     button.classList.toggle('fx--active')
   }
 }
