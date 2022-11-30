@@ -68,7 +68,7 @@ class Autocomplete
         }
 
         // hook for custom modifications of autocomplete words
-        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['ke_search_premium']['modifyAutocompleWordList'])) {
+        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['ke_search_premium']['modifyAutocompleWordList'] ?? '')) {
             foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['ke_search_premium']['modifyAutocompleWordList'] as $_classRef) {
                 $_procObj = GeneralUtility::makeInstance($_classRef);
                 $_procObj->modifyAutocompleWordList($words, $begin, $amount, $pid);
