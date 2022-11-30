@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b5278cfc21f580ec91b9d9ea4f87800",
+    "content-hash": "b64431d260c405615ec423872f86dae8",
     "packages": [
         {
             "name": "b13/container",
@@ -2469,6 +2469,73 @@
                 "source": "https://github.com/IchHabRecht/content_defender/tree/3.2.3"
             },
             "time": "2022-08-29T14:23:22+00:00"
+        },
+        {
+            "name": "ichhabrecht/filefill",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IchHabRecht/filefill.git",
+                "reference": "3265d87062c6c7845ce988ddbf8c25098632e016"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IchHabRecht/filefill/zipball/3265d87062c6c7845ce988ddbf8c25098632e016",
+                "reference": "3265d87062c6c7845ce988ddbf8c25098632e016",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "typo3/cms-core": "^10.4.11 || ^11.5"
+            },
+            "replace": {
+                "typo3-ter/filefill": "self.version"
+            },
+            "require-dev": {
+                "nimut/testing-framework": "6.x-dev"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "4.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "filefill",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/public"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IchHabRecht\\Filefill\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nicole Cordes",
+                    "email": "typo3@cordes.co",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Find and fetch missing local files from different remotes",
+            "homepage": "https://github.com/IchHabRecht/filefill",
+            "keywords": [
+                "extension",
+                "file",
+                "missing",
+                "placeholder",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/IchHabRecht/filefill/issues",
+                "source": "https://github.com/IchHabRecht/filefill/tree/4.1.1"
+            },
+            "time": "2022-05-05T16:24:54+00:00"
         },
         {
             "name": "in2code/luxletter",
@@ -14478,7 +14545,8 @@
     "prefer-lowest": false,
     "platform": {
         "ext-pdo": "*",
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "ext-simplexml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

@@ -73,7 +73,8 @@
 		"cweagans/composer-patches": "^1.7",
 		"tpwd/ke_search_premium": "*@dev",
 		"causal/image_autoresize": "^2.2",
-		"ext-simplexml": "*"
+		"ext-simplexml": "*",
+		"ichhabrecht/filefill": "^4.1"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
