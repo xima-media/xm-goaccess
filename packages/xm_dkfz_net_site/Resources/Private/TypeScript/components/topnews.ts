@@ -9,7 +9,9 @@ class Topnews {
     this.slider = document.querySelector('.topnews')
 
     const buttons = document.querySelectorAll('.topnews button')
-    if (!buttons || !this.slider) {
+    const bullets = document.querySelectorAll('.topnews__bullets a')
+
+    if (!buttons || !this.slider || !bullets) {
       return
     }
 
@@ -18,6 +20,8 @@ class Topnews {
     buttons.forEach((btn) => {
       btn.addEventListener('click', this.onButtonClick.bind(this))
     })
+
+    bullets.forEach(bullet => bullet.addEventListener('click', this.onBulletClick.bind(this)))
   }
 
   protected readSliderState () {
@@ -32,9 +36,20 @@ class Topnews {
   }
 
   onButtonClick (e: Event) {
+    e.preventDefault()
     const button = e.currentTarget as HTMLAnchorElement
     const modifier = button.classList.contains('next') ? 1 : this.slideCount - 1
     const next = (this.currentSlideNr + modifier) % this.slideCount
+    this.slider.classList.add('animation')
+
+    setTimeout(() => this.writeSliderState(next), 400)
+  }
+
+  onBulletClick (e: Event) {
+    e.preventDefault()
+    const bullet = e.currentTarget as HTMLAnchorElement
+    const next = parseInt(bullet.getAttribute('data-news'))
+
     this.slider.classList.add('animation')
 
     setTimeout(() => this.writeSliderState(next), 400)

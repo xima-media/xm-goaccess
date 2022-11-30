@@ -44,7 +44,7 @@
 			<f:variable name="numbers" value="{0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7}"/>
 			<f:for each="{numbers}" as="nr" iteration="j">
 				<f:if condition="{j.index} < {k.total}">
-					<a href="#" class="{f:if(condition: '{j.index} == {k.index}', then: 'active')}"></a>
+					<a data-news="{nr}" title="Topnews #{j.cycle}" aria-label="Navigate to Topnews #{j.cycle}" href="#" class="{f:if(condition: '{j.index} == {k.index}', then: 'active')}"></a>
 				</f:if>
 			</f:for>
 		</div>
