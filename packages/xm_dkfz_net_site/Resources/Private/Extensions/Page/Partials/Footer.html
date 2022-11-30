@@ -1,16 +1,13 @@
 <footer class="footer">
 	<div class="footer__wrapper">
 		<ul class="footer__items">
-			<li class="footer__item">
-				<a class="footer__link footer__link--meta" href="">
-					Impressum
-				</a>
-			</li>
-			<li class="footer__item">
-				<a class="footer__link footer__link--meta" href="">
-					Datenschutz
-				</a>
-			</li>
+			<f:for each="{footerNav}" as="item">
+				<li class="footer__item">
+					<a class="footer__link footer__link--meta" href="{item.link}" title="{item.title}">
+						{item.title}
+					</a>
+				</li>
+			</f:for>
 		</ul>
 		<ul class="footer__items">
 			<li class="footer__item">

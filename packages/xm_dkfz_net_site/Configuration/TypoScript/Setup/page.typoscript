@@ -134,6 +134,13 @@ page {
         }
       }
 
+      # Footer navigation
+      90 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      90 {
+        special = list
+        special.value = {$pidsFooterNav}
+        as = footerNav
+      }
     }
   }
 
