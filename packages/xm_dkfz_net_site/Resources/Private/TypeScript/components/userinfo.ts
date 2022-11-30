@@ -34,7 +34,9 @@ class Userinfo {
   constructor () {
     this.bindStorageResetAtLogin()
 
-    if (!document.querySelectorAll('#userinfoUri').length) {
+    const hasUserinfoUri = document.querySelectorAll('#userinfoUri').length
+    const isLightHouseRequest = navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
+    if (!hasUserinfoUri || isLightHouseRequest) {
       return
     }
 
@@ -105,7 +107,7 @@ class Userinfo {
       app.showLogin()
       return
     }
-    
+
     this.modifyBookmarkSidebar()
   }
 
