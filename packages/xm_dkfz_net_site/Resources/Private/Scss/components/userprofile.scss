@@ -130,8 +130,11 @@ form.userprofile {
             &--inline {
                 display: grid;
                 grid-template-columns: 1fr 2fr;
-                align-items: center;
                 --input-margin: 0;
+
+                label {
+                    margin-top: .5rem;
+                }
             }
         }
     }
