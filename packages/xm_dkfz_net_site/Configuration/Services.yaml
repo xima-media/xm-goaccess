@@ -23,6 +23,11 @@ services:
       - name: event.listener
         identifier: 'userSearchEvent'
 
+  Xima\XmDkfzNetSite\EventListener\UserEditFormEvent:
+    tags:
+      - name: event.listener
+        identifier: 'userEditFormEvent'
+
   querybuilder.beUsers:
     class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
     factory:
