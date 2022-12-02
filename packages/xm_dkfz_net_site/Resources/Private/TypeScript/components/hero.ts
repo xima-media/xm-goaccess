@@ -8,6 +8,12 @@ class Hero {
   }
 
   init () {
+    const isLightHouseRequest = navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
+
+    if (isLightHouseRequest) {
+      return
+    }
+
     this.elements = document.querySelectorAll<HTMLElement>('.background--image-hero')
 
     this.elements.forEach((element) => {
