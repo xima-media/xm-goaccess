@@ -288,7 +288,7 @@
         padding-left: var(--space-unit);
         padding-right: var(--space-unit);
 
-        @include media-breakpoint-up(lg) {
+        @media (min-width: calc(1200px + var(--space-unit))) {
             padding-left: 0;
             padding-right: 0;
         }
