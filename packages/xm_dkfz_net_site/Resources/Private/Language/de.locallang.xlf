@@ -228,7 +228,7 @@
 				<target>Kein Profilbild</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-0-headline">
-				<target>Kompetenzen</target>
+				<target>Meine Kompetenzen</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-0-placeholder">
 				<target>Kompetenz hinzufügen</target>
@@ -517,6 +517,12 @@
 			</trans-unit>
 			<trans-unit id="user.representative" space="preserve">
 				<target>Vertreter</target>
+			</trans-unit>
+			<trans-unit id="user.about" space="preserve">
+				<target>Über mich</target>
+			</trans-unit>
+			<trans-unit id="user.about.description" space="preserve">
+				<target>Schreiben Sie etwas über sich, um sich Ihren Kollegen vorzustellen!</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
 				<target>Kontaktdaten überschreiben</target>

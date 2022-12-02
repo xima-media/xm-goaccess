@@ -140,12 +140,19 @@ call_user_func(function () {
                 'foreign_table_where' => ' AND {#tx_xmdkfznetsite_domain_model_committee}.{#sys_language_uid} IN (-1,0)',
             ],
         ],
+        'about' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.about',
+            'config' => [
+                'type' => 'text',
+            ],
+        ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,committee',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,committee,about',
         '',
         'after:email'
     );

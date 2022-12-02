@@ -67,6 +67,7 @@ create table fe_users (
 	responsibilities text,
 	representative   varchar(64)             not null default '',
 	committee        int(11) unsigned default '0' not null,
+	about            text
 );
 
 create table be_users (

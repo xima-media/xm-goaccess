@@ -308,7 +308,7 @@
 				<source>No profile picture</source>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-0-headline">
-				<source>Qualification</source>
+				<source>My Qualification</source>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-0-placeholder">
 				<source>Add qualification</source>
@@ -531,6 +531,12 @@
 			</trans-unit>
 			<trans-unit id="user.representative" space="preserve">
 				<source>Representative</source>
+			</trans-unit>
+			<trans-unit id="user.about" space="preserve">
+				<source>About me</source>
+			</trans-unit>
+			<trans-unit id="user.about.description" space="preserve">
+				<source>Write something about you to introduce yourself to your colleagues!</source>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
 				<source>Override user contacts</source>

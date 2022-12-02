@@ -32,6 +32,8 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected string $responsibilities = '';
 
+    protected string $about = '';
+
     /**
      * @return string
      */
@@ -293,5 +295,15 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     public function getRepresentative(): ?User
     {
         return $this->representative;
+    }
+
+    public function getAbout(): string
+    {
+        return $this->about;
+    }
+
+    public function setAbout(string $about): void
+    {
+        $this->about = $about;
     }
 }
