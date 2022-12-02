@@ -1,10 +1,11 @@
 <f:variable name="cssVariables">
+	<f:if condition="{files.0}">
+		--background-image-jpg: url({f:uri.image(image: files.0,width: 576)});
+		--background-image-jpg-md: url({f:uri.image(image: files.0,width: 992)});
+		--background-image-jpg-xl: url({f:uri.image(image: files.0,width: 2500)});
+	</f:if>
 	<f:for each="{files}" as="file" iteration="i">
 		<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
-		--background-image-{index}jpg: url({f:uri.image(image: file, width: 576)});
-		--background-image-{index}jpg-md: url({f:uri.image(image: file,width: 992)});
-		--background-image-{index}jpg-xl: url({f:uri.image(image: file, width: 2500)});
-
 		--background-image-{index}webp: url({f:uri.image(image: file, width: 576, fileExtension: 'webp')});
 		--background-image-{index}webp-md: url({f:uri.image(image: file,width: 992, fileExtension: 'webp')});
 		--background-image-{index}webp-xl: url({f:uri.image(image: file, width: 2500, fileExtension: 'webp')});
