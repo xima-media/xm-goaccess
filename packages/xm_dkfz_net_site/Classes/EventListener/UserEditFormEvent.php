@@ -2,7 +2,6 @@
 
 namespace Xima\XmDkfzNetSite\EventListener;
 
-
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -11,7 +10,6 @@ use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 
 class UserEditFormEvent
 {
-
     public function __invoke(\Blueways\BwGuild\Event\UserEditFormEvent $event): void
     {
         $user = $event->getUser();
@@ -41,11 +39,11 @@ class UserEditFormEvent
             ->execute()
             ->fetchAllAssociative();
 
-        return array_map(function($user) {
+        return array_map(function ($user) {
             $userTitle = $user['title'] ? $user['title'] . ' ' : '';
             return [
                 'label' => $userTitle . $user['last_name'] . ', ' . $user['first_name'],
-                'value' => $user['uid']
+                'value' => $user['uid'],
             ];
         }, $users);
     }
