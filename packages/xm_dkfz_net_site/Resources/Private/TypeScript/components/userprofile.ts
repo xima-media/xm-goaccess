@@ -56,8 +56,12 @@ class Userprofile {
     const inputElement = app.lightbox.content.querySelector('#representative') as HTMLInputElement
     const hiddenElement = app.lightbox.content.querySelector('#representativeHiddenInput') as HTMLInputElement
 
+    if (!inputElement || !hiddenElement) {
+      return
+    }
+
     const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete')) as AutocompleteItem[]
-    
+
     autocomplete({
       input: inputElement,
       minLength: 2,

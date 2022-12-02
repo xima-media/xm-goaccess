@@ -116,7 +116,7 @@ div.userprofile {
 form.userprofile {
 
     fieldset:not(:last-child), h3 {
-        margin-bottom: var(--space-md);
+        margin-bottom: 2.5rem;
     }
 
     .form-group {
@@ -164,6 +164,11 @@ form.userprofile {
 
     h5, .h5 {
         margin-bottom: var(--space-sm);
+    }
+
+    h6 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     .list {

@@ -50,6 +50,21 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return $this->responsibilities;
     }
 
+    public function setRepresentative(?User $representative): void
+    {
+        $this->representative = $representative;
+    }
+
+    public function setCommittee(string $committee): void
+    {
+        $this->committee = $committee;
+    }
+
+    public function setResponsibilities(string $responsibilities): void
+    {
+        $this->responsibilities = $responsibilities;
+    }
+
     /**
      * @return int
      */
