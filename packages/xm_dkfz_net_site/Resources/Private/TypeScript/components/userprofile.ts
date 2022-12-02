@@ -1,6 +1,7 @@
 import app from './basic'
 
-import autocomplete, { AutocompleteItem } from 'autocompleter'
+import autocomplete, {AutocompleteItem} from 'autocompleter'
+import {AutocomleterItem} from "./hero-form";
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -8,21 +9,21 @@ interface FeatureItem extends AutocompleteItem {
 }
 
 class Userprofile {
-  constructor () {
+  constructor() {
     this.bindEvents()
   }
 
-  protected bindEvents () {
+  protected bindEvents() {
     this.bindProfileEditLink()
   }
 
-  protected bindProfileEditLink () {
+  protected bindProfileEditLink() {
     document.querySelectorAll('a[data-user-edit-link]').forEach((link) => {
       link.addEventListener('click', this.onUserProfileEditLinkClick.bind(this))
     })
   }
 
-  protected onUserProfileEditLinkClick (e: Event) {
+  protected onUserProfileEditLinkClick(e: Event) {
     e.preventDefault()
     const link = e.currentTarget as Element
     const url = link.getAttribute('data-user-edit-link')
@@ -37,20 +38,51 @@ class Userprofile {
     })
   }
 
-  protected async loadUserEditForm (url: string) {
+  protected async loadUserEditForm(url: string) {
     return await app.apiRequest(url).then(data => {
       return data.html
     })
   }
 
-  protected bindUserEditFormEvents () {
+  protected bindUserEditFormEvents() {
     const form = app.lightbox.content.querySelector('form')
+    this.initUserRepresentativeAutocomplete()
     this.initUserFeatureInputs()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
   }
 
-  protected initUserFeatureInputs () {
+  protected initUserRepresentativeAutocomplete() {
+    const inputElement = app.lightbox.content.querySelector('#representative') as HTMLInputElement
+    const hiddenElement = app.lightbox.content.querySelector('#representativeHiddenInput') as HTMLInputElement
+
+    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete')) as AutocompleteItem[]
+    
+    autocomplete({
+      input: inputElement,
+      minLength: 2,
+      disableAutoSelect: true,
+      fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
+      onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+    })
+  }
+
+  protected onUserRepresentativeAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any) {
+    text = text.toLowerCase()
+
+    const filteredUsers = allItems.filter((item) => {
+      return item.label.toString().toLowerCase().includes(text)
+    }).slice(0, 10)
+
+    update(filteredUsers)
+  }
+
+  protected onUserRepresentativeAutocompleteSelect(input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem) {
+    input.value = item.label
+    hiddenInput.value = item.value
+  }
+
+  protected initUserFeatureInputs() {
     const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]')
     const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
@@ -63,7 +95,7 @@ class Userprofile {
       const selectedFeaturesJson = container.getAttribute('data-selected-features')
       let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
 
-      function hashCode (str: string) {
+      function hashCode(str: string) {
         let hash = 0
         for (let i = 0, len = str.length; i < len; i++) {
           const chr = str.charCodeAt(i)
@@ -73,7 +105,7 @@ class Userprofile {
         return hash
       }
 
-      function onBubbleClick (e: Event) {
+      function onBubbleClick(e: Event) {
         e.preventDefault()
         const featureElement = e.currentTarget as HTMLLinkElement
         const featureId = featureElement.getAttribute('data-feature')
@@ -92,11 +124,11 @@ class Userprofile {
         featureElement.remove()
       }
 
-      function addBubbleClickEvent (bubbleElement: Element) {
+      function addBubbleClickEvent(bubbleElement: Element) {
         bubbleElement.addEventListener('click', onBubbleClick)
       }
 
-      function addNewBubbleForFeature (feature: FeatureItem) {
+      function addNewBubbleForFeature(feature: FeatureItem) {
         const newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement
         newFeatureBubble.setAttribute('data-feature', feature.value)
         newFeatureBubble.querySelector('span').innerHTML = feature.label
@@ -105,7 +137,7 @@ class Userprofile {
         bubbleDropZoneElement.appendChild(newFeatureBubble)
       }
 
-      function onAutocompleteSelect (item: FeatureItem) {
+      function onAutocompleteSelect(item: FeatureItem) {
         // create new bubble
         addNewBubbleForFeature(item)
         // add as selected in form
@@ -117,7 +149,7 @@ class Userprofile {
         inputElement.value = ''
       }
 
-      function onAutocompleteFetch (text: string, update: any) {
+      function onAutocompleteFetch(text: string, update: any) {
         text = text.toLowerCase()
         const filteredFeatures = allFeatures.filter((feature) => {
           const isMatchedByTextSearch = feature.label.toLowerCase().includes(text)
@@ -127,7 +159,7 @@ class Userprofile {
         update(filteredFeatures)
       }
 
-      function onNewFeatureEntered () {
+      function onNewFeatureEntered() {
         const trimmedInputString = inputElement.value.trim()
         const newFeatureId = 'NEW' + hashCode(trimmedInputString)
         const isAlreadySelected = selectedFeatures.find(f => f.label === trimmedInputString) !== undefined
@@ -137,7 +169,7 @@ class Userprofile {
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = { label: trimmedInputString, value: newFeatureId }
+        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
@@ -182,7 +214,7 @@ class Userprofile {
     })
   }
 
-  protected onUserEditFormSubmit (e: Event) {
+  protected onUserEditFormSubmit(e: Event) {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
@@ -198,7 +230,7 @@ class Userprofile {
       .catch(e => app.handleRequestError.bind(this))
   }
 
-  protected onAbortButtonClick (e: Event) {
+  protected onAbortButtonClick(e: Event) {
     e.preventDefault()
     app.lightbox.close()
   }

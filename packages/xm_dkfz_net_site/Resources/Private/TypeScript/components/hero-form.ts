@@ -1,6 +1,6 @@
 import autocomplete from 'autocompleter'
 
-interface AutocomleterItem {
+export interface AutocomleterItem {
   label: string
   value: string
 }
