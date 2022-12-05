@@ -52,6 +52,8 @@ div.userprofile {
         }
     }
 
+
+
     &__contact {
 
         @include media-breakpoint-up(xl) {
@@ -214,6 +216,10 @@ form.userprofile {
         padding: 1px 5px;
     }
 
+    & > div span {
+        color: var(--color-gray-700)
+    }
+
     & > div:not(:last-child) {
         border-bottom: 1px solid rgba(#000, 0.1);
     }
@@ -223,6 +229,10 @@ form.userprofile {
         background: var(--color-primary);
         color: var(--color-white);
         cursor: pointer;
+        span {
+            color: var(--color-white);
+            opacity: 0.8;
+        }
     }
 
 }

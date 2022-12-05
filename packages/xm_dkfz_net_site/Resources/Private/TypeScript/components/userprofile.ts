@@ -185,6 +185,12 @@ class Userprofile {
       }
 
       function onAutocompleteSelect(item: FeatureItem) {
+        // dynamic item (for new generation) was selected
+        if (item.value === '') {
+          onNewFeatureEntered()
+          return
+        }
+
         // create new bubble
         addNewBubbleForFeature(item)
         // add as selected in form
@@ -198,11 +204,17 @@ class Userprofile {
 
       function onAutocompleteFetch(text: string, update: any) {
         text = text.toLowerCase()
-        const filteredFeatures = allFeatures.filter((feature) => {
+        let filteredFeatures = allFeatures.filter((feature) => {
           const isMatchedByTextSearch = feature.label.toLowerCase().includes(text)
           const isNotAlreadySelected = selectedFeatures.find(f => f.value === feature.value) === undefined
           return isMatchedByTextSearch && isNotAlreadySelected
         })
+
+        // append new empty item
+        if (allFeatures.filter((feature: FeatureItem) => feature.label.toLowerCase() === text.toLowerCase()).length !== 1) {
+          filteredFeatures = [{label: text, value: ''}, ...filteredFeatures]
+        }
+
         update(filteredFeatures)
       }
 
@@ -256,7 +268,18 @@ class Userprofile {
         minLength: 1,
         disableAutoSelect: true,
         fetch: onAutocompleteFetch,
-        onSelect: onAutocompleteSelect
+        onSelect: onAutocompleteSelect,
+        render: function (item:FeatureItem, currentValue): HTMLDivElement | undefined {
+          const itemElement = document.createElement("div");
+
+          itemElement.innerHTML = item.label
+
+          if (item.value === '') {
+            itemElement.innerHTML += ' <span>neu hinzufügen</span>'
+          }
+
+          return itemElement;
+        }
       })
     })
   }
