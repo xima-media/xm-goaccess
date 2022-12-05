@@ -46,11 +46,32 @@ class Userprofile {
 
   protected bindUserEditFormEvents() {
     const form = app.lightbox.content.querySelector('form')
+    this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocomplete()
     this.initUserCommitteeRepresentativeAutocomplete()
     this.initUserFeatureInputs()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
+  }
+
+  protected initUserRepresentativeSelect() {
+    const selectElement = app.lightbox.content.querySelector('#user-committee')
+
+    if (!selectElement) {
+      return
+    }
+
+    selectElement.addEventListener('change', this.onUserRepresentativeSelectChange.bind(this))
+  }
+
+  protected onUserRepresentativeSelectChange(e: Event) {
+    e.preventDefault()
+    const element = e.currentTarget as HTMLSelectElement
+    const formElementDiv = element.closest('.form-element')
+    formElementDiv.classList.remove('active')
+    if (parseInt(element.value)) {
+      formElementDiv.classList.add('active')
+    }
   }
 
   protected initUserRepresentativeAutocomplete() {

@@ -248,6 +248,18 @@
 			<trans-unit id="userEditForm.yourSelection">
 				<target>Ihre Auswahl</target>
 			</trans-unit>
+			<trans-unit id="userEditForm.logo.aspectRatio">
+				<target>Bildformat</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.logo.aspectRatio.square">
+				<target>Quadratisch</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.logo.minSize">
+				<target>Mindestgröße</target>
+			</trans-unit>
+			<trans-unit id="userEditForm.logo.encoding">
+				<target>Dateiformat</target>
+			</trans-unit>
 			<trans-unit id="abort">
 				<target>Abbruch</target>
 			</trans-unit>

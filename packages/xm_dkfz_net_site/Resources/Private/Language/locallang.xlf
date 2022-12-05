@@ -328,6 +328,18 @@
 			<trans-unit id="userEditForm.yourSelection">
 				<source>Your selection</source>
 			</trans-unit>
+			<trans-unit id="userEditForm.logo.aspectRatio">
+				<source>Aspect ratio</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.logo.aspectRatio.square">
+				<source>square</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.logo.minSize">
+				<source>Min. size</source>
+			</trans-unit>
+			<trans-unit id="userEditForm.logo.encoding">
+				<source>File encoding</source>
+			</trans-unit>
 			<trans-unit id="abort">
 				<source>Abort</source>
 			</trans-unit>

@@ -156,6 +156,10 @@ form.userprofile {
         }
     }
 
+    .form-element.hide-siblings:not(.active) ~ .form-element {
+        display: none;
+    }
+
     span.icon {
         background: var(--color-gray-100);
         padding: 1rem;
