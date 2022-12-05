@@ -12,21 +12,25 @@ class QuickSearch {
   quickSearchButtonToggleEl: HTMLButtonElement
 
   constructor () {
-    this.quickSearchOpenState = false
-    this.quickSearchEl = document.querySelector('.quick-search__wrapper')
+    this.cacheDom()
 
-    // main element existing?
-    this.quickSearchInputEl = this.quickSearchEl.querySelector('.field__input')
-    this.quickSearchButtonToggleEl = this.quickSearchEl.querySelector('.quick-search__button--toggle')
+    if (this.quickSearchEl) {
+      this.initAutoCompleter()
+    }
 
-    this.initAutoCompleter()
-
-    if (this.quickSearchButtonToggleEl != null) {
+    if (this.quickSearchButtonToggleEl) {
       this.bindQuickSearchButtonEvents()
     }
   }
 
+  protected cacheDom (): void {
+    this.quickSearchEl = document.querySelector('.quick-search__wrapper')
+    this.quickSearchInputEl = document.querySelector('.quick-search__wrapper .field__input')
+    this.quickSearchButtonToggleEl = document.querySelector('.quick-search__wrapper .quick-search__button--toggle')
+  }
+
   protected initAutoCompleter (): void {
+    this.quickSearchOpenState = false
     const url = this.quickSearchInputEl.closest('form').dataset.url
 
     autocomplete({
