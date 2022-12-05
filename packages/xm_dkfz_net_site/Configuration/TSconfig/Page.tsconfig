@@ -169,6 +169,7 @@ TCEFORM {
     notes.disabled = 1
     istopnews.disabled = 1
     type.disabled = 1
+    fal_media.config.maxitems = 1
   }
 
   sys_file_reference {
