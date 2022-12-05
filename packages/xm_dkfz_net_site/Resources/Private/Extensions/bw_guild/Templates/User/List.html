@@ -36,23 +36,7 @@
 						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
 					</f:link.action>
 					<div class="card__image">
-						<f:if condition="{user.logo}">
-							<picture>
-								<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'webp')}"
-										type="image/webp">
-								<source srcset="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
-										type="image/jpeg">
-								<img src="{f:uri.image(image:user.logo, width:'80', fileExtension: 'jpg')}"
-									 alt="{file.originalResource.alternative}"
-									 class="picture__image image--responsive"
-									 loading="lazy"/>
-							</picture>
-						</f:if>
-						<f:if condition="!{user.logo}">
-							<img width="80"
-								 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-								 alt="No profile picture"/>
-						</f:if>
+						<f:render partial="UserImage" arguments="{user: user, width: 80}" />
 					</div>
 					<div class="card__content">
 						<h3 class="card__title h6">{user.displayName}</h3>
