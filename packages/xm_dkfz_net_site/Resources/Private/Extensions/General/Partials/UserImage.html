@@ -22,7 +22,7 @@
 </f:if>
 
 <f:section name="Image">
-	<picture>
+	<picture class="userimage">
 		<source srcset="{f:uri.image(image:logo, width:width, fileExtension: 'webp')}" type="image/webp">
 		<source srcset="{f:uri.image(image:logo, width:width, fileExtension: 'jpg')}" type="image/jpeg">
 		<img src="{f:uri.image(image:logo, width:width, fileExtension: 'jpg', width: width)}"

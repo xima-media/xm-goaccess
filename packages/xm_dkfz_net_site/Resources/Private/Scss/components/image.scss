@@ -12,7 +12,6 @@
 //
 //   @section 1. Image responsive
 //
-
 .image--responsive {
     width: 100%;
     height: auto;
@@ -42,6 +41,34 @@
         .picture__pattern {
             display: none;
         }
+    }
+}
+
+picture.userimage {
+    display: grid;
+    position: relative;
+    --color-primary: #2662c3;
+
+    &:after, img {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    img {
+        margin-left: 4%;
+        margin-bottom: 4%;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 66%;
+        aspect-ratio: 1;
+        background: var(--color-primary);
+        align-self: flex-end;
+
+        z-index: -1;
     }
 }
 
