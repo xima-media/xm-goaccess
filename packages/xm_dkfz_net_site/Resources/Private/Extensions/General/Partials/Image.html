@@ -27,9 +27,9 @@
 		  class="picture__pattern {f:if(condition: patternStyle, then: patternStyle, else: 'pattern')}  {f:if(condition: image, else:'no-image color-accent--gray-900')}"></span>
 	<f:if condition="{image}">
 		<picture>
-			<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
+			<source srcset="{f:uri.image(image:image, width:imageSize, cropVariant: cropVariant, fileExtension: 'webp')}"
 					type="image/webp">
-			<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
+			<source srcset="{f:uri.image(image:image, width:imageSize, cropVariant: cropVariant, fileExtension: 'jpg')}"
 					type="image/jpeg">
 			<f:image image="{image}"
 					 width="{imageSize}"
