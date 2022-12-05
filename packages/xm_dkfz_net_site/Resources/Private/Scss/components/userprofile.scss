@@ -83,6 +83,8 @@ div.userprofile {
 
     &__facts {
 
+        margin-bottom: calc(2 * var(--content-padding));
+
         ul {
             display: grid;
             gap: 1rem;
@@ -112,6 +114,14 @@ div.userprofile {
         strong {
             display: block;
         }
+    }
+
+    &__about {
+        margin-bottom: calc(1.5 * var(--content-padding));
+    }
+
+    &__features {
+        margin-bottom: calc(1.5 * var(--content-padding));
     }
 }
 

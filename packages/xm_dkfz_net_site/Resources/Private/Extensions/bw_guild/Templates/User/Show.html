@@ -75,71 +75,103 @@
 		</div>
 	</div>
 
-	<div class="userprofile__facts">
-		<ul>
-			<f:if condition="{user.location}">
-				<li>
-					<span>
-						<f:render partial="Icon" arguments="{icon: 'map'}"/>
-					</span>
-					<p>
-						<strong>
-							<f:translate extensionName="XmDkfzNetSite" key="user.location"/>
-						</strong> {user.location}
-					</p>
-				</li>
-			</f:if>
-			<f:if condition="{user.contactRoom}">
-				<li>
-					<span>
-						<f:render partial="Icon" arguments="{icon: 'location'}"/>
-					</span>
-					<p>
-						<strong>
-							<f:translate extensionName="XmDkfzNetSite" key="place.room"/>
-						</strong> {user.contactRoom}
-					</p>
-				</li>
-			</f:if>
-			<f:if condition="{user.memberSince}">
-				<li>
-					<span>
-						<f:render partial="Icon" arguments="{icon: 'calendar'}"/>
-					</span>
-					<p>
-						<strong>
-							<f:translate extensionName="XmDkfzNetSite" key="user.member_since"/>
-						</strong> {user.memberSince->f:format.date(format:'d.m.Y')}
-					</p>
-				</li>
-			</f:if>
-			<f:if condition="{user.representative}">
-				<li>
-					<span>
-						<f:render partial="Icon" arguments="{icon: 'user-plus'}"/>
-					</span>
-					<p>
-						<strong>
-							<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
-						</strong>
-						<f:link.action action="show" arguments="{user: user.representative}">
-							{user.representative.displayName}
-						</f:link.action>
-					</p>
-				</li>
-			</f:if>
-			<f:if condition="{user.responsibilities}">
-				<li>
-					<span>
-						<f:render partial="Icon" arguments="{icon: 'clipboard'}"/>
-					</span>
-					<p>
-						<strong>
-							<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
-						</strong> {user.responsibilities}
-					</p>
-				</li>
-			</f:if>
-		</ul>
+	<div>
+		<div class="userprofile__facts">
+			<ul>
+				<f:if condition="{user.location}">
+					<li>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'map'}"/>
+						</span>
+						<p>
+							<strong>
+								<f:translate extensionName="XmDkfzNetSite" key="user.location"/>
+							</strong> {user.location}
+						</p>
+					</li>
+				</f:if>
+				<f:if condition="{user.contactRoom}">
+					<li>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'location'}"/>
+						</span>
+						<p>
+							<strong>
+								<f:translate extensionName="XmDkfzNetSite" key="place.room"/>
+							</strong> {user.contactRoom}
+						</p>
+					</li>
+				</f:if>
+				<f:if condition="{user.memberSince}">
+					<li>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'calendar'}"/>
+						</span>
+						<p>
+							<strong>
+								<f:translate extensionName="XmDkfzNetSite" key="user.member_since"/>
+							</strong> {user.memberSince->f:format.date(format:'d.m.Y')}
+						</p>
+					</li>
+				</f:if>
+				<f:if condition="{user.representative}">
+					<li>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'user-plus'}"/>
+						</span>
+						<p>
+							<strong>
+								<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
+							</strong>
+							<f:link.action action="show" arguments="{user: user.representative}">
+								{user.representative.displayName}
+							</f:link.action>
+						</p>
+					</li>
+				</f:if>
+				<f:if condition="{user.responsibilities}">
+					<li>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'clipboard'}"/>
+						</span>
+						<p>
+							<strong>
+								<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
+							</strong> {user.responsibilities}
+						</p>
+					</li>
+				</f:if>
+			</ul>
+		</div>
+
+		<f:if condition="{user.about}">
+			<div class="userprofile__about">
+				<h3 class="h4">
+					<f:translate extensionName="XmDkfzNetSite" key="user.about"/>
+				</h3>
+				<p>{user.about->f:format.nl2br()}</p>
+			</div>
+		</f:if>
+
+		<f:alias map="{items: {0:0,1:1,2:2}}">
+			<f:for each="{items}" as="key">
+				<f:if condition="{user.featuresGroupedByRecordType.{key}}">
+					<div class="userprofile__features">
+						<h4 class="h5">
+							<f:translate extensionName="XmDkfzNetSite" key="userEditForm.feature-{key}-headline"/>
+						</h4>
+						<ul class="list list--inline">
+							<f:for each="{user.featuresGroupedByRecordType.{key}}" as="feature">
+								<span class="button button--secondary" data-feature="{feature.uid}">
+									<span>{feature.name}</span>
+								</span>
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+			</f:for>
+		</f:alias>
+
+
 	</div>
 </div>
