@@ -2,7 +2,6 @@
 
 namespace Xima\XmDkfzNetSite\EventListener;
 
-
 use Blueways\BwGuild\Event\InitializeUserUpdateEvent;
 use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 

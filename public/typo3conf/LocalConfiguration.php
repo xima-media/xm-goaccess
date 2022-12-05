@@ -210,7 +210,7 @@ return [
             'options' => [],
         ],
         'permalogin' => 2,
-        'lifetime' => 604800
+        'lifetime' => 604800,
     ],
     'GFX' => [
         'imagefile_ext' => 'gif,png,jpeg,jpg,webp',
