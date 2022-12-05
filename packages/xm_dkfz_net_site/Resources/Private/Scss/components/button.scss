@@ -49,6 +49,16 @@
     }
 }
 
+input[type="file"]::file-selector-button {
+    padding: .375rem 1rem;
+    border-radius: var(--space-doubled);
+    border: 2px solid var(--color-gray-900);
+    align-items: center;
+    background: none;
+    color: var(--color-gray-900);
+    margin-right: 10px;
+}
+
 
 //
 //   @section 2. Button primary
