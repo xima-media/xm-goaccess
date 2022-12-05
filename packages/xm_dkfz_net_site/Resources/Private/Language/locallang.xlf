@@ -415,6 +415,9 @@
 			<trans-unit id="user.committee">
 				<source>Committee</source>
 			</trans-unit>
+			<trans-unit id="user.committee.member_in">
+				<source>Member in</source>
+			</trans-unit>
 			<trans-unit id="label.download">
 				<source>Download</source>
 			</trans-unit>

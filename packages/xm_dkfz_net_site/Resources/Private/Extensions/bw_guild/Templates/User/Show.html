@@ -14,7 +14,7 @@
 				<p>{user.contactFunction}</p>
 			</f:if>
 			<f:if condition="{user.groups}">
-				<p><strong>
+				<p class="m-b-0"><strong>
 					<f:for each="{user.groups}" as="group" iteration="i">
 						{group.title}{f:if(condition: i.isLast, else: ', ')}
 					</f:for>
@@ -66,13 +66,45 @@
 
 		<div class="box box--groups">
 			<h6>Kontakt Abteilung</h6>
-
 			<f:for each="{user.groups}" as="group" iteration="i">
 				<p>{group.title}</p>
-
 			</f:for>
-
 		</div>
+
+		<f:if condition="{user.committee}">
+			<div class="infobox color-accent--primary infobox--background-white color__border">
+				<div class="infobox--wrapper">
+					<h5 class="infobox__title">
+						<f:translate extensionName="XmDkfzNetSite" key="user.committee"/>
+					</h5>
+					<p class="m-b-0">
+						<strong>{f:translate(extensionName:'XmDkfzNetSite', key:'user.committee.member_in')}:</strong>
+					</p>
+					<p>{user.committee}</p>
+					<f:if condition="{user.committeeResponsibilities}">
+						<p class="m-b-0">
+							<strong>{f:translate(extensionName:'XmDkfzNetSite',
+								key:'user.committee_responsibilities')}:</strong>
+						</p>
+						<p>{user.committeeResponsibilities->f:format.nl2br()}</p>
+					</f:if>
+					<f:if condition="{user.committeeRepresentative}">
+						<p class="m-b-0"><strong> {f:translate(extensionName:'XmDkfzNetSite',
+							key:'user.committee_responsibilities')}:</strong></p>
+						<p>
+							<f:link.action action="show"
+										   pageUid="{settings.showPid}"
+										   pluginName="Usershow"
+										   controller="User"
+										   arguments="{user: user.committeeRepresentative}">
+								{user.committeeRepresentative.displayName}
+							</f:link.action>
+						</p>
+					</f:if>
+				</div>
+			</div>
+		</f:if>
+
 	</div>
 
 	<div>
@@ -172,6 +204,6 @@
 			</f:for>
 		</f:alias>
 
-
 	</div>
+
 </div>

@@ -29,7 +29,7 @@ div.userprofile {
     gap: 2rem;
     align-items: flex-start;
 
-    p, h1, button, ul {
+    h1, button, ul {
         margin: 0;
     }
 
@@ -73,6 +73,7 @@ div.userprofile {
             &--groups {
                 --color-primary: #e5ecf8;
                 color: inherit;
+                margin-bottom: var(--content-padding);
             }
 
             p:last-child {
@@ -83,7 +84,7 @@ div.userprofile {
 
     &__facts {
 
-        margin-bottom: calc(2 * var(--content-padding));
+        margin-bottom: calc(1.5 * var(--content-padding));
 
         ul {
             display: grid;

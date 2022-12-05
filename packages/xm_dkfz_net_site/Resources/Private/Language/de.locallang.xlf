@@ -281,6 +281,9 @@
 			<trans-unit id="user.committee">
 				<target>Gremium</target>
 			</trans-unit>
+			<trans-unit id="user.committee.member_in">
+				<target>Mitglied in</target>
+			</trans-unit>
 			<trans-unit id="label.download">
 				<target>Herunterladen</target>
 			</trans-unit>
