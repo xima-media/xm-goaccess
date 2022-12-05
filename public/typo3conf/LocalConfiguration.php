@@ -209,6 +209,8 @@ return [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+        'permalogin' => 2,
+        'lifetime' => 604800
     ],
     'GFX' => [
         'imagefile_ext' => 'gif,png,jpeg,jpg,webp',
