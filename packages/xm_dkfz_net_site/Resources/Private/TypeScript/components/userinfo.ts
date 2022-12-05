@@ -84,11 +84,11 @@ class Userinfo {
     }
 
     document.querySelectorAll('.hide-for-self[data-user-uid="' + this.userinfo.user.uid + '"]').forEach(btn => {
-      btn.classList.add('is-self')
+      btn.classList.add('d-none')
     })
 
     document.querySelectorAll('.show-for-self[data-user-uid="' + this.userinfo.user.uid + '"]').forEach(btn => {
-      btn.classList.add('is-self')
+      btn.classList.remove('show-for-self')
     })
   }
 
