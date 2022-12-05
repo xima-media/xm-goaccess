@@ -41,6 +41,7 @@ class Userinfo {
     }
 
     this.loadUserinfo().then(() => {
+      this.modifyShowForSelfClasses()
       this.modifyHtmlTag()
       this.modifyUserNav()
       this.modifyBookmarkLinks()
@@ -75,6 +76,20 @@ class Userinfo {
         localStorage.removeItem('userinfo')
       })
     }
+  }
+
+  protected modifyShowForSelfClasses() {
+    if (!this.userinfo) {
+      return
+    }
+
+    document.querySelectorAll('.hide-for-self[data-user-uid="' + this.userinfo.user.uid + '"]').forEach(btn => {
+      btn.classList.add('is-self')
+    })
+
+    document.querySelectorAll('.show-for-self[data-user-uid="' + this.userinfo.user.uid + '"]').forEach(btn => {
+      btn.classList.add('is-self')
+    })
   }
 
   protected modifyHtmlTag() {

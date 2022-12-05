@@ -341,10 +341,24 @@ ul > li {
     }
 }
 
+.show-for-self {
+    display: none !important;
+
+    &.is-self {
+        display: inherit !important;
+    }
+}
+
+.hide-for-self.is-self {
+    display: none;
+}
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
 
 
 // end of basic.scss file

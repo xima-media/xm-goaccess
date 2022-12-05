@@ -18,7 +18,7 @@ class Userprofile {
   }
 
   protected bindProfileEditLink() {
-    document.querySelectorAll('a[data-user-edit-link]').forEach((link) => {
+    document.querySelectorAll('[data-user-edit-link]').forEach((link) => {
       link.addEventListener('click', this.onUserProfileEditLinkClick.bind(this))
     })
   }

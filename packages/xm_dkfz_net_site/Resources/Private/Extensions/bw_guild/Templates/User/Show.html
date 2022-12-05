@@ -23,7 +23,8 @@
 		</div>
 
 		<button type="button"
-				class="button button--primary"
+				class="button button--primary hide-for-self"
+				data-user-uid="{user.uid}"
 				data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
 			<span data-onload>
 				<f:render partial="Icon" arguments="{icon: 'person-add'}"/>
@@ -33,6 +34,13 @@
 				<f:render partial="Icon" arguments="{icon: 'person-remove'}"/>
 				Mitarbeiter gemerkt
 			</span>
+		</button>
+
+		<button class="button button--primary show-for-self"
+				data-user-uid="{user.uid}"
+				data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819)}">
+			<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+			Profil bearbeiten
 		</button>
 
 	</div>
@@ -126,7 +134,10 @@
 						<f:render partial="Icon" arguments="{icon: 'clipboard'}"/>
 					</span>
 					<p>
-						<strong><f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/></strong> {user.responsibilities} </p>
+						<strong>
+							<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
+						</strong> {user.responsibilities}
+					</p>
 				</li>
 			</f:if>
 		</ul>
