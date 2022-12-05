@@ -66,6 +66,7 @@ class Userprofile {
       input: inputElement,
       minLength: 2,
       disableAutoSelect: true,
+      preventSubmit: true,
       fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
       onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
     })
