@@ -242,7 +242,7 @@ return [
         'transport_smtp_encrypt' => '',
         'transport_smtp_password' => '',
         'transport_smtp_username' => '',
-        'transport_sendmail_command' => '/usr/bin/sendmail -bs',
+        'transport_sendmail_command' => '/usr/sbin/sendmail -bs',
         'transport_smtp_server' => '127.0.0.1:25',
         'defaultMailFromName' => 'DKFZ Intranet',
         'defaultMailFromAddress' => 'noreply@intracmsprod.inet.dkfz-heidelberg.de',
