@@ -32,14 +32,14 @@
 		</button>
 	</div>
 
-	<div class="news-content">
+	<div class="news-content content-wrapper__content-text">
 
 		<f:if condition="{newsItem.mediaNonPreviews.0}">
 			<f:render partial="Image" arguments="{image: newsItem.mediaNonPreviews.0}"/>
 		</f:if>
 
 		<f:if condition="{newsItem.teaser}">
-			<p class="news-intro h5" itemprop="description">{newsItem.teaser}</p>
+			<p class="h4 news-intro text-intro" itemprop="description">{newsItem.teaser}</p>
 		</f:if>
 
 		<div class="news-text-wrap" itemprop="articleBody">

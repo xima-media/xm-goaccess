@@ -18,12 +18,17 @@ $table-alignments: left, right, center;
             }
         }
 
-        p {
+        p:not([class^="h"]) {
             font-family: var(--font-family-sans-serif);
-            font-size: 18px;
-            line-height: 30px;
+
+            // @TODO: wtf is this?
             max-width: 60.625rem;
             margin: auto;
+
+            @include media-breakpoint-up(md) {
+                font-size: 18px;
+                line-height: 30px;
+            }
         }
 
         ul {
