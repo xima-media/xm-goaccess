@@ -140,6 +140,32 @@ call_user_func(function () {
                 'foreign_table_where' => ' AND {#tx_xmdkfznetsite_domain_model_committee}.{#sys_language_uid} IN (-1,0)',
             ],
         ],
+        'committee_responsibilities' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.committee_responsibilities',
+            'config' => [
+                'type' => 'text',
+            ],
+        ],
+        'committee_representative' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.committee_representative',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 1,
+                'maxitems' => 1,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
         'about' => [
             'exclude' => false,
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.about',
@@ -152,7 +178,7 @@ call_user_func(function () {
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,committee,about',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,committee,committee_responsibilities,committee_representative,about',
         '',
         'after:email'
     );

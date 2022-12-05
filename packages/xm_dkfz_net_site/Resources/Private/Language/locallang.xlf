@@ -532,6 +532,12 @@
 			<trans-unit id="user.representative" space="preserve">
 				<source>Representative</source>
 			</trans-unit>
+			<trans-unit id="user.committee_responsibilities" space="preserve">
+				<source>Responsibilities</source>
+			</trans-unit>
+			<trans-unit id="user.committee_representative" space="preserve">
+				<source>Representative</source>
+			</trans-unit>
 			<trans-unit id="user.about" space="preserve">
 				<source>About me</source>
 			</trans-unit>

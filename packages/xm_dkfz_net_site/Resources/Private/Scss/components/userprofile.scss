@@ -135,6 +135,10 @@ form.userprofile {
                 label {
                     margin-top: .5rem;
                 }
+
+                .form-element {
+                    grid-column: 2 / 3;
+                }
             }
         }
     }

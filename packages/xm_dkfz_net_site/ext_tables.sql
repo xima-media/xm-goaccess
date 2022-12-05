@@ -56,18 +56,20 @@ create table tx_news_domain_model_news (
 );
 
 create table fe_users (
-	location         varchar(255) default '' not null,
-	member_since     int(11) unsigned default '0' not null,
-	birthday         int(11) unsigned default '0' not null,
-	dkfz_id          int(11) unsigned default '0' not null,
-	ad_account_name  varchar(255) default '' not null,
-	contacts         int(11) unsigned default '0' not null,
-	dkfz_hash        varchar(255) default '' not null,
-	gender           int(11) unsigned default '0' not null,
-	responsibilities text,
-	representative   varchar(64)             not null default '',
-	committee        int(11) unsigned default '0' not null,
-	about            text
+	location                   varchar(255) default '' not null,
+	member_since               int(11) unsigned default '0' not null,
+	birthday                   int(11) unsigned default '0' not null,
+	dkfz_id                    int(11) unsigned default '0' not null,
+	ad_account_name            varchar(255) default '' not null,
+	contacts                   int(11) unsigned default '0' not null,
+	dkfz_hash                  varchar(255) default '' not null,
+	gender                     int(11) unsigned default '0' not null,
+	responsibilities           text,
+	representative             varchar(64)             not null default '',
+	committee                  int(11) unsigned default '0' not null,
+	committee_responsibilities text,
+	committee_representative   int(11) unsigned default '0' not null,
+	about                      text
 );
 
 create table be_users (

@@ -47,6 +47,7 @@ class Userprofile {
   protected bindUserEditFormEvents() {
     const form = app.lightbox.content.querySelector('form')
     this.initUserRepresentativeAutocomplete()
+    this.initUserCommitteeRepresentativeAutocomplete()
     this.initUserFeatureInputs()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
@@ -55,6 +56,26 @@ class Userprofile {
   protected initUserRepresentativeAutocomplete() {
     const inputElement = app.lightbox.content.querySelector('#representative') as HTMLInputElement
     const hiddenElement = app.lightbox.content.querySelector('#representativeHiddenInput') as HTMLInputElement
+
+    if (!inputElement || !hiddenElement) {
+      return
+    }
+
+    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete')) as AutocompleteItem[]
+
+    autocomplete({
+      input: inputElement,
+      minLength: 2,
+      disableAutoSelect: true,
+      preventSubmit: true,
+      fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
+      onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+    })
+  }
+
+  protected initUserCommitteeRepresentativeAutocomplete() {
+    const inputElement = app.lightbox.content.querySelector('#user-committee-representative') as HTMLInputElement
+    const hiddenElement = app.lightbox.content.querySelector('#committeeRepresentativeHiddenInput') as HTMLInputElement
 
     if (!inputElement || !hiddenElement) {
       return

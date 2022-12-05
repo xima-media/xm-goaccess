@@ -32,6 +32,30 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected string $responsibilities = '';
 
+    protected ?User $committeeRepresentative = null;
+
+    public function getCommitteeRepresentative(): ?User
+    {
+        return $this->committeeRepresentative;
+    }
+
+    public function setCommitteeRepresentative(?User $committeeRepresentative): void
+    {
+        $this->committeeRepresentative = $committeeRepresentative;
+    }
+
+    public function getCommitteeResponsibilities(): string
+    {
+        return $this->committeeResponsibilities;
+    }
+
+    public function setCommitteeResponsibilities(string $committeeResponsibilities): void
+    {
+        $this->committeeResponsibilities = $committeeResponsibilities;
+    }
+
+    protected string $committeeResponsibilities = '';
+
     protected string $about = '';
 
     /**
