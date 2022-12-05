@@ -30,7 +30,7 @@ call_user_func(function () {
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'eval' => 'date,int',
                 'format' => 'date',
             ],
         ],
@@ -40,7 +40,7 @@ call_user_func(function () {
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'eval' => 'date,int',
                 'format' => 'date',
             ],
         ],
