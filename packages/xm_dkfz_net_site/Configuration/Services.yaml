@@ -118,3 +118,7 @@ services:
 
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true
+
+  Blueways\BwGuild\Controller\ApiController:
+    arguments:
+      $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\UserRepository'

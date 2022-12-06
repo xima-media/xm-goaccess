@@ -28,7 +28,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected ?User $representative = null;
 
-    protected string $committee = '';
+    protected ?Committee $committee = null;
 
     protected string $responsibilities = '';
 
@@ -58,17 +58,6 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected string $about = '';
 
-    /**
-     * @return string
-     */
-    public function getCommittee(): string
-    {
-        return $this->committee;
-    }
-
-    /**
-     * @return string
-     */
     public function getResponsibilities(): string
     {
         return $this->responsibilities;
@@ -79,99 +68,71 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         $this->representative = $representative;
     }
 
-    public function setCommittee(string $committee): void
-    {
-        $this->committee = $committee;
-    }
-
     public function setResponsibilities(string $responsibilities): void
     {
         $this->responsibilities = $responsibilities;
     }
 
-    /**
-     * @return int
-     */
     public function getGender(): int
     {
         return $this->gender;
     }
 
-    /**
-     * @param int $gender
-     */
+    public function setCommittee(?Committee $committee): void
+    {
+        $this->committee = $committee;
+    }
+
+    public function getCommittee(): ?Committee
+    {
+        return $this->committee;
+    }
+
     public function setGender(int $gender): void
     {
         $this->gender = $gender;
     }
 
-    /**
-     * @return bool
-     */
     public function isDisable(): bool
     {
         return $this->disable;
     }
 
-    /**
-     * @param bool $disable
-     */
     public function setDisable(bool $disable): void
     {
         $this->disable = $disable;
     }
 
-    /**
-     * @param string $room
-     */
     public function setRoom(string $room): void
     {
         $this->room = $room;
     }
 
-    /**
-     * @param string $location
-     */
     public function setLocation(string $location): void
     {
         $this->location = $location;
     }
 
-    /**
-     * @param \DateTime|null $memberSince
-     */
     public function setMemberSince(?\DateTime $memberSince): void
     {
         $this->memberSince = $memberSince;
     }
 
-    /**
-     * @param \DateTime|null $birthday
-     */
     public function setBirthday(?\DateTime $birthday): void
     {
         $this->birthday = $birthday;
     }
 
-    /**
-     * @param string $dkfzId
-     */
     public function setDkfzId(string $dkfzId): void
     {
         $this->dkfzId = $dkfzId;
     }
 
-    /**
-     * @param string $adAccountName
-     */
     public function setAdAccountName(string $adAccountName): void
     {
         $this->adAccountName = $adAccountName;
     }
 
-    /**
-     * @param string $dkfzHash
-     */
     public function setDkfzHash(string $dkfzHash): void
     {
         $this->dkfzHash = $dkfzHash;
@@ -185,57 +146,36 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         $this->contacts = $contacts;
     }
 
-    /**
-     * @return string
-     */
     public function getRoom(): string
     {
         return $this->room;
     }
 
-    /**
-     * @return string
-     */
     public function getLocation(): string
     {
         return $this->location;
     }
 
-    /**
-     * @return \DateTime|null
-     */
     public function getMemberSince(): ?\DateTime
     {
         return $this->memberSince;
     }
 
-    /**
-     * @return \DateTime|null
-     */
     public function getBirthday(): ?\DateTime
     {
         return $this->birthday;
     }
 
-    /**
-     * @return string
-     */
     public function getDkfzId(): string
     {
         return $this->dkfzId;
     }
 
-    /**
-     * @return string
-     */
     public function getAdAccountName(): string
     {
         return $this->adAccountName;
     }
 
-    /**
-     * @return string
-     */
     public function getDkfzHash(): string
     {
         return $this->dkfzHash;
