@@ -129,7 +129,7 @@ picture.userimage {
         }
 
         &.color {
-            background-color: var(--color-accent);
+            background-color: var(--color-accent, var(--color-primary));
             width: calc(50% + .875rem);
             aspect-ratio: 1;
             align-self: flex-end;

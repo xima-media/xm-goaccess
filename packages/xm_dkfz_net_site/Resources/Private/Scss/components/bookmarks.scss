@@ -30,3 +30,61 @@
         display: none;
     }
 }
+
+.bookmarks-sidebar {
+    display: grid;
+    margin-bottom: calc(1.5 * var(--content-padding));
+
+    li {
+        display: flex;
+        border-bottom: 1px solid var(--color-gray-300);
+        padding: .75rem 0;
+        gap: 1rem;
+    }
+
+    .picture__item {
+        margin-bottom: 0.5rem;
+    }
+
+    .picture__pattern.color {
+        margin: -0.5rem;
+    }
+
+    .content {
+        flex-grow: 1;
+    }
+
+    &--fe_users .content {
+        display: flex;
+        gap: 10px;
+    }
+
+    &--pages .content {
+        display: grid;
+
+        .h6 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+
+        nav {
+            margin-left: 1.25rem;
+
+            a {
+                color: var(--color-gray-500);
+                font-size: 14px;
+
+                &:not(:last-child):after {
+                    content: '/';
+                    margin: 0 3px 0 5px;
+                }
+            }
+        }
+    }
+
+    &--pages .news {
+        display: grid;
+    }
+}

@@ -1,51 +1,101 @@
 {namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
 
-<h2>Merkliste</h2>
+<h3>Merkliste</h3>
 
 <f:if condition="{bookmarks.fe_users}">
-	<h3>Mitarbeiter</h3>
-	<ul class="bookmarks__sidebar-list">
-		<f:for each="{bookmarks.fe_users}" as="user">
-			<li class="bookmarks__sidebar-items bookmarks__sidebar-list-item">
-				<div class="contact--wrapper color-accent--blue-900">
-					<div class="contact-image">
-						<div class="contact-image--container">
-							<div class="card card--image-top card--md card--image-size-xxs">
-								<div class="card__image">
-									<figure class="picture picture--with-image picture--width-color"
-											data-color="primary" data-pattern-color="transparent">
-										<div class="picture__item color-accent--primary">
-											<xm:svgInline src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg" />
-										</div>
-									</figure>
-								</div>
-							</div>
+	<f:if condition="{bookmarks.fe_users}">
+		<h5 class="m-b-0">Mitarbeiter</h5>
+		<ul class="bookmarks-sidebar bookmarks-sidebar--fe_users">
+			<f:for each="{bookmarks.fe_users}" as="user">
+				<li>
+					<div class="content">
 
-							<div class="contact--information">
-								<div class="contact--information-data">
-									<h6>
-										<f:link.action action="show"
-													   pluginName="Usershow"
-													   extensionName="BwGuild"
-													   controller="User"
-													   pageUid="{pidUserDetail}"
-													   arguments="{user: user.uid}">{user.displayName}
-										</f:link.action>
-									</h6>
-									<p>
-										Gruppenleitung EK Investitionsgüter / Dienstleistungen <br/>
-										<span>M230 – Beschaffung und Materialwirtschaft</span>
-									</p>
-								</div>
-							</div>
-						</div>
+						<f:render partial="UserImage" arguments="{user: user, width: 60}"/>
+
+						<h6>
+							<f:link.action action="show"
+										   pluginName="Usershow"
+										   extensionName="BwGuild"
+										   controller="User"
+										   pageUid="159"
+										   arguments="{user: user.uid}">{user.last_name}, {user.first_name}
+							</f:link.action>
+						</h6>
+
 					</div>
 
-					<button class="button--remove" aria-label="Von Merkliste entfernen" data-tooltip="Von Merkliste entfernen" data-bookmark-entity="employlee" data-bookmark-added="false" data-bookmark-id="{{ tabId }}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
-					</button>
-				</div>
-			</li>
-		</f:for>
-	</ul>
+					<a href="#"
+					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
+						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
+					</a>
+
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+
+	<f:if condition="{bookmarks.pages}">
+		<h5 class="m-b-0">Seiten</h5>
+		<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
+			<f:for each="{bookmarks.pages}" as="page">
+				<li>
+					<div class="content">
+						<f:link.typolink class="h6" parameter="{page.uid}">
+							<f:render partial="Icon" arguments="{icon: 'arrow-right', size: 'sm'}"/>
+							{page.title}
+						</f:link.typolink>
+						<nav>
+							<f:for each="{page.rootline}" as="item">
+								<f:link.typolink parameter="{item.uid}"/>
+							</f:for>
+						</nav>
+					</div>
+					<a href="#"
+					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
+						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
+					</a>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+
+	<f:if condition="{bookmarks.tx_news_domain_model_news}">
+		<h5 class="m-b-0">News</h5>
+		<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
+			<f:for each="{bookmarks.tx_news_domain_model_news}" as="news">
+				<li>
+					<div class="content">
+						<f:link.action extensionName="News"
+									   pluginName="Pi1"
+									   controller="News"
+									   action="detail"
+									   pageUid="142"
+									   class="h6"
+									   arguments="{news: news.uid}">
+							<f:if condition="{news.image}">
+								<figure class="picture__item">
+									<span aria-hidden="true" class="picture__pattern color"></span>
+									<picture>
+										<f:image class="picture__image"
+												 src="{news.image}"
+												 treatIdAsReference="1"
+												 width="120"/>
+									</picture>
+								</figure>
+							</f:if>
+								<figure class="picture__item picture__item--no-image color-accent--primary">
+									<span aria-hidden="true"
+										  class="picture__pattern pattern no-image color-accent--gray-900"></span>
+								</figure>
+							<h6>{news.title}</h6>
+						</f:link.action>
+					</div>
+					<a href="#"
+					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
+						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
+					</a>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
 </f:if>
