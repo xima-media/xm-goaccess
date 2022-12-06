@@ -9,8 +9,6 @@ return [
         'cruser_id' => 'cruser_id',
         'searchFields' => 'name,function,room',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Images/icon-place.svg',
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
     ],
     'types' => [
         0 => [

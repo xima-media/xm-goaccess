@@ -82,6 +82,9 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
                     ],
                 ],
             ],
+            'behaviour' => [
+                'allowLanguageSynchronization' => true,
+            ],
         ],
     ],
     'tt_content_items' => [
