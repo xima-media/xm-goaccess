@@ -37,5 +37,4 @@ class UserInfoApiEvent
         $userinfo->bookmarks = $bookmarks;
         $event->setUserinfo($userinfo);
     }
-
 }
