@@ -107,6 +107,13 @@ html.open-lightbox {
         .lightbox__content {
             opacity: 1;
             max-width: calc(100vw - var(--space-lg));
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
     }
 
