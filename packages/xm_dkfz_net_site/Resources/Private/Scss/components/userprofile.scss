@@ -12,6 +12,21 @@ input[type="date"] {
     text-transform: uppercase;
 }
 
+a[data-clear-inputs] {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    height: 46px;
+    width: 46px;
+    line-height: 45px;
+    text-align: center;
+
+    input.autocomplete:placeholder-shown + & {
+        display: none;
+    }
+}
+
 body#p159 {
     --content-width: 1200px;
 }
@@ -172,6 +187,7 @@ form.userprofile {
     .form-element {
         display: flex;
         flex-direction: column;
+        position: relative;
 
         &:only-child {
             width: 100%;

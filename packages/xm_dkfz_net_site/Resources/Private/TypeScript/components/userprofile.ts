@@ -50,6 +50,7 @@ class Userprofile {
     this.initUserRepresentativeAutocomplete()
     this.initUserCommitteeRepresentativeAutocomplete()
     this.initUserFeatureInputs()
+    this.initClearLinks()
     form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
   }
@@ -91,6 +92,18 @@ class Userprofile {
       preventSubmit: true,
       fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
       onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+    })
+  }
+
+  protected initClearLinks() {
+    app.lightbox.content.querySelectorAll('a[data-clear-inputs]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault()
+        const link = e.currentTarget as HTMLLinkElement
+        app.lightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs')).forEach(input => {
+          input.value = ''
+        })
+      })
     })
   }
 
@@ -269,7 +282,7 @@ class Userprofile {
         disableAutoSelect: true,
         fetch: onAutocompleteFetch,
         onSelect: onAutocompleteSelect,
-        render: function (item:FeatureItem, currentValue): HTMLDivElement | undefined {
+        render: function (item: FeatureItem, currentValue): HTMLDivElement | undefined {
           const itemElement = document.createElement("div");
 
           itemElement.innerHTML = item.label
