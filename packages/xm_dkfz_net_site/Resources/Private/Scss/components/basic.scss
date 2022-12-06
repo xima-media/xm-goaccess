@@ -326,7 +326,7 @@ ul > li {
     text-align: center;
 }
 
-*[class*="show-for-"] {
+*[class*="show-for-"], button[class*="show-for-"] {
     display: none;
 }
 
