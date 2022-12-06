@@ -33,6 +33,11 @@ services:
       - name: event.listener
         identifier: 'initializeUserUpdateAction'
 
+  Xima\XmDkfzNetSite\EventListener\UserInfoApiEvent:
+    tags:
+      - name: event.listener
+        identifier: 'userInfoApiEvent'
+
   querybuilder.beUsers:
     class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
     factory:
