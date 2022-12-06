@@ -2,11 +2,11 @@
 
 <h3>Merkliste</h3>
 
-<f:if condition="{bookmarks.fe_users}">
-	<f:if condition="{bookmarks.fe_users}">
+<f:if condition="{userinfo.bookmarks.fe_users}">
+	<f:if condition="{userinfo.bookmarks.fe_users}">
 		<h5 class="m-b-0">Mitarbeiter</h5>
 		<ul class="bookmarks-sidebar bookmarks-sidebar--fe_users">
-			<f:for each="{bookmarks.fe_users}" as="user">
+			<f:for each="{userinfo.bookmarks.fe_users}" as="user">
 				<li>
 					<div class="content">
 
@@ -26,7 +26,7 @@
 
 					<a href="#"
 					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
+						<f:render partial="Icon" arguments="{icon: 'delete-bin', size: 'sm'}"/>
 					</a>
 
 				</li>
@@ -34,10 +34,10 @@
 		</ul>
 	</f:if>
 
-	<f:if condition="{bookmarks.pages}">
+	<f:if condition="{userinfo.bookmarks.pages}">
 		<h5 class="m-b-0">Seiten</h5>
 		<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
-			<f:for each="{bookmarks.pages}" as="page">
+			<f:for each="{userinfo.bookmarks.pages}" as="page">
 				<li>
 					<div class="content">
 						<f:link.typolink class="h6" parameter="{page.uid}">
@@ -52,17 +52,17 @@
 					</div>
 					<a href="#"
 					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
+						<f:render partial="Icon" arguments="{icon: 'delete-bin', size: 'sm'}"/>
 					</a>
 				</li>
 			</f:for>
 		</ul>
 	</f:if>
 
-	<f:if condition="{bookmarks.tx_news_domain_model_news}">
+	<f:if condition="{userinfo.bookmarks.tx_news_domain_model_news}">
 		<h5 class="m-b-0">News</h5>
 		<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
-			<f:for each="{bookmarks.tx_news_domain_model_news}" as="news">
+			<f:for each="{userinfo.bookmarks.tx_news_domain_model_news}" as="news">
 				<li>
 					<div class="content">
 						<f:link.action extensionName="News"
@@ -83,16 +83,21 @@
 									</picture>
 								</figure>
 							</f:if>
+							<f:if condition="!{news.image}">
 								<figure class="picture__item picture__item--no-image color-accent--primary">
 									<span aria-hidden="true"
 										  class="picture__pattern pattern no-image color-accent--gray-900"></span>
 								</figure>
+							</f:if>
 							<h6>{news.title}</h6>
+							<f:comment>
+								<p>{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 30)}</p>
+							</f:comment>
 						</f:link.action>
 					</div>
 					<a href="#"
 					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
+						<f:render partial="Icon" arguments="{icon: 'delete-bin', size: 'sm'}"/>
 					</a>
 				</li>
 			</f:for>
