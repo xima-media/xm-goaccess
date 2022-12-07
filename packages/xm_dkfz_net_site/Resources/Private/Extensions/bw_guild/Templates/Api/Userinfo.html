@@ -2,134 +2,138 @@
 
 <h3>Merkliste</h3>
 
+
 <f:if condition="{userinfo.bookmarks.fe_users}">
-	<f:if condition="{userinfo.bookmarks.fe_users}">
-		<h5 class="m-b-0">Mitarbeiter</h5>
-		<ul class="bookmarks-sidebar bookmarks-sidebar--fe_users">
-			<f:for each="{userinfo.bookmarks.fe_users}" as="user">
-				<li>
-					<div class="content">
+	<h5 class="m-b-0">Mitarbeiter</h5>
+	<ul class="bookmarks-sidebar bookmarks-sidebar--fe_users">
+		<f:for each="{userinfo.bookmarks.fe_users}" as="user">
+			<li>
+				<div class="content">
 
-						<f:render partial="UserImage" arguments="{user: user, width: 60}"/>
+					<f:render partial="UserImage" arguments="{user: user, width: 60}"/>
 
-						<h6>
-							<f:link.action action="show"
-										   pluginName="Usershow"
-										   extensionName="BwGuild"
-										   controller="User"
-										   pageUid="159"
-										   arguments="{user: user.uid}">{user.last_name}, {user.first_name}
-							</f:link.action>
-						</h6>
+					<h6>
+						<f:link.action action="show"
+									   pluginName="Usershow"
+									   extensionName="BwGuild"
+									   controller="User"
+									   pageUid="159"
+									   arguments="{user: user.uid}">{user.last_name}, {user.first_name}
+						</f:link.action>
+					</h6>
 
-					</div>
+				</div>
 
-					<a href="#" class="tab-item__link"
-					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
-					</a>
+				<a href="#"
+				   class="tab-item__link"
+				   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
+					<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+				</a>
 
-				</li>
-			</f:for>
-		</ul>
-	</f:if>
-
-	<f:if condition="{userinfo.bookmarks.pages}">
-		<h5 class="m-b-0">Seiten</h5>
-		<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
-			<f:for each="{userinfo.bookmarks.pages}" as="page">
-				<li>
-					<div class="content">
-						<f:link.typolink class="h6" parameter="{page.uid}">
-							<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-							{page.title}
-						</f:link.typolink>
-						<nav>
-							<f:for each="{page.rootline}" as="item">
-								<f:link.typolink parameter="{item.uid}"/>
-							</f:for>
-						</nav>
-					</div>
-					<a href="#" class="tab-item__link"
-					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
-					</a>
-				</li>
-			</f:for>
-		</ul>
-	</f:if>
-
-	<f:if condition="{userinfo.bookmarks.sys_file}">
-		<h5>Dokumente</h5>
-		<ul class="bookmarks-sidebar bookmarks-sidebar--sys_file">
-			<f:for each="{userinfo.bookmarks.sys_file}" as="file" iteration="fileIterator">
-				<li>
-					<div class="content">
-						<span class="title">{file.name->f:format.htmlspecialchars()}</span>
-						<span class="tab-item__type">{file.extension}</span>
-						<a href="{f:uri.typolink(parameter:'t3://file?uid={file.uid}')}"
-						   class="tab-item__link"
-						   type="button"
-						   aria-label="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
-						   download>
-							<f:render partial="Icon" arguments="{icon: 'download'}"/>
-						</a>
-					</div>
-					<a href="#"
-					   class="tab-item__link"
-					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
-					</a>
-				</li>
-			</f:for>
-		</ul>
-	</f:if>
-
-	<f:if condition="{userinfo.bookmarks.tx_news_domain_model_news}">
-		<h5 class="m-b-0">News</h5>
-		<ul class="bookmarks-sidebar bookmarks-sidebar--news">
-			<f:for each="{userinfo.bookmarks.tx_news_domain_model_news}" as="news">
-				<li>
-					<f:link.action extensionName="News"
-								   pluginName="Pi1"
-								   controller="News"
-								   action="detail"
-								   pageUid="142"
-								   class="content"
-								   arguments="{news: news.uid}">
-						<f:if condition="{news.image}">
-							<figure class="picture__item">
-								<span aria-hidden="true" class="picture__pattern color"></span>
-								<picture>
-									<f:image class="picture__image"
-											 src="{news.image}"
-											 treatIdAsReference="1"
-											 width="120"/>
-								</picture>
-							</figure>
-						</f:if>
-						<f:if condition="!{news.image}">
-							<figure class="picture__item picture__item--no-image color-accent--primary">
-								<span aria-hidden="true"
-									  class="picture__pattern pattern no-image color-accent--gray-900"></span>
-							</figure>
-						</f:if>
-						<div>
-							<p class="m-b-0 date">
-								<f:format.date format="d.m.Y">{news.datetime}</f:format.date>
-							</p>
-							<h6>{news.title}</h6>
-							<p class="m-b-0">{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
-						</div>
-					</f:link.action>
-
-					<a href="#" class="tab-item__link"
-					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
-					</a>
-				</li>
-			</f:for>
-		</ul>
-	</f:if>
-
+			</li>
+		</f:for>
+	</ul>
 </f:if>
+
+<f:if condition="{userinfo.bookmarks.pages}">
+	<h5 class="m-b-0">Seiten</h5>
+	<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
+		<f:for each="{userinfo.bookmarks.pages}" as="page">
+			<li>
+				<div class="content">
+					<f:link.typolink class="h6" parameter="{page.uid}">
+						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+						{page.title}
+					</f:link.typolink>
+					<nav>
+						<f:for each="{page.rootline}" as="item">
+							<f:link.typolink parameter="{item.uid}"/>
+						</f:for>
+					</nav>
+				</div>
+				<a href="#"
+				   class="tab-item__link"
+				   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
+					<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+				</a>
+			</li>
+		</f:for>
+	</ul>
+</f:if>
+
+<f:if condition="{userinfo.bookmarks.sys_file}">
+	<h5>Dokumente</h5>
+	<ul class="bookmarks-sidebar bookmarks-sidebar--sys_file">
+		<f:for each="{userinfo.bookmarks.sys_file}" as="file" iteration="fileIterator">
+			<li>
+				<div class="content">
+					<span class="title">{file.name->f:format.htmlspecialchars()}</span>
+					<span class="tab-item__type">{file.extension}</span>
+					<a href="{f:uri.typolink(parameter:'t3://file?uid={file.uid}')}"
+					   class="tab-item__link"
+					   type="button"
+					   aria-label="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
+					   download>
+						<f:render partial="Icon" arguments="{icon: 'download'}"/>
+					</a>
+				</div>
+				<a href="#"
+				   class="tab-item__link"
+				   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'sys_file', recordUid: file.uid})}">
+					<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+				</a>
+			</li>
+		</f:for>
+	</ul>
+</f:if>
+
+<f:if condition="{userinfo.bookmarks.tx_news_domain_model_news}">
+	<h5 class="m-b-0">News</h5>
+	<ul class="bookmarks-sidebar bookmarks-sidebar--news">
+		<f:for each="{userinfo.bookmarks.tx_news_domain_model_news}" as="news">
+			<li>
+				<f:link.action extensionName="News"
+							   pluginName="Pi1"
+							   controller="News"
+							   action="detail"
+							   pageUid="142"
+							   class="content"
+							   arguments="{news: news.uid}">
+					<f:if condition="{news.image}">
+						<figure class="picture__item">
+							<span aria-hidden="true" class="picture__pattern color"></span>
+							<picture>
+								<f:image class="picture__image" src="{news.image}" treatIdAsReference="1" width="120"/>
+							</picture>
+						</figure>
+					</f:if>
+					<f:if condition="!{news.image}">
+						<figure class="picture__item picture__item--no-image color-accent--primary">
+							<span aria-hidden="true"
+								  class="picture__pattern pattern no-image color-accent--gray-900"></span>
+						</figure>
+					</f:if>
+					<div>
+						<p class="m-b-0 date">
+							<f:format.date format="d.m.Y">{news.datetime}</f:format.date>
+						</p>
+						<h6>{news.title}</h6>
+						<p class="m-b-0">{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
+					</div>
+				</f:link.action>
+
+				<a href="#"
+				   class="tab-item__link"
+				   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'tx_news_domain_model_news', recordUid: news.uid})}">
+					<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+				</a>
+			</li>
+		</f:for>
+	</ul>
+</f:if>
+
+<div class="infobox color-accent--cyan infobox--background-white">
+	<div class="infobox--wrapper">
+		<p class="infobox__text">Ihre Merkliste ist leer.</p>
+	</div>
+</div>

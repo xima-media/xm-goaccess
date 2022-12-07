@@ -35,6 +35,14 @@
     display: grid;
     margin-bottom: calc(1.5 * var(--content-padding));
 
+    @include media-breakpoint-up(md) {
+        min-width: 450px;
+    }
+
+    & + .infobox {
+        display: none;
+    }
+
     li {
         display: flex;
         border-bottom: 1px solid var(--color-gray-300);

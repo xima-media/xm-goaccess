@@ -132,8 +132,24 @@ class Userinfo {
     }
 
     app.lightbox.displayContent(this.userinfo.html)
+    app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
     app.lightbox.stopLoading()
     app.lightbox.open(LightboxStyle.sidebar)
+  }
+
+  protected onBookmarkSidebarLinkClick(e: Event) {
+    e.preventDefault()
+    const link = e.currentTarget as HTMLLinkElement
+    const url = link.getAttribute('data-bookmark-url')
+    app.lightbox.startLoading()
+    app.apiRequest(url, 'DELETE').then((userinfo) => {
+      this.userinfo = userinfo
+      localStorage.setItem('userinfo', JSON.stringify(userinfo))
+      this.modifyBookmarkLinks()
+      app.lightbox.displayContent(userinfo.html)
+      app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
+      app.lightbox.stopLoading()
+    })
   }
 
   protected modifyUserNav () {
@@ -159,6 +175,7 @@ class Userinfo {
     }
 
     document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
+      button.classList.remove('fx--hover', 'js--checked')
       const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)')
       if (urlParts.length !== 3) {
         return
