@@ -302,12 +302,14 @@ class Userprofile {
 
     const form = e.currentTarget as HTMLFormElement
     const url = form.getAttribute('action')
+    const profileUrl = form.getAttribute('data-profile-url')
 
     app.lightbox.startLoading()
     app.apiRequest(url, 'POST', form)
       .then(data => {
         app.lightbox.displayContent(data.html)
         this.bindUserEditFormEvents()
+        app.invalidateCacheRequest(profileUrl)
         app.lightbox.stopLoading()
       })
       .catch(e => app.handleRequestError.bind(this))
