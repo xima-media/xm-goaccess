@@ -10,11 +10,11 @@
 		<f:for each="{mainNav}" as="level1Item" iteration="i">
 			<li class="navigation__item fx--first">
 
-				<a class="navigation__link fx--first {f:if(condition:level1Item.active, then:'fx--active')} {f:if(condition:i.isLast, then:'color--primary')}"
+				<a class="navigation__link fx--first {f:if(condition:level1Item.active, then:'fx--active')} {f:if(condition:i.isLast, then:'color')}"
 					 href="{level1Item.link}"
 					 title="{level1Item.title}">
 					<f:if condition="{i.isLast}">
-						<f:render partial="Icon" arguments="{icon: 'bookmark'}"/>
+						<f:render partial="Icon" arguments="{icon: 'users'}"/>
 					</f:if>
 					{level1Item.title}
 				</a>
