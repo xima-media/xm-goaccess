@@ -62,6 +62,10 @@
         flex-grow: 1;
     }
 
+    .tab-item__link {
+        min-width: 44px;
+    }
+
     &--fe_users .content {
         display: flex;
         gap: 10px;

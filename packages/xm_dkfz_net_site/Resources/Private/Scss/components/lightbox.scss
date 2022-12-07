@@ -66,6 +66,7 @@ html.open-lightbox {
 }
 
 .lightbox {
+    --content-padding: 1rem;
     display: none;
     position: fixed;
     width: calc(100vw);
@@ -78,6 +79,14 @@ html.open-lightbox {
     overflow-x: scroll;
     align-items: flex-start;
     backdrop-filter: blur(5px);
+
+    @include media-breakpoint-up(md) {
+        --content-padding: 2rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        --content-padding: 3rem;
+    }
 
     &--closing {
         transition: opacity 0.2s ease;
@@ -96,17 +105,16 @@ html.open-lightbox {
         justify-content: flex-end;
         overflow-x: hidden;
         overflow-y: hidden;
-        width: calc(100vw + 500px);
-        left: -500px;
+        width: calc(100vw + 800px);
+        left: -800px;
 
         &.lightbox--closing {
-            transform: translate3d(500px, 0, 0);
-            transition: opacity 0.2s ease 0.2s, transform .2s ease-in-out;
+            transform: translate3d(800px, 0, 0);
+            transition: opacity 0.8s ease 0.4s, transform .4s ease-in-out;
         }
 
         .lightbox__content {
             opacity: 1;
-            max-width: calc(100vw - var(--space-lg));
             overflow-y: scroll;
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -114,25 +122,21 @@ html.open-lightbox {
             &::-webkit-scrollbar {
                 display: none;
             }
-
-            @include media-breakpoint-up(md) {
-                max-width: calc(800px - var(--space-lg));
-            }
         }
     }
 
     &__content {
         background: #FFF;
-        max-width: calc(100vw - var(--space-lg));
+        max-width: calc(100vw - var(--content-padding));
         width: 100%;
         margin: 0 auto;
-        padding: var(--space-lg);
+        padding: var(--content-padding);
         display: grid;
         opacity: 0;
         min-height: 15vh;
 
         @include media-breakpoint-up(md) {
-            max-width: calc(800px - var(--space-lg));
+            max-width: 800px;
         }
     }
 
@@ -150,8 +154,8 @@ html.open-lightbox {
         width: var(--space-lg);
         height: var(--space-lg);
         position: relative;
-        top: calc(-0.95 * var(--space-lg));
-        right: calc(-0.9 * var(--space-lg));
+        top: calc(-0.75 * var(--content-padding));
+        right: calc(-0.75 * var(--content-padding));
         display: flex;
         justify-content: center;
         align-items: center;
