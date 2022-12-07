@@ -77,6 +77,20 @@
     &--fe_users .content {
         display: flex;
         gap: 10px;
+        align-items: center;
+
+        p {
+            font-size: 14px;
+        }
+
+        &:hover {
+            text-decoration: none;
+
+            h6 {
+                text-decoration: underline;
+            }
+        }
+
     }
 
     &--pages .content {

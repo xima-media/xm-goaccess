@@ -3,26 +3,39 @@
 <h3>Merkliste</h3>
 
 
-<f:if condition="{userinfo.bookmarks.fe_users}">
+<f:if condition="{userinfo.bookmarks.users}">
 	<h5 class="m-b-0">Mitarbeiter</h5>
 	<ul class="bookmarks-sidebar bookmarks-sidebar--fe_users">
-		<f:for each="{userinfo.bookmarks.fe_users}" as="user">
+		<f:for each="{userinfo.bookmarks.users}" as="user">
 			<li>
-				<div class="content">
+				<f:link.action action="show"
+							   pluginName="Usershow"
+							   extensionName="BwGuild"
+							   controller="User"
+							   pageUid="159"
+							   class="content"
+							   arguments="{user: user.uid}">
 
-					<f:render partial="UserImage" arguments="{user: user, width: 60}"/>
+					<f:render partial="UserImage" arguments="{user: user, width: 70}"/>
 
-					<h6>
-						<f:link.action action="show"
-									   pluginName="Usershow"
-									   extensionName="BwGuild"
-									   controller="User"
-									   pageUid="159"
-									   arguments="{user: user.uid}">{user.last_name}, {user.first_name}
-						</f:link.action>
-					</h6>
+					<div>
+						<h6>{user.displayName}</h6>
 
-				</div>
+						<f:if condition="{user.contactFunction}">
+							<p class="m-b-0">{user.contactFunction}</p>
+						</f:if>
+
+						<f:if condition="{user.groups}">
+							<p class="m-b-0"><strong>
+								<f:for each="{user.groups}" as="group" iteration="i">
+									{group.title}{f:if(condition: i.isLast, else: ', ')}
+								</f:for>
+							</strong></p>
+						</f:if>
+
+					</div>
+
+				</f:link.action>
 
 				<a href="#"
 				   class="tab-item__link"
@@ -42,7 +55,7 @@
 			<li>
 				<div class="content">
 					<f:link.typolink class="h6" parameter="{page.uid}">
-						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+						<f:render partial="Icon" arguments="{icon: 'arrow-right', size: 'sm'}"/>
 						{page.title}
 					</f:link.typolink>
 					<nav>
