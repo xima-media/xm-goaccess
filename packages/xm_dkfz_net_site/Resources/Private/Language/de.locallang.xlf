@@ -593,6 +593,24 @@
 			<trans-unit id="lightbox.close.title" space="preserve">
 				<target>Schließen</target>
 			</trans-unit>
+			<trans-unit id="bookmarks.headline" space="preserve">
+				<target>Merkliste</target>
+			</trans-unit>
+			<trans-unit id="bookmarks.empty" space="preserve">
+				<target>Ihre Merkliste ist leer</target>
+			</trans-unit>
+			<trans-unit id="bookmarks.users" space="preserve">
+				<target>Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="bookmarks.pages" space="preserve">
+				<target>Seiten</target>
+			</trans-unit>
+			<trans-unit id="bookmarks.sys_file" space="preserve">
+				<target>Dokumente</target>
+			</trans-unit>
+			<trans-unit id="bookmarks.news" space="preserve">
+				<target>News</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

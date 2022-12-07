@@ -607,6 +607,24 @@
 			<trans-unit id="lightbox.close.title" space="preserve">
 				<source>Close</source>
 			</trans-unit>
+			<trans-unit id="bookmarks.headline" space="preserve">
+				<source>Bookmarks</source>
+			</trans-unit>
+			<trans-unit id="bookmarks.empty" space="preserve">
+				<source>Your bookmark list is empty</source>
+			</trans-unit>
+			<trans-unit id="bookmarks.users" space="preserve">
+				<source>Co-worker</source>
+			</trans-unit>
+			<trans-unit id="bookmarks.pages" space="preserve">
+				<source>Pages</source>
+			</trans-unit>
+			<trans-unit id="bookmarks.sys_file" space="preserve">
+				<source>Documents</source>
+			</trans-unit>
+			<trans-unit id="bookmarks.news" space="preserve">
+				<source>News</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

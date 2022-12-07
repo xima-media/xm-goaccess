@@ -151,11 +151,11 @@ html.open-lightbox {
 
     &__close {
         justify-self: right;
-        width: var(--space-lg);
-        height: var(--space-lg);
+        width: 3rem;
+        height: 3rem;
         position: relative;
-        top: calc(-0.75 * var(--content-padding));
-        right: calc(-0.75 * var(--content-padding));
+        top: -0.2rem;
+        right: 0;
         display: flex;
         justify-content: center;
         align-items: center;

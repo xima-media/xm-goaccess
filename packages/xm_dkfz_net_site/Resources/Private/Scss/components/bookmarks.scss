@@ -39,6 +39,10 @@
         min-width: 450px;
     }
 
+    &__headline {
+        margin: 0 var(--content-padding) var(--content-padding) 0;
+    }
+
     & + .infobox {
         display: none;
     }
@@ -56,6 +60,10 @@
         max-width: 120px;
         width: 100%;
         align-self: center;
+    }
+
+    &__infobox .infobox--wrapper {
+        margin-left: 1rem;
     }
 
     .picture__pattern.color {
@@ -104,7 +112,7 @@
         }
 
         nav {
-            margin-left: 1.25rem;
+            margin-left: 1.35rem;
 
             a {
                 color: var(--color-gray-500);
