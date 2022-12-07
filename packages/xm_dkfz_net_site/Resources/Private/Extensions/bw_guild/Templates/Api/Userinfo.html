@@ -24,9 +24,9 @@
 
 					</div>
 
-					<a href="#"
+					<a href="#" class="tab-item__link"
 					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin', size: 'sm'}"/>
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
 					</a>
 
 				</li>
@@ -41,7 +41,7 @@
 				<li>
 					<div class="content">
 						<f:link.typolink class="h6" parameter="{page.uid}">
-							<f:render partial="Icon" arguments="{icon: 'arrow-right', size: 'sm'}"/>
+							<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
 							{page.title}
 						</f:link.typolink>
 						<nav>
@@ -50,9 +50,35 @@
 							</f:for>
 						</nav>
 					</div>
-					<a href="#"
+					<a href="#" class="tab-item__link"
 					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin', size: 'sm'}"/>
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+					</a>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+
+	<f:if condition="{userinfo.bookmarks.sys_file}">
+		<h5>Dokumente</h5>
+		<ul class="bookmarks-sidebar bookmarks-sidebar--sys_file">
+			<f:for each="{userinfo.bookmarks.sys_file}" as="file" iteration="fileIterator">
+				<li>
+					<div class="content">
+						<span class="title">{file.name->f:format.htmlspecialchars()}</span>
+						<span class="tab-item__type">{file.extension}</span>
+						<a href="{f:uri.typolink(parameter:'t3://file?uid={file.uid}')}"
+						   class="tab-item__link"
+						   type="button"
+						   aria-label="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
+						   download>
+							<f:render partial="Icon" arguments="{icon: 'download'}"/>
+						</a>
+					</div>
+					<a href="#"
+					   class="tab-item__link"
+					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
 					</a>
 				</li>
 			</f:for>
@@ -93,16 +119,17 @@
 								<f:format.date format="d.m.Y">{news.datetime}</f:format.date>
 							</p>
 							<h6>{news.title}</h6>
-							<p>{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
+							<p class="m-b-0">{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
 						</div>
 					</f:link.action>
 
-					<a href="#"
+					<a href="#" class="tab-item__link"
 					   data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, arguments: {tableName: 'pages', recordUid: page.uid})}">
-						<f:render partial="Icon" arguments="{icon: 'delete-bin', size: 'sm'}"/>
+						<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
 					</a>
 				</li>
 			</f:for>
 		</ul>
 	</f:if>
+
 </f:if>

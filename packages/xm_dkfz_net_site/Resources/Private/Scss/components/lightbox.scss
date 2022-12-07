@@ -114,6 +114,10 @@ html.open-lightbox {
             &::-webkit-scrollbar {
                 display: none;
             }
+
+            @include media-breakpoint-up(md) {
+                max-width: calc(800px - var(--space-lg));
+            }
         }
     }
 
