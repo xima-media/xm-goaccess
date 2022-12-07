@@ -4,6 +4,15 @@ baseVariants:
     base: '%env("TYPO3_RELEASE_URL")%'
     condition: 'getenv("IS_RELEASE_REQUEST")'
 enabled_oauth2_providers: 'xima,dkfz'
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=315'
+  -
+    errorCode: 0
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=317'
 languages:
   -
     title: Deutsch
