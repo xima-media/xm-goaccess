@@ -286,4 +286,36 @@ tt_content {
     }
   }
 
+  newsletter-news < lib.contentElement
+  newsletter-news {
+    templateName = NewsletterNews
+    templateRootPaths {
+      10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/Elements
+    }
+
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      10 {
+        table = tx_news_domain_model_news
+        where =
+        where.dataWrap = uid IN ({field:news})
+        if.isTrue.field = news
+        pidInList = {$pidNewsStorage}
+        as = news
+        orderBy = reclist_sortby
+        selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:news}') AS reclist_sortby
+
+        dataProcessing {
+          30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+          30 {
+            references.fieldName = fal_media
+            max = 1
+            as = files
+          }
+
+        }
+      }
+
+    }
+  }
 }
