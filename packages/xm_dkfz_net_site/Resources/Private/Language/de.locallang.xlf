@@ -600,7 +600,7 @@
 				<target>Ihre Merkliste ist leer</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.users" space="preserve">
-				<target>Mitarbeiter</target>
+				<target>Mitarbeiter:in</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.pages" space="preserve">
 				<target>Seiten</target>
