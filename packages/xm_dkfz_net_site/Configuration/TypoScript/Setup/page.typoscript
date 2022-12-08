@@ -258,23 +258,3 @@ page {
 [traverse(page, "uid") == {$pidJobList}]
   config.htmlTag.attributes.class = background--gradient
 [end]
-
-[traverse(page, "uid") == 311]
-  page >
-  newsletter = PAGE
-  newsletter.typeNum = 0
-  newsletter {
-    10 = FLUIDTEMPLATE
-    10 {
-      templateName = Newsletter
-      layoutRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Layouts
-      partialRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Partials
-      templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/Page
-    }
-
-    includeCSS {
-      foundation = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/ZurbFoundation.css
-      luxletter = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/Luxletter.css
-    }
-  }
-[end]
