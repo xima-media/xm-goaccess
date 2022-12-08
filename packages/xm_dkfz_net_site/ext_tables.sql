@@ -16,6 +16,7 @@ create table tt_content (
 	tx_xmdkfznetsite_function        varchar(255) not null default '',
 	viewColumn                       varchar(255) not null default '',
 	employees                        varchar(255) not null default '',
+	news                             varchar(255) not null default '',
 );
 
 create table tt_content_item (

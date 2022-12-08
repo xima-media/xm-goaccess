@@ -625,6 +625,12 @@
 			<trans-unit id="bookmarks.news" space="preserve">
 				<source>News</source>
 			</trans-unit>
+			<trans-unit id="tt_content.newsletter-news.title" space="preserve">
+				<source>News list</source>
+			</trans-unit>
+			<trans-unit id="tt_content.newsletter-news.description" space="preserve">
+				<source>Select a number of list items</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

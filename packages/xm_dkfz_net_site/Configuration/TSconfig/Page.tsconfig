@@ -353,3 +353,23 @@ tx_news.templateLayouts {
 [traverse(page, "uid") == 141]
   TCEFORM.tt_content.CType.removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, serviceSlider, page_teaser, mtext, mbox, bw_focuspoint_images_svg, employeeSlider, form_formframework, shortcut, list, html, bw_static_template, teaser, container-2cols, container-accordion, container-tabs
 [GLOBAL]
+
+# Newsletter pages
+[161 in tree.rootLineIds]
+  mod.wizards.newContentElement.wizardItems.container >
+  mod.wizards.newContentElement.wizardItems.forms >
+  mod.wizards.newContentElement.wizardItems.luxletter >
+  mod.wizards.newContentElement.wizardItems.plugins >
+  mod.wizards.newContentElement.wizardItems.special >
+  mod.wizards.newContentElement.wizardItems.common.elements {
+    newsletter-news {
+      iconIdentifier = content-listgroup
+      title = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.newsletter-news.title
+      description = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.newsletter-news.description
+      tt_content_defValues {
+        CType = newsletter-news
+      }
+    }
+  }
+  mod.wizards.newContentElement.wizardItems.common.show = textmedia,newsletter-news
+[GLOBAL]

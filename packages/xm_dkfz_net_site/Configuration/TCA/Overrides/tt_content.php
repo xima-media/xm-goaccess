@@ -49,6 +49,18 @@ $tempFields = [
             'minitems' => 1,
         ],
     ],
+    'news' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content.news',
+        'config' => [
+            'type' => 'group',
+            'allowed' => 'tx_news_domain_model_news',
+            'size' => 5,
+            'behaviour' => [
+                'allowLanguageSynchronization' => true,
+            ],
+        ]
+    ]
 ];
 
 // Add all fields to tt_content

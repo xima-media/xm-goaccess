@@ -611,6 +611,12 @@
 			<trans-unit id="bookmarks.news" space="preserve">
 				<target>News</target>
 			</trans-unit>
+			<trans-unit id="tt_content.newsletter-news.title" space="preserve">
+				<target>Newsbeiträge</target>
+			</trans-unit>
+			<trans-unit id="tt_content.newsletter-news.description" space="preserve">
+				<target>Ausgewählte Liste an Newsbeiträgen</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
