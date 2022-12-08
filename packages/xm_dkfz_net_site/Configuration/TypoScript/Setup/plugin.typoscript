@@ -47,6 +47,7 @@ plugin.tx_kesearch_pi1 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
+
   cssFile >
 }
 
@@ -54,6 +55,7 @@ plugin.tx_kesearch_pi2 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
+
   cssFile >
   highlightedWord_stdWrap.wrap = <mark class="color-accent--primary">|</mark>
   includeFilters = 1
@@ -63,6 +65,7 @@ plugin.tx_kesearch_pi3 {
   view {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
+
   cssFile >
 }
 
@@ -72,5 +75,29 @@ lib.quickSearch {
   10 {
     templateLayout = 20
     resultPage = 111
+  }
+}
+
+plugin.tx_luxletter_fe {
+  view {
+    templateRootPaths.2 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/
+    partialRootPaths.1 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Partials/
+    layoutRootPaths.1 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Layouts/
+  }
+
+  settings {
+    addInlineCss {
+      0 = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/ZurbFoundation.css
+      1 = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/Luxletter.css
+    }
+
+    containerHtml {
+      path = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/Mail/
+      options {
+        1 {
+          fileName = NewsletterContainer
+        }
+      }
+    }
   }
 }
