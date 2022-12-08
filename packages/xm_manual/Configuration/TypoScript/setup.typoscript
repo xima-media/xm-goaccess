@@ -48,6 +48,8 @@ page {
     gutenberg.inline = 1
     theme = EXT:xm_manual/Resources/Public/Css/Frontend/gutenberg.modern.min.css
     theme.inline = 1
+    focuspoint = EXT:xm_manual/Resources/Public/Css/Frontend/focuspoint.css
+    focuspoint.inline = 1
     manual = EXT:xm_manual/Resources/Public/Css/Frontend/manual.css
     manual.inline = 1
   }
