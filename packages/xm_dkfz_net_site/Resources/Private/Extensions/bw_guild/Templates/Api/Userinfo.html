@@ -80,7 +80,7 @@
 		<f:for each="{userinfo.bookmarks.sys_file}" as="file" iteration="fileIterator">
 			<li>
 				<div class="content">
-					<span class="title">{file.name->f:format.htmlspecialchars()}</span>
+					<span class="title">{f:if(condition:file.title, then: file.title, else:'{file.name->f:format.htmlspecialchars()}')}</span>
 					<span class="tab-item__type">{file.extension}</span>
 					<a href="{f:uri.typolink(parameter:'t3://file?uid={file.uid}')}"
 					   class="tab-item__link"

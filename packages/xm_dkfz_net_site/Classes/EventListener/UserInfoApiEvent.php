@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\EventListener;
 
+use TYPO3\CMS\Core\Resource\Index\MetaDataRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
@@ -14,10 +15,13 @@ class UserInfoApiEvent
 
     protected DataMapper $dataMapper;
 
-    public function __construct(NewsRepository $newsRepository, DataMapper $dataMapper)
+    protected MetaDataRepository $metaDataRepository;
+
+    public function __construct(NewsRepository $newsRepository, DataMapper $dataMapper, MetaDataRepository $metaDataRepository)
     {
         $this->newsRepository = $newsRepository;
         $this->dataMapper = $dataMapper;
+        $this->metaDataRepository = $metaDataRepository;
     }
 
     public function __invoke(\Blueways\BwGuild\Event\UserInfoApiEvent $event): void
@@ -45,6 +49,14 @@ class UserInfoApiEvent
         if (isset($bookmarks['fe_users']) && $bookmarks['fe_users']) {
             $users = $this->dataMapper->map(User::class, $bookmarks['fe_users']);
             $bookmarks['users'] = $users;
+        }
+
+        if (isset($bookmarks['sys_file']) && $bookmarks['sys_file']) {
+            foreach ($bookmarks['sys_file'] as $fileUid => $file) {
+                $meta = $this->metaDataRepository->findByFileUid($fileUid);
+                $bookmarks['sys_file'][$fileUid]['title'] = $meta['title'];
+            }
+            $userinfo->bookmarkFieldsToKeep['sys_file'][] = 'title';
         }
 
         $userinfo->bookmarks = $bookmarks;
