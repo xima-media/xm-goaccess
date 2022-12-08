@@ -103,7 +103,7 @@
             }
 
             // rotate Icon if Link extern
-            &[href^="http"]{
+            &[href^="http"] {
                 [class*='icon-'] {
                     transform: rotate(-45deg);
                 }
@@ -326,7 +326,7 @@
 
         &__content {
             .card__header {
-                margin-bottom: 0!important;
+                margin-bottom: 0 !important;
             }
         }
     }
@@ -353,6 +353,14 @@
     padding: 2rem;
     border: 1px solid var(--color-gray-200);
     width: 100%;
+
+    &:hover {
+        border-color: var(--color-gray-400);
+
+        .h6 {
+            text-decoration: underline;
+        }
+    }
 
     .card {
 
@@ -676,6 +684,7 @@
                 }
             }
         }
+
         &-md {
             .card {
                 &__image {
@@ -742,7 +751,7 @@
 
         &__image {
             .picture__image,
-            .picture--no-image .picture__item{
+            .picture--no-image .picture__item {
                 object-fit: cover;
                 aspect-ratio: 179 / 119; // width:358, height:238
             }
