@@ -79,14 +79,18 @@ a:visited {
 
 table.button table td a {
 	border-color: #0047b9;
+	color: #fff;
 }
 
 table.button table td {
 	background-color: #0047b9;
 	border-color: #0047b9;
+	color: #fff;
 }
+
 table.button:hover table td, table.button:visited table td, table.button:active table td {
 	background-color: #0040a8;
+	color: #fff;
 }
 
 hr {
