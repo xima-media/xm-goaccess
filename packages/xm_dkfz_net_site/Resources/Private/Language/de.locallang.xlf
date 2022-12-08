@@ -561,7 +561,7 @@
 				<target>Zu den gewählten Suchfiltern wurden keine Benutzer gefunden</target>
 			</trans-unit>
 			<trans-unit id="usersearch.found" space="preserve">
-				<target>Es wurden %s Benutzer gefunden</target>
+				<target>Es wurden %s Mitarbeiter:innen gefunden</target>
 			</trans-unit>
 			<trans-unit id="usersearch.demand.search" space="preserve">
 				<target>Suche nach Name, Vorname, Telefonnummer</target>
