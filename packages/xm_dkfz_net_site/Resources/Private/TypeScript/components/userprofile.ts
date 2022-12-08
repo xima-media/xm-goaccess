@@ -309,7 +309,6 @@ class Userprofile {
       .then(data => {
         app.lightbox.displayContent(data.html)
         this.bindUserEditFormEvents()
-        app.invalidateCacheRequest(profileUrl)
         app.lightbox.stopLoading()
       })
       .catch(e => app.handleRequestError.bind(this))

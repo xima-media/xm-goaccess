@@ -63,22 +63,6 @@ export default {
       })
   },
 
-  invalidateCacheRequest: async function (url: string): Promise<any> {
-    return await fetch(url, {
-      headers: {
-        Pragma: 'no-cache',
-        Expires: '-1',
-        'Cache-Control': 'no-cache',
-      }
-    })
-      .then(async response => {
-        return response.text()
-      })
-      .catch(error => {
-        this.handleRequestError(error)
-      })
-  },
-
   handleRequestError: function (error: any) {
     localStorage.removeItem('userinfo')
     //console.error('could not load data', error)
