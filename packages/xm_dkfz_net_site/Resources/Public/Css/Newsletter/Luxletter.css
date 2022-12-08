@@ -8,6 +8,11 @@ html,
 	background: #f3f3f3 !important;
 }
 
+p {
+	color: #222;
+	line-height: 1.4;
+}
+
 .container.header {
 	background: #f3f3f3;
 }
@@ -22,26 +27,32 @@ img:not(.small) {
 	width: 100%;
 	max-width: 100%;
 }
+
 img.small.small30 {
 	max-width: 30px;
 	max-height: 30px;
 	margin: 0 5px;
 }
+
 img.small.small200 {
 	width: 200px;
 	display: inline;
 }
+
 .float-right {
 	float: right;
 }
+
 table.button.success table td {
 	color: #fefefe;
 	background: #0047b9;
 	border: 2px solid white;
 }
+
 table.button.success:hover table td {
 	background: #0040a8;
 }
+
 table.button.success table td a {
 	color: white;
 }
@@ -49,16 +60,37 @@ table.button.success table td a {
 a {
 	color: #0047b9;
 }
+
 a:hover {
 	color: #0040a8;
 }
+
 a:active {
 	color: #0040a8;
 }
+
 a:visited {
 	color: #0040a8;
 }
 
 .footer {
 	background: #0047b9;
+}
+
+table.button table td a {
+	border-color: #0047b9;
+}
+
+table.button table td {
+	background-color: #0047b9;
+	border-color: #0047b9;
+}
+table.button:hover table td, table.button:visited table td, table.button:active table td {
+	background-color: #0040a8;
+}
+
+hr {
+	height: 2px;
+	border: 0;
+	background: #d2d2d2;
 }

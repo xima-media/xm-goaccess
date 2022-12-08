@@ -1,6 +1,103 @@
+<table class="spacer">
+	<tbody>
+	<tr>
+		<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+	</tr>
+	</tbody>
+</table>
+<hr/>
+<table class="spacer">
+	<tbody>
+	<tr>
+		<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+	</tr>
+	</tbody>
+</table>
+
 <f:for each="{news}" as="item">
-	<h4>{item.data.title}</h4>
-	<f:if condition="{item.files.0}">
-		<f:image image="{item.files.0}" width="600" />
-	</f:if>
+	<table class="row">
+		<tbody>
+		<tr>
+			<th class="large-offset-1 small-12 large-3 columns first">
+				<table>
+					<tbody>
+					<tr>
+						<th class="text-center">
+							<f:if condition="{item.files.0}">
+								<f:image image="{item.files.0}" width="200"/>
+							</f:if>
+						</th>
+					</tr>
+					</tbody>
+				</table>
+			</th>
+			<th class="small-12 large-8 columns last">
+				<table>
+					<tbody>
+					<tr>
+						<th>
+							<f:link.action extensionName="News"
+										   pluginName="Pi1"
+										   controller="News"
+										   action="detail"
+										   pageUid="142"
+										   absolute="true"
+										   arguments="{news: item.data.uid}">
+								<h5 class="small-text-center">
+									{item.data.title}</h5>
+							</f:link.action>
+							<p class="small-text-center">
+								<f:if condition="{item.data.teaser}">
+									<f:then>
+										{item.data.teaser}
+									</f:then>
+									<f:else>
+										{item.bodytext}
+									</f:else>
+								</f:if>
+							</p>
+						</th>
+					</tr>
+					<tr>
+						<th class="">
+							<table class="button small-text-center">
+								<tbody>
+								<tr>
+									<td>
+										<table>
+											<tbody>
+											<tr>
+												<td>
+													<f:link.action extensionName="News"
+																   pluginName="Pi1"
+																   controller="News"
+																   action="detail"
+																   pageUid="142"
+																   absolute="true"
+																   arguments="{news: item.data.uid}">
+														Weiterlesen
+													</f:link.action>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+						</th>
+					</tr>
+					</tbody>
+				</table>
+			</th>
+		</tr>
+		</tbody>
+	</table>
+	<table class="spacer">
+		<tbody>
+		<tr>
+			<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+		</tr>
+		</tbody>
+	</table>
 </f:for>

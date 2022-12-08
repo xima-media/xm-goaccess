@@ -273,8 +273,8 @@ page {
     }
 
     includeCSS {
-      luxletter = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/Luxletter.css
       foundation = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/ZurbFoundation.css
+      luxletter = EXT:xm_dkfz_net_site/Resources/Public/Css/Newsletter/Luxletter.css
     }
   }
 [end]
