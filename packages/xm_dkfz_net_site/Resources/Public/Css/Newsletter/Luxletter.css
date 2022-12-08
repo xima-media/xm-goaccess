@@ -22,11 +22,14 @@ img:not(.small) {
 	width: 100%;
 	max-width: 100%;
 }
-img.small {
-	width: 24px;
+img.small.small30 {
+	max-width: 30px;
+	max-height: 30px;
+	margin: 0 5px;
 }
-img.small.small50 {
-	width: 50px;
+img.small.small200 {
+	width: 200px;
+	display: inline;
 }
 .float-right {
 	float: right;
@@ -56,3 +59,6 @@ a:visited {
 	color: #0040a8;
 }
 
+.footer {
+	background: #0047b9;
+}
