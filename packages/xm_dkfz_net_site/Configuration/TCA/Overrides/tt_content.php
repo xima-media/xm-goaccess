@@ -59,8 +59,8 @@ $tempFields = [
             'behaviour' => [
                 'allowLanguageSynchronization' => true,
             ],
-        ]
-    ]
+        ],
+    ],
 ];
 
 // Add all fields to tt_content
