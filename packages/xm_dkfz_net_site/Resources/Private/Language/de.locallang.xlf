@@ -617,6 +617,12 @@
 			<trans-unit id="tt_content.newsletter-news.description" space="preserve">
 				<target>Ausgewählte Liste an Newsbeiträgen</target>
 			</trans-unit>
+			<trans-unit id="group.secretaries" space="preserve">
+				<target>Sekretäriat</target>
+			</trans-unit>
+			<trans-unit id="group.managers" space="preserve">
+				<target>Leitung</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

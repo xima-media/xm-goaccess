@@ -631,6 +631,12 @@
 			<trans-unit id="tt_content.newsletter-news.description" space="preserve">
 				<source>Select a number of list items</source>
 			</trans-unit>
+			<trans-unit id="group.secretaries" space="preserve">
+				<source>Secretary</source>
+			</trans-unit>
+			<trans-unit id="group.managers" space="preserve">
+				<source>Managers</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
