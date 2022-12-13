@@ -33,7 +33,7 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     protected string $responsibilities = '';
 
     protected ?User $committeeRepresentative = null;
-
+    
     public function getCommitteeRepresentative(): ?User
     {
         return $this->committeeRepresentative;

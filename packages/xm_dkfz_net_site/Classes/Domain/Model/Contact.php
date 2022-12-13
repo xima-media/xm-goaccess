@@ -2,7 +2,6 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Model;
 
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Contact extends AbstractEntity
@@ -17,7 +16,7 @@ class Contact extends AbstractEntity
 
     protected string $number = '';
 
-    protected ?FrontendUserGroup $feGroup = null;
+    protected ?FeGroup $feGroup = null;
 
     /**
      * @return string
@@ -60,9 +59,9 @@ class Contact extends AbstractEntity
     }
 
     /**
-     * @return FrontendUserGroup|null
+     * @return FeGroup|null
      */
-    public function getFeGroup(): ?FrontendUserGroup
+    public function getFeGroup(): ?FeGroup
     {
         return $this->feGroup;
     }

@@ -14,4 +14,7 @@ return [
     \Xima\XmDkfzNetSite\Domain\Model\BeGroup::class => [
         'tableName' => 'be_groups',
     ],
+    \Xima\XmDkfzNetSite\Domain\Model\FeGroup::class => [
+        'tableName' => 'fe_groups',
+    ],
 ];
