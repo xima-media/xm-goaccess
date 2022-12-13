@@ -58,3 +58,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Blueways\BwGuild\Domain\Model\Dto
 
 // change order of backend login provider
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders']['1616569531']['sorting'] = 75;
+
+// Override luxletter translations
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['EXT:luxletter/Resources/Private/Language/locallang.xlf'][] = 'EXT:xm_dkfz_net_site/Resources/Private/Language/Overrides/luxletter.xlf';
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['de']['EXT:luxletter/Resources/Private/Language/locallang.xlf'][] = 'EXT:xm_dkfz_net_site/Resources/Private/Language/Overrides/de.luxletter.xlf';
