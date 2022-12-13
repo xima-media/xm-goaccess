@@ -63,7 +63,6 @@
 		"blueways/bw-guild": "*@dev",
 		"xima/xm-goaccess": "^11.0",
 		"ext-dom": "*",
-		"ichhabrecht/content-defender": "^3.2",
 		"in2code/luxletter": "^14.0.0",
 		"blueways/bw-static-template": "^2.0",
 		"tpwd/ke_search": "^4.5",
