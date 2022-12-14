@@ -161,6 +161,18 @@ html.open-lightbox {
         align-items: center;
         background: transparent;
         border: none;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: var(--color-white);
+            background: var(--color-gray-900);
+        }
+
+        &:active {
+            transform: scale(0.9);
+            box-shadow: 0 0 0 0.3rem rgba(#000, 0.1);
+        }
     }
 
     &__loader {

@@ -132,6 +132,7 @@
             border: 2px solid transparent;
             background: transparent;
             border-radius: 50%;
+            transition: all 0.2s ease;
 
             &:hover, &.fx--hover {
                 cursor: pointer;
@@ -139,10 +140,9 @@
                 background: var(--color-gray-900);
             }
 
-            &.fx--hover:hover {
-                border-color: var(--color-gray-900);
-                color: var(--color-gray-900);
-                background: transparent;
+            &:active {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0.3rem rgba(#000, 0.1);
             }
         }
     }
