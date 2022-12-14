@@ -9,6 +9,7 @@ main.login {
         @include background-blur(#FFF, .2);
         display: grid;
         justify-items: center;
+        min-height: 600px;
     }
 
     .logo, .box, footer {
@@ -18,12 +19,16 @@ main.login {
     }
 
     .logo {
-        width: 16.25rem;
-        background: var(--color-white);
         text-align: center;
+        background: var(--color-primary);
+        color: #FFF;
+        padding: 0;
+        width: 100%;
+        margin: 0;
 
-        img {
-            filter: none;
+        svg {
+            margin: 1rem 1rem 1.5rem;
+            max-width: 16.25rem;
         }
     }
 

@@ -1,3 +1,4 @@
+{namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
 <f:variable name="cssVariables">
 	<f:for each="{files}" as="file" iteration="i">
 		<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
@@ -17,13 +18,9 @@
 
 	<div class="login__blur">
 
-		<a class="logo" href="/">
-			<img src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/dkfz_logo.svg')}"
-				 width="212"
-				 height="32"
-				 class="logo__image"
-				 alt="DKFZ Logo"/>
-		</a>
+		<f:link.page class="logo" pageUid="1">
+			<xm:svgInline class="logo__image" src="EXT:xm_dkfz_net_site/Resources/Public/Images/dkfz_logo.svg" />
+		</f:link.page>
 
 		<div class="box">
 			<h1 class="h5">Willkommen beim DKFZ intern</h1>
