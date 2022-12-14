@@ -49,13 +49,6 @@
                 transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
                 transition: opacity $transition-time, transform $transition-time; // cubic-bezier(.8, -.5, .2, 1.4);
             }
-
-            &__button {
-                &--toggle {
-                    transition: z-index 0s $transition-time;
-                    z-index: -1;
-                }
-            }
         }
     }
 
