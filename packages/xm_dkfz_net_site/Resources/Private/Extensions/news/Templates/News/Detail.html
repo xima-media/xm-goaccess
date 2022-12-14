@@ -10,8 +10,8 @@
 		<h1 itemprop="headline" class="hero__title">{newsItem.title}</h1>
 
 		<p class="hero__info">
-			<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'d. F Y')}">
-				<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+			<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+				<f:format.date format="%d. %B %Y">{newsItem.datetime}</f:format.date>
 			</time>
 			<f:if condition="{newsItem.firstCategory}">
 				| {newsItem.firstCategory.title}
