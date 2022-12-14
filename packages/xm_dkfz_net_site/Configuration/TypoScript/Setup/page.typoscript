@@ -242,19 +242,19 @@ page {
 [end]
 
 [traverse(page, "uid") == {$pidUserList}]
-  config.htmlTag.attributes.class = background--gradient
+  config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
 [end]
 
 [traverse(page, "uid") == {$pidUserDetail}]
-  config.htmlTag.attributes.class = background--gradient
+  config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
   config.htmlTag.attributes.style = --gradient-offset:460px
 [end]
 
 [traverse(page, "uid") == {$pidSearch}]
-  config.htmlTag.attributes.class = background--gradient
+  config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
   config.htmlTag.attributes.style = --gradient-offset:380px
 [end]
 
 [traverse(page, "uid") == {$pidJobList}]
-  config.htmlTag.attributes.class = background--gradient
+  config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
 [end]

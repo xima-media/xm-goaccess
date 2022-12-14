@@ -8,6 +8,7 @@ class Header {
     this.headerEL = document.querySelector('.header')
 
     if (this.headerEL) {
+      this.headerEL.classList.add('is-loaded')
       this.headerStickyTriggerEL = this.headerEL.querySelector('.header__sticky-trigger')
 
       // methods
