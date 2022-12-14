@@ -115,5 +115,4 @@ class FeGroup extends AbstractEntity
     {
         return $this->subgroup;
     }
-
 }

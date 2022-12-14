@@ -86,14 +86,14 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookAbteilung\\:\\:\\$leitung type has no value type specified in iterable type array\\.$#"
+			message: "#^Cannot call method attach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\>\\|null\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
 
 		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Dto\\\\PhoneBookAbteilung\\:\\:\\$sekretariat type has no value type specified in iterable type array\\.$#"
+			message: "#^Cannot call method detach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\>\\|null\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/Dto/PhoneBookAbteilung.php
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllFileMounts\\(\\) should return array\\<int, array\\{title\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
@@ -101,12 +101,12 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_id\\: string, uid\\: int, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
 		-
-			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableGroupInterface\\:\\:findAllGroupsWithDkfzNumber\\(\\)$#"
+			message: "#^Return type \\(array\\<int, array\\{dkfz_id\\: string, uid\\: int, dkfz_hash\\: string\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should be compatible with return type \\(array\\<int, array\\{dkfz_number\\: string, uid\\: int, dkfz_hash\\: string\\}\\>\\) of method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\ImportableGroupInterface\\:\\:findAllGroupsWithDkfzNumber\\(\\)$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
 
@@ -146,7 +146,7 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_number\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzNumber\\(\\) should return array\\<int, array\\{dkfz_number\\: string, uid\\: int, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
 
