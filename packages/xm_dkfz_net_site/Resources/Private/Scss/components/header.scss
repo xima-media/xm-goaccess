@@ -108,8 +108,13 @@
 
         @include media-breakpoint-down(lg) {
             .button--white {
-                color: var(--color-white);
+                color: #FFF;
                 background-color: transparent;
+
+                &:hover {
+                    color: var(--color-primary);
+                    background-color: #FFF;
+                }
             }
         }
     }

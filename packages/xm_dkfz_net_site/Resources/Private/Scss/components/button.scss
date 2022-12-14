@@ -142,10 +142,14 @@ input[type="file"]::file-selector-button {
 
     &.fx--hover,
     &:hover {
-        //opacity: .9;
         color: var(--color-primary);
         background-color: var(--color-white);
         box-shadow: 0 0 0 var(--space-xxs) rgba($color-white, .3);
+        transition: color 0.2s ease, background 0.2s ease, box-shadow 0.3s ease;
+
+        &:active {
+            box-shadow: 0 0 0 var(--space-xxs) rgba($color-white, .5);
+        }
     }
 }
 
