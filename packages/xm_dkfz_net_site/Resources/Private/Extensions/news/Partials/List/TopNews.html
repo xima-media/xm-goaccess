@@ -56,7 +56,7 @@
 
 			<div class="topnews__text-main">
 				<p>
-					<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+					<f:format.date format="%d. %B %Y">{newsItem.datetime}</f:format.date>
 					<f:if condition="{newsItem.firstCategory}">
 						| {newsItem.firstCategory.title}
 					</f:if>
