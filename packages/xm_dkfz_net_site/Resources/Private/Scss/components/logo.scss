@@ -13,22 +13,23 @@
     padding: 1rem 0 1.25rem;
     margin-right: 1rem;
 
-    img {
-        max-width: 100%;
+    svg {
+        fill: currentColor;
     }
 
     @include media-breakpoint-up(md) {
         margin: 0;
         width: 16.25rem;
         padding: 1rem 1.5rem 1.25rem;
-        background-color: var(--color-white);
-    }
+        transition: all 0.2s ease;
 
-    &__image {
-        @include media-breakpoint-down(md) {
-            filter: brightness(0) invert(1);
+        .fx--header-not-sticky & {
+            background-color: var(--color-white);
+            color: var(--color-primary);
         }
     }
+
+
 }
 
 // end of logo.scss file
