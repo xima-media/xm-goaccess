@@ -84,6 +84,7 @@ create table fe_groups (
 	title       varchar(255) default '' not null,
 	secretaries varchar(255) default '' not null,
 	managers    varchar(255) default '' not null,
+	dkfz_hash   varchar(255) default '' not null,
 );
 
 create table be_groups (
@@ -91,6 +92,7 @@ create table be_groups (
 	title       varchar(255) default '' not null,
 	secretaries varchar(255) default '' not null,
 	managers    varchar(255) default '' not null,
+	dkfz_hash   varchar(255) default '' not null,
 );
 
 create table tx_xmdkfznetsite_domain_model_contact (

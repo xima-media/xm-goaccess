@@ -213,25 +213,38 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
+     * @param array<int, array{dkfz_number: string, uid: int, dkfz_hash: string}> $dbGroups
      * @return PhoneBookCompareResult
      */
     public function compareDbGroupsWithJson(array $dbGroups): PhoneBookCompareResult
     {
         $result = new PhoneBookCompareResult();
-        $jsonGroups = array_keys($this->phoneBookAbteilungen);
 
-        $dbGroupsIdentifier = array_map(function ($dbGroup) {
-            return $dbGroup['dkfz_number'];
-        }, $dbGroups);
+        foreach ($dbGroups as $dbGroup) {
+            $abteilung = $this->phoneBookAbteilungen[$dbGroup['dkfz_number']] ?? false;
 
-        $result->dkfzNumbersToDelete = array_filter($dbGroupsIdentifier, function ($identifier) use ($jsonGroups) {
-            return !in_array($identifier, $jsonGroups);
-        });
+            // delete group from database if group not found
+            if (!$abteilung) {
+                $result->dkfzNumbersToDelete[] = $dbGroup['dkfz_number'];
+                continue;
+            }
 
-        $result->dkfzNumbersToCreate = array_filter($jsonGroups, function ($xmlGroup) use ($dbGroupsIdentifier) {
-            return !in_array($xmlGroup, $dbGroupsIdentifier);
-        });
+            // search for group number in xml and mark for update if changed (as skipped otherwise)
+            if ($dbGroup['dkfz_hash'] !== $abteilung->getHash()) {
+                $result->dkfzNumbersToUpdate[] = $dbGroup['dkfz_number'];
+            } else {
+                $result->dkfzNumbersToSkip[] = $dbGroup['dkfz_number'];
+            }
+        }
+
+        // skip creation if already marked to update or to skip
+        $numbersToIgnore = array_merge($result->dkfzNumbersToUpdate, $result->dkfzNumbersToSkip);
+        foreach ($this->phoneBookAbteilungen as $number => $phoneBookAbteilung) {
+            if (in_array($number, $numbersToIgnore, true)) {
+                continue;
+            }
+            $result->dkfzNumbersToCreate[] = $number;
+        }
 
         return $result;
     }

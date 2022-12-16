@@ -60,7 +60,9 @@ abstract class AbstractImportGroupCommand extends Command
 
         $io->listing([
             '<success>' . count($this->compareResult->dkfzNumbersToCreate) . '</success> to create',
+            '<warning>' . count($this->compareResult->dkfzNumbersToUpdate) . '</warning> to update',
             '<error>' . count($this->compareResult->dkfzNumbersToDelete) . '</error> to delete',
+            '' . count($this->compareResult->dkfzNumbersToSkip) . ' to skip',
         ]);
 
         if (count($this->compareResult->dkfzNumbersToCreate)) {
@@ -69,6 +71,16 @@ abstract class AbstractImportGroupCommand extends Command
             $phoneBookAbteilungenToCreate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToCreate);
             $pid = $this->phoneBookUtility->getUserStoragePid($this);
             $this->groupRepository->bulkInsertPhoneBookAbteilungen($phoneBookAbteilungenToCreate, $pid, $fileMounts);
+            $io->write('<success>done</success>');
+            $io->newLine();
+        }
+
+        if (count($this->compareResult->dkfzNumbersToUpdate)) {
+            $io->write('Updating groups..');
+            $phoneBookAbteilungenToUpdate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToUpdate);
+            foreach ($phoneBookAbteilungenToUpdate as $bookAbteilung) {
+                $this->groupRepository->updateFromPhoneBookEntry($bookAbteilung);
+            }
             $io->write('<success>done</success>');
             $io->newLine();
         }

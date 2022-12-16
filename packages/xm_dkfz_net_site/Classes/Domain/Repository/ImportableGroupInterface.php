@@ -7,7 +7,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 interface ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_number: string, uid: int}>
+     * @return array<int, array{dkfz_number: string, uid: int, dkfz_hash: string}>
      **/
     public function findAllGroupsWithDkfzNumber(): array;
 
@@ -36,4 +36,6 @@ interface ImportableGroupInterface
      * @return int
      */
     public function bulkInsertFileMounts(array $dkfzNumbers, string $basePath): int;
+
+    public function updateFromPhoneBookEntry(PhoneBookAbteilung $entry): int;
 }

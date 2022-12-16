@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use Xima\XmDkfzNetSite\Domain\Model\BeUser;
+use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 
 /**
  * @extends Repository<BeUser>
@@ -17,7 +18,7 @@ use Xima\XmDkfzNetSite\Domain\Model\BeUser;
 class BeGroupRepository extends Repository implements ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, uid: int}>
+     * @return array<int, array{dkfz_id: string, uid: int, dkfz_hash: string}>
      * @throws DBALException
      * @throws Exception
      */
@@ -26,7 +27,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_number', 'uid')
+        $result = $qb->select('dkfz_number', 'uid', 'dkfz_hash')
             ->from('be_groups')
             ->where(
                 $qb->expr()->neq('dkfz_number', $qb->createNamedParameter(''))
@@ -62,6 +63,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 $abteilung->nummer,
                 $abteilung->bezeichnung,
                 $mountPoints,
+                $abteilung->getHash(),
             ];
         }, $phoneBookAbteilungen);
 
@@ -73,8 +75,10 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 'dkfz_number',
                 'title',
                 'file_mountpoints',
+                'dkfz_hash',
             ],
             [
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
@@ -153,5 +157,27 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 Connection::PARAM_INT,
             ]
         );
+    }
+
+    public function updateFromPhoneBookEntry(PhoneBookAbteilung $entry): int
+    {
+        return GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('be_groups')
+            ->update(
+                'be_groups',
+                [
+                    'dkfz_hash' => $entry->getHash(),
+                    'title' => $entry->bezeichnung,
+                    'deleted' => 0,
+                    'hidden' => 0,
+                ],
+                ['dkfz_number' => $entry->nummer],
+                [
+                    Connection::PARAM_STR,
+                    Connection::PARAM_STR,
+                    Connection::PARAM_BOOL,
+                    Connection::PARAM_BOOL,
+                ]
+            );
     }
 }
