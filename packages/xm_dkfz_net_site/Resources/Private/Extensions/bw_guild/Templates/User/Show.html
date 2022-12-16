@@ -1,4 +1,4 @@
-<div class="userprofile">
+<div class="userprofile" xmlns:f="http://www.w3.org/1999/html">
 
 	<div class="userprofile__header">
 
@@ -47,7 +47,9 @@
 
 	<div class="userprofile__contact">
 		<div class="box">
-			<h6>Kontakt</h6>
+			<h6>
+				<f:translate extensionName="XmDkfzNetSite" key="contact"/>
+			</h6>
 			<ul>
 				<f:for each="{user.phoneContacts}" as="contact" iteration="i">
 					<li class="contact__item">
@@ -64,12 +66,33 @@
 			</ul>
 		</div>
 
-		<div class="box box--groups">
-			<h6>Kontakt Abteilung</h6>
-			<f:for each="{user.groups}" as="group" iteration="i">
-				<p>{group.title}</p>
-			</f:for>
-		</div>
+		<f:if condition="{user.groups}">
+			<div class="box box--groups">
+				<h5>
+					<f:translate extensionName="XmDkfzNetSite" key="contact"/>
+					<f:translate extensionName="XmDkfzNetSite" key="contact.fe_group"/>
+				</h5>
+				<f:for each="{user.groups}" as="group" iteration="i">
+					<p class="m-b-0">{group.title}</p>
+					<f:if condition="{group.managers}">
+						<h6 class="m-b-0">
+							<f:translate extensionName="XmDkfzNetSite" key="group.managers"/>
+						</h6>
+						<f:for each="{group.managers}" as="groupUser">
+							<f:render section="GroupUser" arguments="{groupUser: groupUser}"/>
+						</f:for>
+					</f:if>
+					<f:if condition="{group.secretaries}">
+						<h6 class="m-b-0">
+							<f:translate extensionName="XmDkfzNetSite" key="group.secretaries"/>
+						</h6>
+						<f:for each="{group.secretaries}" as="groupUser">
+							<f:render section="GroupUser" arguments="{groupUser: groupUser}"/>
+						</f:for>
+					</f:if>
+				</f:for>
+			</div>
+		</f:if>
 
 		<f:if condition="{user.committee}">
 			<div class="infobox color-accent--primary infobox--background-white color__border">
@@ -207,3 +230,38 @@
 	</div>
 
 </div>
+
+<f:section name="GroupUser">
+	<div class="box__user">
+		<f:link.action action="show"
+					   pageUid="{settings.showPid}"
+					   pluginName="Usershow"
+					   controller="User"
+					   arguments="{user: groupUser.uid}">
+			<f:render partial="UserImage" arguments="{user: groupUser, width: 70}"/>
+		</f:link.action>
+		<div>
+			<f:link.action action="show"
+						   pageUid="{settings.showPid}"
+						   pluginName="Usershow"
+						   controller="User"
+						   arguments="{user: groupUser.uid}">
+				<p class="m-b-0">{groupUser.displayName}</p>
+			</f:link.action>
+			<ul>
+				<f:for each="{groupUser.phoneContacts}" as="contact" iteration="i">
+					<li class="contact__item">
+						<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+						<a href="tel:{contact.cleanNumber}">{contact.number}</a>
+					</li>
+				</f:for>
+				<f:if condition="{groupUser.email}">
+					<li class="contact__item">
+						<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+						<f:link.email email="{groupUser.email}">{groupUser.email}</f:link.email>
+					</li>
+				</f:if>
+			</ul>
+		</div>
+	</div>
+</f:section>

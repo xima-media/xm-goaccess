@@ -22,12 +22,18 @@
 </f:if>
 
 <f:section name="Image">
-	<picture class="userimage">
+
+	<f:if condition="{width + 1} > 100">
+		<f:variable name="widthClass">userimage--large</f:variable>
+	</f:if>
+
+	<picture class="userimage {widthClass}">
 		<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'webp')}" type="image/webp">
 		<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg')}" type="image/jpeg">
 		<img src="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg', width: width)}"
 			 alt="{user.logo.0.alternative}"
-			 width="{width}"
+			 width="{width - 5}"
 			 loading="lazy"/>
+		<span></span>
 	</picture>
 </f:section>

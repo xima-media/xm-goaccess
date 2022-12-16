@@ -73,7 +73,6 @@ div.userprofile {
     }
 
 
-
     &__contact {
 
         margin-bottom: calc(1.5 * var(--content-padding));
@@ -96,6 +95,17 @@ div.userprofile {
                 --color-primary: #e5ecf8;
                 color: inherit;
                 margin-bottom: var(--content-padding);
+            }
+
+            &__user {
+                display: grid;
+                gap: 1rem;
+                grid-template-columns: min-content auto;
+                margin: 0.5rem 0;
+
+                a:hover + div p, a:hover p {
+                    text-decoration: underline;
+                }
             }
 
             p:last-child {
@@ -269,6 +279,7 @@ form.userprofile {
         background: var(--color-primary);
         color: var(--color-white);
         cursor: pointer;
+
         span {
             color: var(--color-white);
             opacity: 0.8;
