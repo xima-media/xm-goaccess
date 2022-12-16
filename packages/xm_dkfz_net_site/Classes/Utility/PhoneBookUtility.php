@@ -326,6 +326,36 @@ class PhoneBookUtility
         }
     }
 
+    /**
+     * @param array<int, array{dkfz_id: int, uid: int}> $dbUsers
+     * @return void
+     */
+    public function setGroupUserRelations(array $dbUsers): void
+    {
+        $dbUserUidsById = [];
+        foreach ($dbUsers as $dbUser) {
+            $dbUserUidsById[$dbUser['dkfz_id']] = $dbUser['uid'];
+        }
+
+        foreach ($this->phoneBookAbteilungen as $bookAbteilung) {
+            $leitungUsers = [];
+            foreach ($bookAbteilung->leitung as $phoneBookAbteilungPerson) {
+                if (isset($dbUserUidsById[$phoneBookAbteilungPerson->id])) {
+                    $leitungUsers[] = $dbUserUidsById[$phoneBookAbteilungPerson->id];
+                }
+            }
+            $bookAbteilung->managers = implode(',', $leitungUsers);
+
+            $sekretariatUsers = [];
+            foreach ($bookAbteilung->sekretariat as $phoneBookAbteilungPerson) {
+                if (isset($dbUserUidsById[$phoneBookAbteilungPerson->id])) {
+                    $sekretariatUsers[] = $dbUserUidsById[$phoneBookAbteilungPerson->id];
+                }
+            }
+            $bookAbteilung->secretaries = implode(',', $sekretariatUsers);
+        }
+    }
+
     public function getStorageIdentifierForGroups(): string
     {
         $extConf = (array)$this->extensionConfiguration->get('xm_dkfz_net_site');

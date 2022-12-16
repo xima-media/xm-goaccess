@@ -22,6 +22,10 @@ class PhoneBookAbteilung
      */
     public array $sekretariat = [];
 
+    public string $secretaries = '';
+
+    public string $managers = '';
+
     public function __construct(string $dkfzId)
     {
         $this->dkfzId = $dkfzId;

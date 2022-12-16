@@ -9,6 +9,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableGroupInterface;
+use Xima\XmDkfzNetSite\Domain\Repository\ImportableUserInterface;
 use Xima\XmDkfzNetSite\Utility\PhoneBookUtility;
 
 abstract class AbstractImportGroupCommand extends Command
@@ -25,16 +26,20 @@ abstract class AbstractImportGroupCommand extends Command
 
     protected ImportableGroupInterface $groupRepository;
 
+    protected ImportableUserInterface $userRepository;
+
     public function __construct(
         ImportableGroupInterface $groupRepository,
         PhoneBookUtility $phoneBookUtility,
         StorageRepository $storageRepository,
+        ImportableUserInterface $userRepository,
         string $name = null
     ) {
         parent::__construct($name);
         $this->groupRepository = $groupRepository;
         $this->phoneBookUtility = $phoneBookUtility;
         $this->storageRepository = $storageRepository;
+        $this->userRepository = $userRepository;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -49,6 +54,8 @@ abstract class AbstractImportGroupCommand extends Command
 
         $apiGroups = $this->phoneBookUtility->getGroupIdentifierInJson();
         $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
+        $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
+        $this->phoneBookUtility->setGroupUserRelations($dbUsers);
 
         $io->listing([
             '<success>' . count($apiGroups) . '</success> found in PhoneBook (JSON)',

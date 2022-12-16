@@ -60,11 +60,15 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'title',
                 'pid',
                 'dkfz_hash',
+                'managers',
+                'secretaries',
             ],
             [
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_STR,
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
             ]
         );
@@ -107,12 +111,16 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'fe_groups',
                 [
                     'dkfz_hash' => $entry->getHash(),
+                    'secretaries' => $entry->secretaries,
+                    'managers' => $entry->managers,
                     'title' => $entry->bezeichnung,
                     'deleted' => 0,
                     'hidden' => 0,
                 ],
                 ['dkfz_number' => $entry->nummer],
                 [
+                    Connection::PARAM_STR,
+                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,

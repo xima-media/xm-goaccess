@@ -50,8 +50,10 @@ call_user_func(function () {
         ],
         'dkfz_hash' => [
             'label' => 'Hash',
-            'type' => 'passthrough',
-        ]
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('fe_groups', $tempColumns);
