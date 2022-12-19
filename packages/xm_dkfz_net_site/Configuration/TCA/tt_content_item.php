@@ -322,6 +322,9 @@ return [
                         'info' => false,
                     ],
                 ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'fe_user' => [
