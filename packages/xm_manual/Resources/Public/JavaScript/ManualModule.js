@@ -11,15 +11,13 @@ define(['TYPO3/CMS/Core/DocumentService'], function (DocumentService) {
                 setTimeout(function () {
 
                     const tree = top.document.querySelector('typo3-backend-navigation-component-pagetree');
+
                     if (tree && !tree.classList.contains('filtered-for-manuals')) {
                         tree.classList.add('filtered-for-manuals');
                         tree.refresh();
                     }
 
-                    document.dispatchEvent(new CustomEvent('typo3:manual:loaded'));
-
                 }, 500);
-
 
             });
         },

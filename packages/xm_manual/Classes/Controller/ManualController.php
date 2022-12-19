@@ -10,6 +10,7 @@ use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Context\LanguageAspectFactory;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Http\HtmlResponse;
@@ -23,6 +24,7 @@ use TYPO3\CMS\Core\Routing\UnableToLinkToPageException;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Type\Bitmask\Permission;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ManualController extends ActionController
@@ -53,6 +55,29 @@ class ManualController extends ActionController
         $this->siteFinder = $siteFinder;
     }
 
+    protected function isManualRootPage(int $pageUid): bool
+    {
+        $rootline = GeneralUtility::makeInstance(RootlineUtility::class, $pageUid)->get();
+        return isset($rootline[0], $rootline[0]['doktype']) && $rootline[0]['doktype'] === 701;
+    }
+
+    protected function getUidOfFirstManualPage(): int
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+        $page = $qb->select('uid')
+            ->from('pages')
+            ->where(
+                $qb->expr()->and(
+                    $qb->expr()->eq('doktype', $qb->createNamedParameter(701, \PDO::PARAM_INT)),
+                    $qb->expr()->eq('is_siteroot', $qb->createNamedParameter(1, \PDO::PARAM_INT)),
+                )
+            )
+            ->execute()
+            ->fetchOne();
+
+        return $page ?: 0;
+    }
+
     public function indexAction(): ResponseInterface
     {
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
@@ -67,6 +92,10 @@ class ManualController extends ActionController
         $this->pageRenderer->addInlineLanguageLabelFile('EXT:xm_manual/Resources/Private/Language/locallang.xlf');
         $pageId = (int)($this->request->getParsedBody()['id'] ?? $this->request->getQueryParams()['id'] ?? 0);
 
+        if (!$this->isManualRootPage($pageId)) {
+            $pageId = $this->getUidOfFirstManualPage();
+        }
+
         $this->moduleTemplate->setBodyTag('<body class="typo3-module-xm_manual">');
         $this->moduleTemplate->setModuleId('typo3-module-manual');
 
@@ -80,7 +109,8 @@ class ManualController extends ActionController
             $pageinfo['title'] ?? ''
         );
 
-        $languageId = $this->getCurrentLanguage($pageId, $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
+        $languageId = $this->getCurrentLanguage($pageId,
+            $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
         try {
             $targetUrl = BackendUtility::getPreviewUrl(
                 $pageId,
@@ -100,7 +130,8 @@ class ManualController extends ActionController
             return $this->renderFlashMessage($flashMessage);
         }
 
-        $languageId = $this->getCurrentLanguage($pageId, $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
+        $languageId = $this->getCurrentLanguage($pageId,
+            $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
         $this->registerDocHeader($pageId, $languageId, $targetUrl, $this->request->getQueryParams()['route']);
 
         $this->view->assign('url', $targetUrl);
@@ -168,7 +199,8 @@ class ManualController extends ActionController
 
             foreach ($siteLanguages as $siteLanguage) {
                 $languageAspectToTest = LanguageAspectFactory::createFromSiteLanguage($siteLanguage);
-                $page = $this->pageRepository->getPageOverlay($this->pageRepository->getPage($pageId), $siteLanguage->getLanguageId());
+                $page = $this->pageRepository->getPageOverlay($this->pageRepository->getPage($pageId),
+                    $siteLanguage->getLanguageId());
 
                 if ($this->pageRepository->isPageSuitableForLanguage($page, $languageAspectToTest)) {
                     $languages[$siteLanguage->getLanguageId()] = $siteLanguage->getTitle();
@@ -210,7 +242,7 @@ class ManualController extends ActionController
 
     /**
      * Register the doc header
-
+     *
      * @param int $pageId
      * @param int $languageId
      * @param string $targetUrl
