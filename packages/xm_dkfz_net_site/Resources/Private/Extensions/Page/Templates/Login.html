@@ -23,7 +23,7 @@
 		</f:link.page>
 
 		<div class="box">
-			<h1 class="h5">Willkommen beim DKFZ intern</h1>
+			<h1 class="h5">{f:translate(key: 'login.headline', extensionName: 'XmDkfzNetSite')}</h1>
 			<f:variable name="loginProvider" value="xima"/>
 			<f:if condition="{baseUrl} == 'https://intranetstage.dkfz.de' || {baseUrl} == 'https://intranet2.dkfz.de'">
 				<f:variable name="loginProvider" value="dkfz" />
@@ -35,7 +35,7 @@
 						 class="button button--primary "
 						 additionalAttributes="{role: 'button'}"
 						 aria="{pressed: ariaPressed}">
-				Login with {loginProvider->f:format.case(mode: 'upper')}
+				{f:translate(key: 'login.button', extensionName: 'XmDkfzNetSite')}
 			</f:link.page>
 		</div>
 

@@ -644,6 +644,12 @@
 			<trans-unit id="page.emergency" space="preserve">
 				<target>Notfall</target>
 			</trans-unit>
+			<trans-unit id="login.headline" space="preserve">
+				<target>Willkommen beim DKFZ Intranet</target>
+			</trans-unit>
+			<trans-unit id="login.button" space="preserve">
+				<target>Anmelden</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

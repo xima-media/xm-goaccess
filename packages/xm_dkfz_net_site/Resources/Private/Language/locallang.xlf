@@ -658,6 +658,12 @@
 			<trans-unit id="page.emergency" space="preserve">
 				<source>Emergency</source>
 			</trans-unit>
+			<trans-unit id="login.headline" space="preserve">
+				<source>Welcome to the DKFZ intranet</source>
+			</trans-unit>
+			<trans-unit id="login.button" space="preserve">
+				<source>Login</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
