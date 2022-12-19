@@ -22,7 +22,9 @@
     }
 
     h3 {
-        color: var(--color-accent);
+        color: var(--color-primary);
+        z-index: 1;
+        position: relative;
     }
 
     &__container {
