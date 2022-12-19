@@ -96,6 +96,7 @@ class ManualController extends ActionController
             $pageId = $this->getUidOfFirstManualPage();
         }
 
+        $this->moduleTemplate->setBodyTag('<body class="typo3-module-xm_manual">');
         $this->moduleTemplate->setModuleId('typo3-module-manual');
 
         $pageinfo = BackendUtility::readPageAccess(
