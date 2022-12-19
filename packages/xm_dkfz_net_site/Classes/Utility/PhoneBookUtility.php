@@ -328,7 +328,6 @@ class PhoneBookUtility
 
     /**
      * @param array<int, array{dkfz_id: int, uid: int}> $dbUsers
-     * @return void
      */
     public function setGroupUserRelations(array $dbUsers): void
     {
