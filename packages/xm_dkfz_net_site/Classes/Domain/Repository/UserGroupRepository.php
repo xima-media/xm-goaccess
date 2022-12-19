@@ -48,6 +48,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 $abteilung->bezeichnung,
                 $pid,
                 $abteilung->getHash(),
+                $abteilung->managers,
+                $abteilung->secretaries,
             ];
         }, $phoneBookAbteilungen);
 
