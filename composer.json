@@ -12,10 +12,6 @@
 		{
 			"type": "path",
 			"url": "./packages/*"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/josefglatz/instagram"
 		}
 	],
 	"require": {
