@@ -531,13 +531,13 @@
 				<target>Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="user.representative" space="preserve">
-				<target>Vertreter</target>
+				<target>Vertretung</target>
 			</trans-unit>
 			<trans-unit id="user.committee_responsibilities" space="preserve">
 				<target>Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="user.committee_representative" space="preserve">
-				<target>Vertreter</target>
+				<target>Vertretung</target>
 			</trans-unit>
 			<trans-unit id="user.about" space="preserve">
 				<target>Über mich</target>
