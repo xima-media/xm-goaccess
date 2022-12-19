@@ -96,7 +96,6 @@ class ManualController extends ActionController
             $pageId = $this->getUidOfFirstManualPage();
         }
 
-        $this->moduleTemplate->setBodyTag('<body class="typo3-module-xm_manual">');
         $this->moduleTemplate->setModuleId('typo3-module-manual');
 
         $pageinfo = BackendUtility::readPageAccess(
@@ -135,6 +134,7 @@ class ManualController extends ActionController
         $this->registerDocHeader($pageId, $languageId, $targetUrl, $this->request->getQueryParams()['route']);
 
         $this->view->assign('url', $targetUrl);
+        $this->view->assign('pid', $pageId);
 
         $this->moduleTemplate->setContent($this->view->render());
         return new HtmlResponse($this->moduleTemplate->renderContent());
