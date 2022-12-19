@@ -623,6 +623,27 @@
 			<trans-unit id="group.managers" space="preserve">
 				<target>Leitung</target>
 			</trans-unit>
+			<trans-unit id="page.login" space="preserve">
+				<target>Anmelden</target>
+			</trans-unit>
+			<trans-unit id="page.logout" space="preserve">
+				<target>Abmelden</target>
+			</trans-unit>
+			<trans-unit id="page.profileEdit" space="preserve">
+				<target>Profil bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="page.profileMy" space="preserve">
+				<target>Mein Profil</target>
+			</trans-unit>
+			<trans-unit id="page.bookmarkMenu" space="preserve">
+				<target>Merkliste aufrufen</target>
+			</trans-unit>
+			<trans-unit id="page.feedbackMenu" space="preserve">
+				<target>Feedback geben</target>
+			</trans-unit>
+			<trans-unit id="page.emergency" space="preserve">
+				<target>Notfall</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

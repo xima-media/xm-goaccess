@@ -637,6 +637,27 @@
 			<trans-unit id="group.managers" space="preserve">
 				<source>Managers</source>
 			</trans-unit>
+			<trans-unit id="page.login" space="preserve">
+				<source>Login</source>
+			</trans-unit>
+			<trans-unit id="page.logout" space="preserve">
+				<source>Logout</source>
+			</trans-unit>
+			<trans-unit id="page.profileEdit" space="preserve">
+				<source>Edit profile</source>
+			</trans-unit>
+			<trans-unit id="page.profileMy" space="preserve">
+				<source>My profile</source>
+			</trans-unit>
+			<trans-unit id="page.bookmarkMenu" space="preserve">
+				<source>Open bookmarks</source>
+			</trans-unit>
+			<trans-unit id="page.feedbackMenu" space="preserve">
+				<source>Open feedback</source>
+			</trans-unit>
+			<trans-unit id="page.emergency" space="preserve">
+				<source>Emergency</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

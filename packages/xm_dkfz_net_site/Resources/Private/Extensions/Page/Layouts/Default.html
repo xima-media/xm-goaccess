@@ -37,7 +37,7 @@
 
 			<a class="header__link" href="#notfall">
 				<f:render partial="Icon" arguments="{icon: 'emergency'}"/>
-				Notfall
+				{f:translate(key: 'page.emergency', extensionName: 'XmDkfzNetSite')}
 			</a>
 		</div>
 		<div class="header__right">
@@ -50,8 +50,8 @@
 						<li class="navigation__item navigation__item--open-chat">
 							<a class="navigation__link button button--icon-only"
 							   href="#message"
-							   aria-label="Feedback geben"
-							   data-tooltip="Feedback geben"
+							   aria-label="{f:translate(key: 'page.feedbackMenu', extensionName: 'XmDkfzNetSite')}"
+							   data-tooltip="{f:translate(key: 'page.feedbackMenu', extensionName: 'XmDkfzNetSite')}"
 							   aria-expanded="false">
 								<f:render partial="Icon" arguments="{icon: 'message'}"/>
 							</a>
@@ -59,8 +59,8 @@
 						<li class="navigation__item navigation__item--bookmark">
 							<a class="navigation__link button button--icon-only"
 							   href="#bookmark"
-							   aria-label="Lesezeichen anzeigen"
-							   data-tooltip="Favoriten aufrufen"
+							   aria-label="{f:translate(key: 'page.bookmarkMenu', extensionName: 'XmDkfzNetSite')}"
+							   data-tooltip="{f:translate(key: 'page.bookmarkMenu', extensionName: 'XmDkfzNetSite')}"
 							   aria-expanded="false">
 								<f:render partial="Icon" arguments="{icon: 'bookmark'}"/>
 							</a>
@@ -81,13 +81,13 @@
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-menu-link">
 									<li class="show-for-loggedIn">
-										<a class="dropdown-item" href="#" data-user-profile-link>Mein Profil</a>
+										<a class="dropdown-item" href="#" data-user-profile-link>{f:translate(key: 'page.profileMy', extensionName: 'XmDkfzNetSite')}</a>
 									</li>
 									<li class="show-for-loggedIn">
 										<a class="dropdown-item"
 										   href="#"
 										   data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
-											Profil bearbeiten
+											{f:translate(key: 'page.profileEdit', extensionName: 'XmDkfzNetSite')}
 										</a>
 									</li>
 									<li class=" show-for-loggedIn">
@@ -96,12 +96,12 @@
 									<li class="show-for-loggedIn">
 										<f:link.page pageUid="{pidLogin}"
 													 class="dropdown-item"
-													 additionalParams="{logintype:'logout'}">Abmelden
+													 additionalParams="{logintype:'logout'}">{f:translate(key: 'page.logout', extensionName: 'XmDkfzNetSite')}
 										</f:link.page>
 									</li>
 									<li class="hide-for-loggedIn">
 										<f:link.page pageUid="{pidLogin}"
-													 class="dropdown-item">Anmelden
+													 class="dropdown-item">{f:translate(key: 'page.login', extensionName: 'XmDkfzNetSite')}
 										</f:link.page>
 									</li>
 								</ul>
