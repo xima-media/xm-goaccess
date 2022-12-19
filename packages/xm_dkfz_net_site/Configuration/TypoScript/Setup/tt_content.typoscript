@@ -257,29 +257,29 @@ tt_content {
                 as = logo
               }
 
+              30 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+              30 {
+                table = tx_xmdkfznetsite_domain_model_contact
+                where =
+                where.dataWrap = uid IN ({field:contacts})
+                if.isTrue.field = overrides
+                pidInList = {$pidFeUserStorage}
+                as = contacts
+                orderBy = reclist_sortby
+                selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:contacts}') AS reclist_sortby
+              }
+
+              40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+              40 {
+                table = tx_xmdkfznetsite_domain_model_contact
+                pidInList = {$pidFeUserStorage}
+                where = foreign_uid=###feuser### AND foreign_table='fe_users'
+                markers.feuser.field = uid
+                as = contacts
+                if.isFalse.field = overrides
+              }
             }
 
-            30 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-            30 {
-              table = tx_xmdkfznetsite_domain_model_contact
-              where =
-              where.dataWrap = uid IN ({field:contacts})
-              if.isTrue.field = overrides
-              pidInList = {$pidFeUserStorage}
-              as = contacts
-              orderBy = reclist_sortby
-              selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:contacts}') AS reclist_sortby
-            }
-
-            40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-            40 {
-              table = tx_xmdkfznetsite_domain_model_contact
-              pidInList = {$pidFeUserStorage}
-              where = foreign_uid=###feuser### AND foreign_table='fe_users'
-              markers.feuser.field = fe_user
-              as = contacts
-              if.isFalse.field = overrides
-            }
           }
         }
       }
