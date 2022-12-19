@@ -108,8 +108,10 @@ class ManualController extends ActionController
             $pageinfo['title'] ?? ''
         );
 
-        $languageId = $this->getCurrentLanguage($pageId,
-            $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
+        $languageId = $this->getCurrentLanguage(
+            $pageId,
+            $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null
+        );
         try {
             $targetUrl = BackendUtility::getPreviewUrl(
                 $pageId,
@@ -129,8 +131,10 @@ class ManualController extends ActionController
             return $this->renderFlashMessage($flashMessage);
         }
 
-        $languageId = $this->getCurrentLanguage($pageId,
-            $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null);
+        $languageId = $this->getCurrentLanguage(
+            $pageId,
+            $this->request->getParsedBody()['language'] ?? $this->request->getQueryParams()['language'] ?? null
+        );
         $this->registerDocHeader($pageId, $languageId, $targetUrl, $this->request->getQueryParams()['route']);
 
         $this->view->assign('url', $targetUrl);
@@ -199,8 +203,10 @@ class ManualController extends ActionController
 
             foreach ($siteLanguages as $siteLanguage) {
                 $languageAspectToTest = LanguageAspectFactory::createFromSiteLanguage($siteLanguage);
-                $page = $this->pageRepository->getPageOverlay($this->pageRepository->getPage($pageId),
-                    $siteLanguage->getLanguageId());
+                $page = $this->pageRepository->getPageOverlay(
+                    $this->pageRepository->getPage($pageId),
+                    $siteLanguage->getLanguageId()
+                );
 
                 if ($this->pageRepository->isPageSuitableForLanguage($page, $languageAspectToTest)) {
                     $languages[$siteLanguage->getLanguageId()] = $siteLanguage->getTitle();
