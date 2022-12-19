@@ -216,9 +216,8 @@ class Userprofile {
       }
 
       function onAutocompleteFetch(text: string, update: any) {
-        text = text.toLowerCase()
         let filteredFeatures = allFeatures.filter((feature) => {
-          const isMatchedByTextSearch = feature.label.toLowerCase().includes(text)
+          const isMatchedByTextSearch = feature.label.toLowerCase().includes(text.toLowerCase())
           const isNotAlreadySelected = selectedFeatures.find(f => f.value === feature.value) === undefined
           return isMatchedByTextSearch && isNotAlreadySelected
         })
