@@ -40,16 +40,13 @@ create table tt_content_item (
 	text             text,
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
-	fe_user          int(11) unsigned default '0' not null,
-	page             int(11) unsigned default '0' not null,
+	fe_user          varchar(255) default '' not null,
+	page             varchar(255) default '' not null,
 	contacts         varchar(255) default '' not null,
 	overrides        int(11) unsigned default '0' not null,
 	overrides2       int(11) unsigned default '0' not null,
 	tt_content_items int(11) unsigned default '0' not null,
 
-	primary key (uid),
-	KEY              parent (pid),
-	KEY language (l10n_parent,sys_language_uid)
 );
 
 create table tx_news_domain_model_news (
