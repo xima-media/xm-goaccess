@@ -3,10 +3,10 @@ config {
   sendCacheHeaders = 1
   debug = 0
   contentObjectExceptionHandler = 1
-  compressJs = 1
-  compressCss = 1
-  concatenateJs = 1
-  concatenateCss = 1
+  compressJs = 0
+  compressCss = 0
+  concatenateJs = 0
+  concatenateCss = 0
   admPanel = 1
 
   htmlTag.attributes.style = --scrollbar-width:17px;
