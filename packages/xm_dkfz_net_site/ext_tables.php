@@ -23,3 +23,5 @@ defined('TYPO3') || die();
         'labels' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang_mod.xlf',
     ]
 );
+
+$GLOBALS['TBE_STYLES']['skins']['xm_dkfz_net_site']['stylesheetDirectories'][] = 'EXT:xm_dkfz_net_site/Resources/Public/Css/Backend/';

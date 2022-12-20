@@ -93,3 +93,7 @@
 .color--green-light {
 	--color: #a0b400;
 }
+
+.panel.form-irre-object[data-field-name*="tt_content_item"] {
+	overflow: visible;
+}
