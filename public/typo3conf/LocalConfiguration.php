@@ -253,34 +253,28 @@ return [
         'caching' => [
             'cacheConfigurations' => [
                 'bwguild' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\SimpleFileBackend',
                 ],
                 'hash' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
-                ],
-                'imagesizes' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\SimpleFileBackend',
-                    'options' => [
-                        'compression' => '__UNSET',
-                    ],
+                    'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
                 ],
                 'pages' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
+                    'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
                     'options' => [
                         'compression' => '__UNSET',
                     ],
                 ],
                 'pagesection' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
+                    'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
                     'options' => [
                         'compression' => '__UNSET',
                     ],
                 ],
                 'rootline' => [
-                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\FileBackend',
-                    'options' => [
-                        'compression' => '__UNSET',
-                    ],
+                    'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
+                ],
+                'imagesizes' => [
+                    'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
                 ],
             ],
         ],
