@@ -207,6 +207,8 @@ page {
     og:image {
       attribute = property
       stdWrap.cObject = FILES
+      # @TODO: check for existence
+      stdWrap.cObject.if.isTrue =
       stdWrap.cObject {
         references.data = levelfield:-1, media, slide
         maxItems = 1
