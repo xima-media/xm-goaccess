@@ -2,11 +2,9 @@
 
 
 <f:section name="Main">
-    <div class="list">
-        <ul>
-            <f:for each="{links}" as="link">
-                <f:render partial="Linklist" arguments="{link: link}" />
-            </f:for>
-        </ul>
-    </div>
+	<ul class="list">
+		<f:for each="{links}" as="link">
+			<f:render partial="Linklist" arguments="{link: link}" />
+		</f:for>
+	</ul>
 </f:section>

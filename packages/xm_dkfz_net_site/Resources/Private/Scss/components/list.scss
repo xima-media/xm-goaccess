@@ -8,22 +8,7 @@
 //   @section 1. List
 //
 
-.list {
-    @include list-reset;
 
-    &--inline {
-        display: flex;
-        gap: .25rem;
-    }
-
-    &__link-item {
-        margin-bottom: .4rem;
-
-        a {
-            word-break: break-word;
-        }
-    }
-}
 
 // @todo !!!
 .tags {

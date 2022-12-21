@@ -5,28 +5,16 @@
 <f:section name="Main">
 	<div class="infobox
 				{f:if(condition: data.color, then: 'color-accent--{data.color}')}
-				infobox--background-white
-				{f:if(condition: '{data.frame_class}==\'box\'', then:'color__border')}">
+				infobox--{f:if(condition: '{data.frame_class}==\'box\'', then:'border', else: 'pattern')}">
 		<div class="infobox--wrapper">
 			<f:if condition="{data.header}">
 				<h4 class="infobox__title">{data.header}</h4>
 			</f:if>
-			<p class="infobox__text">{data.bodytext -> f:format.html()}</p>
+			{data.bodytext -> f:format.html()}
 			<f:if condition="{links}">
-				<ul class="infobox__items">
+				<ul class="list">
 					<f:for each="{links}" as="link">
-						<li class="infobox__item">
-							<f:if condition="{link.data.title}">
-								<f:then>
-									<f:spaceless>
-										<f:link.typolink parameter="{link.data.link}" class="link--primary" target="_blank">{link.data.title}</f:link.typolink>
-									</f:spaceless>
-								</f:then>
-								<f:else>
-									<f:link.typolink parameter="{link.data.link}" class="link--primary" target="_blank" />
-								</f:else>
-							</f:if>
-						</li>
+						<f:render partial="Linklist" arguments="{link: link}" />
 					</f:for>
 				</ul>
 			</f:if>

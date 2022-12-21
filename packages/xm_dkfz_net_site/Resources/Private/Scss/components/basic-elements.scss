@@ -1,0 +1,77 @@
+ul, ol {
+    font-family: var(--font-family-sans-serif);
+    letter-spacing: 0.6px;
+    padding-left: var(--list-indent, 1rem);
+
+    @include media-breakpoint-up(md) {
+        --list-indent: 3rem;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    @include media-breakpoint-up(xl) {
+        --list-indent: 5rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    li:not(:last-child) {
+        ul, ol {
+            margin-bottom: 1rem;
+        }
+    }
+
+    li strong {
+        font-weight: 700;
+    }
+
+    ul, ol {
+        margin-top: 0.5rem;
+    }
+}
+
+ul li {
+    list-style: disc;
+}
+
+ul.list {
+    --list-indent: 0;
+
+    &--inline {
+        display: flex;
+        gap: .25rem;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .list__link-item {
+        margin-bottom: .4rem;
+
+        a {
+            word-break: break-word;
+        }
+    }
+}
+
+p {
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(md) {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    > a {
+        text-decoration: underline;
+
+        &:hover {
+            box-shadow: inset 0 -2px 0 0 var(--color-black);
+            text-decoration: none;
+        }
+    }
+
+}

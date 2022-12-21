@@ -3,8 +3,10 @@ $table-alignments: left, right, center;
 
 .content-wrapper {
 
+
+
     &__content-text {
-        h1,h2 {
+        h1, h2 {
             margin-bottom: 2.5rem;
         }
 
@@ -18,41 +20,8 @@ $table-alignments: left, right, center;
             }
         }
 
-        p:not([class^="h"]) {
-            font-family: var(--font-family-sans-serif);
 
-            // @TODO: wtf is this?
-            max-width: 60.625rem;
-            margin: auto;
 
-            @include media-breakpoint-up(md) {
-                font-size: 18px;
-                line-height: 30px;
-            }
-        }
-
-        ul,
-        ol {
-            font-family: var(--font-family-sans-serif);
-            max-width: 60.625rem;
-            margin: auto;
-            letter-spacing: 0.6px;
-            padding-left: 1rem;
-
-            @include media-breakpoint-up(md) {
-                padding-left: 4rem;
-                font-size: 18px;
-                line-height: 30px;
-            }
-        }
-
-        ul li {
-            list-style: disc;
-        }
-
-        ul li strong {
-            font-weight: 700;
-        }
 
         table {
             margin-top: 2rem;
@@ -68,7 +37,7 @@ $table-alignments: left, right, center;
 
             @each $table-alignment in $table-alignments {
                 &[align="#{$table-alignment}"] {
-                    tr,td,th {
+                    tr, td, th {
                         text-align: $table-alignment;
                     }
                 }

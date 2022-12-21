@@ -31,8 +31,7 @@
 
 					<f:if condition="{teaser.links}">
 						<f:then>
-							<div class="list">
-								<ul>
+								<ul class="list">
 									<li class="list__link-item">
 										<f:link.typolink class="link--primary" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
 									</li>
@@ -42,7 +41,6 @@
 										</f:if>
 									</f:for>
 								</ul>
-							</div>
 						</f:then>
 						<f:else>
 							<f:link.typolink class="page-teaser__link page-teaser__link--more link--primary" parameter="{teaser.data.link}">{f:if(condition: teaser.data.link_title, then: teaser.data.link_title, else: '{f:translate(key: \'link.more\', extensionName: \'XmDkfzNetSite\')}')}</f:link.typolink>
