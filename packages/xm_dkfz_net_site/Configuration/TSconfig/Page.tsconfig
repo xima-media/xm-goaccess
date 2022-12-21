@@ -24,6 +24,7 @@ TCEMAIN {
     groupid = 1
     group = 31
   }
+  translateToMessage =
 }
 
 TCEFORM {
