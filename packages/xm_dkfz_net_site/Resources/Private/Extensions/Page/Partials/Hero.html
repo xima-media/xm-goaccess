@@ -30,7 +30,6 @@
 
 				<f:if condition="{contacts}">
 					<div class="hero-teaser__contact">
-						<div class="contact ">
 							<h2 class="h5 contact--title"><f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact"/></h2>
 
 							<f:for each="{contacts.tx_xmdkfznetsite_domain_model_place}" as="place">
@@ -111,12 +110,12 @@
 									</f:for>
 								</div>
 							</f:if>
-						</div>
+
 					</div>
 				</f:if>
 
 				<f:if condition="{data.description}">
-					<div class="hero-teaser__text">
+					<div class="hero-teaser__text frame">
 						<h2 class="h6 text-copy-small">
 							<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.lastEdit"/>
 							: {f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'%d. %B

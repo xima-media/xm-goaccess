@@ -2,6 +2,7 @@ ul, ol {
     font-family: var(--font-family-sans-serif);
     letter-spacing: 0.6px;
     padding-left: var(--list-indent, 1rem);
+    margin-bottom: var(--list-margin, 1rem);
 
     @include media-breakpoint-up(md) {
         --list-indent: 3rem;
@@ -11,6 +12,10 @@ ul, ol {
 
     @include media-breakpoint-up(xl) {
         --list-indent: 5rem;
+    }
+
+    &:last-child {
+        --list-margin: 0;
     }
 
     li {

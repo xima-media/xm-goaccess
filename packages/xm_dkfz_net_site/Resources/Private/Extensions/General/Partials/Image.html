@@ -15,7 +15,7 @@
 		<f:variable name="imageSize" value="440"></f:variable>
 	</f:case>
 	<f:case value="xl">
-		<f:variable name="imageSize" value="1146"></f:variable>
+		<f:variable name="imageSize" value="1170"></f:variable>
 	</f:case>
 	<f:defaultCase>
 		<f:variable name="imageSize" value="970"></f:variable>
@@ -23,8 +23,10 @@
 </f:switch>
 
 <figure class="picture__item {f:if(condition: image, else: 'picture__item--no-image')}">
-	<span aria-hidden="true"
-		  class="picture__pattern {f:if(condition: patternStyle, then: patternStyle, else: 'pattern')}  {f:if(condition: image, else:'no-image color-accent--gray-900')}"></span>
+	<f:comment>
+		<span aria-hidden="true"
+			  class="picture__pattern {f:if(condition: patternStyle, then: patternStyle, else: 'pattern')}  {f:if(condition: image, else:'no-image color-accent--gray-900')}"></span>
+	</f:comment>
 	<f:if condition="{image}">
 		<picture>
 			<source srcset="{f:uri.image(image:image, width:imageSize, cropVariant: cropVariant, fileExtension: 'webp')}"
@@ -44,9 +46,11 @@
 		<f:render partial="Copyright" arguments="{text: image.properties.copyright}"/>
 	</f:if>
 	<f:if condition="{image.properties.description} && !{noCaption}">
-		<figcaption class="picture__caption">
-			{image.properties.description}
-		</figcaption>
+		<div class="frame p-t-0 p-b-0">
+			<figcaption class="picture__caption">
+				{image.properties.description}
+			</figcaption>
+		</div>
 	</f:if>
 </figure>
 

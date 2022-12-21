@@ -83,18 +83,17 @@ picture.userimage {
 
     &__item {
         --pattern-size: 1rem;
-        display: grid;
         position: relative;
+        display: grid;
         z-index: 1;
-        margin: 0 var(--pattern-size) 1rem;
 
         @include media-breakpoint-up(md) {
-            --pattern-size: 2rem;
+            //--pattern-size: 2rem;
         }
 
         @include media-breakpoint-up(lg) {
             --pattern-size: 5rem;
-            margin: 0 0 2rem;
+            //margin: 0 0 2rem;
         }
 
         @include media-breakpoint-up(xxl) {

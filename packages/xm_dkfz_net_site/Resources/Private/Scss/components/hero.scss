@@ -59,22 +59,25 @@
         justify-items: center;
 
         &__no-image {
-            display: flex;
-            gap: var(--space-lg);
+            @include media-breakpoint-up(sm) {
+                display: flex;
+                gap: var(--space-lg);
+                max-width: var(--content-width);
 
-            .hero-teaser__contact {
-                margin: 0 var(--default-overflow-margin-negative) 0 0;
-                position: relative;
-                flex: .5;
-                order: 2;
-                max-width: unset;
-                align-self: flex-start;
-                margin-top: 5rem;
-            }
+                .hero-teaser__contact {
+                    margin: 0 var(--default-overflow-margin-negative) 0 0;
+                    position: relative;
+                    flex: .5;
+                    order: 2;
+                    max-width: unset;
+                    align-self: flex-start;
+                }
 
-            .hero-teaser__text {
-                flex: 1;
-                order: 1;
+                .hero-teaser__text {
+                    flex: 1;
+                    order: 1;
+                    padding-top: 0;
+                }
             }
         }
 
@@ -94,31 +97,32 @@
         }
 
         &__contact {
-            justify-self: left;
-            margin: .5rem 0 0 0;
-            max-width: fit-content;
+            justify-self: stretch;
             max-height: fit-content;
             height: fit-content;
             align-self: flex-end;
             z-index: 1;
+            background: var(--color-primary-opacity-10);
+            padding: 1rem;
 
             @include media-breakpoint-up(sm) {
                 grid-column: 1/2;
                 grid-row: 1/2;
                 justify-self: right;
-                margin: 0 -1rem -1rem 0;
+                margin: 1rem -1rem 0 0;
+                max-width: fit-content;
+                padding: 2rem;
+            }
+
+            @include media-breakpoint-up(lg) {
+                max-width: unset;
+                min-width: 400px;
+                padding: 3rem;
             }
 
             .contact {
-                background: var(--color-primary-opacity-10);
-                padding: 2.5rem 2.5rem 1rem;
-            }
-        }
 
-        &__text {
-            margin-top: 33px;
-            width: 100%;
-            max-width: var(--content-width);
+            }
         }
     }
 }
