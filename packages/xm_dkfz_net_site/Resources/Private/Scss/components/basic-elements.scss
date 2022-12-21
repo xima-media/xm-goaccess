@@ -58,11 +58,16 @@ ul.list {
 }
 
 p {
-    margin-bottom: 1rem;
+    margin-bottom: var(--paragraph-margin, 1rem);
 
     @include media-breakpoint-up(md) {
+        --paragraph-margin: 1.5rem;
         font-size: 18px;
         line-height: 30px;
+    }
+
+    &:last-child {
+        --paragraph-margin: 0;
     }
 
     > a {
