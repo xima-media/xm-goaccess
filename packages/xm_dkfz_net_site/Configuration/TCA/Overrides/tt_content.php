@@ -18,13 +18,6 @@ $tempFields = [
                     'dragdrop' => true,
                     'info' => false,
                 ],
-                'showPossibleLocalizationRecords' => true,
-                'showRemovedLocalizationRecords' => true,
-                'showAllLocalizationLink' => true,
-                'showSynchronizationLink' => true,
-            ],
-            'behaviour' => [
-                'allowLanguageSynchronization' => true,
             ],
         ],
     ],

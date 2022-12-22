@@ -28,8 +28,6 @@ create table tt_content_item (
 	foreign_table    varchar(255) default '' not null,
 	record_type      varchar(255) default '' not null,
 	sorting          int(11) unsigned default '0' not null,
-	sys_language_uid int(11) default '0' not null,
-	l10n_parent      int(11) unsigned default '0' not null,
 	tstamp           int(11) unsigned default '0' not null,
 	crdate           int(11) unsigned default '0' not null,
 	cruser_id        int(11) unsigned default '0' not null,
