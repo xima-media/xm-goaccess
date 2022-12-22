@@ -86,14 +86,17 @@ picture.userimage {
         position: relative;
         display: grid;
         z-index: 1;
+        margin-bottom: 1rem;
 
-        @include media-breakpoint-up(md) {
-            //--pattern-size: 2rem;
+        @include media-breakpoint-down(md) {
+            .frame > * {
+                padding: 0;
+            }
         }
 
         @include media-breakpoint-up(lg) {
             --pattern-size: 5rem;
-            //margin: 0 0 2rem;
+            margin-bottom: 2rem;
         }
 
         @include media-breakpoint-up(xxl) {
@@ -186,7 +189,7 @@ picture.userimage {
             .content-wrapper__content {
                 display: flex;
                 flex-direction: row;
-                gap: 47px;
+                gap: 4rem;
             }
 
             .content-wrapper__content-image {
