@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xima\XmDkfzNetSite\Hook;
 
+use Doctrine\DBAL\Connection as ConnectionAlias;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -67,6 +68,30 @@ class DataHandlerHook
                 if ($oldPos !== false && $oldPos >= 0) {
                     $moveMap[($oldPos + 1) * 100] = ($pos + 1) * 100;
                 }
+            }
+
+            $deletedPos = [];
+            foreach ($tt_content_items_before as $pos => $uid) {
+                $isStillThere = in_array($uid, $tt_content_items_after);
+                if ($isStillThere === false) {
+                    $deletedPos[] = ($pos + 1) * 100;
+                }
+            }
+
+            if (count($deletedPos)) {
+                $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+                $qb->update('tt_content')
+                    ->where(
+                        $qb->expr()->andX(
+                            $qb->expr()->eq('tx_container_parent', $qb->createNamedParameter($id, \PDO::PARAM_INT)),
+                            $qb->expr()->in(
+                                'colPos',
+                                $qb->createNamedParameter($deletedPos, ConnectionAlias::PARAM_STR_ARRAY)
+                            ),
+                        )
+                    )
+                    ->set('deleted', 1)
+                    ->executeStatement();
             }
 
             $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
