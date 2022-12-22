@@ -10,6 +10,8 @@
 //
 
 .accordion {
+    --bs-accordion-transition: none;
+
     margin-bottom: var(--space-doubled);
 
     &__items {
@@ -74,6 +76,8 @@
         &:hover {
             background-color: #111;
             color: $color-white;
+            box-shadow: 1rem 0 0 0 #111, -1rem 0 0 0 #111;
+            border-color: #111;
 
             &::after {
                 @include svg-icon-plus($color-white);
