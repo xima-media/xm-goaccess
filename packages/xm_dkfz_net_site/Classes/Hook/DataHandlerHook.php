@@ -64,7 +64,7 @@ class DataHandlerHook
 
                 // look for old position to update
                 $oldPos = array_search($uid, $tt_content_items_before);
-                if ($oldPos >= 0) {
+                if ($oldPos !== false && $oldPos >= 0) {
                     $moveMap[($oldPos + 1) * 100] = ($pos + 1) * 100;
                 }
             }
