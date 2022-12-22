@@ -1,14 +1,3 @@
-//
-//    @tableOfContent
-//      1. Basic
-//      2. Startpage layout
-//
-
-
-//
-//   @section 1. Basic
-//
-
 html {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -45,56 +34,6 @@ body {
 @include media-breakpoint-up(md) {
     .main {
         min-height: calc(100vh - 19rem);
-    }
-}
-
-// @todo eventuell auslagern
-.article {
-    padding: 0 2rem 2rem 1rem;
-
-    @include media-breakpoint-up(lg) {
-        padding: 0 6rem 6rem 6rem;
-    }
-
-    dl {
-        margin: 2.5rem auto;
-
-        dt {
-            @include h4;
-        }
-
-        dd {
-            @include text-copy-standard;
-            margin-bottom: 3rem;
-            max-width: 100%;
-        }
-    }
-
-    .layout__item--two {
-        @include media-breakpoint-up(lg) {
-            margin-left: -9.5rem;
-            margin-right: -4rem;
-        }
-    }
-
-    .link-primary {
-        text-decoration: underline;
-    }
-
-    .text-copy-standard {
-        max-width: 100%;
-    }
-}
-
-// @todo in eigene Komponente auslagern
-a {
-    color: inherit; // mit bootstrap lösen
-    text-decoration: none;
-
-    &:hover {
-        color: inherit;
-        text-decoration: underline;
-        cursor: pointer;
     }
 }
 
