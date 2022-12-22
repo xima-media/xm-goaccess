@@ -5,7 +5,7 @@
 
 <f:if condition="{userinfo.bookmarks.users}">
 	<h5 class="m-b-0">{f:translate(key: 'bookmarks.users', extensionName: 'XmDkfzNetSite')}</h5>
-	<ul class="bookmarks-sidebar bookmarks-sidebar--fe_users">
+	<ul class="list bookmarks-sidebar bookmarks-sidebar--fe_users">
 		<f:for each="{userinfo.bookmarks.users}" as="user">
 			<li>
 				<f:link.action action="show"
@@ -16,7 +16,7 @@
 							   class="content"
 							   arguments="{user: user.uid}">
 
-					<f:render partial="UserImage" arguments="{user: user, width: 70}"/>
+					<f:render partial="UserImage" arguments="{user: user, width: 70, invert: 1}"/>
 
 					<div>
 						<h6>{user.displayName}</h6>
@@ -50,7 +50,7 @@
 
 <f:if condition="{userinfo.bookmarks.pages}">
 	<h5 class="m-b-0">{f:translate(key: 'bookmarks.pages', extensionName: 'XmDkfzNetSite')}</h5>
-	<ul class="bookmarks-sidebar bookmarks-sidebar--pages">
+	<ul class="list bookmarks-sidebar bookmarks-sidebar--pages">
 		<f:for each="{userinfo.bookmarks.pages}" as="page">
 			<li>
 				<div class="content">
@@ -76,7 +76,7 @@
 
 <f:if condition="{userinfo.bookmarks.sys_file}">
 	<h5>{f:translate(key: 'bookmarks.sys_file', extensionName: 'XmDkfzNetSite')}</h5>
-	<ul class="bookmarks-sidebar bookmarks-sidebar--sys_file">
+	<ul class="list bookmarks-sidebar bookmarks-sidebar--sys_file">
 		<f:for each="{userinfo.bookmarks.sys_file}" as="file" iteration="fileIterator">
 			<li>
 				<div class="content">
@@ -102,7 +102,7 @@
 
 <f:if condition="{userinfo.bookmarks.tx_news_domain_model_news}">
 	<h5 class="m-b-0">{f:translate(key: 'bookmarks.news', extensionName: 'XmDkfzNetSite')}</h5>
-	<ul class="bookmarks-sidebar bookmarks-sidebar--news">
+	<ul class="list bookmarks-sidebar bookmarks-sidebar--news">
 		<f:for each="{userinfo.bookmarks.tx_news_domain_model_news}" as="news">
 			<li>
 				<f:link.action extensionName="News"
@@ -145,7 +145,7 @@
 	</ul>
 </f:if>
 
-<div class="bookmarks-sidebar__infobox infobox color-accent--cyan infobox--background-white">
+<div class="bookmarks-sidebar__infobox infobox infobox--pattern color-accent--cyan">
 	<div class="infobox--wrapper">
 		<p class="infobox__text">{f:translate(key: 'bookmarks.empty', extensionName: 'XmDkfzNetSite')}</p>
 	</div>

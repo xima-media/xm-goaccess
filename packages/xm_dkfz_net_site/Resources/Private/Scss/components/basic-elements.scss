@@ -19,8 +19,8 @@ ul.users {
         margin-bottom: 1.5rem;
     }
 
-    li:not(:last-child) ul {
-        margin: auto 0 0 0;
+    ul {
+        margin-top: auto;
     }
 
     > li {
@@ -127,6 +127,10 @@ ul.list {
 
     li {
         list-style: none;
+    }
+
+    li:not(:last-child) {
+        --list-item-margin: 0;
     }
 
     .list__link-item {
