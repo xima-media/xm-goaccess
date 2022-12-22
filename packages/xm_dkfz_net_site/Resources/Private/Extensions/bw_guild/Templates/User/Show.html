@@ -50,7 +50,7 @@
 			<h6>
 				<f:translate extensionName="XmDkfzNetSite" key="contact"/>
 			</h6>
-			<ul>
+			<ul class="list">
 				<f:for each="{user.phoneContacts}" as="contact" iteration="i">
 					<li class="contact__item">
 						<f:render partial="Icon" arguments="{icon: 'phone'}"/>
@@ -95,7 +95,7 @@
 		</f:if>
 
 		<f:if condition="{user.committee}">
-			<div class="infobox color-accent--primary infobox--background-white color__border">
+			<div class="infobox color-accent--primary infobox--border">
 				<div class="infobox--wrapper">
 					<h5 class="infobox__title">
 						<f:translate extensionName="XmDkfzNetSite" key="user.committee"/>
@@ -132,7 +132,7 @@
 
 	<div>
 		<div class="userprofile__facts">
-			<ul>
+			<ul class="list">
 				<f:if condition="{user.location}">
 					<li>
 						<span>
@@ -248,7 +248,7 @@
 						   arguments="{user: groupUser.uid}">
 				<p class="m-b-0">{groupUser.displayName}</p>
 			</f:link.action>
-			<ul>
+			<ul class="list contacts">
 				<f:for each="{groupUser.phoneContacts}" as="contact" iteration="i">
 					<li class="contact__item">
 						<f:render partial="Icon" arguments="{icon: 'phone'}"/>
