@@ -6,3 +6,6 @@ editor:
     height: 150
     removeButtons:
       - Table
+    contentsCss:
+      - 'EXT:rte_ckeditor/Resources/Public/Css/contents.css'
+      - 'EXT:xm_dkfz_net_site/Resources/Public/Css/Rte/Default.css'
