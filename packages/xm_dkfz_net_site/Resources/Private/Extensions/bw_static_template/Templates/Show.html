@@ -9,7 +9,7 @@
 				<div data-box-id="{i.index}" class="organigram__boxes {f:if(condition: '{block.columnNumber}', then: 'grid-column-{block.columnNumber}', else: '')}">
 					<div class="infobox
 						color-accent--primary
-						infobox--background-white
+						infobox--border
 						color__border">
 						<h5 class="infobox__title">{block.title}</h5>
 					</div>
@@ -22,7 +22,7 @@
 						<button type="button" class="btn-close" aria-label="Close">
 							<f:render partial="Icon" arguments="{icon: 'close'}"/>
 						</button>
-						<div class="organigram__detail--content">
+						<div class="organigram__detail--content accordion">
 							<f:link.typolink parameter="{block.link}" class="h4"
 											 parts-as="parts" target="_blank"
 											 additionalAttributes="{aria-label: '{block.title}'}">
@@ -36,7 +36,7 @@
 										<f:for each="{block.list}" as="list">
 											<f:if condition="{list.column}">
 												<div class="col-md-4">
-													<ul>
+													<ul class="list">
 														<f:for each="{list.column}" as="column">
 															<li>
 																<f:if condition="!{column.description}">
@@ -55,7 +55,7 @@
 																</f:if>
 
 																<f:if condition="{column.description}">
-																	<p>
+																	<p class="text-small">
 																		{column.description}
 																	</p>
 																</f:if>
@@ -83,7 +83,7 @@
     															{list.headline}
     															<f:if condition="{list.description}">
     																<br/>
-    																<span>
+    																<span class="text-small">
     																	{list.description}
     																</span>
     															</f:if>
@@ -100,7 +100,7 @@
 																<f:for each="{list.text}" as="list">
 																	<f:if condition="{list.column}">
 																		<div class="col-md-4">
-																			<ul>
+																			<ul class="list">
 																				<f:for each="{list.column}" as="column">
 																					<li>
 																						<f:link.typolink parameter="{column.link}" class="h5"
@@ -108,7 +108,7 @@
 																										 additionalAttributes="{aria-label: '{column.headline}'}">
 																							{column.headline}
 																						</f:link.typolink>
-																						<p>{column.description}</p>
+																						<p class="text-small">{column.description}</p>
 																					</li>
 																				</f:for>
 																			</ul>
@@ -122,7 +122,7 @@
 											</f:for>
 										</f:then>
 										<f:else>
-											<ul>
+											<ul class="list">
 												<f:for each="{block.list}" as="list">
 													<li>
 														<f:if condition="{list.headline}">
@@ -133,7 +133,7 @@
 															</f:link.typolink>
 														</f:if>
 														<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
-															<p>
+															<p class="text-small">
 																{list.descriptionFirstLine}
 
 																<f:if condition="{list.descriptionSecondLine}">

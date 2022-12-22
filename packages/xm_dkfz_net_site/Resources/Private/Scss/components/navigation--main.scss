@@ -64,6 +64,26 @@
                 display: none;
                 padding: 1.5rem;
 
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: -0.75rem;
+                    left: 3rem;
+                    width: calc(100% - 2.75rem);
+                    height: 0.75rem;
+                    background: var(--border-color);
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: -0.75rem;
+                    top: 2rem;
+                    height: calc(100% - 1.25rem);
+                    background: var(--border-color);
+                    width: 0.75rem;
+                }
+
                 @include media-breakpoint-down(lg) {
                     grid-area: content;
                     flex-direction: column;

@@ -10,6 +10,8 @@
 
 .organigram {
     display: grid;
+    margin-left: var(--default-overflow-margin-negative);
+    margin-right: var(--default-overflow-margin-negative);
 
     &__wrapper {
         grid-column: 1 / 2;
@@ -130,10 +132,12 @@
                 margin-bottom: .5rem;
             }
 
-            ul {
+            ul.list {
                 margin-top: 1rem;
 
                 li {
+                    --list-item-margin: 1rem;
+
                     .organigram__detail--content__headline {
                         @include text-copy-small(700, 0.6px);
                         margin-bottom: 0;
@@ -174,9 +178,7 @@
                     letter-spacing: .3px;
 
                     & > span {
-                        font-size: 1rem;
-                        line-height: 24px;
-                        letter-spacing: normal;
+                        font-family: var(--font-family-sans-serif);
                         font-weight: 200;
                     }
                 }
