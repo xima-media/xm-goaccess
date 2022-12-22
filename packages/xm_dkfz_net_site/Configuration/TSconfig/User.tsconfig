@@ -1,8 +1,5 @@
-[backend.user.isAdmin]
-  options {
-    pageTree.showPageIdWithTitle = 1
-  }
-[GLOBAL]
+# Show page ids in page tree for all users
+options.pageTree.showPageIdWithTitle = 1
 
 # Show whole page tree for all users
 options.pageTree.altElementBrowserMountPoints = 1
