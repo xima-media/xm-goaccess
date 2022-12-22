@@ -96,7 +96,6 @@ picture.userimage {
 
         @include media-breakpoint-up(lg) {
             --pattern-size: 5rem;
-            margin-bottom: 2rem;
         }
 
         @include media-breakpoint-up(xxl) {
@@ -146,7 +145,7 @@ picture.userimage {
             aspect-ratio: 1;
             max-width: 50%;
             align-self: flex-end;
-            margin: 0 0 -1.5rem -1.5rem;
+            margin: 0 0 -1rem -1rem;
         }
     }
 }
