@@ -48,14 +48,15 @@ picture.userimage {
     display: grid;
     position: relative;
     --color-primary: #2662c3;
-    grid-template-columns: var(--pattern-size, 5px) auto;
-    grid-template-rows: auto var(--pattern-size, 5px);
+    grid-template-columns: var(--pattern-size, 6px) auto;
+    grid-template-rows: auto var(--pattern-size, 6px);
+    margin-bottom: -6px;
 
     &--large {
         --pattern-size: 10px;
     }
 
-    img {
+    img, svg {
         z-index: 1;
         grid-column: 2 / 3;
         grid-row: 1 / 2;

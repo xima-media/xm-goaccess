@@ -1,3 +1,19 @@
+ul.contacts {
+    --list-item-margin: 0;
+    --list-margin: 1rem;
+
+    li.contact-image {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        --list-item-margin: 1rem;
+
+        figure {
+            margin: 0;
+        }
+    }
+}
+
 ul, ol {
     font-family: var(--font-family-sans-serif);
     letter-spacing: 0.6px;
@@ -18,8 +34,8 @@ ul, ol {
         --list-margin: 0;
     }
 
-    li {
-        margin-bottom: 0.5rem;
+    li:not(:last-child) {
+        margin-bottom: var(--list-item-margin, 0.5rem);
     }
 
     li:not(:last-child) {
@@ -33,7 +49,7 @@ ul, ol {
     }
 
     ul, ol {
-        margin-top: 0.5rem;
+        margin-top: var(--list-item-margin);
     }
 }
 
@@ -61,6 +77,7 @@ ul.list {
         }
     }
 }
+
 
 a {
     color: inherit;

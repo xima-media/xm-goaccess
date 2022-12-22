@@ -4,6 +4,10 @@
 	<f:variable name="width">150</f:variable>
 </f:if>
 
+<f:if condition="{invert}">
+	<f:variable name="invert">_invert</f:variable>
+</f:if>
+
 <f:if condition="{user.logo}">
 	<f:if condition="{user.logo.0}">
 		<f:then>
@@ -16,9 +20,12 @@
 </f:if>
 
 <f:if condition="!{user.logo.0} && !{user.logo}">
-	<xm:svgInline width="{width}"
-				  height="{width}"
-				  src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg"/>
+	<picture class="userimage {widthClass}">
+		<xm:svgInline width="{width}"
+					  height="{width}"
+					  src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default_alt{invert}.svg"/>
+		<span></span>
+	</picture>
 </f:if>
 
 <f:section name="Image">
@@ -32,7 +39,7 @@
 		<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg')}" type="image/jpeg">
 		<img src="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg', width: width)}"
 			 alt="{user.logo.0.alternative}"
-			 width="{width - 5}"
+			 width="{width}"
 			 loading="lazy"/>
 		<span></span>
 	</picture>

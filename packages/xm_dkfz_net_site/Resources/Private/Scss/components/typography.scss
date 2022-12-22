@@ -182,6 +182,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: 1.6;
 }
 
+.text-small {
+    font-size: 15px;
+    line-height: 22px;
+
+    @include media-breakpoint-up(md) {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
 // @TODO: REMOVE THIS
 .text-copy-small {
     @include text-copy-small;

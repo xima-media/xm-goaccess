@@ -23,93 +23,73 @@
 				<f:if condition="{files}">
 					<div class="hero-teaser__image">
 						<f:for each="{files}" as="file">
-							<f:render partial="Image" arguments="{image: file, size: 'xl', cropVariant: 'teaser', noLazy: 1}"/>
+							<f:render partial="Image"
+									  arguments="{image: file, size: 'xl', cropVariant: 'teaser', noLazy: 1}"/>
 						</f:for>
 					</div>
 				</f:if>
 
 				<f:if condition="{contacts}">
 					<div class="hero-teaser__contact">
-							<h2 class="h5 contact--title"><f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact"/></h2>
+						<h2 class="h5 contact--title">
+							<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact"/>
+						</h2>
 
-							<f:for each="{contacts.tx_xmdkfznetsite_domain_model_place}" as="place">
-								<div class="contact--person">
-									<h3 class="h5 contact--subtitle">{place.name}</h3>
-									<div class="contact--person-container">
-										<f:if condition="{place.contacts} || {place.mail}">
-											<ul>
-												<f:for each="{place.contacts}" as="contact">
-													<li class="contact__item">
-														<f:if condition="{contact.recordType} == 0">
-															<f:render partial="Icon" arguments="{icon: 'phone'}"/>
-															<a href="tel:{contact.number}">{contact.number}</a>
-														</f:if>
-														<f:if condition="{contact.recordType} == 1">
-															<f:render partial="Icon" arguments="{icon: 'printer'}"/>
-															{contact.number}
-														</f:if>
-														<f:if condition="{contact.recordType} == 2">
-															<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-															<f:link.email email="{contact.number}">{contact.number}</f:link.email>
-														</f:if>
-													</li>
-												</f:for>
-												<f:if condition="{place.mail}">
-													<li class="contact__item">
-														<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-														<f:link.email email="{place.mail}">{place.mail}</f:link.email>
-													</li>
-												</f:if>
-											</ul>
-										</f:if>
-									</div>
-								</div>
-							</f:for>
-							<f:if condition="{contacts.fe_users}">
-								<div class="contact--person">
-									<h5 class="contact--subtitle">Ansprechpartner</h5>
-									<f:for each="{contacts.fe_users}" as="user">
-										<div class="contact--person-container">
-											<div class="card card--image-size-xxs">
-												<div class="card__image">
-													<figure class="picture"
-															data-color="transparent"
-															data-pattern-color="transparent">
-														<div class="picture__item color-accent--transparent">
-															<f:if condition="{user.logo}">
-																<picture>
-																	<source srcset="{f:uri.image(image:user.logo, width:'54', fileExtension: 'webp')}"
-																			type="image/webp">
-																	<source srcset="{f:uri.image(image:user.logo, width:'54', fileExtension: 'jpg')}"
-																			type="image/jpeg">
-																	<img src="{f:uri.image(image:user.logo, width:'54', fileExtension: 'jpg')}"
-																		 alt="{file.originalResource.alternative}"
-																		 class="picture__image image--responsive"
-																		 loading="lazy"/>
-																</picture>
-															</f:if>
-															<f:if condition="!{user.logo}">
-																<img width="54"
-																	 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-																	 alt="No profile picture"/>
-															</f:if>
-														</div>
-													</figure>
-												</div>
-											</div>
-											<div class="contact--information">
-												<f:link.action action="show"
-															   pluginName="Usershow"
-															   extensionName="BwGuild"
-															   controller="User"
-															   pageUid="{pidUserDetail}"
-															   arguments="{user: user.uid}">{user.displayName}
-												</f:link.action>
-											</div>
-										</div>
+						<f:for each="{contacts.tx_xmdkfznetsite_domain_model_place}" as="place">
+
+							<h3 class="text-small contact--subtitle">{place.name}</h3>
+
+							<f:if condition="{place.contacts} || {place.mail}">
+								<ul class="list contacts">
+									<f:for each="{place.contacts}" as="contact">
+										<li class="contact__item">
+											<f:if condition="{contact.recordType} == 0">
+												<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+												<a href="tel:{contact.number}">{contact.number}</a>
+											</f:if>
+											<f:if condition="{contact.recordType} == 1">
+												<f:render partial="Icon" arguments="{icon: 'printer'}"/>
+												{contact.number}
+											</f:if>
+											<f:if condition="{contact.recordType} == 2">
+												<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+												<f:link.email email="{contact.number}">{contact.number}</f:link.email>
+											</f:if>
+										</li>
 									</f:for>
-								</div>
+									<f:if condition="{place.mail}">
+										<li class="contact__item">
+											<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+											<f:link.email email="{place.mail}">{place.mail}</f:link.email>
+										</li>
+									</f:if>
+								</ul>
 							</f:if>
+
+
+						</f:for>
+						<f:if condition="{contacts.fe_users}">
+							<h5 class="contact--subtitle text-small">Ansprechpartner</h5>
+							<ul class="list contacts ">
+								<f:for each="{contacts.fe_users}" as="user">
+									<li class="contact-image">
+										<figure class="picture"
+												data-color="transparent"
+												data-pattern-color="transparent">
+											<f:render partial="UserImage" arguments="{user: user, width: 53}"/>
+										</figure>
+										<f:link.action action="show"
+													   pluginName="Usershow"
+													   extensionName="BwGuild"
+													   controller="User"
+													   pageUid="{pidUserDetail}"
+													   arguments="{user: user.uid}">{user.displayName}
+										</f:link.action>
+									</li>
+
+								</f:for>
+							</ul>
+						</f:if>
 
 					</div>
 				</f:if>

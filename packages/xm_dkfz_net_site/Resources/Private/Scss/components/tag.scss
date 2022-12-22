@@ -10,7 +10,6 @@
 //
 
 .list {
-    @include list-reset;
 
     &--inline {
         display: flex;
