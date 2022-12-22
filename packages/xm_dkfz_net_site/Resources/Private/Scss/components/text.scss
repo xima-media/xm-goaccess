@@ -37,10 +37,6 @@
         font-weight: 700;
     }
 
-    &-intro {
-        padding-top: .375rem;
-    }
-
     &--column {
         @include media-breakpoint-up(lg) {
             width: 60.5625rem;
