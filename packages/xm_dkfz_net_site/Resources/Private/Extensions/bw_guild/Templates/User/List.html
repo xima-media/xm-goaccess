@@ -24,69 +24,69 @@
 				</div>
 			</f:else>
 		</f:if>
-		<div class="results__items">
+		<ul class="list users">
 			<f:for each="{users}" as="user">
-				<div class="card card--image-top card--md card--image-size-md card--employee-contact">
+				<li>
 					<f:link.action action="show"
-								   class="card__link card__link--hidden"
+								   class=""
 								   pageUid="{settings.showPid}"
 								   pluginName="Usershow"
 								   controller="User"
 								   arguments="{user: user.uid}">
-						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-					</f:link.action>
-					<div class="card__image">
-						<f:render partial="UserImage" arguments="{user: user, width: 80, invert: 1}" />
-					</div>
-					<div class="card__content">
-						<h3 class="card__title h6">{user.displayName}</h3>
+
+
+						<f:render partial="UserImage" arguments="{user: user, width: 80, invert: 1}"/>
+
+						<h3 class="h6">{user.displayName}</h3>
 
 						<f:if condition="{user.contactFunction}">
-							<p class="card__function">{user.contactFunction}</p>
+							<p class="text-small m-b-0">{user.contactFunction}</p>
 						</f:if>
 
 						<f:if condition="{user.groups}">
-							<p class="card__subtitle"><strong>
+							<p class="text-small"><strong>
 								<f:for each="{user.groups}" as="group" iteration="i">
 									{group.title}{f:if(condition: i.isLast, else: ', ')}
 								</f:for>
 							</strong></p>
 						</f:if>
 
-					</div>
-					<ul class="card__contact">
 
-						<f:if condition="{user.contactRoom}">
-							<li class="contact__item">
-								<f:render partial="Icon" arguments="{icon: 'location'}"/>
-								{user.contactRoom}
-							</li>
-						</f:if>
+						<ul class="list contacts">
 
-						<f:for each="{user.phoneContacts}" as="contact" iteration="i">
-							<li class="contact__item">
-								<f:render partial="Icon" arguments="{icon: 'phone'}"/>
-								<a href="tel:{contact.cleanNumber}">{contact.number}</a>
-							</li>
-						</f:for>
+							<f:if condition="{user.contactRoom}">
+								<li>
+									<f:render partial="Icon" arguments="{icon: 'location'}"/>
+									{user.contactRoom}
+								</li>
+							</f:if>
 
-						<f:for each="{user.faxContacts}" as="contact" iteration="i">
-							<li class="contact__item">
-								<f:render partial="Icon" arguments="{icon: 'printer'}"/>
-								{contact.number}
-							</li>
-						</f:for>
+							<f:for each="{user.phoneContacts}" as="contact" iteration="i">
+								<li>
+									<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+									{contact.number}
+								</li>
+							</f:for>
 
-						<f:if condition="{user.email}">
-							<li class="contact__item">
-								<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-								{user.email}
-							</li>
-						</f:if>
-					</ul>
-				</div>
+							<f:for each="{user.faxContacts}" as="contact" iteration="i">
+								<li>
+									<f:render partial="Icon" arguments="{icon: 'printer'}"/>
+									{contact.number}
+								</li>
+							</f:for>
+
+							<f:if condition="{user.email}">
+								<li>
+									<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+									{user.email}
+								</li>
+							</f:if>
+						</ul>
+
+					</f:link.action>
 			</f:for>
-		</div>
+			</li>
+		</ul>
 
 	</div>
 

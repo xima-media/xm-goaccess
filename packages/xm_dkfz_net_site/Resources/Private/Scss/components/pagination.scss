@@ -77,9 +77,9 @@
 
     a.arrow {
         border-radius: 100%;
-        padding: 6px 8px;
         line-height: 0;
-
+        display: inline-block;
+        
         &:hover {
             background: var(--color-gray-900);
             color: #FFF;
