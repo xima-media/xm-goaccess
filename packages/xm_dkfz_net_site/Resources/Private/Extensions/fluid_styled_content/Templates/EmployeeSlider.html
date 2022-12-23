@@ -11,7 +11,7 @@
 </f:section>
 
 <f:section name="Main">
-	<div class="carousel carousel--color-primary carousel__content-teaser"
+	<div class="carousel carousel--color-primary carousel__content-teaser employee-latest"
 		 data-cols="{&quot;xs&quot;: &quot;1&quot;, &quot;sm&quot;: &quot;2&quot;, &quot;md&quot;: &quot;3&quot;, &quot;lg&quot;: &quot;4&quot;}"
 		 data-pagination-style="{&quot;xs&quot;: &quot;fraction&quot;, &quot;sm&quot;: &quot;bullets&quot;, &quot;md&quot;: &quot;bullets&quot;, &quot;lg&quot;: &quot;bullets&quot;}"
 		 data-pagination-colored="false"
@@ -21,59 +21,32 @@
 				<f:for each="{users}" as="user" iteration="i">
 					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 						<div class="card card--image-top card--md card--image-size-xs card--employee">
-							<div class="card__image">
-								<figure class="picture picture--with-image picture--with-color picture--orientation-xs-" data-color="primary" data-pattern-color="transparent">
-									<div class="picture__item image-color--primary">
-										<f:if condition="{user.logo.0}">
-											<f:then>
-												<picture>
-													<source srcset="{f:uri.image(image:user.logo.0, width:'150', fileExtension: 'webp')}"
-															type="image/webp">
-													<source srcset="{f:uri.image(image:user.logo.0, width:'150', fileExtension: 'jpg')}"
-															type="image/jpeg">
-													<img src="{f:uri.image(image:user.logo.0, width:'150', fileExtension: 'jpg')}"
-														 alt="{user.logo.0.alternative}"
-														 class="picture__image image--responsive"
-														 loading="lazy"/>
-												</picture>
-											</f:then>
-											<f:else>
-												<img width="150" class="picture__image image--responsive"
-													 src="{f:uri.resource(path: 'EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default.svg')}"
-													 alt="No profile picture"/>
-											</f:else>
-										</f:if>
-									</div>
-								</figure>
-							</div>
-							<div class="card__content">
-								<div class="card__header">
-									<f:link.action action="show"
-												   additionalAttributes="{aria-label: '{user.data.last_name},&nbsp;{user.data.first_name}'}"
-												   pageUid="{pidUserDetail}"
-												   pluginName="Usershow"
-												   controller="User"
-												   arguments="{user: user.data.uid}">
-										<h3 class="card__title h5">{user.data.last_name},&nbsp;{user.data.first_name}</h3>
-									</f:link.action>
-								</div>
-							</div>
-							<div class="card__contact">
-								<f:if condition="{user.data.email}">
-									<p class="contact__item">
-										<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-										<f:link.email email="{user.data.email}">{user.data.email}</f:link.email>
-									</p>
-								</f:if>
-								<f:for each="{user.contacts}" as="contact">
-									<f:if condition="{contact.data.recordType} == 0">
-										<p class="contact__item">
-											<f:render partial="Icon" arguments="{icon: 'phone'}"/>
-											<a href="tel:{contact.data.number}">{contact.data.number}</a>
-										</p>
+							<f:link.action action="show"
+										   additionalAttributes="{aria-label: '{user.data.last_name},&nbsp;{user.data.first_name}'}"
+										   pageUid="{pidUserDetail}"
+										   pluginName="Usershow"
+										   controller="User"
+										   arguments="{user: user.data.uid}">
+
+								<f:render partial="UserImage" arguments="{user: user, width: 80, invert: 1}"/>
+								<h3 class="card__title h5">{user.data.last_name},&nbsp;{user.data.first_name}</h3>
+								<ul class="list text-small">
+									<f:if condition="{user.data.email}">
+										<li>
+											<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+											{user.data.email}
+										</li>
 									</f:if>
-								</f:for>
-							</div>
+									<f:for each="{user.contacts}" as="contact">
+										<f:if condition="{contact.data.recordType} == 0">
+											<li>
+												<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+												{contact.data.number}
+											</li>
+										</f:if>
+									</f:for>
+								</ul>
+							</f:link.action>
 						</div>
 					</div>
 				</f:for>
