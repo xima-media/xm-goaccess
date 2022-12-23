@@ -137,8 +137,11 @@ picture.userimage {
             aspect-ratio: 1;
             align-self: flex-end;
             margin: -0.5rem;
+
             @include media-breakpoint-up(lg) {
-                margin: -1rem;
+                &:not(.sm) {
+                    margin: -1rem;
+                }
             }
         }
 
