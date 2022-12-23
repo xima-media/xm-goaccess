@@ -45,7 +45,7 @@ class Userinfo {
       this.modifyHtmlTag()
       this.modifyUserNav()
       this.modifyBookmarkLinks()
-      this.modifyWelcomeMessage()
+      //this.modifyWelcomeMessage()
       this.setFeedbackFormUserValues()
     })
 
