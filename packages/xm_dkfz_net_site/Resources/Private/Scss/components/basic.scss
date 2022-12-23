@@ -189,5 +189,21 @@ input[type="search"]::-webkit-search-results-decoration {
     display: none;
 }
 
+.container-2cols {
+    display: grid;
+    gap: 1rem;
+
+    &--1 {
+        --template-columns: 2fr 1fr;
+    }
+
+    @include media-breakpoint-up(md) {
+        grid-template-columns: var(--template-columns, 1fr 1fr);
+    }
+
+    @include media-breakpoint-up(lg) {
+        gap: 2rem;
+    }
+}
 
 // end of basic.scss file

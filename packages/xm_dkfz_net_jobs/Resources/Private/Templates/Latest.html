@@ -2,9 +2,9 @@
 	<f:for each="{jobs}" as="job">
 		<f:if condition="{job.jobOpening}">
 			<a href="{job.jobPublicationURL}" aria-label="{job.position}" title="{f:translate(key:'LLL:EXT:xm_dkfz_net_jobs/Resources/Private/Language/locallang.xlf:latestJobs.headline')}">
-				<f:render partial="Icon" arguments="{icon:'arrow-right'}"/>
+				<f:render partial="Icon" arguments="{icon:'arrow-right', size:'sm'}"/>
 				<h3 class="h6">{job.position}</h3>
-				<ul class="card__tags">
+				<ul class="list card__tags text-small">
 					<f:if condition="{job.jobOpening.workingTimes.0.name}">
 						<li class="card__tag">{job.jobOpening.workingTimes.0.name}</li>
 					</f:if>

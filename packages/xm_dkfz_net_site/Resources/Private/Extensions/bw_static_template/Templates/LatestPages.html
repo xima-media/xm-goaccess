@@ -1,30 +1,31 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<f:layout name="Default"/>
 <f:section name="Header">
 	<div class="content-wrapper__header">
 		<f:render partial="Header/Header" arguments="{
                 header: '{f:if(condition: title, then: \'{title}\', else: \'Neue Seiten\')}',
-                layout: data.header_layout,
+                layout: 4,
 				positionClass: 'm-b-0{positionClass}',
-                default: settings.defaultHeaderType}" />
-		<span class="content-wrapper__pattern pattern color-accent--gray-900 h2"></span>
+                default: settings.defaultHeaderType}"/>
+		<span class="content-wrapper__pattern pattern color-accent--gray-900 h4"></span>
 	</div>
 
 </f:section>
 <f:section name="Main">
-	<f:for each="{pages}" as="page">
-		<div class="card card--image-top card--md card--image-size-md card--new-page">
-			<f:link.page class="card__link card__link--hidden" pageUid="{page.data.uid}"
-						 additionalAttributes="{aria-label: '{page.data.title}', title: '{page.data.title}'}">
-				<f:render partial="Icon" arguments="{icon:'arrow-right'}"/>
-			</f:link.page>
-			<div class="card__content">
-				<div class="card__header ">
-					<h3 class="card__title h6">{f:if(condition: page.data.nav_title, then: '{page.data.nav_title}', else: '{page.data.title}')}</h3>
-					<p class="card__sub-title">{page.data.description -> f:format.crop(maxCharacters: 50)}</p>
-				</div>
-			</div>
-		</div>
-	</f:for>
+	<ul class="list pages-latest">
+		<f:for each="{pages}" as="page">
+			<li>
+				<f:link.page pageUid="{page.data.uid}"
+							 additionalAttributes="{aria-label: '{page.data.title}', title: '{page.data.title}'}">
+					<f:render partial="Icon" arguments="{icon:'arrow-right', size: 'sm'}"/>
+
+
+						<h3 class="h6">{f:if(condition: page.data.nav_title, then: '{page.data.nav_title}',
+							else: '{page.data.title}')}</h3>
+						<p class="text-tiny">{page.data.description -> f:format.crop(maxCharacters: 50)}</p>
+				</f:link.page>
+			</li>
+		</f:for>
+	</ul>
 </f:section>
 </html>
