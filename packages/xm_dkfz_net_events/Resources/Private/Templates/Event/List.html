@@ -7,13 +7,13 @@
 		<f:for each="{events}" as="event" iteration="i">
 			<div class="event">
 				<a href="{event.link}" title="{event.title}">
-					<h5 class="h3 color">
-						{event.eventdate->f:format.date(format: 'd. M')}
-						<span>{event.eventtime}</span>
-					</h5>
+					<p class="color m-b-0">
+						<span class="h3"><f:format.date format="%d. %B">{event.eventdate}</f:format.date></span>
+						<span class="h3 text-intro">{event.eventtime}</span>
+					</p>
 
-					<p><strong>{event.title}</strong></p>
-					<ul class="card__tags">
+					<h5 class="m-b-05">{event.title}</h5>
+					<ul class="list text-small card__tags">
 						<li class="card__tag">{event.eventlanguage}</li>
 						<li class="card__tag">{event.description}</li>
 					</ul>

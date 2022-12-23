@@ -21,23 +21,14 @@
         }
     }
 
-    h5 {
-        margin-bottom: .5rem;
-
-        span {
-            font-family: $font-family-sans-serif;
-            font-weight: 200;
-        }
-    }
-
-    p {
-        margin-bottom: .3rem;
+    p span:first-child {
+        margin-right: 0.5rem;
     }
 
     .event:not(:last-child) {
         border-bottom: 1px solid var(--color-gray-200);
-        padding-bottom: calc(.5 * var(--content-padding));
-        margin-bottom: calc(.5 * var(--content-padding));
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -53,6 +44,7 @@
     .swiper-slide:nth-child(3n) {
         padding-right: 0;
     }
+
     a:hover {
         text-decoration: none;
 
