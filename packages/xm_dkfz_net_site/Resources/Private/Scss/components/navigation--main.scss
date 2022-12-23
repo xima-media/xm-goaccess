@@ -71,7 +71,7 @@
                     left: 3rem;
                     width: calc(100% - 2.75rem);
                     height: 0.75rem;
-                    background: var(--border-color);
+                    background: var(--color-accent);
                 }
 
                 &::after {
@@ -80,7 +80,7 @@
                     right: -0.75rem;
                     top: 2rem;
                     height: calc(100% - 1.25rem);
-                    background: var(--border-color);
+                    background: var(--color-accent);
                     width: 0.75rem;
                 }
 
