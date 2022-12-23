@@ -2,9 +2,9 @@
 	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
 
-<div class="row">
+<div class="news-latest">
 	<f:for each="{news}" as="newsItem" iteration="i">
-		<div class="col-md-6">
+		<div class="news-latest__item">
 			<n:excludeDisplayedNews newsItem="{newsItem}"/>
 			<f:render section="NewsItem" arguments="{newsItem: newsItem, i: i}"/>
 		</div>
@@ -13,49 +13,29 @@
 
 <f:section name="NewsItem">
 
-	<div class="card color-accent--{newsItem.txXmdkfznetsiteColor}">
+	<div class="color-accent--{newsItem.txXmdkfznetsiteColor}">
 
-		<n:link newsItem="{newsItem}"
-				settings="{settings}"
-				class="card__link card__link--hidden"
-				title="{newsItem.title}">
-			<f:translate key="more-link"/>
-		</n:link>
+		<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
 
-		<div class="card__image">
-			<figure class="picture picture--with-image picture--with-color picture--orientation-md-">
-				<div class="picture__item color-accent--yellow">
-					<f:for each="{newsItem.falMedia}" as="file" iteration="i">
-						<f:if condition="{i.isFirst}">
-							<picture>
-								<source srcset="{f:uri.image(image:file, width:'285', fileExtension: 'webp', cropVariant: 'preview')}"
-										type="image/webp">
-								<source srcset="{f:uri.image(image:file, width:'285', fileExtension: 'jpg', cropVariant: 'preview')}"
-										type="image/jpeg">
-								<img src="{f:uri.image(image:file, width:'285', fileExtension: 'jpg', cropVariant: 'preview')}"
-									 alt="{file.originalResource.alternative}"
-									 class="picture__image image--responsive"
-									 loading="lazy"/>
-							</picture>
-						</f:if>
-					</f:for>
-				</div>
-			</figure>
-		</div>
 
-		<div class="card__content">
-			<div class="card__header">
-				<p>
-					<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
-					|
-					<f:if condition="{newsItem.firstCategory}">
-						{newsItem.firstCategory.title}
+			<div class="m-b-1">
+				<f:for each="{newsItem.falMedia}" as="file" iteration="i">
+					<f:if condition="{i.isFirst}">
+						<f:render partial="Image"
+								  arguments="{image: file, size: 'sm', patternStyle: 'color', noCaption: 1}"/>
 					</f:if>
-				</p>
-				<h3 class="card__title h5">{newsItem.title}</h3>
+				</f:for>
 			</div>
-		</div>
 
+			<p class="text-small m-b-05">
+				<f:format.date format="%d. %B %Y">{newsItem.datetime}</f:format.date>
+				<f:if condition="{newsItem.firstCategory}">
+					| {newsItem.firstCategory.title}
+				</f:if>
+			</p>
+			<h3 class="h5">{newsItem.title}</h3>
+
+		</n:link>
 	</div>
 </f:section>
 

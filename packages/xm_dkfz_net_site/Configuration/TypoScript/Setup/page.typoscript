@@ -257,6 +257,10 @@ page {
   config.htmlTag.attributes.style = --gradient-offset:380px
 [end]
 
+[traverse(page, "uid") == 1]
+  config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
+[end]
+
 [traverse(page, "uid") == {$pidJobList}]
   config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
 [end]

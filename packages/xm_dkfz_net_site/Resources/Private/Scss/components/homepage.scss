@@ -16,17 +16,26 @@ Homepage structure:
     11. More
  */
 
+:root {
+    --overlap-size: 2rem;
+
+    @include media-breakpoint-up(lg) {
+        --overlap-size: 5rem;
+    }
+}
+
 @mixin expandContent {
     --content-width: 1170px;
 
     & > * {
         background: #FFF;
-        box-shadow: 0 0 0 2rem #FFF, 10rem 0 0 2rem #FFF, -10rem 0 0 2rem #FFF;
+        box-shadow: 7px 12rem 0 12.8rem #FFF;
     }
 }
 
 #p1 {
     background-color: var(--color-gray-100);
+    --content-width: 1170px;
 }
 
 #cwelcome {
@@ -42,18 +51,74 @@ Homepage structure:
     }
 }
 
+// Short news
+#c1587 {
+    @include media-breakpoint-up(md) {
+        --content-width: 455px;
+    }
+}
+
+// 2-Col news container
+#c1585 {
+    position: relative;
+    padding-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        --content-padding: 0;
+    }
+
+    & > * {
+        background: #FFF;
+    }
+
+    &:after {
+        content: '';
+        width: 1580px;
+        height: var(--overlap-size);
+        background: #FFF;
+        bottom: calc(-1 * var(--overlap-size));
+        left: 50vw;
+        margin-left: -790px;
+        position: absolute;
+        z-index: 9;
+    }
+}
+
 // Events
 #c5 {
     @include expandContent;
 }
 
 // 4. & 5. Service slider
-#c103, #c104 {
-    --content-width: 1170px;
-    background-color: $color-cyan;
-}
 #c103 {
+    --content-width: 1170px;
+    background-color: #40B7EA;
     --content-padding: 4rem;
+    padding-top: calc(2 * var(--overlap-size));
+}
+
+#c104 {
+    --content-width: 1170px;
+    background-color: #40B7EA;
+    padding-bottom: calc(2 * var(--overlap-size));
+}
+
+// Events
+#c5 {
+    position: relative;
+    padding-top: 0;
+
+    &:after {
+        content: '';
+        width: 1580px;
+        height: var(--overlap-size);
+        background: #FFF;
+        top: calc(-1 * var(--overlap-size));
+        left: 50vw;
+        margin-left: -790px;
+        position: absolute;
+        z-index: 9;
+    }
 }
 
 // 8. Jobs
@@ -62,7 +127,7 @@ Homepage structure:
     background-color: $color-yellow;
 
     .frame {
-        background: rgba(255,255,255,0.8);
+        background: rgba(255, 255, 255, 0.8);
         padding-left: 2rem;
         padding-right: 2rem;
         margin-left: -2rem;
