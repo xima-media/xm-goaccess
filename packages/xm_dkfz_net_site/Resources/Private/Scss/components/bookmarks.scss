@@ -56,7 +56,7 @@
     }
 
     .picture__item {
-        margin: 0 0 0.5rem 0;
+        margin: 0 0 0.5rem 0.5rem;
         max-width: 120px;
         width: 100%;
         align-self: center;
@@ -83,10 +83,6 @@
         gap: 10px;
         align-items: center;
 
-        p {
-            font-size: 14px;
-        }
-
         &:hover {
             text-decoration: none;
 
@@ -104,7 +100,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 0;
         }
 
         nav {
@@ -141,13 +136,14 @@
     }
 
     &--sys_file {
-        background-color: var(--color-gray-100);
-        padding-left: 1rem;
-        padding-right: 1rem;
-        gap: 0;
+        gap: 1px;
 
         li {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border: 0;
             gap: 0;
+            background-color: var(--color-gray-100);
         }
 
         .content {

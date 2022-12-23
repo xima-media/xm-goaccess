@@ -22,11 +22,11 @@
 						<h6>{user.displayName}</h6>
 
 						<f:if condition="{user.contactFunction}">
-							<p class="m-b-0">{user.contactFunction}</p>
+							<p class="m-b-0 text-tiny">{user.contactFunction}</p>
 						</f:if>
 
 						<f:if condition="{user.groups}">
-							<p class="m-b-0"><strong>
+							<p class="m-b-0  text-tiny"><strong>
 								<f:for each="{user.groups}" as="group" iteration="i">
 									{group.title}{f:if(condition: i.isLast, else: ', ')}
 								</f:for>
@@ -58,7 +58,7 @@
 						<f:render partial="Icon" arguments="{icon: 'arrow-right', size: 'sm'}"/>
 						{page.title}
 					</f:link.typolink>
-					<nav>
+					<nav class="text-tiny">
 						<f:for each="{page.rootline}" as="item">
 							<f:link.typolink parameter="{item.uid}"/>
 						</f:for>
@@ -79,7 +79,7 @@
 	<ul class="list bookmarks-sidebar bookmarks-sidebar--sys_file">
 		<f:for each="{userinfo.bookmarks.sys_file}" as="file" iteration="fileIterator">
 			<li>
-				<div class="content">
+				<div class="content text-tiny">
 					<span class="title">{f:if(condition:file.title, then: file.title, else:'{file.name->f:format.htmlspecialchars()}')}</span>
 					<span class="tab-item__type">{file.extension}</span>
 					<a href="{f:uri.typolink(parameter:'t3://file?uid={file.uid}')}"
@@ -114,7 +114,7 @@
 							   arguments="{news: news.uid}">
 					<f:if condition="{news.image}">
 						<figure class="picture__item">
-							<span aria-hidden="true" class="picture__pattern color"></span>
+							<span aria-hidden="true" class="picture__pattern color sm"></span>
 							<picture>
 								<f:image class="picture__image" src="{news.image}" treatIdAsReference="1" width="120"/>
 							</picture>
@@ -127,11 +127,11 @@
 						</figure>
 					</f:if>
 					<div>
-						<p class="m-b-0 date">
+						<p class="m-b-0 text-tiny">
 							<f:format.date format="d.m.Y">{news.datetime}</f:format.date>
 						</p>
 						<h6>{news.title}</h6>
-						<p class="m-b-0">{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
+						<p class="m-b-0 text-tiny">{news.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
 					</div>
 				</f:link.action>
 
