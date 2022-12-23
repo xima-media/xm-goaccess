@@ -6,6 +6,7 @@ plugin.tx_xmdkfznetevents {
     templateRootPaths.10 = {$plugin.tx_xmdkfznetevents.view.templateRootPath}
     partialRootPaths.0 = EXT:xm_dkfz_net_events/Resources/Private/Partials
     partialRootPaths.10 = {$plugin.tx_xmdkfznetevents.view.partialRootPath}
+    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
 }
 
