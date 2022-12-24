@@ -31,9 +31,12 @@ body {
     box-shadow: none;
 }
 
-@include media-breakpoint-up(md) {
-    .main {
+main {
+    padding-top: 3rem;
+
+    @include media-breakpoint-up(md) {
         min-height: calc(100vh - 19rem);
+        padding-top: 3rem;
     }
 }
 

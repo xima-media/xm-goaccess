@@ -1,6 +1,7 @@
 ul.users {
     display: grid;
     gap: 2rem;
+    row-gap: 3rem;
 
     @include media-breakpoint-up(md) {
         grid-template-columns: 1fr 1fr;

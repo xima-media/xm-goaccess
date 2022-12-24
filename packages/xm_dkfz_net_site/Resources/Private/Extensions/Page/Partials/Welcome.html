@@ -1,56 +1,57 @@
-<f:variable name="cssVariables">
-	<f:if condition="{files.0}">
-		--background-image-jpg: url({f:uri.image(image: files.0,width: 576)});
-		--background-image-jpg-md: url({f:uri.image(image: files.0,width: 992)});
-		--background-image-jpg-xl: url({f:uri.image(image: files.0,width: 2500)});
-	</f:if>
-	<f:for each="{files}" as="file" iteration="i">
-		<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
-		--background-image-{index}webp: url({f:uri.image(image: file, width: 576, fileExtension: 'webp')});
-		--background-image-{index}webp-md: url({f:uri.image(image: file,width: 992, fileExtension: 'webp')});
-		--background-image-{index}webp-xl: url({f:uri.image(image: file, width: 2500, fileExtension: 'webp')});
-	</f:for>
-</f:variable>
-
-<div id="cwelcome" class="frame content-wrapper--expanded frame-type-welcome background--image background--image-hero background--expanded" style="{cssVariables}">
+<div id="cwelcome" class="frame content-wrapper--expanded frame-type-welcome">
 
 	<div class="employee-welcome employee-welcome--onload-hidden">
 		<f:comment>
-		<div class="employee-welcome-message">
-			<div class="employee-welcome-message__header">
-				<h2 class="employee-welcome-message__title h4">Guten Tag <span data-username></span></h2>
-				<p class="employee-welcome-message__sub-title">Herzlich Willkommen im Intranet!</p>
-				<a class="employee-welcome-message__link" href="#">
-					Onboarding Informationen
-					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-				</a>
+			<div class="employee-welcome-message">
+				<div class="employee-welcome-message__header">
+					<h2 class="employee-welcome-message__title h4">Guten Tag
+						<span data-username></span>
+					</h2>
+					<p class="employee-welcome-message__sub-title">Herzlich Willkommen im Intranet!</p>
+					<a class="employee-welcome-message__link" href="#">
+						Onboarding Informationen
+						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+					</a>
+				</div>
+				<div class="employee-welcome-message__body">
+					<h3 class="employee-welcome-message__badge badge">Ihr Mitarbeiterprofil</h3>
+					<p>
+						Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr
+						Profil, um besser gefunden zu werden. </p>
+					<a class="employee-welcome-message__link"
+					   data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}"
+					   href="#">
+						Jetzt Profil bearbeiten
+						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+					</a>
+				</div>
 			</div>
-			<div class="employee-welcome-message__body">
-				<h3 class="employee-welcome-message__badge badge">Ihr Mitarbeiterprofil</h3>
-				<p>
-					Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr Profil, um
-					besser gefunden zu werden. </p>
-				<a class="employee-welcome-message__link" data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}" href="#">
-					Jetzt Profil bearbeiten
-					<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-				</a>
-			</div>
-		</div>
 		</f:comment>
 		<div class="employee-finder">
-			<h2 class="employee-finder__title h5">Mitarbeiter finden</h2>
-			<form class="employee-finder__form" action="#">
+			<h2 class="employee-finder__title h5 m-b-0">Mitarbeiter finden</h2>
+			<f:form class="employee-finder__form"
+					extensionName="BwGuild"
+					action="list"
+					section="c381"
+					pluginName="Userlist"
+					name="demand"
+					controller="User"
+					object="{demand}"
+					pageUid="{pidUserList}"
+					additionalAttributes="{autocomplete: 'off'}">
 				<div class="field field--text">
-					<label class="field__label " for="field__input--970814446">Suchen nach Name, Vorname,
-						Telefon</label> <input type="text"
-											   class="field__input "
-											   id="field__input--970814446"
-											   placeholder="Suchen nach Name, Vorname, Telefon">
+					<label class="field__label " for="field__input--970814446">
+						<f:translate extensionName="XmDkfzNetSite" key="usersearch.demand.search"/>
+					</label>
+					<f:form.textfield class="field__input "
+									  id="field__input--970814446"
+									  property="search"
+									  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'usersearch.demand.search')}"/>
 				</div>
 				<button class="employee-finder__button" type="button" aria-label="Suche starten">
 					<f:render partial="Icon" arguments="{icon: 'search'}"/>
 				</button>
-			</form>
+			</f:form>
 		</div>
 	</div>
 </div>

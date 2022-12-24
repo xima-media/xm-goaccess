@@ -289,10 +289,10 @@
 
     &.frame-type-welcome {
         margin-top: 0;
+        padding: 0;
 
         @include media-breakpoint-up(md) {
             margin-top: -1rem;
-            padding-top: calc(2 * var(--content-padding));
         }
 
         @include media-breakpoint-up(lg) {

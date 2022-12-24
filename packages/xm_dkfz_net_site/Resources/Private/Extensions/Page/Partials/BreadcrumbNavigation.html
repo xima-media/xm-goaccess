@@ -2,7 +2,7 @@
 
 <f:if condition="{breadNav->f:count()} > 1 && !{isProfilePage}">
 	<nav class="breadcrumb__wrapper" aria-label="Brotkrumen-Navigation">
-		<ul class="breadcrumb">
+		<ul class="list breadcrumb">
 			<f:for each="{breadNav}" as="item" iteration="i">
 				<li>
 					<f:if condition="{item.current}">

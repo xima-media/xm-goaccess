@@ -1,39 +1,11 @@
-//
-//    @tableOfContent
-//      1. Employee welcome message
-//
-
-
-//
-//   @section 1. Employee welcome message
-//
-
 .employee-welcome {
+    margin-bottom: -2rem;
+    z-index: 2;
+    display: grid;
+    --content-width: 1264px;
 
-    justify-self: center;
-    margin: 0;
-
-    &--onload-hidden {
-        .employee-welcome-message {
-            opacity: 0;
-            transform: translate3d(-5rem, 0, 0);
-        }
-
-        .employee-finder {
-            opacity: 0;
-            transform: translate3d(5rem, 0, 0);
-        }
-    }
-
-    @include media-breakpoint-up(md) {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-
-    }
-
-    @include media-breakpoint-up(lg) {
-
+    & + div {
+        z-index: 1;
     }
 }
 
@@ -43,33 +15,67 @@
     display: grid;
     gap: 3rem;
     max-width: 56.5rem;
-    padding: 1.5rem;
+    padding: 0;
     transition: opacity 1s ease 0.8s, transform 0.7s ease 0.7s;
+}
+
+
+.employee-finder {
+    @include background-blur($color-primary);
+
+    padding: 2.125rem 3rem 3.25rem 3rem;
+    color: var(--color-white);
+    transition: opacity 1s ease 0.8s, transform 0.7s ease 0.7s;
+    width: 100%;
+    justify-self: flex-end;
 
     @include media-breakpoint-up(md) {
-        padding: 2.25rem 2rem 1.875rem 3rem;
-        grid-column: 1 / 9;
-        grid-row: 1 / 7;
+        max-width: 460px;
     }
 
     @include media-breakpoint-up(xl) {
-        grid-template-columns: 2fr 3fr;
-        padding: 2.25rem 2rem 1.875rem 3rem;
-        grid-column: 1 / 10;
-        grid-row: 1 / 6;
+
     }
 
-    &__sub-title {
-        font-size: 20px; // @todo style-variable?
-        line-height: 38px; // @todo style-variable?
+    &__title {
+        margin-bottom: -1rem;
     }
 
-    &__link {
-        @include link-secondary-with-arrow;
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: flex-end;
+        border-bottom: 1px solid var(--color-white);
+
+        & > div:first-child {
+            display: none;
+        }
     }
 
-    &__body {
+    &__button {
+        padding: .5rem;
+        color: currentColor;
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    .field {
+        gap: .5rem;
+        border-bottom: 0;
+        overflow: hidden;
+
+        &__label {
+            white-space: nowrap;
+        }
+
+        &__input {
+            padding-top: .5rem;
+            padding-bottom: .5em;
+            padding-left: 0;
+            color: var(--color-white);
+            background-color: transparent;
+            border-color: transparent;
+            margin-bottom: 0;
+        }
     }
 }
-
-// end of employee-welcome-message.scss file

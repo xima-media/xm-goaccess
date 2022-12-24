@@ -5,7 +5,7 @@
 	<div class="header__meta background--expanded">
 		<div class="header__center">
 
-			<f:link.page class="logo" pageUid="1">
+			<f:link.page class="logo" pageUid="1" title="DKFZ Intranet homepage">
 				<xm:svgInline class="logo__image" src="EXT:xm_dkfz_net_site/Resources/Public/Images/dkfz_logo.svg" />
 			</f:link.page>
 
@@ -134,7 +134,7 @@
 	</div>
 </header>
 
-<main class="main {mainClass} color-accent--{f:if(condition: data.tx_xmdkfznetsite_color, then: data.tx_xmdkfznetsite_color, else: 'primary')}">
+<main class="main {mainClass} color-accent--{f:if(condition: data.tx_xmdkfznetsite_color, then: data.tx_xmdkfznetsite_color, else: 'primary')}" style="{f:render(partial: 'BackgroundImages', arguments: '{files: files}')}">
 	<f:render section="Main"/>
 </main>
 

@@ -34,6 +34,7 @@ lib.videoPreviewImage {
     references.fieldName = uid
     references.table = sys_file_reference
   }
+
   dataProcessing {
     10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
     10 {
@@ -61,6 +62,7 @@ lib.generalFeedbackForm {
   template {
     value = <formvh:render persistenceIdentifier="EXT:xm_dkfz_net_site/Resources/Private/Forms/generalfeedbackform.form.yaml" />
   }
+
   extbase {
     pluginName = Formframework
     controllerExtensionName = Form

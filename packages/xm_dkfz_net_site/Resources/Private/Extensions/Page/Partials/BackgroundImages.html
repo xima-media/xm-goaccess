@@ -1,0 +1,6 @@
+<f:for each="{files}" as="file" iteration="i">
+	<f:variable name="index">{f:if(condition: i.isFirst, else:'{i.index}-')}</f:variable>
+	--background-image-{index}webp: url({f:uri.image(image: file, width: 576, fileExtension: 'webp')});
+	--background-image-{index}webp-md: url({f:uri.image(image: file,width: 992, fileExtension: 'webp')});
+	--background-image-{index}webp-xl: url({f:uri.image(image: file, width: 2500, height: '748c' fileExtension: 'webp')});
+</f:for>

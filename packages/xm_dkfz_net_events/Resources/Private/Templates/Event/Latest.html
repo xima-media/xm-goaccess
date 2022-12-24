@@ -15,11 +15,12 @@
 						   title="{event.title}">
 
 
-							<p class="h3 color">
-								<f:format.date format="%d. %B">{event.eventdate}</f:format.date>
+							<p class="color">
+								<span class="h3 m-b-0"><f:format.date format="%d. %B">{event.eventdate}</f:format.date></span>
+								<span class="h3 m-b-0 text-intro">{event.eventtime}</span>
 							</p>
 
-							<h5>{event.title}</h5>
+							<h3 class="h5">{event.title}</h3>
 							<ul class="list card__tags text-small">
 								<li class="card__tag">{event.eventlanguage}</li>
 								<li class="card__tag">{event.description}</li>

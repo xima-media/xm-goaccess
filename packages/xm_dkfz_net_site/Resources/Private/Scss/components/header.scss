@@ -11,8 +11,8 @@
 .header {
     position: relative;
     z-index: 99;
-    margin-bottom: 3rem;
     background-color: var(--color-primary);
+    padding-top: 4rem;
 
     ul li {
         list-style: none;
@@ -20,12 +20,7 @@
     }
 
     @include media-breakpoint-up(md) {
-        margin-bottom: 1rem;
         padding-top: 6rem;
-    }
-
-    @include media-breakpoint-up(lg) {
-        margin-bottom: 4rem;
     }
 
     // mobile background
@@ -103,7 +98,10 @@
     &__center {
         display: flex;
         align-items: center;
-        justify-content: center;
+
+        @include media-breakpoint-up(lg) {
+            justify-content: center;
+        }
         order: 2;
     }
 

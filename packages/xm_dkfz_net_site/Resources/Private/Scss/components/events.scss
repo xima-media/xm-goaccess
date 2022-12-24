@@ -35,6 +35,8 @@
 .events-latest {
     .card {
         padding: 0;
+        display: grid;
+        height: 100%;
     }
 
     .swiper-slide:nth-child(3n-2) {
@@ -43,6 +45,23 @@
 
     .swiper-slide:nth-child(3n) {
         padding-right: 0;
+    }
+
+    span.h3 {
+        display: block;
+    }
+
+    .text-intro {
+        line-height: 1;
+    }
+
+    a {
+        display: flex;
+        flex-direction: column;
+    }
+
+    ul {
+        margin-top: auto;
     }
 
     a:hover {
