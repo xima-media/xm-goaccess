@@ -10,7 +10,7 @@
 
 .navigation--main {
     position: relative;
-    max-width: $container-default-widths + 2rem;
+    max-width: $container-default-widths;
     margin: auto;
     background-color: var(--color-white);
 
@@ -180,9 +180,9 @@
                     content: '';
                     display: none;
                     position: absolute;
-                    right: .125rem;
+                    right: 0;
                     bottom: 0;
-                    left: .125rem;
+                    left: 0;
                     height: .25rem;
                     background-color: var(--color-primary);
                 }

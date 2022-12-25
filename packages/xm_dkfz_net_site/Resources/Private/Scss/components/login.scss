@@ -8,10 +8,6 @@ main.login {
     --background-image: var(--background-image-webp);
     background-image: var(--background-image);
 
-    @include media-breakpoint-up(md) {
-        --background-image: var(--background-image-webp-md);
-    }
-
     @include media-breakpoint-up(xl) {
         --background-image: var(--background-image-webp-xl);
     }
@@ -39,7 +35,7 @@ main.login {
 
         svg {
             margin: 1rem 1rem 1.5rem;
-            max-width: 16.25rem;
+            max-width: 212px;
         }
     }
 

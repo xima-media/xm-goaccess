@@ -2,12 +2,6 @@ html.open-lightbox {
     overflow: hidden;
     padding-right: var(--scrollbar-width);
 
-    @include media-breakpoint-up(md) {
-        .header__meta {
-            transform: translate3d(-8px, 0, 0);
-        }
-    }
-
     .lightbox {
         display: grid;
         animation: opacityIn 0.4s ease;
