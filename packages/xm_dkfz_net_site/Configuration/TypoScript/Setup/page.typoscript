@@ -254,7 +254,7 @@ page {
 
 [traverse(page, "uid") == {$pidSearch}]
   config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
-  config.htmlTag.attributes.style = --gradient-offset:380px
+  config.htmlTag.attributes.style = --gradient-offset:320px
 [end]
 
 [traverse(page, "uid") == 1]
