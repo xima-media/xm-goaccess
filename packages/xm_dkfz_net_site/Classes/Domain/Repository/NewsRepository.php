@@ -2,14 +2,16 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use Doctrine\DBAL\Driver\Exception;
+use Doctrine\DBAL\DBALException;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class NewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository
 {
     /**
-     * @throws \Doctrine\DBAL\Driver\Exception
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws Exception
+     * @throws DBALException
      */
     public function getPreviewSysFileReferences(array $newsUids): array
     {
