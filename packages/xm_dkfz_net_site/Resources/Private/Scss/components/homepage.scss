@@ -40,22 +40,15 @@ Homepage structure:
     main {
         padding-top: 4rem;
 
-        background-size: auto 575px;
+        background-size: 150% auto;
         background-position: center top;
         background-repeat: no-repeat;
         --background-image: var(--background-image-webp);
         background-image: var(--background-image);
 
-        .no-webp & {
-            --background-image: var(--background-image-jpg);
-        }
-
         @include media-breakpoint-up(md) {
+            background-size: 100% auto;
             padding-top: 5rem;
-            --background-image: var(--background-image-webp-md);
-            .no-webp & {
-                --background-image: var(--background-image-jpg-md);
-            }
         }
 
         @include media-breakpoint-up(lg) {
@@ -64,9 +57,6 @@ Homepage structure:
 
         @include media-breakpoint-up(xl) {
             --background-image: var(--background-image-webp-xl);
-            .no-webp & {
-                --background-image: var(--background-image-jpg-xl);
-            }
         }
 
         &.layout__item {

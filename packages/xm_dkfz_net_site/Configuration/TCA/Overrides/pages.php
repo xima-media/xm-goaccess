@@ -52,6 +52,15 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             ],
         ],
     ],
+    'background' => [
+        'title' => 'Background',
+        'allowedAspectRatios' => [
+            '10:3' => [
+                'title' => '10:3',
+                'value' => 10 / 3,
+            ],
+        ],
+    ]
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', [

@@ -3,26 +3,30 @@ import app from './basic'
 class Hero {
   protected elements: NodeListOf<HTMLElement>
 
-  constructor () {
+  constructor() {
     this.init()
   }
 
-  init () {
+  init() {
     const isLightHouseRequest = navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
 
     if (isLightHouseRequest) {
       return
     }
 
-    this.elements = document.querySelectorAll<HTMLElement>('.background--image-hero')
+    this.elements = document.querySelectorAll<HTMLElement>('main')
 
     this.elements.forEach((element) => {
       this.setRandomImageForElement(element)
     })
   }
 
-  setRandomImageForElement (element: HTMLElement) {
-    const imageCount = element.style.length / 8
+  setRandomImageForElement(element: HTMLElement) {
+    if (!element.style.length) {
+      return
+    }
+
+    const imageCount = element.style.length / 2
     const randomNr = Math.floor(Math.random() * imageCount)
 
     // 0 = onload, do nothing

@@ -125,36 +125,5 @@
 }
 
 
-.background--image-hero {
-    background-size: cover;
-    --background-image: var(--background-image-webp);
-    background-image: var(--background-image);
-
-    .no-webp & {
-        --background-image: var(--background-image-jpg);
-    }
-
-    @include media-breakpoint-up(md) {
-        --background-image: var(--background-image-webp-md);
-        .no-webp & {
-            --background-image: var(--background-image-jpg-md);
-        }
-    }
-
-    @include media-breakpoint-up(xl) {
-        --background-image: var(--background-image-webp-xl);
-        .no-webp & {
-            --background-image: var(--background-image-jpg-xl);
-        }
-    }
-
-    &.layout__item {
-        &.background--expanded {
-            &::after {
-                bottom: -21rem;
-            }
-        }
-    }
-}
 
 // end of hero.scss file
