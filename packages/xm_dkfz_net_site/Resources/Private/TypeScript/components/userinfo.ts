@@ -115,9 +115,15 @@ class Userinfo {
       button.classList.toggle('fx--hover')
       button.classList.toggle('js--checked')
     })
+
+    if (method === 'POST') {
+      const topbarButton = document.querySelector<HTMLButtonElement>('.navigation__item--bookmark')
+      topbarButton.classList.add('animation')
+      setTimeout(() => topbarButton.classList.remove('animation'), 1000)
+    }
   }
 
-  protected onBookmarkSidebarOpenClick () {
+  protected onBookmarkSidebarOpenClick() {
     if (!this.userinfo) {
       app.showLogin()
       return
