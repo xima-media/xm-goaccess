@@ -1,6 +1,8 @@
 
 renderingOptions:
   submitButtonLabel: Submit
+  additionalParams:
+    no_cache: 1
 identifier: generalfeedbackform
 label: 'General feedback form'
 type: Form
