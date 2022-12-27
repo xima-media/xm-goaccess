@@ -309,6 +309,8 @@ class Userprofile {
         app.lightbox.displayContent(data.html)
         this.bindUserEditFormEvents()
         app.lightbox.stopLoading()
+        // invalidate cache
+        fetch(profileUrl, {cache: "reload"})
       })
       .catch(e => app.handleRequestError.bind(this))
   }
