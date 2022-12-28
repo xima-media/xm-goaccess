@@ -42,7 +42,7 @@ class AccordionContainerPreviewRenderer extends ContainerPreviewRenderer
             $accordionItems[] = $child['title'];
         }
 
-        $jsonDiv = '<div class="container-accordion-settings" data-accordion-items="' . urlencode(json_encode($accordionItems)) . '"></div>';
+        $jsonDiv = '<div class="container-accordion-settings" data-accordion-items="' . htmlspecialchars(json_encode($accordionItems, JSON_UNESCAPED_SLASHES), ENT_QUOTES, 'UTF-8') . '"></div>';
 
         return $content . $jsonDiv;
     }

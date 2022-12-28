@@ -16,7 +16,7 @@ define(['jquery'], function ($) {
 
         initAccordion: (accordion) => {
             const table = $(accordion).closest('.exampleContent').find('table');
-            const accordionItems = JSON.parse(decodeURIComponent(accordion.getAttribute('data-accordion-items')));
+            const accordionItems = JSON.parse(accordion.getAttribute('data-accordion-items'));
             const icon = $(accordion).closest('.exampleContent').find('.accordion-container-start .chevron-icon');
 
             for (let i = 1; i <= accordionItems.length; i++) {
