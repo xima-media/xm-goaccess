@@ -2407,27 +2407,28 @@
         },
         {
             "name": "ichhabrecht/filefill",
-            "version": "4.1.1",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/IchHabRecht/filefill.git",
-                "reference": "3265d87062c6c7845ce988ddbf8c25098632e016"
+                "reference": "964b965545a7f399f1a8fe71ce43003b0b98f19b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/IchHabRecht/filefill/zipball/3265d87062c6c7845ce988ddbf8c25098632e016",
-                "reference": "3265d87062c6c7845ce988ddbf8c25098632e016",
+                "url": "https://api.github.com/repos/IchHabRecht/filefill/zipball/964b965545a7f399f1a8fe71ce43003b0b98f19b",
+                "reference": "964b965545a7f399f1a8fe71ce43003b0b98f19b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0",
-                "typo3/cms-core": "^10.4.11 || ^11.5"
+                "php": "^7.4 || ^8.0",
+                "typo3/cms-core": "^10.4.11 || ^11.5 || ~12.0.0 || ~12.1.0"
             },
             "replace": {
                 "typo3-ter/filefill": "self.version"
             },
             "require-dev": {
-                "nimut/testing-framework": "6.x-dev"
+                "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.0",
+                "typo3/testing-framework": "^6.16 || 7.*@dev"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -2436,7 +2437,6 @@
                 },
                 "typo3/cms": {
                     "extension-key": "filefill",
-                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
                     "app-dir": ".Build",
                     "web-dir": ".Build/public"
                 }
@@ -2468,9 +2468,9 @@
             ],
             "support": {
                 "issues": "https://github.com/IchHabRecht/filefill/issues",
-                "source": "https://github.com/IchHabRecht/filefill/tree/4.1.1"
+                "source": "https://github.com/IchHabRecht/filefill/tree/4.2.0"
             },
-            "time": "2022-05-05T16:24:54+00:00"
+            "time": "2022-12-27T21:42:40+00:00"
         },
         {
             "name": "in2code/luxletter",
@@ -11919,16 +11919,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.22",
+            "version": "9.2.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "e4bf60d2220b4baaa0572986b5d69870226b06df"
+                "reference": "9f1f0f9a2fbb680b26d1cf9b61b6eac43a6e4e9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/e4bf60d2220b4baaa0572986b5d69870226b06df",
-                "reference": "e4bf60d2220b4baaa0572986b5d69870226b06df",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/9f1f0f9a2fbb680b26d1cf9b61b6eac43a6e4e9c",
+                "reference": "9f1f0f9a2fbb680b26d1cf9b61b6eac43a6e4e9c",
                 "shasum": ""
             },
             "require": {
@@ -11984,7 +11984,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.22"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.23"
             },
             "funding": [
                 {
@@ -11992,7 +11992,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-18T16:40:55+00:00"
+            "time": "2022-12-28T12:41:10+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -12339,16 +12339,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.9",
+            "version": "v0.11.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "1acec99d6684a54ff92f8b548a4e41b566963778"
+                "reference": "e9eadffbed9c9deb5426fd107faae0452bf20a36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1acec99d6684a54ff92f8b548a4e41b566963778",
-                "reference": "1acec99d6684a54ff92f8b548a4e41b566963778",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/e9eadffbed9c9deb5426fd107faae0452bf20a36",
+                "reference": "e9eadffbed9c9deb5426fd107faae0452bf20a36",
                 "shasum": ""
             },
             "require": {
@@ -12409,9 +12409,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.9"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.10"
             },
-            "time": "2022-11-06T15:29:46+00:00"
+            "time": "2022-12-23T17:47:18+00:00"
         },
         {
             "name": "rector/rector",
@@ -12475,12 +12475,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "58046a3fc3555eda6567a2bdae7195be6aa9babe"
+                "reference": "57a3ee3eb79b9538f3012e6b66c04cdac0b551d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/58046a3fc3555eda6567a2bdae7195be6aa9babe",
-                "reference": "58046a3fc3555eda6567a2bdae7195be6aa9babe",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/57a3ee3eb79b9538f3012e6b66c04cdac0b551d1",
+                "reference": "57a3ee3eb79b9538f3012e6b66c04cdac0b551d1",
                 "shasum": ""
             },
             "conflict": {
@@ -12535,7 +12535,7 @@
                 "cesnet/simplesamlphp-module-proxystatistics": "<3.1",
                 "codeception/codeception": "<3.1.3|>=4,<4.1.22",
                 "codeigniter/framework": "<=3.0.6",
-                "codeigniter4/framework": "<4.2.7",
+                "codeigniter4/framework": "<4.2.11",
                 "codeigniter4/shield": "= 1.0.0-beta",
                 "codiad/codiad": "<=2.8.4",
                 "composer/composer": "<1.10.26|>=2-alpha.1,<2.2.12|>=2.3,<2.3.5",
@@ -13014,7 +13014,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-21T06:05:00+00:00"
+            "time": "2022-12-22T20:04:36+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -14055,12 +14055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "d375d548390fe9da0dddc5d3b98bc9d5092ee8e2"
+                "reference": "0b7008288a450904fcc10ecacf2e0412d236b6ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/d375d548390fe9da0dddc5d3b98bc9d5092ee8e2",
-                "reference": "d375d548390fe9da0dddc5d3b98bc9d5092ee8e2",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/0b7008288a450904fcc10ecacf2e0412d236b6ff",
+                "reference": "0b7008288a450904fcc10ecacf2e0412d236b6ff",
                 "shasum": ""
             },
             "require": {
@@ -14140,7 +14140,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-19T07:56:06+00:00"
+            "time": "2022-12-27T11:57:11+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -14289,16 +14289,16 @@
         },
         {
             "name": "symplify/vendor-patches",
-            "version": "11.1.20",
+            "version": "11.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/vendor-patches.git",
-                "reference": "21e3a7f074e2f1ac92a754b5b399193274575b9d"
+                "reference": "b71e245723d5e1bedcecb1ec0341fb51c2b9ca55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/21e3a7f074e2f1ac92a754b5b399193274575b9d",
-                "reference": "21e3a7f074e2f1ac92a754b5b399193274575b9d",
+                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/b71e245723d5e1bedcecb1ec0341fb51c2b9ca55",
+                "reference": "b71e245723d5e1bedcecb1ec0341fb51c2b9ca55",
                 "shasum": ""
             },
             "require": {
@@ -14320,7 +14320,7 @@
             ],
             "description": "Generate vendor patches for packages with single command",
             "support": {
-                "source": "https://github.com/symplify/vendor-patches/tree/11.1.20"
+                "source": "https://github.com/symplify/vendor-patches/tree/11.1.24"
             },
             "funding": [
                 {
@@ -14332,7 +14332,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-19T12:26:41+00:00"
+            "time": "2022-12-23T14:59:34+00:00"
         },
         {
             "name": "theseer/tokenizer",
