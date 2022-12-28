@@ -5,7 +5,7 @@
 </f:if>
 <f:link.page id="login-link"
 			 pageUid="1"
-			 additionalParams="{oauth2-provider: loginProvider, logintype: 'login'}"
+			 additionalParams="{oauth2-provider: loginProvider, logintype: 'login', after-oauth2-redirect-uri: currentUrl}"
 			 title="Login"
 			 class="button button--primary "
 			 additionalAttributes="{role: 'button'}"

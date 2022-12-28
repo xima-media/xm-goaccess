@@ -34,6 +34,8 @@ page {
       baseUrl.data = site:base
       currentPid = TEXT
       currentPid.data = field:uid
+      currentUrl = TEXT
+      currentUrl.data = getIndpEnv:TYPO3_REQUEST_URL
     }
 
     dataProcessing {
@@ -254,7 +256,7 @@ page {
 
 [traverse(page, "uid") == {$pidSearch}]
   config.htmlTag.attributes.class = fx--header-not-sticky background--gradient
-  config.htmlTag.attributes.style = --gradient-offset:380px
+  config.htmlTag.attributes.style = --gradient-offset:320px
 [end]
 
 [traverse(page, "uid") == 1]

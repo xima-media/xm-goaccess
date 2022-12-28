@@ -204,7 +204,7 @@ return [
         'compressionLevel' => 0,
         'cookieSameSite' => 'lax',
         'debug' => false,
-        'disableNoCacheParameter' => true,
+        'disableNoCacheParameter' => false,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -285,6 +285,7 @@ return [
         'features' => [
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
+            'oauth2.frontend.login.afterOauth2RedirectUriFromQuery' => true,
         ],
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',

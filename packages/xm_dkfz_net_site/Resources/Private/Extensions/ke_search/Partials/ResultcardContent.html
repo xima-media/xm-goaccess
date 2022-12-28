@@ -15,7 +15,7 @@
 			<f:format.raw>{resultrow.title}</f:format.raw>
 		</h3>
 		<f:if condition="{resultrow.date_timestamp} > 0">
-			<p class="card__sub-title">{resultrow.date_timestamp -> f:format.date(format: 'd.m.Y')}</p>
+			<p class="card__sub-title text-small">{resultrow.date_timestamp -> f:format.date(format: 'd.m.Y')}</p>
 		</f:if>
 	</div>
 	<f:if condition="{resultrow.teaser}">
@@ -28,7 +28,7 @@
 </div>
 <f:if condition="{resultrow.tags}">
 	<div class="card__footer">
-		<ul class="card__tags">
+		<ul class="list card__tags">
 			<li class="card__tag">{resultrow.tags}</li>
 		</ul>
 	</div>

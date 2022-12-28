@@ -1,5 +1,5 @@
 <h2 class="results__title h3">{numberofresults} {f:translate(key: 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:searchResults')}</h2>
-<ul>
+<ul class="list">
 	<f:for each="{resultrows}" as="resultrow">
 		<f:render partial="ResultRow" arguments="{conf: conf, resultrow: resultrow}"/>
 	</f:for>

@@ -3,7 +3,7 @@
 		<a href="{resultrow.url}" {f:if(condition: '{resultrow.type} == \'xmkesearchremote\'', then: 'target="_blank"')}>
 			<div class="card__content">
 				<div class="card__header">
-					<h3 class="card__title">
+					<h3 class="h4 card__title">
 						<f:switch expression="{resultrow.type}">
 							<f:case value="news">
 								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">news</span>
@@ -18,20 +18,20 @@
 						<span class="tab__item__title"><f:format.htmlentitiesDecode>{resultrow.title -> f:format.stripTags(allowedTags: '<mark>')}</f:format.htmlentitiesDecode></span>
 					</h3>
 					<f:if condition="{resultrow.date_timestamp} > 0">
-						<p class="card__sub-title">{f:format.date(format: '%d. %B %Y', date: resultrow.date_timestamp)}</p>
+						<p class="card__sub-title text-small">{f:format.date(format: '%d. %B %Y', date: resultrow.date_timestamp)}</p>
 					</f:if>
 				</div>
 				<f:if condition="{resultrow.teaser}">
 					<div class="card__body">
 						<div class="card__text">
-							<p><f:format.htmlentitiesDecode>{resultrow.teaser}</f:format.htmlentitiesDecode></p>
+							<p class="text-small"><f:format.htmlentitiesDecode>{resultrow.teaser}</f:format.htmlentitiesDecode></p>
 						</div>
 					</div>
 				</f:if>
 			</div>
 			<f:if condition="{resultrow.rootline}">
 				<div class="card__footer">
-					<ul class="card__tags">
+					<ul class="list card__tags">
 						<f:for each="{resultrow.rootline}" as="rootlineItem">
 							<li class="card__tag">{f:if(condition: rootlineItem.nav_title, then: rootlineItem.nav_title, else: rootlineItem.title)}</li>
 						</f:for>

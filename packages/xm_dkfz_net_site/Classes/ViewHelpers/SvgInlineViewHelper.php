@@ -16,9 +16,6 @@ class SvgInlineViewHelper extends AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    /**
-     * @var ImageService
-     */
     protected ImageService $imageService;
 
     public function __construct()

@@ -28,8 +28,8 @@ class UserEditFormEvent
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     protected function getUserRepresentativeAutocompleteData(FrontendUser $user): array
     {
@@ -49,8 +49,8 @@ class UserEditFormEvent
     }
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     protected function getCommittees(): array
     {

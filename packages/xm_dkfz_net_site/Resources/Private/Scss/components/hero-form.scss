@@ -74,7 +74,7 @@ body#p8, body#p111 {
     }
 
     @include media-breakpoint-up(xl) {
-        padding: 5rem 7rem;
+        padding: 3rem 7.5rem;
     }
 
     &__title {
@@ -214,6 +214,7 @@ body#p8, body#p111 {
                     align-items: center;
                     gap: 9px;
                     line-height: 17px;
+                    margin-right: 0.5rem;
 
                     &--icon {
                         line-height: 0;
