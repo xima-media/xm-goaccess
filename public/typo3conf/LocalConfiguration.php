@@ -285,6 +285,7 @@ return [
         'features' => [
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
+            'oauth2.frontend.login.afterOauth2RedirectUriFromQuery' => true,
         ],
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',

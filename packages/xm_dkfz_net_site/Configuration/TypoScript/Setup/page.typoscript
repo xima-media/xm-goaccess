@@ -34,6 +34,8 @@ page {
       baseUrl.data = site:base
       currentPid = TEXT
       currentPid.data = field:uid
+      currentUrl = TEXT
+      currentUrl.data = getIndpEnv:TYPO3_REQUEST_URL
     }
 
     dataProcessing {
