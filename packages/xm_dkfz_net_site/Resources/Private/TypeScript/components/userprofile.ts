@@ -1,7 +1,7 @@
 import app from './basic'
 
-import autocomplete, {AutocompleteItem} from 'autocompleter'
-import {AutocomleterItem} from "./hero-form";
+import autocomplete, { AutocompleteItem } from 'autocompleter'
+import { AutocomleterItem } from './hero-form'
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -9,21 +9,21 @@ interface FeatureItem extends AutocompleteItem {
 }
 
 class Userprofile {
-  constructor() {
+  constructor () {
     this.bindEvents()
   }
 
-  protected bindEvents() {
+  protected bindEvents () {
     this.bindProfileEditLink()
   }
 
-  protected bindProfileEditLink() {
+  protected bindProfileEditLink () {
     document.querySelectorAll('[data-user-edit-link]').forEach((link) => {
       link.addEventListener('click', this.onUserProfileEditLinkClick.bind(this))
     })
   }
 
-  protected onUserProfileEditLinkClick(e: Event) {
+  protected onUserProfileEditLinkClick (e: Event) {
     e.preventDefault()
     const link = e.currentTarget as Element
     const url = link.getAttribute('data-user-edit-link')
@@ -38,13 +38,13 @@ class Userprofile {
     })
   }
 
-  protected async loadUserEditForm(url: string) {
+  protected async loadUserEditForm (url: string) {
     return await app.apiRequest(url).then(data => {
       return data.html
     })
   }
 
-  protected bindUserEditFormEvents() {
+  protected bindUserEditFormEvents () {
     const form = app.lightbox.content.querySelector('form')
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocomplete()
@@ -55,7 +55,7 @@ class Userprofile {
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
   }
 
-  protected initUserRepresentativeSelect() {
+  protected initUserRepresentativeSelect () {
     const selectElement = app.lightbox.content.querySelector('#user-committee')
 
     if (!selectElement) {
@@ -65,7 +65,7 @@ class Userprofile {
     selectElement.addEventListener('change', this.onUserRepresentativeSelectChange.bind(this))
   }
 
-  protected onUserRepresentativeSelectChange(e: Event) {
+  protected onUserRepresentativeSelectChange (e: Event) {
     e.preventDefault()
     const element = e.currentTarget as HTMLSelectElement
     const formElementDiv = element.closest('.form-element')
@@ -75,9 +75,9 @@ class Userprofile {
     }
   }
 
-  protected initUserRepresentativeAutocomplete() {
-    const inputElement = app.lightbox.content.querySelector('#representative') as HTMLInputElement
-    const hiddenElement = app.lightbox.content.querySelector('#representativeHiddenInput') as HTMLInputElement
+  protected initUserRepresentativeAutocomplete () {
+    const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#representative')
+    const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#representativeHiddenInput')
 
     if (!inputElement || !hiddenElement) {
       return
@@ -95,7 +95,7 @@ class Userprofile {
     })
   }
 
-  protected initClearLinks() {
+  protected initClearLinks () {
     app.lightbox.content.querySelectorAll('a[data-clear-inputs]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault()
@@ -107,9 +107,9 @@ class Userprofile {
     })
   }
 
-  protected initUserCommitteeRepresentativeAutocomplete() {
-    const inputElement = app.lightbox.content.querySelector('#user-committee-representative') as HTMLInputElement
-    const hiddenElement = app.lightbox.content.querySelector('#committeeRepresentativeHiddenInput') as HTMLInputElement
+  protected initUserCommitteeRepresentativeAutocomplete () {
+    const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#user-committee-representative')
+    const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#committeeRepresentativeHiddenInput')
 
     if (!inputElement || !hiddenElement) {
       return
@@ -127,7 +127,7 @@ class Userprofile {
     })
   }
 
-  protected onUserRepresentativeAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any) {
+  protected onUserRepresentativeAutocompleteFetch (allItems: AutocomleterItem[], text: string, update: any) {
     text = text.toLowerCase()
 
     const filteredUsers = allItems.filter((item) => {
@@ -137,12 +137,12 @@ class Userprofile {
     update(filteredUsers)
   }
 
-  protected onUserRepresentativeAutocompleteSelect(input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem) {
+  protected onUserRepresentativeAutocompleteSelect (input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem) {
     input.value = item.label
     hiddenInput.value = item.value
   }
 
-  protected initUserFeatureInputs() {
+  protected initUserFeatureInputs () {
     const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]')
     const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
@@ -155,7 +155,7 @@ class Userprofile {
       const selectedFeaturesJson = container.getAttribute('data-selected-features')
       let selectedFeatures = selectedFeaturesJson ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
 
-      function hashCode(str: string) {
+      function hashCode (str: string) {
         let hash = 0
         for (let i = 0, len = str.length; i < len; i++) {
           const chr = str.charCodeAt(i)
@@ -165,7 +165,7 @@ class Userprofile {
         return hash
       }
 
-      function onBubbleClick(e: Event) {
+      function onBubbleClick (e: Event) {
         e.preventDefault()
         const featureElement = e.currentTarget as HTMLLinkElement
         const featureId = featureElement.getAttribute('data-feature')
@@ -184,11 +184,11 @@ class Userprofile {
         featureElement.remove()
       }
 
-      function addBubbleClickEvent(bubbleElement: Element) {
+      function addBubbleClickEvent (bubbleElement: Element) {
         bubbleElement.addEventListener('click', onBubbleClick)
       }
 
-      function addNewBubbleForFeature(feature: FeatureItem) {
+      function addNewBubbleForFeature (feature: FeatureItem) {
         const newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement
         newFeatureBubble.setAttribute('data-feature', feature.value)
         newFeatureBubble.querySelector('span').innerHTML = feature.label
@@ -197,7 +197,7 @@ class Userprofile {
         bubbleDropZoneElement.appendChild(newFeatureBubble)
       }
 
-      function onAutocompleteSelect(item: FeatureItem) {
+      function onAutocompleteSelect (item: FeatureItem) {
         // dynamic item (for new generation) was selected
         if (item.value === '') {
           onNewFeatureEntered()
@@ -215,7 +215,7 @@ class Userprofile {
         inputElement.value = ''
       }
 
-      function onAutocompleteFetch(text: string, update: any) {
+      function onAutocompleteFetch (text: string, update: any) {
         let filteredFeatures = allFeatures.filter((feature) => {
           const isMatchedByTextSearch = feature.label.toLowerCase().includes(text.toLowerCase())
           const isNotAlreadySelected = selectedFeatures.find(f => f.value === feature.value) === undefined
@@ -224,13 +224,13 @@ class Userprofile {
 
         // append new empty item
         if (allFeatures.filter((feature: FeatureItem) => feature.label.toLowerCase() === text.toLowerCase()).length !== 1) {
-          filteredFeatures = [{label: text, value: ''}, ...filteredFeatures]
+          filteredFeatures = [{ label: text, value: '' }, ...filteredFeatures]
         }
 
         update(filteredFeatures)
       }
 
-      function onNewFeatureEntered() {
+      function onNewFeatureEntered () {
         const trimmedInputString = inputElement.value.trim()
         const newFeatureId = 'NEW' + hashCode(trimmedInputString)
         const isAlreadySelected = selectedFeatures.find(f => f.label === trimmedInputString) !== undefined
@@ -240,7 +240,7 @@ class Userprofile {
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
+        const newFeatureItem: FeatureItem = { label: trimmedInputString, value: newFeatureId }
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
@@ -282,7 +282,7 @@ class Userprofile {
         fetch: onAutocompleteFetch,
         onSelect: onAutocompleteSelect,
         render: function (item: FeatureItem, currentValue): HTMLDivElement | undefined {
-          const itemElement = document.createElement("div");
+          const itemElement = document.createElement('div')
 
           itemElement.innerHTML = item.label
 
@@ -290,13 +290,13 @@ class Userprofile {
             itemElement.innerHTML += ' <span>neu hinzufügen</span>'
           }
 
-          return itemElement;
+          return itemElement
         }
       })
     })
   }
 
-  protected onUserEditFormSubmit(e: Event) {
+  protected onUserEditFormSubmit (e: Event) {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
@@ -310,12 +310,12 @@ class Userprofile {
         this.bindUserEditFormEvents()
         app.lightbox.stopLoading()
         // invalidate cache
-        fetch(profileUrl, {cache: "reload"})
+        fetch(profileUrl, { cache: 'reload' })
       })
       .catch(e => app.handleRequestError.bind(this))
   }
 
-  protected onAbortButtonClick(e: Event) {
+  protected onAbortButtonClick (e: Event) {
     e.preventDefault()
     app.lightbox.close()
   }

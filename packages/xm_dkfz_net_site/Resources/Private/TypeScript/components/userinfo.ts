@@ -35,7 +35,7 @@ class Userinfo {
     this.bindStorageResetAtLogin()
 
     const hasUserinfoUri = document.querySelectorAll('#userinfoUri').length
-    const isLightHouseRequest = navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
+    const isLightHouseRequest = navigator.userAgent.includes('Chrome-Lighthouse')
     if (!hasUserinfoUri || isLightHouseRequest) {
       return
     }
@@ -45,7 +45,7 @@ class Userinfo {
       this.modifyHtmlTag()
       this.modifyUserNav()
       this.modifyBookmarkLinks()
-      //this.modifyWelcomeMessage()
+      // this.modifyWelcomeMessage()
       this.setFeedbackFormUserValues()
     })
 
@@ -78,7 +78,7 @@ class Userinfo {
     }
   }
 
-  protected modifyShowForSelfClasses() {
+  protected modifyShowForSelfClasses () {
     if (!this.userinfo) {
       return
     }
@@ -92,7 +92,7 @@ class Userinfo {
     })
   }
 
-  protected modifyHtmlTag() {
+  protected modifyHtmlTag () {
     if (this.userinfo) {
       document.querySelector('html').classList.add('loggedIn')
     }
@@ -123,7 +123,7 @@ class Userinfo {
     }
   }
 
-  protected onBookmarkSidebarOpenClick() {
+  protected onBookmarkSidebarOpenClick () {
     if (!this.userinfo) {
       app.showLogin()
       return
@@ -143,7 +143,7 @@ class Userinfo {
     app.lightbox.open(LightboxStyle.sidebar)
   }
 
-  protected onBookmarkSidebarLinkClick(e: Event) {
+  protected onBookmarkSidebarLinkClick (e: Event) {
     e.preventDefault()
     const link = e.currentTarget as HTMLLinkElement
     const url = link.getAttribute('data-bookmark-url')

@@ -3,12 +3,12 @@ import app from './basic'
 class Hero {
   protected elements: NodeListOf<HTMLElement>
 
-  constructor() {
+  constructor () {
     this.init()
   }
 
-  init() {
-    const isLightHouseRequest = navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
+  init () {
+    const isLightHouseRequest = navigator.userAgent.includes('Chrome-Lighthouse')
 
     if (isLightHouseRequest) {
       return
@@ -21,7 +21,7 @@ class Hero {
     })
   }
 
-  setRandomImageForElement(element: HTMLElement) {
+  setRandomImageForElement (element: HTMLElement) {
     if (!element.style.length) {
       return
     }
