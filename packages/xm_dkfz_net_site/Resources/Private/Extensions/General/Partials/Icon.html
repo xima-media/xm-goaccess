@@ -1,6 +1,14 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 {namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
 
-<xm:svgInline class="icon icon--{f:if(condition: icon, then: icon, else: 'info')} icon--size-{f:if(condition: size, then: size, else: 'md')}" width="20" height="20" src="EXT:xm_dkfz_net_site/Resources/Public/Icons/{icon}.svg" />
+<f:if condition="!{width}">
+	<f:variable name="width">20</f:variable>
+</f:if>
+
+<f:if condition="!{height}">
+	<f:variable name="height">20</f:variable>
+</f:if>
+
+<xm:svgInline class="icon icon--{f:if(condition: icon, then: icon, else: 'info')} icon--size-{f:if(condition: size, then: size, else: 'md')}" width="{width}" height="{height}" src="EXT:xm_dkfz_net_site/Resources/Public/Icons/{icon}.svg" />
 
 </html>
