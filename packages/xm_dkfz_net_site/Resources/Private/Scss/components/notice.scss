@@ -3,16 +3,21 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 999;
     width: 100vw;
     display: flex;
     background: #FFF;
     padding: 1rem;
     justify-content: center;
     gap: 1rem;
+    transition: all 0.3s ease;
+
+    &--not-loaded {
+        transition: none;
+    }
 
     &--visible {
-        transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, 0, 0);
         box-shadow: 0 0 3rem rgba(#000, 0.3);
     }
 
@@ -28,7 +33,6 @@
 
     &__wrapper {
         max-width: calc(var(--content-width));
-        width: 100%;
         display: flex;
         gap: 1rem;
         align-items: center;
@@ -69,7 +73,7 @@
     }
 }
 
-$types: "info" #e5ecf8 #123062, "warning" #ffd600 #544a19, "error" #f00 #440d0d;
+$types: "info" #e5ecf8 #123062, "warning" #ffd600 #544a19, "error" #f00 #440d0d, "success" #009933 #033313;
 @each $type, $bgColor, $color in $types {
     .notice--#{$type} {
         background: $bgColor;

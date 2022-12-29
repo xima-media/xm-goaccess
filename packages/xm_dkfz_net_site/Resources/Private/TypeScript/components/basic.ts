@@ -1,10 +1,12 @@
 import Lightbox from './lightbox'
+import Notice from "./notice";
 
 export default {
 
   scrollbarWidth: window.innerWidth - document.documentElement.clientWidth,
   transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
   lightbox: new Lightbox(),
+  notice: new Notice(),
 
   inViewport (checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass: string = 'fx--visible', once: boolean = false) {
     const app = this

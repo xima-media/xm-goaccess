@@ -1,7 +1,8 @@
 import app from './basic'
 
-import autocomplete, { AutocompleteItem } from 'autocompleter'
-import { AutocomleterItem } from './hero-form'
+import autocomplete, {AutocompleteItem} from 'autocompleter'
+import {AutocomleterItem} from './hero-form'
+import {NoticeStyle} from "./notice";
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -13,38 +14,39 @@ class Userprofile {
     this.bindEvents()
   }
 
-  protected bindEvents () {
+  protected bindEvents (): void {
     this.bindProfileEditLink()
   }
 
-  protected bindProfileEditLink () {
+  protected bindProfileEditLink (): void {
     document.querySelectorAll('[data-user-edit-link]').forEach((link) => {
       link.addEventListener('click', this.onUserProfileEditLinkClick.bind(this))
     })
   }
 
-  protected onUserProfileEditLinkClick (e: Event) {
+  protected onUserProfileEditLinkClick (e: Event): void {
     e.preventDefault()
     const link = e.currentTarget as Element
     const url = link.getAttribute('data-user-edit-link')
 
     app.lightbox.startLoading()
     app.lightbox.open()
-
     this.loadUserEditForm(url).then((formHtml) => {
       app.lightbox.displayContent(formHtml)
       this.bindUserEditFormEvents()
       app.lightbox.stopLoading()
+    }).catch(() => {
+      //app.notice.open(NoticeStyle.error, 'lorem')
     })
   }
 
-  protected async loadUserEditForm (url: string) {
+  protected async loadUserEditForm (url: string): Promise<any> {
     return await app.apiRequest(url).then(data => {
       return data.html
     })
   }
 
-  protected bindUserEditFormEvents () {
+  protected bindUserEditFormEvents (): void {
     const form = app.lightbox.content.querySelector('form')
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocomplete()
@@ -55,7 +57,7 @@ class Userprofile {
     form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
   }
 
-  protected initUserRepresentativeSelect () {
+  protected initUserRepresentativeSelect (): void {
     const selectElement = app.lightbox.content.querySelector('#user-committee')
 
     if (!selectElement) {
@@ -65,7 +67,7 @@ class Userprofile {
     selectElement.addEventListener('change', this.onUserRepresentativeSelectChange.bind(this))
   }
 
-  protected onUserRepresentativeSelectChange (e: Event) {
+  protected onUserRepresentativeSelectChange (e: Event): void {
     e.preventDefault()
     const element = e.currentTarget as HTMLSelectElement
     const formElementDiv = element.closest('.form-element')
@@ -75,7 +77,7 @@ class Userprofile {
     }
   }
 
-  protected initUserRepresentativeAutocomplete () {
+  protected initUserRepresentativeAutocomplete (): void {
     const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#representative')
     const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#representativeHiddenInput')
 
@@ -95,7 +97,7 @@ class Userprofile {
     })
   }
 
-  protected initClearLinks () {
+  protected initClearLinks (): void {
     app.lightbox.content.querySelectorAll('a[data-clear-inputs]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault()
@@ -107,7 +109,7 @@ class Userprofile {
     })
   }
 
-  protected initUserCommitteeRepresentativeAutocomplete () {
+  protected initUserCommitteeRepresentativeAutocomplete (): void {
     const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#user-committee-representative')
     const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#committeeRepresentativeHiddenInput')
 
@@ -127,7 +129,7 @@ class Userprofile {
     })
   }
 
-  protected onUserRepresentativeAutocompleteFetch (allItems: AutocomleterItem[], text: string, update: any) {
+  protected onUserRepresentativeAutocompleteFetch (allItems: AutocomleterItem[], text: string, update: any): void {
     text = text.toLowerCase()
 
     const filteredUsers = allItems.filter((item) => {
@@ -137,12 +139,12 @@ class Userprofile {
     update(filteredUsers)
   }
 
-  protected onUserRepresentativeAutocompleteSelect (input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem) {
+  protected onUserRepresentativeAutocompleteSelect (input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem): void {
     input.value = item.label
     hiddenInput.value = item.value
   }
 
-  protected initUserFeatureInputs () {
+  protected initUserFeatureInputs (): void {
     const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]')
     const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
@@ -296,7 +298,7 @@ class Userprofile {
     })
   }
 
-  protected onUserEditFormSubmit (e: Event) {
+  protected onUserEditFormSubmit (e: Event): void {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
@@ -311,11 +313,12 @@ class Userprofile {
         app.lightbox.stopLoading()
         // invalidate cache
         fetch(profileUrl, { cache: 'reload' })
+        app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
       })
       .catch(e => app.handleRequestError.bind(this))
   }
 
-  protected onAbortButtonClick (e: Event) {
+  protected onAbortButtonClick (e: Event): void {
     e.preventDefault()
     app.lightbox.close()
   }
