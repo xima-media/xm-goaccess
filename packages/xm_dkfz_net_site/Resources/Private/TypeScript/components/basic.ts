@@ -1,5 +1,5 @@
 import Lightbox from './lightbox'
-import Notice from "./notice";
+import Notice from './notice'
 
 export default {
 
