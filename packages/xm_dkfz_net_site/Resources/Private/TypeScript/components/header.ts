@@ -17,10 +17,7 @@ class Header {
   }
 
   stickyHeader() {
-    const self = this
-
-    // in viewport
-    app.inViewport(self.headerStickyTriggerEL, document.documentElement, 'fx--header-not-sticky')
+    app.inViewport(this.headerStickyTriggerEL, document.documentElement, 'fx--header-not-sticky')
   }
 }
 

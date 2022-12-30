@@ -10,10 +10,8 @@ class Carousel {
   }
 
   init() {
-    const self = this
-
     // init every carousel
-    self.carouselEl.forEach(element => {
+    this.carouselEl.forEach(element => {
       const cols = JSON.parse(element.dataset.cols)
       const paginationStyle = JSON.parse(element.dataset.paginationStyle)
       const carouselEl = element.querySelector<HTMLElement>('.swiper')
@@ -64,7 +62,7 @@ class Carousel {
         on: {
           init: swiper => {
             // print items count
-            self.printItemsCount(swiper)
+            this.printItemsCount(swiper)
           }
         }
       })

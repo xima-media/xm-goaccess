@@ -8,14 +8,11 @@ class FieldText {
   }
 
   events() {
-    // variables
-    const self = this
-
     // event listener
-    self.fieldEl.forEach(fieldEl => {
+    this.fieldEl.forEach(fieldEl => {
       const fieldInputEl = fieldEl.querySelector<HTMLInputElement>('.field__input')
-      fieldInputEl.addEventListener('focus', () => self.focus(fieldEl, fieldInputEl))
-      fieldInputEl.addEventListener('blur', () => self.blur(fieldEl, fieldInputEl))
+      fieldInputEl.addEventListener('focus', () => this.focus(fieldEl, fieldInputEl))
+      fieldInputEl.addEventListener('blur', () => this.blur(fieldEl, fieldInputEl))
     })
   }
 

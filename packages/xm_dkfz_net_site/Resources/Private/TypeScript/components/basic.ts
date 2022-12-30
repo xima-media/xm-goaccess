@@ -8,11 +8,9 @@ export default {
   notice: new Notice(),
 
   inViewport(checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass = 'fx--visible', once = false) {
-    const app = this
-
     // observe
     new IntersectionObserver(
-      (entries, observer) => {
+      entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             if (targetForCssClassEl === checkEl) {
@@ -47,7 +45,7 @@ export default {
     ).observe(checkEl)
   },
 
-  apiRequest: async function (url: string, method = 'GET', form: HTMLFormElement = null): Promise<any> {
+  apiRequest: async function (url: string, method = 'GET', form: HTMLFormElement): Promise<any> {
     const initConf = Object({ method })
 
     if (form) {
@@ -57,29 +55,26 @@ export default {
     return await fetch(url, initConf)
       .then(async response => {
         if (!response.ok) {
-          this.handleRequestError(response)
+          this.handleRequestError()
           return
         }
         return await response.json()
       })
-      .catch(error => {
-        this.handleRequestError(error)
+      .catch(() => {
+        this.handleRequestError()
       })
   },
 
-  handleRequestError: function (error: any) {
+  handleRequestError: function () {
     localStorage.removeItem('userinfo')
     // console.error('could not load data', error)
   },
 
   showLogin: function () {
-    let loginForm = document.querySelector('#hiddenLogin').outerHTML
+    const loginFormEl = document.querySelector('#hiddenLogin')
+    const loginFormHtml = loginFormEl ? loginFormEl.outerHTML : 'Login form not found'
 
-    if (!loginForm) {
-      loginForm = 'Login form not found'
-    }
-
-    this.lightbox.displayContent(loginForm)
+    this.lightbox.displayContent(loginFormHtml)
     this.lightbox.stopLoading()
     this.lightbox.open()
   }
