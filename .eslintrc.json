@@ -3,7 +3,17 @@
 		"browser": true,
 		"es2021": true
 	},
-	"extends": "standard-with-typescript",
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"prettier"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint",
+		"prettier"
+	],
 	"overrides": [
 	],
 	"parserOptions": {
@@ -13,6 +23,7 @@
 	},
 	"rules": {
 		"@typescript-eslint/prefer-ts-expect-error": "off",
-		"space-after-function-name": "off"
+		"@typescript-eslint/space-after-function-name": "off",
+		"@typescript-eslint/space-before-function-paren": "off"
 	}
 }

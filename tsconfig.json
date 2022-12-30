@@ -6,7 +6,7 @@
 		"target": "es6",
 		"allowJs": true,
 		"moduleResolution": "node",
-		"strictNullChecks": false
+		"strictNullChecks": true
 	},
 	"exclude": [
 		"./node_modules",
