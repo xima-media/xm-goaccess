@@ -1,21 +1,21 @@
 import app from './basic'
 
 class Feedbackform {
-  constructor () {
+  constructor() {
     this.bindEvents()
   }
 
-  protected bindEvents () {
+  protected bindEvents() {
     this.bindFeedbackLink()
   }
 
-  protected bindFeedbackLink () {
-    document.querySelectorAll('a[href="#message"]').forEach((link) => {
+  protected bindFeedbackLink() {
+    document.querySelectorAll('a[href="#message"]').forEach(link => {
       link.addEventListener('click', this.onFeedbackLinkClick.bind(this))
     })
   }
 
-  protected onFeedbackLinkClick (e: Event) {
+  protected onFeedbackLinkClick(e: Event) {
     e.preventDefault()
     const form = document.getElementById('generalfeedbackform')
 
@@ -39,7 +39,7 @@ class Feedbackform {
     }
   }
 
-  protected bindFeedbackFormEvents () {
+  protected bindFeedbackFormEvents() {
     const form = app.lightbox.content.querySelector('form')
     if (form) {
       form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
@@ -61,7 +61,7 @@ class Feedbackform {
     }
   }
 
-  protected toggleLabelByChange (formElement: HTMLSelectElement, formGroup: HTMLDivElement) {
+  protected toggleLabelByChange(formElement: HTMLSelectElement, formGroup: HTMLDivElement) {
     formElement.addEventListener('change', () => {
       formGroup.classList.add('fx--focus')
 
@@ -71,7 +71,7 @@ class Feedbackform {
     })
   }
 
-  protected toggleLabelByFocus (formElement: HTMLInputElement | HTMLTextAreaElement, formGroup: HTMLDivElement) {
+  protected toggleLabelByFocus(formElement: HTMLInputElement | HTMLTextAreaElement, formGroup: HTMLDivElement) {
     formElement.addEventListener('focus', () => {
       formGroup.classList.add('fx--focus')
     })
@@ -83,7 +83,7 @@ class Feedbackform {
     })
   }
 
-  protected onFeedbackFormSubmit (e: Event) {
+  protected onFeedbackFormSubmit(e: Event) {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
@@ -98,13 +98,13 @@ class Feedbackform {
     app.lightbox.startLoading()
     app.lightbox.clear()
     fetch(form.action, requestInit)
-      .then(async (response) => {
+      .then(async response => {
         if (!response.ok) {
           console.error('Submitting feedback failed', response)
         }
         return await response.text()
       })
-      .then((html) => {
+      .then(html => {
         const doc = document.createRange().createContextualFragment(html)
         const feedbackform = doc.querySelector('#generalfeedbackform')
         app.lightbox.displayContent(feedbackform.outerHTML)
@@ -117,4 +117,4 @@ class Feedbackform {
   }
 }
 
-export default (new Feedbackform())
+export default new Feedbackform()

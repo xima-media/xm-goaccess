@@ -2,18 +2,18 @@ import Swiper, { Navigation, Pagination } from 'swiper'
 
 class Carousel {
   carouselEl
-  constructor () {
+  constructor() {
     this.carouselEl = document.querySelectorAll<HTMLElement>('.carousel')
 
     // methods
     this.init()
   }
 
-  init () {
+  init() {
     const self = this
 
     // init every carousel
-    self.carouselEl.forEach((element) => {
+    self.carouselEl.forEach(element => {
       const cols = JSON.parse(element.dataset.cols)
       const paginationStyle = JSON.parse(element.dataset.paginationStyle)
       const carouselEl = element.querySelector<HTMLElement>('.swiper')
@@ -62,7 +62,7 @@ class Carousel {
           }
         },
         on: {
-          init: (swiper) => {
+          init: swiper => {
             // print items count
             self.printItemsCount(swiper)
           }
@@ -71,10 +71,10 @@ class Carousel {
     })
   }
 
-  printItemsCount (swiper: Swiper) {
+  printItemsCount(swiper: Swiper) {
     // print item counts as data attribute
     swiper.$el[0].parentElement.dataset.count = String(swiper.$el[0].querySelectorAll<HTMLElement>('.swiper-slide').length)
   }
 }
 
-export default (new Carousel())
+export default new Carousel()

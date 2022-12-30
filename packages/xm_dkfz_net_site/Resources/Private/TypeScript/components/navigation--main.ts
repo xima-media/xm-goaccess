@@ -2,7 +2,7 @@ class NavigationMain {
   buttonToggleMenuEl
   buttonToggleMenuItemsEl
 
-  constructor () {
+  constructor() {
     this.buttonToggleMenuEl = document.querySelector<HTMLButtonElement>('.fx--toggle-main-menu')
     this.buttonToggleMenuItemsEl = document.querySelectorAll<HTMLButtonElement>('.navigation__button--toggle-items')
 
@@ -12,19 +12,17 @@ class NavigationMain {
     }
   }
 
-  events () {
+  events() {
     const self = this
 
     // toggle mobile menu
     self.buttonToggleMenuEl.addEventListener('click', () => self.toggleMobileMenu())
 
     // toggle mobile menu items
-    self.buttonToggleMenuItemsEl.forEach(button => (
-      button.addEventListener('click', () => self.toggleMobileMenuItems(button))
-    ))
+    self.buttonToggleMenuItemsEl.forEach(button => button.addEventListener('click', () => self.toggleMobileMenuItems(button)))
   }
 
-  toggleMobileMenu () {
+  toggleMobileMenu() {
     // const self = this
 
     // @todo focus-trap hinzufügen
@@ -33,7 +31,7 @@ class NavigationMain {
     document.documentElement.classList.toggle('fx--main-menu-open')
   }
 
-  toggleMobileMenuItems (button: HTMLButtonElement) {
+  toggleMobileMenuItems(button: HTMLButtonElement) {
     // self.buttonToggleMenuEl @todo togle aria-attributwe
 
     // document.documentElement.classList.toggle('fx--main-menu-open')
@@ -42,4 +40,4 @@ class NavigationMain {
   }
 }
 
-export default (new NavigationMain())
+export default new NavigationMain()

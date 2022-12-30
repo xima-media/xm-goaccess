@@ -3,11 +3,11 @@ import app from './basic'
 class Hero {
   protected elements: NodeListOf<HTMLElement>
 
-  constructor () {
+  constructor() {
     this.init()
   }
 
-  init () {
+  init() {
     const isLightHouseRequest = navigator.userAgent.includes('Chrome-Lighthouse')
 
     if (isLightHouseRequest) {
@@ -16,12 +16,12 @@ class Hero {
 
     this.elements = document.querySelectorAll<HTMLElement>('main')
 
-    this.elements.forEach((element) => {
+    this.elements.forEach(element => {
       this.setRandomImageForElement(element)
     })
   }
 
-  setRandomImageForElement (element: HTMLElement) {
+  setRandomImageForElement(element: HTMLElement) {
     if (!element.style.length) {
       return
     }
@@ -49,4 +49,4 @@ class Hero {
   }
 }
 
-export default (new Hero())
+export default new Hero()

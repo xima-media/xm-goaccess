@@ -1,8 +1,8 @@
 import app from './basic'
 
-import autocomplete, {AutocompleteItem} from 'autocompleter'
-import {AutocomleterItem} from './hero-form'
-import {NoticeStyle} from './notice'
+import autocomplete, { AutocompleteItem } from 'autocompleter'
+import { AutocomleterItem } from './hero-form'
+import { NoticeStyle } from './notice'
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -19,7 +19,7 @@ class Userprofile {
   }
 
   protected bindProfileEditLink(): void {
-    document.querySelectorAll('[data-user-edit-link]').forEach((link) => {
+    document.querySelectorAll('[data-user-edit-link]').forEach(link => {
       link.addEventListener('click', this.onUserProfileEditLinkClick.bind(this))
     })
   }
@@ -31,13 +31,15 @@ class Userprofile {
 
     app.lightbox.startLoading()
     app.lightbox.open()
-    this.loadUserEditForm(url).then((formHtml) => {
-      app.lightbox.displayContent(formHtml)
-      this.bindUserEditFormEvents()
-      app.lightbox.stopLoading()
-    }).catch(() => {
-      // app.notice.open(NoticeStyle.error, 'lorem')
-    })
+    this.loadUserEditForm(url)
+      .then(formHtml => {
+        app.lightbox.displayContent(formHtml)
+        this.bindUserEditFormEvents()
+        app.lightbox.stopLoading()
+      })
+      .catch(() => {
+        // app.notice.open(NoticeStyle.error, 'lorem')
+      })
   }
 
   protected async loadUserEditForm(url: string): Promise<any> {
@@ -132,9 +134,11 @@ class Userprofile {
   protected onUserRepresentativeAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any): void {
     text = text.toLowerCase()
 
-    const filteredUsers = allItems.filter((item) => {
-      return item.label.toString().toLowerCase().includes(text)
-    }).slice(0, 10)
+    const filteredUsers = allItems
+      .filter(item => {
+        return item.label.toString().toLowerCase().includes(text)
+      })
+      .slice(0, 10)
 
     update(filteredUsers)
   }
@@ -148,14 +152,14 @@ class Userprofile {
     const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]')
     const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
-    app.lightbox.content.querySelectorAll('div[data-all-features]').forEach((container) => {
+    app.lightbox.content.querySelectorAll('div[data-all-features]').forEach(container => {
       const inputElement = container.querySelector('input')
       const bubbleDropZoneElement = container.querySelector('ul.list')
       const recordType = container.getAttribute('data-record-type')
       const allFeaturesJson = container.getAttribute('data-all-features') ?? ''
-      const allFeatures = allFeaturesJson !== '' ? JSON.parse(allFeaturesJson) as FeatureItem[] : []
+      const allFeatures = allFeaturesJson !== '' ? (JSON.parse(allFeaturesJson) as FeatureItem[]) : []
       const selectedFeaturesJson = container.getAttribute('data-selected-features') ?? ''
-      let selectedFeatures = selectedFeaturesJson !== '' ? JSON.parse(selectedFeaturesJson) as FeatureItem[] : []
+      let selectedFeatures = selectedFeaturesJson !== '' ? (JSON.parse(selectedFeaturesJson) as FeatureItem[]) : []
 
       function hashCode(str: string): string {
         let hash = 0
@@ -218,7 +222,7 @@ class Userprofile {
       }
 
       function onAutocompleteFetch(text: string, update: any): void {
-        let filteredFeatures = allFeatures.filter((feature) => {
+        let filteredFeatures = allFeatures.filter(feature => {
           const isMatchedByTextSearch = feature.label.toLowerCase().includes(text.toLowerCase())
           const isNotAlreadySelected = selectedFeatures.find(f => f.value === feature.value) === undefined
           return isMatchedByTextSearch && isNotAlreadySelected
@@ -226,7 +230,7 @@ class Userprofile {
 
         // append new empty item
         if (allFeatures.filter((feature: FeatureItem) => feature.label.toLowerCase() === text.toLowerCase()).length !== 1) {
-          filteredFeatures = [{label: text, value: ''}, ...filteredFeatures]
+          filteredFeatures = [{ label: text, value: '' }, ...filteredFeatures]
         }
 
         update(filteredFeatures)
@@ -242,7 +246,7 @@ class Userprofile {
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
+        const newFeatureItem: FeatureItem = { label: trimmedInputString, value: newFeatureId }
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
@@ -266,7 +270,7 @@ class Userprofile {
 
       bubbleDropZoneElement.querySelectorAll('a[data-feature]').forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
 
-      inputElement.addEventListener('keydown', (e) => {
+      inputElement.addEventListener('keydown', e => {
         const isEnterKey = e.key === 'Enter'
         const isAutocompleteOptionSelected = document.querySelector('.autocomplete .selected') !== null
         const hasMinLength = inputElement.value.length > 2
@@ -306,14 +310,16 @@ class Userprofile {
     const profileUrl = form.getAttribute('data-profile-url')
 
     app.lightbox.startLoading()
-    app.apiRequest(url, 'POST', form)
+    app
+      .apiRequest(url, 'POST', form)
       .then(data => {
         app.lightbox.displayContent(data.html)
         this.bindUserEditFormEvents()
         app.lightbox.stopLoading()
         // invalidate cache
-        fetch(profileUrl, {cache: 'reload'}).then(() => {
-        }).catch((error) => console.log(error))
+        fetch(profileUrl, { cache: 'reload' })
+          .then(() => {})
+          .catch(error => console.log(error))
         app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
       })
       .catch(e => app.handleRequestError.bind(this))
@@ -325,4 +331,4 @@ class Userprofile {
   }
 }
 
-export default (new Userprofile())
+export default new Userprofile()

@@ -1,7 +1,7 @@
 class VideoPlayer {
   playButtonEl: NodeListOf<HTMLButtonElement>
 
-  constructor () {
+  constructor() {
     // variables
     this.playButtonEl = document.querySelectorAll('.--play-video')
 
@@ -9,9 +9,9 @@ class VideoPlayer {
     this.bindEvents()
   }
 
-  bindEvents (): void {
+  bindEvents(): void {
     // click: play button
-    this.playButtonEl.forEach((button) => button.addEventListener('click', () => this.playExternalVideo(button)))
+    this.playButtonEl.forEach(button => button.addEventListener('click', () => this.playExternalVideo(button)))
 
     // media slider: remove
     document.addEventListener('video:allowed', () => {
@@ -19,11 +19,11 @@ class VideoPlayer {
     })
   }
 
-  playAllExternalVideos (): void {
-    this.playButtonEl.forEach((button) => this.playExternalVideo(button))
+  playAllExternalVideos(): void {
+    this.playButtonEl.forEach(button => this.playExternalVideo(button))
   }
 
-  playExternalVideo (button: HTMLButtonElement): void {
+  playExternalVideo(button: HTMLButtonElement): void {
     const videoPlayerEl: HTMLDivElement = button.closest('.video-player')
     const videoId = videoPlayerEl.dataset.videoId
     const videoMimeType = videoPlayerEl.dataset.videoMimeType
@@ -40,7 +40,7 @@ class VideoPlayer {
     }
   }
 
-  buildVideoUrlByMimetype (mimeType: string, videoId: string): string {
+  buildVideoUrlByMimetype(mimeType: string, videoId: string): string {
     if (mimeType === 'video/youtube') {
       return `https://www.youtube.com/embed/${videoId}`
     }
@@ -53,4 +53,4 @@ class VideoPlayer {
   }
 }
 
-export default (new VideoPlayer())
+export default new VideoPlayer()

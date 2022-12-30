@@ -1,17 +1,16 @@
-
 class Jobs {
-  constructor () {
+  constructor() {
     this.bindEvents()
     this.initPagination()
   }
 
-  initPagination () {
+  initPagination() {
     document.querySelectorAll('.jobs--list--pager-not-loaded').forEach(div => div.classList.remove('jobs--list--pager-not-loaded'))
     this.updatePager()
   }
 
-  updatePager () {
-    document.querySelectorAll('.jobs--list').forEach((list) => {
+  updatePager() {
+    document.querySelectorAll('.jobs--list').forEach(list => {
       list.querySelectorAll('a').forEach(a => a.classList.add('hidden-pager'))
       const notHiddenElements = list.querySelectorAll('a:not(.hidden-filter-category):not(.hidden-filter-place)')
       notHiddenElements.forEach(a => a.classList.remove('hidden-pager'))
@@ -26,7 +25,7 @@ class Jobs {
       })
 
       // update counter
-      document.querySelector('span[data-job-count]').innerHTML = (visibleCount).toString()
+      document.querySelector('span[data-job-count]').innerHTML = visibleCount.toString()
       document.querySelector('span[data-all-job-count]').innerHTML = count.toString()
 
       // hide pager
@@ -41,8 +40,8 @@ class Jobs {
     })
   }
 
-  bindEvents () {
-    document.querySelectorAll('.jobs__nav__button').forEach((btn) => {
+  bindEvents() {
+    document.querySelectorAll('.jobs__nav__button').forEach(btn => {
       btn.addEventListener('click', this.onMoreButtonClick.bind(this))
     })
 
@@ -51,7 +50,7 @@ class Jobs {
     })
   }
 
-  onSearchSelectChange (e: Event) {
+  onSearchSelectChange(e: Event) {
     e.preventDefault()
     const selectElement = e.currentTarget as HTMLSelectElement
     const filterFor = selectElement.getAttribute('id')
@@ -70,9 +69,9 @@ class Jobs {
     this.updatePager()
   }
 
-  onMoreButtonClick (e: Event) {
+  onMoreButtonClick(e: Event) {
     e.preventDefault()
-    document.querySelectorAll('.jobs--list').forEach((list) => {
+    document.querySelectorAll('.jobs--list').forEach(list => {
       const pageNr = parseInt(list.getAttribute('data-page')) + 1
       document.querySelector('span[data-job-count]').innerHTML = (pageNr * 8).toString()
       list.setAttribute('data-page', pageNr.toString())
@@ -82,4 +81,4 @@ class Jobs {
   }
 }
 
-export default (new Jobs())
+export default new Jobs()

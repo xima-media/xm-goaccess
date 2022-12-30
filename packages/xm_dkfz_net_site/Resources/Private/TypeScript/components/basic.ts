@@ -2,50 +2,52 @@ import Lightbox from './lightbox'
 import Notice from './notice'
 
 export default {
-
   scrollbarWidth: window.innerWidth - document.documentElement.clientWidth,
   transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
   lightbox: new Lightbox(),
   notice: new Notice(),
 
-  inViewport (checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass: string = 'fx--visible', once: boolean = false) {
+  inViewport(checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass = 'fx--visible', once = false) {
     const app = this
 
     // observe
-    new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (targetForCssClassEl === checkEl) {
-            entry.target.classList.add(cssClass)
-          } else {
-            targetForCssClassEl.classList.add(cssClass)
-          }
-
-          // create custom: reset timeout
-          const event = new Event('viewport:in', { bubbles: true })
-          entry.target.dispatchEvent(event)
-        } else {
-          if (!once) {
+    new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
             if (targetForCssClassEl === checkEl) {
-              entry.target.classList.remove(cssClass)
+              entry.target.classList.add(cssClass)
             } else {
-              targetForCssClassEl.classList.remove(cssClass)
+              targetForCssClassEl.classList.add(cssClass)
             }
-          }
 
-          // create custom: reset timeout
-          const event = new Event('viewport:out', { bubbles: true })
-          entry.target.dispatchEvent(event)
-        }
-      })
-    }, {
-      // root: document,
-      rootMargin: '0px 0px 0px 0px',
-      threshold: 0
-    }).observe(checkEl)
+            // create custom: reset timeout
+            const event = new Event('viewport:in', { bubbles: true })
+            entry.target.dispatchEvent(event)
+          } else {
+            if (!once) {
+              if (targetForCssClassEl === checkEl) {
+                entry.target.classList.remove(cssClass)
+              } else {
+                targetForCssClassEl.classList.remove(cssClass)
+              }
+            }
+
+            // create custom: reset timeout
+            const event = new Event('viewport:out', { bubbles: true })
+            entry.target.dispatchEvent(event)
+          }
+        })
+      },
+      {
+        // root: document,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0
+      }
+    ).observe(checkEl)
   },
 
-  apiRequest: async function (url: string, method: string = 'GET', form: HTMLFormElement = null): Promise<any> {
+  apiRequest: async function (url: string, method = 'GET', form: HTMLFormElement = null): Promise<any> {
     const initConf = Object({ method })
 
     if (form) {
@@ -81,5 +83,4 @@ export default {
     this.lightbox.stopLoading()
     this.lightbox.open()
   }
-
 }

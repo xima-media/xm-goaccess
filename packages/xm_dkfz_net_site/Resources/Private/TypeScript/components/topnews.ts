@@ -5,7 +5,7 @@ class Topnews {
 
   protected slideCount = 0
 
-  constructor () {
+  constructor() {
     this.slider = document.querySelector('.topnews')
 
     const buttons = document.querySelectorAll('.topnews button')
@@ -17,25 +17,25 @@ class Topnews {
 
     this.readSliderState()
 
-    buttons.forEach((btn) => {
+    buttons.forEach(btn => {
       btn.addEventListener('click', this.onButtonClick.bind(this))
     })
 
     bullets.forEach(bullet => bullet.addEventListener('click', this.onBulletClick.bind(this)))
   }
 
-  protected readSliderState () {
+  protected readSliderState() {
     this.currentSlideNr = parseInt(getComputedStyle(this.slider).getPropertyValue('--current'))
     this.slideCount = parseInt(getComputedStyle(this.slider).getPropertyValue('--count'))
   }
 
-  protected writeSliderState (currentSlide: number) {
+  protected writeSliderState(currentSlide: number) {
     this.currentSlideNr = currentSlide
     this.slider.style.setProperty('--current', currentSlide.toString())
     this.slider.classList.remove('animation')
   }
 
-  onButtonClick (e: Event) {
+  onButtonClick(e: Event) {
     e.preventDefault()
     const button = e.currentTarget as HTMLAnchorElement
     const modifier = button.classList.contains('next') ? 1 : this.slideCount - 1
@@ -45,7 +45,7 @@ class Topnews {
     setTimeout(() => this.writeSliderState(next), 400)
   }
 
-  onBulletClick (e: Event) {
+  onBulletClick(e: Event) {
     e.preventDefault()
     const bullet = e.currentTarget as HTMLAnchorElement
     const next = parseInt(bullet.getAttribute('data-news'))
@@ -56,4 +56,4 @@ class Topnews {
   }
 }
 
-export default (new Topnews())
+export default new Topnews()

@@ -9,7 +9,7 @@ class Organigramm {
 
   protected backgroundClickEventHandler = this.onBackgroundClick.bind(this)
 
-  constructor () {
+  constructor() {
     this.cacheDom()
 
     if (!this.boxes || !this.overlayContainer) {
@@ -19,13 +19,13 @@ class Organigramm {
     this.bindEvents()
   }
 
-  protected cacheDom () {
+  protected cacheDom() {
     this.boxes = document.querySelectorAll('.organigram__boxes')
     this.overlayContainer = document.querySelector('.organigram__overlays')
     this.closeButtons = document.querySelectorAll('.organigram__detail .btn-close')
   }
 
-  protected close () {
+  protected close() {
     document.querySelectorAll('.organigram__detail').forEach(detail => {
       detail.classList.remove('show')
     })
@@ -33,21 +33,21 @@ class Organigramm {
     window.removeEventListener('click', this.backgroundClickEventHandler)
   }
 
-  protected bindEscKeyDown () {
+  protected bindEscKeyDown() {
     document.addEventListener('keydown', this.onEscDown.bind(this))
   }
 
-  protected onEscDown (e: KeyboardEvent) {
+  protected onEscDown(e: KeyboardEvent) {
     if (e.key === 'Escape') {
       this.close()
     }
   }
 
-  protected bindBackgroundClickEvent () {
+  protected bindBackgroundClickEvent() {
     setTimeout(() => window.addEventListener('click', this.backgroundClickEventHandler), 1)
   }
 
-  protected bindEvents () {
+  protected bindEvents() {
     this.closeButtons.forEach(btn => {
       btn.addEventListener('click', this.close.bind(this))
     })
@@ -57,7 +57,7 @@ class Organigramm {
     })
   }
 
-  protected onBoxClick (e: Event) {
+  protected onBoxClick(e: Event) {
     this.close()
     this.bindEscKeyDown()
     const box = e.currentTarget as HTMLElement
@@ -65,14 +65,14 @@ class Organigramm {
     this.open(boxId)
   }
 
-  protected open (boxId: string) {
+  protected open(boxId: string) {
     const box = document.querySelector('.organigram__detail[data-box-target-id="' + boxId + '"]')
     box.classList.add('show')
     this.overlayContainer.classList.add('active')
     this.bindBackgroundClickEvent()
   }
 
-  protected onBackgroundClick (e: PointerEvent) {
+  protected onBackgroundClick(e: PointerEvent) {
     // @ts-ignore
     const isClickInsideContent = e.composedPath().includes(this.overlayContainer.querySelector('.organigram__detail.show'))
     if (!isClickInsideContent) {
@@ -81,4 +81,4 @@ class Organigramm {
   }
 }
 
-export default (new Organigramm())
+export default new Organigramm()

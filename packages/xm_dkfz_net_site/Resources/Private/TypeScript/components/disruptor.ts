@@ -3,18 +3,18 @@ import app from './basic'
 import { LightboxStyle } from './lightbox'
 
 class Disruptor {
-  constructor () {
+  constructor() {
     this.bindDisruptorLoad()
   }
 
-  protected bindDisruptorLoad () {
+  protected bindDisruptorLoad() {
     document.addEventListener('DOMContentLoaded', () => {
       const disruptorModal = Array.from(document.querySelectorAll('.disruptor-wrapper'))
 
       disruptorModal.forEach(modal => {
         const disruptorModalFixed = modal.nextElementSibling
 
-        if (modal as HTMLElement && sessionStorage.getItem('disruptor') === null) {
+        if ((modal as HTMLElement) && sessionStorage.getItem('disruptor') === null) {
           app.lightbox.startLoading()
           app.lightbox.open(LightboxStyle.warning, 'disruptor')
           app.lightbox.displayContent(modal.innerHTML)
@@ -43,4 +43,4 @@ class Disruptor {
   }
 }
 
-export default (new Disruptor())
+export default new Disruptor()

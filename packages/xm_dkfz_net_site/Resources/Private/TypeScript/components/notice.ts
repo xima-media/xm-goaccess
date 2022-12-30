@@ -16,7 +16,7 @@ class Notice {
 
   protected closeButton: Element
 
-  constructor () {
+  constructor() {
     const noticeElement = document.querySelector('.notice')
 
     if (noticeElement) {
@@ -26,27 +26,27 @@ class Notice {
     }
   }
 
-  protected init (): void {
+  protected init(): void {
     this.cacheDom()
     this.bindCloseButtonEvent()
   }
 
-  protected cacheDom (): void {
+  protected cacheDom(): void {
     this.paragraphElement = this.element.querySelector('p')
     this.closeButton = this.element.querySelector('button')
   }
 
-  protected bindCloseButtonEvent (): void {
+  protected bindCloseButtonEvent(): void {
     this.closeButton.addEventListener('click', (e: Event) => {
       this.close()
     })
   }
 
-  public close (): void {
+  public close(): void {
     this.element.classList.remove('notice--visible')
   }
 
-  public open (style: NoticeStyle = NoticeStyle.info, message: string, duration = 0, closable = false): void {
+  public open(style: NoticeStyle = NoticeStyle.info, message: string, duration = 0, closable = false): void {
     this.setStyle(style)
     this.setText(message)
     this.element.classList.add('notice--visible')
@@ -60,15 +60,17 @@ class Notice {
     }
   }
 
-  public setText (content: string): void {
+  public setText(content: string): void {
     this.paragraphElement.innerText = content
   }
 
-  public setStyle (style: NoticeStyle): void {
+  public setStyle(style: NoticeStyle): void {
     const availableStyles = ['info', 'warning', 'error', 'success']
-    this.element.classList.remove(...availableStyles.map(name => {
-      return 'notice--' + name
-    }))
+    this.element.classList.remove(
+      ...availableStyles.map(name => {
+        return 'notice--' + name
+      })
+    )
     this.element.classList.add('notice--' + style)
   }
 }

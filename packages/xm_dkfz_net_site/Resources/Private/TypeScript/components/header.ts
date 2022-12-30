@@ -4,7 +4,7 @@ class Header {
   headerEL
   headerStickyTriggerEL
 
-  constructor () {
+  constructor() {
     this.headerEL = document.querySelector('.header')
 
     if (this.headerEL) {
@@ -16,7 +16,7 @@ class Header {
     }
   }
 
-  stickyHeader () {
+  stickyHeader() {
     const self = this
 
     // in viewport
@@ -24,4 +24,4 @@ class Header {
   }
 }
 
-export default (new Header())
+export default new Header()

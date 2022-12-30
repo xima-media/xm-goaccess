@@ -1,13 +1,13 @@
 class FieldText {
   fieldEl
 
-  constructor () {
+  constructor() {
     this.fieldEl = document.querySelectorAll<HTMLInputElement>('.field--text')
 
     this.events()
   }
 
-  events () {
+  events() {
     // variables
     const self = this
 
@@ -19,11 +19,11 @@ class FieldText {
     })
   }
 
-  focus (fieldEl: HTMLElement, fieldInputEl: HTMLInputElement) {
+  focus(fieldEl: HTMLElement, fieldInputEl: HTMLInputElement) {
     fieldEl.classList.add('fx--focus')
   }
 
-  blur (fieldEl: HTMLElement, fieldInputEl: HTMLInputElement) {
+  blur(fieldEl: HTMLElement, fieldInputEl: HTMLInputElement) {
     // toggle 'filled' css class
     if (fieldInputEl.value) {
       fieldEl.classList.add('fx--filled')
@@ -36,4 +36,4 @@ class FieldText {
   }
 }
 
-export default (new FieldText())
+export default new FieldText()

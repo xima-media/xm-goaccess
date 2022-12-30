@@ -19,7 +19,7 @@ class Lightbox {
 
   protected root = document.querySelector('html')
 
-  constructor () {
+  constructor() {
     const boxElement = document.querySelector('.lightbox')
 
     if (boxElement) {
@@ -28,31 +28,31 @@ class Lightbox {
     }
   }
 
-  protected init () {
+  protected init() {
     this.cacheDom()
     this.bindCloseButtonEvent()
   }
 
-  protected cacheDom () {
+  protected cacheDom() {
     this.content = this.box.querySelector('.lightbox__wrap')
     this.closeButton = this.box.querySelector('.lightbox__close')
   }
 
-  protected bindCloseButtonEvent () {
+  protected bindCloseButtonEvent() {
     this.closeButton.addEventListener('click', (e: Event) => {
       this.close()
     })
   }
 
-  protected bindEscKeyPressEvent () {
+  protected bindEscKeyPressEvent() {
     document.addEventListener('keydown', this.escKeyPressEventHandler)
   }
 
-  protected bindBackgroundClickEvent () {
+  protected bindBackgroundClickEvent() {
     setTimeout(() => window.addEventListener('click', this.backgroundClickEventHandler), 1)
   }
 
-  protected onBackgroundClick (e: PointerEvent) {
+  protected onBackgroundClick(e: PointerEvent) {
     // @ts-ignore
     const isClickInsideContent = e.composedPath().includes(this.box.querySelector('.lightbox__content'))
     // @ts-ignore
@@ -62,18 +62,18 @@ class Lightbox {
     }
   }
 
-  protected onEscKeyPress (e: KeyboardEvent) {
+  protected onEscKeyPress(e: KeyboardEvent) {
     if (this.isCloseable && e.key === 'Escape') {
       this.close()
     }
   }
 
-  protected removeAllListener () {
+  protected removeAllListener() {
     window.removeEventListener('click', this.backgroundClickEventHandler)
     document.removeEventListener('keydown', this.escKeyPressEventHandler)
   }
 
-  public close () {
+  public close() {
     this.box.classList.add('lightbox--closing')
     this.removeAllListener()
 
@@ -91,7 +91,7 @@ class Lightbox {
     }, 400)
   }
 
-  public open (style: LightboxStyle = 0, type: string = '') {
+  public open(style: LightboxStyle = 0, type = '') {
     this.setStyle(style)
     this.root.classList.add('open-lightbox')
     this.root.dataset.lightBoxType = type
@@ -99,35 +99,39 @@ class Lightbox {
     this.bindBackgroundClickEvent()
   }
 
-  public startLoading () {
+  public startLoading() {
     this.box.classList.add('lightbox--loading')
   }
 
-  public stopLoading () {
+  public stopLoading() {
     this.box.classList.remove('lightbox--loading')
   }
 
-  public clear () {
+  public clear() {
     this.content.innerHTML = ''
   }
 
-  public displayContent (content: string) {
+  public displayContent(content: string) {
     this.content.innerHTML = content
   }
 
-  public appendElement (element: HTMLElement) {
+  public appendElement(element: HTMLElement) {
     this.content.append(element)
   }
 
-  public setStyle (style: LightboxStyle): void {
+  public setStyle(style: LightboxStyle): void {
     const availableStyles = ['default', 'sidebar', 'warning']
-    this.box.classList.remove(...availableStyles.map(name => {
-      return 'lightbox--' + name
-    }))
+    this.box.classList.remove(
+      ...availableStyles.map(name => {
+        return 'lightbox--' + name
+      })
+    )
     this.box.classList.add('lightbox--' + availableStyles[style])
-    this.root.classList.remove(...availableStyles.map(name => {
-      return 'lightbox-style-' + name
-    }))
+    this.root.classList.remove(
+      ...availableStyles.map(name => {
+        return 'lightbox-style-' + name
+      })
+    )
     this.root.classList.add('lightbox-style-' + availableStyles[style])
   }
 }

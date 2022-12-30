@@ -2,15 +2,15 @@ import app from './basic'
 import { LightboxStyle } from './lightbox'
 
 class Bookmarks {
-  constructor () {
+  constructor() {
     this.init()
   }
 
-  protected init () {
+  protected init() {
     this.bindEvents()
   }
 
-  protected bindEvents () {
+  protected bindEvents() {
     const bookmarkButton = document.querySelector<HTMLButtonElement>('.navigation__item--bookmark')
 
     if (!bookmarkButton) {
@@ -20,10 +20,10 @@ class Bookmarks {
     bookmarkButton.addEventListener('click', this.onBookmarkButtonClick.bind(this))
   }
 
-  protected onBookmarkButtonClick (e: Event) {
+  protected onBookmarkButtonClick(e: Event) {
     e.preventDefault()
     app.lightbox.open(LightboxStyle.sidebar)
   }
 }
 
-export default (new Bookmarks())
+export default new Bookmarks()

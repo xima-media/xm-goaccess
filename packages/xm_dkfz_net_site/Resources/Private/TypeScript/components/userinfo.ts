@@ -31,7 +31,7 @@ export interface UserinfoResponse {
 class Userinfo {
   protected userinfo: UserinfoResponse
 
-  constructor () {
+  constructor() {
     this.bindStorageResetAtLogin()
 
     const hasUserinfoUri = document.querySelectorAll('#userinfoUri').length
@@ -52,24 +52,24 @@ class Userinfo {
     this.bindEvents()
   }
 
-  protected bindEvents () {
+  protected bindEvents() {
     this.bindBookmarkLinks()
     this.bindBookmarkSidebar()
   }
 
-  protected bindBookmarkLinks () {
-    document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
+  protected bindBookmarkLinks() {
+    document.querySelectorAll('button[data-bookmark-url]').forEach(button => {
       button.addEventListener('click', this.onBookmarkLinkClick.bind(this))
     })
   }
 
-  protected bindBookmarkSidebar () {
+  protected bindBookmarkSidebar() {
     document.querySelectorAll('.navigation__item--bookmark').forEach(link => {
       link.addEventListener('click', this.onBookmarkSidebarOpenClick.bind(this))
     })
   }
 
-  protected bindStorageResetAtLogin () {
+  protected bindStorageResetAtLogin() {
     const loginButton = document.querySelector('#login-link')
     if (loginButton) {
       loginButton.addEventListener('click', () => {
@@ -78,7 +78,7 @@ class Userinfo {
     }
   }
 
-  protected modifyShowForSelfClasses () {
+  protected modifyShowForSelfClasses() {
     if (!this.userinfo) {
       return
     }
@@ -92,13 +92,13 @@ class Userinfo {
     })
   }
 
-  protected modifyHtmlTag () {
+  protected modifyHtmlTag() {
     if (this.userinfo) {
       document.querySelector('html').classList.add('loggedIn')
     }
   }
 
-  protected onBookmarkLinkClick (e: Event) {
+  protected onBookmarkLinkClick(e: Event) {
     e.preventDefault()
 
     if (!this.userinfo) {
@@ -109,7 +109,7 @@ class Userinfo {
     const button = e.currentTarget as Element
     const url = button.getAttribute('data-bookmark-url')
     const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST'
-    app.apiRequest(url, method).then((userinfo) => {
+    app.apiRequest(url, method).then(userinfo => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
       button.classList.toggle('fx--hover')
@@ -123,7 +123,7 @@ class Userinfo {
     }
   }
 
-  protected onBookmarkSidebarOpenClick () {
+  protected onBookmarkSidebarOpenClick() {
     if (!this.userinfo) {
       app.showLogin()
       return
@@ -132,33 +132,37 @@ class Userinfo {
     this.modifyBookmarkSidebar()
   }
 
-  protected modifyBookmarkSidebar () {
+  protected modifyBookmarkSidebar() {
     if (!this.userinfo) {
       return
     }
 
     app.lightbox.displayContent(this.userinfo.html)
-    app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
+    app.lightbox.content
+      .querySelectorAll('a[data-bookmark-url]')
+      .forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
     app.lightbox.stopLoading()
     app.lightbox.open(LightboxStyle.sidebar)
   }
 
-  protected onBookmarkSidebarLinkClick (e: Event) {
+  protected onBookmarkSidebarLinkClick(e: Event) {
     e.preventDefault()
     const link = e.currentTarget as HTMLLinkElement
     const url = link.getAttribute('data-bookmark-url')
     app.lightbox.startLoading()
-    app.apiRequest(url, 'DELETE').then((userinfo) => {
+    app.apiRequest(url, 'DELETE').then(userinfo => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
       this.modifyBookmarkLinks()
       app.lightbox.displayContent(userinfo.html)
-      app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
+      app.lightbox.content
+        .querySelectorAll('a[data-bookmark-url]')
+        .forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
       app.lightbox.stopLoading()
     })
   }
 
-  protected modifyUserNav () {
+  protected modifyUserNav() {
     const userLinkElement = document.querySelector('[data-user-profile-link]')
     if (!userLinkElement || !this.userinfo) {
       return
@@ -166,7 +170,7 @@ class Userinfo {
     userLinkElement.setAttribute('href', this.userinfo.user.url)
   }
 
-  protected modifyWelcomeMessage () {
+  protected modifyWelcomeMessage() {
     const welcomeMessageBox = document.querySelector('.employee-welcome')
     if (!welcomeMessageBox || !this.userinfo) {
       return
@@ -175,12 +179,12 @@ class Userinfo {
     welcomeMessageBox.classList.remove('employee-welcome--onload-hidden')
   }
 
-  protected modifyBookmarkLinks () {
+  protected modifyBookmarkLinks() {
     if (!this.userinfo) {
       return
     }
 
-    document.querySelectorAll('button[data-bookmark-url]').forEach((button) => {
+    document.querySelectorAll('button[data-bookmark-url]').forEach(button => {
       button.classList.remove('fx--hover', 'js--checked')
       const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)')
       if (urlParts.length !== 3) {
@@ -197,7 +201,7 @@ class Userinfo {
     })
   }
 
-  protected setFeedbackFormUserValues () {
+  protected setFeedbackFormUserValues() {
     const nameField = document.getElementById('generalfeedbackform-name') as HTMLInputElement
     const emailField = document.getElementById('generalfeedbackform-email') as HTMLInputElement
 
@@ -211,14 +215,14 @@ class Userinfo {
     }
   }
 
-  protected async loadUserinfo () {
+  protected async loadUserinfo() {
     const loadedFromStorage = this.loadUserinfoFromStorage()
     if (!loadedFromStorage) {
       return await this.loadUserinfoFromApi()
     }
   }
 
-  protected loadUserinfoFromStorage (): boolean {
+  protected loadUserinfoFromStorage(): boolean {
     const storedUserinfo = localStorage.getItem('userinfo')
     if (!storedUserinfo) {
       return false
@@ -238,18 +242,18 @@ class Userinfo {
     return true
   }
 
-  protected async loadUserinfoFromApi () {
+  protected async loadUserinfoFromApi() {
     const url = document.querySelector('#userinfoUri').getAttribute('data-user-info')
 
     if (!url) {
       return
     }
 
-    return await app.apiRequest(url).then((userinfo) => {
+    return await app.apiRequest(url).then(userinfo => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
     })
   }
 }
 
-export default (new Userinfo())
+export default new Userinfo()

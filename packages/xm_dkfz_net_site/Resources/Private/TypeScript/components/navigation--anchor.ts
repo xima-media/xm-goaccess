@@ -1,46 +1,72 @@
 class NavigationAnchor {
   public nav: HTMLElement
   public navItems: HTMLElement
-  public navLinks: any[]
-  public sections: NodeList
-  public navButtons: HTMLElement[]
+  public navLinks: NodeListOf<HTMLElement>
+  public sections: NodeListOf<HTMLElement>
+  public navButtons: NodeListOf<HTMLElement>
 
-  constructor () {
-    // only if element on the page
-    if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length !== 0) {
-      // methods
-      this.cacheDom()
-      this.bindDomEvents()
-      this.bindNavigationButtonEvents()
+  constructor() {
+    if (!this.cacheDom()) {
+      return
     }
+
+    this.events()
+    this.bindNavigationButtonEvents()
+    this.bindNavigationLinksEvents()
+    this.registerSectionsIntersectionObserver()
   }
 
-  public cacheDom (): void {
-    this.nav = document.querySelector<HTMLElement>('.navigation--anchor')
-    this.navItems = this.nav.querySelector<HTMLElement>('.navigation__items')
-    this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'))
-    this.navButtons = Array.from(this.nav.querySelectorAll<HTMLElement>('.navigation__button'))
-    this.sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
+  public cacheDom(): boolean {
+    const nav = document.querySelector<HTMLElement>('.navigation--anchor')
+    const navItems = document.querySelector<HTMLElement>('.navigation--anchor .navigation__items')
+    const navLinks = document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__link')
+    const navButtons = document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__button')
+    const sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
 
+    if (!nav || !navItems || !navLinks || !navButtons || !sections) {
+      return false
+    }
+
+    this.nav = nav
+    this.navItems = navItems
+    this.navLinks = navLinks
+    this.navButtons = navButtons
+    this.sections = sections
+
+    return true
+  }
+
+  protected events(): void {
+    const currStickyPos = this.nav.getBoundingClientRect().top + window.scrollY
+    document.addEventListener('scroll', () => {
+      this.fixAnchorNavigationOnScroll(currStickyPos)
+    })
+  }
+
+  protected bindNavigationLinksEvents(): void {
     this.navLinks.forEach(link => {
       link.addEventListener('click', (e: { preventDefault: () => void }) => {
         // Prevent the default link behavior
         e.preventDefault()
 
         // Get the href of the clicked link
-        const href = link.getAttribute('href')
+        const sectionId = link.getAttribute('href')
 
         // Get the element with the corresponding ID
-        const element = document.querySelector(href)
+        if (sectionId) {
+          const element = document.querySelector(sectionId)
 
-        // Scroll to the element
-        element.scrollIntoView({ behavior: 'smooth' })
+          // Scroll to the element
+          element?.scrollIntoView({ behavior: 'smooth' })
+        }
       })
     })
+  }
 
+  protected registerSectionsIntersectionObserver(): void {
     // Create an intersection observer for each section
     this.sections.forEach((section: HTMLElement) => {
-      const observer = new IntersectionObserver((entries) => {
+      const observer = new IntersectionObserver(entries => {
         // Check if the section is intersecting
         if (entries[0].isIntersecting) {
           // Get the ID of the section
@@ -70,16 +96,18 @@ class NavigationAnchor {
     })
   }
 
-  protected bindDomEvents (): void {
-    const currStickyPos = this.nav.getBoundingClientRect().top + window.scrollY
-    document.addEventListener('scroll', () => {
-      this.fixAnchorNavigationOnScroll(currStickyPos)
-    })
-  }
-
-  protected bindNavigationButtonEvents (): void {
-    const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }:
-    { clientWidth: number, clientHeight: number, scrollWidth: number, scrollHeight: number }): boolean => {
+  protected bindNavigationButtonEvents(): void {
+    const isOverflown = ({
+                           clientWidth,
+                           clientHeight,
+                           scrollWidth,
+                           scrollHeight
+                         }: {
+      clientWidth: number
+      clientHeight: number
+      scrollWidth: number
+      scrollHeight: number
+    }): boolean => {
       return scrollHeight > clientHeight || scrollWidth > clientWidth
     }
 
@@ -92,7 +120,9 @@ class NavigationAnchor {
         }
 
         button.addEventListener('click', () => {
-          this.sideScroll(this.navItems, button.dataset.direction, 25, 200, 150)
+          if (button?.dataset.direction) {
+            this.sideScroll(this.navItems, button.dataset.direction, 25, 200, 150)
+          }
         })
       })
 
@@ -102,7 +132,7 @@ class NavigationAnchor {
     }
   }
 
-  protected sideScroll (element: HTMLElement, direction: string, speed: number, distance: number, step: number): void {
+  protected sideScroll(element: HTMLElement, direction: string, speed: number, distance: number, step: number): void {
     let scrollAmount = 0
 
     const slideTimer = setInterval(function () {
@@ -118,9 +148,13 @@ class NavigationAnchor {
     }, speed)
   }
 
-  toggleNavigationScrollButtons (element: HTMLElement): void {
-    const leftButton: HTMLElement = this.nav.querySelector('button.left')
-    const rightButton: HTMLElement = this.nav.querySelector('button.right')
+  toggleNavigationScrollButtons(element: HTMLElement): void {
+    const leftButton = this.nav.querySelector<HTMLButtonElement>('button.left')
+    const rightButton = this.nav.querySelector<HTMLButtonElement>('button.right')
+
+    if (!leftButton || !rightButton) {
+      return
+    }
 
     setTimeout(() => {
       if (element.scrollLeft > 5) {
@@ -137,7 +171,7 @@ class NavigationAnchor {
     }, 300)
   }
 
-  protected fixAnchorNavigationOnScroll (currStickyPos: number): void {
+  protected fixAnchorNavigationOnScroll(currStickyPos: number): void {
     let thresholdNavigationBar = 124
 
     if (window.innerWidth <= 1800) {
@@ -154,4 +188,4 @@ class NavigationAnchor {
   }
 }
 
-export default (new NavigationAnchor())
+export default new NavigationAnchor()

@@ -2,8 +2,8 @@ import app from './basic'
 import tippy from 'tippy.js'
 
 class Tooltip {
-  constructor () {
-    document.querySelectorAll<HTMLElement>('[data-tooltip]').forEach((tooltip) => {
+  constructor() {
+    document.querySelectorAll<HTMLElement>('[data-tooltip]').forEach(tooltip => {
       const placement = tooltip.dataset.tooltipPlacement ? tooltip.dataset.tooltipPlacement : 'bottom'
       const content = tooltip.dataset.tooltip
       let showOnCreate = tooltip.dataset.tooltipShowOnCreate ? tooltip.dataset.tooltipShowOnCreate : false
@@ -19,7 +19,7 @@ class Tooltip {
         delay: [app.transitionTime, 0],
         touch: false,
         showOnCreate,
-        onShow (instance) {
+        onShow(instance) {
           if (showOnCreate) {
             // hide after 3 seconds
             setTimeout(() => {
@@ -35,4 +35,4 @@ class Tooltip {
   }
 }
 
-export default (new Tooltip())
+export default new Tooltip()

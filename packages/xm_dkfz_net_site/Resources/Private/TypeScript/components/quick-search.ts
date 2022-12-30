@@ -1,4 +1,4 @@
-import autocomplete, { AutocompleteResult, AutocompleteSettings } from 'autocompleter'
+import autocomplete from 'autocompleter'
 
 interface AutocomleterItem {
   label: string
@@ -12,33 +12,50 @@ class QuickSearch {
   quickSearchButtonToggleEl: HTMLButtonElement
   quickSearchFormEl: HTMLFormElement
 
-  constructor () {
-    this.cacheDom()
-
-    if (this.quickSearchEl) {
-      this.initAutoCompleter()
+  constructor() {
+    if (!this.cacheDom()) {
+      return
     }
 
-    if (this.quickSearchButtonToggleEl) {
-      this.bindQuickSearchButtonEvents()
+    this.initAutoCompleter()
+    this.bindQuickSearchButtonEvents()
+  }
+
+  protected cacheDom(): boolean {
+    const quickSearchEl = document.querySelector<HTMLElement>('.quick-search')
+    const quickSearchInputEl = document.querySelector<HTMLInputElement>('.quick-search__wrapper .field__input')
+    const quickSearchButtonToggleEl = document.querySelector<HTMLButtonElement>('.quick-search__wrapper .quick-search__button--toggle')
+    const quickSearchFormEl = document.querySelector<HTMLFormElement>('#form_kesearch_pi3')
+
+    if (!quickSearchEl || !quickSearchInputEl || !quickSearchButtonToggleEl || !quickSearchFormEl) {
+      return false
     }
+
+    this.quickSearchEl = quickSearchEl
+    this.quickSearchInputEl = quickSearchInputEl
+    this.quickSearchButtonToggleEl = quickSearchButtonToggleEl
+    this.quickSearchFormEl = quickSearchFormEl
+
+    return true
   }
 
-  protected cacheDom (): void {
-    this.quickSearchEl = document.querySelector('.quick-search')
-    this.quickSearchInputEl = document.querySelector('.quick-search__wrapper .field__input')
-    this.quickSearchButtonToggleEl = document.querySelector('.quick-search__wrapper .quick-search__button--toggle')
-    this.quickSearchFormEl = document.querySelector<HTMLFormElement>('#form_kesearch_pi3')
-  }
+  protected initAutoCompleter(): void {
+    if (!this.quickSearchInputEl || !this.quickSearchEl) {
+      return
+    }
 
-  protected initAutoCompleter (): void {
     this.quickSearchOpenState = false
     this.quickSearchInputEl.addEventListener('input', () => {
-      if (this.quickSearchInputEl.value.length === 1) {
+      if (this.quickSearchInputEl && this.quickSearchInputEl.value.length === 1) {
         const fillAutoCompleterList = async (): Promise<AutocomleterItem[] | any> => {
-          const items = await this.fetchAutocompleteItems(this.quickSearchInputEl)
+          let items: AutocomleterItem[]
+          if (this.quickSearchInputEl) {
+            items = await this.fetchAutocompleteItems(this.quickSearchInputEl)
+          } else {
+            return
+          }
 
-          if (items == null) {
+          if (!items) {
             return
           }
 
@@ -56,10 +73,10 @@ class QuickSearch {
     })
   }
 
-  protected async fetchAutocompleteItems (searchInput: HTMLInputElement): Promise<AutocomleterItem[] | any> {
-    const autoCompleteListUrl = `${searchInput.closest('form').dataset.url}&wordStartsWith=${searchInput.value}`
+  protected async fetchAutocompleteItems(searchInput: HTMLInputElement): Promise<AutocomleterItem[] | any> {
+    const autoCompleteListUrl = `${searchInput.closest('form')?.dataset.url}&wordStartsWith=${searchInput.value}`
     return await fetch(autoCompleteListUrl)
-      .then(async (response) => await response.json())
+      .then(async response => await response.json())
       .then((autoCompleteList: any[]) => {
         if (autoCompleteList) {
           return autoCompleteList.map((item: any) => {
@@ -72,32 +89,39 @@ class QuickSearch {
       })
   }
 
-  protected onAutocompleteFetch (allItems: AutocomleterItem[], text: string, update: any): void {
+  protected onAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any): void {
     text = text.toLowerCase()
 
-    const filteredFeatures = allItems.filter((item) => {
-      return item.value.toString().toLowerCase().includes(text)
-    }).slice(0, 10)
+    const filteredFeatures = allItems
+      .filter(item => {
+        return item.value.toString().toLowerCase().includes(text)
+      })
+      .slice(0, 10)
 
     update(filteredFeatures)
   }
 
-  protected onAutocompleteSelect (input: HTMLInputElement, item: AutocomleterItem): void {
+  protected onAutocompleteSelect(input: HTMLInputElement, item: AutocomleterItem): void {
     input.value = item.value
-    const form = input.closest('form')
+    const form: HTMLFormElement | null = input.closest('form')
 
-    if (form != null) {
-      form.submit()
-    }
+    form?.submit()
   }
 
-  bindQuickSearchButtonEvents (): void {
+  protected bindQuickSearchButtonEvents(): void {
+    if (!this.quickSearchButtonToggleEl && !this.quickSearchInputEl) {
+      return
+    }
+
     // toggle: quick search
-    this.quickSearchButtonToggleEl.addEventListener('click', e => {
-      this.quickSearchButtonToggleEl.closest('.search-box').classList.add('search-box--active')
+    this.quickSearchButtonToggleEl.addEventListener('click', () => {
+      this.quickSearchButtonToggleEl?.closest('.search-box')?.classList.add('search-box--active')
       this.quickSearchInputEl.focus()
 
-      if (this.quickSearchInputEl.value.length !== 0 && this.quickSearchButtonToggleEl.closest('.search-box').classList.contains('search-box--active')) {
+      if (
+        this.quickSearchInputEl.value.length !== 0 &&
+        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')
+      ) {
         setTimeout(() => {
           this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
         }, 500)
@@ -105,7 +129,10 @@ class QuickSearch {
     })
 
     this.quickSearchInputEl.addEventListener('input', () => {
-      if (this.quickSearchInputEl.value.length !== 0 && this.quickSearchButtonToggleEl.closest('.search-box').classList.contains('search-box--active')) {
+      if (
+        this.quickSearchInputEl.value.length !== 0 &&
+        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')
+      ) {
         this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
       }
     })
@@ -113,17 +140,17 @@ class QuickSearch {
     document.addEventListener('mousedown', event => this.clickOutsideQuickSearch(event))
   }
 
-  clickOutsideQuickSearch (event: MouseEvent): void {
+  protected clickOutsideQuickSearch(event: MouseEvent): void {
     const targetEl = event.target as HTMLElement
     const targetParentEl = targetEl.closest('.quick-search')
 
     if (targetParentEl === null && !targetEl.classList.contains('autocomplete-suggestion')) {
       this.quickSearchButtonToggleEl.setAttribute('type', 'button')
-      if (this.quickSearchButtonToggleEl.closest('.search-box').classList.contains('search-box--active')) {
-        this.quickSearchButtonToggleEl.closest('.search-box').classList.remove('search-box--active')
+      if (this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')) {
+        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.remove('search-box--active')
       }
     }
   }
 }
 
-export default (new QuickSearch())
+export default new QuickSearch()
