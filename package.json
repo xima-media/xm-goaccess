@@ -11,6 +11,7 @@
     "ts:watch": "webpack --config webpack.config.js --stats-children --stats-error-details",
     "ts:build": "webpack --config webpack.prod.config.js",
     "ts:fix": "npx eslint packages/xm_dkfz_net_site/Resources/Private/TypeScript --fix",
+    "ts:format": "npx prettier --config .prettierrc packages/xm_dkfz_net_site/Resources/Private/TypeScript --write",
     "svg:optimize": "svgo -f ./packages/xm_dkfz_net_site/Resources/Public/Icons -p 2 --config svgo.config.js"
   },
   "author": "Maik Schneider",
