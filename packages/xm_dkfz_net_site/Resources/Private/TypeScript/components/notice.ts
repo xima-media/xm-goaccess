@@ -1,5 +1,3 @@
-import app from './basic'
-
 export enum NoticeStyle {
   info = 'info',
   warning = 'warning',
@@ -32,8 +30,8 @@ class Notice {
 
   protected cacheDom(): boolean {
     const noticeElement = document.querySelector('.notice')
-    const paragraphElement = this.element.querySelector('p')
-    const closeButton = this.element.querySelector('button')
+    const paragraphElement = document.querySelector<HTMLParagraphElement>('.notice p')
+    const closeButton = document.querySelector('.notice button')
 
     if (!noticeElement || !paragraphElement || !closeButton) {
       return false
@@ -48,6 +46,7 @@ class Notice {
 
   protected bindCloseButtonEvent(): void {
     this.closeButton.addEventListener('click', (e: Event) => {
+      e.preventDefault()
       this.close()
     })
   }

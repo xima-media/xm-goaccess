@@ -17,8 +17,8 @@ export interface UserOffer {
 }
 
 interface UserBookmarks {
-  fe_users: FeUserBookmark[number]
-  pages: PageBookmark[number]
+  fe_users: FeUserBookmark[]
+  pages: PageBookmark[]
 }
 
 interface FeUserBookmark {
@@ -35,7 +35,7 @@ interface PageBookmark {
 
 export interface UserinfoResponse {
   user: UserData
-  offers: UserOffer[number]
+  offers: UserOffer[]
   bookmarks: UserBookmarks
   html: string
   validUntil: number
@@ -107,7 +107,7 @@ class Userinfo {
 
   protected modifyHtmlTag() {
     if (this.userinfo) {
-      document.querySelector('html').classList.add('loggedIn')
+      document.querySelector('html')?.classList.add('loggedIn')
     }
   }
 
@@ -120,7 +120,7 @@ class Userinfo {
     }
 
     const button = e.currentTarget as Element
-    const url = button.getAttribute('data-bookmark-url')
+    const url = button.getAttribute('data-bookmark-url') ?? ''
     const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST'
     app.apiRequest(url, method).then(userinfo => {
       this.userinfo = userinfo
@@ -207,6 +207,7 @@ class Userinfo {
       if (!(urlParts[1] in this.userinfo.bookmarks)) {
         return
       }
+      // @ts-ignore
       if (!(urlParts[2] in this.userinfo.bookmarks[urlParts[1]])) {
         return
       }

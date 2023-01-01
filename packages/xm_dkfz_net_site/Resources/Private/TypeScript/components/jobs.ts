@@ -16,7 +16,7 @@ class Jobs {
       notHiddenElements.forEach(a => a.classList.remove('hidden-pager'))
 
       const count = notHiddenElements.length
-      const pageNr = parseInt(list.getAttribute('data-page'))
+      const pageNr = parseInt(list.getAttribute('data-page') ?? '')
       const visibleCount = 8 * pageNr
       notHiddenElements.forEach((element, i) => {
         if (i > visibleCount) {
@@ -25,8 +25,14 @@ class Jobs {
       })
 
       // update counter
-      document.querySelector('span[data-job-count]').innerHTML = visibleCount.toString()
-      document.querySelector('span[data-all-job-count]').innerHTML = count.toString()
+      const spanVisible = document.querySelector('span[data-job-count]')
+      if (spanVisible) {
+        spanVisible.innerHTML = visibleCount.toString()
+      }
+      const spanHidden = document.querySelector('span[data-all-job-count]')
+      if (spanHidden) {
+        spanHidden.innerHTML = count.toString()
+      }
 
       // hide pager
       if (visibleCount >= count) {
@@ -72,8 +78,11 @@ class Jobs {
   onMoreButtonClick(e: Event) {
     e.preventDefault()
     document.querySelectorAll('.jobs--list').forEach(list => {
-      const pageNr = parseInt(list.getAttribute('data-page')) + 1
-      document.querySelector('span[data-job-count]').innerHTML = (pageNr * 8).toString()
+      const pageNr = parseInt(list.getAttribute('data-page') ?? '') + 1
+      const span = document.querySelector('span[data-job-count]')
+      if (span) {
+        span.innerHTML = (pageNr * 8).toString()
+      }
       list.setAttribute('data-page', pageNr.toString())
     })
 

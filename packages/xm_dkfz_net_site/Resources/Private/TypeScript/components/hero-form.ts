@@ -20,10 +20,10 @@ class HeroForm {
   }
 
   protected initAutocompleterForInput(inputElement: HTMLInputElement) {
-    const autocompleterData = JSON.parse(inputElement.getAttribute('data-autocomplete')) as string[]
+    const autocompleterData = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as string[]
 
     const allItems = autocompleterData.map(item => {
-      return { label: item, value: item }
+      return {label: item, value: item}
     }) as AutocomleterItem[]
 
     autocomplete({
@@ -35,7 +35,7 @@ class HeroForm {
     })
   }
 
-  protected onAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any) {
+  protected onAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: (items: AutocomleterItem[]) => void) {
     text = text.toLowerCase()
 
     const filteredFeatures = allItems
@@ -65,7 +65,7 @@ class HeroForm {
     if (filterExpandButton && filterContainer) {
       filterExpandButton.addEventListener('click', () => {
         ;['show-for-md'].map(classes => filterContainer.classList.toggle(classes))
-        filterExpandButton.querySelector('svg').classList.toggle('icon--rotated')
+        filterExpandButton.querySelector('svg')?.classList.toggle('icon--rotated')
       })
     }
   }
@@ -81,7 +81,9 @@ class HeroForm {
     const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
     const searchFormCheckbox = form.querySelector<HTMLInputElement>(`input[name="${resultListCheckbox.name}"]`)
 
-    searchFormCheckbox.checked = resultListCheckbox.checked
+    if (searchFormCheckbox) {
+      searchFormCheckbox.checked = resultListCheckbox.checked
+    }
 
     form.submit()
   }
@@ -94,12 +96,14 @@ class HeroForm {
 
   protected onResultListResetButtonClick(e: Event) {
     const resetButton = e.currentTarget as HTMLButtonElement
-    const filterList = document.getElementById(resetButton.dataset.filterlistId) as HTMLUListElement
+    const filterList = document.getElementById(resetButton.dataset.filterlistId ?? '') as HTMLUListElement
     const form = document.getElementById('form_kesearch_pi1') as HTMLFormElement
 
     filterList.querySelectorAll('input[type="checkbox"]').forEach((resultListCheckbox: HTMLInputElement) => {
       const searchFormCheckbox = form.querySelector<HTMLInputElement>(`input[name="${resultListCheckbox.name}"]`)
-      resultListCheckbox.checked = searchFormCheckbox.checked = false
+      if (searchFormCheckbox) {
+        resultListCheckbox.checked = searchFormCheckbox.checked = false
+      }
     })
 
     form.submit()

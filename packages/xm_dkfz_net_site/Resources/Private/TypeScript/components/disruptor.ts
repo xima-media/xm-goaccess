@@ -23,8 +23,8 @@ class Disruptor {
             const target = e.target as HTMLButtonElement
             const root = target.querySelector('html')
 
-            if (root.dataset.lightBoxType && root.dataset.lightBoxType === 'disruptor') {
-              disruptorModalFixed.classList.remove('d-none')
+            if (root && root.dataset.lightBoxType && root.dataset.lightBoxType === 'disruptor') {
+              disruptorModalFixed?.classList.remove('d-none')
               modal.classList.add('d-none')
 
               sessionStorage.setItem('disruptor', 'close')
@@ -34,8 +34,8 @@ class Disruptor {
         }
 
         if (sessionStorage.getItem('disruptor') !== null) {
-          disruptorModalFixed.classList.remove('d-none')
-          document.querySelector('html').classList.add('modal-disruptor-fixed')
+          disruptorModalFixed?.classList.remove('d-none')
+          document.querySelector('html')?.classList.add('modal-disruptor-fixed')
           modal.classList.add('d-none')
         }
       })

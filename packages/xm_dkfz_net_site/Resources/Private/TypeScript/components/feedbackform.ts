@@ -23,7 +23,7 @@ class Feedbackform {
       let displayContent = form.outerHTML
       const email = form.querySelector<HTMLInputElement>('#generalfeedbackform-email')
 
-      if (email.value.length === 0) {
+      if (email && email.value.length === 0) {
         if (document.documentElement.getAttribute('lang') === 'de-de') {
           displayContent = '<p>Sie müssen eingeloggt sein, um Feedback zu senden!</p>'
         } else {
@@ -83,12 +83,18 @@ class Feedbackform {
     })
   }
 
-  protected onFeedbackFormSubmit(e: Event) {
+  protected onFeedbackFormSubmit(e: Event): void {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
     const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]')
     const formData = new FormData(form)
+
+    if (!submitButton) {
+      console.error('Submit button not found', 1672609585)
+      return
+    }
+
     formData.append(submitButton.name, submitButton.value)
     const requestInit = {
       method: 'POST',
@@ -107,6 +113,10 @@ class Feedbackform {
       .then(html => {
         const doc = document.createRange().createContextualFragment(html)
         const feedbackform = doc.querySelector('#generalfeedbackform')
+        if (!feedbackform) {
+          console.error('Could not find feedback form', 1672604140)
+          return
+        }
         app.lightbox.displayContent(feedbackform.outerHTML)
         this.bindFeedbackFormEvents()
         app.lightbox.stopLoading()

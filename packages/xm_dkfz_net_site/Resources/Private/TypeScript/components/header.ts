@@ -1,23 +1,18 @@
 import app from './basic'
 
 class Header {
-  headerEL
-  headerStickyTriggerEL
 
   constructor() {
-    this.headerEL = document.querySelector('.header')
+    const headerEL = document.querySelector('.header')
+    const headerStickyTriggerEL = document.querySelector('.header .header__sticky-trigger')
 
-    if (this.headerEL) {
-      this.headerEL.classList.add('is-loaded')
-      this.headerStickyTriggerEL = this.headerEL.querySelector('.header__sticky-trigger')
-
-      // methods
-      this.stickyHeader()
+    if (headerEL) {
+      headerEL.classList.add('is-loaded')
     }
-  }
 
-  stickyHeader() {
-    app.inViewport(this.headerStickyTriggerEL, document.documentElement, 'fx--header-not-sticky')
+    if (headerEL && headerStickyTriggerEL) {
+      app.inViewport(headerStickyTriggerEL, document.documentElement, 'fx--header-not-sticky')
+    }
   }
 }
 

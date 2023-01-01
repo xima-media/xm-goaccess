@@ -1,6 +1,6 @@
 class NavigationMain {
   buttonToggleMenuEl: HTMLButtonElement
-  buttonToggleMenuItemsEl
+  buttonToggleMenuItemsEl: NodeListOf<HTMLButtonElement>
 
   constructor() {
     if (!this.cacheDom()) {

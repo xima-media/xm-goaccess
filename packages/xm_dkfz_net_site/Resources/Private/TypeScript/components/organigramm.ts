@@ -1,5 +1,3 @@
-import app from './basic'
-
 class Organigramm {
   protected boxes: NodeListOf<HTMLDivElement>
 
@@ -71,7 +69,7 @@ class Organigramm {
     this.close()
     this.bindEscKeyDown()
     const box = e.currentTarget as HTMLElement
-    const boxId = box.getAttribute('data-box-id')
+    const boxId = box.getAttribute('data-box-id') ?? ''
     this.open(boxId)
   }
 

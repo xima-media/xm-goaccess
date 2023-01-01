@@ -1,5 +1,3 @@
-import app from './basic'
-
 class Hero {
   protected elements: NodeListOf<HTMLElement>
 

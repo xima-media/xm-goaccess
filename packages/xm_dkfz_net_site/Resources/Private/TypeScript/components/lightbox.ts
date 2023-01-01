@@ -17,29 +17,34 @@ class Lightbox {
 
   protected escKeyPressEventHandler = this.onEscKeyPress.bind(this)
 
-  protected root = document.querySelector('html')
+  protected root: HTMLHtmlElement
 
   constructor() {
-    const boxElement = document.querySelector('.lightbox')
-
-    if (boxElement) {
-      this.box = boxElement
-      this.init()
-    }
-  }
-
-  protected init() {
     this.cacheDom()
     this.bindCloseButtonEvent()
   }
 
   protected cacheDom() {
-    this.content = this.box.querySelector('.lightbox__wrap')
-    this.closeButton = this.box.querySelector('.lightbox__close')
+    const content = document.querySelector('.lightbox__wrap')
+    const closeButton = document.querySelector('.lightbox__close')
+    const root = document.querySelector('html')
+    const box = document.querySelector('.lightbox')
+
+    if (!content || !closeButton || !root || !box) {
+      return false
+    }
+
+    this.box = box
+    this.content = content
+    this.closeButton = closeButton
+    this.root = root
+
+    return true
   }
 
   protected bindCloseButtonEvent() {
-    this.closeButton.addEventListener('click', (e: Event) => {
+    this.closeButton?.addEventListener('click', (e: Event) => {
+      e.preventDefault()
       this.close()
     })
   }

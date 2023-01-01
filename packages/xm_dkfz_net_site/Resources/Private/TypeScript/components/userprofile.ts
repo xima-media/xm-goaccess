@@ -55,14 +55,14 @@ class Userprofile {
     this.initUserCommitteeRepresentativeAutocomplete()
     this.initUserFeatureInputs()
     this.initClearLinks()
-    form.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
-    form.querySelector('button[data-abort]').addEventListener('click', this.onAbortButtonClick.bind(this))
+    form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
+    form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
   }
 
   protected initUserRepresentativeSelect(): void {
     const selectElement = app.lightbox.content.querySelector('#user-committee')
 
-    if (selectElement === null) {
+    if (!selectElement) {
       return
     }
 
@@ -73,9 +73,9 @@ class Userprofile {
     e.preventDefault()
     const element = e.currentTarget as HTMLSelectElement
     const formElementDiv = element.closest('.form-element')
-    formElementDiv.classList.remove('active')
+    formElementDiv?.classList.remove('active')
     if (parseInt(element.value) >= 0) {
-      formElementDiv.classList.add('active')
+      formElementDiv?.classList.add('active')
     }
   }
 
@@ -83,11 +83,11 @@ class Userprofile {
     const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#representative')
     const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#representativeHiddenInput')
 
-    if (inputElement === null || hiddenElement === null) {
+    if (!inputElement || !hiddenElement) {
       return
     }
 
-    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete')) as AutocompleteItem[]
+    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
 
     autocomplete({
       input: inputElement,
@@ -104,7 +104,7 @@ class Userprofile {
       link.addEventListener('click', e => {
         e.preventDefault()
         const link = e.currentTarget as HTMLLinkElement
-        app.lightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs')).forEach(input => {
+        app.lightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs') ?? '').forEach(input => {
           input.value = ''
         })
       })
@@ -119,7 +119,7 @@ class Userprofile {
       return
     }
 
-    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete')) as AutocompleteItem[]
+    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
 
     autocomplete({
       input: inputElement,
@@ -177,8 +177,14 @@ class Userprofile {
 
       function onBubbleClick(e: Event): void {
         e.preventDefault()
+
+        if (!selectElement) {
+          console.error('No element found', 1672608344)
+          return
+        }
+
         const featureElement = e.currentTarget as HTMLLinkElement
-        const featureId = featureElement.getAttribute('data-feature')
+        const featureId = featureElement.getAttribute('data-feature') ?? ''
         // remove from selectable items
         selectedFeatures = selectedFeatures.filter(feature => feature.value !== featureId)
 
@@ -186,7 +192,7 @@ class Userprofile {
         const isPersisted = parseInt(featureId) > 0
         if (isPersisted) {
           const optionElement = selectElement.querySelector('option[value="' + featureId + '"]')
-          optionElement.removeAttribute('selected')
+          optionElement?.removeAttribute('selected')
         } else {
           container.querySelectorAll('input[name^="tx_bwguild_api[user][features][' + featureId + ']"]').forEach(el => el.remove())
         }
@@ -337,7 +343,7 @@ class Userprofile {
           .catch()
         app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
       })
-      .catch(e => app.handleRequestError.bind(this))
+      .catch(() => app.handleRequestError.bind(this))
   }
 
   protected onAbortButtonClick(e: Event): void {
