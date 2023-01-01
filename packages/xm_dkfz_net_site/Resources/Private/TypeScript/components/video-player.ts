@@ -24,11 +24,14 @@ class VideoPlayer {
   }
 
   playExternalVideo(button: HTMLButtonElement): void {
-    const videoPlayerEl: HTMLDivElement = button.closest('.video-player')
-    const videoId = videoPlayerEl.dataset.videoId
-    const videoMimeType = videoPlayerEl.dataset.videoMimeType
+    const videoPlayerEl: HTMLDivElement|null = button.closest('.video-player')
+    if (!videoPlayerEl) {
+      return
+    }
+    const videoId = videoPlayerEl.dataset.videoId ?? ''
+    const videoMimeType = videoPlayerEl.dataset.videoMimeType ?? ''
     const fullScreen = videoPlayerEl.dataset.fullScreen === 'true' ? 'allowfullscreen="true"' : ''
-    const title = videoPlayerEl.dataset.title
+    const title = videoPlayerEl.dataset.title ?? ''
     const videoSrc = this.buildVideoUrlByMimetype(videoMimeType, videoId)
 
     // append video

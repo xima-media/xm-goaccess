@@ -1,8 +1,8 @@
 import app from './basic'
 
-import autocomplete, { AutocompleteItem } from 'autocompleter'
-import { AutocomleterItem } from './hero-form'
-import { NoticeStyle } from './notice'
+import autocomplete, {AutocompleteItem} from 'autocompleter'
+import {AutocomleterItem} from './hero-form'
+import {NoticeStyle} from './notice'
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -27,7 +27,7 @@ class Userprofile {
   protected onUserProfileEditLinkClick(e: Event): void {
     e.preventDefault()
     const link = e.currentTarget as Element
-    const url = link.getAttribute('data-user-edit-link')
+    const url = link.getAttribute('data-user-edit-link') ?? ''
 
     app.lightbox.startLoading()
     app.lightbox.open()
@@ -155,11 +155,15 @@ class Userprofile {
     app.lightbox.content.querySelectorAll('div[data-all-features]').forEach(container => {
       const inputElement = container.querySelector('input')
       const bubbleDropZoneElement = container.querySelector('ul.list')
-      const recordType = container.getAttribute('data-record-type')
+      const recordType = container.getAttribute('data-record-type') ?? ''
       const allFeaturesJson = container.getAttribute('data-all-features') ?? ''
       const allFeatures = allFeaturesJson !== '' ? (JSON.parse(allFeaturesJson) as FeatureItem[]) : []
       const selectedFeaturesJson = container.getAttribute('data-selected-features') ?? ''
       let selectedFeatures = selectedFeaturesJson !== '' ? (JSON.parse(selectedFeaturesJson) as FeatureItem[]) : []
+
+      if (!inputElement || !bubbleDropZoneElement) {
+        return
+      }
 
       function hashCode(str: string): string {
         let hash = 0
@@ -195,15 +199,24 @@ class Userprofile {
       }
 
       function addNewBubbleForFeature(feature: FeatureItem): void {
+        if (!bubbleDropZoneElement || !featureBubbleTemplate) {
+          return
+        }
         const newFeatureBubble = featureBubbleTemplate.cloneNode(true) as HTMLLinkElement
         newFeatureBubble.setAttribute('data-feature', feature.value)
-        newFeatureBubble.querySelector('span').innerHTML = feature.label
+        const spanElement = newFeatureBubble.querySelector('span')
+        if (spanElement) {
+          spanElement.innerHTML = feature.label
+        }
         newFeatureBubble.classList.remove('d-none')
         addBubbleClickEvent(newFeatureBubble)
         bubbleDropZoneElement.appendChild(newFeatureBubble)
       }
 
       function onAutocompleteSelect(item: FeatureItem): void {
+        if (!inputElement || !selectElement) {
+          return;
+        }
         // dynamic item (for new generation) was selected
         if (item.value === '') {
           onNewFeatureEntered()
@@ -213,8 +226,7 @@ class Userprofile {
         // create new bubble
         addNewBubbleForFeature(item)
         // add as selected in form
-        const optionElement = selectElement.querySelector('option[value="' + item.value + '"]')
-        optionElement.setAttribute('selected', 'selected')
+        selectElement.querySelector('option[value="' + item.value + '"]')?.setAttribute('selected', 'selected')
         // add to selected list
         selectedFeatures.push(item)
         // clear input
@@ -230,13 +242,16 @@ class Userprofile {
 
         // append new empty item
         if (allFeatures.filter((feature: FeatureItem) => feature.label.toLowerCase() === text.toLowerCase()).length !== 1) {
-          filteredFeatures = [{ label: text, value: '' }, ...filteredFeatures]
+          filteredFeatures = [{label: text, value: ''}, ...filteredFeatures]
         }
 
         update(filteredFeatures)
       }
 
       function onNewFeatureEntered(): void {
+        if (!inputElement) {
+          return
+        }
         const trimmedInputString = inputElement.value.trim()
         const newFeatureId = 'NEW' + hashCode(trimmedInputString)
         const isAlreadySelected = selectedFeatures.find(f => f.label === trimmedInputString) !== undefined
@@ -246,7 +261,7 @@ class Userprofile {
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = { label: trimmedInputString, value: newFeatureId }
+        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
@@ -268,11 +283,11 @@ class Userprofile {
         inputElement.value = ''
       }
 
-      bubbleDropZoneElement.querySelectorAll('a[data-feature]').forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
+      bubbleDropZoneElement.querySelectorAll('a[data-feature]')?.forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
 
       inputElement.addEventListener('keydown', e => {
         const isEnterKey = e.key === 'Enter'
-        const isAutocompleteOptionSelected = document.querySelector('.autocomplete .selected') !== null
+        const isAutocompleteOptionSelected = document.querySelector('.autocomplete .selected')
         const hasMinLength = inputElement.value.length > 2
 
         if (isEnterKey && !isAutocompleteOptionSelected && hasMinLength) {
@@ -287,7 +302,7 @@ class Userprofile {
         disableAutoSelect: true,
         fetch: onAutocompleteFetch,
         onSelect: onAutocompleteSelect,
-        render: function (item: FeatureItem, currentValue): HTMLDivElement | undefined {
+        render: function (item: FeatureItem): HTMLDivElement | undefined {
           const itemElement = document.createElement('div')
 
           itemElement.innerHTML = item.label
@@ -306,8 +321,8 @@ class Userprofile {
     e.preventDefault()
 
     const form = e.currentTarget as HTMLFormElement
-    const url = form.getAttribute('action')
-    const profileUrl = form.getAttribute('data-profile-url')
+    const url = form.getAttribute('action') ?? ''
+    const profileUrl = form.getAttribute('data-profile-url') ?? ''
 
     app.lightbox.startLoading()
     app
@@ -317,9 +332,9 @@ class Userprofile {
         this.bindUserEditFormEvents()
         app.lightbox.stopLoading()
         // invalidate cache
-        fetch(profileUrl, { cache: 'reload' })
-          .then(() => {})
-          .catch(error => console.log(error))
+        fetch(profileUrl, {cache: 'reload'})
+          .then()
+          .catch()
         app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
       })
       .catch(e => app.handleRequestError.bind(this))

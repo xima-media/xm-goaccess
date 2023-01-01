@@ -16,13 +16,26 @@ export interface UserOffer {
   title: string
 }
 
-export interface UserBookmarks {
-  fe_users: object
+interface UserBookmarks {
+  fe_users: FeUserBookmark[number]
+  pages: PageBookmark[number]
+}
+
+interface FeUserBookmark {
+  first_name: string
+  last_name: string
+  uid: number
+  username: string
+}
+
+interface PageBookmark {
+  title: string
+  uid: number
 }
 
 export interface UserinfoResponse {
   user: UserData
-  offers: UserOffer[]
+  offers: UserOffer[number]
   bookmarks: UserBookmarks
   html: string
   validUntil: number
@@ -118,8 +131,8 @@ class Userinfo {
 
     if (method === 'POST') {
       const topbarButton = document.querySelector<HTMLButtonElement>('.navigation__item--bookmark')
-      topbarButton.classList.add('animation')
-      setTimeout(() => topbarButton.classList.remove('animation'), 1000)
+      topbarButton?.classList.add('animation')
+      setTimeout(() => topbarButton?.classList.remove('animation'), 1000)
     }
   }
 
@@ -148,7 +161,7 @@ class Userinfo {
   protected onBookmarkSidebarLinkClick(e: Event) {
     e.preventDefault()
     const link = e.currentTarget as HTMLLinkElement
-    const url = link.getAttribute('data-bookmark-url')
+    const url = link.getAttribute('data-bookmark-url') ?? ''
     app.lightbox.startLoading()
     app.apiRequest(url, 'DELETE').then(userinfo => {
       this.userinfo = userinfo
@@ -172,10 +185,11 @@ class Userinfo {
 
   protected modifyWelcomeMessage() {
     const welcomeMessageBox = document.querySelector('.employee-welcome')
-    if (!welcomeMessageBox || !this.userinfo) {
+    const usernameElement = document.querySelector('.employee-welcome span[data-username]')
+    if (!welcomeMessageBox || !usernameElement || !this.userinfo) {
       return
     }
-    welcomeMessageBox.querySelector('span[data-username]').innerHTML = this.userinfo.user.username
+    usernameElement.innerHTML = this.userinfo.user.username
     welcomeMessageBox.classList.remove('employee-welcome--onload-hidden')
   }
 
@@ -186,14 +200,13 @@ class Userinfo {
 
     document.querySelectorAll('button[data-bookmark-url]').forEach(button => {
       button.classList.remove('fx--hover', 'js--checked')
-      const urlParts = button.getAttribute('data-bookmark-url').match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)')
-      if (urlParts.length !== 3) {
+      const urlParts = button.getAttribute('data-bookmark-url')?.match('(?:bookmark\\/)([\\w\\d]+)(?:\\/)(\\d+)(?:\\.json)')
+      if (!urlParts || urlParts.length !== 3) {
         return
       }
       if (!(urlParts[1] in this.userinfo.bookmarks)) {
         return
       }
-      // @ts-ignore
       if (!(urlParts[2] in this.userinfo.bookmarks[urlParts[1]])) {
         return
       }
@@ -243,7 +256,7 @@ class Userinfo {
   }
 
   protected async loadUserinfoFromApi() {
-    const url = document.querySelector('#userinfoUri').getAttribute('data-user-info')
+    const url = document.querySelector('#userinfoUri')?.getAttribute('data-user-info') ?? ''
 
     if (!url) {
       return

@@ -19,10 +19,20 @@ class Organigramm {
     this.bindEvents()
   }
 
-  protected cacheDom() {
-    this.boxes = document.querySelectorAll('.organigram__boxes')
-    this.overlayContainer = document.querySelector('.organigram__overlays')
-    this.closeButtons = document.querySelectorAll('.organigram__detail .btn-close')
+  protected cacheDom(): boolean {
+    const boxes = document.querySelectorAll<HTMLDivElement>('.organigram__boxes')
+    const overlayContainer = document.querySelector<HTMLDivElement>('.organigram__overlays')
+    const closeButtons = document.querySelectorAll<HTMLAnchorElement>('.organigram__detail .btn-close')
+
+    if (!boxes || !overlayContainer || !closeButtons) {
+      return false
+    }
+
+    this.boxes = boxes
+    this.overlayContainer = overlayContainer
+    this.closeButtons = closeButtons
+
+    return true
   }
 
   protected close() {
@@ -66,8 +76,7 @@ class Organigramm {
   }
 
   protected open(boxId: string) {
-    const box = document.querySelector('.organigram__detail[data-box-target-id="' + boxId + '"]')
-    box.classList.add('show')
+    document.querySelector('.organigram__detail[data-box-target-id="' + boxId + '"]')?.classList.add('show')
     this.overlayContainer.classList.add('active')
     this.bindBackgroundClickEvent()
   }

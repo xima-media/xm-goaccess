@@ -45,7 +45,7 @@ export default {
     ).observe(checkEl)
   },
 
-  apiRequest: async function (url: string, method = 'GET', form: HTMLFormElement): Promise<any> {
+  apiRequest: async function (url: string, method = 'GET', form: HTMLFormElement|null = null): Promise<any> {
     const initConf = Object({ method })
 
     if (form) {

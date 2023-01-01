@@ -6,15 +6,15 @@ class Topnews {
   protected slideCount = 0
 
   constructor() {
-    this.slider = document.querySelector('.topnews')
-
+    const slider = document.querySelector<HTMLDivElement>('.topnews')
     const buttons = document.querySelectorAll('.topnews button')
     const bullets = document.querySelectorAll('.topnews__bullets a')
 
-    if (!buttons || !this.slider || !bullets) {
+    if (!buttons || !slider || !bullets) {
       return
     }
 
+    this.slider = slider
     this.readSliderState()
 
     buttons.forEach(btn => {
@@ -48,7 +48,7 @@ class Topnews {
   onBulletClick(e: Event) {
     e.preventDefault()
     const bullet = e.currentTarget as HTMLAnchorElement
-    const next = parseInt(bullet.getAttribute('data-news'))
+    const next = parseInt(bullet.getAttribute('data-news') ?? '')
 
     this.slider.classList.add('animation')
 

@@ -17,13 +17,12 @@ class Notice {
   protected closeButton: Element
 
   constructor() {
-    const noticeElement = document.querySelector('.notice')
-
-    if (noticeElement) {
-      this.element = noticeElement
-      this.init()
-      this.element.classList.remove('notice--not-loaded')
+    if (!this.cacheDom()) {
+      return
     }
+
+    this.init()
+    this.element.classList.remove('notice--not-loaded')
   }
 
   protected init(): void {
@@ -31,9 +30,20 @@ class Notice {
     this.bindCloseButtonEvent()
   }
 
-  protected cacheDom(): void {
-    this.paragraphElement = this.element.querySelector('p')
-    this.closeButton = this.element.querySelector('button')
+  protected cacheDom(): boolean {
+    const noticeElement = document.querySelector('.notice')
+    const paragraphElement = this.element.querySelector('p')
+    const closeButton = this.element.querySelector('button')
+
+    if (!noticeElement || !paragraphElement || !closeButton) {
+      return false
+    }
+
+    this.element = noticeElement
+    this.paragraphElement = paragraphElement
+    this.closeButton = closeButton
+
+    return true
   }
 
   protected bindCloseButtonEvent(): void {
