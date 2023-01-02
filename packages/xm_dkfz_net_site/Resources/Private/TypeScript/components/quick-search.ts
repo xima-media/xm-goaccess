@@ -94,16 +94,19 @@ class QuickSearch {
   bindQuickSearchButtonEvents (): void {
     // toggle: quick search
     this.quickSearchButtonToggleEl.addEventListener('click', e => {
-      e.preventDefault()
       this.quickSearchButtonToggleEl.closest('.search-box').classList.add('search-box--active')
       this.quickSearchInputEl.focus()
+
+      if (this.quickSearchInputEl.value.length !== 0 && this.quickSearchButtonToggleEl.closest('.search-box').classList.contains('search-box--active')) {
+        setTimeout(() => {
+          this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
+        }, 500)
+      }
     })
 
     this.quickSearchInputEl.addEventListener('input', () => {
-      if (this.quickSearchInputEl.value.length !== 0) {
-        this.quickSearchButtonToggleEl.addEventListener('click', e => {
-          this.quickSearchFormEl.submit()
-        })
+      if (this.quickSearchInputEl.value.length !== 0 && this.quickSearchButtonToggleEl.closest('.search-box').classList.contains('search-box--active')) {
+        this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
       }
     })
 
@@ -115,6 +118,7 @@ class QuickSearch {
     const targetParentEl = targetEl.closest('.quick-search')
 
     if (targetParentEl === null && !targetEl.classList.contains('autocomplete-suggestion')) {
+      this.quickSearchButtonToggleEl.setAttribute('type', 'button')
       if (this.quickSearchButtonToggleEl.closest('.search-box').classList.contains('search-box--active')) {
         this.quickSearchButtonToggleEl.closest('.search-box').classList.remove('search-box--active')
       }
