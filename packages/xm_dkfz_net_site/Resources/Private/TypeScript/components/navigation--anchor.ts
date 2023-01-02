@@ -2,111 +2,155 @@ class NavigationAnchor {
   public nav: HTMLElement
   public navItems: HTMLElement
   public navLinks: any[]
+  public sections: NodeList
+  public navButtons: HTMLElement[]
 
   constructor () {
     // only if element on the page
-    if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length) {
+    if (document.querySelectorAll<HTMLElement>('.navigation--anchor').length !== 0) {
       // methods
       this.cacheDom()
-      this.events()
+      this.bindDomEvents()
+      this.bindNavigationButtonEvents()
     }
   }
 
-  public cacheDom () {
+  public cacheDom (): void {
     this.nav = document.querySelector<HTMLElement>('.navigation--anchor')
     this.navItems = this.nav.querySelector<HTMLElement>('.navigation__items')
     this.navLinks = Array.from(this.navItems.querySelectorAll<HTMLElement>('.navigation__link'))
-  }
-
-  protected events () {
-    // variables
-    const sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
-    const self = this
-
-    const observer = new IntersectionObserver(this.observerCallback, { threshold: 0.1 })
+    this.navButtons = Array.from(this.nav.querySelectorAll<HTMLElement>('.navigation__button'))
+    this.sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
 
     this.navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        sections.forEach((section) => observer.unobserve(section))
-        self.scrollStop(() => {
-          sections.forEach((section) => observer.observe(section))
-        })
+      link.addEventListener('click', (e: { preventDefault: () => void }) => {
+        // Prevent the default link behavior
+        e.preventDefault()
+
+        // Get the href of the clicked link
+        const href = link.getAttribute('href')
+
+        // Get the element with the corresponding ID
+        const element = document.querySelector(href)
+
+        // Scroll to the element
+        element.scrollIntoView({ behavior: 'smooth' })
       })
     })
-    sections.forEach((section) => observer.observe(section))
 
-    this.scrollableNavigation()
+    // Create an intersection observer for each section
+    this.sections.forEach((section: HTMLElement) => {
+      const observer = new IntersectionObserver((entries) => {
+        // Check if the section is intersecting
+        if (entries[0].isIntersecting) {
+          // Get the ID of the section
+          const id = section.getAttribute('id')
+
+          // Find the corresponding navigation link
+          const navLink = document.querySelector<HTMLLinkElement>(`.navigation--anchor a[href="#${id}"]`)
+
+          if (navLink !== null) {
+            // Add the "active" class to the link
+            navLink.classList.add('active')
+          }
+        } else {
+          // Find the corresponding navigation link
+          const id = section.getAttribute('id')
+          const navLink = document.querySelector(`.navigation--anchor a[href="#${id}"]`)
+
+          if (navLink !== null) {
+            // Remove the "active" class from the link
+            navLink.classList.remove('active')
+          }
+        }
+      })
+
+      // Observe the section
+      observer.observe(section)
+    })
   }
 
-  protected observerCallback (entries: any[]) {
-    const navListItems = Array.from(document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__link'))
-    entries.forEach((entry) => {
-      const sectionId = entry.target.id
-      const currentLink = navListItems.filter(
-        (link) => link.getAttribute('href').substr(1) === sectionId
-      )
-      if (currentLink.length > 0) {
-        if (!entry.isIntersecting) {
-          currentLink[0].classList.remove('active')
-        } else {
-          currentLink[0].classList.add('active')
-          scrollNavItemIntoView(currentLink[0])
-        }
-      }
+  protected bindDomEvents (): void {
+    const currStickyPos = this.nav.getBoundingClientRect().top + window.scrollY
+    document.addEventListener('scroll', () => {
+      this.fixAnchorNavigationOnScroll(currStickyPos)
     })
+  }
 
-    function scrollNavItemIntoView (activeLink: HTMLElement) {
-      if (document.body.clientWidth >= 1800) {
-        activeLink.scrollIntoView()
-      }
+  protected bindNavigationButtonEvents (): void {
+    const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }:
+    { clientWidth: number, clientHeight: number, scrollWidth: number, scrollHeight: number }): boolean => {
+      return scrollHeight > clientHeight || scrollWidth > clientWidth
+    }
+
+    if (isOverflown(this.navItems)) {
+      this.navButtons.forEach(button => {
+        button.classList.add('active')
+
+        if (button.classList.contains('left')) {
+          button.classList.remove('active')
+        }
+
+        button.addEventListener('click', () => {
+          this.sideScroll(this.navItems, button.dataset.direction, 25, 200, 150)
+        })
+      })
+
+      this.navItems.addEventListener('scroll', () => {
+        this.toggleNavigationScrollButtons(this.navItems)
+      })
     }
   }
 
-  protected scrollableNavigation () {
-    const horizontalScrollItemsWrapper = document.querySelector('.horizontal-scroll .navigation__items')
-    const navButtonRight = document.querySelector('.horizontal-scroll .navigation__button.right')
-    const navButtonLeft = document.querySelector('.horizontal-scroll .navigation__button.left')
+  protected sideScroll (element: HTMLElement, direction: string, speed: number, distance: number, step: number): void {
+    let scrollAmount = 0
 
-    horizontalScrollItemsWrapper.addEventListener('scroll', (e) => {
-      const scroll = horizontalScrollItemsWrapper.scrollLeft
-
-      if (scroll + horizontalScrollItemsWrapper.getBoundingClientRect().width >= horizontalScrollItemsWrapper.scrollWidth) {
-        navButtonRight.classList.remove('active')
+    const slideTimer = setInterval(function () {
+      if (direction === 'left') {
+        element.scrollLeft -= step
       } else {
-        navButtonRight.classList.add('active')
+        element.scrollLeft += step
       }
-
-      if (scroll === 0) {
-        navButtonLeft.classList.remove('active')
-      } else {
-        navButtonLeft.classList.add('active')
+      scrollAmount += step
+      if (scrollAmount >= distance) {
+        window.clearInterval(slideTimer)
       }
-    })
-
-    this.scrollHorizontallyByClick(horizontalScrollItemsWrapper, navButtonRight, navButtonLeft)
+    }, speed)
   }
 
-  protected scrollHorizontallyByClick (scrollWrapper: Element, navButtonRight: Element, navButtonLeft: Element, scrollValue = 200) {
-    navButtonRight.addEventListener('click', () => {
-      scrollWrapper.scrollLeft += scrollValue
-    })
+  toggleNavigationScrollButtons (element: HTMLElement): void {
+    const leftButton: HTMLElement = this.nav.querySelector('button.left')
+    const rightButton: HTMLElement = this.nav.querySelector('button.right')
 
-    navButtonLeft.addEventListener('click', () => {
-      scrollWrapper.scrollLeft -= scrollValue
-    })
+    setTimeout(() => {
+      if (element.scrollLeft > 5) {
+        leftButton.classList.add('active')
+      } else {
+        leftButton.classList.remove('active')
+      }
+
+      if (element.scrollWidth - element.offsetWidth === element.scrollLeft) {
+        rightButton.classList.remove('active')
+      } else {
+        rightButton.classList.add('active')
+      }
+    }, 300)
   }
 
-  protected scrollStop (callback: () => void, refresh = 66) {
-    if (!callback || typeof callback !== 'function') return
+  protected fixAnchorNavigationOnScroll (currStickyPos: number): void {
+    let thresholdNavigationBar = 124
 
-    // @ts-ignore
-    let isScrolling: NodeJS.Timeout
+    if (window.innerWidth <= 1800) {
+      thresholdNavigationBar = 68
+    }
 
-    window.addEventListener('scroll', function (event) {
-      // Clear our timeout throughout the scroll
-      window.clearTimeout(isScrolling)
-      isScrolling = setTimeout(callback, refresh)
-    }, false)
+    currStickyPos = currStickyPos - thresholdNavigationBar
+
+    if (window.scrollY > currStickyPos) {
+      this.nav.classList.add('navigation--anchor--fixed')
+    } else {
+      this.nav.classList.remove('navigation--anchor--fixed')
+    }
   }
 }
 

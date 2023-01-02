@@ -3,10 +3,11 @@
 		 aria-label="{f:translate(key: 'anchorNav.label', extensionName: 'XmDkfzNetSite')}">
 		<div class="horizontal-scroll">
 			<button class="navigation__button left"
+					data-direction="left"
 					aria-label="{f:translate(key: 'button.back', extensionName: 'XmDkfzNetSite')}">
 				<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
 			</button>
-			<ul class="navigation__items">
+			<ul class="list navigation__items">
 				<f:for each="{anchorNavElements}" as="item">
 					<li class="navigation__item">
 						<a class="navigation__link" href="#c{item.data.uid}">{item.data.header}</a>
@@ -14,6 +15,7 @@
 				</f:for>
 			</ul>
 			<button class="navigation__button right"
+					data-direction="right"
 					aria-label="{f:translate(key: 'button.next', extensionName: 'XmDkfzNetSite')}">
 				<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
 			</button>
