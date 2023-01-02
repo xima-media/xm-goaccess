@@ -111,4 +111,12 @@ abstract class AbstractImportGroupCommand extends Command
     {
         return [];
     }
+
+    /**
+     * @return array<int, array{title: string, uid:int}>
+     */
+    protected function getAndCreateNewsPagesForGroups(): array
+    {
+        return [];
+    }
 }

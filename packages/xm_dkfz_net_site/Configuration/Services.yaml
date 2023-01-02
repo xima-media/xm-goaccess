@@ -111,6 +111,12 @@ services:
       $groupRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeGroupRepository'
       $userRepository: '@Xima\XmDkfzNetSite\Domain\Repository\BeUserRepository'
 
+  Xima\XmDkfzNetSite\Command\ImportDbMountPointsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:importDbMountPointsCommand'
+        schedulable: false
+
   Xima\XmDkfzNetSite\Command\SlugUpdaterCommand:
     tags:
       - name: 'console.command'

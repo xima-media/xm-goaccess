@@ -190,4 +190,34 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 ]
             );
     }
+
+    public function findAllGroupsWithoutShortNewsMountPoint(): array
+    {
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
+        $qb->getRestrictions()->removeAll();
+
+        $result = $qb->select('g.dkfz_number', 'g.uid')
+            ->from('be_groups', 'g')
+            ->leftJoin('g', 'pages', 'p',
+                $qb->expr()->andX(
+                    $qb->expr()->inSet('g.db_mountpoints', $qb->quoteIdentifier('p.uid')),
+                    $qb->expr()->eq('p.title', 'CONCAT("Kurzmeldung (", ' . $qb->quoteIdentifier('g.dkfz_number') . ', ")")'),
+                    $qb->expr()->eq('p.deleted', 0)
+                )
+            )
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->neq('g.dkfz_number', $qb->createNamedParameter('')),
+                    $qb->expr()->isNull('p.title')
+                )
+            )
+            ->groupBy('g.uid')
+            ->execute();
+
+        if (!$result instanceof Result) {
+            return [];
+        }
+
+        return $result->fetchAllAssociative();
+    }
 }
