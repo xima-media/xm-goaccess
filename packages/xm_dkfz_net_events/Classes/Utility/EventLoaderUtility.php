@@ -38,7 +38,7 @@ class EventLoaderUtility
 
         if (empty($this->events)) {
             $this->requestRssEvents($url);
-            $this->cache->set($cacheIdentifier, $this->events);
+            $this->cache->set($cacheIdentifier, $this->events, [], 86400);
         }
     }
 
