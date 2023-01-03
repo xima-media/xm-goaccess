@@ -55,7 +55,6 @@ main {
 
     &--primary {
         @include link-primary;
-        //display: block;
 
         .icon {
             @include size(.75rem, .75rem);

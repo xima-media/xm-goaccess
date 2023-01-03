@@ -246,10 +246,18 @@
     line-height: 26px;
     font-weight: 700;
     letter-spacing: 1.2px;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 22px 100%;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size .3s;
 
-    &:hover {
+    &:hover,
+    &:focus {
         color: var(--color-gray-900);
-        text-decoration: underline;
+        text-decoration: none;
+        background-size: 100% 2px;
     }
 
     &::before {
