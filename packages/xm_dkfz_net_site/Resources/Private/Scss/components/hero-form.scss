@@ -8,9 +8,14 @@
 //   @section 1. Hero form
 //
 
-body#p8, body#p111 {
+body#p8, body#p111, body#p5 {
     --content-width: 1200px;
 }
+
+body#p5 {
+    --gradient-offset: 435px;
+}
+
 #c175 {
     --content-width: 800px;
 }
