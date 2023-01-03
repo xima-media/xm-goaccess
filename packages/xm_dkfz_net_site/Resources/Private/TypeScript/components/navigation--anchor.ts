@@ -67,25 +67,15 @@ class NavigationAnchor {
     // Create an intersection observer for each section
     this.sections.forEach((section: HTMLElement) => {
       const observer = new IntersectionObserver(entries => {
+        const id = section.getAttribute('id') as string
+        const navLink = document.querySelector<HTMLLinkElement>(`.navigation--anchor a[href="#${id}"]`)
         // Check if the section is intersecting
         if (entries[0].isIntersecting) {
-          // Get the ID of the section
-          const id = section.getAttribute('id')
-
-          // Find the corresponding navigation link
-          const navLink = document.querySelector<HTMLLinkElement>(`.navigation--anchor a[href="#${id}"]`)
-
-          if (navLink !== null) {
-            // Add the "active" class to the link
+          if (navLink) {
             navLink.classList.add('active')
           }
         } else {
-          // Find the corresponding navigation link
-          const id = section.getAttribute('id')
-          const navLink = document.querySelector(`.navigation--anchor a[href="#${id}"]`)
-
-          if (navLink !== null) {
-            // Remove the "active" class from the link
+          if (navLink) {
             navLink.classList.remove('active')
           }
         }
@@ -148,7 +138,7 @@ class NavigationAnchor {
     }, speed)
   }
 
-  toggleNavigationScrollButtons(element: HTMLElement): void {
+  protected toggleNavigationScrollButtons(element: HTMLElement): void {
     const leftButton = this.nav.querySelector<HTMLButtonElement>('button.left')
     const rightButton = this.nav.querySelector<HTMLButtonElement>('button.right')
 

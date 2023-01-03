@@ -33,7 +33,7 @@ class Organigramm {
     return true
   }
 
-  protected close() {
+  protected close(): void {
     document.querySelectorAll('.organigram__detail').forEach(detail => {
       detail.classList.remove('show')
     })
@@ -41,21 +41,23 @@ class Organigramm {
     window.removeEventListener('click', this.backgroundClickEventHandler)
   }
 
-  protected bindEscKeyDown() {
+  protected bindEscKeyDown(): void {
     document.addEventListener('keydown', this.onEscDown.bind(this))
   }
 
-  protected onEscDown(e: KeyboardEvent) {
+  protected onEscDown(e: KeyboardEvent): void {
     if (e.key === 'Escape') {
       this.close()
     }
   }
 
-  protected bindBackgroundClickEvent() {
-    setTimeout(() => window.addEventListener('click', this.backgroundClickEventHandler), 1)
+  protected bindBackgroundClickEvent(): void {
+    setTimeout(() => {
+      window.addEventListener('click', this.backgroundClickEventHandler)
+    }, 1)
   }
 
-  protected bindEvents() {
+  protected bindEvents(): void {
     this.closeButtons.forEach(btn => {
       btn.addEventListener('click', this.close.bind(this))
     })
@@ -65,7 +67,7 @@ class Organigramm {
     })
   }
 
-  protected onBoxClick(e: Event) {
+  protected onBoxClick(e: Event): void {
     this.close()
     this.bindEscKeyDown()
     const box = e.currentTarget as HTMLElement
@@ -73,14 +75,14 @@ class Organigramm {
     this.open(boxId)
   }
 
-  protected open(boxId: string) {
+  protected open(boxId: string): void {
     document.querySelector('.organigram__detail[data-box-target-id="' + boxId + '"]')?.classList.add('show')
     this.overlayContainer.classList.add('active')
     this.bindBackgroundClickEvent()
   }
 
-  protected onBackgroundClick(e: PointerEvent) {
-    // @ts-ignore
+  protected onBackgroundClick(e: PointerEvent): void {
+    // @ts-expect-error
     const isClickInsideContent = e.composedPath().includes(this.overlayContainer.querySelector('.organigram__detail.show'))
     if (!isClickInsideContent) {
       this.close()

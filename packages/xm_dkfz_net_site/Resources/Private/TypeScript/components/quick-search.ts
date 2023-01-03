@@ -6,11 +6,11 @@ interface AutocomleterItem {
 }
 
 class QuickSearch {
-  quickSearchOpenState: boolean
-  quickSearchEl: HTMLElement
-  quickSearchInputEl: HTMLInputElement
-  quickSearchButtonToggleEl: HTMLButtonElement
-  quickSearchFormEl: HTMLFormElement
+  public quickSearchOpenState: boolean
+  public quickSearchEl: HTMLElement
+  public quickSearchInputEl: HTMLInputElement
+  public quickSearchButtonToggleEl: HTMLButtonElement
+  public quickSearchFormEl: HTMLFormElement
 
   constructor() {
     if (!this.cacheDom()) {
@@ -49,8 +49,9 @@ class QuickSearch {
       if (this.quickSearchInputEl && this.quickSearchInputEl.value.length === 1) {
         const fillAutoCompleterList = async (): Promise<AutocomleterItem[] | any> => {
           let items: AutocomleterItem[]
-          if (this.quickSearchInputEl) {
-            items = await this.fetchAutocompleteItems(this.quickSearchInputEl)
+          const url = this.quickSearchInputEl?.closest('form')?.dataset.url
+          if (url) {
+            items = await this.fetchAutocompleteItems(this.quickSearchInputEl, url)
           } else {
             return
           }
@@ -73,8 +74,8 @@ class QuickSearch {
     })
   }
 
-  protected async fetchAutocompleteItems(searchInput: HTMLInputElement): Promise<AutocomleterItem[] | any> {
-    const autoCompleteListUrl = `${searchInput.closest('form')?.dataset.url}&wordStartsWith=${searchInput.value}`
+  protected async fetchAutocompleteItems(searchInput: HTMLInputElement, url: string): Promise<AutocomleterItem[] | any> {
+    const autoCompleteListUrl = `${url}&wordStartsWith=${searchInput.value}`
     return await fetch(autoCompleteListUrl)
       .then(async response => await response.json())
       .then((autoCompleteList: any[]) => {
@@ -137,7 +138,9 @@ class QuickSearch {
       }
     })
 
-    document.addEventListener('mousedown', event => this.clickOutsideQuickSearch(event))
+    document.addEventListener('mousedown', event => {
+      this.clickOutsideQuickSearch(event)
+    })
   }
 
   protected clickOutsideQuickSearch(event: MouseEvent): void {
