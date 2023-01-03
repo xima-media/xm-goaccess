@@ -16,8 +16,6 @@
     grid-row: 1/2;
     margin-bottom: 1rem;
     color: var(--color-white);
-    font-size: 14px;
-    letter-spacing: .6px;
     margin-left: 0.5rem;
 
     &__content {
@@ -30,6 +28,9 @@
     }
 
     &__text {
+        font-size: 14px;
+        letter-spacing: .6px;
+        line-height: 20px;
         margin: 0;
         margin-left: .5rem;
     }
