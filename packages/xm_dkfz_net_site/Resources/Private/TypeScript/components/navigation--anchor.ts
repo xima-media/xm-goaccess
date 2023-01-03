@@ -98,11 +98,11 @@ class NavigationAnchor {
 
   protected bindNavigationButtonEvents(): void {
     const isOverflown = ({
-                           clientWidth,
-                           clientHeight,
-                           scrollWidth,
-                           scrollHeight
-                         }: {
+      clientWidth,
+      clientHeight,
+      scrollWidth,
+      scrollHeight
+    }: {
       clientWidth: number
       clientHeight: number
       scrollWidth: number
