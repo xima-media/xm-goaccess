@@ -6,3 +6,5 @@ storage_identifier_for_imported_groups =
 default_fe_user_group =
 # cat=basic/enable; type=string; label=Identifier of be_group for every imported be_user
 default_be_user_group =
+# cat=basic/enable; type=string; label=PID for the creation of short news sys_folder
+pid_for_short_news_creation=
