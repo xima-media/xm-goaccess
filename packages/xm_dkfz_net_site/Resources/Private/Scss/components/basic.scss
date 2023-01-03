@@ -36,11 +36,11 @@ body {
 }
 
 main {
-    padding-top: 3rem;
+    padding-top: 2rem;
 
     @include media-breakpoint-up(md) {
         min-height: calc(100vh - 19rem);
-        padding-top: 3rem;
+        padding-top: 2rem;
     }
 }
 
