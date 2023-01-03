@@ -29,20 +29,27 @@ class ImportDbMountPointsCommand extends Command
         $this->setHelp('Creates defined mount points (e.g. sys_folder) for backend groups');
     }
 
+    /**
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
 
-        $io->writeln('Reading backend groups from database');
+        $io->writeln('Create missing short news page records..');
+        $createdFolders = $this->createShortNewsMountPoints();
+        $io->newLine(1);
+        $message = $createdFolders ? ['Created <success>' . $createdFolders . '</success> records'] : ['No records to add'];
+        $io->listing($message);
 
-        $this->createShortNewsMountPoints();
-
+        $io->success('Done');
         return Command::SUCCESS;
     }
 
     /**
      * @throws Exception
+     * @throws \Doctrine\DBAL\Driver\Exception
      */
     protected function createShortNewsMountPoints(): int
     {
@@ -76,6 +83,9 @@ class ImportDbMountPointsCommand extends Command
         return count($groups);
     }
 
+    /**
+     * @throws Exception
+     */
     protected function getShortNewsStorageUid(): int
     {
         $shortNewsStorageUid = $this->phoneBookUtility->getDkfzExtensionSetting('pid_for_short_news_creation');

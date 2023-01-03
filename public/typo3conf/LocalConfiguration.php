@@ -191,7 +191,7 @@ return [
             'default_fe_user_group' => '1',
             'phone_book_api_url' => '../var/phonebook/db.json',
             'storage_identifier_for_imported_groups' => '1:Gruppen',
-            'pid_for_short_news_creation' => '424',
+            'pid_for_short_news_creation' => '479',
         ],
         'xm_goaccess' => [
             'html_path' => '../var/goaccess/goaccess.html',
