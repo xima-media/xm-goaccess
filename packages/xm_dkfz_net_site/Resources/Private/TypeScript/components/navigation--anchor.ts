@@ -72,10 +72,12 @@ class NavigationAnchor {
         // Check if the section is intersecting
         if (entries[0].isIntersecting) {
           if (navLink) {
+            navLink.parentElement?.classList.add('active')
             navLink.classList.add('active')
           }
         } else {
           if (navLink) {
+            navLink.parentElement?.classList.remove('active')
             navLink.classList.remove('active')
           }
         }
