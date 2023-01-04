@@ -34,7 +34,7 @@
         max-width: 30rem;
     }
 
-    p:last-child {
+    p:not(.copyright__text):last-child {
         margin-bottom: 1rem;
     }
 }
