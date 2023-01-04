@@ -117,11 +117,13 @@ class QuickSearch {
     // toggle: quick search
     this.quickSearchButtonToggleEl.addEventListener('click', () => {
       this.quickSearchButtonToggleEl?.closest('.search-box')?.classList.add('search-box--active')
+      this.quickSearchButtonToggleEl?.closest('.navigation__items')?.classList.add('search-box--active')
       this.quickSearchInputEl.focus()
 
       if (
         this.quickSearchInputEl.value.length !== 0 &&
-        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')
+        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active') &&
+        this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.contains('search-box--active')
       ) {
         setTimeout(() => {
           this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
@@ -132,7 +134,8 @@ class QuickSearch {
     this.quickSearchInputEl.addEventListener('input', () => {
       if (
         this.quickSearchInputEl.value.length !== 0 &&
-        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')
+        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active') &&
+        this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.contains('search-box--active')
       ) {
         this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
       }
@@ -151,6 +154,7 @@ class QuickSearch {
       this.quickSearchButtonToggleEl.setAttribute('type', 'button')
       if (this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')) {
         this.quickSearchButtonToggleEl.closest('.search-box')?.classList.remove('search-box--active')
+        this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.remove('search-box--active')
       }
     }
   }

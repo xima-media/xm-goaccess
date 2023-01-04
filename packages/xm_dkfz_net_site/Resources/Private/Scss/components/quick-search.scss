@@ -37,7 +37,7 @@
         &:focus {
             width: 300px;
             border-radius: 0;
-            background-color: var(--color-primary);
+            background-color: transparent;
             border-bottom:1px solid rgba(255,255,255,.5);
             transition: all 500ms ease-in-out;
             padding: 10px 40px 10px 10px;
@@ -64,7 +64,7 @@
             ~ .field__input {
                 width: 300px;
                 border-radius: 0;
-                background-color: var(--color-primary);
+                background-color: transparent;
                 border-bottom:1px solid rgba(255,255,255,.5);
                 transition: all 500ms ease-in-out;
                 padding: 10px 40px 10px 10px;
