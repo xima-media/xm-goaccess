@@ -9,8 +9,8 @@ class QuickSearch {
   public quickSearchOpenState: boolean
   public quickSearchEl: HTMLElement
   public quickSearchInputEl: HTMLInputElement
-  public quickSearchButtonToggleEl: HTMLButtonElement
-  public quickSearchFormEl: HTMLFormElement
+  public quickSearchButtonToggleEl: HTMLButtonElement | null
+  public quickSearchFormEl: HTMLFormElement | null
 
   constructor() {
     if (!this.cacheDom()) {
@@ -27,7 +27,7 @@ class QuickSearch {
     const quickSearchButtonToggleEl = document.querySelector<HTMLButtonElement>('.quick-search__wrapper .quick-search__button--toggle')
     const quickSearchFormEl = document.querySelector<HTMLFormElement>('#form_kesearch_pi3')
 
-    if (!quickSearchEl || !quickSearchInputEl || !quickSearchButtonToggleEl || !quickSearchFormEl) {
+    if (!quickSearchEl || !quickSearchInputEl) {
       return false
     }
 
@@ -40,6 +40,7 @@ class QuickSearch {
   }
 
   protected initAutoCompleter(): void {
+    console.log('here')
     if (!this.quickSearchInputEl || !this.quickSearchEl) {
       return
     }
@@ -110,7 +111,7 @@ class QuickSearch {
   }
 
   protected bindQuickSearchButtonEvents(): void {
-    if (!this.quickSearchButtonToggleEl && !this.quickSearchInputEl) {
+    if (!this.quickSearchButtonToggleEl) {
       return
     }
 
@@ -122,11 +123,12 @@ class QuickSearch {
 
       if (
         this.quickSearchInputEl.value.length !== 0 &&
+        this.quickSearchButtonToggleEl &&
         this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active') &&
         this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.contains('search-box--active')
       ) {
         setTimeout(() => {
-          this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
+          this.quickSearchButtonToggleEl?.setAttribute('type', 'submit')
         }, 500)
       }
     })
@@ -134,6 +136,7 @@ class QuickSearch {
     this.quickSearchInputEl.addEventListener('input', () => {
       if (
         this.quickSearchInputEl.value.length !== 0 &&
+        this.quickSearchButtonToggleEl &&
         this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active') &&
         this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.contains('search-box--active')
       ) {
@@ -149,6 +152,10 @@ class QuickSearch {
   protected clickOutsideQuickSearch(event: MouseEvent): void {
     const targetEl = event.target as HTMLElement
     const targetParentEl = targetEl.closest('.quick-search')
+
+    if (!this.quickSearchButtonToggleEl) {
+      return
+    }
 
     if (targetParentEl === null && !targetEl.classList.contains('autocomplete-suggestion')) {
       this.quickSearchButtonToggleEl.setAttribute('type', 'button')
