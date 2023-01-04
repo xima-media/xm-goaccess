@@ -26,7 +26,7 @@
             color: var(--color-gray-900);
             border: none;
             transition: none;
-            
+
             @include text-copy-small(900);
 
             @include media-breakpoint-up(lg) {
@@ -154,6 +154,18 @@
                 transform: scale(0.9);
                 box-shadow: 0 0 0 0.3rem rgba(#000, 0.1);
             }
+        }
+    }
+}
+
+.frame-type-uploads {
+    .tab-item__title {
+        margin-top: auto;
+        margin-bottom: auto;
+
+        .icon {
+            align-self: flex-start;
+            margin-top: 3px;
         }
     }
 }
