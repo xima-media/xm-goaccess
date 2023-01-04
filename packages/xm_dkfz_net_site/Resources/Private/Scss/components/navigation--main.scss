@@ -1,13 +1,3 @@
-//
-//    @tableOfContent
-//      1. Main navigation
-//
-
-
-//
-//   @section 1. Main navigation
-//
-
 .navigation--main {
     position: relative;
     max-width: $container-default-widths;
@@ -39,11 +29,6 @@
     }
 
     .navigation {
-        //&__button {
-        //    @include media-breakpoint-up(xl) {
-        //        display: none;
-        //    }
-        //}
 
         &__items {
             @include list-reset;
@@ -128,11 +113,16 @@
                 }
 
                 @include media-breakpoint-up(lg) {
+                    display: grid;
+
                     &:hover,
                     &:focus-within {
                         .navigation__items {
                             &.fx--second {
-                                display: flex;
+                                display: grid;
+                                margin-top: 4rem;
+                                max-width: 75vw;
+                                grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
                             }
                         }
                     }
@@ -150,7 +140,7 @@
             gap: .5rem;
             align-items: center;
             font-weight: 200;
-            white-space: nowrap;
+            // white-space: nowrap;
             text-decoration: none;
 
             &.fx--first {
@@ -211,7 +201,9 @@
             }
 
             &.fx--third {
-                min-width: 200px;
+                // min-width: 200px;
+                font-size: 16px;
+                line-height: 24px;
             }
 
             &.fx--second,
