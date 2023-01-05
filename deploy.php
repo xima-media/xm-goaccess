@@ -6,6 +6,8 @@ require_once(__DIR__ . '/vendor/xima/xima-deployer-extended-typo3/autoload.php')
 
 set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
 
+set('composer_channel', '2');
+
 function defineTestHost($branchName, $stage)
 {
     host('dev-t3-debian11-01-' . strtolower($branchName))
