@@ -189,7 +189,7 @@ deploy-xima-staging:
     on_stop: teardown-environment
   stage: deploy
   extends: .deploy-prepare
-  needs: [ "build-php", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
   only:
     refs:
       - "master"
