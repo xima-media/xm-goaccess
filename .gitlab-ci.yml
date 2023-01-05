@@ -142,7 +142,7 @@ reset:xima-staging:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01-${CI_COMMIT_BRANCH,,} --no-interaction
 
 variables:
-  BASE_BRANCH: "DKFZ-532"
+  BASE_BRANCH: "master"
 
 .provision-variables:
   variables:
