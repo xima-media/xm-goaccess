@@ -20,19 +20,10 @@ create table tt_content (
 );
 
 create table tt_content_item (
-	uid              int(11) not null auto_increment,
-	pid              int(11) default '0' not null,
-	deleted          tinyint(4) unsigned default '0' not null,
-	hidden           tinyint(4) unsigned default '0' not null,
 	foreign_uid      int(11) default '0' not null,
 	foreign_table    varchar(255) default '' not null,
 	record_type      varchar(255) default '' not null,
 	sorting          int(11) unsigned default '0' not null,
-	tstamp           int(11) unsigned default '0' not null,
-	crdate           int(11) unsigned default '0' not null,
-	cruser_id        int(11) unsigned default '0' not null,
-	sys_language_uid int(11) default 0 not null,
-	l10n_parent      int(11) unsigned default '0' not null,
 
 	title            varchar(255) default '' not null,
 	link             varchar(255) default '' not null,
