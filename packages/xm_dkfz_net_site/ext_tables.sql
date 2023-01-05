@@ -20,6 +20,11 @@ create table tt_content (
 );
 
 create table tt_content_item (
+	foreign_uid      int(11) default '0' not null,
+	foreign_table    varchar(255) default '' not null,
+	record_type      varchar(255) default '' not null,
+	sorting          int(11) unsigned default '0' not null,
+
 	title            varchar(255) default '' not null,
 	link             varchar(255) default '' not null,
 	link_title       varchar(255) default '' not null,
