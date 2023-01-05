@@ -80,11 +80,7 @@ deploy-dkfz-staging:
       when: never
     - if: $CI_COMMIT_BRANCH == "master" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - vendor/bin/dep deploy-fast staging-dkfz --log=deployer.log -vvv
-  artifacts:
-    paths:
-      - deployer.log
-    expire_in: 1 day
+    - vendor/bin/dep deploy-fast staging-dkfz -vvv
 
 deploy-dkfz-production:
   extends: .deploy-prepare
