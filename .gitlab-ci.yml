@@ -122,8 +122,8 @@ backup-production-dkfz:
   script:
     - vendor/bin/dep db:export production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep db:download production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction
-    - vendor/bin/dep db:process --options=dumpcode:BackupProductionDkfz --no-interaction
-    - vendor/bin/dep db:compress --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:process local --options=dumpcode:BackupProductionDkfz --no-interaction
+    - vendor/bin/dep db:compress local --options=dumpcode:BackupProductionDkfz --no-interaction
     - vendor/bin/dep media:pull production-dkfz --no-interaction
   artifacts:
     paths:
