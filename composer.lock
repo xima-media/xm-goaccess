@@ -250,7 +250,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -7942,7 +7942,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10355,12 +10355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "9461cb92f01e6fe281cb2865a310c5957d7f6e01"
+                "reference": "92bb8fc000b1993c1f8ec72d112e6a97491d9ca4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/9461cb92f01e6fe281cb2865a310c5957d7f6e01",
-                "reference": "9461cb92f01e6fe281cb2865a310c5957d7f6e01",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/92bb8fc000b1993c1f8ec72d112e6a97491d9ca4",
+                "reference": "92bb8fc000b1993c1f8ec72d112e6a97491d9ca4",
                 "shasum": ""
             },
             "require": {
@@ -10385,11 +10385,11 @@
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
                 "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/main"
             },
-            "time": "2023-01-05T12:06:41+00:00"
+            "time": "2023-01-05T17:12:37+00:00"
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -10424,7 +10424,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -10458,7 +10458,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -10545,7 +10545,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -10580,7 +10580,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-DKFZ-534",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
@@ -14285,16 +14285,16 @@
         },
         {
             "name": "symplify/vendor-patches",
-            "version": "11.1.30.72",
+            "version": "11.1.31.72",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/vendor-patches.git",
-                "reference": "e60044a8ec684731bd4dc4fafee9c9eaef27b2ff"
+                "reference": "e8bcc1b86755f0d3e3e8de70388a3700a20622b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/e60044a8ec684731bd4dc4fafee9c9eaef27b2ff",
-                "reference": "e60044a8ec684731bd4dc4fafee9c9eaef27b2ff",
+                "url": "https://api.github.com/repos/symplify/vendor-patches/zipball/e8bcc1b86755f0d3e3e8de70388a3700a20622b8",
+                "reference": "e8bcc1b86755f0d3e3e8de70388a3700a20622b8",
                 "shasum": ""
             },
             "require": {
@@ -14317,7 +14317,7 @@
             "description": "Generate vendor patches for packages with single command",
             "support": {
                 "issues": "https://github.com/symplify/vendor-patches/issues",
-                "source": "https://github.com/symplify/vendor-patches/tree/11.1.30.72"
+                "source": "https://github.com/symplify/vendor-patches/tree/11.1.31.72"
             },
             "funding": [
                 {
@@ -14329,7 +14329,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-03T00:07:17+00:00"
+            "time": "2023-01-05T15:27:37+00:00"
         },
         {
             "name": "theseer/tokenizer",
