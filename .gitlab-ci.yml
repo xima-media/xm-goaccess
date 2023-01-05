@@ -178,6 +178,9 @@ teardown-environment:
     name: $CI_COMMIT_BRANCH
     action: stop
   when: manual
+  only:
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
     - 'curl --request POST --form token=$CI_JOB_TOKEN --form ref=dev --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_environment]="$project_environment" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
 
