@@ -184,7 +184,7 @@ return [
             'api_url_override' => '',
         ],
         'xm_dkfz_net_jobs' => [
-            'api_url' => 'https://jobs.dkfz.de/jobPublication/list.json?language=de',
+            'api_url' => 'https://jobs.dkfz.de/portal/intranet/jobPublication/list.json',
         ],
         'xm_dkfz_net_site' => [
             'default_be_user_group' => '1',
