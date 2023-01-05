@@ -34,7 +34,7 @@ host('staging-dkfz')
     ->set('bin/php', '/usr/bin/php8.1')
     ->set('repository', 'git@git.dkfz.de:dkfz/dkfz-t3-intranet.git')
     ->set('public_urls', ['https://intranetstage.dkfz.de'])
-    ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de')
+    ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de');
 
 host('production-dkfz')
     ->setHostname('intracmsprod')
