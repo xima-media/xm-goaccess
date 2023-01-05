@@ -664,6 +664,9 @@
 			<trans-unit id="login.button" space="preserve">
 				<source>Login</source>
 			</trans-unit>
+			<trans-unit id="homepage.usersearch" space="preserve">
+				<source>Staff search</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

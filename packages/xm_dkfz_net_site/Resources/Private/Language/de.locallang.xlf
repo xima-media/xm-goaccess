@@ -650,6 +650,9 @@
 			<trans-unit id="login.button" space="preserve">
 				<target>Anmelden</target>
 			</trans-unit>
+			<trans-unit id="homepage.usersearch" space="preserve">
+				<target>Mitarbeiter:innen suchen</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
