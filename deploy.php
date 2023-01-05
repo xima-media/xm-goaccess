@@ -55,8 +55,6 @@ host('production-dkfz')
     ->set('fetch_method', 'curl')
     ->set('media_rsync_flags', '-rz --perms');
 
-
-
 // Upload of dist files
 after('deploy:update_code', 'deploy:upload-dist');
 task('deploy:upload-dist', function () {
