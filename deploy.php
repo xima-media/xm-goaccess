@@ -2,20 +2,14 @@
 
 namespace Deployer;
 
-require_once(__DIR__ . '/vendor/blueways/deployer-recipes/autoload.php');
+require_once(__DIR__ . '/vendor/xima/xima-deployer-extended-typo3/autoload.php');
 
 set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
-//set('teams_webhook', 'https://ximamediagmbh.webhook.office.com/webhookb2/a14869ed-d90e-419d-849e-b185ac6e5636@890938ce-3232-42b7-981d-9a7cbe37a475/IncomingWebhook/49bc7a84cd024f79b74984417341520c/f0210cd8-c97d-4d14-b199-28af55f9215e');
-
-host('local')
-    ->hostname('local')
-    ->set('deploy_path', getcwd())
-    ->set('public_urls', ['https://xm-dkfz-net.ddev.site']);
 
 host('staging-dkfz')
-    ->hostname('intracmsstage')
-    ->stage('staging-dkfz')
-    ->user('xima')
+    ->setHostname('intracmsstage')
+    ->set('labels', ['stage' => 'staging-dkfz'])
+    ->setRemoteUser('xima')
     ->set('branch', 'master')
     ->set('repository', 'git@git.dkfz.de:dkfz/dkfz-t3-intranet.git')
     ->set('public_urls', ['https://intranetstage.dkfz.de'])
@@ -27,9 +21,9 @@ host('staging-dkfz')
     ->set('fetch_method', 'curl');
 
 host('production-dkfz')
-    ->hostname('intracmsprod')
-    ->stage('production-dkfz')
-    ->user('xima')
+    ->setHostname('intracmsprod')
+    ->set('labels', ['stage' => 'production-dkfz'])
+    ->setRemoteUser('xima')
     ->set('branch', 'master')
     ->set('repository', 'git@git.dkfz.de:dkfz/dkfz-t3-intranet.git')
     ->set('public_urls', ['https://intranet2.dkfz.de'])
@@ -41,30 +35,26 @@ host('production-dkfz')
     ->set('fetch_method', 'curl')
     ->set('media_rsync_flags', '-rz --perms');
 
-host('feature')
-    ->hostname('192.168.2.41')
-    ->stage('feature')
-    ->user('xima')
-    ->set('db_source_host', 'staging')
-    ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod')
-    ->set('writable_chmod_mode', '2770')
-    ->set('writable_chmod_recursive', false)
-    ->set('public_urls', ['https://fbd.dkfz-typo3-dev.xima.local'])
-    ->set('deploy_path', '/var/www/html/fbd.dkfz-typo3-dev.xima.local');
+function defineTestHost($branchName, $stage)
+{
+    host('dev-t3-debian11-01-' . strtolower($branchName))
+        ->setHostname('192.168.97.133')
+        ->setRemoteUser('xima')
+        ->set('labels', ['stage' => $stage])
+        ->set('branch', $branchName)
+        ->set('bin/php', '/usr/bin/php8.1')
+        ->set('public_urls', ['https://' . strtolower($branchName) . '.dev.dkfz-intranet-typo3.xima.dev'])
+        ->set('deploy_path', '/var/www/html/dkfz-intranet-typo3_dev_' . strtolower($branchName));
+}
 
-host('dev-t3-debian11-01')
-    ->hostname('192.168.97.133')
-    ->stage('dev')
-    ->user('xima')
-    ->set('branch', 'master')
-    ->set('public_urls', ['https://dev.dkfz-intranet-typo3.xima.dev'])
-    ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod')
-    ->set('writable_chmod_recursive', false)
-    ->set('writable_chmod_mode', '2770')
-    ->set('bin/php', '/usr/bin/php8.1')
-    ->set('deploy_path', '/var/www/html/dkfz-intranet-typo3_dev');
+for ($i = 0; $i <= 999; $i++) {
+    $ticketNr = str_pad($i, 3, '0', STR_PAD_LEFT);
+    $branchName = 'DKFZ-' . $ticketNr;
+
+    defineTestHost($branchName, 'feature');
+}
+
+defineTestHost('master', 'staging');
 
 // Upload of dist files
 after('deploy:update_code', 'deploy:upload-dist');

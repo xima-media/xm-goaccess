@@ -71,22 +71,6 @@ test-php-stan:
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
 
-deploy-dev-t3-debian11-01:
-  extends: .deploy-prepare
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
-  stage: deploy
-  environment:
-    name: $CI_COMMIT_BRANCH
-    url: https://dev.$CI_PROJECT_NAME.xima.dev
-  only:
-    refs:
-      - "master"
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-  script:
-    - vendor/bin/dep deploy:unlock dev-t3-debian11-01
-    - vendor/bin/dep deploy dev-t3-debian11-01 -vvv
-
 deploy-dkfz-staging:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node" ]
@@ -147,7 +131,7 @@ backup-production-dkfz:
       - public/uploads
     expire_in: 1 day
 
-reset:dev-t3-debian11-01:
+reset:xima-staging:
   extends: .deploy-prepare
   stage: sync
   only:
@@ -155,35 +139,63 @@ reset:dev-t3-debian11-01:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   when: manual
   script:
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01 --no-interaction
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01-${CI_COMMIT_BRANCH,,} --no-interaction
 
-provision-environment:
-  stage: provision
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
+variables:
+  BASE_BRANCH: "DKFZ-532"
+
+.provision-variables:
   variables:
     project_webserver: "t3-debian11-01"
     project_database: "t3-mariadb10-5-01"
     project_name: $CI_PROJECT_NAME
     project_environment: "dev"
-    project_branch: "master"
+    project_branch: $CI_COMMIT_BRANCH
+    project_base_branch: $BASE_BRANCH
     project_aliases: "handbuch"
     project_php_version: "8.1"
-    project_feature_branch_deployment: "false"
     project_goaccess: "true"
     project_mailhog: "true"
     project_scheduler_frequency_minutes: "15"
+
+provision-environment:
+  extends: .provision-variables
   trigger:
     project: systemadministration/sys-t3-ansible-management
+    branch: dev
     strategy: depend
+  stage: provision
+  only:
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
+    refs:
+      - "master"
+      - "/^DKFZ-.*$/"
 
-#deploy-feature:
-#  extends: .deploy-prepare
-#  only:
-#    refs:
-#      - "/^DKFZ-.*$/"
-#    variables:
-#      - $GITLAB_LOCATION == "XIMA-INTERN"
-#  script:
-#    - vendor/bin/dep deploy-fast feature -o branch=$CI_COMMIT_BRANCH
+teardown-environment:
+  extends: .provision-variables
+  stage: provision
+  environment:
+    name: $CI_COMMIT_BRANCH
+    action: stop
+  when: manual
+  script:
+    - 'curl --request POST --form token=$CI_JOB_TOKEN --form ref=dev --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_environment]="$project_environment" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
+
+deploy-xima-staging:
+  environment:
+    name: $CI_COMMIT_BRANCH
+    url: https://$CI_COMMIT_BRANCH.dev.$CI_PROJECT_NAME.xima.dev
+    on_stop: teardown-environment
+  stage: deploy
+  extends: .deploy-prepare
+  needs: [ "build-php", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
+  only:
+    refs:
+      - "master"
+      - "/^DKFZ-.*$/"
+    variables:
+      - $GITLAB_LOCATION == "XIMA-INTERN"
+  script:
+    - vendor/bin/dep deploy:unlock dev-t3-debian11-01-${CI_COMMIT_BRANCH,,}
+    - vendor/bin/dep deploy-fast dev-t3-debian11-01-${CI_COMMIT_BRANCH,,} --options=base_branch:$BASE_BRANCH -vvv
