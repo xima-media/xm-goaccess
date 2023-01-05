@@ -28,17 +28,13 @@ defineTestHost('master', 'staging');
 
 host('staging-dkfz')
     ->setHostname('intracmsstage')
-    ->set('labels', ['stage' => 'staging-dkfz'])
     ->setRemoteUser('xima')
+    ->set('labels', ['stage' => 'staging-dkfz'])
     ->set('branch', 'master')
+    ->set('bin/php', '/usr/bin/php8.1')
     ->set('repository', 'git@git.dkfz.de:dkfz/dkfz-t3-intranet.git')
     ->set('public_urls', ['https://intranetstage.dkfz.de'])
-    ->set('http_user', 'www-data')
-    ->set('writable_mode', 'chmod')
-    ->set('writable_chmod_recursive', false)
-    ->set('writable_chmod_mode', '2770')
     ->set('deploy_path', '/var/www/html/intracmsstage.dkfz-heidelberg.de')
-    ->set('fetch_method', 'curl');
 
 host('production-dkfz')
     ->setHostname('intracmsprod')
