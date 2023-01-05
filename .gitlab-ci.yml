@@ -61,6 +61,7 @@ test-php-stan:
   stage: deploy
   needs: [ "build-php" ]
   before_script:
+    - export no_proxy=localhost && export noproxy=localhost
     - apk add --update --quiet rsync gzip
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
