@@ -16,6 +16,10 @@ ul.users {
     }
 
     picture {
+        overflow: hidden;
+    }
+
+    figure {
         margin-top: -6rem;
         margin-bottom: 1.5rem;
     }
@@ -40,7 +44,8 @@ ul.users {
         flex-direction: column;
     }
 
-    path {
+    path,
+    img {
         transition: transform 0.3s ease;
         transform-origin: 50% 50%;
     }
@@ -48,8 +53,8 @@ ul.users {
     a:hover {
         text-decoration: none;
 
-
-        path {
+        path,
+        img {
             transform: scale(1.1);
         }
 

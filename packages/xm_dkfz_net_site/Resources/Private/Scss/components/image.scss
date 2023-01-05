@@ -44,7 +44,7 @@
     }
 }
 
-picture.userimage {
+figure.userimage {
     display: grid;
     position: relative;
     --color-primary: #2662c3;
@@ -56,7 +56,7 @@ picture.userimage {
         --pattern-size: 10px;
     }
 
-    img, svg {
+    picture, svg {
         z-index: 1;
         grid-column: 2 / 3;
         grid-row: 1 / 2;

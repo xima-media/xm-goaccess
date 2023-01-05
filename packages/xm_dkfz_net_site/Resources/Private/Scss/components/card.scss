@@ -347,6 +347,30 @@
     }
 }
 
+.card--employee {
+
+    picture {
+        overflow: hidden;
+    }
+
+    .userimage {
+        path,
+        img {
+            transition: transform 0.3s ease;
+            transform-origin: 50% 50%;
+        }
+    }
+
+    &:hover {
+        .userimage {
+            path,
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
 
 .card--employee-contact {
     margin-top: 3rem;
