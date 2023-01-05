@@ -20,7 +20,7 @@ class NavigationAnchor {
     const nav = document.querySelector<HTMLElement>('.navigation--anchor')
     const navItems = document.querySelector<HTMLElement>('.navigation--anchor .navigation__items')
     const navLinks = document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__link')
-    const navButtons = document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__items .navigation__button')
+    const navButtons = document.querySelectorAll<HTMLElement>('.navigation--anchor .navigation__button')
     const sections = document.querySelectorAll<HTMLElement>('.content-wrapper')
 
     if (!nav || !navItems || !navLinks || !navButtons || !sections) {
@@ -37,17 +37,17 @@ class NavigationAnchor {
   }
 
   protected events(): void {
-    const currStickyPos = this.nav.getBoundingClientRect().top + window.scrollY
+    const currentStickyPos = this.nav.getBoundingClientRect().top + window.scrollY
     document.addEventListener('scroll', () => {
-      this.fixAnchorNavigationOnScroll(currStickyPos)
+      this.fixAnchorNavigationOnScroll(currentStickyPos)
     })
   }
 
   protected bindNavigationLinksEvents(): void {
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', (e: { preventDefault: () => void }) => {
+    for (const link of this.navLinks) {
+      link.addEventListener('click', (event: { preventDefault: () => void }) => {
         // Prevent the default link behavior
-        e.preventDefault()
+        event.preventDefault()
 
         // Get the href of the clicked link
         const sectionId = link.getAttribute('href')
@@ -60,12 +60,12 @@ class NavigationAnchor {
           element?.scrollIntoView({ behavior: 'smooth' })
         }
       })
-    })
+    }
   }
 
   protected registerSectionsIntersectionObserver(): void {
     // Create an intersection observer for each section
-    this.sections.forEach((section: HTMLElement) => {
+    for (const section of this.sections) {
       const observer = new IntersectionObserver(entries => {
         const id = section.getAttribute('id') as string
         const navLink = document.querySelector<HTMLLinkElement>(`.navigation--anchor a[href="#${id}"]`)
@@ -85,7 +85,7 @@ class NavigationAnchor {
 
       // Observe the section
       observer.observe(section)
-    })
+    }
   }
 
   protected bindNavigationButtonEvents(): void {
@@ -104,7 +104,7 @@ class NavigationAnchor {
     }
 
     if (isOverflown(this.navItems)) {
-      this.navButtons.forEach(button => {
+      for (const button of this.navButtons) {
         button.classList.add('active')
 
         if (button.classList.contains('left')) {
@@ -116,7 +116,7 @@ class NavigationAnchor {
             this.sideScroll(this.navItems, button.dataset.direction, 25, 200, 150)
           }
         })
-      })
+      }
 
       this.navItems.addEventListener('scroll', () => {
         this.toggleNavigationScrollButtons(this.navItems)
@@ -163,16 +163,16 @@ class NavigationAnchor {
     }, 300)
   }
 
-  protected fixAnchorNavigationOnScroll(currStickyPos: number): void {
+  protected fixAnchorNavigationOnScroll(currentStickyPos: number): void {
     let thresholdNavigationBar = 124
 
     if (window.innerWidth <= 1800) {
       thresholdNavigationBar = 68
     }
 
-    currStickyPos = currStickyPos - thresholdNavigationBar
+    currentStickyPos = currentStickyPos - thresholdNavigationBar
 
-    if (window.scrollY > currStickyPos) {
+    if (window.scrollY > currentStickyPos) {
       this.nav.classList.add('navigation--anchor--fixed')
     } else {
       this.nav.classList.remove('navigation--anchor--fixed')

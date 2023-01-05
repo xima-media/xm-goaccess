@@ -18,7 +18,7 @@
         top: 124px;
 
         @media screen and (max-width: 1800px ) {
-            top: 68px;
+            top: 60px;
             width: 100vw;
         }
     }
@@ -118,6 +118,7 @@
                 position: relative;
                 padding: 0 0 1.875rem 2rem;
                 margin-top: -0.25rem;
+                max-width: 30rem;
 
                 &::before {
                     content: '';
