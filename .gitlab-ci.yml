@@ -163,7 +163,7 @@ provision-environment:
   extends: .provision-variables
   trigger:
     project: systemadministration/sys-t3-ansible-management
-    branch: dev
+    branch: major-1.x.x
     strategy: depend
   stage: provision
   only:
@@ -184,7 +184,7 @@ teardown-environment:
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
-    - 'curl --request POST --form token=$CI_JOB_TOKEN --form ref=dev --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_environment]="$project_environment" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
+    - 'curl --request POST --form token=$CI_JOB_TOKEN --form ref=major-1.x.x --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_environment]="$project_environment" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
 
 deploy-xima-staging:
   environment:
