@@ -24,6 +24,8 @@ return [
             'user-contact' => 'content-user',
             'related-page' => 'content-menu-sitemap-pages',
         ],
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l18n_parent',
     ],
     'types' => [
         0 => [
