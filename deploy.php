@@ -6,6 +6,26 @@ require_once(__DIR__ . '/vendor/xima/xima-deployer-extended-typo3/autoload.php')
 
 set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
 
+function defineTestHost($branchName, $stage)
+{
+    host('dev-t3-debian11-01-' . strtolower($branchName))
+        ->setHostname('192.168.97.133')
+        ->setRemoteUser('xima')
+        ->set('labels', ['stage' => $stage])
+        ->set('branch', $branchName)
+        ->set('bin/php', '/usr/bin/php8.1')
+        ->set('public_urls', ['https://' . strtolower($branchName) . '.dev.dkfz-intranet-typo3.xima.dev'])
+        ->set('deploy_path', '/var/www/html/dkfz-intranet-typo3_dev_' . strtolower($branchName));
+}
+
+for ($i = 1; $i <= 999; $i++) {
+    $ticketNr = str_pad($i, 3, '0', STR_PAD_LEFT);
+    $branchName = 'DKFZ-' . $ticketNr;
+    defineTestHost($branchName, 'feature');
+}
+
+defineTestHost('master', 'staging');
+
 host('staging-dkfz')
     ->setHostname('intracmsstage')
     ->set('labels', ['stage' => 'staging-dkfz'])
@@ -35,26 +55,7 @@ host('production-dkfz')
     ->set('fetch_method', 'curl')
     ->set('media_rsync_flags', '-rz --perms');
 
-function defineTestHost($branchName, $stage)
-{
-    host('dev-t3-debian11-01-' . strtolower($branchName))
-        ->setHostname('192.168.97.133')
-        ->setRemoteUser('xima')
-        ->set('labels', ['stage' => $stage])
-        ->set('branch', $branchName)
-        ->set('bin/php', '/usr/bin/php8.1')
-        ->set('public_urls', ['https://' . strtolower($branchName) . '.dev.dkfz-intranet-typo3.xima.dev'])
-        ->set('deploy_path', '/var/www/html/dkfz-intranet-typo3_dev_' . strtolower($branchName));
-}
 
-for ($i = 0; $i <= 999; $i++) {
-    $ticketNr = str_pad($i, 3, '0', STR_PAD_LEFT);
-    $branchName = 'DKFZ-' . $ticketNr;
-
-    defineTestHost($branchName, 'feature');
-}
-
-defineTestHost('master', 'staging');
 
 // Upload of dist files
 after('deploy:update_code', 'deploy:upload-dist');
@@ -95,11 +96,11 @@ option(
 task('reset:from_production_artifact', function () {
     run('cd {{deploy_path}}/current && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
     if (test('[ -f {{deploy_path}}/current/artifacts.zip ]')) {
-        run('cd {{deploy_path}}/current && vendor/bin/dep db:rmdump --options=dumpcode:BackupProductionDkfz --no-interaction');
+        run('cd {{deploy_path}}/current && vendor/bin/dep db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
         run('cd {{deploy_path}}/current && unzip -o artifacts.zip');
         run('mv -f {{deploy_path}}/current/.dep/database/dumps/* {{deploy_path}}/.dep/database/dumps/');
-        run('cd {{deploy_path}}/current && vendor/bin/dep db:decompress --options=dumpcode:BackupProductionDkfz --no-interaction');
-        run('cd {{deploy_path}}/current && vendor/bin/dep db:import --options=dumpcode:BackupProductionDkfz --no-interaction');
+        run('cd {{deploy_path}}/current && vendor/bin/dep db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+        run('cd {{deploy_path}}/current && vendor/bin/dep db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
     }
 });
 
