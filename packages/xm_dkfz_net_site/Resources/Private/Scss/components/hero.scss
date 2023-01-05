@@ -30,6 +30,7 @@
 
     &--with-image {
         margin: 0 var(--default-overflow-margin-negative);
+        margin-bottom: 5rem;
 
         & + .navigation--anchor {
             margin: 0;
@@ -57,6 +58,16 @@
         margin-top: var(--space-lg);
         text-align: left;
         justify-items: center;
+
+        &__text {
+            &.frame {
+                padding-bottom: 0;
+            }
+
+            .text-intro {
+                margin-bottom: 0;
+            }
+        }
 
         &__no-image {
             @include media-breakpoint-up(sm) {

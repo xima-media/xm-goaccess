@@ -1,13 +1,17 @@
 .page-teaser {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
-    padding-top: calc(1.5 * var(--content-padding));
     padding-bottom: calc(1.25 * var(--content-padding));
+
+    &:not(:first-child) {
+        padding-top: calc(1.5 * var(--content-padding));
+    }
 
     @include media-breakpoint-up(md) {
         gap: 3.75rem;
         flex-direction: row;
-        grid-template-columns: 1fr 1fr;
     }
 
     &:nth-child(2n-1) {
@@ -37,4 +41,8 @@
     p:not(.copyright__text):last-child {
         margin-bottom: 1rem;
     }
+}
+
+.frame-type-page_teaser {
+    --content-width: 1170px;
 }
