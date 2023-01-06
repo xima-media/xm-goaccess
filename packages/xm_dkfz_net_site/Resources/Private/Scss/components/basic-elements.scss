@@ -53,9 +53,11 @@ ul.users {
     a:hover {
         text-decoration: none;
 
-        path,
-        img {
-            transform: scale(1.1);
+        .userimage {
+            path,
+            img {
+                transform: scale(1.1);
+            }
         }
 
         .h6 {
