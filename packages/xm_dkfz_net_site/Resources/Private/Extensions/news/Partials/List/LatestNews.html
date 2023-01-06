@@ -22,7 +22,7 @@
 				<f:for each="{newsItem.falMedia}" as="file" iteration="i">
 					<f:if condition="{i.isFirst}">
 						<f:render partial="Image"
-								  arguments="{image: file, size: 'sm', patternStyle: 'color', noCaption: 1}"/>
+								  arguments="{image: file, patternSize: 'sm', patternStyle: 'color', noCaption: 1}"/>
 					</f:if>
 				</f:for>
 			</div>
