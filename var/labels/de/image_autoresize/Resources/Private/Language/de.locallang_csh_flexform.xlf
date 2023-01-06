@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-18T07:12:12Z" product-name="image_autoresize" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="file_types.description" xml:space="preserve" approved="yes">
+				<source>Comma-separated list of file types to be handled.
+Example: jpg,jpeg,png,tif,tiff
+If empty, the list of file types configured in General tab will be taken into account.</source>
+			<target state="final">Kommaseparierte Liste von Dateitypen welche verarbeitet werden.
+Beispiel: jpg,jpeg,png,tif,tiff
+Wenn nicht gesetzt, wird die Liste an konfigurierten Dateitypen im Blatt 'Allgemein' verwendet.</target></trans-unit>
+    </body>
+  </file>
+</xliff>

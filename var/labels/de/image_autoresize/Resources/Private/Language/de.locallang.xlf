@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-18T07:12:07Z" product-name="image_autoresize" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="saveConfiguration" approved="yes">
+        <source>Save configuration</source>
+        <target state="final">Konfiguration speichern</target>
+      </trans-unit>
+      <trans-unit id="saveCloseConfiguration" approved="yes">
+        <source>Save and close configuration</source>
+        <target state="final">Konfiguration speichern und schließen</target>
+      </trans-unit>
+      <trans-unit id="closeConfiguration" approved="yes">
+        <source>Close configuration</source>
+        <target state="final">Konfiguration schließen</target>
+      </trans-unit>
+      <trans-unit id="message.imageTransparent" approved="yes">
+        <source>Image %s has not been resized because transparency has been detected.</source>
+        <target state="final">Bild %s wurde nicht angepasst, weil Transparenz erkannt wurde.</target>
+      </trans-unit>
+      <trans-unit id="message.imageResized" approved="yes">
+        <source>Image %s has been automatically resized to %sx%s pixels.</source>
+        <target state="final">Bild %s wurde automatisch zu %sx%s pixels verkleinert.</target>
+      </trans-unit>
+      <trans-unit id="message.imageResizedAndRenamed" approved="yes">
+        <source>Image %s has been automatically resized to %sx%s pixels and has been renamed as %s.</source>
+        <target state="final">Bild %s wurde automatisch zu %sx%s verkleinert und als %s umbenannt.</target>
+      </trans-unit>
+      <trans-unit id="message.imageNotWritable" approved="yes">
+        <source>Image %s cannot be resized because file is not writable.</source>
+        <target state="final">Bild %s kann nicht geändert werden, da die Datei schreibgeschützt ist.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
