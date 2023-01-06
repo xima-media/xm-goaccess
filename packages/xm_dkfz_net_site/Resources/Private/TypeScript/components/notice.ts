@@ -60,7 +60,9 @@ class Notice {
     this.setText(message)
     this.element.classList.add('notice--visible')
     if (duration) {
-      setTimeout(() => this.close(), duration)
+      setTimeout(() => {
+        this.close()
+      }, duration)
     }
     if (closable) {
       this.element.classList.add('notice--closeable')

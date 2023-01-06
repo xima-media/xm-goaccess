@@ -151,9 +151,9 @@ class Userinfo {
     }
 
     app.lightbox.displayContent(this.userinfo.html)
-    app.lightbox.content
-      .querySelectorAll('a[data-bookmark-url]')
-      .forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
+    app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => {
+      link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this))
+    })
     app.lightbox.stopLoading()
     app.lightbox.open(LightboxStyle.sidebar)
   }
@@ -168,9 +168,9 @@ class Userinfo {
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
       this.modifyBookmarkLinks()
       app.lightbox.displayContent(userinfo.html)
-      app.lightbox.content
-        .querySelectorAll('a[data-bookmark-url]')
-        .forEach(link => link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this)))
+      app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => {
+        link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this))
+      })
       app.lightbox.stopLoading()
     })
   }
@@ -207,7 +207,7 @@ class Userinfo {
       if (!(urlParts[1] in this.userinfo.bookmarks)) {
         return
       }
-      // @ts-ignore
+      // @ts-expect-error
       if (!(urlParts[2] in this.userinfo.bookmarks[urlParts[1]])) {
         return
       }
@@ -232,7 +232,8 @@ class Userinfo {
   protected async loadUserinfo() {
     const loadedFromStorage = this.loadUserinfoFromStorage()
     if (!loadedFromStorage) {
-      return await this.loadUserinfoFromApi()
+      await this.loadUserinfoFromApi()
+      return
     }
   }
 
@@ -263,7 +264,7 @@ class Userinfo {
       return
     }
 
-    return await app.apiRequest(url).then(userinfo => {
+    await app.apiRequest(url).then(userinfo => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
     })

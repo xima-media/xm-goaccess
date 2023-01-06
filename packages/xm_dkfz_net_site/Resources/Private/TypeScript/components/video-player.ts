@@ -11,7 +11,11 @@ class VideoPlayer {
 
   bindEvents(): void {
     // click: play button
-    this.playButtonEl.forEach(button => button.addEventListener('click', () => this.playExternalVideo(button)))
+    this.playButtonEl.forEach(button => {
+      button.addEventListener('click', () => {
+        this.playExternalVideo(button)
+      })
+    })
 
     // media slider: remove
     document.addEventListener('video:allowed', () => {
@@ -20,11 +24,13 @@ class VideoPlayer {
   }
 
   playAllExternalVideos(): void {
-    this.playButtonEl.forEach(button => this.playExternalVideo(button))
+    this.playButtonEl.forEach(button => {
+      this.playExternalVideo(button)
+    })
   }
 
   playExternalVideo(button: HTMLButtonElement): void {
-    const videoPlayerEl: HTMLDivElement|null = button.closest('.video-player')
+    const videoPlayerEl: HTMLDivElement | null = button.closest('.video-player')
     if (!videoPlayerEl) {
       return
     }

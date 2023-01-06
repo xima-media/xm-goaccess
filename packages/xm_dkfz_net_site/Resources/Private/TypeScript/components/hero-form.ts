@@ -15,7 +15,9 @@ class HeroForm {
     const autocompleteInputs = document.querySelectorAll<HTMLInputElement>('.hero-form input.autocomplete')
 
     if (autocompleteInputs) {
-      autocompleteInputs.forEach(inputElement => this.initAutocompleterForInput(inputElement))
+      autocompleteInputs.forEach(inputElement => {
+        this.initAutocompleterForInput(inputElement)
+      })
     }
   }
 
@@ -23,7 +25,7 @@ class HeroForm {
     const autocompleterData = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as string[]
 
     const allItems = autocompleterData.map(item => {
-      return {label: item, value: item}
+      return { label: item, value: item }
     }) as AutocomleterItem[]
 
     autocomplete({

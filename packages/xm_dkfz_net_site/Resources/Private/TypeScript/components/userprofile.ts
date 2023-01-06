@@ -1,8 +1,8 @@
 import app from './basic'
 
-import autocomplete, {AutocompleteItem} from 'autocompleter'
-import {AutocomleterItem} from './hero-form'
-import {NoticeStyle} from './notice'
+import autocomplete, { AutocompleteItem } from 'autocompleter'
+import { AutocomleterItem } from './hero-form'
+import { NoticeStyle } from './notice'
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -194,7 +194,9 @@ class Userprofile {
           const optionElement = selectElement.querySelector('option[value="' + featureId + '"]')
           optionElement?.removeAttribute('selected')
         } else {
-          container.querySelectorAll('input[name^="tx_bwguild_api[user][features][' + featureId + ']"]').forEach(el => el.remove())
+          container.querySelectorAll('input[name^="tx_bwguild_api[user][features][' + featureId + ']"]').forEach(el => {
+            el.remove()
+          })
         }
         // delete element
         featureElement.remove()
@@ -221,7 +223,7 @@ class Userprofile {
 
       function onAutocompleteSelect(item: FeatureItem): void {
         if (!inputElement || !selectElement) {
-          return;
+          return
         }
         // dynamic item (for new generation) was selected
         if (item.value === '') {
@@ -248,7 +250,7 @@ class Userprofile {
 
         // append new empty item
         if (allFeatures.filter((feature: FeatureItem) => feature.label.toLowerCase() === text.toLowerCase()).length !== 1) {
-          filteredFeatures = [{label: text, value: ''}, ...filteredFeatures]
+          filteredFeatures = [{ label: text, value: '' }, ...filteredFeatures]
         }
 
         update(filteredFeatures)
@@ -267,7 +269,7 @@ class Userprofile {
         }
 
         // create new feature
-        const newFeatureItem: FeatureItem = {label: trimmedInputString, value: newFeatureId}
+        const newFeatureItem: FeatureItem = { label: trimmedInputString, value: newFeatureId }
         addNewBubbleForFeature(newFeatureItem)
 
         // add to select list
@@ -289,7 +291,9 @@ class Userprofile {
         inputElement.value = ''
       }
 
-      bubbleDropZoneElement.querySelectorAll('a[data-feature]')?.forEach(bubbleElement => addBubbleClickEvent(bubbleElement))
+      bubbleDropZoneElement.querySelectorAll('a[data-feature]')?.forEach(bubbleElement => {
+        addBubbleClickEvent(bubbleElement)
+      })
 
       inputElement.addEventListener('keydown', e => {
         const isEnterKey = e.key === 'Enter'
@@ -338,9 +342,7 @@ class Userprofile {
         this.bindUserEditFormEvents()
         app.lightbox.stopLoading()
         // invalidate cache
-        fetch(profileUrl, {cache: 'reload'})
-          .then()
-          .catch()
+        fetch(profileUrl, { cache: 'reload' }).then().catch()
         app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
       })
       .catch(() => app.handleRequestError.bind(this))

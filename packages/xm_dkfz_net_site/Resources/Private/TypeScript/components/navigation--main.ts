@@ -25,10 +25,16 @@ class NavigationMain {
 
   events(): void {
     // toggle mobile menu
-    this.buttonToggleMenuEl.addEventListener('click', () => this.toggleMobileMenu())
+    this.buttonToggleMenuEl.addEventListener('click', () => {
+      this.toggleMobileMenu()
+    })
 
     // toggle mobile menu items
-    this.buttonToggleMenuItemsEl.forEach(button => button.addEventListener('click', () => this.toggleMobileMenuItems(button)))
+    this.buttonToggleMenuItemsEl.forEach(button => {
+      button.addEventListener('click', () => {
+        this.toggleMobileMenuItems(button)
+      })
+    })
   }
 
   toggleMobileMenu(): void {

@@ -21,6 +21,7 @@
 		"project": "./tsconfig.json"
 	},
 	"rules": {
+		"prettier/prettier": "error",
 		"@typescript-eslint/space-after-function-name": "off",
 		"@typescript-eslint/space-before-function-paren": "off",
 		"@typescript-eslint/no-explicit-any": "off",

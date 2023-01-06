@@ -1,7 +1,9 @@
 class News {
   constructor() {
     if (document.querySelector('.image-slider')) {
-      document.querySelectorAll('.image-slider').forEach(slider => this.initSlider(slider))
+      document.querySelectorAll('.image-slider').forEach(slider => {
+        this.initSlider(slider)
+      })
     }
   }
 

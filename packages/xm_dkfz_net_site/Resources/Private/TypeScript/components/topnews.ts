@@ -21,7 +21,9 @@ class Topnews {
       btn.addEventListener('click', this.onButtonClick.bind(this))
     })
 
-    bullets.forEach(bullet => bullet.addEventListener('click', this.onBulletClick.bind(this)))
+    bullets.forEach(bullet => {
+      bullet.addEventListener('click', this.onBulletClick.bind(this))
+    })
   }
 
   protected readSliderState() {
@@ -42,7 +44,9 @@ class Topnews {
     const next = (this.currentSlideNr + modifier) % this.slideCount
     this.slider.classList.add('animation')
 
-    setTimeout(() => this.writeSliderState(next), 400)
+    setTimeout(() => {
+      this.writeSliderState(next)
+    }, 400)
   }
 
   onBulletClick(e: Event) {
@@ -52,7 +56,9 @@ class Topnews {
 
     this.slider.classList.add('animation')
 
-    setTimeout(() => this.writeSliderState(next), 400)
+    setTimeout(() => {
+      this.writeSliderState(next)
+    }, 400)
   }
 }
 

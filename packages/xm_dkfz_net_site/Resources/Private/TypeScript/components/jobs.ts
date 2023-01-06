@@ -5,15 +5,21 @@ class Jobs {
   }
 
   initPagination() {
-    document.querySelectorAll('.jobs--list--pager-not-loaded').forEach(div => div.classList.remove('jobs--list--pager-not-loaded'))
+    document.querySelectorAll('.jobs--list--pager-not-loaded').forEach(div => {
+      div.classList.remove('jobs--list--pager-not-loaded')
+    })
     this.updatePager()
   }
 
   updatePager() {
     document.querySelectorAll('.jobs--list').forEach(list => {
-      list.querySelectorAll('a').forEach(a => a.classList.add('hidden-pager'))
+      list.querySelectorAll('a').forEach(a => {
+        a.classList.add('hidden-pager')
+      })
       const notHiddenElements = list.querySelectorAll('a:not(.hidden-filter-category):not(.hidden-filter-place)')
-      notHiddenElements.forEach(a => a.classList.remove('hidden-pager'))
+      notHiddenElements.forEach(a => {
+        a.classList.remove('hidden-pager')
+      })
 
       const count = notHiddenElements.length
       const pageNr = parseInt(list.getAttribute('data-page') ?? '')
@@ -62,7 +68,9 @@ class Jobs {
     const filterFor = selectElement.getAttribute('id')
     const filterValue = selectElement.value
 
-    document.querySelectorAll('.jobs--list').forEach(list => list.setAttribute('data-page', '1'))
+    document.querySelectorAll('.jobs--list').forEach(list => {
+      list.setAttribute('data-page', '1')
+    })
 
     document.querySelectorAll('.jobs--list a').forEach(link => {
       link.classList.remove('hidden-filter-' + filterFor)

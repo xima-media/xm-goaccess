@@ -9,7 +9,7 @@ class Tooltip {
       let showOnCreate = tooltip.dataset.tooltipShowOnCreate ? tooltip.dataset.tooltipShowOnCreate : false
 
       // init tooltip
-      // @ts-ignore
+      // @ts-expect-error
       tippy(tooltip, {
         interactive: true,
         trigger: 'mouseenter focus',
