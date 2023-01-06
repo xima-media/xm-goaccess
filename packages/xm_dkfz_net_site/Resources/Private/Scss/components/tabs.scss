@@ -163,6 +163,10 @@
         margin-top: auto;
         margin-bottom: auto;
 
+        span {
+            padding-right: 2rem;
+            word-break: break-all;
+        }
         .icon {
             align-self: flex-start;
             margin-top: 3px;
