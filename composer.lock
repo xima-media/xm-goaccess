@@ -10355,12 +10355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "92bb8fc000b1993c1f8ec72d112e6a97491d9ca4"
+                "reference": "a015837d4da83be63176262cebdf13968ab11a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/92bb8fc000b1993c1f8ec72d112e6a97491d9ca4",
-                "reference": "92bb8fc000b1993c1f8ec72d112e6a97491d9ca4",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/a015837d4da83be63176262cebdf13968ab11a38",
+                "reference": "a015837d4da83be63176262cebdf13968ab11a38",
                 "shasum": ""
             },
             "require": {
@@ -10385,7 +10385,7 @@
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
                 "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/main"
             },
-            "time": "2023-01-05T17:12:37+00:00"
+            "time": "2023-01-06T16:52:50+00:00"
         },
         {
             "name": "xima/xm-dkfz-net-events",
