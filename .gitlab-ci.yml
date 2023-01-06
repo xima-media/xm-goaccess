@@ -121,9 +121,9 @@ backup-production-dkfz:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
     - vendor/bin/dep db:export production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - vendor/bin/dep db:process production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - vendor/bin/dep db:compress production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
     - vendor/bin/dep db:download production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
-    - vendor/bin/dep db:process local --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
-    - vendor/bin/dep db:compress local --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
     - vendor/bin/dep media:pull production-dkfz --no-interaction
   artifacts:
     paths:
