@@ -123,6 +123,7 @@ backup-production-dkfz:
     - vendor/bin/dep db:export production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
     - vendor/bin/dep db:process production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
     - vendor/bin/dep db:compress production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
+    - scp xima@intracmsprod:/var/www/html/intracmsprod.dkfz-heidelberg.de/.dep/database/dumps/*dumpcode=BackupProductionDkfz* .dep/database/dumps/
     - vendor/bin/dep media:pull production-dkfz --no-interaction
   artifacts:
     paths:
