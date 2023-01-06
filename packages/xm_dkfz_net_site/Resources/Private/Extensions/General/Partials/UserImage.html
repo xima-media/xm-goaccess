@@ -20,12 +20,14 @@
 </f:if>
 
 <f:if condition="!{user.logo.0} && !{user.logo}">
-	<picture class="userimage {widthClass}">
-		<xm:svgInline width="{width}"
-					  height="{width}"
-					  src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default_alt{invert}.svg"/>
-		<span></span>
-	</picture>
+	<figure class="userimage {widthClass}">
+		<picture>
+			<xm:svgInline width="{width}"
+						  height="{width}"
+						  src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default_alt{invert}.svg"/>
+		</picture>
+		<span />
+	</figure>
 </f:if>
 
 <f:section name="Image">
@@ -34,13 +36,15 @@
 		<f:variable name="widthClass">userimage--large</f:variable>
 	</f:if>
 
-	<picture class="userimage {widthClass}">
-		<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'webp')}" type="image/webp">
-		<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg')}" type="image/jpeg">
-		<img src="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg', width: width)}"
-			 alt="{user.logo.0.alternative}"
-			 width="{width}"
-			 loading="lazy"/>
+	<figure class="userimage {widthClass}">
+		<picture>
+			<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'webp')}" type="image/webp">
+			<source srcset="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg')}" type="image/jpeg">
+			<img src="{f:uri.image(image:logo, width:width, cropVariant:'square', fileExtension: 'jpg', width: width)}"
+				 alt="{user.logo.0.alternative}"
+				 width="{width}"
+				 loading="lazy"/>
+		</picture>
 		<span></span>
-	</picture>
+	</figure>
 </f:section>
