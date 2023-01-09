@@ -34,8 +34,10 @@ Homepage structure:
 }
 
 #p1 {
-    background-color: var(--color-gray-100);
     --content-width: 1170px;
+    @include media-breakpoint-up(xxl) {
+        background-color: var(--color-gray-100);
+    }
 
     main {
         padding-top: 4rem;
