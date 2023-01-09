@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62740cf3aaae08999a38465d89c53a04",
+    "content-hash": "076cfb6a6b8d0960404c719b150db5da",
     "packages": [
         {
             "name": "b13/container",
@@ -250,7 +250,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -864,16 +864,16 @@
         },
         {
             "name": "deployer/deployer",
-            "version": "v7.0.2",
+            "version": "v7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/deployer.git",
-                "reference": "99a57a9035cfe0eeae5dba5befe5411ac0f3ac72"
+                "reference": "b5e2151bed677f686340032164542081ba15dbf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/deployer/zipball/99a57a9035cfe0eeae5dba5befe5411ac0f3ac72",
-                "reference": "99a57a9035cfe0eeae5dba5befe5411ac0f3ac72",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/b5e2151bed677f686340032164542081ba15dbf0",
+                "reference": "b5e2151bed677f686340032164542081ba15dbf0",
                 "shasum": ""
             },
             "bin": [
@@ -903,7 +903,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-10T07:44:30+00:00"
+            "time": "2023-01-08T21:36:28+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -2261,16 +2261,16 @@
         },
         {
             "name": "helhum/typo3-console",
-            "version": "v7.1.4",
+            "version": "v7.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-Console/TYPO3-Console.git",
-                "reference": "ad1edbb50e209d9234f2c612ee887d9ff9e6da71"
+                "reference": "d2fbbf93a590cd0413af5810237ca8bcfc73a6e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/ad1edbb50e209d9234f2c612ee887d9ff9e6da71",
-                "reference": "ad1edbb50e209d9234f2c612ee887d9ff9e6da71",
+                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/d2fbbf93a590cd0413af5810237ca8bcfc73a6e5",
+                "reference": "d2fbbf93a590cd0413af5810237ca8bcfc73a6e5",
                 "shasum": ""
             },
             "require": {
@@ -2361,7 +2361,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-20T16:16:38+00:00"
+            "time": "2023-01-08T21:25:27+00:00"
         },
         {
             "name": "ichhabrecht/filefill",
@@ -2429,6 +2429,56 @@
                 "source": "https://github.com/IchHabRecht/filefill/tree/4.2.0"
             },
             "time": "2022-12-27T21:42:40+00:00"
+        },
+        {
+            "name": "in2code/instagram",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maikschneider/instagram.git",
+                "reference": "05b73b3a86b283ac7e372229277c070ae7a0a2fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maikschneider/instagram/zipball/05b73b3a86b283ac7e372229277c070ae7a0a2fa",
+                "reference": "05b73b3a86b283ac7e372229277c070ae7a0a2fa",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0",
+                "typo3/cms-core": "^10.4 || ^11.5"
+            },
+            "default-branch": true,
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "instagram"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "In2code\\Instagram\\": "Classes/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Kellner",
+                    "email": "alexander.kellner@in2code.de"
+                }
+            ],
+            "description": "Show images and posts from instagram profiles",
+            "homepage": "https://github.com/in2code-de/instagram",
+            "keywords": [
+                "instagram"
+            ],
+            "support": {
+                "source": "https://github.com/maikschneider/instagram/tree/master"
+            },
+            "time": "2022-07-23T18:49:55+00:00"
         },
         {
             "name": "in2code/luxletter",
@@ -7942,7 +7992,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10389,7 +10439,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -10424,7 +10474,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -10458,7 +10508,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -10545,7 +10595,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -10580,7 +10630,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-master",
+            "version": "dev-DKFZ-520",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
@@ -11855,16 +11905,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.9.7",
+            "version": "1.9.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "0501435cd342eac7664bd62155b1ef907fc60b6f"
+                "reference": "45411d15bf85a33b4a8ee9b75a6e82998c9adb97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0501435cd342eac7664bd62155b1ef907fc60b6f",
-                "reference": "0501435cd342eac7664bd62155b1ef907fc60b6f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/45411d15bf85a33b4a8ee9b75a6e82998c9adb97",
+                "reference": "45411d15bf85a33b4a8ee9b75a6e82998c9adb97",
                 "shasum": ""
             },
             "require": {
@@ -11894,7 +11944,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.9.7"
+                "source": "https://github.com/phpstan/phpstan/tree/1.9.8"
             },
             "funding": [
                 {
@@ -11910,7 +11960,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-04T21:59:57+00:00"
+            "time": "2023-01-08T21:26:18+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -14476,6 +14526,7 @@
         "xima/xm-kesearch-remote": 20,
         "xima/xm-manual": 20,
         "tpwd/ke_search_premium": 20,
+        "in2code/instagram": 20,
         "roave/security-advisories": 20,
         "codeception/codeception": 5,
         "ssch/typo3-rector": 20

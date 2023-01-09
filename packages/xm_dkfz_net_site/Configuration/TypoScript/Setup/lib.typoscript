@@ -73,3 +73,6 @@ lib.generalFeedbackForm {
 
 lib.pageTitle = TEXT
 lib.pageTitle.data = page:title
+
+tt_content.list.20.instagram_pi1 = TEXT
+tt_content.list.20.instagram_pi1.value = Instagram

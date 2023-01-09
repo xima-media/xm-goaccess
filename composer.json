@@ -10,6 +10,10 @@
 	],
 	"repositories": [
 		{
+			"type": "github",
+			"url": "https://github.com/maikschneider/instagram.git"
+		},
+		{
 			"type": "path",
 			"url": "./packages/*"
 		}
@@ -69,7 +73,8 @@
 		"tpwd/ke_search_premium": "*@dev",
 		"causal/image_autoresize": "^2.2",
 		"ext-simplexml": "*",
-		"ichhabrecht/filefill": "^4.1"
+		"ichhabrecht/filefill": "^4.1",
+		"in2code/instagram": "dev-master"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
