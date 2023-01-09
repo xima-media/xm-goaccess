@@ -189,6 +189,8 @@ page {
       attribute = http-equiv
     }
 
+    theme-color = #0047b9
+
     # OpenGraph Tags
     og:title {
       attribute = property
