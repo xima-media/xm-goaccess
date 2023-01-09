@@ -74,5 +74,15 @@ lib.generalFeedbackForm {
 lib.pageTitle = TEXT
 lib.pageTitle.data = page:title
 
-tt_content.list.20.instagram_pi1 = TEXT
-tt_content.list.20.instagram_pi1.value = Instagram
+tt_content.list.20.instagram_pi1 = FLUIDTEMPLATE
+tt_content.list.20.instagram_pi1 {
+  file = EXT:xm_dkfz_net_site/Resources/Private/Extensions/fluid_styled_content/Templates/Instagram.html
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+    10 {
+      table = tx_instagram_feed
+      pidInList = 0
+      as = feed
+    }
+  }
+}
