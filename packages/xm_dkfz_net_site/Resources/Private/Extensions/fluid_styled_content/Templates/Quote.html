@@ -1,10 +1,9 @@
 <f:layout name="Default" />
 
-<!-- Start Quote-->
 <f:section name="Main">
-	<figure class="quote">
+	<div class="quote">
 		<span class="quote__pattern pattern color-accent--{data.color}"></span>
-		<div class="quote__body">
+		<figure class="quote__body">
 			<blockquote class="quote__content h5"><p>„{data.bodytext}“</p></blockquote>
 			<figcaption class="quote__caption">
 				<f:if condition="{data.tx_xmdkfznetsite_author}">
@@ -12,7 +11,7 @@
 					</cite>
 				</f:if>
 			</figcaption>
-		</div>
-	</figure>
+			<f:render partial="Icon" arguments="{icon: 'quotation-mark'}"/>
+		</figure>
+	</div>
 </f:section>
-<!-- End Quote-->
