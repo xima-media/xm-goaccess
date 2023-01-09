@@ -1,16 +1,18 @@
-//
-//    @tableOfContent
-//      1. Quote
-//
-
-
-//
-//   @section 1. Quote
-//
-
 .quote {
     display: grid;
     text-align: center;
+    position: relative;
+
+    .icon--quotation-mark {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        fill: $color-gray-100;
+        transform: translate(-50%, -50%);
+        opacity: .7;
+    }
 
     &__pattern {
         grid-column: 1/2;
@@ -22,6 +24,7 @@
     }
 
     &__body {
+        position: relative;
         grid-column: 1/2;
         grid-row:1/2;
         margin-bottom: 6rem;
@@ -31,20 +34,13 @@
     &__content {
         position: relative;
         line-height: 36px;
-        padding: 3.3rem 6rem 0rem;
-
-        &:before {
-            position: absolute;
-            content: open-quote;
-            font-size: 25rem;
-            margin-top: -6rem;
-            transform: translateX(-50%);
-            color: inherit;
-            opacity: .15;
-        }
+        padding: 3.3rem 6rem 0;
+        z-index: 1;
     }
     &__caption{
         margin-bottom: 3.3rem;
+        position: relative;
+        z-index: 1;
     }
 
     &__cite {
