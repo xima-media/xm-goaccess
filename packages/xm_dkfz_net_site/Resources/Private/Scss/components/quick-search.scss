@@ -7,6 +7,7 @@
         &--active {
             .quick-search__button--toggle {
                 color: var(--color-white);
+                background-color: transparent;
             }
         }
     }
@@ -45,20 +46,6 @@
     }
 
     .quick-search__button--toggle {
-        position: relative;
-        z-index: 1;
-        width: 2.125rem;
-        height: 2.125rem;
-        border-style: none;
-        font-size: 20px;
-        font-weight: bold;
-        outline: none;
-        cursor: pointer;
-        border-radius: 50%;
-        right: 0;
-        color: var(--color-primary) ;
-        background-color:transparent;
-        pointer-events: painted;
 
         &:focus {
             ~ .field__input {

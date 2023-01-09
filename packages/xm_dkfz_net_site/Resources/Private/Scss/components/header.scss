@@ -86,7 +86,7 @@
         .navigation__items {
             &.search-box--active {
                 .navigation__item:not(.navigation__item--quick-search) {
-                    visibility: hidden;
+                    opacity: 0;
                 }
             }
         }
