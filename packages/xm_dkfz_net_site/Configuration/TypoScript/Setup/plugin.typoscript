@@ -102,3 +102,10 @@ plugin.tx_luxletter_fe {
   }
 }
 module.tx_luxletter < plugin.tx_luxletter_fe
+
+plugin.tx_instagram {
+  view {
+    templateRootPaths.2 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/instagram/Templates
+    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
+  }
+}

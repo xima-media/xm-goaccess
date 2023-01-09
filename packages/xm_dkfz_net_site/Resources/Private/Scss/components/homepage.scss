@@ -261,3 +261,108 @@ Homepage structure:
         }
     }
 }
+
+// 10. Social Media
+#c2261 {
+    --content-width: 1170px;
+    background-color: var(--color-gray-100);
+
+    .frame {
+        background: #FFF;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: grid;
+        height: 100%;
+        align-content: flex-start;
+        position: relative;
+        padding-top: 0;
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: var(--overlap-size);
+            background: #FFF;
+            top: calc(-1 * var(--overlap-size));
+            left: 0;
+            position: absolute;
+            z-index: 9;
+        }
+
+        &:after {
+            top: auto;
+            bottom: calc(-1 * var(--overlap-size));
+        }
+    }
+}
+
+.c-socialwall {
+
+    margin-top: calc(-0.5 * var(--overlap-size));
+
+    h5 {
+        z-index: 10;
+        position: relative;
+        margin-bottom: 1.5rem;
+
+        svg {
+            margin-bottom: 1rem;
+        }
+
+        text-align: center;
+
+        span {
+            display: block;
+        }
+    }
+
+    a {
+        border: 1px solid var(--color-gray-200);
+        padding-bottom: 1rem;
+
+        &:hover {
+            text-decoration: none;
+            border-color: var(--color-gray-400);
+
+            p.text-small {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    p {
+        display: block;
+        margin: 1rem;
+        word-break: break-all;
+    }
+
+    p.text-date {
+        font-family: var(--font-family-sans-serif);
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--color-gray-700);
+    }
+
+    img {
+        width: auto !important;
+        max-width: 100%;
+    }
+
+    picture {
+        display: block;
+        margin-bottom: 1rem;
+        text-align: center;
+        background: var(--color-gray-100);
+    }
+
+    &__items {
+        display: grid;
+        @include media-breakpoint-up(sm) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        grid-template-rows: min-content min-content auto;
+        gap: 1rem;
+    }
+}
