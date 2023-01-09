@@ -23,6 +23,8 @@
         }
 
         &__item {
+            opacity: 1;
+            transition: opacity .5s ease;
             &--open-chat {
                 @include media-breakpoint-down(lg) {
                     display: none;
