@@ -6,6 +6,7 @@ namespace Xima\XmDkfzNetSite\Hook;
 
 use Doctrine\DBAL\Connection as ConnectionAlias;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmDkfzNetSite\Tca\TcaUtility;
@@ -40,6 +41,7 @@ class DataHandlerHook
             ));
 
             $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content_item');
+            $qb->getRestrictions()->removeByType(HiddenRestriction::class);
             $tt_content_items_before = $qb->select('uid')
                 ->from('tt_content_item')
                 ->where(
@@ -80,6 +82,7 @@ class DataHandlerHook
 
             if (count($deletedPos)) {
                 $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+                $qb->getRestrictions()->removeAll();
                 $qb->update('tt_content')
                     ->where(
                         $qb->expr()->andX(
@@ -95,6 +98,7 @@ class DataHandlerHook
             }
 
             $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+            $qb->getRestrictions()->removeAll();
             $accordionChildren = $qb->select('*')
                 ->from('tt_content')
                 ->where(
