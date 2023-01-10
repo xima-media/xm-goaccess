@@ -96,10 +96,9 @@
 				<f:if condition="{data.description}">
 					<div class="hero-teaser__text frame">
 						<p class="text-small">
-							<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.lastEdit"/>
-							: {f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'%d. %B
-							%Y\')}', else:'{data.SYS_LASTCHANGED->f:format.date(format:\'%d. %B %Y\')}')}
-						</p>
+							{f:translate(key:'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.lastEdit')}:
+							{f:if(condition: data.lastUpdated, then:'{data.lastUpdated->f:format.date(format:\'%d. %B
+							%Y\')}', else:'{data.SYS_LASTCHANGED->f:format.date(format:\'%d. %B %Y\')}')} </p>
 						<f:if condition="{data.description}">
 							<p class="h4 text-intro">{data.description}</p>
 						</f:if>
