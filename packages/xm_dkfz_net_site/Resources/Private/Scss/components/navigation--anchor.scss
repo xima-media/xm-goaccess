@@ -3,6 +3,7 @@
     top: 480px;
     left: 50px;
     z-index: 100;
+    max-width: 14vw;
 
     @media screen and (max-width: 1800px ) {
         position: relative;
