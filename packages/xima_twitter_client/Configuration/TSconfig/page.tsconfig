@@ -1,0 +1,5 @@
+[traverse(page, "module") == "tw"]
+  mod.web_list {
+    allowedNewTables = tx_ximatwitterclient_domain_model_account,tx_ximatwitterclient_domain_model_tweet
+  }
+[GLOBAL]
