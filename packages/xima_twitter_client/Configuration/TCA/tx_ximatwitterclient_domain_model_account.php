@@ -25,7 +25,20 @@ return [
                 'type' => 'input',
                 'eval' => 'trim,required'
             ]
-        ]
-    ]
+        ],
+        'fetch_type' => [
+            'label' => 'Type',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                  [
+                      'Latest tweets of user',
+                      ''
+                  ],
+                ],
+            ],
+        ],
+    ],
 ];
 
