@@ -180,6 +180,12 @@ return [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
         ],
+        'xima_twitter_client' => [
+            'api_key' => 'Bn7ayOiifE3NBAEtFRV7lmubL',
+            'api_secret' => '',
+            'access_key' => '64132999-1zns9EPrKi0WuC1pu0jddx1qdEn1CLLfHtILfQA0F',
+            'access_secret' => '',
+        ],
         'xm_dkfz_net_events' => [
             'api_url_override' => '',
         ],

@@ -10,6 +10,18 @@ class Account extends AbstractEntity
 
     protected string $fetchType = '';
 
+    protected string $fetchOptions = '';
+
+    public function getFetchOptions(): string
+    {
+        return $this->fetchOptions;
+    }
+
+    public function getFetchType(): string
+    {
+        return $this->fetchType;
+    }
+
     public function __construct(string $fetchType)
     {
         $this->fetchType = $fetchType;

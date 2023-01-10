@@ -1,6 +1,6 @@
 <?php
 
-namespace Xima\XimaTwitterClient\Domain\Model;
+namespace Xima\XimaTwitterClient\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
 

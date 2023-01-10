@@ -8,7 +8,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use Xima\XimaTwitterClient\Domain\Model\AccountRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Xima\XimaTwitterClient\Domain\Model\Account;
+use Xima\XimaTwitterClient\Domain\Repository\AccountRepository;
+use Xima\XimaTwitterClient\FetchType\FetchTypeInterface;
 
 class FetchTweetsCommand extends Command
 {
@@ -27,10 +30,24 @@ class FetchTweetsCommand extends Command
     {
         $this->initConnection();
 
-        $userId = $this->fetchUserId('DKFZ');
-        $tweets = $this->fetchLatestTweets($userId);
+        $accounts = $this->accountRepository->findAll();
 
-        $this->saveTweets($tweets);
+        /** @var Account $account */
+        foreach ($accounts as $account) {
+            $fetchType = GeneralUtility::makeInstance($account->getFetchType());
+
+            if (is_subclass_of($fetchType, FetchTypeInterface::class)) {
+                throw new \Exception('FetchType "' . $account->getFetchType() . '" does not implement FetchTypeInterface', 1673335140);
+            }
+
+            $userId = $this->fetchUserId($account->getUsername());
+
+            $tweets = $fetchType->fetchTweets($this->connection, $userId);
+
+            $this->saveTweets($tweets);
+        }
+
+
 
         return Command::SUCCESS;
     }

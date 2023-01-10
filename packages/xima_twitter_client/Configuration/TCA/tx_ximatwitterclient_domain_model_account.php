@@ -15,7 +15,8 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'username'
+            'showitem' => 'username, fetch_type, fetch_options, max_results',
+            'max_results'
         ]
     ],
     'columns' => [
@@ -32,13 +33,32 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                  [
-                      'Latest tweets of user',
-                      ''
-                  ],
+                    [
+                        'Latest tweets of user',
+                        \Xima\XimaTwitterClient\FetchType\LatestTweets::class
+                    ],
                 ],
             ],
         ],
+        'fetch_options' => [
+            'label' => 'Options',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
+                'items' => [
+                    ['Include replies', 'includeReplies'],
+                    ['Include retweets', 'includeRetweets'],
+                ]
+            ]
+        ],
+        'max_results' => [
+            'label' => 'Max results',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'int,required',
+                'default' => 10
+            ],
+        ]
     ],
 ];
 
