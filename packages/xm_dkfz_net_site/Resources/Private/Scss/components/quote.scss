@@ -33,9 +33,15 @@
 
     &__content {
         position: relative;
-        line-height: 36px;
         padding: 3.3rem 6rem 0;
         z-index: 1;
+
+        p {
+            font-family: var(--font-family-sans-serif);
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 36px;
+        }
     }
     &__caption{
         margin-bottom: 3.3rem;
