@@ -1,0 +1,25 @@
+{
+	"name": "xima/xima-twitter-client",
+	"description": "Import and display tweets",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Maik Schneider",
+			"email": "maik.schneider@xima.de",
+			"role": "Developer"
+		}
+	],
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "xima_twitter_client"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Xima\\XimaTwitterClient\\": "Classes"
+		}
+	},
+	"require": {
+		"abraham/twitteroauth": "^4.0"
+	}
+}

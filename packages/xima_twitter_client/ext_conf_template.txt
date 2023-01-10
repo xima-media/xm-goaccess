@@ -1,0 +1,4 @@
+# cat=basic/enable; type=string; label=URL of the event rss feed
+api_secret =
+# cat=basic/enable; type=string; label=URL of the event rss feed
+api_key =
