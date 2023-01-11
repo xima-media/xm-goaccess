@@ -46,17 +46,17 @@ class LatestTweets implements FetchTypeInterface
         }
 
         $tweetsToPersist = $this->filterResponse($response);
-        $this->saveTweets($tweetsToPersist);
 
-        return 1;
+        return $this->saveTweets($tweetsToPersist);
     }
 
-    protected function saveTweets($response)
+    protected function saveTweets($response): int
     {
 
         $data = ['tx_ximatwitterclient_domain_model_tweet' => [], 'sys_file_reference' => []];
         foreach ($response->data as $key => $tweet) {
 
+            $attachmentIds = [];
 
             foreach ($tweet?->attachments?->media_keys ?? [] as $key2 => $mediaKey) {
                 $sysFileIdentifier = $this->saveAttachment($response, $mediaKey);
@@ -64,6 +64,8 @@ class LatestTweets implements FetchTypeInterface
                 if (!$sysFileIdentifier) {
                     continue;
                 }
+
+                $attachmentIds[] = 'NEW' . $key . 'FILE' . $key2;
 
                 $data['sys_file_reference']['NEW' . $key . 'FILE' . $key2] = [
                     'table_local' => 'sys_file',
@@ -76,17 +78,21 @@ class LatestTweets implements FetchTypeInterface
             }
 
             $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key] = [
+                'pid' => $this->account->getPid(),
                 'id' => $tweet->id,
                 'author_id' => $tweet->author_id,
                 'text' => $tweet->text,
+                'attachments' => implode(',', $attachmentIds),
             ];
         }
 
         if (count($data['tx_ximatwitterclient_domain_model_tweet'])) {
             $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
             $dataHandler->start($data, []);
-            //$dataHandler->process_datamap();
+            $dataHandler->process_datamap();
         }
+
+        return count($data['tx_ximatwitterclient_domain_model_tweet']);
     }
 
     protected function saveAttachment($response, string $mediaKey): ?int
@@ -131,11 +137,14 @@ class LatestTweets implements FetchTypeInterface
     protected function filterResponse($response): \stdClass
     {
         $ids = $this->getTweetIdsFromResponse($response);
-        $idsToIgnore = $this->tweetRepository->findTweetsByIds($ids);
+        $tweetKeys = $this->tweetRepository->findTweetsByIds($ids);
+        $idsToIgnore = array_unique(array_map(function ($tweet) {
+            return $tweet['id'];
+        }, $tweetKeys));
 
-        foreach ($response->data as &$tweet) {
+        foreach ($response->data as $key => $tweet) {
             if (in_array($tweet->id, $idsToIgnore)) {
-                unset($tweet);
+                unset($response->data[$key]);
             }
         }
 

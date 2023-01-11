@@ -36,6 +36,7 @@ class FetchTweetsCommand extends Command
     {
         $this->initConnection();
 
+        $newTweets = 0;
         $accounts = $this->accountRepository->findAllIgnorePid();
         $imageFolder = $this->getImageStorage();
 
@@ -54,8 +55,10 @@ class FetchTweetsCommand extends Command
 
             $userId = $this->fetchUserId($account->getUsername());
 
-            $count = $fetchType->fetchTweets($this->connection, $userId);
+            $newTweets = $fetchType->fetchTweets($this->connection, $userId);
         }
+
+        $output->writeln('Added ' . $newTweets . ' new tweets');
 
         return Command::SUCCESS;
     }

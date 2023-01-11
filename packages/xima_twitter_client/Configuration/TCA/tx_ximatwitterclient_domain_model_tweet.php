@@ -3,7 +3,7 @@
 return [
     'ctrl' => [
         'title' => 'Tweet',
-        'label' => 'username',
+        'label' => 'text',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -15,7 +15,7 @@ return [
     ],
     'types' => [
         0 => [
-
+            'showitem' => 'id, author_id, text, attachments'
         ]
     ],
     'columns' => [
@@ -37,6 +37,12 @@ return [
                 'type' => 'text'
             ]
         ],
+        'attachments' => [
+            'label' => 'Attachments',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'attachments', [], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            )
+        ]
     ]
 ];
 

@@ -16,7 +16,6 @@ return [
     'types' => [
         0 => [
             'showitem' => 'username, fetch_type, fetch_options, max_results',
-            'max_results'
         ]
     ],
     'columns' => [
