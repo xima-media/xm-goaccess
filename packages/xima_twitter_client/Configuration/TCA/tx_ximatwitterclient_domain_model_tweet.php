@@ -19,12 +19,24 @@ return [
         ]
     ],
     'columns' => [
-        'username' => [
-            'label' => 'Username',
+        'id' => [
+            'label' => 'Tweet ID',
             'config' => [
                 'type' => 'input'
             ]
-        ]
+        ],
+        'author_id' => [
+            'label' => 'Autor ID',
+            'config' => [
+                'type' => 'input'
+            ]
+        ],
+        'text' => [
+            'label' => 'Text',
+            'config' => [
+                'type' => 'text'
+            ]
+        ],
     ]
 ];
 

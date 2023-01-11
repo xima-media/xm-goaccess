@@ -1,4 +1,10 @@
-# cat=basic/enable; type=string; label=URL of the event rss feed
+# cat=basic/enable; type=string; label=
 api_secret =
-# cat=basic/enable; type=string; label=URL of the event rss feed
+# cat=basic/enable; type=string; label=
 api_key =
+# cat=basic/enable; type=string; label=
+access_secret =
+# cat=basic/enable; type=string; label=
+access_key =
+# cat=basic/enable; type=string; label=
+image_storage = 1:Twitter

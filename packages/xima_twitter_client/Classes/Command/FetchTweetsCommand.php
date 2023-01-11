@@ -3,14 +3,19 @@
 namespace Xima\XimaTwitterClient\Command;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use mysql_xdevapi\Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Resource\Exception\FolderDoesNotExistException;
+use TYPO3\CMS\Core\Resource\Folder;
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XimaTwitterClient\Domain\Model\Account;
 use Xima\XimaTwitterClient\Domain\Repository\AccountRepository;
+use Xima\XimaTwitterClient\Domain\Repository\TweetRepository;
 use Xima\XimaTwitterClient\FetchType\FetchTypeInterface;
 
 class FetchTweetsCommand extends Command
@@ -21,6 +26,7 @@ class FetchTweetsCommand extends Command
         private LoggerInterface $logger,
         protected ExtensionConfiguration $extensionConfiguration,
         protected AccountRepository $accountRepository,
+        protected TweetRepository $tweetRepository,
         string $name = null
     ) {
         parent::__construct($name);
@@ -30,24 +36,25 @@ class FetchTweetsCommand extends Command
     {
         $this->initConnection();
 
-        $accounts = $this->accountRepository->findAll();
+        $accounts = $this->accountRepository->findAllIgnorePid();
+        $imageFolder = $this->getImageStorage();
 
         /** @var Account $account */
         foreach ($accounts as $account) {
             $fetchType = GeneralUtility::makeInstance($account->getFetchType());
 
-            if (is_subclass_of($fetchType, FetchTypeInterface::class)) {
-                throw new \Exception('FetchType "' . $account->getFetchType() . '" does not implement FetchTypeInterface', 1673335140);
+            if (!$fetchType instanceof FetchTypeInterface) {
+                throw new \Exception('FetchType "' . $account->getFetchType() . '" does not implement FetchTypeInterface',
+                    1673335140);
             }
+
+            $fetchType->setAccount($account);
+            $fetchType->setTweetRepository($this->tweetRepository);
 
             $userId = $this->fetchUserId($account->getUsername());
 
-            $tweets = $fetchType->fetchTweets($this->connection, $userId);
-
-            $this->saveTweets($tweets);
+            $count = $fetchType->fetchTweets($this->connection, $userId);
         }
-
-
 
         return Command::SUCCESS;
     }
@@ -69,6 +76,10 @@ class FetchTweetsCommand extends Command
             $extConf['access_secret']);
         $connection->setApiVersion('2');
         $content = $connection->get('users/by', ['usernames' => $username]);
+
+        if (isset($content->errors) && count($content->errors)) {
+            throw new \Exception($content->errors[0]->title, 1673361745);
+        }
 
         if (!$content->data[0]->id || count($content->data) !== 1 || strtolower($username) !== strtolower($content->data[0]->username)) {
             throw new \Exception('Could not fetch twitter user id', 1673281853);
@@ -94,8 +105,32 @@ class FetchTweetsCommand extends Command
         return (array)$response;
     }
 
-    protected function saveTweets(array $tweets): void
+    protected function getImageStorage(): Folder
     {
+        $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
+        $extConf = $this->extensionConfiguration->get('xima_twitter_client');
+        $path = $extConf['image_storage'];
 
+        if (str_contains($path, ':')) {
+            try {
+                $folder = $resourceFactory->getFolderObjectFromCombinedIdentifier($path);
+            } catch (FolderDoesNotExistException) {
+                $segments = explode(':', $path);
+                $folder = $resourceFactory->getStorageObject((int)$segments[0])->createFolder($segments[1]);
+            }
+        } else {
+            try {
+                $folder = $resourceFactory->getDefaultStorage()->getFolder($path);
+            } catch (FolderDoesNotExistException) {
+                $folder = $resourceFactory->getDefaultStorage()->createFolder($path);
+            }
+        }
+
+        if (!$folder instanceof Folder) {
+            throw new Exception('Could not get or create folder "' . $path . '" for twitter image download',
+                1673432058);
+        }
+
+        return $folder;
     }
 }

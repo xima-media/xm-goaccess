@@ -8,4 +8,6 @@ create table tx_ximatwitterclient_domain_model_account (
 
 create table tx_ximatwitterclient_domain_model_tweet (
 	text text,
+	id varchar(255) not null default '',
+	author_id varchar(255) not null default '',
 );

@@ -13,3 +13,6 @@ services:
       - name: 'console.command'
         command: 'twitter:fetchTweets'
         schedulable: false
+
+  Xima\XimaTwitterClient\FetchType\LatestTweets:
+    public: true
