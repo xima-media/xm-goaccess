@@ -12,6 +12,13 @@ class Account extends AbstractEntity
 
     protected string $fetchOptions = '';
 
+    protected int $maxResults = 0;
+
+    public function getMaxResults(): int
+    {
+        return $this->maxResults;
+    }
+
     public function getFetchOptions(): string
     {
         return $this->fetchOptions;

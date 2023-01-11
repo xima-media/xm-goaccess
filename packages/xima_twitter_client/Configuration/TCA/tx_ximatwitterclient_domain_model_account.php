@@ -45,8 +45,8 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectCheckBox',
                 'items' => [
-                    ['Include replies', 'includeReplies'],
-                    ['Include retweets', 'includeRetweets'],
+                    ['Exclude replies', 'replies'],
+                    ['Exclude retweets', 'retweets'],
                 ]
             ]
         ],

@@ -33,10 +33,13 @@ class LatestTweets implements FetchTypeInterface
 
     public function fetchTweets(TwitterOAuth $connection, string $userId): int
     {
+        $options = $this->account->getFetchOptions();
+        $maxResults = $this->account->getMaxResults();
+
         $response = $connection->get('users/' . $userId . '/tweets', [
-            'exclude' => 'replies,retweets',
+            'exclude' => $options,
             'expansions' => 'author_id,attachments.media_keys',
-            'max_results' => '10',
+            'max_results' => (string)$maxResults,
             'media.fields' => 'url,type,media_key,preview_image_url,alt_text',
             'user.fields' => 'name,id,profile_image_url'
         ]);
