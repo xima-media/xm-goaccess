@@ -3,8 +3,11 @@
 namespace Xima\XimaTwitterClient\FetchType;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Stream;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Resource\Folder;
+use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XimaTwitterClient\Domain\Model\Account;
 use Xima\XimaTwitterClient\Domain\Repository\TweetRepository;
@@ -30,8 +33,6 @@ class LatestTweets implements FetchTypeInterface
 
     public function fetchTweets(TwitterOAuth $connection, string $userId): int
     {
-
-
         $response = $connection->get('users/' . $userId . '/tweets', [
             'exclude' => 'replies,retweets',
             'expansions' => 'author_id,attachments.media_keys',
@@ -53,12 +54,25 @@ class LatestTweets implements FetchTypeInterface
     protected function saveTweets($response)
     {
 
-        $data = ['tx_ximatwitterclient_domain_model_tweet' => []];
+        $data = ['tx_ximatwitterclient_domain_model_tweet' => [], 'sys_file_reference' => []];
         foreach ($response->data as $key => $tweet) {
 
-            if (property_exists($tweet, 'attachments')) {
-                $firstMediaKey = $tweet->attachments->media_keys[0];
-                $sysFileIdentifier = $this->saveAttachment($response, $firstMediaKey);
+
+            foreach ($tweet?->attachments?->media_keys ?? [] as $key2 => $mediaKey) {
+                $sysFileIdentifier = $this->saveAttachment($response, $mediaKey);
+
+                if (!$sysFileIdentifier) {
+                    continue;
+                }
+
+                $data['sys_file_reference']['NEW' . $key . 'FILE' . $key2] = [
+                    'table_local' => 'sys_file',
+                    'uid_local' => $sysFileIdentifier,
+                    'tablenames' => 'tx_ximatwitterclient_domain_model_tweet',
+                    'uid_foreign' => 'NEW' . $key,
+                    'fieldname' => 'attachments',
+                    'pid' => $this->account->getPid(),
+                ];
             }
 
             $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key] = [
@@ -75,9 +89,43 @@ class LatestTweets implements FetchTypeInterface
         }
     }
 
-    protected function saveAttachment(): string
+    protected function saveAttachment($response, string $mediaKey): ?int
     {
-        return '';
+        $uid = null;
+
+        foreach ($response->includes->media as $media) {
+            if ($media->media_key !== $mediaKey) {
+                continue;
+            }
+
+            if ($media->type === 'photo') {
+                $uid = $this->downloadImage($media->url);
+            }
+
+            if ($media->type === 'video') {
+                $uid = $this->downloadImage($media->preview_image_url);
+            }
+        }
+
+        return $uid;
+    }
+
+    protected function downloadImage(string $imageUrl): int
+    {
+        $filename = basename($imageUrl);
+
+        if ($this->imageFolder->hasFile($filename)) {
+            return $this->imageFolder->getFile($filename)->getUid();
+        }
+
+        $file = $this->imageFolder->createFile($filename);
+        $tempFile = $file->getForLocalProcessing();
+        $client = GeneralUtility::makeInstance(Client::class);
+        $resource = \GuzzleHttp\Psr7\Utils::tryFopen($tempFile, 'w');
+        $client->request('GET', $imageUrl, ['sink' => $resource]);
+        $file->setContents(file_get_contents($tempFile));
+
+        return $file->getUid();
     }
 
     protected function filterResponse($response): \stdClass

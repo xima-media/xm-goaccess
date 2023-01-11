@@ -49,6 +49,7 @@ class FetchTweetsCommand extends Command
             }
 
             $fetchType->setAccount($account);
+            $fetchType->setImageFolder($imageFolder);
             $fetchType->setTweetRepository($this->tweetRepository);
 
             $userId = $this->fetchUserId($account->getUsername());
