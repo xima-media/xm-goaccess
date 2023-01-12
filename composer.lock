@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62740cf3aaae08999a38465d89c53a04",
+    "content-hash": "db8fa7921d5b12d9e2d0885036b451fe",
     "packages": [
         {
             "name": "b13/container",
@@ -250,7 +250,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -2584,6 +2584,95 @@
                 "source": "https://github.com/thephpleague/oauth2-client/tree/2.6.1"
             },
             "time": "2021-12-22T16:42:49+00:00"
+        },
+        {
+            "name": "lochmueller/staticfilecache",
+            "version": "12.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lochmueller/staticfilecache.git",
+                "reference": "68163d7a0f1f16a1d3855b8212b8fa5682d9ae0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lochmueller/staticfilecache/zipball/68163d7a0f1f16a1d3855b8212b8fa5682d9ae0b",
+                "reference": "68163d7a0f1f16a1d3855b8212b8fa5682d9ae0b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "ext-zlib": "*",
+                "php": "^7.4||^8.0",
+                "typo3/cms-core": "^10.4.21||^11.5.2",
+                "typo3/cms-extensionmanager": "^10.4.21||^11.5.2"
+            },
+            "conflict": {
+                "tomasnorre/crawler": "<11.0.1"
+            },
+            "replace": {
+                "typo3-ter/staticfilecache": "self.version"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.5",
+                "phpmetrics/phpmetrics": "^2.5",
+                "typo3/testing-framework": "^6.1"
+            },
+            "suggest": {
+                "friendsofsymfony/http-cache": "For HTTP proxy cache services like Varnish",
+                "lochmueller/seocli": "Scan websites against SEO criteria and/or trigger the indexing process and cache warming in deployment scripts"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "staticfilecache",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SFC\\Staticfilecache\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Lochmüller",
+                    "email": "tim@fruit-lab.de",
+                    "homepage": "https://github.com/lochmueller",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Transparent static file cache solution using mod_rewrite and mod_expires. Increase performance for static pages by a factor of 230!!",
+            "homepage": "https://extensions.typo3.org/extension/staticfilecache",
+            "keywords": [
+                "StaticFileCache",
+                "TYPO3 CMS",
+                "cache",
+                "file",
+                "magic",
+                "speed",
+                "static"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/lochmueller/staticfilecache/main/en-us/",
+                "issues": "https://github.com/lochmueller/staticfilecache/issues",
+                "source": "https://github.com/lochmueller/staticfilecache"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/lochmueller",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/lochmueller",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-26T13:35:21+00:00"
         },
         {
             "name": "lolli42/finediff",
@@ -7942,7 +8031,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10389,7 +10478,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -10424,7 +10513,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -10458,7 +10547,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -10545,7 +10634,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -10580,7 +10669,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-master",
+            "version": "dev-DKFZ-535",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
