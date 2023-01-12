@@ -200,7 +200,7 @@ return [
             'inlineServiceStyles' => '0',
             'inlineStyleAssets' => 'ico,png,woff2',
             'inlineStyleMinify' => '0',
-            'overrideCacheDirectory' => '',
+            'overrideCacheDirectory' => 'typo3temp/assets/tx_staticfilecache/',
             'rawurldecodeCacheFileName' => '0',
             'renameTablesToOtherPrefix' => '0',
             'sendCacheControlHeaderRedirectAfterCacheTimeout' => '0',
