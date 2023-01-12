@@ -410,7 +410,10 @@ Homepage structure:
         grid-template-columns: min-content auto;
         gap: 1rem;
         padding-bottom: 1rem;
-        border-bottom: 1px solid var(--color-gray-200);
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--color-gray-200);
+        }
     }
 
     &__profile {
