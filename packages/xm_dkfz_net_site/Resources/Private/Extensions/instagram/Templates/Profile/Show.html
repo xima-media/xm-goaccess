@@ -24,12 +24,12 @@
 
 						<f:then>
 							<picture>
-								<source srcset="{f:uri.image(src:'/typo3temp/assets/tx_instagram/{image.id}.jpg', width:'250', height:'250', fileExtension: 'webp')}"
+								<source srcset="{f:uri.image(src:'/typo3temp/assets/tx_instagram/{image.id}.jpg', width:'250', height:'250c', fileExtension: 'webp')}"
 										type="image/webp">
-								<source srcset="{f:uri.image(src:'/typo3temp/assets/tx_instagram/{image.id}.jpg', width:'250', height:'250', fileExtension: 'jpg')}"
+								<source srcset="{f:uri.image(src:'/typo3temp/assets/tx_instagram/{image.id}.jpg', width:'250', height:'250c', fileExtension: 'jpg')}"
 										type="image/jpeg">
 
-								<img src="{f:uri.image(src:'/typo3temp/assets/tx_instagram/{image.id}.jpg', width:'250', height:'250')}"
+								<img src="{f:uri.image(src:'/typo3temp/assets/tx_instagram/{image.id}.jpg', width:'250', height:'250c')}"
 									 title="{image.caption -> f:format.crop(maxCharacters: 120, append: ' ...')}"
 									 alt="{image.caption -> f:format.crop(maxCharacters: 120, append: ' ...')}"
 									 loading="lazy"/>
