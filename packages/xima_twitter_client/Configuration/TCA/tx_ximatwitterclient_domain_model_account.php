@@ -16,15 +16,15 @@ return [
     'types' => [
         0 => [
             'showitem' => 'username, fetch_type, fetch_options, max_results',
-        ]
+        ],
     ],
     'columns' => [
         'username' => [
             'label' => 'Username',
             'config' => [
                 'type' => 'input',
-                'eval' => 'trim,required'
-            ]
+                'eval' => 'trim,required',
+            ],
         ],
         'fetch_type' => [
             'label' => 'Type',
@@ -34,7 +34,7 @@ return [
                 'items' => [
                     [
                         'Latest tweets of user',
-                        \Xima\XimaTwitterClient\FetchType\LatestTweets::class
+                        \Xima\XimaTwitterClient\FetchType\LatestTweets::class,
                     ],
                 ],
             ],
@@ -47,17 +47,16 @@ return [
                 'items' => [
                     ['Exclude replies', 'replies'],
                     ['Exclude retweets', 'retweets'],
-                ]
-            ]
+                ],
+            ],
         ],
         'max_results' => [
             'label' => 'Max results',
             'config' => [
                 'type' => 'input',
                 'eval' => 'int,required',
-                'default' => 10
+                'default' => 10,
             ],
-        ]
+        ],
     ],
 ];
-

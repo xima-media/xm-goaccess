@@ -15,34 +15,35 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'id, author_id, text, attachments'
-        ]
+            'showitem' => 'id, author_id, text, attachments',
+        ],
     ],
     'columns' => [
         'id' => [
             'label' => 'Tweet ID',
             'config' => [
-                'type' => 'input'
-            ]
+                'type' => 'input',
+            ],
         ],
         'author_id' => [
             'label' => 'Autor ID',
             'config' => [
-                'type' => 'input'
-            ]
+                'type' => 'input',
+            ],
         ],
         'text' => [
             'label' => 'Text',
             'config' => [
-                'type' => 'text'
-            ]
+                'type' => 'text',
+            ],
         ],
         'attachments' => [
             'label' => 'Attachments',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'attachments', [], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            )
-        ]
-    ]
+                'attachments',
+                [],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            ),
+        ],
+    ],
 ];
-

@@ -45,8 +45,10 @@ class FetchTweetsCommand extends Command
             $fetchType = GeneralUtility::makeInstance($account->getFetchType());
 
             if (!$fetchType instanceof FetchTypeInterface) {
-                throw new \Exception('FetchType "' . $account->getFetchType() . '" does not implement FetchTypeInterface',
-                    1673335140);
+                throw new \Exception(
+                    'FetchType "' . $account->getFetchType() . '" does not implement FetchTypeInterface',
+                    1673335140
+                );
             }
 
             $fetchType->setAccount($account);
@@ -67,8 +69,12 @@ class FetchTweetsCommand extends Command
     {
         $extConf = $this->extensionConfiguration->get('xima_twitter_client');
 
-        $this->connection = new TwitterOAuth($extConf['api_key'], $extConf['api_secret'], $extConf['access_key'],
-            $extConf['access_secret']);
+        $this->connection = new TwitterOAuth(
+            $extConf['api_key'],
+            $extConf['api_secret'],
+            $extConf['access_key'],
+            $extConf['access_secret']
+        );
         $this->connection->setApiVersion('2');
     }
 
@@ -76,8 +82,12 @@ class FetchTweetsCommand extends Command
     {
         $extConf = $this->extensionConfiguration->get('xima_twitter_client');
 
-        $connection = new TwitterOAuth($extConf['api_key'], $extConf['api_secret'], $extConf['access_key'],
-            $extConf['access_secret']);
+        $connection = new TwitterOAuth(
+            $extConf['api_key'],
+            $extConf['api_secret'],
+            $extConf['access_key'],
+            $extConf['access_secret']
+        );
         $connection->setApiVersion('2');
         $content = $connection->get('users/by', ['usernames' => $username]);
 
@@ -99,7 +109,7 @@ class FetchTweetsCommand extends Command
             'expansions' => 'author_id,attachments.media_keys',
             'max_results' => '10',
             'media.fields' => 'url,type,media_key,preview_image_url,alt_text',
-            'user.fields' => 'name,id,profile_image_url'
+            'user.fields' => 'name,id,profile_image_url',
         ]);
 
         if (!count($response->data)) {
@@ -131,8 +141,10 @@ class FetchTweetsCommand extends Command
         }
 
         if (!$folder instanceof Folder) {
-            throw new Exception('Could not get or create folder "' . $path . '" for twitter image download',
-                1673432058);
+            throw new Exception(
+                'Could not get or create folder "' . $path . '" for twitter image download',
+                1673432058
+            );
         }
 
         return $folder;

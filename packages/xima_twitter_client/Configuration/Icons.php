@@ -8,5 +8,5 @@ return [
     'twitter' => [
         'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
         'source' => 'EXT:xima_twitter_client/Resources/Public/Icons/Extension.svg',
-    ]
+    ],
 ];

@@ -4,14 +4,11 @@ namespace Xima\XimaTwitterClient\FetchType;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Stream;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Resource\Folder;
-use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XimaTwitterClient\Domain\Model\Account;
 use Xima\XimaTwitterClient\Domain\Repository\TweetRepository;
-use Xima\XimaTwitterClient\FetchType\FetchTypeInterface;
 
 class LatestTweets implements FetchTypeInterface
 {
@@ -41,7 +38,7 @@ class LatestTweets implements FetchTypeInterface
             'expansions' => 'author_id,attachments.media_keys',
             'max_results' => (string)$maxResults,
             'media.fields' => 'url,type,media_key,preview_image_url,alt_text',
-            'user.fields' => 'name,id,profile_image_url'
+            'user.fields' => 'name,id,profile_image_url',
         ]);
 
         if (!count($response->data)) {
@@ -55,10 +52,8 @@ class LatestTweets implements FetchTypeInterface
 
     protected function saveTweets($response): int
     {
-
         $data = ['tx_ximatwitterclient_domain_model_tweet' => [], 'sys_file_reference' => []];
         foreach ($response->data as $key => $tweet) {
-
             $attachmentIds = [];
 
             foreach ($tweet?->attachments?->media_keys ?? [] as $key2 => $mediaKey) {
