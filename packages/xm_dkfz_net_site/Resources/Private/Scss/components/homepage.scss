@@ -263,7 +263,7 @@ Homepage structure:
 }
 
 // 10. Social Media
-#c2261 {
+#c2261, #c2505 {
     --content-width: 1170px;
     background-color: var(--color-gray-100);
 
@@ -364,5 +364,59 @@ Homepage structure:
         }
         grid-template-rows: min-content min-content auto;
         gap: 1rem;
+    }
+}
+
+.twitter {
+
+    margin-top: calc(-0.5 * var(--overlap-size));
+
+    h5 {
+        z-index: 10;
+        position: relative;
+        margin-bottom: 1.5rem;
+
+        svg {
+            margin-bottom: 1rem;
+
+            path {
+                fill: #1D9BF0;
+            }
+        }
+
+        text-align: center;
+
+        span {
+            display: block;
+        }
+    }
+
+    p a {
+        color: var(--color-primary);
+
+        &:hover {
+            box-shadow: none;
+            text-decoration: underline;
+        }
+    }
+
+    &__wall {
+        display: grid;
+        gap: 1rem;
+    }
+
+    &__tweet {
+        display: grid;
+        grid-template-columns: min-content auto;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-gray-200);
+    }
+
+    &__profile {
+        svg path {
+            fill: var(--color-primary);
+        }
+
     }
 }

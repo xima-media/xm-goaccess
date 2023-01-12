@@ -1,0 +1,15 @@
+tt_content.twitter = FLUIDTEMPLATE
+tt_content.twitter {
+  file = EXT:xima_twitter_client/Resources/Private/Templates/Twitter.html
+  dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+  dataProcessing.10 {
+    table = tx_ximatwitterclient_domain_model_tweet
+    pidInList = 523
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        references.fieldName = attachments
+      }
+    }
+  }
+}
