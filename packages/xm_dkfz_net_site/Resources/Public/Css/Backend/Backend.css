@@ -94,6 +94,10 @@
 	--color: #a0b400;
 }
 
+.color--primary {
+	--color: #0047b9;
+}
+
 .panel.form-irre-object[data-field-name*="tt_content_item"] {
 	overflow: visible;
 }
