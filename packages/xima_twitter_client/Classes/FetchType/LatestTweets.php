@@ -37,7 +37,7 @@ class LatestTweets implements FetchTypeInterface
             'user.fields' => 'name,id,profile_image_url',
         ];
 
-        $options = GeneralUtility::trimExplode(',', $this->account->getFetchOptions());
+        $options = GeneralUtility::trimExplode(',', $this->account->getFetchOptions(), true);
         if (count($options)) {
             $params['exclude'] = implode(',', $options);
         }
