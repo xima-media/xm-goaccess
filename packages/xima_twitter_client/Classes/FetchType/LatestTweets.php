@@ -78,14 +78,12 @@ class LatestTweets implements FetchTypeInterface
                 ];
             }
 
-            $text = $this->parseTweetBody($tweet->text);
-
             $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key] = [
                 'account' => $this->account->getUid(),
                 'pid' => $this->account->getPid(),
                 'id' => $tweet->id,
                 'author_id' => $tweet->author_id,
-                'text' => $text,
+                'text' => $tweet->text,
                 'attachments' => implode(',', $attachmentIds),
             ];
 
@@ -123,12 +121,6 @@ class LatestTweets implements FetchTypeInterface
             }
         }
         return null;
-    }
-
-    protected function parseTweetBody($tweet): string
-    {
-        $tweet = preg_replace('/(https:\/\/[^\s]+)/', '<a href="$0">$0</a>', $tweet);
-        return preg_replace('/@([^\s]+)/', '<a href="https://twitter.com/$1">$0</a>', $tweet);
     }
 
     protected function saveAttachment($response, string $mediaKey): ?int

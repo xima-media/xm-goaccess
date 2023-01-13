@@ -16,3 +16,7 @@ create table tx_ximatwitterclient_domain_model_tweet (
 	profile_image int(11) unsigned default '0' not null,
 	attachments   int(11) unsigned default '0' not null,
 );
+
+create table tt_content (
+	twitter varchar(255) not null default '',
+);
