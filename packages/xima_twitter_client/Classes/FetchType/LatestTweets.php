@@ -81,6 +81,7 @@ class LatestTweets implements FetchTypeInterface
             $text = $this->parseTweetBody($tweet->text);
 
             $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key] = [
+                'account' => $this->account->getUid(),
                 'pid' => $this->account->getPid(),
                 'id' => $tweet->id,
                 'author_id' => $tweet->author_id,

@@ -15,10 +15,18 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'id, author_id, text, attachments, username, name, profile_image',
+            'showitem' => 'account, id, author_id, text, attachments, username, name, profile_image',
         ],
     ],
     'columns' => [
+        'account' => [
+            'label' => 'Account',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'foreign_table' => 'tx_ximatwitterclient_domain_model_account',
+            ]
+        ],
         'id' => [
             'label' => 'Tweet ID',
             'config' => [
