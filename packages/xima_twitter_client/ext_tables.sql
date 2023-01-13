@@ -7,8 +7,11 @@ create table tx_ximatwitterclient_domain_model_account (
 );
 
 create table tx_ximatwitterclient_domain_model_tweet (
-	text        text,
-	id          varchar(255) not null default '',
-	author_id   varchar(255) not null default '',
-	attachments int(11) unsigned default '0' not null,
+	text          text,
+	id            varchar(255) not null default '',
+	author_id     varchar(255) not null default '',
+	username      varchar(255) not null default '',
+	name          varchar(255) not null default '',
+	profile_image int(11) unsigned default '0' not null,
+	attachments   int(11) unsigned default '0' not null,
 );

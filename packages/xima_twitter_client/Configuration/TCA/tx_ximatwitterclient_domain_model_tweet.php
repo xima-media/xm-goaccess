@@ -15,7 +15,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'id, author_id, text, attachments',
+            'showitem' => 'id, author_id, text, attachments, username, name, profile_image',
         ],
     ],
     'columns' => [
@@ -31,6 +31,18 @@ return [
                 'type' => 'input',
             ],
         ],
+        'username' => [
+            'label' => 'Username',
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
+        'name' => [
+            'label' => 'Name',
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
         'text' => [
             'label' => 'Text',
             'config' => [
@@ -41,6 +53,14 @@ return [
             'label' => 'Attachments',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'attachments',
+                [],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            ),
+        ],
+        'profile_image' => [
+            'label' => 'Attachments',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'profile_image',
                 [],
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),

@@ -84,6 +84,22 @@ class LatestTweets implements FetchTypeInterface
                 'text' => $text,
                 'attachments' => implode(',', $attachmentIds),
             ];
+
+            $user = $this->getUserForTweet($response, $tweet);
+            if ($user) {
+                $profileImageId = $this->downloadImage($user->profile_image_url);
+                $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key]['username'] = $user->username;
+                $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key]['name'] = $user->name;
+                $data['tx_ximatwitterclient_domain_model_tweet']['NEW' . $key]['profile_image'] = 'NEW' . $key . 'PROFILE';
+                $data['sys_file_reference']['NEW' . $key . 'PROFILE'] = [
+                    'table_local' => 'sys_file',
+                    'uid_local' => $profileImageId,
+                    'tablenames' => 'tx_ximatwitterclient_domain_model_tweet',
+                    'uid_foreign' => 'NEW' . $key,
+                    'fieldname' => 'profile_image',
+                    'pid' => $this->account->getPid(),
+                ];
+            }
         }
 
         if (count($data['tx_ximatwitterclient_domain_model_tweet'])) {
@@ -93,6 +109,16 @@ class LatestTweets implements FetchTypeInterface
         }
 
         return count($data['tx_ximatwitterclient_domain_model_tweet']);
+    }
+
+    protected function getUserForTweet($response, $tweet): ?\stdClass
+    {
+        foreach ($response->includes->users as $user) {
+            if ($user->id === $tweet->author_id) {
+                return $user;
+            }
+        }
+        return null;
     }
 
     protected function parseTweetBody($tweet): string
