@@ -78,7 +78,7 @@ class TweetProcessor implements DataProcessorInterface
         $results = $qb->select('*')
             ->from('tx_ximatwitterclient_domain_model_tweet')
             ->where(
-                $qb->expr()->eq('account', $qb->quoteArrayBasedValueListToStringList($accountUids))
+                $qb->expr()->in('account', $qb->quoteArrayBasedValueListToStringList($accountUids))
             )
             ->execute()
             ->fetchAllAssociative();
