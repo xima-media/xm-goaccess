@@ -42,3 +42,7 @@ To start the download, run this command:
 ```bash
 vendor/bin/typo3cms twitter:fetchTweets
 ```
+
+To output a Twitter feed, add the new custom content element "Twitter" to any page:
+
+![Backend Wizard preview](Documentation/backend_wizard.jpg)
