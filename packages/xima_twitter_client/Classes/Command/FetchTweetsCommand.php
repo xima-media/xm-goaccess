@@ -75,6 +75,7 @@ class FetchTweetsCommand extends Command
             $extConf['access_key'],
             $extConf['access_secret']
         );
+        $this->connection->setTimeouts(10, 10);
         $this->connection->setApiVersion('2');
     }
 
@@ -100,23 +101,6 @@ class FetchTweetsCommand extends Command
         }
 
         return $content->data[0]->id;
-    }
-
-    protected function fetchLatestTweets(string $userId): array
-    {
-        $response = $this->connection->get('users/' . $userId . '/tweets', [
-            'exclude' => 'replies,retweets',
-            'expansions' => 'author_id,attachments.media_keys',
-            'max_results' => '10',
-            'media.fields' => 'url,type,media_key,preview_image_url,alt_text',
-            'user.fields' => 'name,id,profile_image_url',
-        ]);
-
-        if (!count($response->data)) {
-            throw new \Exception('Could not fetch tweets', 1673286318);
-        }
-
-        return (array)$response;
     }
 
     protected function getImageStorage(): Folder
