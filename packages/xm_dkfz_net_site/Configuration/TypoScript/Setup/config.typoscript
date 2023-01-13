@@ -12,3 +12,7 @@ config {
   htmlTag.attributes.style = --scrollbar-width:17px;
   htmlTag.attributes.class = fx--header-not-sticky
 }
+
+[backend.user.isLoggedIn]
+  config.no_cache = 1
+[end]

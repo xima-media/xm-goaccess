@@ -69,7 +69,8 @@
 		"tpwd/ke_search_premium": "*@dev",
 		"causal/image_autoresize": "^2.2",
 		"ext-simplexml": "*",
-		"ichhabrecht/filefill": "^4.1"
+		"ichhabrecht/filefill": "^4.1",
+		"lochmueller/staticfilecache": "^12.5"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
