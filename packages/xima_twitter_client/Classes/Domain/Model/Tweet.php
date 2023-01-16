@@ -78,5 +78,4 @@ class Tweet extends AbstractEntity
         $html = preg_replace('/(https:\/\/[^\s]+)/', '<a href="$0">$0</a>', $this->text);
         return preg_replace('/@([^\s]+)/', '<a href="https://twitter.com/$1">$0</a>', $html);
     }
-
 }

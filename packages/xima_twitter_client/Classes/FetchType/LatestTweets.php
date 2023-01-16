@@ -35,7 +35,7 @@ class LatestTweets implements FetchTypeInterface
             'max_results' => (string)$this->account->getMaxResults(),
             'media.fields' => 'url,type,media_key,preview_image_url,alt_text',
             'user.fields' => 'name,id,profile_image_url',
-            'tweet.fields' => 'created_at'
+            'tweet.fields' => 'created_at',
         ];
 
         $options = GeneralUtility::trimExplode(',', $this->account->getFetchOptions(), true);
@@ -86,7 +86,7 @@ class LatestTweets implements FetchTypeInterface
                 'author_id' => $tweet->author_id,
                 'text' => $tweet->text,
                 'attachments' => implode(',', $attachmentIds),
-                'date' => (new \DateTime($tweet->created_at))->getTimestamp()
+                'date' => (new \DateTime($tweet->created_at))->getTimestamp(),
             ];
 
             $user = $this->getUserForTweet($response, $tweet);

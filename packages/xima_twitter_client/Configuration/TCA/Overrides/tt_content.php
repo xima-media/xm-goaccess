@@ -18,8 +18,8 @@
         'config' => [
             'type' => 'group',
             'allowed' => 'tx_ximatwitterclient_domain_model_account',
-        ]
-    ]
+        ],
+    ],
 ]);
 
 $GLOBALS['TCA']['tt_content']['types']['twitter'] = [

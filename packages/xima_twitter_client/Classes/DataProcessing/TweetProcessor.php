@@ -18,11 +18,9 @@ namespace Xima\XimaTwitterClient\DataProcessing;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
-use TYPO3\CMS\Frontend\ContentObject\ContentDataProcessor;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use Xima\XimaTwitterClient\Domain\Model\Tweet;
-use Xima\XimaTwitterClient\Domain\Repository\TweetRepository;
 
 /**
  * Fetch records from the database, using the default .select syntax from TypoScript.
@@ -46,7 +44,6 @@ use Xima\XimaTwitterClient\Domain\Repository\TweetRepository;
  */
 class TweetProcessor implements DataProcessorInterface
 {
-
     /**
      * Fetches records from the database as an array
      *
@@ -62,10 +59,9 @@ class TweetProcessor implements DataProcessorInterface
         array $processorConfiguration,
         array $processedData
     ) {
-
         $accounts = $cObj->getRecords('tx_ximatwitterclient_domain_model_account', [
             'uidInList.' => [
-                'field' => 'twitter'
+                'field' => 'twitter',
             ],
             'pidInList' => 0,
         ]);

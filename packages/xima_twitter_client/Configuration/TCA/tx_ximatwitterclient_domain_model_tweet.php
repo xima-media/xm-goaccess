@@ -25,7 +25,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_ximatwitterclient_domain_model_account',
-            ]
+            ],
         ],
         'id' => [
             'label' => 'Tweet ID',
