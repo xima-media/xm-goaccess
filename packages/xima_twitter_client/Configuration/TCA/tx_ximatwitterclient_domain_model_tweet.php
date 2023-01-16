@@ -15,7 +15,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'account, id, author_id, text, attachments, username, name, profile_image',
+            'showitem' => 'account, id, date, author_id, text, attachments, username, name, profile_image',
         ],
     ],
     'columns' => [
@@ -31,6 +31,14 @@ return [
             'label' => 'Tweet ID',
             'config' => [
                 'type' => 'input',
+            ],
+        ],
+        'date' => [
+            'label' => 'Date',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
             ],
         ],
         'author_id' => [
