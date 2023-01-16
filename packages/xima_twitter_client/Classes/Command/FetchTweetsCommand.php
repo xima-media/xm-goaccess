@@ -75,7 +75,7 @@ class FetchTweetsCommand extends Command
             $extConf['access_key'],
             $extConf['access_secret']
         );
-        $this->connection->setTimeouts(10, 10);
+        $this->connection->setTimeouts(30, 30);
         $this->connection->setApiVersion('2');
     }
 
