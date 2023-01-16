@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace xm=Xima\XmDkfzNetSite\ViewHelpers}
+<f:layout name="Default"/>
+<f:section name="Header">
+
+</f:section>
+
+<f:section name="Main">
+
+	<div class="twitter">
+
+		<h3 class="h5">
+			<f:render partial="Icon" arguments="{icon:'twitter', width: 28, height: 28}"/>
+			<span>DKFZ auf Twitter</span>
+		</h3>
+
+		<div class="twitter__wall">
+			<f:for each="{tweets}" as="tweet">
+				<div class="twitter__tweet">
+					<div class="twitter__profile">
+						<f:image image="{tweet.profileImage}"/>
+					</div>
+					<div>
+						<p class="text-small m-b-0"><strong>{tweet.name}</strong></p>
+						<p class="text-small m-b-05">
+							<a target="_blank" href="https://twitter.com/{tweet.username}" title="{tweet.name}">
+								@{tweet.username}
+							</a>
+						</p>
+						<p>{tweet.textAsHtml->f:format.raw()}</p>
+						<f:if condition="{tweet.attachments}">
+							<div class="twitter__images">
+								<f:for each="{tweet.attachments}" as="image">
+									<f:image width="200" image="{image}"/>
+								</f:for>
+							</div>
+						</f:if>
+					</div>
+
+				</div>
+			</f:for>
+		</div>
+	</div>
+</f:section>
+</html>

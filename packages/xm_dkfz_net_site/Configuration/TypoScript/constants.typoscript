@@ -145,3 +145,14 @@ plugin.tx_kesearch {
   partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ke_search/Partials/
   layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/ke_search/Layouts/
 }
+
+###########################
+### xima_twitter_client ###
+###########################
+plugin.tx_ximatwitterclient {
+  view {
+    templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xima_twitter_client/Templates/
+    partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xima_twitter_client/Partials/
+    layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xima_twitter_client/Layouts/
+  }
+}
