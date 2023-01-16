@@ -36,6 +36,8 @@ page {
       currentPid.data = field:uid
       currentUrl = TEXT
       currentUrl.data = getIndpEnv:TYPO3_REQUEST_URL
+      pidEmergency = TEXT
+      pidEmergency.value = {$pidEmergency}
     }
 
     dataProcessing {
