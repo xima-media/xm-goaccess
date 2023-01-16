@@ -2,6 +2,7 @@
 
 namespace Xima\XimaTwitterClient\Domain\Model;
 
+use DateTime;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -21,6 +22,13 @@ class Tweet extends AbstractEntity
     protected string $name = '';
 
     protected ?FileReference $profileImage = null;
+
+    protected DateTime $date;
+
+    public function getDate(): DateTime
+    {
+        return $this->date;
+    }
 
     /**
      * @var ObjectStorage<FileReference>|null

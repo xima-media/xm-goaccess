@@ -422,4 +422,16 @@ Homepage structure:
         }
 
     }
+
+    &__header {
+        display: flex;
+    }
+
+    &__usernames {
+        flex-grow: 1;
+    }
+
+    &__date {
+        color: var(--color-gray-700);
+    }
 }

@@ -21,12 +21,18 @@
 						<f:image image="{tweet.profileImage}"/>
 					</div>
 					<div>
-						<p class="text-small m-b-0"><strong>{tweet.name}</strong></p>
-						<p class="text-small m-b-05">
-							<a target="_blank" href="https://twitter.com/{tweet.username}" title="{tweet.name}">
-								@{tweet.username}
-							</a>
-						</p>
+						<div class="twitter__header">
+							<div class="twitter__usernames">
+								<p class="text-small m-b-0"><strong>{tweet.name}</strong></p>
+								<p class="text-small m-b-05">
+									<a target="_blank" href="https://twitter.com/{tweet.username}" title="{tweet.name}">
+										@{tweet.username}
+									</a>
+								</p>
+							</div>
+							<p class="text-small twitter__date">
+								{tweet.date->f:format.date(format: 'd.m.Y')} </p>
+						</div>
 						<p>{tweet.textAsHtml->f:format.raw()}</p>
 						<f:if condition="{tweet.attachments}">
 							<div class="twitter__images">
