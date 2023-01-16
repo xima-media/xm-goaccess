@@ -17,9 +17,18 @@
 		<div class="twitter__wall">
 			<f:for each="{tweets}" as="tweet">
 				<div class="twitter__tweet">
-					<div class="twitter__profile">
-						<f:image image="{tweet.profileImage}"/>
-					</div>
+					<a class="twitter__profile"
+					   target="_blank"
+					   href="https://twitter.com/{tweet.username}"
+					   title="{tweet.name}">
+						<picture>
+							<source srcset="{f:uri.image(image: tweet.profileImage, width:48, fileExtension: 'webp')}"
+									type="image/webp">
+							<source srcset="{f:uri.image(image: tweet.profileImage, width:48, fileExtension: 'jpg')}"
+									type="image/jpeg">
+							<f:image loading="lazy" width="48" fileExtension="webp" image="{tweet.profileImage}"/>
+						</picture>
+					</a>
 					<div>
 						<div class="twitter__header">
 							<div class="twitter__usernames">
@@ -31,9 +40,9 @@
 								</p>
 							</div>
 							<p class="text-small twitter__date">
-								{tweet.date->f:format.date(format: 'd.m.Y')} </p>
+								{tweet.date->f:format.date(format: 'd.m.y')} </p>
 						</div>
-						<p>{tweet.textAsHtml->f:format.raw()}</p>
+						<p class="m-b-05">{tweet.textAsHtml->f:format.raw()}</p>
 						<f:if condition="{tweet.attachments}">
 							<div class="twitter__images">
 								<f:for each="{tweet.attachments}" as="image">

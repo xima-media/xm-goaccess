@@ -417,6 +417,8 @@ Homepage structure:
     }
 
     &__profile {
+        margin-top: 0.25rem;
+        
         svg path {
             fill: var(--color-primary);
         }
@@ -425,6 +427,11 @@ Homepage structure:
 
     &__header {
         display: flex;
+
+        p a {
+            color: var(--color-gray-900);
+            text-decoration: none;
+        }
     }
 
     &__usernames {
