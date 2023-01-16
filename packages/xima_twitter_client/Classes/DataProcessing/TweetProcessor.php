@@ -76,6 +76,7 @@ class TweetProcessor implements DataProcessorInterface
             ->where(
                 $qb->expr()->in('account', $qb->quoteArrayBasedValueListToStringList($accountUids))
             )
+            ->orderBy('date', 'DESC')
             ->execute()
             ->fetchAllAssociative();
 
