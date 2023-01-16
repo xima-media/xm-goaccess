@@ -212,6 +212,13 @@ return [
             'useReverseUriLengthInPriority' => '1',
             'validHtaccessHeaders' => 'Content-Type,Content-Language,Link,X-SFC-Tags',
         ],
+        'xima_twitter_client' => [
+            'api_key' => 'Bn7ayOiifE3NBAEtFRV7lmubL',
+            'api_secret' => '',
+            'access_key' => '64132999-1zns9EPrKi0WuC1pu0jddx1qdEn1CLLfHtILfQA0F',
+            'access_secret' => '',
+            'image_storage' => '1:Twitter',
+        ],
         'xm_dkfz_net_events' => [
             'api_url_override' => '',
         ],

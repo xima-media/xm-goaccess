@@ -73,3 +73,4 @@ lib.generalFeedbackForm {
 
 lib.pageTitle = TEXT
 lib.pageTitle.data = page:title
+

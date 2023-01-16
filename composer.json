@@ -10,6 +10,10 @@
 	],
 	"repositories": [
 		{
+			"type": "github",
+			"url": "https://github.com/maikschneider/instagram.git"
+		},
+		{
 			"type": "path",
 			"url": "./packages/*"
 		}
@@ -70,7 +74,9 @@
 		"causal/image_autoresize": "^2.2",
 		"ext-simplexml": "*",
 		"ichhabrecht/filefill": "^4.1",
-		"lochmueller/staticfilecache": "^12.5"
+		"lochmueller/staticfilecache": "^12.5",
+		"in2code/instagram": "dev-master",
+		"xima/xima-twitter-client":  "*@dev"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

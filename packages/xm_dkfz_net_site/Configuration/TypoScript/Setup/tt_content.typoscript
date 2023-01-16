@@ -175,6 +175,20 @@ tt_content {
         max = 3
         as = pages
       }
+
+      40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      40 {
+        table = tx_ximatwitterclient_domain_model_tweet
+        pidInList = 498
+        as = tweets
+        max = 3
+        dataProcessing {
+          10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+          10 {
+            references.fieldName = attachments
+          }
+        }
+      }
     }
   }
 
