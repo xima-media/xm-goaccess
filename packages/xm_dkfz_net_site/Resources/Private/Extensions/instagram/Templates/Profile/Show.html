@@ -13,13 +13,9 @@
 		<f:for each="{feed.data}" as="image" iteration="iteration">
 			<f:if condition="{iteration.cycle} <= 6">
 				<f:link.external uri="{image.permalink}"
-								 title="Instagram profile {settings.username}"
+								 title="View on Instagram"
 								 target="_blank"
 								 rel="noopener">
-
-					<p class="text-date">
-						<f:format.date format="%d. %B">{image.timestamp}</f:format.date>
-					</p>
 					<instagram:isLocalImageExisting id="{image.id}">
 
 						<f:then>
@@ -48,7 +44,12 @@
 						</f:else>
 					</instagram:isLocalImageExisting>
 
-					<p class="text-small">{image.caption->f:format.crop(maxCharacters: 60)}</p>
+					<div class="overlay">
+						<p class="text-small">{image.caption->f:format.crop(maxCharacters: 150)}</p>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+						</span>
+					</div>
 				</f:link.external>
 			</f:if>
 		</f:for>

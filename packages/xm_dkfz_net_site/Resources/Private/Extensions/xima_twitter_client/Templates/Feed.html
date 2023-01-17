@@ -26,7 +26,11 @@
 									type="image/webp">
 							<source srcset="{f:uri.image(image: tweet.profileImage, width:48, fileExtension: 'jpg')}"
 									type="image/jpeg">
-							<f:image loading="lazy" width="48" fileExtension="webp" image="{tweet.profileImage}"/>
+							<f:image loading="lazy"
+									 width="48"
+									 fileExtension="webp"
+									 alt="Profile image"
+									 image="{tweet.profileImage}"/>
 						</picture>
 					</a>
 					<div>
@@ -40,13 +44,22 @@
 								</p>
 							</div>
 							<p class="text-small twitter__date">
-								{tweet.date->f:format.date(format: 'd.m.y')} </p>
+								<a target="_blank"
+								   href="https://twitter.com/{tweet.username}/status/{tweet.id}"
+								   title="Open tweet">
+									{tweet.date->f:format.date(format: 'd.m.y')}
+								</a>
+							</p>
 						</div>
 						<p class="m-b-05">{tweet.textAsHtml->f:format.raw()}</p>
 						<f:if condition="{tweet.attachments}">
 							<div class="twitter__images">
 								<f:for each="{tweet.attachments}" as="image">
-									<f:image width="200" image="{image}"/>
+									<a target="_blank"
+									   href="https://twitter.com/{tweet.username}/status/{tweet.id}"
+									   title="Open tweet">
+										<f:image alt="Twitter Image" width="200" maxHeight="200" image="{image}"/>
+									</a>
 								</f:for>
 							</div>
 						</f:if>
