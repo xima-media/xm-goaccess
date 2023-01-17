@@ -115,33 +115,12 @@ class QuickSearch {
       return
     }
 
-    // toggle: quick search
     this.quickSearchButtonToggleEl.addEventListener('click', () => {
-      this.quickSearchButtonToggleEl?.closest('.search-box')?.classList.add('search-box--active')
-      this.quickSearchButtonToggleEl?.closest('.navigation__items')?.classList.add('search-box--active')
-      this.quickSearchInputEl.focus()
-
-      if (
-        this.quickSearchInputEl.value.length !== 0 &&
-        this.quickSearchButtonToggleEl &&
-        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active') &&
-        this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.contains('search-box--active')
-      ) {
-        setTimeout(() => {
-          this.quickSearchButtonToggleEl?.setAttribute('type', 'submit')
-        }, 500)
-      }
+      this.handleQuickSearchButtonClick()
     })
 
     this.quickSearchInputEl.addEventListener('input', () => {
-      if (
-        this.quickSearchInputEl.value.length !== 0 &&
-        this.quickSearchButtonToggleEl &&
-        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active') &&
-        this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.contains('search-box--active')
-      ) {
-        this.quickSearchButtonToggleEl.setAttribute('type', 'submit')
-      }
+      this.handleQuickSearchInput()
     })
 
     document.addEventListener('mousedown', event => {
@@ -149,18 +128,39 @@ class QuickSearch {
     })
   }
 
+  protected handleQuickSearchButtonClick(): void {
+    const searchBox = this.quickSearchButtonToggleEl?.closest('.search-box')
+    const navigationItems = this.quickSearchButtonToggleEl?.closest('.navigation__items')
+
+    if (searchBox) {
+      searchBox.classList.add('search-box--active')
+      navigationItems?.classList.add('search-box--active')
+    }
+    this.quickSearchInputEl.focus()
+    if (this.quickSearchInputEl.value.length !== 0) {
+      setTimeout(() => {
+        this.quickSearchButtonToggleEl?.setAttribute('type', 'submit')
+      }, 500)
+    }
+  }
+
+  protected handleQuickSearchInput(): void {
+    if (this.quickSearchInputEl.value.length !== 0) {
+      this.quickSearchButtonToggleEl?.setAttribute('type', 'submit')
+    }
+  }
+
   protected clickOutsideQuickSearch(event: MouseEvent): void {
+    if (!this.quickSearchButtonToggleEl) return
+
     const targetEl = event.target as HTMLElement
     const targetParentEl = targetEl.closest('.quick-search')
 
-    if (!this.quickSearchButtonToggleEl) {
-      return
-    }
-
     if (targetParentEl === null && !targetEl.classList.contains('autocomplete-suggestion')) {
       this.quickSearchButtonToggleEl.setAttribute('type', 'button')
-      if (this.quickSearchButtonToggleEl.closest('.search-box')?.classList.contains('search-box--active')) {
-        this.quickSearchButtonToggleEl.closest('.search-box')?.classList.remove('search-box--active')
+      const searchBox = this.quickSearchButtonToggleEl.closest('.search-box')
+      if (searchBox?.classList.contains('search-box--active')) {
+        searchBox?.classList.remove('search-box--active')
         this.quickSearchButtonToggleEl.closest('.navigation__items')?.classList.remove('search-box--active')
       }
     }
