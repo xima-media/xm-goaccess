@@ -156,4 +156,5 @@ plugin.tx_ximatwitterclient {
     partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xima_twitter_client/Partials/
     layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/xima_twitter_client/Layouts/
   }
+  settings.maxItems = 3
 }

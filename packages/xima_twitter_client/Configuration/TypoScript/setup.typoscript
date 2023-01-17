@@ -10,4 +10,5 @@ tt_content.twitter {
   layoutRootPaths.1673619033 = {$plugin.tx_ximatwitterclient.view.layoutRootPath}
 
   dataProcessing.1673621525 = Xima\XimaTwitterClient\DataProcessing\TweetProcessor
+  dataProcessing.1673621525.maxItems = {$plugin.tx_ximatwitterclient.settings.maxItems}
 }

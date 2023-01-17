@@ -4,4 +4,7 @@ plugin.tx_ximatwitterclient {
     partialRootPath =
     layoutRootPath =
   }
+  settings {
+    maxItems =
+  }
 }

@@ -17,6 +17,7 @@ namespace Xima\XimaTwitterClient\DataProcessing;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
@@ -71,14 +72,20 @@ class TweetProcessor implements DataProcessorInterface
         }, $accounts);
 
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_ximatwitterclient_domain_model_tweet');
-        $results = $qb->select('*')
+        $query = $qb->select('*')
             ->from('tx_ximatwitterclient_domain_model_tweet')
             ->where(
                 $qb->expr()->in('account', $qb->quoteArrayBasedValueListToStringList($accountUids))
             )
-            ->orderBy('date', 'DESC')
-            ->execute()
-            ->fetchAllAssociative();
+            ->orderBy('date', 'DESC');
+
+        $maxItemConf = $processorConfiguration['maxItems'] ?? '';
+        $maxItems = MathUtility::canBeInterpretedAsInteger($maxItemConf) ? (int)$maxItemConf : 0;
+        if ($maxItems) {
+            $query->setMaxResults($maxItemConf);
+        }
+
+        $results = $query->execute()->fetchAllAssociative();
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         $tweets = $dataMapper->map(Tweet::class, $results);
