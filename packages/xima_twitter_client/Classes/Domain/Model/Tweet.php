@@ -83,7 +83,8 @@ class Tweet extends AbstractEntity
 
     public function getTextAsHtml(): string
     {
-        $html = preg_replace('/(https:\/\/[^\s]+)/', '<a href="$0">$0</a>', $this->text);
-        return preg_replace('/@([^\s]+)/', '<a href="https://twitter.com/$1">$0</a>', $html);
+        $html = preg_replace('/(https:\/\/[^\s\:]+)/', '<a title="Open link" target="_blank" href="$0">$0</a>', $this->text);
+        $html = preg_replace('/(#)([^\s]+)/', '<a title="View hashtag" target="_blank" href="https://twitter.com/hashtag/$2">$0</a>', $html);
+        return preg_replace('/@([^\s\:\.]+)/', '<a title="Open profile" target="_blank" href="https://twitter.com/$1">$0</a>', $html);
     }
 }
