@@ -395,9 +395,11 @@ Homepage structure:
 
     p a {
         color: var(--color-primary);
+        border: none;
+        text-decoration: underline;
 
         &:hover {
-            box-shadow: none;
+            background: none;
             text-decoration: underline;
         }
     }
