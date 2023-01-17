@@ -12,7 +12,7 @@ services:
     tags:
       - name: 'console.command'
         command: 'twitter:fetchTweets'
-        schedulable: false
+        schedulable: true
 
   Xima\XimaTwitterClient\FetchType\LatestTweets:
     public: true
