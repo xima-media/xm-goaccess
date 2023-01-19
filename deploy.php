@@ -2,6 +2,8 @@
 
 namespace Deployer;
 
+use SourceBroker\DeployerExtendedTypo3\Utility\ConsoleUtility;
+
 require_once(__DIR__ . '/vendor/xima/xima-deployer-extended-typo3/autoload.php');
 
 set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
@@ -90,13 +92,20 @@ option(
     'Gitlab token of DKFZ production repo.'
 );
 task('reset:from_production_artifact', function () {
-    run('cd {{deploy_path}}/current && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
-    if (test('[ -f {{deploy_path}}/current/artifacts.zip ]')) {
-        run('cd {{deploy_path}}/current && vendor/bin/dep db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
-        run('cd {{deploy_path}}/current && unzip -o artifacts.zip');
-        run('mv -f {{deploy_path}}/current/.dep/database/dumps/* {{deploy_path}}/.dep/database/dumps/');
-        run('cd {{deploy_path}}/current && vendor/bin/dep db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
-        run('cd {{deploy_path}}/current && vendor/bin/dep db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+    if (get('is_argument_host_the_same_as_local_host')) {
+        $activeDir = get('deploy_path') . (testLocally('[ -e {{deploy_path}}/release ]') ? '/release' : '/current');
+        $activeDir = testLocally('[ -e ' . $activeDir . ' ]') ? $activeDir : get('deploy_path');
+        runLocally('cd ' . $activeDir . ' && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
+        if (testLocally('[ -f ' . $activeDir . '/artifacts.zip ]')) {
+            runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && unzip -o artifacts.zip');
+            runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+        }
+    } else {
+        $activeDir = get('deploy_path') . (test('[ -e {{deploy_path}}/release ]') ? '/release' : '/current');
+        $verbosity = (new ConsoleUtility())->getVerbosityAsParameter();
+        run('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} reset:from_production_artifact ' . get('argument_host') . ' -o DKFZ_ACCESS_TOKEN="{DKFZ_ACCESS_TOKEN}" ' . $verbosity);
     }
 });
 
