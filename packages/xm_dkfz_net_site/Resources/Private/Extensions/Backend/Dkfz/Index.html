@@ -6,6 +6,21 @@
 
 <f:be.pageRenderer includeRequireJsModules="{0: 'TYPO3/CMS/XmDkfzNetSite/BackendModuleDkfz'}" />
 
+<f:if condition="!{entries->f:count()}">
+	<div class="alert alert-danger">
+		<div class="media">
+			<div class="media-left">
+				<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-exclamation fa-stack-1x"></i>
+				</span>
+			</div>
+			<div class="media-body"><h4 class="alert-title">Could read data from phonebook API!</h4>
+				<p class="alert-message">This error can occur when the data is updated at that moment (typically every hour on the hour). Please try again later. If the error persists, please contact support.</p>
+			</div>
+		</div>
+	</div>
+</f:if>
+
 <div class="card-container">
 	<div class="card card-size-fixed-small">
 		<div class="card-header">

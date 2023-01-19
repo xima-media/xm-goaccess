@@ -3,14 +3,12 @@
 namespace Xima\XmDkfzNetJobs\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Xima\XmDkfzNetJobs\Utility\JobLoaderUtility;
 
 class JobController extends ActionController
 {
-
     public function __construct(
         protected JobLoaderUtility $jobLoaderUtility
     ) {

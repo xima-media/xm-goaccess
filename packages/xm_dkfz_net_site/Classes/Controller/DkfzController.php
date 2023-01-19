@@ -45,7 +45,14 @@ class DkfzController extends ActionController
      */
     public function indexAction(): ResponseInterface
     {
-        $this->phoneBookUtility->loadJson();
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+
+        try {
+            $this->phoneBookUtility->loadJson();
+        } catch (Exception) {
+            $moduleTemplate->setContent($this->view->render());
+            return $this->htmlResponse($moduleTemplate->renderContent());
+        }
         $entries = $this->phoneBookUtility->getPhoneBookEntries();
 
         $this->phoneBookUtility->setFilterEntriesForPlaces(true);
