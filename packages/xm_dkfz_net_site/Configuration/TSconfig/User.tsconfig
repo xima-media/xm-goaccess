@@ -4,6 +4,9 @@ options.pageTree.showPageIdWithTitle = 1
 # Show whole page tree for all users
 options.pageTree.altElementBrowserMountPoints = 1
 
+# disable full cache clear
+options.clearCache.all = 0
+
 # Hide fields in usersettings for users of usergroup 1 (Base-Redakteur)
 [1 in backend.user.userGroupIds]
   # hide Handbuch
