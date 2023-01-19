@@ -76,7 +76,7 @@ Homepage structure:
 }
 
 // Topnews
-#c105, #3209 {
+#c105, #c3209 {
     @include expandContent;
 
     margin-top: -3rem;
@@ -87,14 +87,14 @@ Homepage structure:
 }
 
 // Short news
-#c1615, #3211 {
+#c1615, #c3211 {
     @include media-breakpoint-up(md) {
         --content-width: 455px;
     }
 }
 
 // 2-Col news container
-#c1612, #3210 {
+#c1612, #c3210 {
     position: relative;
     padding-bottom: 0;
 
@@ -120,26 +120,26 @@ Homepage structure:
 }
 
 // Events
-#c5, #3215 {
+#c5, #c3215 {
 
 }
 
 // 4. & 5. Service slider
-#c103, #3213 {
+#c103, #c3213 {
     --content-width: 1170px;
     --content-padding: 4rem;
     background-color: #40B7EA;
     padding-top: calc(2 * var(--overlap-size));
 }
 
-#c104, #3214 {
+#c104, #c3214 {
     --content-width: 1170px;
     background-color: #40B7EA;
     padding-bottom: calc(2 * var(--overlap-size));
 }
 
 // Events
-#c5, #3215 {
+#c5, #c3215 {
     position: relative;
     padding-top: 0;
 
@@ -157,7 +157,7 @@ Homepage structure:
 }
 
 // 8. Jobs
-#c113, #3217 {
+#c113, #c3217 {
     --content-width: 1170px;
     background-color: #FFE140;
     padding-top: calc(2 * var(--overlap-size));
@@ -265,7 +265,7 @@ Homepage structure:
 }
 
 // 10. Social Media
-#c2899, #3220 {
+#c2899, #c3220 {
     --content-width: 1170px;
     background-color: var(--color-gray-100);
 
