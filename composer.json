@@ -97,6 +97,9 @@
 	"extra": {
 		"composer-exit-on-patch-failure": true,
 		"patches": {
+			"in2code/instagram": [
+				"patches/in2code-instagram-classes-middleware-getauthenticationcode-php.patch"
+			],
 			"waldhacker/typo3-oauth2-client": [
 				"patches/waldhacker-typo3-oauth2-client-classes-backend-loginprovider-oauth2loginprovider-php.patch"
 			],
