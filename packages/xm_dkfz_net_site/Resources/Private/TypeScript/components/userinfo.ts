@@ -65,24 +65,24 @@ class Userinfo {
     this.bindEvents()
   }
 
-  protected bindEvents() {
+  protected bindEvents(): void {
     this.bindBookmarkLinks()
     this.bindBookmarkSidebar()
   }
 
-  protected bindBookmarkLinks() {
+  protected bindBookmarkLinks(): void {
     document.querySelectorAll('button[data-bookmark-url]').forEach(button => {
       button.addEventListener('click', this.onBookmarkLinkClick.bind(this))
     })
   }
 
-  protected bindBookmarkSidebar() {
+  protected bindBookmarkSidebar(): void {
     document.querySelectorAll('.navigation__item--bookmark').forEach(link => {
       link.addEventListener('click', this.onBookmarkSidebarOpenClick.bind(this))
     })
   }
 
-  protected bindStorageResetAtLogin() {
+  protected bindStorageResetAtLogin(): void {
     const loginButton = document.querySelector('#login-link')
     if (loginButton) {
       loginButton.addEventListener('click', () => {

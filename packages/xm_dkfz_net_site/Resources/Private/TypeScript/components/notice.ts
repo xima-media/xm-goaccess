@@ -15,12 +15,14 @@ class Notice {
   protected closeButton: Element
 
   constructor() {
+
     if (!this.cacheDom()) {
       return
     }
 
     this.init()
     this.element.classList.remove('notice--not-loaded')
+    this.bindUrlActionNotice()
   }
 
   protected init(): void {
@@ -51,6 +53,26 @@ class Notice {
     })
   }
 
+  protected bindUrlActionNotice(): void {
+    const hash = document.location.hash
+
+    if (!hash || hash.substring(1, 8) !== 'action-') {
+      return
+    }
+
+    const action = hash.substring(8)
+
+    if (action === 'logged-in') {
+      this.open(NoticeStyle.success, 'Login erfolgreich', 2000)
+      history.replaceState(null, '', ' ')
+    }
+
+    if (action === 'logged-out') {
+      this.open(NoticeStyle.success, 'Logout erfolgreich', 2000)
+      history.replaceState(null, '', ' ')
+    }
+  }
+
   public close(): void {
     this.element.classList.remove('notice--visible')
   }
@@ -58,7 +80,9 @@ class Notice {
   public open(style: NoticeStyle = NoticeStyle.info, message: string, duration = 0, closable = false): void {
     this.setStyle(style)
     this.setText(message)
-    this.element.classList.add('notice--visible')
+    setTimeout(() => {
+      this.element.classList.add('notice--visible')
+    }, 100)
     if (duration) {
       setTimeout(() => {
         this.close()
