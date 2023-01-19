@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use JsonMapper;
 use Psr\Log\LoggerInterface;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
@@ -24,19 +25,18 @@ class JobLoaderUtility
      */
     protected array $jobs = [];
 
+    protected CacheManager $cacheManager;
+
     public function __construct(
         FrontendInterface $cache,
         ExtensionConfiguration $extensionConfiguration,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        CacheManager $cacheManager
     ) {
         $this->cache = $cache;
         $this->extensionConfiguration = $extensionConfiguration;
         $this->logger = $logger;
-    }
-
-    public function updateJobs(): bool
-    {
-        return $this->loadJobs(false);
+        $this->cacheManager = $cacheManager;
     }
 
     /**
@@ -87,7 +87,7 @@ class JobLoaderUtility
         return $jobPlaces;
     }
 
-    protected function loadJobs(bool $useCache = true): bool
+    public function loadJobs(bool $useCache = true): bool
     {
         if ($this->jobs) {
             return true;
@@ -97,6 +97,7 @@ class JobLoaderUtility
         if (!($jsonJobs = $this->cache->get('dkfz')) || !$useCache) {
             $jsonJobs = $this->fetchRemoteJobs();
             $this->cache->set('dkfz', $jsonJobs);
+            $this->cacheManager->flushCachesByTag('dkfz_jobs');
         }
 
         if (!is_string($jsonJobs)) {

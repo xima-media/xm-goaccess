@@ -25,7 +25,7 @@ class CacheJobsCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $success = $this->jobLoaderUtility->updateJobs();
+        $success = $this->jobLoaderUtility->loadJobs(false);
 
         return $success ? Command::SUCCESS : Command::FAILURE;
     }
