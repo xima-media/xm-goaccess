@@ -40,7 +40,6 @@ class QuickSearch {
   }
 
   protected initAutoCompleter(): void {
-    console.log('here')
     if (!this.quickSearchInputEl || !this.quickSearchEl) {
       return
     }
