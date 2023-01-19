@@ -97,10 +97,10 @@ task('reset:from_production_artifact', function () {
         $activeDir = testLocally('[ -e ' . $activeDir . ' ]') ? $activeDir : get('deploy_path');
         runLocally('cd ' . $activeDir . ' && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
         if (testLocally('[ -f ' . $activeDir . '/artifacts.zip ]')) {
-            runLocally('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{local/bin/deployer}} db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction -vvv');
             runLocally('cd ' . $activeDir . ' && unzip -o artifacts.zip');
-            runLocally('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
-            runLocally('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{local/bin/deployer}} db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{local/bin/deployer}} db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
         }
     } else {
         $activeDir = get('deploy_path') . (test('[ -e {{deploy_path}}/release ]') ? '/release' : '/current');
