@@ -96,17 +96,21 @@ task('reset:from_production_artifact', function () {
         $activeDir = get('deploy_path') . (testLocally('[ -e {{deploy_path}}/release ]') ? '/release' : '/current');
         $activeDir = testLocally('[ -e ' . $activeDir . ' ]') ? $activeDir : get('deploy_path');
         runLocally('cd ' . $activeDir . ' && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
-        if (testLocally('[ -f ' . $activeDir . '/artifacts.zip ]')) {
-            runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{local/bin/deployer}} db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction -vvv');
-            runLocally('cd ' . $activeDir . ' && unzip -o artifacts.zip');
-            runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{local/bin/deployer}} db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
-            runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{local/bin/deployer}} db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
-        }
+        runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+        runLocally('cd ' . $activeDir . ' && unzip -o artifacts.zip');
+        runLocally('cd ' . $activeDir . ' && mv -n .dep/database/dumps/*dumpcode=BackupProductionDkfz* {{db_storage_path_local}}/');
+        runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+        runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+        runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+        runLocally('cd ' . $activeDir . ' && rm -f artifacts.zip');
     } else {
-        $activeDir = get('deploy_path') . (test('[ -e {{deploy_path}}/release ]') ? '/release' : '/current');
         $verbosity = (new ConsoleUtility())->getVerbosityAsParameter();
-        run('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} reset:from_production_artifact ' . get('argument_host') . ' -o DKFZ_ACCESS_TOKEN="{{DKFZ_ACCESS_TOKEN}}" ' . $verbosity);
+        run('cd {{release_or_current_path}} && {{bin/php}} {{bin/deployer}} reset:from_production_artifact {{argument_host}} -o DKFZ_ACCESS_TOKEN="{{DKFZ_ACCESS_TOKEN}}" ' . $verbosity);
     }
+});
+
+task('test', function () {
+    var_dump(get('db_storage_path_local'));
 });
 
 // set shared dirs
