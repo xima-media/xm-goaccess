@@ -105,7 +105,7 @@ reset-staging-dkfz:
     variables:
       - $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$CI_JOB_TOKEN staging-dkfz --no-interaction
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging-dkfz --no-interaction
   when: manual
 
 backup-production-dkfz:
