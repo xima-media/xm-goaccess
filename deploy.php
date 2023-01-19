@@ -97,15 +97,15 @@ task('reset:from_production_artifact', function () {
         $activeDir = testLocally('[ -e ' . $activeDir . ' ]') ? $activeDir : get('deploy_path');
         runLocally('cd ' . $activeDir . ' && curl --location --output artifacts.zip --header "PRIVATE-TOKEN: {{DKFZ_ACCESS_TOKEN}}" "https://git.dkfz.de/api/v4/projects/69/jobs/artifacts/master/download?job=backup-production-dkfz"');
         if (testLocally('[ -f ' . $activeDir . '/artifacts.zip ]')) {
-            runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} db:rmdump {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
             runLocally('cd ' . $activeDir . ' && unzip -o artifacts.zip');
-            runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
-            runLocally('cd ' . $activeDir . ' && vendor/bin/dep db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} db:decompress {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
+            runLocally('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} db:import {{argument_host}} --options=dumpcode:BackupProductionDkfz --no-interaction');
         }
     } else {
         $activeDir = get('deploy_path') . (test('[ -e {{deploy_path}}/release ]') ? '/release' : '/current');
         $verbosity = (new ConsoleUtility())->getVerbosityAsParameter();
-        run('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} reset:from_production_artifact ' . get('argument_host') . ' -o DKFZ_ACCESS_TOKEN="{DKFZ_ACCESS_TOKEN}" ' . $verbosity);
+        run('cd ' . $activeDir . ' && {{bin/php}} {{bin/deployer}} reset:from_production_artifact ' . get('argument_host') . ' -o DKFZ_ACCESS_TOKEN="{{DKFZ_ACCESS_TOKEN}}" ' . $verbosity);
     }
 });
 
