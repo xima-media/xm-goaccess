@@ -667,6 +667,12 @@
 			<trans-unit id="homepage.usersearch" space="preserve">
 				<source>Staff search</source>
 			</trans-unit>
+			<trans-unit id="twitter.headline" space="preserve">
+				<source>DKFZ on Twitter</source>
+			</trans-unit>
+			<trans-unit id="instagram.headline" space="preserve">
+				<source>DKFZ on Instagram</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

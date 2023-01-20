@@ -653,6 +653,12 @@
 			<trans-unit id="homepage.usersearch" space="preserve">
 				<target>Mitarbeiter:innen suchen</target>
 			</trans-unit>
+			<trans-unit id="twitter.headline" space="preserve">
+				<target>DKFZ auf Twitter</target>
+			</trans-unit>
+			<trans-unit id="instagram.headline" space="preserve">
+				<target>DKFZ auf Instagram</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
