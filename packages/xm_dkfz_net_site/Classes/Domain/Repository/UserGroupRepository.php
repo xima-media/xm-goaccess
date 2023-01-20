@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
@@ -42,7 +43,9 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
             return 0;
         }
 
-        $rows = array_map(function ($abteilung) use ($pid) {
+        $currentDate = (new DateTime())->getTimestamp();
+
+        $rows = array_map(function ($abteilung) use ($pid, $currentDate) {
             return [
                 $abteilung->nummer,
                 $abteilung->bezeichnung,
@@ -50,6 +53,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 $abteilung->getHash(),
                 $abteilung->managers,
                 $abteilung->secretaries,
+                $currentDate,
+                $currentDate,
             ];
         }, $phoneBookAbteilungen);
 
@@ -64,6 +69,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'dkfz_hash',
                 'managers',
                 'secretaries',
+                'crdate',
+                'tstamp',
             ],
             [
                 Connection::PARAM_STR,
@@ -72,6 +79,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
+                Connection::PARAM_INT,
+                Connection::PARAM_INT,
             ]
         );
     }
@@ -107,6 +116,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
 
     public function updateFromPhoneBookEntry(PhoneBookAbteilung $entry): int
     {
+        $currentDate = (new DateTime())->getTimestamp();
+
         return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_groups')
             ->update(
@@ -118,6 +129,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                     'title' => $entry->bezeichnung,
                     'deleted' => 0,
                     'hidden' => 0,
+                    'tstamp' => $currentDate,
                 ],
                 ['dkfz_number' => $entry->nummer],
                 [
@@ -127,6 +139,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,
                     Connection::PARAM_BOOL,
+                    Connection::PARAM_INT,
                 ]
             );
     }

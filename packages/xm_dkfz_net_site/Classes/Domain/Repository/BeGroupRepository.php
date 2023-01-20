@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
@@ -50,7 +51,9 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
             return 0;
         }
 
-        $rows = array_map(function ($abteilung) use ($fileMounts) {
+        $currentDate = (new DateTime())->getTimestamp();
+
+        $rows = array_map(function ($abteilung) use ($fileMounts, $currentDate) {
             $mountPoints = array_filter($fileMounts, function ($fileMount) use ($abteilung) {
                 return $fileMount['title'] === $abteilung->nummer;
             });
@@ -66,6 +69,8 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 $abteilung->secretaries,
                 $mountPoints,
                 $abteilung->getHash(),
+                $currentDate,
+                $currentDate,
             ];
         }, $phoneBookAbteilungen);
 
@@ -80,6 +85,8 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 'secretaries',
                 'file_mountpoints',
                 'dkfz_hash',
+                'crdate',
+                'tstamp',
             ],
             [
                 Connection::PARAM_STR,
@@ -88,6 +95,8 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
+                Connection::PARAM_INT,
+                Connection::PARAM_INT,
             ]
         );
     }
@@ -167,6 +176,8 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
 
     public function updateFromPhoneBookEntry(PhoneBookAbteilung $entry): int
     {
+        $currentDate = (new DateTime())->getTimestamp();
+
         return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('be_groups')
             ->update(
@@ -178,6 +189,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                     'secretaries' => $entry->secretaries,
                     'deleted' => 0,
                     'hidden' => 0,
+                    'tstamp' => $currentDate,
                 ],
                 ['dkfz_number' => $entry->nummer],
                 [
@@ -187,6 +199,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,
                     Connection::PARAM_BOOL,
+                    Connection::PARAM_INT,
                 ]
             );
     }

@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use DateTime;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
@@ -63,7 +64,9 @@ class BeUserRepository extends Repository implements ImportableUserInterface
         $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('BE');
         $defaultPassword = $saltingInstance->getHashedPassword(md5(uniqid()));
 
-        $rows = array_map(function ($user) use ($defaultPassword) {
+        $currentDate = (new DateTime())->getTimestamp();
+
+        $rows = array_map(function ($user) use ($defaultPassword, $currentDate) {
             return [
                 $user->getHash(),
                 $user->id,
@@ -75,6 +78,8 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                 $defaultPassword,
                 3,
                 0,
+                $currentDate,
+                $currentDate,
             ];
         }, $entries);
 
@@ -110,6 +115,8 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                 'password',
                 'options',
                 'pid',
+                'tstamp',
+                'crdate',
             ],
             [
                 Connection::PARAM_STR,
@@ -122,12 +129,16 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
                 Connection::PARAM_INT,
+                Connection::PARAM_INT,
+                Connection::PARAM_INT,
             ]
         );
     }
 
     public function updateUserFromPhoneBookEntry(PhoneBookEntry $entry): int
     {
+        $currentDate = (new DateTime())->getTimestamp();
+
         return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('be_users')
             ->update(
@@ -141,6 +152,7 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                     'usergroup' => $entry->usergroup,
                     'deleted' => 0,
                     'disable' => 0,
+                    'tstamp' => $currentDate,
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -152,6 +164,7 @@ class BeUserRepository extends Repository implements ImportableUserInterface
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,
                     Connection::PARAM_BOOL,
+                    Connection::PARAM_INT,
                 ]
             );
     }

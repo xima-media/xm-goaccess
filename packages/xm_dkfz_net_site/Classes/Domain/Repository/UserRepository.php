@@ -2,6 +2,7 @@
 
 namespace Xima\XmDkfzNetSite\Domain\Repository;
 
+use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
@@ -52,7 +53,9 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
         $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
         $defaultPassword = $saltingInstance->getHashedPassword(md5(uniqid()));
 
-        $rows = array_map(function ($user) use ($pid, $defaultPassword) {
+        $currentDate = (new DateTime())->getTimestamp();
+
+        $rows = array_map(function ($user) use ($pid, $defaultPassword, $currentDate) {
             return [
                 $user->getHash(),
                 $user->id,
@@ -68,6 +71,8 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 $user->getUsername(),
                 $defaultPassword,
                 $pid,
+                $currentDate,
+                $currentDate,
             ];
         }, $entries);
 
@@ -107,6 +112,8 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 'slug',
                 'password',
                 'pid',
+                'crdate',
+                'tstamp',
             ],
             [
                 Connection::PARAM_STR,
@@ -123,12 +130,16 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
+                Connection::PARAM_INT,
+                Connection::PARAM_INT,
             ]
         );
     }
 
     public function updateUserFromPhoneBookEntry(PhoneBookEntry $entry): int
     {
+        $currentDate = (new DateTime())->getTimestamp();
+
         return GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users')
             ->update(
@@ -146,6 +157,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     'gender' => $entry->getGender(),
                     'usergroup' => $entry->usergroup,
                     'contacts' => count($entry->rufnummern),
+                    'tstamp' => $currentDate,
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -160,6 +172,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
                     Connection::PARAM_STR,
+                    Connection::PARAM_INT,
                     Connection::PARAM_INT,
                 ]
             );
