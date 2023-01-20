@@ -19,7 +19,7 @@
 				<div class="twitter__tweet">
 					<a class="twitter__profile"
 					   target="_blank"
-					   rel="noreferrer"
+					   rel="noopener"
 					   href="https://twitter.com/{tweet.username}"
 					   title="{tweet.name}">
 						<picture>
@@ -40,7 +40,7 @@
 								<p class="text-small m-b-0"><strong>{tweet.name}</strong></p>
 								<p class="text-small m-b-05">
 									<a target="_blank"
-									   rel="noreferrer"
+									   rel="noopener"
 									   href="https://twitter.com/{tweet.username}"
 									   title="{tweet.name}">
 										@{tweet.username}
@@ -50,7 +50,7 @@
 							<p class="text-small twitter__date">
 								<a target="_blank"
 								   href="https://twitter.com/{tweet.username}/status/{tweet.id}"
-								   rel="noreferrer"
+								   rel="noopener"
 								   title="Open tweet">
 									{tweet.date->f:format.date(format: 'd.m.y')}
 								</a>
@@ -61,7 +61,7 @@
 							<div class="twitter__images">
 								<f:for each="{tweet.attachments}" as="image">
 									<a target="_blank"
-									   rel="noreferrer"
+									   rel="noopener"
 									   href="https://twitter.com/{tweet.username}/status/{tweet.id}"
 									   title="Open tweet">
 										<f:image alt="Twitter Image" width="200" maxHeight="200" image="{image}"/>
