@@ -8,8 +8,6 @@ require_once(__DIR__ . '/vendor/xima/xima-deployer-extended-typo3/autoload.php')
 
 set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
 
-set('composer_channel', '2');
-
 function defineTestHost($branchName, $stage)
 {
     host('dev-t3-debian11-01-' . strtolower($branchName))
@@ -110,10 +108,6 @@ task('reset:from_production_artifact', function () {
         $verbosity = (new ConsoleUtility())->getVerbosityAsParameter();
         run('cd {{release_or_current_path}} && {{bin/php}} {{bin/deployer}} reset:from_production_artifact {{argument_host}} -o DKFZ_ACCESS_TOKEN="{{DKFZ_ACCESS_TOKEN}}" ' . $verbosity);
     }
-});
-
-task('test', function () {
-    var_dump(get('db_storage_path_local'));
 });
 
 // set shared dirs
