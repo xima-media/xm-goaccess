@@ -67,6 +67,21 @@
 			<trans-unit id="category.8">
 				<source>Further offers</source>
 			</trans-unit>
+			<trans-unit id="workingTimes.1">
+				<source>Full-time</source>
+			</trans-unit>
+			<trans-unit id="workingTimes.2">
+				<source>Part-time</source>
+			</trans-unit>
+			<trans-unit id="workingTimes.3">
+				<source>Marginal employment</source>
+			</trans-unit>
+			<trans-unit id="workingTimes.4">
+				<source>Part time 19,75 hrs./week</source>
+			</trans-unit>
+			<trans-unit id="workingTimes.5">
+				<source>Part-time 75%</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
