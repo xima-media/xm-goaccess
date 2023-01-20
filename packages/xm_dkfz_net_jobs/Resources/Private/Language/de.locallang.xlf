@@ -49,6 +49,39 @@
 			<trans-unit id="searchJobs.place">
 				<target>Einsatzort</target>
 			</trans-unit>
+			<trans-unit id="category.3">
+				<target>Wissenschaft</target>
+			</trans-unit>
+			<trans-unit id="category.4">
+				<target>Promotion</target>
+			</trans-unit>
+			<trans-unit id="category.5">
+				<target>Labor</target>
+			</trans-unit>
+			<trans-unit id="category.6">
+				<target>Administration, IT and Technologie</target>
+			</trans-unit>
+			<trans-unit id="category.7">
+				<target>Ausbildung und duales Studium</target>
+			</trans-unit>
+			<trans-unit id="category.8">
+				<target>Weitere Angebote</target>
+			</trans-unit>
+			<trans-unit id="workingTimes.1">
+				<target>Vollzeit</target>
+			</trans-unit>
+			<trans-unit id="workingTimes.2">
+				<target>Teilzeit</target>
+			</trans-unit>
+			<trans-unit id="workingTimes.3">
+				<target>Geringfügig Beschäftigt</target>
+			</trans-unit>
+			<trans-unit id="workingTimes.4">
+				<target>Teilzeit 19,75 Std./Woche</target>
+			</trans-unit>
+			<trans-unit id="workingTimes.5">
+				<target>Teilzeit 75%</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
