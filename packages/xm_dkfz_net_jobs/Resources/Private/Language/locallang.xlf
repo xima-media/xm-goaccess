@@ -49,6 +49,24 @@
 			<trans-unit id="searchJobs.place">
 				<source>Location</source>
 			</trans-unit>
+			<trans-unit id="category.3">
+				<source>Science</source>
+			</trans-unit>
+			<trans-unit id="category.4">
+				<source>PhD</source>
+			</trans-unit>
+			<trans-unit id="category.5">
+				<source>Laboratory</source>
+			</trans-unit>
+			<trans-unit id="category.6">
+				<source>Administration, IT and technology</source>
+			</trans-unit>
+			<trans-unit id="category.7">
+				<source>Apprenticeship and Cooperative Education</source>
+			</trans-unit>
+			<trans-unit id="category.8">
+				<source>Further offers</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

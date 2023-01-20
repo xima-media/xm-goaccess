@@ -12,7 +12,7 @@
 					<select class="field__input job__search-select" id="category">
 						<option selected="selected" value=""></option>
 						<f:for each="{categories}" as="category">
-							<option value="{category}">{category}</option>
+							<option value="{category.name}"><f:translate key="category.{category.id}">{category.name}</f:translate></option>
 						</f:for>
 					</select>
 				</div>

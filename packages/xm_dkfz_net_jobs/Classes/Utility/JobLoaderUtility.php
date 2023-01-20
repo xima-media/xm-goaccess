@@ -59,7 +59,10 @@ class JobLoaderUtility
         $jobCategories = [];
         foreach ($this->jobs as $job) {
             foreach ($job->jobOpening?->categories ?? [] as $category) {
-                $jobCategories[$category->id] = $category->name;
+                $jobCategories[$category->name] = [
+                    'name' => $category->name,
+                    'id' => $category->id,
+                ];
             }
         }
 
