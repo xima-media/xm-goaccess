@@ -105,7 +105,14 @@ class TeaserPreviewRenderer extends TextmediaPreviewRenderer
         $page = $qb->select('*')
             ->from('pages')
             ->where(
-                $qb->expr()->eq('uid', $qb->createNamedParameter($pageUid, \PDO::PARAM_INT))
+                $qb->expr()->orX(
+                    $qb->expr()->eq('uid', $qb->createNamedParameter($pageUid, \PDO::PARAM_INT)),
+                    $qb->expr()->eq('l10n_parent', $qb->createNamedParameter($pageUid, \PDO::PARAM_INT))
+                )
+            )
+            ->andWhere(
+                $qb->expr()->eq('sys_language_uid',
+                    $qb->createNamedParameter($item['sys_language_uid'], \PDO::PARAM_INT))
             )
             ->execute()
             ->fetchAssociative();
