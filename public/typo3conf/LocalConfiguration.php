@@ -153,16 +153,16 @@ return [
                     'label' => 'Im Backend anmelden',
                     'implementationClassName' => \Xima\XmDkfzNetSite\Client\Provider\Dkfz::class,
                     'options' => [
-                        'clientId' => '8086662d-c0d6-4daa-b154-8f6524bbf6a9',
-                        'clientSecret' => 'k_2XzWbsGYKaE2tgIUIOK6_FpQogkmZSVAKUYW3K',
+                        'clientId' => '',
+                        'clientSecret' => '',
                         'scopeSeparator' => ' ',
                         'scopes' => [
                             'openid',
                             'email',
                             'profile',
                         ],
-                        'urlAccessToken' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/token',
-                        'urlAuthorize' => 'https://tdkfzadfs.dkfz-heidelberg.de/adfs/oauth2/authorize',
+                        'urlAccessToken' => '',
+                        'urlAuthorize' => '',
                     ],
                     'scopes' => [
                         'backend',
