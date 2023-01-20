@@ -31,6 +31,11 @@ parameters:
 			path: packages/xm_dkfz_net_jobs/Classes/Controller/JobController.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:getJobCategories\\(\\) should return array\\<string\\> but returns array\\<string, array\\<string, int\\|string\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
+
+		-
 			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Controller/DkfzController.php
@@ -44,26 +49,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$itemlist of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\RelationHandler\\:\\:start\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
-
-		-
-			message: "#^Cannot access offset 'description' on array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Cannot access offset 'media' on array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
 			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
@@ -369,11 +354,6 @@ parameters:
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
-
-		-
-			message: "#^Cannot access offset 'media' on array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
 
 		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
