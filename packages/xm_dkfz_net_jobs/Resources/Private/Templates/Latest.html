@@ -6,7 +6,7 @@
 				<h3 class="h6">{job.position}</h3>
 				<ul class="list card__tags text-small">
 					<f:if condition="{job.jobOpening.workingTimes.0.name}">
-						<li class="card__tag">{job.jobOpening.workingTimes.0.name}</li>
+						<li class="card__tag"><f:translate key="workingTimes.{job.jobOpening.workingTimes.0.id}">{job.jobOpening.workingTimes.0.name}</f:translate></li>
 					</f:if>
 					<f:if condition="{job.jobOpening.location}">
 						<li class="card__tag">{job.jobOpening.location}</li>
