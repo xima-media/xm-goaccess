@@ -43,6 +43,12 @@
 			<trans-unit id="searchJobs.notfound.description">
 				<target>Zu den aktuellen Filtereinstellungen wurden keine Angebote gefunden</target>
 			</trans-unit>
+			<trans-unit id="searchJobs.category">
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="searchJobs.place">
+				<target>Einsatzort</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

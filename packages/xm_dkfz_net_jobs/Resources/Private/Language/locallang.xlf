@@ -43,6 +43,12 @@
 			<trans-unit id="searchJobs.notfound.description">
 				<source>With the current filter, no jobs could be found</source>
 			</trans-unit>
+			<trans-unit id="searchJobs.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="searchJobs.place">
+				<source>Location</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
