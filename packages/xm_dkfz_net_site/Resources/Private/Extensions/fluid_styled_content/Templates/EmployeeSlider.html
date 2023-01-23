@@ -22,31 +22,26 @@
 					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 						<div class="card card--image-top card--md card--image-size-xs card--employee">
 							<f:link.action action="show"
-										   additionalAttributes="{aria-label: '{user.data.last_name},&nbsp;{user.data.first_name}'}"
+										   additionalAttributes="{aria-label: '{user.displayName}'}"
 										   pageUid="{pidUserDetail}"
 										   pluginName="Usershow"
 										   controller="User"
 										   extensionName="BwGuild"
-										   arguments="{user: user.data.uid}">
+										   arguments="{user: user.uid}">
 
 								<f:render partial="UserImage" arguments="{user: user, width: 80, invert: 1}"/>
-								<h3 class="card__title h5">{user.data.last_name},&nbsp;{user.data.first_name}</h3>
-								<ul class="list text-small">
-									<f:if condition="{user.data.email}">
-										<li>
-											<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-											{user.data.email}
-										</li>
-									</f:if>
-									<f:for each="{user.contacts}" as="contact">
-										<f:if condition="{contact.data.recordType} == 0">
-											<li>
-												<f:render partial="Icon" arguments="{icon: 'phone'}"/>
-												{contact.data.number}
-											</li>
-										</f:if>
-									</f:for>
-								</ul>
+								<h3 class="card__title h5">{user.displayName}</h3>
+								<f:if condition="{user.contactFunction}">
+									<p class="text-small m-b-0">{user.contactFunction}</p>
+								</f:if>
+
+								<f:if condition="{user.groups}">
+									<p class="text-small"><strong>
+										<f:for each="{user.groups}" as="group" iteration="i">
+											{group.title}{f:if(condition: i.isLast, else: ', ')}
+										</f:for>
+									</strong></p>
+								</f:if>
 							</f:link.action>
 						</div>
 					</div>
