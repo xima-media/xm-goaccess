@@ -56,6 +56,9 @@ export default {
       .then(async response => {
         if (!response.ok) {
           this.handleRequestError()
+          if (response.status === 403) {
+            this.showLogin()
+          }
           return
         }
         return await response.json()
