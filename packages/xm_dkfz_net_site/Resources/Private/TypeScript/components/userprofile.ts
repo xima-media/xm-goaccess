@@ -338,6 +338,7 @@ class Userprofile {
     app
       .apiRequest(url, 'POST', form)
       .then(data => {
+        localStorage.removeItem('userinfo')
         app.lightbox.displayContent(data.html)
         this.bindUserEditFormEvents()
         app.lightbox.stopLoading()

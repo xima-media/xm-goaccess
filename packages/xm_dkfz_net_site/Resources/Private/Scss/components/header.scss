@@ -118,16 +118,9 @@
         order: 3;
         margin-left: auto;
 
-        @include media-breakpoint-down(lg) {
-            .button--white {
-                color: #FFF;
-                background-color: transparent;
-
-                &:hover {
-                    color: var(--color-primary);
-                    background-color: #FFF;
-                }
-            }
+        button.user-image-loaded {
+            padding: 0;
+            background: none;
         }
     }
 

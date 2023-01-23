@@ -1,5 +1,5 @@
 import app from './basic'
-import { LightboxStyle } from './lightbox'
+import {LightboxStyle} from './lightbox'
 
 export interface UserData {
   uid: number
@@ -54,12 +54,7 @@ class Userinfo {
     }
 
     this.loadUserinfo().then(() => {
-      this.modifyShowForSelfClasses()
-      this.modifyHtmlTag()
-      this.modifyUserNav()
-      this.modifyBookmarkLinks()
-      // this.modifyWelcomeMessage()
-      this.setFeedbackFormUserValues()
+      document.dispatchEvent(new CustomEvent('userinfo-update'))
     })
 
     this.bindEvents()
@@ -68,6 +63,17 @@ class Userinfo {
   protected bindEvents(): void {
     this.bindBookmarkLinks()
     this.bindBookmarkSidebar()
+    document.addEventListener('userinfo-update', this.onUserinfoUpdate.bind(this))
+  }
+
+  protected onUserinfoUpdate(): void {
+    this.modifyShowForSelfClasses()
+    this.modifyHtmlTag()
+    this.modifyUserNav()
+    this.modifyBookmarkLinks()
+    this.modifyUserImagePreview()
+    // this.modifyWelcomeMessage()
+    this.setFeedbackFormUserValues()
   }
 
   protected bindBookmarkLinks(): void {
@@ -219,6 +225,17 @@ class Userinfo {
       }
       button.classList.add('fx--hover', 'js--checked')
     })
+  }
+
+  protected modifyUserImagePreview(): void {
+    const figure = document.querySelector('#user-image-preview')
+    if (!this.userinfo?.user?.logo || !figure) {
+      return
+    }
+    const image = document.createElement('img')
+    image.setAttribute('src', this.userinfo.user.logo)
+    figure.replaceChild(image, figure.childNodes.item(1))
+    figure.closest('button')?.classList.add('user-image-loaded')
   }
 
   protected setFeedbackFormUserValues() {
