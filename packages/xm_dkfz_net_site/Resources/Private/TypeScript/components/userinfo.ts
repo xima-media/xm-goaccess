@@ -89,6 +89,12 @@ class Userinfo {
         localStorage.removeItem('userinfo')
       })
     }
+    const logoutButton = document.querySelector('#logout-link')
+    if (logoutButton) {
+      logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('userinfo')
+      })
+    }
   }
 
   protected modifyShowForSelfClasses() {
