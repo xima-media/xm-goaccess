@@ -47,7 +47,7 @@ class DataHandlerHook
                 ->where(
                     $qb->expr()->andX(
                         $qb->expr()->eq('foreign_uid', $qb->createNamedParameter($id, \PDO::PARAM_INT)),
-                        $qb->expr()->eq('foreign_table', $qb->createNamedParameter('tt_content', \PDO::PARAM_INT)),
+                        $qb->expr()->eq('foreign_table', $qb->createNamedParameter('tt_content', \PDO::PARAM_STR)),
                     )
                 )
                 ->orderBy('sorting')
