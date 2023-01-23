@@ -66,28 +66,28 @@
 
 										<f:if condition="{userItem.user.0.contactRoom}">
 											<li>
-												<f:render partial="Icon" arguments="{icon: 'location'}"/>
+												<f:render partial="Icon" arguments="{icon: 'location', width: 16, height: 16}"/>
 												{userItem.user.0.contactRoom}
 											</li>
 										</f:if>
 
 										<f:for each="{userItem.user.0.phoneContacts}" as="contact" iteration="i">
 											<li>
-												<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+												<f:render partial="Icon" arguments="{icon: 'phone', width: 16, height: 16}"/>
 												{contact.number}
 											</li>
 										</f:for>
 
 										<f:for each="{userItem.user.0.faxContacts}" as="contact" iteration="i">
 											<li>
-												<f:render partial="Icon" arguments="{icon: 'printer'}"/>
+												<f:render partial="Icon" arguments="{icon: 'printer', width: 16, height: 16}"/>
 												{contact.number}
 											</li>
 										</f:for>
 
 										<f:if condition="{userItem.user.0.email}">
 											<li>
-												<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+												<f:render partial="Icon" arguments="{icon: 'mail', width: 16, height: 16}"/>
 												{userItem.user.0.email}
 											</li>
 										</f:if>
@@ -97,7 +97,7 @@
 									<p class="label hide-for-xl">
 										<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
 									</p>
-									<p>
+									<p class="text-small">
 										<f:if condition="{userItem.user.0.responsibilities}">
 											{userItem.user.0.responsibilities}
 										</f:if>
@@ -107,7 +107,7 @@
 									<p class="label hide-for-xl">
 										<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
 									</p>
-									<p>
+									<p class="text-small">
 										<f:if condition="{userItem.user.0.representative}">
 											<f:link.action action="show"
 														   controller="User"

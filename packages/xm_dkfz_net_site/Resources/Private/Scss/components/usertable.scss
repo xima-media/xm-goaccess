@@ -22,7 +22,7 @@ div.table {
 
     &__header {
         display: grid;
-        grid-template-columns: 80px 150px 250px auto 120px;
+        grid-template-columns: 90px 150px 250px auto 120px;
         column-gap: 1rem;
         border-bottom: 1px solid $black;
         padding: .5rem;
@@ -33,6 +33,14 @@ div.table {
         margin-bottom: var(--content-padding);
         gap: 1rem;
         padding: .5rem;
+
+        svg {
+            margin-right: 0.25rem;
+        }
+
+        ul.list li {
+            --list-item-margin: .25rem;
+        }
 
         &:nth-child(2n-1) {
             background: var(--color-gray-white-reversed);
