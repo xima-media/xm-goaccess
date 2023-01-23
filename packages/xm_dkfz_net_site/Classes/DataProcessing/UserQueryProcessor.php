@@ -2,19 +2,16 @@
 
 namespace Xima\XmDkfzNetSite\DataProcessing;
 
+use PDO;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use Xima\XmDkfzNetSite\Domain\Model\User;
-use Xima\XmDkfzNetSite\Domain\Repository\UserRepository;
 
 class UserQueryProcessor implements DataProcessorInterface
 {
-
     public function __construct()
     {
     }
@@ -27,6 +24,7 @@ class UserQueryProcessor implements DataProcessorInterface
     ) {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
 
+        // employee slider
         if ($processorConfiguration['type'] === 'latest') {
             $userResults = $qb->select('*')
                 ->from('fe_users')
@@ -36,11 +34,39 @@ class UserQueryProcessor implements DataProcessorInterface
                 ->fetchAllAssociative();
         }
 
+        // select user for user table + responsibilities override
+        if ($processorConfiguration['type'] === 'usertable' && $processedData['data']['fe_user']) {
+            $userResults = $qb->select('*')
+                ->from('fe_users')
+                ->where(
+                    $qb->expr()->eq(
+                        'uid',
+                        $qb->createNamedParameter((int)$processedData['data']['fe_user'], PDO::PARAM_INT)
+                    )
+                )
+                ->execute()
+                ->fetchAllAssociative();
+
+            if ($processedData['data']['overrides2']) {
+                $userResults[0]['responsibilities'] = $processedData['data']['text'];
+            }
+        }
+
+        // map query response to model
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         $users = $dataMapper->map(User::class, $userResults ?? []);
 
-        $processedData[$processorConfiguration['as']] = $users;
+        // override of user contacts in usertable
+        if ($processorConfiguration['type'] === 'usertable' && count($users) === 1 && $processedData['data']['overrides']) {
+            $selectedContacts = GeneralUtility::intExplode(',', $processedData['data']['contacts'], true);
+            foreach ($users[0]?->getContacts() ?? [] as $contact) {
+                if (!in_array($contact->getUid(), $selectedContacts)) {
+                    $users[0]->removeContact($contact);
+                }
+            }
+        }
 
+        $processedData[$processorConfiguration['as']] = $users;
         return $processedData;
     }
 }

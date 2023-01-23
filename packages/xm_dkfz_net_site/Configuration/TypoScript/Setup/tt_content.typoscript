@@ -214,6 +214,8 @@ tt_content {
   usertable {
     templateName = Usertable
     dataProcessing {
+
+
       10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
       10 {
         table = tt_content_item
@@ -224,54 +226,13 @@ tt_content {
         as = users
 
         dataProcessing {
-          20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-          20 {
-            table = fe_users
-            pidInList = {$pidFeUserStorage}
-            where = uid=###uid### AND deleted=0 AND disable=0
-            markers.uid.field = fe_user
+
+          5 = Xima\XmDkfzNetSite\DataProcessing\UserQueryProcessor
+          5 {
+            type = usertable
             as = user
-
-            dataProcessing {
-              10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-              10 {
-                table = fe_users
-                pidInList = {$pidFeUserStorage}
-                where = uid=###uid### AND deleted=0 AND disable=0
-                markers.uid.field = representative
-                as = representative
-              }
-
-              20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-              20 {
-                references.fieldName = logo
-                as = logo
-              }
-
-              30 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-              30 {
-                table = tx_xmdkfznetsite_domain_model_contact
-                where =
-                where.dataWrap = uid IN ({field:contacts})
-                if.isTrue.field = overrides
-                pidInList = {$pidFeUserStorage}
-                as = contacts
-                orderBy = reclist_sortby
-                selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:contacts}') AS reclist_sortby
-              }
-
-              40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-              40 {
-                table = tx_xmdkfznetsite_domain_model_contact
-                pidInList = {$pidFeUserStorage}
-                where = foreign_uid=###feuser### AND foreign_table='fe_users'
-                markers.feuser.field = uid
-                as = contacts
-                if.isFalse.field = overrides
-              }
-            }
-
           }
+
         }
       }
     }

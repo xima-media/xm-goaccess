@@ -76,6 +76,31 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
 
 		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 2
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) has parameter \\$contentObjectConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) has parameter \\$processedData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) has parameter \\$processorConfiguration with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
+
+		-
 			message: "#^Cannot call method attach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\>\\|null\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
@@ -84,6 +109,11 @@ parameters:
 			message: "#^Cannot call method detach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\>\\|null\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
+
+		-
+			message: "#^Cannot call method detach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Contact\\>\\|null\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllFileMounts\\(\\) should return array\\<int, array\\{title\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"

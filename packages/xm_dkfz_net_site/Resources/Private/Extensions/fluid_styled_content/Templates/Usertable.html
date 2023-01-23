@@ -41,57 +41,54 @@
 							<div class="table__row">
 								<div class="username">
 									<f:link.action action="show"
-												   title="{userItem.user.0.data.first_name} {userItem.user.0.data.last_name}"
+												   title="{userItem.user.0.displayName}"
 												   controller="User"
 												   pluginName="Usershow"
 												   pageUid="{settings.pidUserDetail}"
 												   extensionName="BwGuild"
-												   arguments="{user: userItem.user.0.data.uid}">
-										{userItem.user.0.data.title} {userItem.user.0.data.last_name}, {userItem.user.0.data.first_name}
+												   arguments="{user: userItem.user.0.uid}">
+										{userItem.user.0.displayName}
 									</f:link.action>
 								</div>
 								<div class="picture">
 									<f:link.action action="show"
 												   controller="User"
-												   title="{userItem.user.0.data.first_name} {userItem.user.0.data.last_name}"
+												   title="{userItem.user.0.displayName}"
 												   pluginName="Usershow"
 												   pageUid="{settings.pidUserDetail}"
 												   extensionName="BwGuild"
-												   arguments="{user: userItem.user.0.data.uid}">
+												   arguments="{user: userItem.user.0.uid}">
 										<f:render partial="UserImage" arguments="{user: userItem.user.0, width: 80}"/>
 									</f:link.action>
 								</div>
 								<div class="contact">
-									<ul class="list">
-										<f:for each="{userItem.user.0.contacts}" as="contact" iteration="i">
-											<f:if condition="{contact.data.record_type} == 0">
-												<f:if condition="{contact.data.room} && {i.isFirst}">
-													<li class="contact__item">
-														<f:render partial="Icon" arguments="{icon: 'location'}"/>
-														{contact.data.room}
-													</li>
-												</f:if>
-												<li class="contact__item">
-													<f:render partial="Icon" arguments="{icon: 'phone'}"/>
-													<a title="Call now" href="tel:{contact.data.number}">
-														{contact.data.number}
-													</a>
-												</li>
-											</f:if>
-											<f:if condition="{contact.data.record_type} == 1">
-												<li class="contact__item">
-													<f:render partial="Icon" arguments="{icon: 'printer'}"/>
-													{contact.data.number}
-												</li>
-											</f:if>
+									<ul class="list contacts text-small">
+
+										<f:if condition="{userItem.user.0.contactRoom}">
+											<li>
+												<f:render partial="Icon" arguments="{icon: 'location'}"/>
+												{userItem.user.0.contactRoom}
+											</li>
+										</f:if>
+
+										<f:for each="{userItem.user.0.phoneContacts}" as="contact" iteration="i">
+											<li>
+												<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+												{contact.number}
+											</li>
 										</f:for>
-										<f:if condition="{userItem.user.0.data.email}">
+
+										<f:for each="{userItem.user.0.faxContacts}" as="contact" iteration="i">
+											<li>
+												<f:render partial="Icon" arguments="{icon: 'printer'}"/>
+												{contact.number}
+											</li>
+										</f:for>
+
+										<f:if condition="{userItem.user.0.email}">
 											<li>
 												<f:render partial="Icon" arguments="{icon: 'mail'}"/>
-												<f:link.email title="{userItem.user.0.data.email}"
-															  email="{userItem.user.0.data.email}">
-													{userItem.user.0.data.email}
-												</f:link.email>
+												{userItem.user.0.email}
 											</li>
 										</f:if>
 									</ul>
@@ -101,11 +98,8 @@
 										<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
 									</p>
 									<p>
-										<f:if condition="!{userItem.data.overrides2} && {userItem.user.0.data.responsibilities}">
-											{userItem.user.0.data.responsibilities}
-										</f:if>
-										<f:if condition="{userItem.data.overrides2} && {userItem.data.text}">
-											{userItem.data.text}
+										<f:if condition="{userItem.user.0.responsibilities}">
+											{userItem.user.0.responsibilities}
 										</f:if>
 									</p>
 								</div>
@@ -120,9 +114,8 @@
 														   pluginName="Usershow"
 														   pageUid="{settings.pidUserDetail}"
 														   extensionName="BwGuild"
-														   arguments="{user: userItem.user.0.representative.0.data.uid}">
-												{userItem.user.0.representative.0.data.last_name},
-												{userItem.user.0.representative.0.data.first_name}
+														   arguments="{user: userItem.user.0.representative.uid}">
+												{userItem.user.0.representative.displayName}
 											</f:link.action>
 										</f:if>
 									</p>

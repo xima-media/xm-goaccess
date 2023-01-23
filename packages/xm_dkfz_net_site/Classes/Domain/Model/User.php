@@ -195,6 +195,11 @@ class User extends \Blueways\BwGuild\Domain\Model\User
      */
     protected ?ObjectStorage $contacts = null;
 
+    public function removeContact(Contact $contact): void
+    {
+        $this->contacts->detach($contact);
+    }
+
     public function getDisplayName(): string
     {
         if (!$this->lastName || !$this->firstName) {
