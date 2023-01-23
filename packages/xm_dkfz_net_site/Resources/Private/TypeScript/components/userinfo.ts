@@ -251,7 +251,8 @@ class Userinfo {
     try {
       const userInfo: UserinfoResponse = JSON.parse(storedUserinfo)
 
-      if (new Date(userInfo.validUntil * 1000) > new Date()) {
+      if (new Date(userInfo.validUntil * 1000) < new Date()) {
+        localStorage.removeItem('userinfo')
         return false
       }
 
