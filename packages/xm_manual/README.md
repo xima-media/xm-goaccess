@@ -1,6 +1,15 @@
 # XIMA TYPO3 Manual Extension
 
-This extension provides a new page type for generating a editor manual that can be viewed in the backend or downloaded as PDF.
+This extension provides a new page type for creating an editor manual right in the TYPO3 backend.
+
+![Backend Preview](./Documentation/Images/backend_preview.png)
+
+## Features
+
+* Backend module with preview
+* PDF download
+* Configured [bw_focuspoint_images](https://extensions.typo3.org/extension/bw_focuspoint_images) to annotate screenshots
+* Configured [bw_icons](https://extensions.typo3.org/extension/bw_icons) to add inline icons
 
 ## Installation
 
@@ -12,6 +21,10 @@ This extension provides a new page type for generating a editor manual that can 
 3. Create new TypoScript template
    1. Include static TypoScript template
 
+
+## Transferring the manual
+
+An initial transfer can be done with the TYPO3 integrated [ImpExp extension](https://docs.typo3.org/c/typo3/cms-impexp/main/en-us/). However, updating an existing page tree is not recommend - better wait for the upcoming extension [xima-typo3-page-sync](https://github.com/xima-media/xima-typo3-page-sync).
 
 ## Export
 
