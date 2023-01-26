@@ -38,9 +38,3 @@
         ],
     ]
 );
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile(
-    'xm_manual',
-    'Configuration/TSconfig/Page.tsconfig',
-    'Editor Manual',
-);

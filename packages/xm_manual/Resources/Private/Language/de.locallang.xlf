@@ -30,6 +30,18 @@
 			<trans-unit id="focus_point.default">
 				<target>Standard</target>
 			</trans-unit>
+			<trans-unit id="wizard.mbox.title">
+				<target>Infobox</target>
+			</trans-unit>
+			<trans-unit id="wizard.mbox.description">
+				<target>Farblicher Hinweis mit Icon</target>
+			</trans-unit>
+			<trans-unit id="wizard.mtext.title">
+				<target>Text mit Bild</target>
+			</trans-unit>
+			<trans-unit id="wizard.mtext.description">
+				<target>Textelement mit Überschrift und Fließtext</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

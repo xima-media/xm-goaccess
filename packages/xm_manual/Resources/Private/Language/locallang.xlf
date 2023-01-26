@@ -30,6 +30,21 @@
 			<trans-unit id="focus_point.default">
 				<source>Default</source>
 			</trans-unit>
+			<trans-unit id="focus_point.default">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="wizard.mbox.title">
+				<source>Info box</source>
+			</trans-unit>
+			<trans-unit id="wizard.mbox.description">
+				<source>Color hint with icon</source>
+			</trans-unit>
+			<trans-unit id="wizard.mtext.title">
+				<source>Text with image</source>
+			</trans-unit>
+			<trans-unit id="wizard.mtext.description">
+				<source>Text element with heading and body text</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
