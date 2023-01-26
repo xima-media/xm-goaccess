@@ -6,6 +6,10 @@
 
 <f:if condition="{newsItem}">
 
+	<f:if condition="{newsItem.pid}!=141">
+		<f:variable name="shortNews" value="shortNews image-orient--18"></f:variable>
+	</f:if>
+
 	<div class="hero">
 		<h1 itemprop="headline" class="hero__title">{newsItem.title}</h1>
 
@@ -32,59 +36,67 @@
 		</button>
 	</div>
 
-	<div class="news-content content-wrapper__content-text">
+	<div class="news-content news-content--{shortNews} content-wrapper__content-text color-accent--{newsItem.tx_xmdkfznetsite_color}">
 
-		<f:if condition="{newsItem.mediaNonPreviews.0}">
-			<f:render partial="Image" arguments="{image: newsItem.mediaNonPreviews.0}"/>
-		</f:if>
-
-		<f:if condition="{newsItem.teaser}">
-			<p class="h4 news-intro text-intro" itemprop="description">{newsItem.teaser}</p>
-		</f:if>
-
-		<div class="news-text-wrap" itemprop="articleBody">
-			<f:format.html>{newsItem.bodytext}</f:format.html>
+		<div class="content-wrapper__content-image">
+			<f:if condition="{newsItem.mediaNonPreviews.0}">
+				<f:render partial="Image" arguments="{image: newsItem.mediaNonPreviews.0}"/>
+			</f:if>
 		</div>
 
-		<f:if condition="{newsItem.mediaNonPreviews.1}">
-			<div class="image-slider" data-current="1">
+		<div>
 
-				<button class="prev" aria-label="zurück">
-					<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
-				</button>
+			<f:if condition="{newsItem.teaser}">
+				<p class="h4 news-intro text-intro" itemprop="description">{newsItem.teaser}</p>
+			</f:if>
 
-				<button class="next" aria-label="Vor">
-					<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
-				</button>
+			<div class="news-text-wrap" itemprop="articleBody">
+				<f:format.html>{newsItem.bodytext}</f:format.html>
+			</div>
 
-				<div class="image-slider__images">
-					<div class="image-slider__wrapper">
-						<f:for as="image" iteration="i" each="{newsItem.mediaNonPreviews}">
-							<f:if condition="!{i.isFirst}">
-								<div class="image-slider__item {f:if(condition: '{i.index} === 1', then: 'current')}" data-item="{i.index}">
-									<picture>
-										<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
-												type="image/webp">
-										<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
-												type="image/jpeg">
-										<f:image image="{image}"
-												 width="970"
-												 cropVariant="{cropVariant}"
-												 fileExtension="jpg"
-												 class=""
-												 loading="lazy"/>
-									</picture>
-								</div>
-							</f:if>
-						</f:for>
+			<f:if condition="{newsItem.mediaNonPreviews.1}">
+				<div class="image-slider" data-current="1">
+
+					<button class="prev" aria-label="zurück">
+						<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
+					</button>
+
+					<button class="next" aria-label="Vor">
+						<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+					</button>
+
+					<div class="image-slider__images">
+						<div class="image-slider__wrapper">
+							<f:for as="image" iteration="i" each="{newsItem.mediaNonPreviews}">
+								<f:if condition="!{i.isFirst}">
+									<div class="image-slider__item {f:if(condition: '{i.index} === 1', then: 'current')}"
+										 data-item="{i.index}">
+										<picture>
+											<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
+													type="image/webp">
+											<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
+													type="image/jpeg">
+											<f:image image="{image}"
+													 width="970"
+													 cropVariant="{cropVariant}"
+													 fileExtension="jpg"
+													 class=""
+													 loading="lazy"/>
+										</picture>
+									</div>
+								</f:if>
+							</f:for>
+						</div>
 					</div>
 				</div>
-			</div>
-		</f:if>
+			</f:if>
+
+		</div>
 	</div>
 
 	<f:if condition="{newsItem.contentElements}">
-		<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+		<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}
+		</f:cObject>
 	</f:if>
 
 </f:if>

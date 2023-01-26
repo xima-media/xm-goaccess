@@ -17,6 +17,15 @@
             margin-top: 3rem;
         }
     }
+
+    &--shortNews {
+
+        @include media-breakpoint-up(xl) {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            align-items: flex-start;
+        }
+    }
 }
 
 
