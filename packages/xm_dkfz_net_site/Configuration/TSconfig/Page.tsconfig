@@ -350,6 +350,17 @@ tx_news.templateLayouts {
   }
 [GLOBAL]
 
+[traverse(page, "module") == "news"]
+  mod.web_list {
+    allowedNewTables = tx_news_domain_model_news
+  }
+[GLOBAL]
+
+# Remove content element section for short news
+[479 in tree.rootLineIds]
+  TCEFORM.tx_news_domain_model_news.content_elements.disabled = 1
+[GLOBAL]
+
 # CE elements for news
 [traverse(page, "uid") == 141]
   TCEFORM.tt_content.CType.removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, serviceSlider, page_teaser, mtext, mbox, bw_focuspoint_images_svg, employeeSlider, form_formframework, shortcut, list, html, bw_static_template, teaser, container-2cols, container-accordion, container-tabs
