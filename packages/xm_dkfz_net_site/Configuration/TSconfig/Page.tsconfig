@@ -157,7 +157,7 @@ TCEFORM {
 
   tx_news_domain_model_news {
     content_elements.disabled = 0
-    fal_related_files.disabled = 1
+    fal_related_files.disabled = 0
     related_links.disabled = 1
     tags.disabled = 1
     author.disabled = 1
