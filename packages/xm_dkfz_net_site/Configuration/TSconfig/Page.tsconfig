@@ -359,6 +359,7 @@ tx_news.templateLayouts {
 # Remove content element section for short news
 [479 in tree.rootLineIds]
   TCEFORM.tx_news_domain_model_news.content_elements.disabled = 1
+  TCEFORM.tx_news_domain_model_news.teaser.disabled = 1
 [GLOBAL]
 
 # CE elements for news
