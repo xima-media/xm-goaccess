@@ -618,7 +618,7 @@
 				<target>Ausgewählte Liste an Newsbeiträgen</target>
 			</trans-unit>
 			<trans-unit id="group.secretaries" space="preserve">
-				<target>Sekretäriat</target>
+				<target>Sekretariat</target>
 			</trans-unit>
 			<trans-unit id="group.managers" space="preserve">
 				<target>Leitung</target>
