@@ -102,6 +102,7 @@ page {
         where = foreign_uid=###uid### AND foreign_table='pages' AND deleted=0 AND hidden=0
         orderBy = sorting
         markers.uid.field = uid
+        markers.uid.override.field = _PAGES_OVERLAY_UID
         as = relatedPages
         dataProcessing {
           40 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
