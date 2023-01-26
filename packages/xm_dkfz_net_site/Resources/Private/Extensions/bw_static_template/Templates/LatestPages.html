@@ -3,14 +3,14 @@
 <f:section name="Header">
 	<div class="content-wrapper__header">
 		<f:render partial="Header/Header" arguments="{
-                header: '{f:if(condition: title, then: \'{title}\', else: \'Neue Seiten\')}',
+                header: title,
                 layout: 3,
 				positionClass: 'm-b-0{positionClass}',
                 default: settings.defaultHeaderType}"/>
 		<span class="content-wrapper__pattern pattern color-accent--gray-900 h4"></span>
 	</div>
-
 </f:section>
+
 <f:section name="Main">
 	<ul class="list pages-latest">
 		<f:for each="{pages}" as="page">
