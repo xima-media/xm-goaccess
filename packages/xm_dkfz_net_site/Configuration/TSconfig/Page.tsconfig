@@ -30,7 +30,7 @@ TCEMAIN {
 TCEFORM {
   tt_content {
     CType {
-      removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, mbox, mtext
+      removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div
       altLabels {
         image = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.title
       }
@@ -324,6 +324,7 @@ mod.wizards.newContentElement.wizardItems {
 
     show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_serviceSlider,tt_content_page_teaser,tt_content_employeeSlider,tt_content_usertable)
   }
+  manual >
 }
 
 mod.web_layout {
