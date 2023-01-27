@@ -64,7 +64,17 @@
 									   rel="noopener"
 									   href="https://twitter.com/{tweet.username}/status/{tweet.id}"
 									   title="Open tweet">
-										<f:image alt="Twitter Image" width="200" maxHeight="200" image="{image}"/>
+										<picture>
+											<source srcset="{f:uri.image(image: image, width:200, maxHeight:200, fileExtension: 'webp')}"
+													type="image/webp">
+											<source srcset="{f:uri.image(image: image, width:200, maxHeight:200, fileExtension: 'jpg')}"
+													type="image/jpeg">
+											<f:image loading="lazy"
+													 width="200"
+													 fileExtension="webp"
+													 alt="Tweet image"
+													 image="{image}"/>
+										</picture>
 									</a>
 								</f:for>
 							</div>
