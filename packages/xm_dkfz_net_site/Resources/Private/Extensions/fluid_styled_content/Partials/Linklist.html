@@ -3,11 +3,11 @@
         <f:if condition="{link.data.title}">
             <f:then>
                 <f:spaceless>
-                    <f:link.typolink parameter="{link.data.link}" class="link--primary" parts-as="parts" target="_blank">{link.data.title}</f:link.typolink>
+                    <f:link.typolink parameter="{link.data.link}" class="link--primary" parts-as="parts">{link.data.title}</f:link.typolink>
                 </f:spaceless>
             </f:then>
             <f:else>
-                <f:link.typolink parameter="{link.data.link}" class="link--primary" parts-as="parts" target="_blank" />
+                <f:link.typolink parameter="{link.data.link}" class="link--primary" parts-as="parts" />
             </f:else>
         </f:if>
     </li>
