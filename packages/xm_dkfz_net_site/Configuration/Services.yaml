@@ -38,6 +38,11 @@ services:
       - name: event.listener
         identifier: 'userInfoApiEvent'
 
+  Xima\XmDkfzNetSite\EventListener\NewsDetailAction:
+    tags:
+      - name: event.listener
+        identifier: 'newsDetailAction'
+
   querybuilder.beUsers:
     class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
     factory:
