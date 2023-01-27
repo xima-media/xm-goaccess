@@ -54,6 +54,40 @@
 				<f:format.html>{newsItem.bodytext}</f:format.html>
 			</div>
 
+			<f:if condition="{newsItem.relatedFiles}">
+				<div class="news-related news-related-files">
+					<h4>
+						<f:translate key="related-files" />
+					</h4>
+					<f:for each="{newsItem.relatedFiles}" as="file" iteration="fileIterator">
+						<div class="tab-item__wrapper tab-item__wrapper--background-gray-100">
+							<div class="col-md-8 tab-item__title">
+								<f:render partial="Icon" arguments="{icon: 'file'}" /> <span>{f:if(condition: file.originalResource.properties.title, then: file.originalResource.properties.title, else: file.originalResource.name) -> f:format.htmlspecialchars()}</span>
+							</div>
+							<div class="col-md-4 tab-item__detail">
+								<span class="tab-item__type">{file.originalResource.extension}</span>
+								<span class="tab-item__size"><f:format.bytes value="{file.originalResource.properties.size}" /></span>
+								<a href="{file.originalResource.publicUrl}" {f:if(condition:data.target,then: ' target="{data.target}"')}
+								class="tab-item__link tab-item__link--download"
+								type="button"
+								aria-label="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
+								data-tooltip="{f:translate(key: 'label.download', extensionName: 'XmDkfzNetSite')}"
+								download>
+								<f:render partial="Icon" arguments="{icon: 'download'}" />
+								</a>
+								<button class="tab-item__link" type="button" id="file-{file.originalResource.uid}"
+										aria-label="{f:translate(key: 'label.addBookmark', extensionName: 'XmDkfzNetSite')}"
+										data-tooltip="{f:translate(key: 'label.addBookmark', extensionName: 'XmDkfzNetSite')}"
+										data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {tableName: 'sys_file', recordUid: file.originalResource.properties.file})}"
+								>
+									<f:render partial="Icon" arguments="{icon: 'bookmark-add'}" />
+								</button>
+							</div>
+						</div>
+					</f:for>
+				</div>
+			</f:if>
+
 			<f:if condition="{newsItem.mediaNonPreviews.1}">
 				<div class="image-slider" data-current="1">
 
