@@ -2,6 +2,10 @@
   "name": "xm-dkfz-net",
   "version": "1.0.0",
   "description": "Asset build for DKFZ Intranet",
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
   "scripts": {
     "start": "npm-run-all -p sass:watch ts:watch",
     "build": "npm-run-all -s sass:build sass:postcss ts:build",
