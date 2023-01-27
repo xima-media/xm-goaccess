@@ -75,5 +75,12 @@ body > #hiddenLogin {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    @include media-breakpoint-up(md) {
+        padding-left: 2rem;
+    }
+
+    p {
+        margin-bottom: 2rem;
+    }
 }
