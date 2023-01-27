@@ -121,8 +121,20 @@
                             &.fx--second {
                                 display: grid;
                                 margin-top: 4rem;
-                                max-width: 75vw;
+                                max-width: 90vw;
                                 grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+                            }
+                        }
+                    }
+                }
+
+                @media screen and (max-height: 800px) {
+
+                    &:hover,
+                    &:focus-within {
+                        .navigation__items {
+                            &.fx--second {
+                                grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
                             }
                         }
                     }
@@ -131,6 +143,7 @@
 
             &.fx--third {
                 border-bottom: 1px solid $color-gray-100;
+                hyphens: auto;
             }
         }
 
