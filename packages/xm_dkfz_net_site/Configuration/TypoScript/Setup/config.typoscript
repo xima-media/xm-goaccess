@@ -8,6 +8,7 @@ config {
   concatenateJs = 0
   concatenateCss = 0
   admPanel = 1
+  extTarget = _blank
 
   htmlTag.attributes.style = --scrollbar-width:17px;
   htmlTag.attributes.class = fx--header-not-sticky
