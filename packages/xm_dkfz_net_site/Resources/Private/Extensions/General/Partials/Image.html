@@ -44,10 +44,10 @@
 	<f:if condition="{image.properties.copyright}">
 		<f:render partial="Copyright" arguments="{text: image.properties.copyright}"/>
 	</f:if>
-	<f:if condition="{image.properties.description} && !{noCaption}">
+	<f:if condition="{image.description} && !{noCaption}">
 		<div class="frame p-t-0 p-b-0">
 			<figcaption class="picture__caption">
-				{image.properties.description}
+				{image.description}
 			</figcaption>
 		</div>
 	</f:if>
