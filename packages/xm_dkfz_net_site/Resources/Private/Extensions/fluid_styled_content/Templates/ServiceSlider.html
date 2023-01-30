@@ -14,7 +14,7 @@
 					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 						<div class="card card--image-top card--md card--image-size-md card--service">
 
-							<f:link.typolink parameter="{service.data.link}" class="card__link card__link--hidden" parts-as="parts" target="_blank"
+							<f:link.typolink parameter="{service.data.link}" class="card__link card__link--hidden" parts-as="parts" 
 											 additionalAttributes="{aria-label: '{service.data.title}'}">
 								<div class="card__link--background">
 									<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
