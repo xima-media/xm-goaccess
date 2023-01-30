@@ -126,6 +126,36 @@
     }
 }
 
+.news-list {
+
+    display: grid;
+    gap: 5rem;
+
+    &__item {
+
+        display: grid;
+        gap: 1rem;
+
+
+        @include media-breakpoint-up(sm) {
+            grid-template-columns: 1fr 2.3fr;
+        }
+
+        @include media-breakpoint-up(sm) {
+            gap: 4rem;
+        }
+
+    }
+
+    a:hover {
+        text-decoration: none;
+
+        h3 {
+            text-decoration: underline;
+        }
+    }
+}
+
 .news-shortnews {
     margin: 2rem 0 0;
 
