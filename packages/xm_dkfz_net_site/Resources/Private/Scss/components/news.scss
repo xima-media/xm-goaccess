@@ -147,3 +147,19 @@
         border-bottom: 1px solid #CCC;
     }
 }
+
+.news-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    row-gap: 1rem;
+
+    a {
+        white-space: nowrap;
+        font-weight: normal;
+
+        &.active {
+            font-weight: bold;
+        }
+    }
+}

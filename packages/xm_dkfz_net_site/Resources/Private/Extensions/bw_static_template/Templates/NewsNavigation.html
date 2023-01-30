@@ -3,15 +3,15 @@
 
 <f:section name="Main">
 
-	<ul class="list">
+	<ul class="list news-categories text-small">
 		<li>
-			<f:link.page class="{f:if(condition:activeCategory, else:'active')}">
+			<f:link.page class="content-wrapper__link {f:if(condition:activeCategory, else:'active')}">
 				{f:translate(key: 'news.allCategories', extensionName: 'XmDkfzNetSite')}
 			</f:link.page>
 		</li>
 		<f:for each="{categories}" as="category">
 			<li>
-				<f:link.page class="{f:if(condition:'{activeCategory}=={category.data.uid}', then:'active')}"
+				<f:link.page class="content-wrapper__link {f:if(condition:'{activeCategory}=={category.data.uid}', then:'active')}"
 							 additionalParams="{tx_news_pi1:{overwriteDemand:{categories: category.data.uid}}}">
 					{category.data.title}
 				</f:link.page>
