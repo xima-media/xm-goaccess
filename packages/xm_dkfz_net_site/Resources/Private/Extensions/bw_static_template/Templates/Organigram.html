@@ -1,0 +1,157 @@
+<f:layout name="Default"/>
+
+<f:section name="Header"></f:section>
+
+<f:section name="Main">
+	<div class="organigram">
+		<div class="organigram__wrapper">
+			<f:for each="{boxes}" as="block" iteration="i">
+				<div data-box-id="{i.index}" class="organigram__boxes {f:if(condition: '{block.columnNumber}', then: 'grid-column-{block.columnNumber}', else: '')}">
+					<div class="infobox
+						color-accent--primary
+						infobox--border
+						color__border">
+						<h5 class="infobox__title">{block.title}</h5>
+					</div>
+				</div>
+			</f:for>
+		</div>
+		<div class="organigram__overlays">
+			<f:for each="{boxes}" as="block" iteration="i">
+				<div data-box-target-id="{i.index}" class="organigram__detail {f:if(condition: block.widthAccordion, then: 'organigram__detail--with-accordion')}">
+						<button type="button" class="btn-close" aria-label="Close">
+							<f:render partial="Icon" arguments="{icon: 'close'}"/>
+						</button>
+						<div class="organigram__detail--content accordion">
+							<f:link.typolink parameter="{block.link}" class="h4"
+											 parts-as="parts" target="_blank"
+											 additionalAttributes="{aria-label: '{block.title}'}">
+								{block.title}
+								<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+							</f:link.typolink>
+
+							<f:if condition="{block.fullWidth}">
+								<f:then>
+									<div class="row">
+										<f:for each="{block.list}" as="list">
+											<f:if condition="{list.column}">
+												<div class="col-md-4">
+													<ul class="list">
+														<f:for each="{list.column}" as="column">
+															<li>
+																<f:if condition="!{column.description}">
+																	<f:then>
+																		<h4>{column.headline}</h4>
+																	</f:then>
+																	<f:else>
+																		<f:if condition="{column.headline}">
+																			<f:link.typolink parameter="{column.link}"
+																							 parts-as="parts"
+																							 additionalAttributes="{aria-label: '{column.headline}'}">
+																				<h5 class="organigram__detail--content__headline">{column.headline}</h5>
+																			</f:link.typolink>
+																		</f:if>
+																	</f:else>
+																</f:if>
+
+																<f:if condition="{column.description}">
+																	<p class="text-small">
+																		{column.description}
+																	</p>
+																</f:if>
+															</li>
+														</f:for>
+													</ul>
+												</div>
+											</f:if>
+										</f:for>
+									</div>
+								</f:then>
+								<f:else>
+									<f:if condition="{block.widthAccordion}">
+										<f:then>
+											<f:for each="{block.list}" as="list" iteration="i">
+												<div class="accordion__item">
+													<h3 class="accordion__items--subtitle" id="accordion{i.index}">
+														<button class="accordion-button collapsed"
+																type="button"
+																aria-expanded="false"
+																data-bs-toggle="collapse"
+																data-bs-target="#accordionItem{i.index}"
+																aria-controls="accordionItem{i.index}">
+    														<span class="accordion-button--description h6">
+    															{list.headline}
+    															<f:if condition="{list.description}">
+    																<br/>
+    																<span class="text-small">
+    																	{list.description}
+    																</span>
+    															</f:if>
+    														</span>
+														</button>
+													</h3>
+
+													<div class="accordion-collapse collapse"
+														 id="accordionItem{i.index}"
+														 data-bs-parent="#accordion{i.index}"
+														 aria-labelledby="accordion{i.index}">
+														<div class="accordion-body accordion__panel">
+															<div class="row">
+																<f:for each="{list.text}" as="list">
+																	<f:if condition="{list.column}">
+																		<div class="col-md-4">
+																			<ul class="list">
+																				<f:for each="{list.column}" as="column">
+																					<li>
+																						<f:link.typolink parameter="{column.link}" class="h5"
+																										 parts-as="parts" target="_blank"
+																										 additionalAttributes="{aria-label: '{column.headline}'}">
+																							{column.headline}
+																						</f:link.typolink>
+																						<p class="text-small">{column.description}</p>
+																					</li>
+																				</f:for>
+																			</ul>
+																		</div>
+																	</f:if>
+																</f:for>
+															</div>
+														</div>
+													</div>
+												</div>
+											</f:for>
+										</f:then>
+										<f:else>
+											<ul class="list">
+												<f:for each="{block.list}" as="list">
+													<li>
+														<f:if condition="{list.headline}">
+															<f:link.typolink parameter="{list.link}"
+																			 parts-as="parts"
+																			 additionalAttributes="{aria-label: '{list.headline}'}">
+																<h5 class="organigram__detail--content__headline">{list.headline}</h5>
+															</f:link.typolink>
+														</f:if>
+														<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
+															<p class="text-small">
+																{list.descriptionFirstLine}
+
+																<f:if condition="{list.descriptionSecondLine}">
+																	<br>
+																	{list.descriptionSecondLine}
+																</f:if>
+															</p>
+														</f:if>
+													</li>
+												</f:for>
+											</ul>
+										</f:else>
+									</f:if>
+								</f:else>
+							</f:if>
+						</div>
+					</div>
+			</f:for>
+		</div>
+	</div>
+</f:section>
