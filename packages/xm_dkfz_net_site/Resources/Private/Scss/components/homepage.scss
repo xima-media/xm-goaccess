@@ -91,6 +91,10 @@ Homepage structure:
     @include media-breakpoint-up(md) {
         --content-width: 455px;
     }
+
+    .content-wrapper__content {
+        padding-top: 1rem;
+    }
 }
 
 // 2-Col news container
@@ -100,6 +104,10 @@ Homepage structure:
 
     @include media-breakpoint-up(md) {
         --content-padding: 0;
+    }
+
+    .content-wrapper__content {
+        padding-top: 1rem;
     }
 
     & > * {

@@ -107,10 +107,12 @@
 .news-latest {
     display: grid;
     gap: 2rem;
-    margin: 2rem 0 0;
 
     @include media-breakpoint-up(sm) {
         grid-template-columns: 1fr 1fr;
+        &[data-news-limit="4"] {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
     }
 
     @include media-breakpoint-up(sm) {
@@ -157,7 +159,6 @@
 }
 
 .news-shortnews {
-    margin: 2rem 0 0;
 
     a {
         display: block;

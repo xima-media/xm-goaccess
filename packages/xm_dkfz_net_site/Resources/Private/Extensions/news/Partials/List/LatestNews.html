@@ -2,7 +2,7 @@
 	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
 	  data-namespace-typo3-fluid="true">
 
-<div class="news-latest">
+<div class="news-latest" data-news-limit="{settings.limit}">
 	<f:for each="{news}" as="newsItem" iteration="i">
 		<div class="news-latest__item">
 			<n:excludeDisplayedNews newsItem="{newsItem}"/>
