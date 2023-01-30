@@ -191,6 +191,18 @@ tt_content {
           }
         }
       }
+
+      50 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      50 {
+        as = categories
+        pidInList = 918
+        table = sys_category
+      }
+    }
+
+    variables {
+      activeCategory = TEXT
+      activeCategory.data = GP:tx_news_pi1|overwriteDemand|categories
     }
   }
 

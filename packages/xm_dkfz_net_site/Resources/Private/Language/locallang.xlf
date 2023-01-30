@@ -682,6 +682,9 @@
 			<trans-unit id="instagram.headline" space="preserve">
 				<source>DKFZ on Instagram</source>
 			</trans-unit>
+			<trans-unit id="news.allCategories" space="preserve">
+				<source>All categories</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
