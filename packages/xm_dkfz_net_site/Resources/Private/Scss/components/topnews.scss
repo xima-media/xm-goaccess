@@ -149,6 +149,7 @@
         @include media-breakpoint-up(lg) {
             grid-template-columns: 1.2fr 1fr min-content;
             gap: 4rem;
+            align-content: stretch;
 
             h3 {
                 margin: 3rem 0;
