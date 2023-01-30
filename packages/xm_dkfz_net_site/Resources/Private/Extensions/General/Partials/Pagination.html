@@ -24,11 +24,14 @@
 			<li>…</li>
 		</f:if>
 		<f:for each="{pagination.allPageNumbers}" as="page">
-			<li>
-				<a class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'current')}"
-				   href="{f:uri.action(action:actionName, arguments:{currentPage: page, demand: demandArguments})}">{page}
-				</a>
-			</li>
+			<f:if condition="{page} != {pagination.lastPageNumber}">
+				<li>
+					<a class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'current')}"
+					   href="{f:uri.action(action:actionName, arguments:{currentPage: page, demand: demandArguments})}">
+						{page}
+					</a>
+				</li>
+			</f:if>
 		</f:for>
 		<f:if condition="{pagination.hasMorePages}">
 			<li>…</li>
