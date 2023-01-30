@@ -18,6 +18,10 @@
         }
     }
 
+    .news-related {
+        margin-top: 3rem;
+    }
+
     &--shortNews {
 
         @include media-breakpoint-up(xl) {
