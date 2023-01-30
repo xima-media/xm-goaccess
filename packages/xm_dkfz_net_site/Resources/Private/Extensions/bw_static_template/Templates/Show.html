@@ -126,10 +126,10 @@
 												<f:for each="{block.list}" as="list">
 													<li>
 														<f:if condition="{list.headline}">
-															<f:link.typolink parameter="{column.link}"
+															<f:link.typolink parameter="{list.link}"
 																			 parts-as="parts"
-																			 additionalAttributes="{aria-label: '{column.headline}'}">
-																<h5 class="organigram__detail--content__headline">{column.headline}</h5>
+																			 additionalAttributes="{aria-label: '{list.headline}'}">
+																<h5 class="organigram__detail--content__headline">{list.headline}</h5>
 															</f:link.typolink>
 														</f:if>
 														<f:if condition="{list.descriptionFirstLine} || {list.descriptionSecondLine}">
