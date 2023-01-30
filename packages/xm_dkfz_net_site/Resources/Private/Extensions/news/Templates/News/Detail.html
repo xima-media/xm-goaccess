@@ -6,7 +6,7 @@
 
 <f:if condition="{newsItem}">
 
-	<f:if condition="{newsItem.pid}!=141">
+	<f:if condition="{newsItem.pid}!=141 && {newsItem.mediaNonPreviews.0}">
 		<f:variable name="shortNews" value="shortNews image-orient--18"></f:variable>
 	</f:if>
 
