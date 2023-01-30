@@ -58,7 +58,7 @@
 				<p>
 					<f:format.date format="%d. %B %Y">{newsItem.datetime}</f:format.date>
 					<f:if condition="{newsItem.firstCategory}">
-						| {newsItem.firstCategory.title}
+						<span class="vertical-spacer">|</span> {newsItem.firstCategory.title}
 					</f:if>
 				</p>
 				<f:if condition="{newsItem.teaser}">

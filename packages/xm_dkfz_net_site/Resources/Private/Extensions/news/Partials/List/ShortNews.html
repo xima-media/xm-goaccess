@@ -20,7 +20,7 @@
 			<p class="text-small m-b-05">
 				<f:format.date format="%d. %B %Y">{newsItem.datetime}</f:format.date>
 				<f:if condition="{newsItem.firstCategory}">
-					| {newsItem.firstCategory.title}
+					<span class="vertical-spacer">|</span> {newsItem.firstCategory.title}
 				</f:if>
 			</p>
 			<h4 class="h6  m-b-0">{newsItem.title}</h4>
