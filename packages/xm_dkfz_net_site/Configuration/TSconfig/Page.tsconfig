@@ -30,7 +30,7 @@ TCEMAIN {
 TCEFORM {
   tt_content {
     CType {
-      removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div
+      removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, html, mtext, mbox, bw_focuspoint_images_svg, form_formframework
       altLabels {
         image = LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:image.slider.title
       }
@@ -326,7 +326,7 @@ mod.wizards.newContentElement.wizardItems {
       }
     }
 
-    show := addToList(tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_serviceSlider,tt_content_page_teaser,tt_content_employeeSlider,tt_content_usertable)
+    show = textmedia,image,uploads,tt_content_linklist,tt_content_video,tt_content_infobox,tt_content_quote,tt_content_page_teaser,tt_content_employeeSlider,tt_content_usertable
   }
   manual >
 }
@@ -370,7 +370,7 @@ tx_news.templateLayouts {
 
 # CE elements for news
 [traverse(page, "uid") == 141]
-  TCEFORM.tt_content.CType.removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, serviceSlider, page_teaser, mtext, mbox, bw_focuspoint_images_svg, employeeSlider, form_formframework, shortcut, list, html, bw_static_template, teaser, container-2cols, container-accordion, container-tabs
+  TCEFORM.tt_content.CType.removeItems = textpic, bullets, header, text, table, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, div, serviceSlider, page_teaser, mtext, mbox, bw_focuspoint_images_svg, employeeSlider, form_formframework, shortcut, list, html, teaser, container-2cols, container-accordion, container-tabs, twitter, bw_static_template, newsletter-news
 [GLOBAL]
 
 # Newsletter pages

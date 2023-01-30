@@ -34,15 +34,16 @@ mod.wizards.newContentElement.wizardItems {
     show = tt_content_mtext,tt_content_mbox,bw_focuspoint_images_svg
   }
 
-  common.elements >
-  forms.elements >
-  special.elements >
-  plugins.elements >
-  menu.elements >
-  luxletter.elements >
-  container.elements >
+  common.show =
+  forms.show =
+  special.show =
+  plugins.show =
+  menu.show =
+  luxletter.show =
+  container.show =
 }
 
+TCEFORM.tt_content.CType.removeItems >
 TCEFORM.tt_content.assets.config.maxitems = 1
 TCEFORM.tt_content.imageorient.disabled = 0
 TCEFORM.tt_content.imageorient.removeItems = 1,2,9,10,17,18
