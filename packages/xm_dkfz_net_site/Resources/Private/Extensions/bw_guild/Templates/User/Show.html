@@ -28,11 +28,11 @@
 				data-bookmark-url="{f:uri.action(action: 'bookmark', pageUid: '1', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {tableName: 'fe_users', recordUid: user.uid})}">
 			<span data-onload>
 				<f:render partial="Icon" arguments="{icon: 'person-add'}"/>
-				Mitarbeiter merken
+				<f:translate extensionName="XmDkfzNetSite" key="user.bookmark"/>
 			</span>
 			<span data-checked>
 				<f:render partial="Icon" arguments="{icon: 'person-remove'}"/>
-				Mitarbeiter gemerkt
+				<f:translate extensionName="XmDkfzNetSite" key="user.bookmark.remove"/>
 			</span>
 		</button>
 
@@ -40,7 +40,7 @@
 				data-user-uid="{user.uid}"
 				data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
 			<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
-			Profil bearbeiten
+			<f:translate extensionName="XmDkfzNetSite" key="userEditForm.profileEdit"/>
 		</button>
 
 	</div>
