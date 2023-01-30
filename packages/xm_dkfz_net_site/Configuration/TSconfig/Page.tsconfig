@@ -159,6 +159,10 @@ TCEFORM {
     content_elements.disabled = 0
     fal_related_files.disabled = 0
     related_links.disabled = 1
+    related.disabled = 1
+    related_from.disabled = 1
+    archive.disabled = 1
+    fe_group.disabled = 1
     tags.disabled = 1
     author.disabled = 1
     author_email.disabled = 1
@@ -361,6 +365,7 @@ tx_news.templateLayouts {
 [479 in tree.rootLineIds]
   TCEFORM.tx_news_domain_model_news.content_elements.disabled = 1
   TCEFORM.tx_news_domain_model_news.teaser.disabled = 1
+  TCEFORM.tx_news_domain_model_news.categories.disabled = 1
 [GLOBAL]
 
 # CE elements for news
