@@ -88,7 +88,7 @@
 										<f:if condition="{userItem.user.0.email}">
 											<li>
 												<f:render partial="Icon" arguments="{icon: 'mail', width: 16, height: 16}"/>
-												{userItem.user.0.email}
+												<f:link.email email="{userItem.user.0.email}">{userItem.user.0.email}</f:link.email>
 											</li>
 										</f:if>
 									</ul>
