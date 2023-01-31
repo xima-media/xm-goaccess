@@ -373,14 +373,11 @@
 			<trans-unit id="contact.number">
 				<source>Phone</source>
 			</trans-unit>
-			<trans-unit id="contact.fe_group">
-				<source>User group</source>
-			</trans-unit>
 			<trans-unit id="contact.function">
 				<source>Function</source>
 			</trans-unit>
 			<trans-unit id="contact.fe_group">
-				<source>Frontend Group</source>
+				<source>Unit</source>
 			</trans-unit>
 			<trans-unit id="contact.primary_number">
 				<source>Is primary number</source>
@@ -641,7 +638,7 @@
 				<source>Secretary</source>
 			</trans-unit>
 			<trans-unit id="group.managers" space="preserve">
-				<source>Managers</source>
+				<source>Head</source>
 			</trans-unit>
 			<trans-unit id="page.login" space="preserve">
 				<source>Login</source>
