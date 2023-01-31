@@ -13,6 +13,7 @@
         justify-content: center;
         background-color: $color-gray-100;
         max-width: 100vw;
+        z-index: 1;
     }
 
     &--fixed {
