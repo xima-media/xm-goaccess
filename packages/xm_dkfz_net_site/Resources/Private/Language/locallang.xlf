@@ -682,6 +682,21 @@
 			<trans-unit id="news.allCategories" space="preserve">
 				<source>All categories</source>
 			</trans-unit>
+			<trans-unit id="welcome.headline" space="preserve">
+				<source>Good day</source>
+			</trans-unit>
+			<trans-unit id="welcome.text" space="preserve">
+				<source>Welcome to the Intranet</source>
+			</trans-unit>
+			<trans-unit id="welcome.profile.headline" space="preserve">
+				<source>Your Employee Profile</source>
+			</trans-unit>
+			<trans-unit id="welcome.profile.text" space="preserve">
+				<source>Take the opportunity to introduce yourself to your colleagues and complete your profile to be found better.</source>
+			</trans-unit>
+			<trans-unit id="welcome.profile.link" space="preserve">
+				<source>Edit profile now</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

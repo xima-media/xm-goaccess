@@ -671,6 +671,21 @@
 			<trans-unit id="news.allCategories" space="preserve">
 				<target>Alle Kategorien</target>
 			</trans-unit>
+			<trans-unit id="welcome.headline" space="preserve">
+				<target>Guten Tag</target>
+			</trans-unit>
+			<trans-unit id="welcome.text" space="preserve">
+				<target>Herzlich Willkommen im Intranet</target>
+			</trans-unit>
+			<trans-unit id="welcome.profile.headline" space="preserve">
+				<target>Ihr Mitarbeiterprofil</target>
+			</trans-unit>
+			<trans-unit id="welcome.profile.text" space="preserve">
+				<target>Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr Profil, um besser gefunden zu werden.</target>
+			</trans-unit>
+			<trans-unit id="welcome.profile.link" space="preserve">
+				<target>Jetzt Profil bearbeiten</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
