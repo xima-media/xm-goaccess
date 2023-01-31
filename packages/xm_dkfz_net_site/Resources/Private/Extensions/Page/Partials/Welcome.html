@@ -1,24 +1,20 @@
 <div id="cwelcome" class="frame content-wrapper--expanded frame-type-welcome">
 
 	<div class="employee-welcome employee-welcome--onload-hidden">
-		<f:comment>
+
 			<div class="employee-welcome-message">
 				<div class="employee-welcome-message__header">
-					<h2 class="employee-welcome-message__title h4">Guten Tag
+					<h2 class="h4 m-b-05">Guten Tag
 						<span data-username></span>
 					</h2>
-					<p class="employee-welcome-message__sub-title">Herzlich Willkommen im Intranet!</p>
-					<a class="employee-welcome-message__link" href="#">
-						Onboarding Informationen
-						<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
-					</a>
+					<p class="text-intro h5">Herzlich Willkommen im Intranet!</p>
 				</div>
 				<div class="employee-welcome-message__body">
-					<h3 class="employee-welcome-message__badge badge">Ihr Mitarbeiterprofil</h3>
-					<p>
+					<h3 class="employee-welcome-message__badge badge m-b-05">Ihr Mitarbeiterprofil</h3>
+					<p class="text-small m-b-1">
 						Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr
 						Profil, um besser gefunden zu werden. </p>
-					<a class="employee-welcome-message__link"
+					<a class="content-wrapper__link"
 					   data-user-edit-link="{f:uri.action(action: 'userEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}"
 					   href="#">
 						Jetzt Profil bearbeiten
@@ -26,7 +22,7 @@
 					</a>
 				</div>
 			</div>
-		</f:comment>
+
 		<div class="employee-finder">
 			<h2 class="employee-finder__title h5 m-b-0"><f:translate extensionName="XmDkfzNetSite" key="homepage.usersearch"/></h2>
 			<f:form class="employee-finder__form"

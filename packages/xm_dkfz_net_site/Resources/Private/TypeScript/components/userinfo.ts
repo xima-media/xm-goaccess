@@ -72,7 +72,7 @@ class Userinfo {
     this.modifyUserNav()
     this.modifyBookmarkLinks()
     this.modifyUserImagePreview()
-    // this.modifyWelcomeMessage()
+    this.modifyWelcomeMessage()
     this.setFeedbackFormUserValues()
   }
 
@@ -201,7 +201,7 @@ class Userinfo {
     if (!welcomeMessageBox || !usernameElement || !this.userinfo) {
       return
     }
-    usernameElement.innerHTML = this.userinfo.user.username
+    usernameElement.innerHTML = this.userinfo.user.first_name + ' ' + this.userinfo.user.last_name
     welcomeMessageBox.classList.remove('employee-welcome--onload-hidden')
   }
 
