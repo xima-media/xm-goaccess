@@ -683,13 +683,13 @@
 				<source>All categories</source>
 			</trans-unit>
 			<trans-unit id="welcome.headline" space="preserve">
-				<source>Good day</source>
+				<source>Hello</source>
 			</trans-unit>
 			<trans-unit id="welcome.text" space="preserve">
 				<source>Welcome to the Intranet</source>
 			</trans-unit>
 			<trans-unit id="welcome.profile.headline" space="preserve">
-				<source>Your Employee Profile</source>
+				<source>Your Personal Profile</source>
 			</trans-unit>
 			<trans-unit id="welcome.profile.text" space="preserve">
 				<source>Take the opportunity to introduce yourself to your colleagues and complete your profile to be found better.</source>
