@@ -17,6 +17,13 @@ class FeGroup extends AbstractEntity
      */
     protected ?ObjectStorage $managers = null;
 
+    protected string $dkfzNumber = '';
+
+    public function getDkfzNumber(): string
+    {
+        return $this->dkfzNumber;
+    }
+
     /**
      * @return ObjectStorage<User>|null
      */

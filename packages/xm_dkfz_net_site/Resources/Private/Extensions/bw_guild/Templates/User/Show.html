@@ -16,7 +16,7 @@
 			<f:if condition="{user.groups}">
 				<p class="m-b-0"><strong>
 					<f:for each="{user.groups}" as="group" iteration="i">
-						{group.title}{f:if(condition: i.isLast, else: ', ')}
+						{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
 					</f:for>
 				</strong></p>
 			</f:if>
@@ -73,7 +73,7 @@
 					<f:translate extensionName="XmDkfzNetSite" key="contact.fe_group"/>
 				</h5>
 				<f:for each="{user.groups}" as="group" iteration="i">
-					<p class="m-b-0">{group.title}</p>
+					<p class="m-b-0">{group.dkfzNumber} - {group.title}</p>
 					<f:if condition="{group.managers}">
 						<h6 class="m-b-0">
 							<f:translate extensionName="XmDkfzNetSite" key="group.managers"/>

@@ -38,7 +38,7 @@
 								<f:if condition="{user.groups}">
 									<p class="text-small"><strong>
 										<f:for each="{user.groups}" as="group" iteration="i">
-											{group.title}{f:if(condition: i.isLast, else: ', ')}
+											{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
 										</f:for>
 									</strong></p>
 								</f:if>
