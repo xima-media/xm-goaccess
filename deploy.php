@@ -77,7 +77,7 @@ task('typo3cms:cache:warmup', function () {
 task('typo3cms:cache:warmup-live', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
-    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup-live --depth=1 --mode=exec');
+    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup-live --depth=3 --mode=exec');
 });
 before('buffer:start', 'typo3cms:cache:warmup');
 after('buffer:stop', 'typo3cms:cache:warmup-live');
