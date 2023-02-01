@@ -36,6 +36,7 @@
 
     &__content {
         max-width: 30rem;
+        flex-grow: 1;
     }
 
     p:not(.copyright__text):last-child {
