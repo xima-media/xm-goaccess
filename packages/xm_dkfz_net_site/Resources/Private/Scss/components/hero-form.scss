@@ -115,6 +115,10 @@ body#p5 {
         }
     }
 
+    .field--select option {
+        background: #000;
+    }
+
     &__wrapper {
         --color-primary: #2662c3;
         background-color: var(--color-primary);
@@ -126,7 +130,6 @@ body#p5 {
     }
 
     &__filter-button {
-        display: block;
         background-color: var(--color-primary);
         color: white;
         display: flex;
