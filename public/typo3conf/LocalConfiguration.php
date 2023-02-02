@@ -231,6 +231,7 @@ return [
             'phone_book_api_url' => '../var/phonebook/db.json',
             'storage_identifier_for_imported_groups' => '1:Gruppen',
             'pid_for_short_news_creation' => '479',
+            'logout_redirect_url' => '',
         ],
         'xm_goaccess' => [
             'html_path' => '../var/goaccess/goaccess.html',

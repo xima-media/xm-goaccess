@@ -371,6 +371,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyPagesIndexEntryHook.php
 
 		-
+			message: "#^Parameter \\#1 \\$uri of class TYPO3\\\\CMS\\\\Core\\\\Http\\\\RedirectResponse constructor expects Psr\\\\Http\\\\Message\\\\UriInterface\\|string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Middleware/RedirectAfterLogout.php
+
+		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Preview/AccordionContainerPreviewRenderer.php

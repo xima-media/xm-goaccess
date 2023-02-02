@@ -8,3 +8,5 @@ default_fe_user_group =
 default_be_user_group =
 # cat=basic/enable; type=string; label=PID for the creation of short news sys_folder
 pid_for_short_news_creation=
+# cat=basic/enable; type=string; label=URL to redirect to after logout
+logout_redirect_url=
