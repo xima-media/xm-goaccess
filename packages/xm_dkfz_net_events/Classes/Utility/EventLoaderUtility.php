@@ -88,7 +88,8 @@ class EventLoaderUtility
             }
 
             if ($eventReflection->getProperty($xmlPropertyName)->getType()->getName() === 'string') {
-                $event->$xmlPropertyName = $node->nodeValue;
+                $value = $node->nodeValue ?: $node->nextSibling->nodeValue;
+                $event->$xmlPropertyName = $value;
                 continue;
             }
 
