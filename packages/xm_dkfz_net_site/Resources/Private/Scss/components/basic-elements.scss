@@ -32,13 +32,9 @@ ul.users {
         margin-top: 3rem;
         border: 1px solid var(--color-gray-200);
         display: grid;
-
-        &:hover {
-            border-color: var(--color-gray-400);
-        }
     }
 
-    a {
+    .users__item {
         padding: 2rem;
         display: flex;
         flex-direction: column;
@@ -51,8 +47,6 @@ ul.users {
     }
 
     a:hover {
-        text-decoration: none;
-
         .userimage {
             path,
             img {
@@ -60,9 +54,7 @@ ul.users {
             }
         }
 
-        .h6 {
-            text-decoration: underline;
-        }
+        
     }
 }
 

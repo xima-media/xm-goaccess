@@ -53,13 +53,13 @@
 			<ul class="list">
 				<f:for each="{user.phoneContacts}" as="contact" iteration="i">
 					<li class="contact__item">
-						<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+						<f:render partial="Icon" arguments="{icon: 'phone', width: 14, height: 14}"/>
 						<a href="tel:{contact.cleanNumber}">{contact.number}</a>
 					</li>
 				</f:for>
 				<f:if condition="{user.email}">
 					<li class="contact__item">
-						<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+						<f:render partial="Icon" arguments="{icon: 'mail', width: 14, height: 14}"/>
 						<f:link.email email="{user.email}">{user.email}</f:link.email>
 					</li>
 				</f:if>
@@ -251,13 +251,13 @@
 			<ul class="list contacts">
 				<f:for each="{groupUser.phoneContacts}" as="contact" iteration="i">
 					<li class="contact__item">
-						<f:render partial="Icon" arguments="{icon: 'phone'}"/>
+						<f:render partial="Icon" arguments="{icon: 'phone', width: 14, height: 14}"/>
 						<a href="tel:{contact.cleanNumber}">{contact.number}</a>
 					</li>
 				</f:for>
 				<f:if condition="{groupUser.email}">
 					<li class="contact__item">
-						<f:render partial="Icon" arguments="{icon: 'mail'}"/>
+						<f:render partial="Icon" arguments="{icon: 'mail', width: 14, height: 14}"/>
 						<f:link.email email="{groupUser.email}">{groupUser.email}</f:link.email>
 					</li>
 				</f:if>
