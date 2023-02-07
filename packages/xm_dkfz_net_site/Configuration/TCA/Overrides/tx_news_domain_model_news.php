@@ -30,9 +30,9 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['fal_media']['config']['
     'preview' => [
         'title' => 'Preview',
         'allowedAspectRatios' => [
-            '1:1' => [
-                'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.1_1',
-                'value' => 1.0,
+            '3:2' => [
+                'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.3_2',
+                'value' => 3 / 2,
             ],
         ],
     ],
