@@ -58,7 +58,6 @@ class UserQueryProcessor implements DataProcessorInterface
 
         // overrides from user table content element
         if ($processorConfiguration['type'] === 'usertable' && count($users) === 1) {
-
             // override of user contacts
             if ($processedData['data']['overrides']) {
                 $selectedContacts = GeneralUtility::intExplode(',', $processedData['data']['contacts'], true);
