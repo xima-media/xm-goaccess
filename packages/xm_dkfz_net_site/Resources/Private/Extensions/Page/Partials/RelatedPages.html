@@ -4,9 +4,9 @@
 		<div class="releated-pages">
 
 			<div>
-				<h5>
+				<h2 class="h5">
 					<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:related-pages-headline"/>
-				</h5>
+				</h2>
 				<div class="pattern-divider color-accent--gray-700"></div>
 			</div>
 
@@ -28,15 +28,15 @@
 							</f:if>
 
 						</div>
-						<div class="text">
+						<div>
 
 							<f:if condition="{item.data.overrides} && {item.data.title}">
-								<f:then><p>{item.data.title}</p></f:then>
-								<f:else><p>{item.page.0.parent.0.data.title}</p></f:else>
+								<f:then><p class="text-small">{item.data.title}</p></f:then>
+								<f:else><p class="text-small">{item.page.0.parent.0.data.title}</p></f:else>
 							</f:if>
 							<f:if condition="{item.data.overrides} && {item.data.link_title}">
-								<f:then><h4>{item.data.link_title}</h4></f:then>
-								<f:else><h4>{item.page.0.data.title}</h4></f:else>
+								<f:then><h3 class="h5">{item.data.link_title}</h3></f:then>
+								<f:else><h3 class="h5">{item.page.0.data.title}</h3></f:else>
 							</f:if>
 
 						</div>
