@@ -56,13 +56,22 @@ class UserQueryProcessor implements DataProcessorInterface
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         $users = $dataMapper->map(User::class, $userResults ?? []);
 
-        // override of user contacts in usertable
-        if ($processorConfiguration['type'] === 'usertable' && count($users) === 1 && $processedData['data']['overrides']) {
-            $selectedContacts = GeneralUtility::intExplode(',', $processedData['data']['contacts'], true);
-            foreach ($users[0]?->getContacts() ?? [] as $contact) {
-                if (!in_array($contact->getUid(), $selectedContacts)) {
-                    $users[0]->removeContact($contact);
+        // overrides from user table content element
+        if ($processorConfiguration['type'] === 'usertable' && count($users) === 1) {
+
+            // override of user contacts
+            if ($processedData['data']['overrides']) {
+                $selectedContacts = GeneralUtility::intExplode(',', $processedData['data']['contacts'], true);
+                foreach ($users[0]?->getContacts() ?? [] as $contact) {
+                    if (!in_array($contact->getUid(), $selectedContacts)) {
+                        $users[0]->removeContact($contact);
+                    }
                 }
+            }
+
+            // override of responsibilities
+            if ($processedData['data']['overrides2']) {
+                $users[0]->setResponsibilities($processedData['data']['text']);
             }
         }
 
