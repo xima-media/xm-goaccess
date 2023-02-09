@@ -68,9 +68,15 @@ class UserSearchEvent
         $this->addJoinOnContacts();
 
         $this->queryBuilder->andWhere(
-            $this->queryBuilder->expr()->like(
-                'c.function',
-                $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%')
+            $this->queryBuilder->expr()->orX(
+                $this->queryBuilder->expr()->like(
+                    'c.function',
+                    $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%')
+                ),
+                $this->queryBuilder->expr()->like(
+                    $this->userDemand::TABLE . '.responsibilities',
+                    $this->queryBuilder->createNamedParameter('%' . $this->userDemand->function . '%')
+                )
             )
         );
     }
@@ -107,7 +113,7 @@ class UserSearchEvent
             return;
         }
 
-        // reset search termin in demand to prevent default text search in user properties
+        // reset search term in demand to prevent default text search in user properties
         $this->userDemand->search = '';
 
         $this->addJoinOnContacts();
