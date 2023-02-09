@@ -374,7 +374,7 @@
 				<source>Phone</source>
 			</trans-unit>
 			<trans-unit id="contact.function">
-				<source>Function</source>
+				<source>Function / Responsibility</source>
 			</trans-unit>
 			<trans-unit id="contact.fe_group">
 				<source>Unit</source>

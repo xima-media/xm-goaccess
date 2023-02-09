@@ -330,7 +330,7 @@
 				<target>Benutzergruppe</target>
 			</trans-unit>
 			<trans-unit id="contact.function">
-				<target>Funktion</target>
+				<target>Funktion / Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="contact.fe_group">
 				<target>Abteilung</target>
