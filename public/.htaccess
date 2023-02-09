@@ -157,6 +157,7 @@ AddEncoding gzip .gzip
 	ExpiresByType application/atom+xml                  "access plus 1 hour"
 	ExpiresByType application/rdf+xml                   "access plus 1 hour"
 	ExpiresByType application/rss+xml                   "access plus 1 hour"
+	ExpiresByType application/pdf                   	"access plus 1 hour"
 
 	ExpiresByType font/collection                       "access plus 1 month"
 	ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
