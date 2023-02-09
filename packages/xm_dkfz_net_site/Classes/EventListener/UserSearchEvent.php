@@ -5,6 +5,7 @@ namespace Xima\XmDkfzNetSite\EventListener;
 use Blueways\BwGuild\Event\ModifyQueryBuilderEvent;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\MathUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\UserDemand;
 
 class UserSearchEvent
@@ -26,9 +27,21 @@ class UserSearchEvent
         $this->userDemand = $demand;
         $this->queryBuilder = $event->getQueryBuilder();
 
+        $this->addConstraintForLastName();
         $this->addConstraintForFunction();
         $this->addConstraintForCommittee();
         $this->addConstraintForPhoneNumber();
+        $this->addOrderConstraint();
+    }
+
+    protected function addConstraintForLastName(): void
+    {
+        $this->queryBuilder->andWhere(
+            $this->queryBuilder->expr()->neq(
+                $this->userDemand::TABLE . '.last_name',
+                $this->queryBuilder->createNamedParameter('')
+            )
+        );
     }
 
     protected function addJoinOnContacts(): void
@@ -124,5 +137,11 @@ class UserSearchEvent
                 $this->queryBuilder->createNamedParameter('%' . $searchTerm . '%', \PDO::PARAM_STR)
             )
         );
+    }
+
+    protected function addOrderConstraint(): void
+    {
+        $this->queryBuilder->addOrderBy($this->userDemand::TABLE . '.last_name', QueryInterface::ORDER_ASCENDING);
+        $this->queryBuilder->addOrderBy($this->userDemand::TABLE . '.first_name', QueryInterface::ORDER_ASCENDING);
     }
 }
