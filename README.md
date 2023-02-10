@@ -2,9 +2,9 @@
 
 This is the main repository for the DKFZ TYPO3 project.
 
-* Repository: [Gitlab](https://t3-gitlab-dev.xima.local/dkfz/dkfz-t3-intranet/)
-* Staging-Instance: [stage.dkfz-typo3-dev.xima.local](https://stage.dkfz-typo3-dev.xima.local/)
-* Feature-Branches: [fbd.dkfz-typo3-dev.xima.local](https://fbd.dkfz-typo3-dev.xima.local/)
+* Repository: [GitLab XIMA](https://git.xima.de/typo3/dkfz/dkfz-intranet-typo3) → [GitLab DKFZ](https://git.dkfz.de/dkfz/dkfz-t3-intranet) (Mirror)
+* Staging-Instance: [master.dev.dkfz-intranet-typo3.xima.dev](https://master.dev.dkfz-intranet-typo3.xima.dev/)
+* Feature-Branches overview: [GitLab Deployments](https://git.xima.de/typo3/dkfz/dkfz-intranet-typo3/-/environments)
 
 ## 1. Local setup
 
@@ -23,8 +23,8 @@ All TypeScript and SCSS source files are located inside the `packages/xm_dkfz_ne
 
 There are currently two Gitlab installations where you can checkout the source code:
 
-* [DKFZ-Intern](https://git.dkfz.de/dkfz/dkfz-t3-intranet.git) (**PRIMARY**)
-* [XIMA-Intern](https://t3-gitlab-dev.xima.local)
+* [XIMA-Intern](https://git.xima.de/typo3/dkfz/dkfz-intranet-typo3) (**PRIMARY**)
+* [DKFZ-Intern](https://git.dkfz.de/dkfz/dkfz-t3-intranet.git) (Mirror)
 
 To connect to the primary DKFZ-Repository via SSH, you need to adjust your SSH configuration (`~/.ssh/config`), since it does not use the default port 22:
 
@@ -46,23 +46,31 @@ When starting the project for the first time, an example database is imported th
   * Username: admin
   * Password: changeme
 
-### 3.2. Staging database (sync)
+### 3.2. Staging database
 
 To download the staging database, you can use deployer. These commands download the database and media files:
 
 ```
-dep db:pull staging
-dep media:pull staging
+dep db:pull dev-t3-debian11-01-master
+dep media:pull dev-t3-debian11-01-master
 ```
 
 (Make sure you have authenticated your ddev container and added the `dep` command alias, see 5. Commands)
 
-### 3.3. TYPO3 Styleguide
+### 3.3. Production Artifacts
 
-* [https://stage.dkfz-typo3-dev.xima.local/styleguide/themenseite](https://stage.dkfz-typo3-dev.xima.local/styleguide/themenseite)
-* [https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten](https://stage.dkfz-typo3-dev.xima.local/styleguide/komponenten)
+There is a deployer task to download the production database and files from the DKFZ GitLab via API:
 
-## 4. Project structure
+```
+dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN="<SEE KEEPASS>"
+```
+
+### 4. TYPO3 Styleguide
+
+* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite](master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite)
+* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten](master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten)
+
+## 5. Project structure
 
 All configurations are made for the production context. Configurations can be overridden via `.env` oder `dev.typoscript` files to fit your local ddev installation.
 
@@ -84,19 +92,17 @@ All configurations are made for the production context. Configurations can be ov
 └── package.json
 ```
 
-## 5. Commands
+## 6. Commands
 
 * `ddev` commands:
   * ```ddev ...```
   * ```ddev composer ...```
   * ```ddev typo3cms ...```
-  * ```ddev auth ssh``` → Add your SSH-Key to the container
 * `deployer` commands:
   * ```dep```
-  * ```dep deploy-fast staging``` → Staging deployment
-  * ```dep deploy-fast feature -o branch=DKFZ-001``` → Feature branch deployment
-  * ```dep db:pull staging``` → Download database
-  * ```dep media:pull staging``` → Download fileadmin & co.
+  * ```dep deploy-fast``` → select instance (e.g. master) deployment
+  * ```dep db:pull``` → Download database
+  * ```dep media:pull``` → Download fileadmin & co.
 
 To add the `dep` alias, add this to your `~/.bashrc`:
 
@@ -104,12 +110,13 @@ To add the `dep` alias, add this to your `~/.bashrc`:
 alias dep="ddev exec vendor/bin/dep"
 ```
 
-## 6. Tests
+## 7. Tests
 
-The pipelines are configured to run tests before deploying to staging.
+The pipelines are configured to run tests before deploying to master and production.
 
 * phpstan
 * phpfixer
+* phplint
 * Codeception (currently disabled in pipeline)
 
 To run the tests locally, run `ddev composer run php:stan` and `ddev composer run php:fixer`.
