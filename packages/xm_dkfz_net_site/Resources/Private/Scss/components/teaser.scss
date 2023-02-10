@@ -1,7 +1,7 @@
 .page-teaser {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    align-items: center;
     gap: 1.5rem;
     padding-bottom: calc(1.25 * var(--content-padding));
 
@@ -14,14 +14,12 @@
         flex-direction: row;
     }
 
-    &:nth-child(2n-1) {
-        justify-content: flex-start;
+    &:nth-child(2n-1) .page-teaser__image {
 
-        .page-teaser__image {
+
+        @include media-breakpoint-up(lg) {
+            margin: 0 0 0 -2rem;
             order: unset;
-            @include media-breakpoint-up(lg) {
-                margin: 0 0 0 -2rem;
-            }
         }
     }
 
