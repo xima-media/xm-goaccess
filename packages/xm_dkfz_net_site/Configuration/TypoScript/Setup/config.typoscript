@@ -1,6 +1,7 @@
 config {
   no_cache = 0
   sendCacheHeaders = 1
+  cache_period = 30
   debug = 0
   contentObjectExceptionHandler = 1
   compressJs = 0
