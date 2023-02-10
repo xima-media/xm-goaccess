@@ -67,8 +67,8 @@ dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN="<SEE KEEPASS>"
 
 ### 4. TYPO3 Styleguide
 
-* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite](master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite)
-* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten](master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten)
+* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite](https://master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite)
+* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten](https://master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten)
 
 ## 5. Project structure
 
