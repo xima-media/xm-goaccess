@@ -48,7 +48,12 @@
 						<f:if condition="{user.groups}">
 							<p class="text-small"><strong>
 								<f:for each="{user.groups}" as="group" iteration="i">
-									{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
+									<f:link.action action="list"
+												   class=""
+												   pluginName="Userlist"
+												   controller="User"
+												   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
+									</f:link.action>
 								</f:for>
 							</strong></p>
 						</f:if>
