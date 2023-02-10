@@ -14,15 +14,10 @@ This is the main repository for the DKFZ TYPO3 project.
 
 ### 1.1. Asset-Building
 
-All TypeScript and SCSS source files are located inside the `packages/xm_dkfz_net_prototype` directory and become compiled via webpack.
+All TypeScript and SCSS source files are located inside the `packages/xm_dkfz_net_site/Resources/Private` directory and are compiled via webpack.
 
 * `npm run start` (watch task, used in *Development/Local* context)
 * `npm run build` (build task, used in *Production* context)
-
-To build the patternlab prototype, run the following commands:
-
-* `npm run serve` (watch task for patternlab)
-* `npm run build:patternlab` (build task for patternlab)
 
 ## 2. Git-Server
 
@@ -76,8 +71,8 @@ All configurations are made for the production context. Configurations can be ov
 ├── config
 ├── packages
 │   ├── xm_dkfz_net_jobs
-│   ├── xm_dkfz_net_prototype
 │   └── xm_dkfz_net_site
+│   └── ...
 ├── public (Web root)
 │   ├── typo3conf
 │   │   ├── AdditionalConfiguration.php
