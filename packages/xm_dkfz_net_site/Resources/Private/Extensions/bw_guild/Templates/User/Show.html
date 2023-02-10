@@ -23,7 +23,7 @@
 									   section="c381"
 									   pageUid="{settings.pidUserList}"
 									   controller="User"
-									   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber} -
+									   arguments="{demand: {feGroup: group.fakeSlug}}">{group.dkfzNumber} -
 							{group.title}{f:if(condition: i.isLast, else: ', ')}
 						</f:link.action>
 					</f:for>
@@ -90,7 +90,7 @@
 									   pageUid="{settings.pidUserList}"
 									   title="{group.title}"
 									   controller="User"
-									   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber} -
+									   arguments="{demand: {feGroup: group.fakeSlug}}">{group.dkfzNumber} -
 							{group.title}
 						</f:link.action>
 					</p>
@@ -182,7 +182,7 @@
 										   controller="User"
 										   pageUid="{settings.pidUserList}"
 										   section="c381"
-										   arguments="{demand: {room: user.contactRoom}}">{user.contactRoom}
+										   arguments="{demand: {room: user.contactRoomFakeSlug}}">{user.contactRoom}
 							</f:link.action>
 						</p>
 					</li>

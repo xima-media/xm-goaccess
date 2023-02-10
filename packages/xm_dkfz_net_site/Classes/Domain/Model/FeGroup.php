@@ -122,4 +122,10 @@ class FeGroup extends AbstractEntity
     {
         return $this->subgroup;
     }
+
+    public function getFakeSlug(): string
+    {
+        $identifier = $this->dkfzNumber ?: $this->title;
+        return urlencode($identifier);
+    }
 }

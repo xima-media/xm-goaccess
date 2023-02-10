@@ -55,7 +55,7 @@
 												   section="c381"
 												   title="{group.title}"
 												   controller="User"
-												   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber}
+												   arguments="{demand: {feGroup: group.fakeSlug}}">{group.dkfzNumber}
 										- {group.title}{f:if(condition: i.isLast, else: ', ')}
 									</f:link.action>
 								</f:for>
@@ -73,7 +73,7 @@
 												   pluginName="Userlist"
 												   section="c381"
 												   controller="User"
-												   arguments="{demand: {room: user.contactRoom}}">{user.contactRoom}
+												   arguments="{demand: {room: user.contactRoomFakeSlug}}">{user.contactRoom}
 									</f:link.action>
 								</li>
 							</f:if>

@@ -224,6 +224,12 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return '';
     }
 
+    public function getContactRoomFakeSlug(): string
+    {
+        $identifier = $this->getContactRoom();
+        return urlencode($identifier);
+    }
+
     public function getContactFunction(): string
     {
         foreach ($this->contacts ?? [] as $contact) {

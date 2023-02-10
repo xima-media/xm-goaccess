@@ -1,0 +1,33 @@
+routeEnhancers:
+  DkfzUserlist:
+    type: Extbase
+    extension: BwGuild
+    plugin: Userlist
+    routes:
+      - routePath: '/{localized_unit}/{dkfzNumber}'
+        _controller: 'User::list'
+        _arguments:
+          dkfzNumber: 'demand/feGroup'
+      - routePath: '/{localized_room}/{room}'
+        _controller: 'User::list'
+        _arguments:
+          room: 'demand/room'
+    requirements:
+      dkfzNumber: '.+'
+      room: '.+'
+    defaults:
+      dkfzNumber: ''
+      room: ''
+    aspects:
+      localized_unit:
+        type: LocaleModifier
+        default: 'abteilung'
+        localeMap:
+          - locale: 'en_US.*'
+            value: 'unit'
+      localized_room:
+        type: LocaleModifier
+        default: 'raum'
+        localeMap:
+          - locale: 'en_US.*'
+            value: 'room'

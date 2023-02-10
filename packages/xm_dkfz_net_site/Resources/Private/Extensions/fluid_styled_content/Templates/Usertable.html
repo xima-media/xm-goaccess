@@ -67,15 +67,7 @@
 										<f:if condition="{userItem.user.0.contactRoom}">
 											<li class="contact__item">
 												<f:render partial="Icon" arguments="{icon: 'location', width: 14, height: 14}"/>
-												<f:link.action action="list"
-															   class=""
-															   title="{userItem.user.0.contactRoom}"
-															   extensionName="BwGuild"
-															   pluginName="Userlist"
-															   controller="User"
-															   pageUid="{settings.pidUserList}"
-															   section="c381"
-															   arguments="{demand: {room: userItem.user.0.contactRoom}}">{userItem.user.0.contactRoom}</f:link.action>
+												{userItem.user.0.contactRoom}
 											</li>
 										</f:if>
 
