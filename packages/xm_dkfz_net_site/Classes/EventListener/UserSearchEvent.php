@@ -123,7 +123,9 @@ class UserSearchEvent
     {
         $searchTerm = $this->userDemand->search;
 
-        if (!$searchTerm || !MathUtility::canBeInterpretedAsInteger($searchTerm)) {
+        $possiblePhoneNumber = str_replace([' ', '+49'], '', $searchTerm);
+
+        if (!$searchTerm || !MathUtility::canBeInterpretedAsInteger($possiblePhoneNumber)) {
             return;
         }
 
