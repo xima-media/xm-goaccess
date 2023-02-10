@@ -28,6 +28,7 @@ class UserQueryProcessor implements DataProcessorInterface
         if ($processorConfiguration['type'] === 'latest') {
             $userResults = $qb->select('*')
                 ->from('fe_users')
+                ->where($qb->expr()->neq('fe_users.last_name', $qb->createNamedParameter('')))
                 ->orderBy('crdate', 'DESC')
                 ->setMaxResults((int)$processorConfiguration['max'])
                 ->execute()
