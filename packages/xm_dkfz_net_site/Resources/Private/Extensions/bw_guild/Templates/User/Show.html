@@ -16,7 +16,15 @@
 			<f:if condition="{user.groups}">
 				<p class="m-b-0"><strong>
 					<f:for each="{user.groups}" as="group" iteration="i">
-						{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
+						<f:link.action action="list"
+									   class=""
+									   pluginName="Userlist"
+									   section="c381"
+									   pageUid="{settings.pidUserList}"
+									   controller="User"
+									   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber} -
+							{group.title}{f:if(condition: i.isLast, else: ', ')}
+						</f:link.action>
 					</f:for>
 				</strong></p>
 			</f:if>
@@ -73,7 +81,17 @@
 					<f:translate extensionName="XmDkfzNetSite" key="contact.fe_group"/>
 				</h5>
 				<f:for each="{user.groups}" as="group" iteration="i">
-					<p class="m-b-0">{group.dkfzNumber} - {group.title}</p>
+					<p class="m-b-0">
+						<f:link.action action="list"
+									   class=""
+									   pluginName="Userlist"
+									   section="c381"
+									   pageUid="{settings.pidUserList}"
+									   controller="User"
+									   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber} -
+							{group.title}
+						</f:link.action>
+					</p>
 					<f:if condition="{group.managers}">
 						<h6 class="m-b-0">
 							<f:translate extensionName="XmDkfzNetSite" key="group.managers"/>
@@ -153,7 +171,15 @@
 						<p class="text-small">
 							<strong>
 								<f:translate extensionName="XmDkfzNetSite" key="place.room"/>
-							</strong> {user.contactRoom}
+							</strong>
+							<f:link.action action="list"
+										   class=""
+										   pluginName="Userlist"
+										   controller="User"
+										   pageUid="{settings.pidUserList}"
+										   section="c381"
+										   arguments="{demand: {room: user.contactRoom}}">{user.contactRoom}
+							</f:link.action>
 						</p>
 					</li>
 				</f:if>

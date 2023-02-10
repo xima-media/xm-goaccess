@@ -14,6 +14,9 @@ plugin {
     view {
       partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
     }
+    settings {
+      pidUserList = {$pidUserList}
+    }
   }
 
   tx_bwguild_usersearch {

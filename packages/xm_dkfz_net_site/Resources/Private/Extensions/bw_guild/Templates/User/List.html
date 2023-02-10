@@ -51,8 +51,10 @@
 									<f:link.action action="list"
 												   class=""
 												   pluginName="Userlist"
+												   section="c381"
 												   controller="User"
-												   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
+												   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber}
+										- {group.title}{f:if(condition: i.isLast, else: ', ')}
 									</f:link.action>
 								</f:for>
 							</strong></p>
@@ -64,7 +66,13 @@
 							<f:if condition="{user.contactRoom}">
 								<li class="contact__item">
 									<f:render partial="Icon" arguments="{icon: 'location', width: 14, height: 14}"/>
-									{user.contactRoom}
+									<f:link.action action="list"
+												   class=""
+												   pluginName="Userlist"
+												   section="c381"
+												   controller="User"
+												   arguments="{demand: {room: user.contactRoom}}">{user.contactRoom}
+									</f:link.action>
 								</li>
 							</f:if>
 

@@ -31,6 +31,7 @@ class UserSearchEvent
         $this->addConstraintForFunction();
         $this->addConstraintForCommittee();
         $this->addConstraintForPhoneNumber();
+        $this->addConstraintForRoom();
         $this->addOrderConstraint();
     }
 
@@ -143,5 +144,21 @@ class UserSearchEvent
     {
         $this->queryBuilder->addOrderBy($this->userDemand::TABLE . '.last_name', QueryInterface::ORDER_ASCENDING);
         $this->queryBuilder->addOrderBy($this->userDemand::TABLE . '.first_name', QueryInterface::ORDER_ASCENDING);
+    }
+
+    protected function addConstraintForRoom()
+    {
+        if (!$this->userDemand->room) {
+            return;
+        }
+
+        $this->addJoinOnContacts();
+
+        $this->queryBuilder->andWhere(
+            $this->queryBuilder->expr()->eq(
+                'c.room',
+                $this->queryBuilder->createNamedParameter($this->userDemand->room)
+            ),
+        );
     }
 }
