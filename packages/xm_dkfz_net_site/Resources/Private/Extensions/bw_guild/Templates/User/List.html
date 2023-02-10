@@ -34,6 +34,7 @@
 									   class=""
 									   pageUid="{settings.showPid}"
 									   pluginName="Usershow"
+									   title="{user.displayName}"
 									   controller="User"
 									   arguments="{user: user.uid}">
 							<f:render partial="UserImage" arguments="{user: user, width: 80, invert: 1}"/>
@@ -52,6 +53,7 @@
 												   class=""
 												   pluginName="Userlist"
 												   section="c381"
+												   title="{group.title}"
 												   controller="User"
 												   arguments="{demand: {feGroup: group.dkfzNumber}}">{group.dkfzNumber}
 										- {group.title}{f:if(condition: i.isLast, else: ', ')}
