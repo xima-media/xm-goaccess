@@ -76,6 +76,9 @@ deploy-dkfz-staging:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node" ]
   stage: deploy
+  environment:
+    name: DKFZ Stage
+    url: https://intranetstage.dkfz.de/
   rules:
     - if: $IS_SCHEDULED_BACKUP == "true"
       when: never
@@ -89,6 +92,9 @@ deploy-dkfz-production:
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
   stage: deploy
   when: manual
+  environment:
+    name: DKFZ Live
+    url: https://intranet.dkfz.de/
   rules:
     - if: $IS_SCHEDULED_BACKUP == "true"
       when: never
