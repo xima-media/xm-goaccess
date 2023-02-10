@@ -221,6 +221,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/EventListener/UserEditFormEvent.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\UserSearchEvent\\:\\:addConstraintForRoom\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/EventListener/UserSearchEvent.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Form\\\\Element\\\\OverrideToggleElement\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Form/Element/OverrideToggleElement.php

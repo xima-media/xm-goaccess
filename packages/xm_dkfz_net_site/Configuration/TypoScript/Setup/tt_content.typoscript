@@ -5,6 +5,7 @@ lib.contentElement {
 
   settings {
     pidUserDetail = {$pidUserDetail}
+    pidUserList = {$pidUserList}
   }
 }
 
