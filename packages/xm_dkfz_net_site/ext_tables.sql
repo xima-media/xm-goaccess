@@ -55,9 +55,11 @@ create table fe_users (
 	gender                     int(11) unsigned default '0' not null,
 	responsibilities           text,
 	representative             varchar(64)  default null,
+	representative2            varchar(64)  default null,
 	committee                  int(11) unsigned default null,
 	committee_responsibilities text,
 	committee_representative   int(11) unsigned default null,
+	committee_representative2  int(11) unsigned default null,
 	about                      text
 );
 

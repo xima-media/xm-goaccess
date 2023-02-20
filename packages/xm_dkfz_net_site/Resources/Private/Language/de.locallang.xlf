@@ -542,11 +542,17 @@
 			<trans-unit id="user.representative" space="preserve">
 				<target>Vertretung</target>
 			</trans-unit>
+			<trans-unit id="user.representative2" space="preserve">
+				<target>Vertretung 2</target>
+			</trans-unit>
 			<trans-unit id="user.committee_responsibilities" space="preserve">
 				<target>Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="user.committee_representative" space="preserve">
 				<target>Vertretung</target>
+			</trans-unit>
+			<trans-unit id="user.committee_representative2" space="preserve">
+				<target>Vertretung2</target>
 			</trans-unit>
 			<trans-unit id="user.about" space="preserve">
 				<target>Über mich</target>

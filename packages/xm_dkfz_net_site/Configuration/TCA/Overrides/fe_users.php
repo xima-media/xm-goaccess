@@ -139,6 +139,25 @@ call_user_func(function () {
                 ],
             ],
         ],
+        'representative2' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.representative2',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 1,
+                'maxitems' => 1,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
         'committee' => [
             'exclude' => false,
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.committee',
@@ -179,6 +198,25 @@ call_user_func(function () {
                 ],
             ],
         ],
+        'committee_representative2' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.committee_representative2',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 1,
+                'maxitems' => 1,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
         'about' => [
             'exclude' => false,
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.about',
@@ -191,7 +229,7 @@ call_user_func(function () {
     ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users',
-        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,committee,committee_responsibilities,committee_representative,about',
+        'location,member_since,birthday,gender,dkfz_id,ad_account_name,contacts,responsibilities,representative,representative2,committee,committee_responsibilities,committee_representative,committee_representative2,about',
         '',
         'after:email'
     );
