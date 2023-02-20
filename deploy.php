@@ -11,7 +11,7 @@ set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
 function defineTestHost($branchName, $stage)
 {
     host('dev-t3-debian11-01-' . strtolower($branchName))
-        ->setHostname('192.168.97.133')
+        ->setHostname('10.19.8.4')
         ->setRemoteUser('xima')
         ->set('labels', ['stage' => $stage])
         ->set('branch', $branchName)
