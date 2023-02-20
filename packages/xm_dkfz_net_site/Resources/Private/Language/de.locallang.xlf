@@ -654,7 +654,7 @@
 				<target>Willkommen beim DKFZ Intranet</target>
 			</trans-unit>
 			<trans-unit id="login.text" space="preserve">
-				<target>Bitte melden Sie sich, um alle Funktionen im Intranet nutzen zu können.</target>
+				<target>Bitte melden Sie sich an, um alle Funktionen im Intranet nutzen zu können.</target>
 			</trans-unit>
 			<trans-unit id="login.button" space="preserve">
 				<target>Anmelden</target>
