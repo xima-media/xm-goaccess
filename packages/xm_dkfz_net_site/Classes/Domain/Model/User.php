@@ -28,11 +28,15 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected ?User $representative = null;
 
+    protected ?User $representative2 = null;
+
     protected ?Committee $committee = null;
 
     protected string $responsibilities = '';
 
     protected ?User $committeeRepresentative = null;
+
+    protected ?User $committeeRepresentative2 = null;
 
     public function getCommitteeRepresentative(): ?User
     {
@@ -42,6 +46,26 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     public function setCommitteeRepresentative(?User $committeeRepresentative): void
     {
         $this->committeeRepresentative = $committeeRepresentative;
+    }
+
+    public function getRepresentative2(): ?User
+    {
+        return $this->representative2;
+    }
+
+    public function setRepresentative2(?User $representative2): void
+    {
+        $this->representative2 = $representative2;
+    }
+
+    public function getCommitteeRepresentative2(): ?User
+    {
+        return $this->committeeRepresentative2;
+    }
+
+    public function setCommitteeRepresentative2(?User $committeeRepresentative2): void
+    {
+        $this->committeeRepresentative2 = $committeeRepresentative2;
     }
 
     public function getCommitteeResponsibilities(): string

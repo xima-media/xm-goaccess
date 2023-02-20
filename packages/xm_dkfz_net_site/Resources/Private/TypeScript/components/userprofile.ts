@@ -51,8 +51,7 @@ class Userprofile {
   protected bindUserEditFormEvents(): void {
     const form = app.lightbox.content.querySelector('form')
     this.initUserRepresentativeSelect()
-    this.initUserRepresentativeAutocomplete()
-    this.initUserCommitteeRepresentativeAutocomplete()
+    this.initUserRepresentativeAutocompleter()
     this.initUserFeatureInputs()
     this.initClearLinks()
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
@@ -79,23 +78,32 @@ class Userprofile {
     }
   }
 
-  protected initUserRepresentativeAutocomplete(): void {
-    const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#representative')
-    const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#representativeHiddenInput')
+  protected initUserRepresentativeAutocompleter(): void {
+    const inputSelectors = [
+      ['#representative', '#representativeHiddenInput'],
+      ['#representative2', '#representative2HiddenInput'],
+      ['#user-committee-representative', '#committeeRepresentativeHiddenInput'],
+      ['#user-committee-representative2', '#committeeRepresentative2HiddenInput']
+    ]
 
-    if (!inputElement || !hiddenElement) {
-      return
-    }
+    inputSelectors.forEach(selectors => {
+      const inputElement = app.lightbox.content.querySelector<HTMLInputElement>(selectors[0])
+      const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>(selectors[1])
 
-    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
+      if (!inputElement || !hiddenElement) {
+        return
+      }
 
-    autocomplete({
-      input: inputElement,
-      minLength: 2,
-      disableAutoSelect: true,
-      preventSubmit: true,
-      fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
-      onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+      const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
+
+      autocomplete({
+        input: inputElement,
+        minLength: 2,
+        disableAutoSelect: true,
+        preventSubmit: true,
+        fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
+        onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+      })
     })
   }
 
@@ -108,26 +116,6 @@ class Userprofile {
           input.value = ''
         })
       })
-    })
-  }
-
-  protected initUserCommitteeRepresentativeAutocomplete(): void {
-    const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#user-committee-representative')
-    const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#committeeRepresentativeHiddenInput')
-
-    if (inputElement === null || hiddenElement === null) {
-      return
-    }
-
-    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
-
-    autocomplete({
-      input: inputElement,
-      minLength: 2,
-      disableAutoSelect: true,
-      preventSubmit: true,
-      fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
-      onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
     })
   }
 
