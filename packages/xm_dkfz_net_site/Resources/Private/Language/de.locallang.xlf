@@ -405,10 +405,10 @@
 				<target>Endzeit</target>
 			</trans-unit>
 			<trans-unit id="disruptor.palette.general">
-				<source>Allgemein</source>
+				<target>Allgemein</target>
 			</trans-unit>
 			<trans-unit id="disruptor.palette.date">
-				<source>Datum</source>
+				<target>Datum</target>
 			</trans-unit>
 			<trans-unit id="sys_file_reference.video_preview_image">
 				<target>Vorschaubild für MP4-Videos.</target>
@@ -438,13 +438,13 @@
 				<target>Teaser</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser-item.override2" space="preserve">
-				<source>Bild ausblenden</source>
+				<target>Bild ausblenden</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.link" space="preserve">
 				<target>Link</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.link.title" space="preserve">
-				<source>Linktext</source>
+				<target>Linktext</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
 				<target>Teaser</target>
@@ -456,7 +456,7 @@
 				<target>Titel des aufklappbaren Akkordeon-Elements</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.accordion-item" space="preserve">
-				<source>Akkordeon</source>
+				<target>Akkordeon</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.related-page" space="preserve">
 				<target>Verwandte Seite</target>
@@ -465,7 +465,7 @@
 				<target>Felder überschreiben</target>
 			</trans-unit>
 			<trans-unit id="page" space="preserve">
-				<source>Page</source>
+				<target>Seite</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
 				<target>Seite</target>
