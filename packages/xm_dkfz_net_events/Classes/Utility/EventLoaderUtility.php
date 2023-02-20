@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionClass;
 use Symfony\Component\DomCrawler\Crawler;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Core\Environment;
 use Xima\XmDkfzNetEvents\Domain\Model\Dto\Event;
 
@@ -17,29 +16,11 @@ class EventLoaderUtility
      */
     protected array $events = [];
 
-    protected FrontendInterface $cache;
-
-    public function __construct(FrontendInterface $cache)
-    {
-        $this->cache = $cache;
-    }
-
     public function getEvents(string $url): array
     {
-        $this->loadEvents($url);
+        $this->requestRssEvents($url);
 
         return $this->events;
-    }
-
-    public function loadEvents(string $url, bool $useCache = true): void
-    {
-        $cacheIdentifier = md5($url);
-        $this->events = $useCache && $this->cache->has($cacheIdentifier) ? $this->cache->get($cacheIdentifier) : [];
-
-        if (empty($this->events)) {
-            $this->requestRssEvents($url);
-            $this->cache->set($cacheIdentifier, $this->events, [], 86400);
-        }
     }
 
     public function requestRssEvents(string $url): void
@@ -80,7 +61,7 @@ class EventLoaderUtility
 
         $children = $crawler->filter('item')->children();
 
-        foreach ($children as $key => $node) {
+        foreach ($children as $node) {
             $xmlPropertyName = strtolower($node->tagName);
 
             if (!$eventReflection->hasProperty($xmlPropertyName)) {

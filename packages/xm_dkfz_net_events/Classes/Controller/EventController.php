@@ -31,6 +31,8 @@ class EventController extends ActionController
 
         $this->view->assign('events', $events);
 
+        $this->addCacheTag();
+
         return $this->htmlResponse();
     }
 
@@ -48,6 +50,8 @@ class EventController extends ActionController
         $this->view->assign('header', $header);
         $this->view->assign('events', $events);
 
+        $this->addCacheTag();
+
         return $this->htmlResponse();
     }
 
@@ -61,5 +65,18 @@ class EventController extends ActionController
         }
 
         return $url;
+    }
+
+    protected function addCacheTag(): void
+    {
+        // Add cache tag
+        if (!empty($GLOBALS['TSFE']) && is_object($GLOBALS['TSFE'])) {
+            static $cacheTagsSet = false;
+            $typoScriptFrontendController = $GLOBALS['TSFE'];
+            if (!$cacheTagsSet) {
+                $typoScriptFrontendController->addCacheTags(['dkfz_events']);
+                $cacheTagsSet = true;
+            }
+        }
     }
 }

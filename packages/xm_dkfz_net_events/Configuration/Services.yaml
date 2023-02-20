@@ -8,11 +8,10 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
 
-  cache.event_cache:
-    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-    factory: [ '@TYPO3\CMS\Core\Cache\CacheManager', 'getCache' ]
-    arguments: [ 'xmdkfznetevents_eventcache' ]
-
-  Xima\XmDkfzNetEvents\Utility\EventLoaderUtility:
+  Xima\XmDkfzNetEvents\Command\CacheEventsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'events:cache'
+        schedulable: true
     arguments:
-      $cache: '@cache.event_cache'
+      $cache: '@cache.pages'

@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to an undefined method object\\:\\:addCacheTags\\(\\)\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_events/Classes/Controller/EventController.php
+
+		-
 			message: "#^Access to an undefined property DOMNode\\:\\:\\$tagName\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
@@ -17,11 +22,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$datetime of class DateTime constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
-
-		-
-			message: "#^Property Xima\\\\XmDkfzNetEvents\\\\Utility\\\\EventLoaderUtility\\:\\:\\$events \\(array\\<Xima\\\\XmDkfzNetEvents\\\\Domain\\\\Model\\\\Dto\\\\Event\\>\\) does not accept mixed\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
 
