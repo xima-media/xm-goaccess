@@ -145,6 +145,20 @@
 							</f:link.action>
 						</p>
 					</f:if>
+					<f:if condition="{user.committeeRepresentative2}">
+						<p class="m-b-0"><strong> {f:translate(extensionName:'XmDkfzNetSite',
+							key:'user.committee_representative2')}:</strong></p>
+						<p>
+							<f:link.action action="show"
+										   pageUid="{settings.showPid}"
+										   pluginName="Usershow"
+										   controller="User"
+										   title="{user.committeeRepresentative2.displayName}"
+										   arguments="{user: user.committeeRepresentative2}">
+								{user.committeeRepresentative2.displayName}
+							</f:link.action>
+						</p>
+					</f:if>
 				</div>
 			</div>
 		</f:if>
@@ -210,6 +224,21 @@
 							</strong>
 							<f:link.action action="show" arguments="{user: user.representative}" title="{user.representative.displayName}">
 								{user.representative.displayName}
+							</f:link.action>
+						</p>
+					</li>
+				</f:if>
+				<f:if condition="{user.representative2}">
+					<li>
+						<span>
+							<f:render partial="Icon" arguments="{icon: 'user-plus'}"/>
+						</span>
+						<p class="text-small">
+							<strong>
+								<f:translate extensionName="XmDkfzNetSite" key="user.representative2"/>
+							</strong>
+							<f:link.action action="show" arguments="{user: user.representative2}" title="{user.representative2.displayName}">
+								{user.representative2.displayName}
 							</f:link.action>
 						</p>
 					</li>
