@@ -112,8 +112,25 @@ class Userprofile {
       link.addEventListener('click', e => {
         e.preventDefault()
         const link = e.currentTarget as HTMLLinkElement
+        let newValue = ''
+        let newHiddenValue = ''
+
+        if (link.hasAttribute('data-hide-onclear')) {
+          const element = app.lightbox.content.querySelector<HTMLDivElement>(link.getAttribute('data-hide-onclear') ?? '')
+          newValue = element?.querySelector<HTMLInputElement>('input[type="text"]')?.value ?? ''
+          newHiddenValue = element?.querySelector<HTMLInputElement>('input[type="hidden"]')?.value ?? ''
+          element?.querySelector<HTMLAnchorElement>('a[data-clear-inputs]')?.click()
+          if (!newValue) {
+            element?.classList.add('d-none')
+          }
+        }
+
         app.lightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs') ?? '').forEach(input => {
-          input.value = ''
+          if (input.getAttribute('type') === 'hidden') {
+            input.value = newHiddenValue
+          } else {
+            input.value = newValue
+          }
         })
       })
     })
@@ -134,6 +151,9 @@ class Userprofile {
   protected onUserRepresentativeAutocompleteSelect(input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem): void {
     input.value = item.label
     hiddenInput.value = item.value
+    if (input.hasAttribute('data-show-oninput')) {
+      document.querySelector<HTMLDivElement>(input.getAttribute('data-show-oninput') ?? '')?.classList.remove('d-none')
+    }
   }
 
   protected initUserFeatureInputs(): void {
