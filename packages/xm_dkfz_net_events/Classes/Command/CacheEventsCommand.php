@@ -5,11 +5,11 @@ namespace Xima\XmDkfzNetEvents\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Cache\CacheManager;
 
 class CacheEventsCommand extends Command
 {
-    public function __construct(protected FrontendInterface $cache, string $name = null)
+    public function __construct(protected CacheManager $cacheManager, string $name = null)
     {
         parent::__construct($name);
     }
@@ -22,7 +22,7 @@ class CacheEventsCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->cache->flushByTag('dkfz_events');
+        $this->cacheManager->flushCachesByTag('dkfz_jobs');
 
         return Command::SUCCESS;
     }
