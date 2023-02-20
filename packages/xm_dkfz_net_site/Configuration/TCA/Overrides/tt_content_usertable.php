@@ -65,6 +65,12 @@ $GLOBALS['TCA']['tt_content']['types']['usertable'] = [
                         'overrides2' => [
                             'displayCond' => 'FIELD:fe_user:REQ:true',
                         ],
+                        'overrides3' => [
+                            'displayCond' => 'FIELD:fe_user:REQ:true',
+                        ],
+                        'fe_users' => [
+                            'displayCond' => 'FIELD:fe_user:REQ:true',
+                        ],
                     ],
                 ],
             ],
