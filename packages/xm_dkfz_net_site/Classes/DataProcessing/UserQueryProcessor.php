@@ -71,7 +71,7 @@ class UserQueryProcessor implements DataProcessorInterface
 
             // override of responsibilities
             if ($processedData['data']['overrides2']) {
-                $users[0]->setResponsibilities($processedData['data']['text']);
+                $users[0]->setResponsibilities($processedData['data']['text'] ?? '');
             }
         }
 
