@@ -5,13 +5,11 @@
 		<div class="page-teaser color-accent--{teaser.data.color}">
 			<div class="page-teaser__image">
 
-				<f:if condition="{teaser.files}">
-					<f:for each="{teaser.files}" as="file" iteration="teaserFileIterator">
-						<f:render partial="Image" arguments="{image: file, patternStyle: 'color', size: 'sm', noCaption: 1}" />
-					</f:for>
+				<f:if condition="{teaser.files.0} && !{teaser.data.overrides2}">
+					<f:render partial="Image" arguments="{image: teaser.files.0, patternStyle: 'color', size: 'sm', noCaption: 1}" />
 				</f:if>
 
-				<f:if condition="!{teaser.files}">
+				<f:if condition="!{teaser.files.0} || {teaser.data.overrides2}">
 					<f:render partial="Image" arguments="" />
 				</f:if>
 

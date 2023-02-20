@@ -110,7 +110,7 @@ return [
     'palettes' => [
         'teaser-override' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',
-            'showitem' => 'title,color,--linebreak--,text,--linebreak--,image,--linebreak--,tt_content_items',
+            'showitem' => 'title,color,overrides2;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item.override2;,--linebreak--,text,--linebreak--,image,--linebreak--,tt_content_items',
         ],
         'slider-override' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_teaser.palette.override',

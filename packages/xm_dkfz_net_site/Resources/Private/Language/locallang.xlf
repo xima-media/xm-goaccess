@@ -166,6 +166,9 @@
 			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
 				<source>Teaser item</source>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.teaser-item.override2" space="preserve">
+				<source>Hide image</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.link" space="preserve">
 				<source>Link</source>
 			</trans-unit>

@@ -1,7 +1,7 @@
 <div class="content-teaser-preview m-t-3 m-b-3">
 	<f:for each="{children}" as="item">
 		<div>
-			<f:if condition="{item.files}">
+			<f:if condition="{item.files} && !{item.overrides2}">
 				<f:for each="{item.files}" as="file" iteration="fileIterator">
 					<f:if condition="{fileIterator.cycle} === 1">
 						<span class="color-border color--{item.color}">
@@ -10,7 +10,7 @@
 					</f:if>
 				</f:for>
 			</f:if>
-			<f:if condition="!{item.files}">
+			<f:if condition="!{item.files} || {item.overrides2}">
 				<span class="stripe-border color--gray-900">
 					<div class="content-teaser-placeholder-image color--{item.color}" style="height:54px"></div>
 				</span>

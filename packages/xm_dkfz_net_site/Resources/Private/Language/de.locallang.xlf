@@ -437,6 +437,9 @@
 			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
 				<target>Teaser</target>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.teaser-item.override2" space="preserve">
+				<source>Bild ausblenden</source>
+			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.link" space="preserve">
 				<target>Link</target>
 			</trans-unit>
