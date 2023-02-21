@@ -114,8 +114,19 @@
 														   pluginName="Usershow"
 														   pageUid="{settings.pidUserDetail}"
 														   extensionName="BwGuild"
+														   class="m-b-05 d-inline-block"
 														   arguments="{user: userItem.user.0.representative.uid}">
 												{userItem.user.0.representative.displayName}
+											</f:link.action>
+										</f:if>
+										<f:if condition="{userItem.user.0.representative2}">
+											<f:link.action action="show"
+														   controller="User"
+														   pluginName="Usershow"
+														   pageUid="{settings.pidUserDetail}"
+														   extensionName="BwGuild"
+														   arguments="{user: userItem.user.0.representative2.uid}">
+												{userItem.user.0.representative2.displayName}
 											</f:link.action>
 										</f:if>
 									</p>

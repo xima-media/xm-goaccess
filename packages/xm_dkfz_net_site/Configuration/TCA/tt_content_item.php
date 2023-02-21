@@ -77,7 +77,7 @@ return [
             ],
         ],
         'user-contact' => [
-            'showitem' => 'sys_language_uid, record_type,fe_user,overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override,--palette--,contacts,overrides2;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override2,--palette--,text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities',
+            'showitem' => 'sys_language_uid, record_type,fe_user,overrides;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override,--palette--,contacts,overrides2;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override2,--palette--,text;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:user.responsibilities ,overrides3;LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.user-contact.override3,--palette--,fe_users',
             'columnsOverrides' => [
                 'record_type' => [
                     'config' => [
@@ -274,6 +274,19 @@ return [
                 ],
             ],
         ],
+        'overrides3' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.overrides',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'overrideToggle',
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ],
+                ],
+            ],
+        ],
         'tt_content_items' => [
             'label' => 'ITEMS',
             'config' => [
@@ -310,6 +323,26 @@ return [
                 'fieldWizard' => [
                     'recordsOverview' => [
                         'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
+        'fe_users' => [
+            'label' => 'Users',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'size' => 2,
+                'minitems' => 0,
+                'maxitems' => 2,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => false,
                     ],
                 ],
             ],

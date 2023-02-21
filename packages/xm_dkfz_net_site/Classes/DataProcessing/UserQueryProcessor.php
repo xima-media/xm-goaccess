@@ -51,6 +51,12 @@ class UserQueryProcessor implements DataProcessorInterface
             if ($processedData['data']['overrides2']) {
                 $userResults[0]['responsibilities'] = $processedData['data']['text'];
             }
+
+            if ($processedData['data']['overrides3']) {
+                $userUids = GeneralUtility::trimExplode(',', $processedData['data']['fe_users'], true);
+                $userResults[0]['representative'] = $userUids[0] ?? '';
+                $userResults[0]['representative2'] = $userUids[1] ?? '';
+            }
         }
 
         // map query response to model

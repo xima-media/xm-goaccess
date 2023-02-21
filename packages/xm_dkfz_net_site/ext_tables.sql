@@ -32,10 +32,12 @@ create table tt_content_item (
 	image            int(11) unsigned default '0' not null,
 	color            varchar(64)             not null default '',
 	fe_user          varchar(255) default '' not null,
+	fe_users         varchar(255) default '' not null,
 	page             varchar(255) default '' not null,
 	contacts         varchar(255) default '' not null,
 	overrides        int(11) unsigned default '0' not null,
 	overrides2       int(11) unsigned default '0' not null,
+	overrides3       int(11) unsigned default '0' not null,
 	tt_content_items int(11) unsigned default '0' not null,
 
 );
@@ -55,9 +57,11 @@ create table fe_users (
 	gender                     int(11) unsigned default '0' not null,
 	responsibilities           text,
 	representative             varchar(64)  default null,
+	representative2            varchar(64)  default null,
 	committee                  int(11) unsigned default null,
 	committee_responsibilities text,
 	committee_representative   int(11) unsigned default null,
+	committee_representative2  int(11) unsigned default null,
 	about                      text
 );
 

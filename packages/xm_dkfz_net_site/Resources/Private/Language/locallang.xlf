@@ -553,11 +553,17 @@
 			<trans-unit id="user.representative" space="preserve">
 				<source>Representative</source>
 			</trans-unit>
+			<trans-unit id="user.representative2" space="preserve">
+				<source>Representative 2</source>
+			</trans-unit>
 			<trans-unit id="user.committee_responsibilities" space="preserve">
 				<source>Responsibilities</source>
 			</trans-unit>
 			<trans-unit id="user.committee_representative" space="preserve">
 				<source>Representative</source>
+			</trans-unit>
+			<trans-unit id="user.committee_representative2" space="preserve">
+				<source>Representative 2</source>
 			</trans-unit>
 			<trans-unit id="user.about" space="preserve">
 				<source>About me</source>
@@ -570,6 +576,9 @@
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override2" space="preserve">
 				<source>Override user responsibilities</source>
+			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.user-contact.override3" space="preserve">
+				<source>Override user representatives</source>
 			</trans-unit>
 			<trans-unit id="contactData" space="preserve">
 				<source>Contact data</source>

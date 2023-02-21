@@ -51,8 +51,7 @@ class Userprofile {
   protected bindUserEditFormEvents(): void {
     const form = app.lightbox.content.querySelector('form')
     this.initUserRepresentativeSelect()
-    this.initUserRepresentativeAutocomplete()
-    this.initUserCommitteeRepresentativeAutocomplete()
+    this.initUserRepresentativeAutocompleter()
     this.initUserFeatureInputs()
     this.initClearLinks()
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
@@ -79,23 +78,32 @@ class Userprofile {
     }
   }
 
-  protected initUserRepresentativeAutocomplete(): void {
-    const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#representative')
-    const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#representativeHiddenInput')
+  protected initUserRepresentativeAutocompleter(): void {
+    const inputSelectors = [
+      ['#representative', '#representativeHiddenInput'],
+      ['#representative2', '#representative2HiddenInput'],
+      ['#user-committee-representative', '#committeeRepresentativeHiddenInput'],
+      ['#user-committee-representative2', '#committeeRepresentative2HiddenInput']
+    ]
 
-    if (!inputElement || !hiddenElement) {
-      return
-    }
+    inputSelectors.forEach(selectors => {
+      const inputElement = app.lightbox.content.querySelector<HTMLInputElement>(selectors[0])
+      const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>(selectors[1])
 
-    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
+      if (!inputElement || !hiddenElement) {
+        return
+      }
 
-    autocomplete({
-      input: inputElement,
-      minLength: 2,
-      disableAutoSelect: true,
-      preventSubmit: true,
-      fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
-      onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+      const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
+
+      autocomplete({
+        input: inputElement,
+        minLength: 2,
+        disableAutoSelect: true,
+        preventSubmit: true,
+        fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
+        onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
+      })
     })
   }
 
@@ -104,30 +112,27 @@ class Userprofile {
       link.addEventListener('click', e => {
         e.preventDefault()
         const link = e.currentTarget as HTMLLinkElement
+        let newValue = ''
+        let newHiddenValue = ''
+
+        if (link.hasAttribute('data-hide-onclear')) {
+          const element = app.lightbox.content.querySelector<HTMLDivElement>(link.getAttribute('data-hide-onclear') ?? '')
+          newValue = element?.querySelector<HTMLInputElement>('input[type="text"]')?.value ?? ''
+          newHiddenValue = element?.querySelector<HTMLInputElement>('input[type="hidden"]')?.value ?? ''
+          element?.querySelector<HTMLAnchorElement>('a[data-clear-inputs]')?.click()
+          if (!newValue) {
+            element?.classList.add('d-none')
+          }
+        }
+
         app.lightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs') ?? '').forEach(input => {
-          input.value = ''
+          if (input.getAttribute('type') === 'hidden') {
+            input.value = newHiddenValue
+          } else {
+            input.value = newValue
+          }
         })
       })
-    })
-  }
-
-  protected initUserCommitteeRepresentativeAutocomplete(): void {
-    const inputElement = app.lightbox.content.querySelector<HTMLInputElement>('#user-committee-representative')
-    const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>('#committeeRepresentativeHiddenInput')
-
-    if (inputElement === null || hiddenElement === null) {
-      return
-    }
-
-    const allItems = JSON.parse(inputElement.getAttribute('data-autocomplete') ?? '') as AutocompleteItem[]
-
-    autocomplete({
-      input: inputElement,
-      minLength: 2,
-      disableAutoSelect: true,
-      preventSubmit: true,
-      fetch: this.onUserRepresentativeAutocompleteFetch.bind(this, allItems),
-      onSelect: this.onUserRepresentativeAutocompleteSelect.bind(this, inputElement, hiddenElement)
     })
   }
 
@@ -146,6 +151,9 @@ class Userprofile {
   protected onUserRepresentativeAutocompleteSelect(input: HTMLInputElement, hiddenInput: HTMLInputElement, item: AutocomleterItem): void {
     input.value = item.label
     hiddenInput.value = item.value
+    if (input.hasAttribute('data-show-oninput')) {
+      document.querySelector<HTMLDivElement>(input.getAttribute('data-show-oninput') ?? '')?.classList.remove('d-none')
+    }
   }
 
   protected initUserFeatureInputs(): void {
