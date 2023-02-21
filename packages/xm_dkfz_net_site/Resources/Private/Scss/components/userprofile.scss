@@ -206,7 +206,9 @@ form.userprofile {
     }
 
     label {
-        font-weight: bold;
+        &:not(.field__checkbox) {
+            font-weight: bold;
+        }
     }
 
     .form-element {

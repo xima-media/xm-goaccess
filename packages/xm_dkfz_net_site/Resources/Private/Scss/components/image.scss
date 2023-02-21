@@ -54,6 +54,13 @@ figure.userimage {
 
     &--large {
         --pattern-size: 10px;
+
+        +label {
+            &.field__checkbox {
+                margin-top: 1rem;
+                margin-left: 2rem;
+            }
+        }
     }
 
     picture, svg {
