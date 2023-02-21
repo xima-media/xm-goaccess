@@ -33,6 +33,7 @@ pidDisruptorStorage = 101
 pidSearch = 111
 pidsFooterNav = 304,305
 pidEmergency = 222
+pidTerminal = 1018
 
 ##############################
 #### FLUID STYLED CONTENT ####

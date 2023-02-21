@@ -15,6 +15,7 @@
 // own
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/config.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/page.typoscript'
+@import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/page.terminal.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/lib.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/plugin.typoscript'
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/tt_content.typoscript'
