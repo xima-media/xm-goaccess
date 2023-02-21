@@ -177,6 +177,12 @@ div.userprofile {
 
 form.userprofile {
 
+    &.disabled-image-upload {
+        .userimage, p, input[type="file"] {
+            opacity: 0.4;
+        }
+    }
+
     fieldset:not(:last-child), h3 {
         margin-bottom: 2.5rem;
     }

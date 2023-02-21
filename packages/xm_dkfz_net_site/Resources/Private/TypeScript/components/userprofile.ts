@@ -50,6 +50,7 @@ class Userprofile {
 
   protected bindUserEditFormEvents(): void {
     const form = app.lightbox.content.querySelector('form')
+    this.initUserImageDeleteClick()
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocomplete()
     this.initUserCommitteeRepresentativeAutocomplete()
@@ -57,6 +58,33 @@ class Userprofile {
     this.initClearLinks()
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
+  }
+
+  protected initUserImageDeleteClick(): void {
+    const checkboxElement = app.lightbox.content.querySelector<HTMLInputElement>('input#deleteLogo')
+
+    if (!checkboxElement) {
+      return
+    }
+
+    checkboxElement.addEventListener('change', this.onUserImageDeleteChange.bind(this))
+  }
+
+  protected onUserImageDeleteChange(): void {
+    const formElement = app.lightbox.content.querySelector('form')
+    const uploadElement = app.lightbox.content.querySelector('form input[name="tx_bwguild_api[user][logo]"]')
+
+    if (!formElement || !uploadElement) {
+      return
+    }
+
+    if (formElement.classList.contains('disabled-image-upload')) {
+      uploadElement.removeAttribute('disabled')
+      formElement.classList.remove('disabled-image-upload')
+    } else {
+      uploadElement.setAttribute('disabled', 'disabled')
+      formElement.classList.add('disabled-image-upload')
+    }
   }
 
   protected initUserRepresentativeSelect(): void {
