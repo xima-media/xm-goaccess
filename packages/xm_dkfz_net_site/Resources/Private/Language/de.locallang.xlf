@@ -266,6 +266,9 @@
 			<trans-unit id="userEditForm.logo.encoding">
 				<target>Dateiformat</target>
 			</trans-unit>
+			<trans-unit id="userEditForm.logo.delete">
+				<target>Bild löschen</target>
+			</trans-unit>
 			<trans-unit id="abort">
 				<target>Abbruch</target>
 			</trans-unit>

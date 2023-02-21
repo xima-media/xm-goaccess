@@ -349,6 +349,9 @@
 			<trans-unit id="userEditForm.logo.encoding">
 				<source>File encoding</source>
 			</trans-unit>
+			<trans-unit id="userEditForm.logo.delete">
+				<source>Delete image</source>
+			</trans-unit>
 			<trans-unit id="abort">
 				<source>Abort</source>
 			</trans-unit>
