@@ -11,5 +11,16 @@
       partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials
       templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Templates
     }
+
+    includeCSS {
+      terminal = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/terminal.min.css
+      keSearchPremiumAutocompleteCss >
+    }
+
+    includeJSFooter {
+      terminal = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/terminal.min.js
+    }
   }
+
+  plugin.tx_news.settings.defaultDetailPid = {$pidTerminal}
 [end]
