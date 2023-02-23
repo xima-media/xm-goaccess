@@ -1,5 +1,5 @@
-const slider = document.getElementById('terminalSlider')
-const progressBar = document.getElementById('terminal-progress-bar')
+const slider: HTMLElement = document.getElementById('terminalSlider')!
+const progressBar: HTMLElement = document.getElementById('terminal-progress-bar')!
 
 function onSliderButtonClick(isPrev: boolean): void {
   const current = parseInt(getComputedStyle(slider).getPropertyValue('--current'))
@@ -24,7 +24,7 @@ if (slider) {
   document.querySelector('button.prev')?.addEventListener('click', onSliderButtonClick.bind(null, true))
   document.querySelector('button.next')?.addEventListener('click', onSliderButtonClick.bind(null, false))
 
-  const seconds = document.getElementById('slider-duration').style.getPropertyValue('--timer')
+  const seconds = document.getElementById('slider-duration')!.style.getPropertyValue('--timer')!
   const duration = parseInt(seconds.replace('s', '')) * 1000
 
   setInterval(onSliderButtonClick.bind(null, false), duration)
