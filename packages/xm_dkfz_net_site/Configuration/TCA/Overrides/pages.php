@@ -123,7 +123,7 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
         'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.sliderDuration.description',
         'config' => [
             'type' => 'input',
-            'eval' => 'int'
+            'eval' => 'int',
         ],
     ],
 ]);
@@ -191,4 +191,3 @@ $GLOBALS['TCA']['pages']['types'][702]['showitem'] = $GLOBALS['TCA']['pages']['t
     '702',
     'after:nav_title'
 );
-
