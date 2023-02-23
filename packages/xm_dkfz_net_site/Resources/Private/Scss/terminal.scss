@@ -41,7 +41,13 @@ body {
         width: 100%;
         max-width: 40vw;
         margin: 0;
+    }
 
+    @media (min-aspect-ratio: 1/1) {
+        padding: 3vh;
+        &__logo {
+            max-width: 40vh;
+        }
     }
 }
 
@@ -50,16 +56,29 @@ h2 {
     line-height: 1.2;
     font-family: 'The Serif', serif;
     color: #00186E;
+
+    @media (min-aspect-ratio: 1/1) {
+        margin-top: 0;
+        font-size: 6vh;
+    }
 }
 
 p {
     font-size: 3vw;
     line-height: 1.8;
+
+    @media (min-aspect-ratio: 1/1) {
+        font-size: 2.5vh;
+    }
 }
 
 .terminal-slider {
     overflow: hidden;
     margin: 10vw 0 0 0;
+
+    @media (min-aspect-ratio: 1/1) {
+        margin: 10vh 0 0 0;
+    }
 
     &__wrapper {
         display: grid;
@@ -91,6 +110,18 @@ p {
             transition: opacity 0.3s ease 0.2s;
         }
 
+        @media (min-aspect-ratio: 1/1) {
+            padding: 5vh 10vh;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+
+            &:after {
+                --pattern-size: 0.66vh;
+                width: 45vh;
+                height: 60vh;
+            }
+        }
+
     }
 
     &__placeholder {
@@ -99,6 +130,10 @@ p {
 
     &__text {
         margin-left: 7vw;
+
+        @media (min-aspect-ratio: 1/1) {
+            margin-left: 7vh;
+        }
 
         h2, p {
             transition: transform 0.4s ease 0.3s, opacity 0.3s ease 0.4s;
@@ -149,6 +184,10 @@ p {
     bottom: 0;
     left: 0;
     --start: 1.2s;
+
+    @media (min-aspect-ratio: 1/1) {
+        height: 2vh;
+    }
 
     &.run {
         animation: progressIndicator calc(var(--timer) - var(--start) - 1s) linear;
