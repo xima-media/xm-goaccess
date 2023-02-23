@@ -1,4 +1,6 @@
 const slider = document.getElementById('terminalSlider')
+const progressBar = document.getElementById('terminal-progress-bar')
+const duration = 5
 
 function onSliderButtonClick(isPrev: boolean): void {
   const current = parseInt(getComputedStyle(slider).getPropertyValue('--current'))
@@ -10,10 +12,12 @@ function onSliderButtonClick(isPrev: boolean): void {
 
 function goSlide(nextNumber: number): void {
   slider.classList.add('animation')
+  progressBar.classList.remove('run')
 
   setTimeout(() => {
     slider.style.setProperty('--current', nextNumber.toString())
     slider.classList.remove('animation')
+    progressBar.classList.add('run')
   }, 400)
 
 }
@@ -21,6 +25,7 @@ function goSlide(nextNumber: number): void {
 if (slider) {
   document.querySelector('button.prev')?.addEventListener('click', onSliderButtonClick.bind(null, true))
   document.querySelector('button.next')?.addEventListener('click', onSliderButtonClick.bind(null, false))
+  document.querySelector('body').style.setProperty('--timer', `${duration}s`)
 
-  setInterval(onSliderButtonClick.bind(null, false), 5000)
+  setInterval(onSliderButtonClick.bind(null, false), duration * 1000)
 }
