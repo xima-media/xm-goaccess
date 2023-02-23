@@ -3,6 +3,8 @@
 @import 'sanitize.css/typography';
 @import 'sanitize.css/ui-monospace';
 
+@import "components/basic-variables--scss";
+
 @font-face {
     font-family: 'The Serif';
     font-weight: 700;
@@ -12,19 +14,41 @@
     font-display: swap;
 }
 
+@each $name, $value in $colors {
+    :root {
+        --color-#{$name}: #{$value};
+    }
+    .color--#{$name} {
+        --color: #{$value};
+    }
+}
+
 body {
     font-family: 'The Sans', sans-serif;
     color: #111;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'The Serif', serif;
-    color: #00186E;
+.header {
+
+    display: grid;
+    padding: 5vw;
+
+    &__logo {
+        justify-self: center;
+        color: var(--color-primary);
+        padding: 0;
+        width: 100%;
+        max-width: 40vw;
+        margin: 0;
+
+    }
 }
 
 h2 {
     font-size: 6vw;
     line-height: 1.2;
+    font-family: 'The Serif', serif;
+    color: #00186E;
 }
 
 p {
@@ -32,48 +56,25 @@ p {
     line-height: 1.8;
 }
 
-.pattern {
-    background-image: var(--pattern-url);
-    background-color: var(--color, #0047b9);
-    z-index: 0;
-    display: block;
-    height: 50%;
-    width: 50%;
-    position: absolute;
-    left: -3px;
-    bottom: -3px;
-    content: '';
-}
-
-.pattern {
-    &:after {
-        content: '';
-
-    }
-}
-
 .terminal-slider {
     overflow: hidden;
-    margin: 15vw 0;
+    margin: 10vw 0 0 0;
 
     &__wrapper {
-        width: 300vw;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    // @todo: remove me
-    &__item:nth-child(n+3) {
-        display: none;
+        width: calc(var(--count) * 100vw);
+        grid-template-columns: repeat(var(--count), 1fr);
+        --translateX: calc(var(--current) * -100vw);
+        transform: translate3d(var(--translateX), 0, 0);
     }
 
     &__item {
         padding: 7vw 10vw;
         position: relative;
+        overflow: hidden;
 
         &:after {
             --pattern-size: 0.66vw;
-            --color: #009ee3;
             content: '';
             width: 45vw;
             height: 80vw;
@@ -86,10 +87,47 @@ p {
             background-size: var(--pattern-size) var(--pattern-size);
             background-image: linear-gradient(-45deg, var(--color, #0047b9) 10%, transparent 10%, transparent 50%, var(--color, #0047b9) 50%, var(--color, #0047b9) 60%, transparent 60%, transparent 100%);
             z-index: -1;
+            transition: opacity 0.3s ease 0.2s;
         }
+
+    }
+
+    &__placeholder {
+        height: 10vw;
     }
 
     &__text {
         margin-left: 7vw;
+
+        h2, p {
+            transition: transform 0.4s ease 0.3s, opacity 0.3s ease 0.4s;
+        }
+
+        p {
+            transition-delay: 0.35s, 0.45s;
+        }
+    }
+
+    img {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transition: clip-path 0.3s ease, transform 0.2s ease;
+    }
+
+    &.animation {
+
+        .terminal-slider__item:after {
+            opacity: 0;
+        }
+
+        img {
+            clip-path: polygon(75% 0%, 75% 0%, 25% 100%, 25% 100%);
+        }
+
+        h2, p {
+            transform: translate3d(-100px, 0px, 0);
+            opacity: 0;
+            transition: transform 0.6s ease 0.1s, opacity 0.4s ease 0s;
+        }
+
     }
 }

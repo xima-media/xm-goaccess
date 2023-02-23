@@ -1,7 +1,10 @@
-<div class="terminal-slider">
+<!--<button class="prev">prev</button>-->
+<!--<button class="next">next</button>-->
+
+<div class="terminal-slider" id="terminalSlider" style="--count:{news->f:count()}; --current:0">
 	<div class="terminal-slider__wrapper">
 		<f:for each="{news}" as="newsItem" iteration="i">
-			<div class="terminal-slider__item color-accent--{newsItem.txXmdkfznetsiteColor}">
+			<div class="terminal-slider__item color--{newsItem.txXmdkfznetsiteColor} {f:if(condition: i.isFirst, then: 'current')}">
 				<n:excludeDisplayedNews newsItem="{newsItem}"/>
 
 
@@ -15,12 +18,8 @@
 									 loading="{f:if(condition: noLazy, else: 'lazy')}"/>
 						</f:then>
 						<f:else>
-
+							<div class="terminal-slider__placeholder"></div>
 						</f:else>
-					</f:if>
-
-					<f:if condition="!{newsItem.falMedia}">
-						<f:render partial="Image" arguments="{patternSize: 'xl'}"/>
 					</f:if>
 				</div>
 
@@ -29,11 +28,11 @@
 					<p>
 						<f:if condition="{newsItem.teaser}">
 							<f:then>
-								{newsItem.teaser -> f:format.crop(maxCharacters: 250, respectWordBoundaries:'1') ->
+								{newsItem.teaser -> f:format.crop(maxCharacters: 350, respectWordBoundaries:'1') ->
 								f:format.stripTags()}
 							</f:then>
 							<f:else>
-								{newsItem.bodytext -> f:format.crop(maxCharacters: 250, respectWordBoundaries:'1') ->
+								{newsItem.bodytext -> f:format.crop(maxCharacters: 350, respectWordBoundaries:'1') ->
 								f:format.stripTags()}
 							</f:else>
 						</f:if>
