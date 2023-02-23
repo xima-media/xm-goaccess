@@ -148,7 +148,7 @@ p {
     position: fixed;
     bottom: 0;
     left: 0;
-    --start: calc(var(--timer) * 0.3);
+    --start: 1.2s;
 
     &.run {
         animation: progressIndicator calc(var(--timer) - var(--start) - 1s) linear;

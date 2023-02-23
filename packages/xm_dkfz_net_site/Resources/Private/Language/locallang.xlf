@@ -88,6 +88,12 @@
 			<trans-unit id="pages.media.description" space="preserve">
 				<source>This image is used in the introduction of the page and for the content element "Teaser".</source>
 			</trans-unit>
+			<trans-unit id="pages.sliderDuration" space="preserve">
+				<source>Slider duration</source>
+			</trans-unit>
+			<trans-unit id="pages.sliderDuration.description" space="preserve">
+				<source>Time in seconds</source>
+			</trans-unit>
 			<trans-unit id="container.accordion">
 				<source>Accordion</source>
 			</trans-unit>
