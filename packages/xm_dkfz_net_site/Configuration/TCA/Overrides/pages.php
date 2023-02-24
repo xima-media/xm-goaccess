@@ -117,6 +117,15 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             ],
         ],
     ],
+    'slider_duration' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.sliderDuration',
+        'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.sliderDuration.description',
+        'config' => [
+            'type' => 'input',
+            'eval' => 'int',
+        ],
+    ],
 ]);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
@@ -161,3 +170,24 @@ $GLOBALS['TCA']['pages']['types'][(string)\TYPO3\CMS\Core\Domain\Repository\Page
         ],
     ],
 ];
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+    'pages',
+    'doktype',
+    [
+        'Info Terminal',
+        702,
+        'content-device-mobile',
+    ],
+    '1',
+    'after'
+);
+$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes'][702] = 'content-device-mobile';
+$GLOBALS['TCA']['pages']['types'][702]['showitem'] = $GLOBALS['TCA']['pages']['types'][1]['showitem'];
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    'pages',
+    'slider_duration',
+    '702',
+    'after:nav_title'
+);

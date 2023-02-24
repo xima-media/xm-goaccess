@@ -9,8 +9,8 @@
   "scripts": {
     "start": "npm-run-all -p sass:watch ts:watch",
     "build": "npm-run-all -s sass:build sass:postcss ts:build",
-    "sass:watch": "sass --error-css --watch --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.css",
-    "sass:build": "sass --no-source-map --quiet --style=compressed --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css",
+    "sass:watch": "sass --error-css --watch --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.css packages/xm_dkfz_net_site/Resources/Private/Scss/terminal.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/terminal.css",
+    "sass:build": "sass --no-source-map --quiet --style=compressed --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css packages/xm_dkfz_net_site/Resources/Private/Scss/terminal.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/terminal.min.css",
     "sass:postcss": "postcss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css --map false --use autoprefixer -d packages/xm_dkfz_net_site/Resources/Public/Css/dist/",
     "ts:watch": "webpack --config webpack.config.js --stats-children --stats-error-details",
     "ts:build": "webpack --config webpack.prod.config.js",
@@ -27,6 +27,7 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.19",
     "postcss-cli": "^10.0.0",
+    "sanitize.css": "^13.0.0",
     "sass": "^1.56.1",
     "svgo": "^3.0.2",
     "swiper": "^8.4.5",

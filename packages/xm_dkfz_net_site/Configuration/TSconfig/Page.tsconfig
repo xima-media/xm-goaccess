@@ -153,6 +153,10 @@ TCEFORM {
     rowDescription.disabled = 1
 
     media.config.maxitems = 1
+
+    # Infoterminal
+    tx_xmdkfznetsite_color.types.702.disabled = 1
+    tt_content_items.types.702.disabled = 1
   }
 
   tx_news_domain_model_news {
@@ -347,6 +351,7 @@ tx_news.templateLayouts {
   topnews = Top News
   latestnews = Latest News
   shortnews = Short News
+  terminal = Terminal
 }
 
 [traverse(page, "module") == "cm"]

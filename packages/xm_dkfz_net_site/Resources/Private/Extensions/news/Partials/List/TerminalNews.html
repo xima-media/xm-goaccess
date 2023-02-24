@@ -1,0 +1,45 @@
+<!--<button class="prev">prev</button>-->
+<!--<button class="next">next</button>-->
+
+<div class="terminal-slider" id="terminalSlider" style="--count:{news->f:count()}; --current:0">
+	<div class="terminal-slider__wrapper">
+		<f:for each="{news}" as="newsItem" iteration="i">
+			<div class="terminal-slider__item color--{newsItem.txXmdkfznetsiteColor} {f:if(condition: i.isFirst, then: 'current')}">
+				<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+
+				<div>
+					<f:if condition="{newsItem.falMedia.0}">
+						<f:then>
+							<f:image image="{newsItem.falMedia.0}"
+									 width="2000"
+									 alt="{newsItem.falMedia.0.properties.alternative}"
+									 loading="{f:if(condition: noLazy, else: 'lazy')}"/>
+						</f:then>
+						<f:else>
+							<div class="terminal-slider__placeholder"></div>
+						</f:else>
+					</f:if>
+				</div>
+
+				<div class="terminal-slider__text">
+					<h2>{newsItem.title}</h2>
+					<p>
+						<f:if condition="{newsItem.teaser}">
+							<f:then>
+								{newsItem.teaser -> f:format.crop(maxCharacters: 350, respectWordBoundaries:'1') ->
+								f:format.stripTags()}
+							</f:then>
+							<f:else>
+								{newsItem.bodytext -> f:format.crop(maxCharacters: 350, respectWordBoundaries:'1') ->
+								f:format.stripTags()}
+							</f:else>
+						</f:if>
+					</p>
+				</div>
+			</div>
+		</f:for>
+	</div>
+</div>
+
+<div id="terminal-progress-bar" class="run"></div>

@@ -17,6 +17,10 @@
 			<f:render partial="List/ShortNews" arguments="{_all}" />
 		</f:if>
 
+		<f:if condition="{settings.templateLayout} == 'terminal'">
+			<f:render partial="List/TerminalNews" arguments="{_all}" />
+		</f:if>
+
 		<f:if condition="{settings.templateLayout} == ''">
 			<f:render partial="List/ListNews" arguments="{_all}" />
 		</f:if>

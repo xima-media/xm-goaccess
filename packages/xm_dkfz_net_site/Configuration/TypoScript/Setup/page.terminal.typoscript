@@ -1,0 +1,25 @@
+[traverse(page, "doktype") == 702]
+  page >
+
+  terminal = PAGE
+  terminal {
+    10 = FLUIDTEMPLATE
+    10 {
+      templateName = Terminal
+      layoutRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Layouts
+      partialRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Partials
+      partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials
+      templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Page/Templates
+    }
+
+    includeCSS {
+      terminal = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/terminal.min.css
+      keSearchPremiumAutocompleteCss >
+    }
+
+    includeJSFooter {
+      terminal = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/terminal.min.js
+    }
+  }
+
+[end]

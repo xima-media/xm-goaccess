@@ -89,6 +89,12 @@
 			<trans-unit id="pages.media.description" space="preserve">
 				<target>Dieses Bild wird in der Einleitung der Seite und für das Inhaltselement "Teaser" verwendet.</target>
 			</trans-unit>
+			<trans-unit id="pages.sliderDuration" space="preserve">
+				<target>Slider Dauer</target>
+			</trans-unit>
+			<trans-unit id="pages.sliderDuration.description" space="preserve">
+				<target>Zeit in Sekunden</target>
+			</trans-unit>
 			<trans-unit id="container.accordion">
 				<target>Akkordeon</target>
 			</trans-unit>

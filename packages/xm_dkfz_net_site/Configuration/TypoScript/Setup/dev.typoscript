@@ -13,4 +13,7 @@
 
   page.includeCSS.app = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/app.css
   page.includeJSFooter.app = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/app.js
+
+  terminal.includeCSS.terminal = EXT:xm_dkfz_net_site/Resources/Public/Css/dist/terminal.css
+  terminal.includeJSFooter.terminal = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/terminal.js
 [global]
