@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookEntry;
@@ -180,5 +181,39 @@ class PlaceRepository extends Repository implements ImportableUserInterface
         );
 
         return $query->execute();
+    }
+
+    /**
+     * @param mixed $demand
+     * @return Place[]
+     * @throws Exception|DBALException
+     */
+    public function findByDemandArray(array $demand): array
+    {
+        $constraints = [];
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
+
+        if (isset($demand['search']) && $demand['search']) {
+            $constraints[] = $qb->expr()->like('name', $qb->createNamedParameter($demand['search'] . '%'));
+        }
+
+        if (empty($constraints)) {
+            return [];
+        }
+
+        $qb->getRestrictions()->removeAll();
+
+        $query = $qb->select('*')
+            ->from('tx_xmdkfznetsite_domain_model_place')
+            ->where($qb->expr()->andX(...$constraints))
+            ->execute();
+
+        if (!$query instanceof Result) {
+            return [];
+        }
+
+        $result = $query->fetchAllAssociative();
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+        return $dataMapper->map(Place::class, $result);
     }
 }

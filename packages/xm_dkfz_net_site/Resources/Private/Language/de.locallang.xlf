@@ -599,6 +599,9 @@
 			<trans-unit id="usersearch.button" space="preserve">
 				<target>Suchen</target>
 			</trans-unit>
+			<trans-unit id="placesearch.found" space="preserve">
+				<target>Es wurden %s Kontaktstellen gefunden</target>
+			</trans-unit>
 			<trans-unit id="committee" space="preserve">
 				<target>Gremium</target>
 			</trans-unit>

@@ -166,7 +166,17 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findByDemandArray\\(\\) has parameter \\$demand with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$demand with type mixed is not subtype of native type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
 

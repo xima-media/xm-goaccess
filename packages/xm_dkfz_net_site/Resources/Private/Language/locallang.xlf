@@ -610,6 +610,9 @@
 			<trans-unit id="usersearch.button" space="preserve">
 				<source>Search</source>
 			</trans-unit>
+			<trans-unit id="placesearch.found" space="preserve">
+				<source>Found %s places</source>
+			</trans-unit>
 			<trans-unit id="committee" space="preserve">
 				<source>Committee</source>
 			</trans-unit>

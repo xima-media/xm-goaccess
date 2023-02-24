@@ -112,3 +112,12 @@ plugin.tx_instagram {
     partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
   }
 }
+
+plugin.tx_xmdkfznetsite_placelist {
+  view {
+    templateRootPaths.0 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Templates/
+    partialRootPaths.0 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Partials/
+    partialRootPaths.20 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/General/Partials/
+    layoutRootPaths.0 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Layouts/
+  }
+}

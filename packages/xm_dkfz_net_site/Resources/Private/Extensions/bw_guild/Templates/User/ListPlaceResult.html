@@ -1,0 +1,69 @@
+<h2 class="results__title h6">
+	<f:translate extensionName="XmDkfzNetSite"
+				 key="placesearch.found"
+				 arguments="{0: '{places->f:count()}'}"/>
+</h2>
+
+<ul class="list users places">
+	<f:for each="{places}" as="user">
+		<li>
+			<div class="users__item">
+				<h3 class="h6">{user.name}</h3>
+
+				<f:if condition="{user.function}">
+					<p class="text-small m-b-0">{user.function}</p>
+				</f:if>
+
+				<f:if condition="{user.feGroup} && {user.feGroup.uid}!=1">
+					<p class="text-small"><strong>
+
+							<f:link.action action="list"
+										   class=""
+										   pluginName="Userlist"
+										   section="c381"
+										   extensionName="BwGuild"
+										   title="{user.feGroup.title}"
+										   controller="User"
+										   arguments="{demand: {feGroup: user.feGroup.fakeSlug}}">{user.feGroup.dkfzNumber}
+								- {user.feGroup.title}
+							</f:link.action>
+
+					</strong></p>
+				</f:if>
+
+				<ul class="list contacts text-small m-b-0">
+
+					<f:if condition="{user.room}">
+						<li class="contact__item">
+							<f:render partial="Icon" arguments="{icon: 'location', width: 14, height: 14}"/>
+							{user.room}
+						</li>
+					</f:if>
+
+					<f:for each="{user.phoneContacts}" as="contact" iteration="i">
+						<li class="contact__item">
+							<f:render partial="Icon" arguments="{icon: 'phone', width: 14, height: 14}"/>
+							{contact.number}
+						</li>
+					</f:for>
+
+					<f:for each="{user.faxContacts}" as="contact" iteration="i">
+						<li class="contact__item">
+							<f:render partial="Icon" arguments="{icon: 'printer', width: 14, height: 14}"/>
+							{contact.number}
+						</li>
+					</f:for>
+
+					<f:if condition="{user.mail}">
+						<li class="contact__item">
+							<f:render partial="Icon" arguments="{icon: 'mail', width: 14, height: 14}"/>
+							<f:link.email email="{user.mail}">{user.mail}</f:link.email>
+						</li>
+					</f:if>
+				</ul>
+
+			</div>
+		</li>
+	</f:for>
+
+</ul>

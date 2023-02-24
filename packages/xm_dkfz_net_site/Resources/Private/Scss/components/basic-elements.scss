@@ -1,3 +1,15 @@
+ul.users.places {
+    > li {
+        margin-top: 0;
+        border: 0;
+        background-color: var(--color-primary-opacity-10);
+    }
+}
+
+.frame-bwguild_userlist:has(+ .frame-xmdkfznetsite_placelist .list):has(.callout) {
+    display: none;
+}
+
 ul.users {
     display: grid;
     gap: 2rem;

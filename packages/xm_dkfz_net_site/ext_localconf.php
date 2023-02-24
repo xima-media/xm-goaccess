@@ -70,3 +70,15 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders']['1616569531'
 // Override luxletter translations
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['EXT:luxletter/Resources/Private/Language/locallang.xlf'][] = 'EXT:xm_dkfz_net_site/Resources/Private/Language/Overrides/luxletter.xlf';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['de']['EXT:luxletter/Resources/Private/Language/locallang.xlf'][] = 'EXT:xm_dkfz_net_site/Resources/Private/Language/Overrides/de.luxletter.xlf';
+
+// register place search plugin
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'XmDkfzNetSite',
+    'Placelist',
+    [
+        \Xima\XmDkfzNetSite\Controller\UserController::class => 'listPlaceResult',
+    ],
+    [
+        \Xima\XmDkfzNetSite\Controller\UserController::class => 'listPlaceResult',
+    ]
+);

@@ -73,3 +73,11 @@ $tempFields = [
     'color',
     'before:layout'
 );
+
+// Register Place plugin
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'XmDkfzNetSite',
+    'Placelist',
+    'Place',
+    'tx_bwguild_offerlist'
+);

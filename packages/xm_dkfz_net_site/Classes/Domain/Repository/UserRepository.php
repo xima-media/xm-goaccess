@@ -6,6 +6,7 @@ use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Result;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -43,6 +44,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
 
     /**
      * @param PhoneBookEntry[] $entries
+     * @throws InvalidPasswordHashException
      */
     public function bulkInsertPhoneBookEntries(array $entries, int $pid): int
     {
