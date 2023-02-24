@@ -190,23 +190,38 @@ class PlaceRepository extends Repository implements ImportableUserInterface
      */
     public function findByDemandArray(array $demand): array
     {
-        $constraints = [];
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmdkfznetsite_domain_model_place');
-
-        if (isset($demand['search']) && $demand['search']) {
-            $constraints[] = $qb->expr()->like('name', $qb->createNamedParameter($demand['search'] . '%'));
-        }
-
-        if (empty($constraints)) {
-            return [];
-        }
-
         $qb->getRestrictions()->removeAll();
 
-        $query = $qb->select('*')
-            ->from('tx_xmdkfznetsite_domain_model_place')
-            ->where($qb->expr()->andX(...$constraints))
-            ->execute();
+        $query = $qb->select('p.*')
+            ->from('tx_xmdkfznetsite_domain_model_place', 'p');
+
+        if (isset($demand['search']) && $demand['search']) {
+            $qb->where($qb->expr()->orX(
+                $qb->expr()->like('p.name', $qb->createNamedParameter($demand['search'] . '%')),
+                $qb->expr()->like('p.function', $qb->createNamedParameter($demand['search'] . '%'))
+            ));
+        }
+
+        if (isset($demand['feGroup']) && $demand['feGroup']) {
+            $qb->innerJoin(
+                'p',
+                'fe_groups',
+                'g',
+                $qb->expr()->eq('p.fe_group', 'g.uid')
+            );
+            $qb->where(
+                $qb->expr()->andX(
+                    $qb->expr()->eq('g.uid', $qb->quoteIdentifier('p.fe_group')),
+                    $qb->expr()->orX(
+                        $qb->expr()->like('g.dkfz_number', $qb->createNamedParameter($demand['feGroup'] . '%')),
+                        $qb->expr()->like('g.title', $qb->createNamedParameter($demand['feGroup'] . '%'))
+                    )
+                )
+            );
+        }
+
+        $query = $query->execute();
 
         if (!$query instanceof Result) {
             return [];

@@ -20,13 +20,15 @@ class UserController extends ActionController
     public function listPlaceResultAction(): ResponseInterface
     {
         $body = $this->request->getParsedBody();
+        $parameter = $this->request->getQueryParams();
 
-        if (!isset($body['tx_bwguild_userlist']['demand'])) {
+        if (!isset($body['tx_bwguild_userlist']['demand']) && !isset($parameter['tx_bwguild_userlist']['demand'])) {
             return $this->htmlResponse('');
         }
 
         // check for demand
-        $demand = array_filter($body['tx_bwguild_userlist']['demand']);
+        $demand = array_merge($body['tx_bwguild_userlist']['demand'] ?? [], $parameter['tx_bwguild_userlist']['demand'] ?? []);
+        $demand = array_filter($demand);
         if (empty($demand)) {
             return $this->htmlResponse('');
         }
