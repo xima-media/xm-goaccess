@@ -70,7 +70,6 @@ test-php-stan:
     - ssh-keyscan $TYPO3_STAGING_URL >> ~/.ssh/known_hosts
     - if [[ ! -z "$TYPO3_PRODUCTION_URL" ]]; then ssh-keyscan $TYPO3_PRODUCTION_URL >> ~/.ssh/known_hosts; fi
     - chmod 644 ~/.ssh/known_hosts
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null\n\n" > ~/.ssh/config
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
