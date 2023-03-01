@@ -69,6 +69,7 @@ test-php-stan:
     - chmod 700 ~/.ssh
     - for IP in $(echo $SSH_KEYSCAN_IPS | sed "s/,/ /g"); do ssh-keyscan $IP >> ~/.ssh/known_hosts; done
     - chmod 644 ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking yes\n\tUserKnownHostsFile=~/.ssh/known_hosts\n\n" > ~/.ssh/config
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
