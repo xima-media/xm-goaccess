@@ -67,7 +67,6 @@ test-php-stan:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - cat ~/.ssh/known_hosts
     - echo $SSH_KEYSCAN_REMOTES | ssh-keyscan -f - > ~/.ssh/known_hosts
     - cat ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
