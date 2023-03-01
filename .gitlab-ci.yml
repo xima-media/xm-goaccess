@@ -68,6 +68,8 @@ test-php-stan:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - for IP in $(echo $SSH_KEYSCAN_IPS | sed "s/,/ /g"); do ssh-keyscan -t ed25519 $IP >> ~/.ssh/known_hosts; done
+    - cat ~/.ssh/known_hosts
+    - export 
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking yes\n\tUserKnownHostsFile=~/.ssh/known_hosts\n\n" > ~/.ssh/config
 
