@@ -67,8 +67,7 @@ test-php-stan:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-keyscan $TYPO3_STAGING_URL >> ~/.ssh/known_hosts
-    - if [[ ! -z "$TYPO3_PRODUCTION_URL" ]]; then ssh-keyscan $TYPO3_PRODUCTION_URL >> ~/.ssh/known_hosts; fi
+    - for IP in $(echo $SSH_KEYSCAN_IPS | sed "s/,/ /g"); do ssh-keyscan $IP >> ~/.ssh/known_hosts; done
     - chmod 644 ~/.ssh/known_hosts
 
 deploy-dkfz-staging:
