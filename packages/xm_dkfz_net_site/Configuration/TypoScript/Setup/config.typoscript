@@ -13,6 +13,12 @@ config {
 
   htmlTag.attributes.style = --scrollbar-width:17px;
   htmlTag.attributes.class = fx--header-not-sticky
+
+  cache {
+    1 = tx_news_domain_model_news:141
+    5 = tx_news_domain_model_news:141
+    20 = tx_news_domain_model_news:141
+  }
 }
 
 [backend.user.isLoggedIn]
