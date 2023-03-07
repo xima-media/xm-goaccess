@@ -54,13 +54,13 @@
         background: #FFF;
 
         @include media-breakpoint-up(xl) {
-            transform: translate3d(var(--direction, -5rem), 0, 0) scale(2);
+            transform: translate3d(var(--direction, -5.1rem), 0, 0) scale(2);
         }
 
         &.next {
             grid-column: 2 / 3;
             justify-self: flex-end;
-            --direction: 5rem;
+            --direction: 5.1rem;
         }
     }
 
@@ -93,6 +93,9 @@
 
     &__item {
         grid-row: 1 / 2;
+        display: grid;
+        justify-items: center;
+        align-items: center;
 
         &.current {
             grid-column: 2 / 3;

@@ -1,0 +1,20 @@
+.marketplace-show {
+    .hero {
+        margin-bottom: var(--space-md);
+    }
+    .image-slider {
+        padding: 3px;
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23e5007d' stroke-width='4' stroke-dasharray='2%2c8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        margin-bottom: var(--space-lg);
+    }
+
+    &__text {
+        margin-bottom: var(--space-lg);
+    }
+}
+
+.frame-bwguild_marketplace {
+    --content-width: 1200px;
+
+    //   background-color: #0a0a0a;
+}
