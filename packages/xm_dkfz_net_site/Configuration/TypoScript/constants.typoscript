@@ -127,17 +127,6 @@ plugin {
   }
 }
 
-#####################
-### OAuth2_client ###
-#####################
-plugin.tx_oauth2client {
-  view {
-    templateRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Templates/
-    partialRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Partials/
-    layoutRootPath = EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Layouts/
-  }
-}
-
 #################
 ### ke_search ###
 #################
