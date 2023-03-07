@@ -76,7 +76,7 @@
 		"ichhabrecht/filefill": "^4.1",
 		"lochmueller/staticfilecache": "^12.5",
 		"in2code/instagram": "dev-master",
-		"xima/xima-twitter-client":  "*@dev"
+		"xima/xima-twitter-client": "*@dev"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
@@ -99,9 +99,6 @@
 		"patches": {
 			"in2code/instagram": [
 				"patches/in2code-instagram-classes-middleware-getauthenticationcode-php.patch"
-			],
-			"waldhacker/typo3-oauth2-client": [
-				"patches/waldhacker-typo3-oauth2-client-classes-backend-loginprovider-oauth2loginprovider-php.patch"
 			],
 			"tomasnorre/crawler": [
 				"patches/tomasnorre-crawler-classes-service-urlservice-php.patch"

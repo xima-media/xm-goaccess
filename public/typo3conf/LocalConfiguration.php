@@ -170,6 +170,11 @@ return [
                     ],
                 ],
             ],
+            'view' => [
+                'templateRootPaths' => [
+                    'EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Templates/',
+                ],
+            ],
         ],
         'pxa_social_feed' => [
             'editorRestriction' => '0',
