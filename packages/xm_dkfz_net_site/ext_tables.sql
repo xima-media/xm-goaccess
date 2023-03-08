@@ -148,13 +148,14 @@ create table tx_xmdkfznetsite_domain_model_disruptor (
 	KEY       parent (pid),
 );
 
-#
-# table structure for table 'sys_file_reference'
-#
 create table sys_file_reference (
 	video_preview_image int(11) unsigned default '0' not null,
 );
 
 create table tx_xmdkfznetsite_domain_model_committee (
 	name varchar(255) default '' not null,
+);
+
+CREATE TABLE tx_bwguild_domain_model_offer (
+	public tinyint(0) DEFAULT 1 NOT NULL,
 );
