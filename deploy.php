@@ -24,6 +24,9 @@ for ($i = 1; $i <= 999; $i++) {
     $ticketNr = str_pad($i, 3, '0', STR_PAD_LEFT);
     $branchName = 'DKFZ-' . $ticketNr;
     defineTestHost($branchName, 'feature');
+
+    $branchName = 'DIS-' . $ticketNr;
+    defineTestHost($branchName, 'feature');
 }
 
 defineTestHost('master', 'staging');
