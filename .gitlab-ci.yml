@@ -175,6 +175,7 @@ provision-environment:
     refs:
       - "master"
       - "/^DKFZ-.*$/"
+      - "/^DIS-.*$/"
 
 teardown-environment:
   extends: .provision-variables
@@ -201,6 +202,7 @@ deploy-xima-staging:
     refs:
       - "master"
       - "/^DKFZ-.*$/"
+      - "/^DIS-.*$/"
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
