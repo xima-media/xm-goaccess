@@ -1,12 +1,11 @@
 import autocomplete from 'autocompleter'
 
-interface AutocomleterItem {
+interface AutocompleterItem {
   label: string
   value: string
 }
 
 class QuickSearch {
-  public quickSearchOpenState: boolean
   public quickSearchEl: HTMLElement
   public quickSearchInputEl: HTMLInputElement
   public quickSearchButtonToggleEl: HTMLButtonElement | null
@@ -43,58 +42,28 @@ class QuickSearch {
     if (!this.quickSearchInputEl || !this.quickSearchEl) {
       return
     }
+    const url = this.quickSearchInputEl?.closest('form')?.dataset.url
 
-    this.quickSearchOpenState = false
-    this.quickSearchInputEl.addEventListener('input', () => {
-      if (this.quickSearchInputEl && this.quickSearchInputEl.value.length === 1) {
-        const fillAutoCompleterList = async (): Promise<AutocomleterItem[] | any> => {
-          let items: AutocomleterItem[]
-          const url = this.quickSearchInputEl?.closest('form')?.dataset.url
-          if (url) {
-            items = await this.fetchAutocompleteItems(this.quickSearchInputEl, url)
-          } else {
-            return
-          }
-
-          if (!items) {
-            return
-          }
-
-          autocomplete({
-            input: this.quickSearchInputEl,
-            minLength: 1,
-            disableAutoSelect: true,
-            fetch: this.onAutocompleteFetch.bind(this, items),
-            onSelect: this.onAutocompleteSelect.bind(this, this.quickSearchInputEl)
-          })
-        }
-
-        void fillAutoCompleterList()
-      }
+    autocomplete({
+      input: this.quickSearchInputEl,
+      minLength: 1,
+      disableAutoSelect: true,
+      fetch: this.onAutocompleteFetch.bind(this, url),
+      onSelect: this.onAutocompleteSelect.bind(this, this.quickSearchInputEl)
     })
   }
 
-  protected async fetchAutocompleteItems(searchInput: HTMLInputElement, url: string): Promise<AutocomleterItem[] | any> {
-    const autoCompleteListUrl = `${url}&wordStartsWith=${searchInput.value}`
-    return await fetch(autoCompleteListUrl)
-      .then(async response => await response.json())
-      .then((autoCompleteList: any[]) => {
-        if (autoCompleteList) {
-          return autoCompleteList.map((item: any) => {
-            return { label: item, value: item }
-          }) as AutocomleterItem[]
-        }
-      })
-      .catch(error => {
-        console.error('Error when fetching results: ', error)
-      })
-  }
-
-  protected onAutocompleteFetch(allItems: AutocomleterItem[], text: string, update: any): void {
+  protected async onAutocompleteFetch(url: string, text: string, update: any): Promise<void> {
     text = text.toLowerCase()
+    const autoCompleteListUrl = `${url}&wordStartsWith=${text}`
+    const items = await this.fetchAutocompleteItems(autoCompleteListUrl)
 
-    const filteredFeatures = allItems
-      .filter(item => {
+    if (!items) {
+      return
+    }
+
+    const filteredFeatures = items
+      .filter((item: { value: { toString: () => string } }) => {
         return item.value.toString().toLowerCase().includes(text)
       })
       .slice(0, 10)
@@ -102,7 +71,22 @@ class QuickSearch {
     update(filteredFeatures)
   }
 
-  protected onAutocompleteSelect(input: HTMLInputElement, item: AutocomleterItem): void {
+  protected async fetchAutocompleteItems(url: string): Promise<AutocompleterItem[] | any> {
+    return await fetch(url)
+      .then(async response => await response.json())
+      .then((autoCompleteList: any[]) => {
+        if (autoCompleteList) {
+          return autoCompleteList.map((item: any) => {
+            return { label: item, value: item }
+          }) as AutocompleterItem[]
+        }
+      })
+      .catch(error => {
+        console.error('Error when fetching results: ', error)
+      })
+  }
+
+  protected onAutocompleteSelect(input: HTMLInputElement, item: AutocompleterItem): void {
     input.value = item.value
     const form: HTMLFormElement | null = input.closest('form')
 
