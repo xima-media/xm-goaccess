@@ -1,17 +1,21 @@
 {
 	"compilerOptions": {
 		"noImplicitAny": true,
-		"sourceMap": true,
+		"inlineSourceMap": true,
+		"inlineSources": true,
 		"module": "es6",
 		"target": "es6",
 		"allowJs": true,
 		"moduleResolution": "node",
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"rootDir": "./packages/xm_dkfz_net_site/Resources/Private/TypeScript"
 	},
 	"exclude": [
 		"./node_modules",
 		"./public",
 		"./var",
-		"./vendor"
+		"./vendor",
+		"./**/*.js",
+		"./**/*.mjs",
 	]
 }
