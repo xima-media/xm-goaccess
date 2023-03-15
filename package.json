@@ -7,15 +7,16 @@
     "node": ">=16.0.0 <17.0.0"
   },
   "scripts": {
-    "start": "npm-run-all -p sass:watch ts:watch",
+    "start": "npm-run-all -p tsc:watch sass:watch ts:watch",
     "build": "npm-run-all -s sass:build sass:postcss ts:build",
     "sass:watch": "sass --error-css --watch --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.css packages/xm_dkfz_net_site/Resources/Private/Scss/terminal.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/terminal.css",
     "sass:build": "sass --no-source-map --quiet --style=compressed --load-path=node_modules packages/xm_dkfz_net_site/Resources/Private/Scss/app.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css packages/xm_dkfz_net_site/Resources/Private/Scss/terminal.scss:packages/xm_dkfz_net_site/Resources/Public/Css/dist/terminal.min.css",
     "sass:postcss": "postcss packages/xm_dkfz_net_site/Resources/Public/Css/dist/app.min.css --map false --use autoprefixer -d packages/xm_dkfz_net_site/Resources/Public/Css/dist/",
-    "ts:watch": "webpack --config webpack.config.js --stats-children --stats-error-details",
-    "ts:build": "webpack --config webpack.prod.config.js",
+    "ts:watch": "node ./esbuild.config.mjs --watch",
+    "ts:build": "node ./esbuild.config.mjs --build",
     "ts:fix": "npx eslint packages/xm_dkfz_net_site/Resources/Private/TypeScript --fix",
     "ts:format": "npx prettier --config .prettierrc packages/xm_dkfz_net_site/Resources/Private/TypeScript --write",
+    "tsc:watch": "npx tsc --watch --noEmit",
     "svg:optimize": "svgo -f ./packages/xm_dkfz_net_site/Resources/Public/Icons -p 2 --config svgo.config.js",
     "ncu": "npx npm-check-updates --interactive --format group"
   },
@@ -32,18 +33,15 @@
     "sass": "^1.58.3",
     "svgo": "^3.0.2",
     "swiper": "^9.1.0",
-    "terser-webpack-plugin": "^5.3.7",
     "tippy.js": "^6.3.7",
-    "ts-loader": "^9.4.2",
-    "typescript": "^4.9.5",
-    "webpack-cli": "^5.0.1",
-    "webpack-merge": "^5.8.0"
+    "typescript": "^4.9.3"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.1",
-    "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "esbuild": "^0.17.11",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "npm-check-updates": "^16.7.12",
     "prettier": "2.8.4"

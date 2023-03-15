@@ -15,7 +15,6 @@ class Notice {
   protected closeButton: Element
 
   constructor() {
-
     if (!this.cacheDom()) {
       return
     }
