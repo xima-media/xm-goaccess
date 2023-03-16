@@ -3,6 +3,8 @@ import app from './basic'
 import autocomplete, { AutocompleteItem } from 'autocompleter'
 import { AutocomleterItem } from './hero-form'
 import { NoticeStyle } from './notice'
+import Cropper from 'cropperjs'
+import * as cropperjs from 'cropperjs'
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -50,6 +52,7 @@ class Userprofile {
 
   protected bindUserEditFormEvents(): void {
     const form = app.lightbox.content.querySelector('form')
+    const logoUploadInput = app.lightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
     this.initUserImageDeleteClick()
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocompleter()
@@ -57,6 +60,49 @@ class Userprofile {
     this.initClearLinks()
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
+
+    logoUploadInput?.addEventListener('change', this.onLogoUploadInputChange.bind(this, logoUploadInput))
+  }
+
+  protected onLogoUploadInputChange(logoUploadInput: any): void {
+    const [file] = logoUploadInput.files
+    const markup = document.querySelector<HTMLElement>('.image-editor')
+    if (file && markup) {
+      const image = markup.querySelector<HTMLImageElement>('#imageEditorImage')
+
+      if (image) {
+        image?.setAttribute('src', URL.createObjectURL(file))
+        app.lightbox.appendDialogElement(markup)
+        app.lightbox.showDialog()
+
+        const cropper = new Cropper(image, {
+          aspectRatio: 1,
+          zoomable: false,
+          rotatable: false,
+          scalable: false
+        })
+
+        const cropButton = markup.querySelector<HTMLButtonElement>('#submitCrop')
+
+        cropButton?.addEventListener('click', () => {
+          const croppedimage = cropper.getCroppedCanvas().toDataURL()
+
+          console.log(croppedimage)
+
+          const image = new Image()
+          image.src = croppedimage
+          image.width = 150
+          image.height = 150
+          const profileImage = app.lightbox.content.querySelector<HTMLImageElement>('.userimage picture')
+
+          profileImage?.querySelector('svg')?.remove()
+          profileImage?.prepend(image)
+          console.log(app.lightbox.content)
+
+          app.lightbox.hideDialog()
+        })
+      }
+    }
   }
 
   protected initUserImageDeleteClick(): void {
