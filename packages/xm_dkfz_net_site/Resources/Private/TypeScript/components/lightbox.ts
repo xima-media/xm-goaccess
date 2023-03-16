@@ -9,6 +9,8 @@ class Lightbox {
 
   public content: Element
 
+  public dialog: Element
+
   public isCloseable = true
 
   protected closeButton: Element
@@ -26,16 +28,18 @@ class Lightbox {
 
   protected cacheDom() {
     const content = document.querySelector('.lightbox__wrap')
+    const dialog = document.querySelector('.lightbox__dialog')
     const closeButton = document.querySelector('.lightbox__close')
     const root = document.querySelector('html')
     const box = document.querySelector('.lightbox')
 
-    if (!content || !closeButton || !root || !box) {
+    if (!content || !closeButton || !root || !box || !dialog) {
       return false
     }
 
     this.box = box
     this.content = content
+    this.dialog = dialog
     this.closeButton = closeButton
     this.root = root
 
@@ -104,6 +108,21 @@ class Lightbox {
     this.root.dataset.lightBoxType = type
     this.bindEscKeyPressEvent()
     this.bindBackgroundClickEvent()
+  }
+
+  public showDialog() {
+    this.content.classList.add('lightbox__wrap--hidden')
+    this.dialog.classList.add('lightbox__dialog--show')
+  }
+
+  public hideDialog() {
+    this.content.classList.remove('lightbox__wrap--hidden')
+    this.dialog.classList.remove('lightbox__dialog--show')
+    this.dialog.innerHTML = ''
+  }
+
+  public appendDialogElement(element: HTMLElement) {
+    this.dialog.append(element)
   }
 
   public startLoading() {
