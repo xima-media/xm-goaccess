@@ -6,8 +6,6 @@ const buildConfig = {
         './packages/xm_dkfz_net_site/Resources/Private/TypeScript/terminal.ts'
     ],
     bundle: true,
-    splitting: true,
-    format: 'esm',
     sourcemap: true,
     outdir: 'packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist/',
     logLevel: 'info',
