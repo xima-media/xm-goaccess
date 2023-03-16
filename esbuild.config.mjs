@@ -6,28 +6,25 @@ const buildConfig = {
         './packages/xm_dkfz_net_site/Resources/Private/TypeScript/terminal.ts'
     ],
     bundle: true,
-    splitting: true,
-    format: 'esm',
     sourcemap: true,
     outdir: 'packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist/',
     logLevel: 'info',
 }
 
 if (process.argv.includes('--build')) {
-    await build(buildConfig)
+    await build()
 } else {
-    await watch(buildConfig)
+    await watch()
 }
 
-async function watch(config) {
-    let ctx = await esbuild.context(config)
+async function build() {
+    buildConfig.sourcemap = false
+    buildConfig.minify = true
+    buildConfig.outExtension = { '.js': '.min.js' }
+    await esbuild.build(buildConfig)
+}
+
+async function watch() {
+    let ctx = await esbuild.context(buildConfig)
     await ctx.watch()
-}
-
-async function build(config) {
-    config.sourcemap = false
-    config.minify = true
-    config.splitting = false
-    config.outExtension = { '.js': '.min.js' }
-    await esbuild.build(config)
 }
