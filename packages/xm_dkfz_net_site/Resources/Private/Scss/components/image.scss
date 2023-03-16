@@ -17,6 +17,13 @@
     height: auto;
 }
 
+.image-editor__image {
+    img {
+        display: block;
+        max-width: 100%;
+    }
+}
+
 .frame-type-textmedia,
 .frame-type-image {
 
