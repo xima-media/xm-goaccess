@@ -38,6 +38,8 @@ page {
       currentUrl.data = getIndpEnv:TYPO3_REQUEST_URL
       pidEmergency = TEXT
       pidEmergency.value = {$pidEmergency}
+      pidOfferShow = TEXT
+      pidOfferShow.value = {$pidOfferShow}
     }
 
     dataProcessing {

@@ -1,48 +1,78 @@
-<div class="frame content-wrapper frame-type-bw_static_template">
+<div>
 
-	<div>
-		<ul class="list news-categories text-small">
-			<li>
-				<a class="content-wrapper__link active" href="#">Alle Anzeigen</a>
-			</li>
-			<li>
-				<a class="content-wrapper__link" href="#">Mein Anzeigen</a>
-			</li>
-		</ul>
-	</div>
+	<f:form extensionName="BwGuild"
+			action="list"
+			pluginName="Offerlist"
+			name="demand"
+			controller="Offer"
+			object="{demand}"
+			class="hero-form">
+		<f:for each="{demand.categories}" as="category" iteration="i">
+			<f:form.hidden property="categories.{i.index}"/>
+		</f:for>
+		<f:form.hidden property="categoryConjunction"/>
 
-
-</div>
-
-<div class="orders orders--list">
-	<f:for each="{offers}" as="offer">
-		{namespace bw=Blueways\BwGuild\ViewHelpers}
-		<div class="orders__item card card__content">
-			<h3>{offer.title}</h3>
-			<p>
-				<f:format.crop maxCharacters="100">{offer.description->f:format.stripTags()}</f:format.crop>
-
-				<br/>
-				<f:link.action pageUid="{settings.showOfferPid}" action="show" controller="Offer" arguments="{offer: offer.uid}">Show
-					offer
-				</f:link.action>
-				<f:if condition="{bw:isEditable(offer: offer)} && {settings.editPid}}">
-					<br/>
-					<f:link.action pageUid="{settings.editPid}"
-								   action="edit"
-								   controller="Offer"
-								   arguments="{offer: offer.uid}">Edit offer
-					</f:link.action>
-					<br/>
-					<f:link.action pageUid="{settings.editPid}"
-								   action="delete"
-								   controller="Offer"
-								   arguments="{offer: offer.uid}">Delete offer
-					</f:link.action>
-				</f:if>
-
-			</p>
+		<div class="hero-form__header">
+			<h2 class="hero-form__title h4">Anzeige filtern</h2>
 		</div>
 
-	</f:for>
+		<div class="hero-form__content">
+			<div class="field field--text field--select {f:if(condition: demand.category, then: 'fx--filled')}">
+				<label class="field__label" for="category"> Alle Rubriken </label>
+				<f:form.select id="category"
+							   class="field__input"
+							   property="category"
+							   options="{categories}"
+							   optionValueField="uid"
+							   optionLabelField="title"
+							   prependOptionLabel=""/>
+			</div>
+		</div>
+	</f:form>
+
+	<h4 class="h6 text-center">{offers->f:count()} Anzeigen</h4>
+
+	<div class="orders">
+		<f:for each="{offers}" as="offer">
+			<f:link.action pageUid="{settings.showOfferPid}"
+						   action="show"
+						   class="orders__item"
+						   pluginName="Offershow"
+						   arguments="{offer: offer.uid}">
+				<span class="square"></span>
+				<div class="content">
+					<div class="m-b-05">
+						<f:format.date format="%d. %B %Y">{offer.crdate}</f:format.date>
+					</div>
+					<h5>{offer.title}</h5>
+					<p class="text-small">
+						<f:if condition="{offer.categories.0}">
+							{offer.categories.0.title}
+						</f:if>
+					</p>
+				</div>
+			</f:link.action>
+		</f:for>
+	</div>
+</div>
+<div>
+	<h4 class="h6 text-center">Meine Anzeigen</h4>
+
+	<button type="button"
+			class="button button--white"
+			data-offer-create-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
+			<f:render partial="Icon" arguments="{icon: 'bookmark-add'}"/>
+			<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark"/>
+	</button>
+
+	<div class="orders" id="my-marketplace">
+		<a href="#" class="orders__item d-none" id="my-marketplace-dummy">
+			<span class="square"></span>
+			<div class="content">
+				<div class="m-b-05 orders__date">###DATE###</div>
+				<h5>###TEXT###</h5>
+				<p class="text-small">###CATEGORY###</p>
+			</div>
+		</a>
+	</div>
 </div>

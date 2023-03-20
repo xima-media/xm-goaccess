@@ -7,20 +7,23 @@
 //
 //   @section 1. Footer
 //
+:root {
+    --footer-margin: 3rem;
+
+    @include media-breakpoint-up(md) {
+        --footer-margin: 5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        --footer-margin: 7rem;
+    }
+}
 
 .footer {
     color: var(--color-white);
     background: var(--color-primary);
     z-index: 1;
-    margin-top: 3rem;
-
-    @include media-breakpoint-up(md) {
-        margin-top: 5rem;
-    }
-
-    @include media-breakpoint-up(lg) {
-        margin-top: 7rem;
-    }
+    margin-top: var(--footer-margin);
 
     ul li {
         list-style: none;
@@ -68,4 +71,5 @@
         margin-bottom: 0;
     }
 }
+
 // end of footer.scss file

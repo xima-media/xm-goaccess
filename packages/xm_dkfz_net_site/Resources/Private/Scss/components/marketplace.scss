@@ -2,6 +2,7 @@
     .hero {
         margin-bottom: var(--space-md);
     }
+
     .image-slider {
         padding: 3px;
         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23e5007d' stroke-width='4' stroke-dasharray='2%2c8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
@@ -13,8 +14,88 @@
     }
 }
 
-.frame-bwguild_marketplace {
+.frame-bwguild_offerlist {
     --content-width: 1200px;
+    background-size: cover;
+    background-image: url('../../Images/blackboard.jpg');
+    margin-top: 3rem;
+    padding-bottom: 10rem;
 
-    //   background-color: #0a0a0a;
+    &:last-child {
+        margin-bottom: calc(var(--footer-margin) * -1);
+    }
+
+    .content-wrapper__content {
+        display: grid;
+    }
+
+    form {
+        margin: -5rem 0 3rem;
+        justify-self: center;
+        max-width: 600px;
+    }
+
+    h4 {
+        color: #FFF;
+        margin-bottom: 3rem;
+    }
+
+    .button--white {
+        color: inherit;
+    }
+}
+
+.orders {
+    display: grid;
+    gap: 2rem;
+
+
+    @include media-breakpoint-up(lg) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__item {
+        position: relative;
+        display: grid;
+
+        $offerColors: (1: "--color-primary", 2: "--color-magenta");
+        @each $index, $value in $offerColors {
+            &:nth-child(2n+#{$index}) {
+                --color-accent: var(#{$value});
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
+
+            h5 {
+                text-decoration: underline;
+            }
+        }
+
+        .square {
+            height: 75%;
+            aspect-ratio: 1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 0;
+            background-color: var(--color-accent);
+        }
+
+        .content {
+            padding: 1rem;
+            background: rgba(#FFF, 0.95);
+            margin: 0 0 var(--pattern-size, 0.5rem) var(--pattern-size, 0.5rem);
+            position: relative;
+            z-index: 1;
+
+            @include media-breakpoint-up(md) {
+                --pattern-size: .75rem;
+                padding: 2rem;
+            }
+        }
+
+
+    }
 }
