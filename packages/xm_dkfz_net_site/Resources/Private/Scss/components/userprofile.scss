@@ -225,6 +225,16 @@ form.userprofile {
         &:only-child {
             width: 100%;
         }
+
+        &--price {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            input {
+                max-width: 7rem;
+            }
+        }
     }
 
     .form-element.hide-siblings:not(.active) ~ .form-element {

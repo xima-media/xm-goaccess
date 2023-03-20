@@ -721,6 +721,78 @@
 			<trans-unit id="welcome.profile.link" space="preserve">
 				<source>Edit profile now</source>
 			</trans-unit>
+			<trans-unit id="marketplace.type" space="preserve">
+				<source>Offer type</source>
+			</trans-unit>
+			<trans-unit id="marketplace.type.placeholder" space="preserve">
+				<source>Please select</source>
+			</trans-unit>
+			<trans-unit id="marketplace.type.4" space="preserve">
+				<source>Offer</source>
+			</trans-unit>
+			<trans-unit id="marketplace.type.5" space="preserve">
+				<source>Wanted</source>
+			</trans-unit>
+			<trans-unit id="marketplace.type.6" space="preserve">
+				<source>Give-away</source>
+			</trans-unit>
+			<trans-unit id="marketplace.title" space="preserve">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="marketplace.title.placeholder" space="preserve">
+				<source>Offer / wanted / give-away..</source>
+			</trans-unit>
+			<trans-unit id="marketplace.category" space="preserve">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="marketplace.category.placeholder" space="preserve">
+				<source>Please select</source>
+			</trans-unit>
+			<trans-unit id="marketplace.description" space="preserve">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="marketplace.price" space="preserve">
+				<source>Price</source>
+			</trans-unit>
+			<trans-unit id="marketplace.images" space="preserve">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="marketplace.contact.headline" space="preserve">
+				<source>Contact information</source>
+			</trans-unit>
+			<trans-unit id="marketplace.contact.phone" space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="marketplace.contact.email" space="preserve">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="marketplace.legal" space="preserve">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="marketplace.button.new" space="preserve">
+				<source>Create offer</source>
+			</trans-unit>
+			<trans-unit id="marketplace.button.delete" space="preserve">
+				<source>Delete offer</source>
+			</trans-unit>
+			<trans-unit id="marketplace.button.edit" space="preserve">
+				<source>Edit offer</source>
+			</trans-unit>
+			<trans-unit id="marketplace.status.waiting" space="preserve">
+				<source>Waiting for approval</source>
+			</trans-unit>
+			<trans-unit id="marketplace.headline.new" space="preserve">
+				<source>New offer</source>
+			</trans-unit>
+			<trans-unit id="marketplace.headline.edit" space="preserve">
+				<source>Edit offer</source>
+			</trans-unit>
+			<trans-unit id="marketplace.navigation.all" space="preserve">
+				<source>All offers</source>
+			</trans-unit>
+			<trans-unit id="marketplace.navigation.my" space="preserve">
+				<source>My offers</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

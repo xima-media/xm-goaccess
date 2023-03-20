@@ -155,7 +155,3 @@ create table sys_file_reference (
 create table tx_xmdkfznetsite_domain_model_committee (
 	name varchar(255) default '' not null,
 );
-
-CREATE TABLE tx_bwguild_domain_model_offer (
-	public tinyint(0) DEFAULT 1 NOT NULL,
-);

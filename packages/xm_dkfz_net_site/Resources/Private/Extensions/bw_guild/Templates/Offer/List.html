@@ -1,4 +1,4 @@
-<div>
+<div class="marketplace-show">
 
 	<f:form extensionName="BwGuild"
 			action="list"
@@ -28,51 +28,95 @@
 							   prependOptionLabel=""/>
 			</div>
 		</div>
+
+		<div class="hero-form__footer">
+			<button type="submit" class="button button--white">
+				<f:render partial="Icon" arguments="{icon:'search'}"/>
+				<f:translate extensionName="XmDkfzNetSite" key="usersearch.button"/>
+			</button>
+		</div>
 	</f:form>
 
 	<h4 class="h6 text-center">{offers->f:count()} Anzeigen</h4>
 
 	<div class="orders">
 		<f:for each="{offers}" as="offer">
-			<f:link.action pageUid="{settings.showOfferPid}"
-						   action="show"
-						   class="orders__item"
-						   pluginName="Offershow"
-						   arguments="{offer: offer.uid}">
+			<div class="orders__item">
 				<span class="square"></span>
 				<div class="content">
-					<div class="m-b-05">
-						<f:format.date format="%d. %B %Y">{offer.crdate}</f:format.date>
+					<f:link.action pageUid="{settings.showOfferPid}"
+								   action="show"
+								   pluginName="Offershow"
+								   arguments="{offer: offer.uid}">
+						<div class="m-b-05">
+							<f:format.date format="%d. %B %Y">{offer.crdate}</f:format.date>
+						</div>
+						<h5>{offer.title}</h5>
+						<p class="text-small">
+							<f:if condition="{offer.categories.0}">
+								{offer.categories.0.title}
+							</f:if>
+						</p>
+					</f:link.action>
+					<div class="actions m-t-1">
+						<div>
+							<span>Wartet auf Freigabe</span>
+						</div>
+						<div class="actions__buttons">
+							<button class="button button--icon-only button--transparent"
+									href="#"
+									data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: offer.uid})}">
+								<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+							</button>
+							<button class="button button--icon-only button--transparent"
+									href="#"
+									data-offer-edit-link="{f:uri.action(action: 'offerDelete', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: offer.uid})}">
+								<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+							</button>
+						</div>
 					</div>
-					<h5>{offer.title}</h5>
-					<p class="text-small">
-						<f:if condition="{offer.categories.0}">
-							{offer.categories.0.title}
-						</f:if>
-					</p>
 				</div>
-			</f:link.action>
+			</div>
 		</f:for>
 	</div>
 </div>
-<div>
+<div class="marketplace-show">
 	<h4 class="h6 text-center">Meine Anzeigen</h4>
 
 	<button type="button"
 			class="button button--white"
-			data-offer-create-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
-			<f:render partial="Icon" arguments="{icon: 'bookmark-add'}"/>
-			<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark"/>
+			data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
+		<f:render partial="Icon" arguments="{icon: 'plus', size: 'sm'}"/>
+		<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:marketplace.button.new"/>
 	</button>
 
 	<div class="orders" id="my-marketplace">
-		<a href="#" class="orders__item d-none" id="my-marketplace-dummy">
+		<div class="orders__item d-none" id="my-marketplace-dummy">
 			<span class="square"></span>
 			<div class="content">
-				<div class="m-b-05 orders__date">###DATE###</div>
-				<h5>###TEXT###</h5>
-				<p class="text-small">###CATEGORY###</p>
+				<a class="orders__link" href="#" title="###TITLE###">
+					<div class="m-b-05 orders__date">###DATE###</div>
+					<h5>###TEXT###</h5>
+					<p class="text-small">###CATEGORY###</p>
+				</a>
+				<div class="actions m-t-1">
+					<div>
+						<span>Wartet auf Freigabe</span>
+					</div>
+					<div class="actions__buttons">
+						<button class="button button--icon-only button--transparent"
+								href="#"
+								data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: '_uid_'})}">
+							<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+						</button>
+						<button class="button button--icon-only button--transparent"
+								href="#"
+								data-offer-delete-link="{f:uri.action(action: 'offerDelete', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: '_uid_'})}">
+							<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+						</button>
+					</div>
+				</div>
 			</div>
-		</a>
+		</div>
 	</div>
 </div>

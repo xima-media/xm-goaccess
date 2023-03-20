@@ -1,4 +1,7 @@
-<h3>Neue Anzeige</h3>
+<h3>
+	<f:translate extensionName="XmDkfzNetSite"
+				 key="{f:if(condition:offer.uid, then: 'marketplace.headline.edit', else: 'marketplace.headline.new')}"/>
+</h3>
 
 <f:flashMessages/>
 
@@ -13,152 +16,75 @@
 			enctype="multipart/form-data"
 			pageType="1657523819">
 
-		<fieldset>
-			<div class="form-group form-group--inline">
-				<label for="memberSince">
-					<span class="icon">
-						<f:render partial="Icon" arguments="{icon: 'calendar'}"/>
-					</span>
-					<f:translate extensionName="XmDkfzNetSite" key="user.member_since"/>
-				</label>
-				<div class="form-element">
-					<f:form.textfield id="memberSince"
-									  property="memberSince"
-									  value="{user.memberSince->f:format.date(format:'Y-m-d')}"
-									  type="date"/>
-				</div>
-			</div>
-		</fieldset>
+		<f:form.hidden property="feUser"/>
 
 		<fieldset>
-			<div class="form-group form-group--inline">
-				<label for="representative">
-					<span class="icon">
-						<f:render partial="Icon" arguments="{icon: 'user-plus'}"/>
-					</span>
-					<f:translate extensionName="XmDkfzNetSite" key="user.representative"/>
-				</label>
-				<div class="form-element">
-					<f:form.hidden id="representativeHiddenInput" property="representative"/>
-					<input data-autocomplete="{representatives->f:format.json()}"
-						   type="text"
-						   class="autocomplete"
-						   placeholder=" "
-						   id="representative"
-						   data-show-oninput="#representative2Fieldset"
-						   value="{user.representative.displayName}"/>
-					<a href="#" data-clear-inputs="#representative, #representativeHiddenInput" data-hide-onclear="#representative2Fieldset">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
-					</a>
-				</div>
-			</div>
-		</fieldset>
-
-		<fieldset class="{f:if(condition: '{user.representative} || {user.representative2}', else: 'd-none')}" id="representative2Fieldset">
-			<div class="form-group form-group--inline">
-				<label for="representative2">
-					<span class="icon">
-						<f:render partial="Icon" arguments="{icon: 'user-plus'}"/>
-					</span>
-					<f:translate extensionName="XmDkfzNetSite" key="user.representative2"/>
-				</label>
-				<div class="form-element">
-					<f:form.hidden id="representative2HiddenInput" property="representative2"/>
-					<input data-autocomplete="{representatives->f:format.json()}"
-						   type="text"
-						   class="autocomplete"
-						   placeholder=" "
-						   id="representative2"
-						   value="{user.representative2.displayName}"/>
-					<a href="#" data-clear-inputs="#representative2, #representative2HiddenInput">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
-					</a>
-				</div>
-			</div>
-		</fieldset>
-
-		<fieldset>
-			<div class="form-group form-group--inline">
-				<label for="responsibilities">
-					<span class="icon">
-						<f:render partial="Icon" arguments="{icon: 'clipboard'}"/>
-					</span>
-					<f:translate extensionName="XmDkfzNetSite" key="user.responsibilities"/>
-				</label>
-				<div class="form-element">
-					<f:form.textarea id="responsibilities" property="responsibilities"/>
-				</div>
-			</div>
-		</fieldset>
-
-		<fieldset>
-			<div class="form-group form-group--inline">
-				<label class="h5" for="user-committee">
-					<f:translate extensionName="XmDkfzNetSite" key="user.committee"/>
-				</label>
-				<div class="form-element hide-siblings {f:if(condition: user.committee, then: 'active')}">
-					<label for="user-committee">
-						<f:translate extensionName="XmDkfzNetSite" key="user.committee.memberIn"/>
-					</label>
-					<f:form.select id="user-committee" property="committee" options="{committees}">
-						<f:form.select.option value=""></f:form.select.option>
-					</f:form.select>
-				</div>
-
-				<div class="form-element">
-					<label for="user-committee-responsibilities">
-						<f:translate extensionName="XmDkfzNetSite" key="user.committee_responsibilities"/>
-					</label>
-					<f:form.textarea id="user-committee-responsibilities" property="committeeResponsibilities"/>
-				</div>
-
-				<div class="form-element">
-					<label for="user-committee-representative">
-						<f:translate extensionName="XmDkfzNetSite" key="user.committee_representative"/>
-					</label>
-					<f:form.hidden id="committeeRepresentativeHiddenInput" property="committeeRepresentative"/>
-					<input data-autocomplete="{representatives->f:format.json()}"
-						   type="text"
-						   class="autocomplete"
-						   placeholder=" "
-						   id="user-committee-representative"
-						   data-show-oninput="#committeeRepresentative2FormElement"
-						   value="{user.committeeRepresentative.displayName}"/>
-					<a href="#" data-clear-inputs="#user-committee-representative, #committeeRepresentativeHiddenInput" data-hide-onclear="#committeeRepresentative2FormElement">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
-					</a>
-				</div>
-
-				<div class="form-element {f:if(condition: '{user.committeeRepresentative2} || {user.committeeRepresentative}', else: 'd-none')}" id="committeeRepresentative2FormElement">
-					<label for="user-committee-representative2">
-						<f:translate extensionName="XmDkfzNetSite" key="user.committee_representative2"/>
-					</label>
-					<f:form.hidden id="committeeRepresentative2HiddenInput" property="committeeRepresentative2"/>
-					<input data-autocomplete="{representatives->f:format.json()}"
-						   type="text"
-						   class="autocomplete"
-						   placeholder=" "
-						   id="user-committee-representative2"
-						   value="{user.committeeRepresentative2.displayName}"/>
-					<a href="#" data-clear-inputs="#user-committee-representative2, #committeeRepresentative2HiddenInput">
-						<f:render partial="Icon" arguments="{icon: 'close', size: 'sm'}"/>
-					</a>
-				</div>
-			</div>
-		</fieldset>
-
-		<fieldset>
-			<label class="h5" for="about">
-				<f:translate extensionName="XmDkfzNetSite" key="user.about"/>
+			<label for="recordType">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.type"/>
 			</label>
-			<div class="form-group">
-				<div class="form-element">
-					<f:form.textarea id="about"
-									 property="about"
-									 placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'user.about.description')}">
+			<div class="form-element">
+				<f:form.select id="recordType" property="recordType">
+					<f:form.select.option value="">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.placeholder"/>
+					</f:form.select.option>
+					<f:form.select.option value="4">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.4"/>
+					</f:form.select.option>
+					<f:form.select.option value="5">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.5"/>
+					</f:form.select.option>
+					<f:form.select.option value="6">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.6"/>
+					</f:form.select.option>
+				</f:form.select>
+			</div>
+		</fieldset>
 
-					</f:form.textarea>
-				</div>
+		<fieldset>
+			<label for="title">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.title"/>
+			</label>
+			<div class="form-element">
+				<f:form.textfield id="title"
+								  property="title"
+								  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.title.placeholder')}"/>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="category">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.category"/>
+			</label>
+			<div class="form-element">
+				<f:form.select id="category"
+							   property="categories.0"
+							   options="{categories}"
+							   optionValueField="uid"
+							   optionLabelField="title"
+							   prependOptionValue="0"
+							   prependOptionLabel=""
+				/>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="description">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.description"/>
+			</label>
+			<div class="form-element">
+				<f:form.textarea id="description" property="description"/>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="price">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.price"/>
+			</label>
+			<div class="form-element form-element--price">
+				<f:form.textfield id="price"
+								  property="price"
+								  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.price.placeholder')}"/>
+				<p><strong>&#8364;</strong></p>
 			</div>
 		</fieldset>
 
