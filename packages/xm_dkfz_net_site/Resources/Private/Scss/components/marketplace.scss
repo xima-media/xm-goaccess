@@ -64,6 +64,14 @@
             }
         }
 
+        &--loading {
+            pointer-events: none;
+
+            a > *, .actions__buttons {
+                opacity: 0.5;
+            }
+        }
+
         a:hover {
             text-decoration: none;
 

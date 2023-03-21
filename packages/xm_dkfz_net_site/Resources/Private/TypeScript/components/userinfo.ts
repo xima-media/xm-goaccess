@@ -361,11 +361,20 @@ class Userinfo {
     e.preventDefault()
     const url = button.getAttribute('data-offer-delete-link')
 
+    // @TODO: ask for confirmation
+
+    button.closest('.orders__item')?.classList.add('orders__item--loading')
+
     app
       .apiRequest(url)
-      .then(() => {
+      .then(data => {
+        // update userinfo
+        localStorage.setItem('userinfo', JSON.stringify(data.userinfo))
+        this.userinfo = data.userinfo
+        // modify list
+        this.modifyMarketplace()
+        // message
         app.notice.open(NoticeStyle.success, 'Offer deleted', 1000)
-        button.closest('.orders__item').remove()
       })
       .catch(() => {
         app.notice.open(NoticeStyle.error, 'Could not delete item, please reload and try again.')
@@ -375,6 +384,12 @@ class Userinfo {
   protected onOfferFormLoaded(): void {
     const form = app.lightbox.content.querySelector('form')
     form.addEventListener('submit', this.onOfferFormSubmit.bind(this))
+    form.querySelector('button[data-abort]')?.addEventListener('click', this.onOfferFormAbort.bind(this))
+  }
+
+  protected onOfferFormAbort(e: PointerEvent): void {
+    e.preventDefault()
+    app.lightbox.close()
   }
 
   protected onOfferFormSubmit(e: SubmitEvent): void {
@@ -382,17 +397,27 @@ class Userinfo {
     const form = e.currentTarget as HTMLFormElement
     const url = form.getAttribute('action') ?? ''
 
+    const isRecordUpdate = form.querySelector('input[name="tx_bwguild_api[offer][__identity]"]')
+
     app.lightbox.startLoading()
     app
       .apiRequest(url, 'POST', form)
       .then(data => {
-        app.lightbox.displayContent(data.html)
+        // update userinfo
         localStorage.setItem('userinfo', JSON.stringify(data.userinfo))
         this.userinfo = data.userinfo
-        this.onOfferFormLoaded()
-        this.modifyMarketplace()
-        app.lightbox.stopLoading()
-        app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
+
+        if (isRecordUpdate) {
+          // refresh login form
+          app.lightbox.displayContent(data.html)
+          this.onOfferFormLoaded()
+          this.modifyMarketplace()
+          app.lightbox.stopLoading()
+          app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
+        } else {
+          // redirect to newly created offer
+          window.location.href = `${this.userinfo.offers.at(-1)?.url}#action-offer-created`
+        }
       })
       .catch(() => app.handleRequestError.bind(this))
   }

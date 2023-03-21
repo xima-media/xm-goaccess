@@ -71,6 +71,11 @@ class Notice {
       this.open(NoticeStyle.success, 'Logout erfolgreich', 2000)
       history.replaceState(null, '', ' ')
     }
+
+    if (action === 'offer-created') {
+      this.open(NoticeStyle.success, 'Erfolgreich erstellt', 2000)
+      history.replaceState(null, '', ' ')
+    }
   }
 
   public close(): void {
