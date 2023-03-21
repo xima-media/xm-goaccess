@@ -19,11 +19,18 @@
 
 .image-editor {
     display: none;
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
 }
 
 .lightbox__dialog {
     .image-editor {
-        display: block;
+        display: grid;
+        gap: 1rem;
     }
 }
 
