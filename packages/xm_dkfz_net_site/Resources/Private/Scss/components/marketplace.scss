@@ -105,10 +105,13 @@
         }
 
         .actions {
-            display: grid;
             grid-template-columns: auto min-content;
             align-items: center;
             align-self: flex-end;
+
+            &:not(.show-for-self) {
+                display: grid;
+            }
 
             span {
                 background: rgba(#000, 0.1);

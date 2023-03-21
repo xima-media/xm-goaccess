@@ -1,6 +1,6 @@
 import app from './basic'
-import {LightboxStyle} from './lightbox'
-import {NoticeStyle} from "./notice";
+import { LightboxStyle } from './lightbox'
+import { NoticeStyle } from './notice'
 
 export interface UserData {
   uid: number
@@ -17,7 +17,12 @@ export interface UserOffer {
   title: string
 }
 
-interface UserOffer {
+export interface Category {
+  uid: number
+  title: string
+}
+
+export interface UserOffer {
   uid: number
   url: string
   title: string
@@ -25,7 +30,7 @@ interface UserOffer {
   categories: Category[]
 }
 
-interface UserBookmarks {
+export interface UserBookmarks {
   fe_users: FeUserBookmark[]
   pages: PageBookmark[]
 }
@@ -62,9 +67,11 @@ class Userinfo {
       return
     }
 
-    this.loadUserinfo().then(() => {
-      document.dispatchEvent(new CustomEvent('userinfo-update'))
-    })
+    this.loadUserinfo()
+      .then(() => document.dispatchEvent(new CustomEvent('userinfo-update')))
+      .catch(() => {
+        app.notice.open(NoticeStyle.warning, 'Could not load user data', 2000)
+      })
 
     this.bindEvents()
   }
@@ -116,27 +123,27 @@ class Userinfo {
     }
   }
 
-  protected modifyShowForSelfClasses() {
+  protected modifyShowForSelfClasses(): void {
     if (!this.userinfo) {
       return
     }
 
-    document.querySelectorAll('.hide-for-self[data-user-uid="' + this.userinfo.user.uid + '"]').forEach(btn => {
+    document.querySelectorAll(`.hide-for-self[data-user-uid="${this.userinfo.user.uid}"]`).forEach(btn => {
       btn.classList.add('d-none')
     })
 
-    document.querySelectorAll('.show-for-self[data-user-uid="' + this.userinfo.user.uid + '"]').forEach(btn => {
+    document.querySelectorAll(`.show-for-self[data-user-uid="${this.userinfo.user.uid}"]`).forEach(btn => {
       btn.classList.remove('show-for-self')
     })
   }
 
-  protected modifyHtmlTag() {
+  protected modifyHtmlTag(): void {
     if (this.userinfo) {
       document.querySelector('html')?.classList.add('loggedIn')
     }
   }
 
-  protected onBookmarkLinkClick(e: Event) {
+  protected onBookmarkLinkClick(e: Event): void {
     e.preventDefault()
 
     if (!this.userinfo) {
@@ -147,12 +154,17 @@ class Userinfo {
     const button = e.currentTarget as Element
     const url = button.getAttribute('data-bookmark-url') ?? ''
     const method = button.classList.contains('js--checked') ? 'DELETE' : 'POST'
-    app.apiRequest(url, method).then(userinfo => {
-      this.userinfo = userinfo
-      localStorage.setItem('userinfo', JSON.stringify(userinfo))
-      button.classList.toggle('fx--hover')
-      button.classList.toggle('js--checked')
-    })
+    app
+      .apiRequest(url, method)
+      .then(userinfo => {
+        this.userinfo = userinfo
+        localStorage.setItem('userinfo', JSON.stringify(userinfo))
+        button.classList.toggle('fx--hover')
+        button.classList.toggle('js--checked')
+      })
+      .catch(() => {
+        app.notice.open(NoticeStyle.error, 'Error saving bookmark', 2000)
+      })
 
     if (method === 'POST') {
       const topbarButton = document.querySelector<HTMLButtonElement>('.navigation__item--bookmark')
@@ -161,7 +173,7 @@ class Userinfo {
     }
   }
 
-  protected onBookmarkSidebarOpenClick() {
+  protected onBookmarkSidebarOpenClick(): void {
     if (!this.userinfo) {
       app.showLogin()
       return
@@ -170,7 +182,7 @@ class Userinfo {
     this.modifyBookmarkSidebar()
   }
 
-  protected modifyBookmarkSidebar() {
+  protected modifyBookmarkSidebar(): void {
     if (!this.userinfo) {
       return
     }
@@ -183,12 +195,12 @@ class Userinfo {
     app.lightbox.open(LightboxStyle.sidebar)
   }
 
-  protected onBookmarkSidebarLinkClick(e: Event) {
+  protected onBookmarkSidebarLinkClick(e: Event): void {
     e.preventDefault()
     const link = e.currentTarget as HTMLLinkElement
     const url = link.getAttribute('data-bookmark-url') ?? ''
     app.lightbox.startLoading()
-    app.apiRequest(url, 'DELETE').then(userinfo => {
+    void app.apiRequest(url, 'DELETE').then(userinfo => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
       this.modifyBookmarkLinks()
@@ -200,7 +212,7 @@ class Userinfo {
     })
   }
 
-  protected modifyUserNav() {
+  protected modifyUserNav(): void {
     const userLinkElement = document.querySelector('[data-user-profile-link]')
     if (!userLinkElement || !this.userinfo) {
       return
@@ -208,7 +220,7 @@ class Userinfo {
     userLinkElement.setAttribute('href', this.userinfo.user.url)
   }
 
-  protected modifyWelcomeMessage() {
+  protected modifyWelcomeMessage(): void {
     const welcomeMessageBox = document.querySelector('.employee-welcome')
     const usernameElement = document.querySelector('.employee-welcome span[data-username]')
     if (!welcomeMessageBox || !usernameElement || !this.userinfo) {
@@ -229,27 +241,31 @@ class Userinfo {
 
     this.userinfo.offers.forEach(order => {
       const orderBox = orderDummy.cloneNode(true) as HTMLLinkElement
-      orderBox.querySelector('.orders__link').setAttribute('href', order.url)
-      orderBox.querySelector('.orders__link').setAttribute('title', order.title)
+      orderBox.querySelector('.orders__link')?.setAttribute('href', order.url)
+      orderBox.querySelector('.orders__link')?.setAttribute('title', order.title)
+      // @ts-expect-error
       orderBox.querySelector('h5').innerHTML = order.title
+      // @ts-expect-error
       orderBox.querySelector('.orders__date').innerHTML = new Date(order.crdate * 1000).toDateString()
+      // @ts-expect-error
       orderBox.querySelector('p').innerHTML = order.categories[0]?.title ?? ''
-      const deleteUrl = orderBox.querySelector('button[data-offer-delete-link]').getAttribute('data-offer-delete-link')
-      const editUrl = orderBox.querySelector('button[data-offer-edit-link]').getAttribute('data-offer-edit-link')
-      orderBox
-        .querySelector('button[data-offer-delete-link]')
-        .setAttribute('data-offer-delete-link', deleteUrl.replace('_uid_', order.uid.toString()))
-      orderBox
-        .querySelector('button[data-offer-edit-link]')
-        .setAttribute('data-offer-edit-link', editUrl.replace('_uid_', order.uid.toString()))
+      // delete button
+      const deleteUrl = orderBox.querySelector('button[data-offer-delete-link]')?.getAttribute('data-offer-delete-link') ?? ''
+      const deleteLink = orderBox.querySelector('button[data-offer-delete-link]')
+      deleteLink?.setAttribute('data-offer-delete-link', deleteUrl.replace('_uid_', order.uid.toString()))
+      deleteLink?.addEventListener('click', this.onDeleteOfferClick.bind(this, deleteLink))
+      // edit button
+      const editUrl = orderBox.querySelector('button[data-offer-edit-link]')?.getAttribute('data-offer-edit-link') ?? ''
+      const editLink = orderBox.querySelector('button[data-offer-edit-link]')
+      editLink?.setAttribute('data-offer-edit-link', editUrl.replace('_uid_', order.uid.toString()))
+      editLink?.addEventListener('click', this.onEditOfferClick.bind(this, editLink))
+      // show & append
       orderBox.classList.remove('d-none')
       marketPlace.append(orderBox)
     })
-
-    this.bindEvents()
   }
 
-  protected modifyBookmarkLinks() {
+  protected modifyBookmarkLinks(): void {
     if (!this.userinfo) {
       return
     }
@@ -282,7 +298,7 @@ class Userinfo {
     figure.closest('button')?.classList.add('user-image-loaded')
   }
 
-  protected modifyFeedbackForm() {
+  protected modifyFeedbackForm(): void {
     const nameField = document.getElementById('generalfeedbackform-name') as HTMLInputElement
     const emailField = document.getElementById('generalfeedbackform-email') as HTMLInputElement
 
@@ -296,7 +312,7 @@ class Userinfo {
     }
   }
 
-  protected async loadUserinfo() {
+  protected async loadUserinfo(): Promise<void> {
     const loadedFromStorage = this.loadUserinfoFromStorage()
     if (!loadedFromStorage) {
       await this.loadUserinfoFromApi()
@@ -325,7 +341,7 @@ class Userinfo {
     return true
   }
 
-  protected async loadUserinfoFromApi() {
+  protected async loadUserinfoFromApi(): Promise<void> {
     const url = document.querySelector('#userinfoUri')?.getAttribute('data-user-info') ?? ''
 
     if (!url) {
@@ -340,7 +356,7 @@ class Userinfo {
 
   protected onEditOfferClick(button: HTMLButtonElement, e: Event): void {
     e.preventDefault()
-    const url = button.getAttribute('data-offer-edit-link')
+    const url = button.getAttribute('data-offer-edit-link') ?? ''
 
     app.lightbox.startLoading()
     app.lightbox.open()
@@ -359,14 +375,14 @@ class Userinfo {
 
   protected onDeleteOfferClick(button: HTMLButtonElement, e: Event): void {
     e.preventDefault()
-    const url = button.getAttribute('data-offer-delete-link')
+    const url = button.getAttribute('data-offer-delete-link') ?? ''
 
     // @TODO: ask for confirmation
 
     button.closest('.orders__item')?.classList.add('orders__item--loading')
 
     app
-      .apiRequest(url)
+      .apiRequest(url, 'POST')
       .then(data => {
         // update userinfo
         localStorage.setItem('userinfo', JSON.stringify(data.userinfo))
@@ -383,8 +399,10 @@ class Userinfo {
 
   protected onOfferFormLoaded(): void {
     const form = app.lightbox.content.querySelector('form')
-    form.addEventListener('submit', this.onOfferFormSubmit.bind(this))
-    form.querySelector('button[data-abort]')?.addEventListener('click', this.onOfferFormAbort.bind(this))
+    if (form) {
+      form.addEventListener('submit', this.onOfferFormSubmit.bind(this))
+      form.querySelector('button[data-abort]')?.addEventListener('click', this.onOfferFormAbort.bind(this))
+    }
   }
 
   protected onOfferFormAbort(e: PointerEvent): void {
@@ -416,10 +434,13 @@ class Userinfo {
           app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
         } else {
           // redirect to newly created offer
-          window.location.href = `${this.userinfo.offers.at(-1)?.url}#action-offer-created`
+          window.location.href = `${this.userinfo.offers.at(-1)?.url ?? ''}#action-offer-created`
         }
       })
-      .catch(() => app.handleRequestError.bind(this))
+      .catch(() => {
+        app.notice.open(NoticeStyle.error, 'Error saving data, please try again', 2000)
+        app.lightbox.stopLoading()
+      })
   }
 }
 
