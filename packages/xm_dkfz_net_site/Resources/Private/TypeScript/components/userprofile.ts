@@ -64,10 +64,10 @@ class Userprofile {
 
   protected onLogoUploadInputChange(logoUploadInput: any): void {
     const [file] = logoUploadInput.files
-    const markup = document.querySelector<HTMLElement>('.image-editor')
-    if (file && markup) {
-      const imageEditor = new ImageEditor()
-      imageEditor.show(markup, file)
+    const userImagePicture: HTMLPictureElement | null = app.lightbox.content.querySelector('.userimage picture')
+    if (file && userImagePicture) {
+      const imageEditor = new ImageEditor(userImagePicture)
+      imageEditor.show(file)
     }
   }
 

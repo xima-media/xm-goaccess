@@ -28,9 +28,29 @@ class ImageEditor {
     }
   }
   private imageCropper: Cropper
-  constructor() {}
+  private dummyEditor: HTMLElement
+  private readonly targetPictureElement: HTMLPictureElement
+  constructor(targetPictureElement: HTMLPictureElement) {
+    this.cacheDom()
 
-  public show(markup: HTMLElement, file: any): void {
+    this.targetPictureElement = targetPictureElement
+  }
+
+  protected cacheDom(): Boolean {
+    const dummyEditor = document.querySelector<HTMLElement>('.image-editor')
+
+    if (!dummyEditor) {
+      return false
+    }
+
+    this.dummyEditor = dummyEditor
+
+    return true
+  }
+
+  public show(file: any): void {
+    const markup = this.dummyEditor.cloneNode(true) as HTMLElement
+    markup.setAttribute('id', `imageEditor-${Date.now()}`)
     const image = markup.querySelector<HTMLImageElement>('#imageEditorImage')
 
     if (image) {
@@ -49,19 +69,13 @@ class ImageEditor {
       const cancelCropButton = markup.querySelector<HTMLButtonElement>('#cancelCrop')
 
       cropButton?.addEventListener('click', () => {
-        const croppedimage = this.imageCropper.getCroppedCanvas().toDataURL()
-
-        this.calculateRelativeDimensions(image)
-
         const previewImage = new Image()
-        previewImage.src = croppedimage
+        previewImage.src = this.imageCropper.getCroppedCanvas().toDataURL()
         previewImage.width = 150
         previewImage.height = 150
-        const profileImage = app.lightbox.content.querySelector<HTMLImageElement>('.userimage picture')
 
-        profileImage?.querySelector('svg')?.remove()
-        profileImage?.prepend(previewImage)
-
+        this.calculateRelativeDimensions(image)
+        this.replaceOriginalImage(previewImage)
         app.lightbox.hideDialog()
       })
 
@@ -82,6 +96,12 @@ class ImageEditor {
 
   protected calculateRelativeUnit(unit: number, dimension: number): number {
     return Math.abs(dimension / unit)
+  }
+
+  protected replaceOriginalImage(previewImage: HTMLImageElement): void {
+    this.targetPictureElement?.querySelector('svg')?.remove()
+    this.targetPictureElement?.querySelector('img')?.remove()
+    this.targetPictureElement?.prepend(previewImage)
   }
 }
 
