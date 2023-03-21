@@ -57,6 +57,8 @@ class ImageEditor {
 
   public show(file: any): void {
     const markup = this.dummyEditor.cloneNode(true) as HTMLElement
+    const form = this.targetPictureElement.closest('form')
+    const hiddenCropInput = form?.querySelector('#hiddenCropAreaInput') as HTMLInputElement
     markup.setAttribute('id', `imageEditor-${Date.now()}`)
     const image = markup.querySelector<HTMLImageElement>('#imageEditorImage')
 
@@ -81,7 +83,7 @@ class ImageEditor {
         previewImage.width = this.targetImageElementWidth
         previewImage.height = this.targetImageElementHeight
 
-        this.calculateRelativeDimensions(image)
+        hiddenCropInput.value = this.calculateRelativeDimensions(image)
         this.replaceOriginalImage(previewImage)
         app.lightbox.hideDialog()
       })
@@ -92,13 +94,13 @@ class ImageEditor {
     }
   }
 
-  protected calculateRelativeDimensions(image: HTMLImageElement): void {
+  protected calculateRelativeDimensions(image: HTMLImageElement): string {
     this.dataCropArea.default.cropArea.width = this.calculateRelativeUnit(image.height, this.imageCropper.getData().height)
     this.dataCropArea.default.cropArea.height = this.calculateRelativeUnit(image.width, this.imageCropper.getData().width)
     this.dataCropArea.default.cropArea.x = this.calculateRelativeUnit(image.width, this.imageCropper.getData().x)
     this.dataCropArea.default.cropArea.y = this.calculateRelativeUnit(image.height, this.imageCropper.getData().y)
 
-    console.log(this.dataCropArea)
+    return JSON.stringify(this.dataCropArea)
   }
 
   protected calculateRelativeUnit(unit: number, dimension: number): number {
