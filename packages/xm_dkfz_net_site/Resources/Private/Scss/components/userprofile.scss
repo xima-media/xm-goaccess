@@ -212,7 +212,7 @@ form.userprofile {
     }
 
     label {
-        &:not(.field__checkbox) {
+        &:not(.field__checkbox):not(.userimage__upload) {
             font-weight: bold;
         }
     }

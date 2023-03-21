@@ -33,6 +33,15 @@ html.open-lightbox {
     }
 }
 
+@keyframes opacityOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes slideIn {
     0% {
         transform: translate3d(500px, 0, 0);
@@ -56,6 +65,23 @@ html.open-lightbox {
     100% {
         transform: translate3d(0, 0, 0);
         opacity: 1
+    }
+}
+
+@keyframes moveOut {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+    30% {
+        transform: translate3d(0, -100vh, 0);
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, -100vh, 0);
+        opacity: 0
     }
 }
 
@@ -134,8 +160,25 @@ html.open-lightbox {
         }
     }
 
-    &__wrap {
+    &__wrap,
+    &__dialog {
         transition: all 0.3s ease;
+
+        &--hidden {
+            display: none;
+        }
+
+        &--show {
+            display: block;
+        }
+    }
+
+    &__dialog {
+        display: none;
+
+        &--show {
+            display: block;
+        }
     }
 
     &__close, &__wrap, &__loader {

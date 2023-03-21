@@ -17,6 +17,16 @@
     height: auto;
 }
 
+.image-editor {
+    display: none;
+}
+
+.lightbox__dialog {
+    .image-editor {
+        display: block;
+    }
+}
+
 .image-editor__image {
     img {
         display: block;
