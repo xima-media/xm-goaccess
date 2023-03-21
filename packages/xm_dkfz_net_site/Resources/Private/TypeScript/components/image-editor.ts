@@ -30,20 +30,27 @@ class ImageEditor {
   private imageCropper: Cropper
   private dummyEditor: HTMLElement
   private readonly targetPictureElement: HTMLPictureElement
+  private targetImageElementWidth: number
+  private targetImageElementHeight: number
   constructor(targetPictureElement: HTMLPictureElement) {
-    this.cacheDom()
-
     this.targetPictureElement = targetPictureElement
+
+    this.cacheDom()
   }
 
   protected cacheDom(): Boolean {
     const dummyEditor = document.querySelector<HTMLElement>('.image-editor')
+    const targetImageElement = this.targetPictureElement.querySelector<HTMLImageElement>('img')
+      ? this.targetPictureElement.querySelector<HTMLImageElement>('img')
+      : this.targetPictureElement.querySelector<HTMLImageElement>('svg')
 
-    if (!dummyEditor) {
+    if (!dummyEditor || !targetImageElement) {
       return false
     }
 
     this.dummyEditor = dummyEditor
+    this.targetImageElementWidth = targetImageElement.clientWidth
+    this.targetImageElementHeight = targetImageElement.clientHeight
 
     return true
   }
@@ -71,8 +78,8 @@ class ImageEditor {
       cropButton?.addEventListener('click', () => {
         const previewImage = new Image()
         previewImage.src = this.imageCropper.getCroppedCanvas().toDataURL()
-        previewImage.width = 150
-        previewImage.height = 150
+        previewImage.width = this.targetImageElementWidth
+        previewImage.height = this.targetImageElementHeight
 
         this.calculateRelativeDimensions(image)
         this.replaceOriginalImage(previewImage)
