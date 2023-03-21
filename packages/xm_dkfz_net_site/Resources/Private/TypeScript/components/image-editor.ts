@@ -46,6 +46,7 @@ class ImageEditor {
       })
 
       const cropButton = markup.querySelector<HTMLButtonElement>('#submitCrop')
+      const cancelCropButton = markup.querySelector<HTMLButtonElement>('#cancelCrop')
 
       cropButton?.addEventListener('click', () => {
         const croppedimage = this.imageCropper.getCroppedCanvas().toDataURL()
@@ -60,8 +61,11 @@ class ImageEditor {
 
         profileImage?.querySelector('svg')?.remove()
         profileImage?.prepend(previewImage)
-        console.log(app.lightbox.content)
 
+        app.lightbox.hideDialog()
+      })
+
+      cancelCropButton?.addEventListener('click', () => {
         app.lightbox.hideDialog()
       })
     }
