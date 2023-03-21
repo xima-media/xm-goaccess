@@ -23,7 +23,7 @@ class ImageEditor {
         width: 0,
         height: 0
       },
-      selectedRatio: 1,
+      selectedRatio: '4:3',
       focusArea: false
     }
   }
