@@ -16,6 +16,7 @@
 		<f:else>
 			<f:render section="Image" arguments="{logo: user.logo, width: width}"/>
 		</f:else>
+
 	</f:if>
 </f:if>
 
@@ -28,22 +29,6 @@
 		</picture>
 		<span />
 	</figure>
-</f:if>
-
-<f:if condition="{editable}">
-	<div class="image-editor">
-		<div class="image-editor__header">
-			<h3 class="Box-title">Profilbild bearbeiten</h3>
-		</div>
-
-		<div class="image-editor__image">
-			<img id="imageEditorImage" src="" alt="Profilbild">
-		</div>
-		<div class="image-editor__footer">
-			<button type="button" id="cancelCrop" class="button button--secondary">Abbrechen</button>
-			<button type="button" id="submitCrop" class="button button--primary">Übernehmen</button>
-		</div>
-	</div>
 </f:if>
 
 <f:section name="Image">

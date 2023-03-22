@@ -190,6 +190,20 @@
 	</div>
 </div>
 
+<div class="image-editor" id="dummyImageEditor">
+	<div class="image-editor__header">
+		<h3 class="Box-title">Profilbild bearbeiten</h3>
+	</div>
+
+	<div class="image-editor__image">
+		<img id="imageEditorImage" src="" alt="Profilbild">
+	</div>
+	<div class="image-editor__footer">
+		<button type="button" id="cancelCrop" class="button button--secondary">Abbrechen</button>
+		<button type="button" id="submitCrop" class="button button--primary">Übernehmen</button>
+	</div>
+</div>
+
 <f:render partial="Disruptor" arguments="{_all}" />
 
 <f:cObject typoscriptObjectPath="lib.generalFeedbackForm" />
