@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Xima\XmGoaccess\Widgets;
 
+use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\JavaScriptInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class ListWidget implements WidgetInterface
+class ListWidget implements WidgetInterface, JavaScriptInterface
 {
     /**
      * @var WidgetConfigurationInterface
@@ -74,5 +76,12 @@ class ListWidget implements WidgetInterface
     public function getOptions(): array
     {
         return $this->options;
+    }
+
+    public function getJavaScriptModuleInstructions(): array
+    {
+        return [
+            JavaScriptModuleInstruction::forRequireJS('TYPO3/CMS/XmGoaccess/DashboardList'),
+        ];
     }
 }

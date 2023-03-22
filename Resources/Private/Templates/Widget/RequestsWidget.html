@@ -1,19 +1,31 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Widget/Widget" />
+<f:layout name="Widget/Widget"/>
 <f:section name="main">
 
 	<f:if condition="{items}">
 		<table class="widget-table">
 			<tr>
-				<th><f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits"/></th>
-				<th><f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors"/></th>
-				<th><f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:path"/></th>
+				<th>
+					<f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits"/>
+				</th>
+				<th>
+					<f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors"/>
+				</th>
+				<th>
+					<f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:path"/>
+				</th>
+				<th></th>
 			</tr>
 			<f:for each="{items}" as="item">
 				<tr>
 					<td>{item.hits}</td>
 					<td>{item.visitors}</td>
 					<td>{item.path}</td>
+					<td>
+						<a href="#" class="btn btn-sm btn-link">
+							<core:icon identifier="actions-plus" size="small"/>
+						</a>
+					</td>
 				</tr>
 			</f:for>
 		</table>
