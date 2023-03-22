@@ -4,23 +4,44 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping',
         'label' => 'title',
-        'delete' => 'deleted',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-        ],
         'searchFields' => 'title,path',
         'type' => 'record_type',
         'iconfile' => 'EXT:xm_goaccess/Resources/Public/Icons/mapping.svg',
+        'rootLevel' => 1,
     ],
     'types' => [
         0 => [
-            'showitem' => 'hidden, path, record_type, page, title',
+            'showitem' => '--palette--;;pathSettings, record_type, page',
+        ],
+        1 => [
+            'showitem' => '--palette--;;pathSettings, record_type, title',
+        ],
+        2 => [
+            'showitem' => '--palette--;;pathSettings, record_type',
+        ],
+    ],
+    'palettes' => [
+        'pathSettings' => [
+            'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.palettes.path',
+            'showitem' => 'path,regex',
         ],
     ],
     'columns' => [
+        'regex' => [
+            'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.regex',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    [
+                        0 => '',
+                    ],
+                ],
+            ],
+        ],
         'record_type' => [
             'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.record_type',
             'config' => [
@@ -29,14 +50,8 @@ return [
                 'items' => [
                     ['Page', 0],
                     ['Action', 1],
+                    ['Ignore', 2],
                 ],
-            ],
-        ],
-        'hidden' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.hidden',
-            'config' => [
-                'type' => 'check',
             ],
         ],
         'title' => [
@@ -63,7 +78,7 @@ return [
                 'type' => 'group',
                 'allowed' => 'pages',
                 'size' => 1,
-                'minitems' => 0,
+                'minitems' => 1,
                 'maxitems' => 1,
                 'fieldControl' => [
                     'addRecord' => [

@@ -4,8 +4,8 @@ services:
     autoconfigure: true
     public: false
 
-  Xima\XmGoaccess\Widgets\:
-    resource: '../Classes/Widgets/*'
+  Xima\XmGoaccess\:
+    resource: '../Classes/*'
 
   Xima\XmGoaccess\Controller\BackendController:
     tags: [ 'backend.controller' ]

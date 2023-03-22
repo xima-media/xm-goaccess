@@ -6,6 +6,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
+use Xima\XmGoaccess\Domain\Repository\MappingRepository;
 
 abstract class AbstractGoaccessDataProvider
 {
@@ -15,12 +16,16 @@ abstract class AbstractGoaccessDataProvider
 
     protected LanguageService $languageService;
 
+    protected MappingRepository $mappingRepository;
+
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
-        LanguageServiceFactory $languageServiceFactory
+        LanguageServiceFactory $languageServiceFactory,
+        MappingRepository $mappingRepository
     ) {
         $this->extensionConfiguration = $extensionConfiguration;
         $this->languageService = $languageServiceFactory->createFromUserPreferences($GLOBALS['BE_USER']);
+        $this->mappingRepository = $mappingRepository;
     }
 
     public function readJsonData(): array
@@ -31,7 +36,8 @@ abstract class AbstractGoaccessDataProvider
             throw new \Exception('Goaccess json_path is not configured', 1662881054);
         }
 
-        $filePath = str_starts_with($extConf['json_path'], '/') ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
+        $filePath = str_starts_with($extConf['json_path'],
+            '/') ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
         if (!file_exists($filePath)) {
             throw new \Exception('File "' . $filePath . '" not found', 1662881054);
         }
