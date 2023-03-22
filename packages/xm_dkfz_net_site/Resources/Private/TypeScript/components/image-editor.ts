@@ -41,7 +41,7 @@ class ImageEditor {
   }
 
   protected cacheDom(): Boolean {
-    const dummyEditor = document.querySelector<HTMLElement>('.image-editor')
+    const dummyEditor = document.querySelector<HTMLElement>('#dummyImageEditor')
     const targetImageElement = this.targetPictureElement.querySelector<HTMLImageElement>('img')
       ? this.targetPictureElement.querySelector<HTMLImageElement>('img')
       : this.targetPictureElement.querySelector<HTMLImageElement>('svg')
