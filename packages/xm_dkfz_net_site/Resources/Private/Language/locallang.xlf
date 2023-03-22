@@ -301,6 +301,12 @@
 			<trans-unit id="button.next">
 				<source>Next</source>
 			</trans-unit>
+			<trans-unit id="button.apply">
+				<source>Apply</source>
+			</trans-unit>
+			<trans-unit id="button.cancel">
+				<source>Cancel</source>
+			</trans-unit>
 			<trans-unit id="container.2cols">
 				<source>2 Columns</source>
 			</trans-unit>
@@ -720,6 +726,9 @@
 			</trans-unit>
 			<trans-unit id="welcome.profile.link" space="preserve">
 				<source>Edit profile now</source>
+			</trans-unit>
+			<trans-unit id="image.editor.headline" space="preserve">
+				<source>Edit image</source>
 			</trans-unit>
 		</body>
 	</file>
