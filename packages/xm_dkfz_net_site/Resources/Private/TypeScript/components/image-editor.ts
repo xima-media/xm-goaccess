@@ -27,6 +27,8 @@ class ImageEditor {
       focusArea: false
     }
   }
+  private image: HTMLImageElement | null
+  private markup: HTMLElement
   private imageCropper: Cropper
   private dummyEditor: HTMLElement
   private readonly targetPictureElement: HTMLPictureElement
@@ -56,42 +58,53 @@ class ImageEditor {
   }
 
   public show(file: any): void {
-    const markup = this.dummyEditor.cloneNode(true) as HTMLElement
-    const form = this.targetPictureElement.closest('form')
-    const hiddenCropInput = form?.querySelector('#hiddenCropAreaInput') as HTMLInputElement
-    markup.setAttribute('id', `imageEditor-${Date.now()}`)
-    const image = markup.querySelector<HTMLImageElement>('#imageEditorImage')
+    this.markup = this.dummyEditor.cloneNode(true) as HTMLElement
+    this.markup.setAttribute('id', `imageEditor-${Date.now()}`)
+    this.image = this.markup.querySelector<HTMLImageElement>('#imageEditorImage')
 
-    if (image) {
-      image?.setAttribute('src', URL.createObjectURL(file))
-      app.lightbox.appendDialogElement(markup)
-      app.lightbox.showDialog()
-
-      this.imageCropper = new Cropper(image, {
+    if (this.image) {
+      this.image.setAttribute('src', URL.createObjectURL(file))
+      this.imageCropper = new Cropper(this.image, {
         aspectRatio: 1,
         zoomable: false,
         rotatable: false,
         scalable: false
       })
 
-      const cropButton = markup.querySelector<HTMLButtonElement>('#submitCrop')
-      const cancelCropButton = markup.querySelector<HTMLButtonElement>('#cancelCrop')
-
-      cropButton?.addEventListener('click', () => {
-        const previewImage = new Image()
-        previewImage.src = this.imageCropper.getCroppedCanvas().toDataURL()
-        previewImage.width = this.targetImageElementWidth
-        previewImage.height = this.targetImageElementHeight
-
-        hiddenCropInput.value = this.calculateRelativeDimensions(image)
-        this.replaceOriginalImage(previewImage)
-        app.lightbox.hideDialog()
-      })
-
-      cancelCropButton?.addEventListener('click', () => {
-        app.lightbox.hideDialog()
-      })
+      app.lightbox.appendDialogElement(this.markup)
+      app.lightbox.showDialog()
+      this.bindCropButtonClickEvent()
+      this.bindCancelCropButtonClickEvent()
     }
+  }
+
+  protected bindCancelCropButtonClickEvent(): void {
+    const cancelCropButton = this.markup.querySelector<HTMLButtonElement>('#cancelCrop')
+    cancelCropButton?.addEventListener('click', () => {
+      app.lightbox.hideDialog()
+    })
+  }
+
+  protected bindCropButtonClickEvent(): void {
+    const cropButton = this.markup.querySelector<HTMLButtonElement>('#submitCrop')
+    cropButton?.addEventListener('click', () => {
+      this.cropImage()
+    })
+  }
+
+  protected cropImage(): void {
+    const form = this.targetPictureElement.closest('form')
+    const hiddenCropInput = form?.querySelector('#hiddenCropAreaInput') as HTMLInputElement
+    const previewImage = new Image()
+    previewImage.src = this.imageCropper.getCroppedCanvas().toDataURL()
+    previewImage.width = this.targetImageElementWidth
+    previewImage.height = this.targetImageElementHeight
+
+    if (this.image) {
+      hiddenCropInput.value = this.calculateRelativeDimensions(this.image)
+    }
+    this.replaceOriginalImage(previewImage)
+    app.lightbox.hideDialog()
   }
 
   protected calculateRelativeDimensions(image: HTMLImageElement): string {
