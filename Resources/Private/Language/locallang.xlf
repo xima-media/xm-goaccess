@@ -54,6 +54,27 @@
 			<trans-unit id="dashboard.goaccess.description">
 				<source>A dashboard with all widgets for goaccess</source>
 			</trans-unit>
+			<trans-unit id="mapping">
+				<source>Mapping</source>
+			</trans-unit>
+			<trans-unit id="mapping.title">
+				<source>GoAccess Mapping</source>
+			</trans-unit>
+			<trans-unit id="mapping.record_type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="mapping.hidden">
+				<source>Hidden</source>
+			</trans-unit>
+			<trans-unit id="mapping.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="mapping.path">
+					<source>Path</source>
+			</trans-unit>
+			<trans-unit id="mapping.page">
+					<source>Page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
