@@ -20,26 +20,32 @@ class Lightbox {
   protected root: HTMLHtmlElement
 
   constructor() {
+    this.createLightboxInstance()
     this.cacheDom()
     this.bindCloseButtonEvent()
   }
 
   protected cacheDom() {
-    const content = document.querySelector('.lightbox__wrap')
-    const closeButton = document.querySelector('.lightbox__close')
+    const content = this.box.querySelector('.lightbox__wrap')
+    const closeButton = this.box.querySelector('.lightbox__close')
     const root = document.querySelector('html')
-    const box = document.querySelector('.lightbox')
 
-    if (!content || !closeButton || !root || !box) {
+    if (!content || !closeButton || !root) {
       return false
     }
 
-    this.box = box
     this.content = content
     this.closeButton = closeButton
     this.root = root
 
     return true
+  }
+
+  protected createLightboxInstance(): void {
+    const dummyLightbox = document.getElementById('dummyLightbox') as HTMLElement
+    this.box = dummyLightbox.cloneNode(true) as HTMLElement
+    this.box.id = `lightbox-${Date.now()}`
+    document.body.append(this.box)
   }
 
   protected bindCloseButtonEvent() {
