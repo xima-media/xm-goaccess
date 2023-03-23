@@ -49,7 +49,7 @@ html.open-lightbox {
     left: 0;
     z-index: 100;
     padding: var(--space-xl) var(--space-sm);
-    overflow-x: scroll;
+    overflow: hidden;
     align-items: flex-start;
     backdrop-filter: blur(5px);
 
@@ -101,12 +101,14 @@ html.open-lightbox {
     &__content {
         background: #FFF;
         max-width: calc(100vw - var(--content-padding));
+        max-height: calc(100vh - var(--space-xxl));
+        min-height: 15vh;
         width: 100%;
         margin: 0 auto;
         padding: var(--content-padding);
         display: grid;
         opacity: 0;
-        min-height: 15vh;
+        overflow: auto;
 
         @include media-breakpoint-up(md) {
             max-width: 800px;
@@ -123,8 +125,16 @@ html.open-lightbox {
     }
 
     &--open {
-        display: grid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         animation: opacityIn 0.4s ease;
+
+        &.lightbox--sidebar {
+            display: grid;
+            justify-content: flex-end;
+            align-items: unset;
+        }
     }
 
     &--default .lightbox__content {
@@ -138,6 +148,9 @@ html.open-lightbox {
     }
 
     &--sidebar .lightbox__content {
+        display: grid;
+        max-height: unset;
+
         animation: slideIn 0.4s ease;
         animation-fill-mode: forwards;
     }
