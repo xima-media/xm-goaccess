@@ -7,7 +7,7 @@ define(['jquery', 'TYPO3/CMS/Core/Event/RegularEvent'], function ($, RegularEven
 				e.preventDefault();
 
 				canvas.querySelectorAll('a').forEach(link => {
-					console.log(link)
+
 				})
 
 			}).delegateTo(document, '.dashboard-item[data-widget-key="goaccessRequests"]')

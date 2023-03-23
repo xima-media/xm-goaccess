@@ -66,20 +66,18 @@ class DataProviderService
                 'hits' => $pathData->hits->count,
                 'visitors' => $pathData->visitors->count,
                 'path' => $path,
-                'mappings' => $this->resolvePathMapping($path),
+                'mapping' => $this->resolvePathMapping($path),
             ];
 
-            if ($demand && count($item['mappings'])) {
-                foreach ($item['mappings'] as $mapping) {
-                    if (!$demand->showPages && $mapping->getRecordType() === 0) {
-                        continue 2;
-                    }
-                    if (!$demand->showActions && $mapping->getRecordType() === 1) {
-                        continue 2;
-                    }
-                    if (!$demand->showIgnored && $mapping->getRecordType() === 2) {
-                        continue 2;
-                    }
+            if ($demand && $item['mapping']) {
+                if (!$demand->showPages && $item['mapping']->getRecordType() === 0) {
+                    continue;
+                }
+                if (!$demand->showActions && $item['mapping']->getRecordType() === 1) {
+                    continue;
+                }
+                if (!$demand->showIgnored && $item['mapping']->getRecordType() === 2) {
+                    continue;
                 }
             }
 
@@ -89,28 +87,25 @@ class DataProviderService
         return $items;
     }
 
-    private function resolvePathMapping(string $path): array
+    private function resolvePathMapping(string $path): ?Mapping
     {
-        $pathMappings = [];
-
         foreach ($this->mappings as $mapping) {
 
             if ($mapping->isRegex()) {
                 preg_match('/' . $mapping->getPath() . '/', $path, $matches);
                 if ($matches) {
                     $this->enrichMapping($mapping);
-                    $pathMappings[] = $mapping;
-                    continue;
+                    return $mapping;
                 }
             }
 
             if (!$mapping->isRegex() && $path === $mapping->getPath()) {
                 $this->enrichMapping($mapping);
-                $pathMappings[] = $mapping;
+                return $mapping;
             }
         }
 
-        return $pathMappings;
+        return null;
     }
 
     private function enrichMapping(Mapping &$mapping): void
