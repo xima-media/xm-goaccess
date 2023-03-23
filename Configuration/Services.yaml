@@ -101,3 +101,9 @@ services:
       - name: 'console.command'
         command: 'goaccess:createMappings'
         schedulable: true
+
+  Xima\XmGoaccess\Command\UpdatePageStatsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'goaccess:updatePageStats'
+        schedulable: true

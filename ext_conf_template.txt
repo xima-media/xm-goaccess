@@ -2,3 +2,5 @@
 html_path =
 # cat=basic/enable; type=string; label=Relative path of the generated JSON file
 json_path =
+# cat=basic/enable; type=string; label=Relative path of the daily log directory
+daily_log_path =

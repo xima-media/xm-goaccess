@@ -81,6 +81,24 @@
 			<trans-unit id="mapping.regex">
 					<source>Is Regex</source>
 			</trans-unit>
+			<trans-unit id="request">
+					<source>Request</source>
+			</trans-unit>
+			<trans-unit id="request">
+					<source>Request</source>
+			</trans-unit>
+			<trans-unit id="request.date">
+					<source>Date</source>
+			</trans-unit>
+			<trans-unit id="request.page">
+					<source>Page</source>
+			</trans-unit>
+			<trans-unit id="request.hits">
+					<source>Hits</source>
+			</trans-unit>
+			<trans-unit id="request.visitors">
+					<source>Visitors</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

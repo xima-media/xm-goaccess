@@ -2,6 +2,7 @@
 
 namespace Xima\XmGoaccess\Service;
 
+use DateTime;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
@@ -13,6 +14,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use Xima\XmGoaccess\Domain\Model\Dto\Demand;
 use Xima\XmGoaccess\Domain\Model\Mapping;
 use Xima\XmGoaccess\Domain\Repository\MappingRepository;
+use Xima\XmGoaccess\Domain\Repository\RequestRepository;
 
 class DataProviderService
 {
@@ -24,6 +26,7 @@ class DataProviderService
     public function __construct(
         protected ExtensionConfiguration $extensionConfiguration,
         protected MappingRepository $mappingRepository,
+        protected RequestRepository $requestRepository,
         protected IconFactory $iconFactory
     ) {
     }
@@ -49,6 +52,49 @@ class DataProviderService
         $content = file_get_contents($filePath);
 
         return $content ? (array)json_decode($content) : [];
+    }
+
+    public function getDailyJsonLogs(): array
+    {
+        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
+
+        if (!isset($extConf['daily_log_path']) || !$extConf['daily_log_path']) {
+            throw new \Exception('Goaccess daily_log_path is not configured', 1679592902);
+        }
+
+        $filePath = str_starts_with($extConf['daily_log_path'],
+            '/') ? $extConf['daily_log_path'] : Environment::getPublicPath() . '/' . $extConf['daily_log_path'];
+        if (!file_exists($filePath)) {
+            throw new \Exception('Folder "' . $filePath . '" not found', 1679592906);
+        }
+
+        $jsonLogs = [];
+        $logFiles = glob($filePath . '*.json');
+        $dates = $this->requestRepository->getAllDates();
+
+        foreach ($logFiles ?: [] as $file) {
+            // decode content
+            $fileContent = file_get_contents($file) ?: '';
+            $jsonContent = (array)json_decode($fileContent);
+
+            // compare with saved dates
+            $timestamp = self::getTimestampFromLogDate($jsonContent['general']->start_date);
+            if (in_array($timestamp, $dates)) {
+                continue;
+            }
+
+            $jsonLogs[] = $jsonContent;
+        }
+
+        return $jsonLogs;
+    }
+
+    public static function getTimestampFromLogDate(string $dateString): int
+    {
+        // OMG, WHAT A DIRTY FIX! Tell goaccess to use english dates..
+        $date = str_replace('ä', 'a', $dateString);
+        $dateObj = DateTime::createFromFormat('d/M/Y', $date)->setTime(0, 0);
+        return $dateObj->getTimestamp();
     }
 
     public function getRequestList(?Demand $demand = null)
