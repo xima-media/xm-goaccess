@@ -135,6 +135,10 @@ html.open-lightbox {
             justify-content: flex-end;
             align-items: unset;
         }
+
+        &.lightbox--warning {
+            align-items: flex-start;
+        }
     }
 
     &--default .lightbox__content {
@@ -145,6 +149,18 @@ html.open-lightbox {
     &--warning .lightbox__content {
         animation: moveIn 0.4s ease;
         animation-fill-mode: forwards;
+
+        .infobox {
+            padding-top: var(--space-lg);
+            padding-bottom: var(--space-xl);
+
+            p {
+                @include text-copy-standard;
+                strong {
+                    letter-spacing: .3px;
+                }
+            }
+        }
     }
 
     &--sidebar .lightbox__content {
@@ -169,6 +185,7 @@ html.open-lightbox {
         border: none;
         border-radius: 50%;
         transition: all 0.2s ease;
+        z-index: 1;
 
         &:hover {
             color: var(--color-white);
