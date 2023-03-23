@@ -10,11 +10,14 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
+use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Dashboard\WidgetApi;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use Xima\XmGoaccess\Domain\Model\Dto\Demand;
 use Xima\XmGoaccess\Domain\Model\Mapping;
 use Xima\XmGoaccess\Domain\Repository\MappingRepository;
 use Xima\XmGoaccess\Domain\Repository\RequestRepository;
+use Xima\XmGoaccess\Widgets\Provider\AbstractGoaccessDataProvider;
 
 class DataProviderService
 {
@@ -27,7 +30,8 @@ class DataProviderService
         protected ExtensionConfiguration $extensionConfiguration,
         protected MappingRepository $mappingRepository,
         protected RequestRepository $requestRepository,
-        protected IconFactory $iconFactory
+        protected IconFactory $iconFactory,
+        protected LanguageService $languageService
     ) {
     }
 
@@ -167,6 +171,37 @@ class DataProviderService
             $pagePath = $pageRecord['title'] . ' [' . $pageRecord['uid'] . ']';
             $mapping->setPagePath($pagePath);
         }
+    }
+
+    public function getPageChartData(int $pid)
+    {
+        $chartData = $this->requestRepository->getChartDataForPage($pid);
+
+        return [
+            'labels' => array_map(function ($timestamp) {
+                return (new DateTime())->setTimestamp($timestamp)->format('d.m.');
+            }, array_column($chartData, 'date')),
+            'datasets' => [
+                [
+                    'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors'),
+                    'borderColor' => WidgetApi::getDefaultChartColors()[0],
+                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(WidgetApi::getDefaultChartColors()[0],
+                        0.1),
+                    'parsing' => ['yAxisKey' => 'A'],
+                    'borderWidth' => 1,
+                    'data' => array_column($chartData, 'visitors'),
+                ],
+                [
+                    'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits'),
+                    'borderColor' => WidgetApi::getDefaultChartColors()[1],
+                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(WidgetApi::getDefaultChartColors()[1],
+                        0.1),
+                    'yAxisID' => 'right',
+                    'borderWidth' => 1,
+                    'data' => array_column($chartData, 'hits'),
+                ],
+            ],
+        ];
     }
 
 }

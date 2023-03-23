@@ -3,11 +3,13 @@
 namespace Xima\XmGoaccess\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Page\PageRenderer;
@@ -85,5 +87,18 @@ class BackendController extends ActionController
             ->setIcon($this->iconFactory->getIcon('apps-pagetree-page-shortcut-external', Icon::SIZE_SMALL));
         $buttonBar->addButton($beUser, ButtonBar::BUTTON_POSITION_LEFT, 1);
         $buttonBar->addButton($feUser, ButtonBar::BUTTON_POSITION_LEFT, 1);
+    }
+
+    public function pageChartAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $pid = (int)$request->getQueryParams()['pid'] ?? 0;
+
+        if (!$pid) {
+            return new JsonResponse([], 404);
+        }
+
+        $chartData = $this->dataProvider->getPageChartData($pid);
+
+        return new JsonResponse($chartData);
     }
 }
