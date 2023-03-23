@@ -5,11 +5,12 @@ export enum LightboxStyle {
 }
 
 class Lightbox {
-  protected box: Element
+  public box: Element
 
   public content: Element
 
   public isCloseable = true
+  public preserveContent = false
 
   protected closeButton: Element
 
@@ -87,6 +88,7 @@ class Lightbox {
   }
 
   public close() {
+    const lightboxCloseEvent = new Event('lightbox:close', { bubbles: true })
     this.box.classList.add('lightbox--closing')
     this.removeAllListener()
 
@@ -96,18 +98,30 @@ class Lightbox {
     }
 
     setTimeout(() => {
+      this.box.dispatchEvent(lightboxCloseEvent)
       this.root.classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
+      this.box.classList.remove('lightbox--open')
       this.root.dataset.lightBoxType = ''
       this.stopLoading()
-      this.clear()
+
+      if (!this.preserveContent) {
+        this.destroy()
+      }
     }, 400)
   }
 
+  public destroy() {
+    this.box.remove()
+  }
+
   public open(style: LightboxStyle = 0, type = '') {
+    const lightboxOpenEvent = new Event('lightbox:open', { bubbles: true })
     this.setStyle(style)
     this.root.classList.add('open-lightbox')
     this.root.dataset.lightBoxType = type
+    this.box.classList.add('lightbox--open')
+    this.box.dispatchEvent(lightboxOpenEvent)
     this.bindEscKeyPressEvent()
     this.bindBackgroundClickEvent()
   }
