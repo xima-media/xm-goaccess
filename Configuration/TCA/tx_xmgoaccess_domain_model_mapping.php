@@ -31,6 +31,7 @@ return [
     ],
     'columns' => [
         'regex' => [
+            'exclude' => false,
             'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.regex',
             'config' => [
                 'type' => 'check',
@@ -43,6 +44,7 @@ return [
             ],
         ],
         'record_type' => [
+            'exclude' => false,
             'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.record_type',
             'config' => [
                 'type' => 'select',
@@ -55,6 +57,7 @@ return [
             ],
         ],
         'title' => [
+            'exclude' => false,
             'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.title',
             'config' => [
                 'placeholder' => '',
@@ -64,6 +67,7 @@ return [
             ],
         ],
         'path' => [
+            'exclude' => false,
             'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.path',
             'config' => [
                 'placeholder' => '',
@@ -73,6 +77,7 @@ return [
             ],
         ],
         'page' => [
+            'exclude' => false,
             'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:mapping.page',
             'config' => [
                 'type' => 'group',

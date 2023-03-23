@@ -10,12 +10,14 @@ class MappingRepository extends Repository
 {
     public function getIgnoredPaths(): array
     {
-        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmgoaccess_mapping');
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmgoaccess_domain_model_mapping');
         $mappings = $qb->select('path', 'regex')
-            ->from('tx_xmgoaccess_mapping')
+            ->from('tx_xmgoaccess_domain_model_mapping')
             ->where($qb->expr()->eq('record_type', $qb->createNamedParameter(2, \PDO::PARAM_INT)))
             ->execute();
 
         return $mappings->fetchAllAssociative();
     }
+
+    
 }

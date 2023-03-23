@@ -24,14 +24,14 @@
 					<td>
 						<div class="btn-group btn-group-sm">
 							<be:link.newRecord class="btn btn-sm btn-link"
-											   defaultValues="{tx_xmgoaccess_mapping: {path: item.path}}"
-											   table="tx_xmgoaccess_mapping"
+											   defaultValues="{tx_xmgoaccess_domain_model_mapping: {path: item.path}}"
+											   table="tx_xmgoaccess_domain_model_mapping"
 											   returnUrl="{f:be.uri(route: 'dashboard')}">
 								<core:icon identifier="actions-link" size="small"/>
 							</be:link.newRecord>
 							<be:link.newRecord class="btn btn-sm btn-link"
-											   defaultValues="{tx_xmgoaccess_mapping: {path: item.path, record_type: 2}}"
-											   table="tx_xmgoaccess_mapping"
+											   defaultValues="{tx_xmgoaccess_domain_model_mapping: {path: item.path, record_type: 2}}"
+											   table="tx_xmgoaccess_domain_model_mapping"
 											   returnUrl="{f:be.uri(route: 'dashboard')}">
 								<core:icon identifier="actions-close" size="small"/>
 							</be:link.newRecord>
