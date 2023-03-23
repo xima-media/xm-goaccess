@@ -92,17 +92,11 @@ class Lightbox {
     this.box.classList.add('lightbox--closing')
     this.removeAllListener()
 
-    if (this.root.dataset.lightBoxType !== '') {
-      const lightBoxCloseEvent = new Event('lightboxClose')
-      document.dispatchEvent(lightBoxCloseEvent)
-    }
-
     setTimeout(() => {
       this.box.dispatchEvent(lightboxCloseEvent)
       this.root.classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
       this.box.classList.remove('lightbox--open')
-      this.root.dataset.lightBoxType = ''
       this.stopLoading()
 
       if (!this.preserveContent) {
@@ -115,11 +109,10 @@ class Lightbox {
     this.box.remove()
   }
 
-  public open(style: LightboxStyle = 0, type = '') {
+  public open(style: LightboxStyle = 0) {
     const lightboxOpenEvent = new Event('lightbox:open', { bubbles: true })
     this.setStyle(style)
     this.root.classList.add('open-lightbox')
-    this.root.dataset.lightBoxType = type
     this.box.classList.add('lightbox--open')
     this.box.dispatchEvent(lightboxOpenEvent)
     this.bindEscKeyPressEvent()
