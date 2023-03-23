@@ -48,10 +48,21 @@
 			<td>{request.visitors}</td>
 			<td>{request.hits}</td>
 			<td>
-				<be:link.newRecord defaultValues="{tx_xmgoaccess_domain_model_mapping: {path:request.path}}"
-								   table="tx_xmgoaccess_domain_model_mapping"
-								   returnUrl="{returnUrl}">{request.path}
-				</be:link.newRecord>
+				<f:if condition="{request.mapping}">
+					<f:then>
+						<be:link.editRecord uid="{request.mapping.uid}"
+											table="tx_xmgoaccess_domain_model_mapping"
+											returnUrl="{returnUrl}">
+							{request.path}
+						</be:link.editRecord>
+					</f:then>
+					<f:else>
+						<be:link.newRecord defaultValues="{tx_xmgoaccess_domain_model_mapping: {path:request.path}}"
+										   table="tx_xmgoaccess_domain_model_mapping"
+										   returnUrl="{returnUrl}">{request.path}
+						</be:link.newRecord>
+					</f:else>
+				</f:if>
 			</td>
 			<td class="nowrap">
 				<f:if condition="{request.mapping}">
@@ -67,12 +78,22 @@
 			</td>
 			<td>
 				<f:if condition="{request.mapping}">
-					<be:link.editRecord uid="{request.mapping.uid}"
-										table="tx_xmgoaccess_domain_model_mapping"
-										returnUrl="{returnUrl}"
-										class="btn btn-default btn-sm">
-						<core:icon identifier="actions-open" size="small"/>
-					</be:link.editRecord>
+					<f:then>
+						<be:link.editRecord uid="{request.mapping.uid}"
+											table="tx_xmgoaccess_domain_model_mapping"
+											returnUrl="{returnUrl}"
+											class="btn btn-default btn-sm">
+							<core:icon identifier="actions-open" size="small"/>
+						</be:link.editRecord>
+					</f:then>
+					<f:else>
+						<be:link.newRecord defaultValues="{tx_xmgoaccess_domain_model_mapping: {path:request.path}}"
+										   table="tx_xmgoaccess_domain_model_mapping"
+										   class="btn btn-default btn-sm"
+										   returnUrl="{returnUrl}">
+							<core:icon identifier="actions-add" size="small"/>
+						</be:link.newRecord>
+					</f:else>
 				</f:if>
 			</td>
 		</tr>

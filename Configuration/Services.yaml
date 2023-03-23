@@ -95,3 +95,9 @@ services:
         iconIdentifier: 'content-widget-list'
         height: 'medium'
         width: 'medium'
+
+  Xima\XmGoaccess\Command\CreateMappingsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'goaccess:createMappings'
+        schedulable: true
