@@ -1,8 +1,10 @@
 import app from './basic'
 
 import { LightboxStyle } from './lightbox'
+import Lightbox from './lightbox'
 
 class Disruptor {
+  protected disruptorLightbox: Lightbox
   constructor() {
     this.bindDisruptorLoad()
   }
@@ -15,9 +17,10 @@ class Disruptor {
         const disruptorModalFixed = modal.nextElementSibling
 
         if ((modal as HTMLElement) && sessionStorage.getItem('disruptor') === null) {
-          app.lightbox.startLoading()
-          app.lightbox.open(LightboxStyle.warning, 'disruptor')
-          app.lightbox.displayContent(modal.innerHTML)
+          this.disruptorLightbox = new Lightbox()
+          this.disruptorLightbox.startLoading()
+          this.disruptorLightbox.open(LightboxStyle.warning, 'disruptor')
+          this.disruptorLightbox.displayContent(modal.innerHTML)
 
           document.addEventListener('lightboxClose', e => {
             const target = e.target as HTMLButtonElement
@@ -30,7 +33,7 @@ class Disruptor {
               sessionStorage.setItem('disruptor', 'close')
             }
           })
-          app.lightbox.stopLoading()
+          this.disruptorLightbox.stopLoading()
         }
 
         if (sessionStorage.getItem('disruptor') !== null) {
