@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use Xima\XmGoaccess\Domain\Model\Dto\Demand;
 use Xima\XmGoaccess\Domain\Model\Mapping;
 use Xima\XmGoaccess\Domain\Repository\MappingRepository;
 
@@ -50,7 +51,7 @@ class DataProviderService
         return $content ? (array)json_decode($content) : [];
     }
 
-    public function getRequestList()
+    public function getRequestList(?Demand $demand = null)
     {
         $goaccessData = $this->readJsonData();
 
@@ -61,12 +62,28 @@ class DataProviderService
         foreach ($goaccessData['requests']->data as $pathData) {
             $path = $pathData->data;
 
-            $items[] = [
+            $item = [
                 'hits' => $pathData->hits->count,
                 'visitors' => $pathData->visitors->count,
                 'path' => $path,
                 'mappings' => $this->resolvePathMapping($path),
             ];
+
+            if ($demand && count($item['mappings'])) {
+                foreach ($item['mappings'] as $mapping) {
+                    if (!$demand->showPages && $mapping->getRecordType() === 0) {
+                        continue 2;
+                    }
+                    if (!$demand->showActions && $mapping->getRecordType() === 1) {
+                        continue 2;
+                    }
+                    if (!$demand->showIgnored && $mapping->getRecordType() === 2) {
+                        continue 2;
+                    }
+                }
+            }
+
+            $items[] = $item;
         }
 
         return $items;
@@ -106,7 +123,7 @@ class DataProviderService
             $iconMarkup = $this->iconFactory->getIconForRecord('pages', $pageRecord, Icon::SIZE_SMALL)->render();
             $mapping->setIconMarkup($iconMarkup);
 
-            $pagePath = $pageRecord['title'] . ' [' .$pageRecord['uid'] .']';
+            $pagePath = $pageRecord['title'] . ' [' . $pageRecord['uid'] . ']';
             $mapping->setPagePath($pagePath);
         }
     }

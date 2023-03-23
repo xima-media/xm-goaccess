@@ -54,7 +54,7 @@ class BackendController extends ActionController
         $demand = Demand::createFromRequest($this->request);
         $mappings = $this->mappingRepository->findAll();
 
-        $requests = $this->dataProvider->getRequestList();
+        $requests = $this->dataProvider->getRequestList($demand);
 
         GeneralUtility::makeInstance(PageRenderer::class)->loadRequireJsModule('TYPO3/CMS/XmGoaccess/MappingsList');
 
