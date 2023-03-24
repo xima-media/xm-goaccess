@@ -101,4 +101,14 @@ class BackendController extends ActionController
 
         return new JsonResponse($chartData);
     }
+
+    public function userSettingsAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $pageHeaderChart = $request->getParsedBody()['pageHeaderChart'] ?? false;
+        $pageHeaderChartSettings = filter_var($pageHeaderChart, FILTER_VALIDATE_BOOLEAN);
+
+        $GLOBALS['BE_USER']->pushModuleData('goaccess_settings', ['pageHeaderChart' => $pageHeaderChartSettings]);
+
+        return new JsonResponse([]);
+    }
 }

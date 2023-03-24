@@ -35,6 +35,10 @@ class DrawPageHeaderHook
             return '';
         }
 
-        return '<div class="dashboard-item" style="width: 800px;"><canvas data-page-uid="' . $pageInfo['uid'] . '"></canvas></div>';
+        $settings = $GLOBALS['BE_USER']->getModuleData('goaccess_settings') ?? [];
+        $onload = isset($settings['pageHeaderChart']) && $settings['pageHeaderChart'] ? 1 : 0;
+        $style = $onload ? '' : 'display:none';
+
+        return '<div class="dashboard-item" style="width: 500px;"><canvas style="' . $style . '" data-onload="' . $onload . '" data-page-uid="' . $pageInfo['uid'] . '"></canvas></div>';
     }
 }
