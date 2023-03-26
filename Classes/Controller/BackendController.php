@@ -4,6 +4,7 @@ namespace Xima\XmGoaccess\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
@@ -48,10 +49,15 @@ class BackendController extends ActionController
 
         $content = file_get_contents($filePath);
         $css = '<style>body{max-height:100vh;}</style>';
-        return $this->htmlResponse($content . $css);
+        $html = $content . $css;
+
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $this->addButtonBar($moduleTemplate);
+        $moduleTemplate->setContent($html);
+        return $this->htmlResponse($moduleTemplate->renderContent());
     }
 
-    public function mappingsAction(): ResponseInterface
+    public function pathsAction(): ResponseInterface
     {
         $demand = Demand::createFromRequest($this->request);
         $mappings = $this->mappingRepository->findAll();
@@ -72,21 +78,29 @@ class BackendController extends ActionController
 
     private function addButtonBar(ModuleTemplate $moduleTemplate): void
     {
+        $actionName = $this->request->getControllerActionName();
+
         $buttonBar = $moduleTemplate->getDocHeaderComponent()->getButtonBar();
-        $beUser = $buttonBar->makeLinkButton()
-            ->setHref('#request')
-            ->setTitle('Requests')
-            ->setClasses('active type-switch')
+        $indexButton = $buttonBar->makeLinkButton()
+            ->setHref($this->uriBuilder->uriFor('index'))
+            ->setTitle('Charts')
+            ->setClasses('type-switch ' . ($actionName === 'index' ? 'active' : ''))
             ->setShowLabelText(true)
             ->setIcon($this->iconFactory->getIcon('content-widget-text', Icon::SIZE_SMALL));
-        $feUser = $buttonBar->makeLinkButton()
-            ->setHref('#mappings')
+        $requestButton = $buttonBar->makeLinkButton()
+            ->setHref($this->uriBuilder->uriFor('paths'))
+            ->setTitle('Requests')
+            ->setClasses('type-switch ' . ($actionName === 'paths' ? 'active' : ''))
+            ->setShowLabelText(true)
+            ->setIcon($this->iconFactory->getIcon('content-widget-text', Icon::SIZE_SMALL));
+        $mappingsButton = $buttonBar->makeLinkButton()
+            ->setHref($this->uriBuilder->uriFor('mappings'))
             ->setTitle('Mappings')
-            ->setClasses('type-switch')
+            ->setClasses('type-switch ' . ($actionName === 'mappings' ? 'active' : ''))
             ->setShowLabelText(true)
             ->setIcon($this->iconFactory->getIcon('apps-pagetree-page-shortcut-external', Icon::SIZE_SMALL));
-        $buttonBar->addButton($beUser, ButtonBar::BUTTON_POSITION_LEFT, 1);
-        $buttonBar->addButton($feUser, ButtonBar::BUTTON_POSITION_LEFT, 1);
+        $buttonBar->addButton($requestButton, ButtonBar::BUTTON_POSITION_LEFT, 1);
+        $buttonBar->addButton($mappingsButton, ButtonBar::BUTTON_POSITION_LEFT, 1);
     }
 
     public function pageChartAction(ServerRequestInterface $request): ResponseInterface
@@ -110,5 +124,13 @@ class BackendController extends ActionController
         $GLOBALS['BE_USER']->pushModuleData('goaccess_settings', ['pageHeaderChart' => $pageHeaderChartSettings]);
 
         return new JsonResponse([]);
+    }
+
+    public function mappingsAction(): ResponseInterface
+    {
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $this->addButtonBar($moduleTemplate);
+        $moduleTemplate->setContent($this->view->render());
+        return $this->htmlResponse($moduleTemplate->renderContent());
     }
 }

@@ -1,0 +1,102 @@
+{namespace be=TYPO3\CMS\Backend\ViewHelpers}<h1>Request log</h1>
+
+<f:form object="{demand}" class="demand-form">
+	<div class="d-flex flex-row gap-4 mb-3">
+		<div class="form-check form-switch">
+			<f:form.checkbox class="form-check-input"
+							 name="showIgnored"
+							 property="showIgnored"
+							 value="1"
+							 id="displayIgnored"/>
+			<label class="form-check-label" for="displayIgnored"> Show ignored paths</label></div>
+
+		<div class="form-check form-switch">
+			<f:form.checkbox class="form-check-input"
+							 name="showPages"
+							 property="showPages"
+							 value="1"
+							 id="displayPages"/>
+			<label class="form-check-label" for="displayPages"> Show page mappings</label>
+		</div>
+
+		<div class="form-check form-switch">
+			<f:form.checkbox class="form-check-input"
+							 name="showActions"
+							 property="showActions"
+							 value="1"
+							 id="displayActions"/>
+			<label class="form-check-label" for="displayActions">Show action mappings </label>
+		</div>
+	</div>
+</f:form>
+
+<f:variable name="returnUrl" value="{f:be.uri(route: 'system_XmGoaccessGoaccess')}"/>
+
+<table data-table="requests" class="table table-striped table-hover mb-0">
+	<thead>
+	<tr>
+		<th>Besucher</th>
+		<th>Anfragen</th>
+		<th>Path</th>
+		<th>Mappings</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody data-multi-record-selection-row-selection="true">
+	<f:for each="{requests}" as="request">
+		<tr>
+			<td>{request.visitors}</td>
+			<td>{request.hits}</td>
+			<td>
+				<f:if condition="{request.mapping}">
+					<f:then>
+						<be:link.editRecord uid="{request.mapping.uid}"
+											table="tx_xmgoaccess_domain_model_mapping"
+											returnUrl="{returnUrl}">
+							{request.path}
+						</be:link.editRecord>
+					</f:then>
+					<f:else>
+						<be:link.newRecord defaultValues="{tx_xmgoaccess_domain_model_mapping: {path:request.path}}"
+										   table="tx_xmgoaccess_domain_model_mapping"
+										   returnUrl="{returnUrl}">{request.path}
+						</be:link.newRecord>
+					</f:else>
+				</f:if>
+			</td>
+			<td class="nowrap">
+				<f:if condition="{request.mapping}">
+					<f:if condition="{request.mapping.iconMarkup}">
+						{request.mapping.iconMarkup->f:format.raw()}
+					</f:if>
+					<f:if condition="{request.mapping.pagePath}">
+						<f:be.link route="web_layout" parameters="{id: request.mapping.page}">
+							{request.mapping.pagePath}
+						</f:be.link>
+					</f:if>
+				</f:if>
+			</td>
+			<td>
+				<f:if condition="{request.mapping}">
+					<f:then>
+						<be:link.editRecord uid="{request.mapping.uid}"
+											table="tx_xmgoaccess_domain_model_mapping"
+											returnUrl="{returnUrl}"
+											class="btn btn-default btn-sm">
+							<core:icon identifier="actions-open" size="small"/>
+						</be:link.editRecord>
+					</f:then>
+					<f:else>
+						<be:link.newRecord defaultValues="{tx_xmgoaccess_domain_model_mapping: {path:request.path}}"
+										   table="tx_xmgoaccess_domain_model_mapping"
+										   class="btn btn-default btn-sm"
+										   returnUrl="{returnUrl}">
+							<core:icon identifier="actions-add" size="small"/>
+						</be:link.newRecord>
+					</f:else>
+				</f:if>
+			</td>
+		</tr>
+	</f:for>
+	</tbody>
+</table>

@@ -7,7 +7,7 @@ if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['xm_goaccess']['html_path'])
         'goaccess',
         '',
         [
-            \Xima\XmGoaccess\Controller\BackendController::class => 'mappings,index',
+            \Xima\XmGoaccess\Controller\BackendController::class => 'paths,mappings',
         ],
         [
             'access' => 'admin',
