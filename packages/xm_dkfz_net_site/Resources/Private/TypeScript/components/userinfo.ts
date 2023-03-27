@@ -233,7 +233,7 @@ class Userinfo {
   protected modifyMarketplace(): void {
     const marketPlace = document.querySelector('#my-marketplace')
     const orderDummy = document.querySelector('#my-marketplace-dummy')
-    if (!marketPlace || !orderDummy || !this.userinfo || !this.userinfo.offers.length) {
+    if (!marketPlace || !orderDummy || !this.userinfo || !this.userinfo.offers) {
       return
     }
 

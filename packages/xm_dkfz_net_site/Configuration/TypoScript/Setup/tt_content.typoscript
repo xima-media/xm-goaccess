@@ -195,8 +195,15 @@ tt_content {
 
       50 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
       50 {
-        as = categories
-        pidInList = 918
+        as = newsCategories
+        pidInList = {$uidCategoryNews}
+        table = sys_category
+      }
+
+      60 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      60 {
+        as = marketplaceCategories
+        pidInList = {$uidCategoryMarketplace}
         table = sys_category
       }
     }
