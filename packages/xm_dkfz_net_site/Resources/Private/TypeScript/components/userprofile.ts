@@ -81,13 +81,14 @@ class Userprofile {
 
     document.addEventListener('imagecrop', (e: CustomEvent) => {
       this.replaceOriginalImage(e.detail.previewImage, userImagePicture)
+      this.showImageEditButton()
       this.setImageCropArea(cropAreaInput, JSON.stringify(e.detail.cropArea))
     })
   }
 
   protected setImageCropArea(cropAreaInput: HTMLInputElement | null, cropAreaValue: string): void {
     if (cropAreaInput) {
-      cropAreaInput.value = JSON.stringify(cropAreaValue)
+      cropAreaInput.value = cropAreaValue
     }
   }
 
@@ -105,6 +106,11 @@ class Userprofile {
     previewImageTarget?.querySelector('svg')?.remove()
     previewImageTarget?.querySelector('img')?.remove()
     previewImageTarget?.prepend(previewImage)
+  }
+
+  protected showImageEditButton(): void {
+    const imageEditButton = app.lightbox.content.querySelector('.userimage .userimage__edit-button')
+    imageEditButton?.classList.remove('userimage__edit-button--hidden')
   }
 
   protected onImageEditButtonClick(): void {
