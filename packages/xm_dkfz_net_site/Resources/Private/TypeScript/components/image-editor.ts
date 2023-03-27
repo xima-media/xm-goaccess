@@ -31,12 +31,7 @@ class ImageEditor {
   private markup: HTMLElement
   private imageCropper: Cropper
   private dummyEditor: HTMLElement
-  private readonly targetPictureElement: HTMLPictureElement
-  private targetImageElementWidth: number
-  private targetImageElementHeight: number
-  constructor(targetPictureElement: HTMLPictureElement, cropArea: cropArea | null = null) {
-    this.targetPictureElement = targetPictureElement
-
+  constructor(cropArea: cropArea | null = null) {
     this.cacheDom()
 
     if (cropArea) {
@@ -46,17 +41,12 @@ class ImageEditor {
 
   protected cacheDom(): Boolean {
     const dummyEditor = document.querySelector<HTMLElement>('#dummyImageEditor')
-    const targetImageElement = this.targetPictureElement.querySelector<HTMLImageElement>('img')
-      ? this.targetPictureElement.querySelector<HTMLImageElement>('img')
-      : this.targetPictureElement.querySelector<HTMLImageElement>('svg')
 
-    if (!dummyEditor || !targetImageElement) {
+    if (!dummyEditor) {
       return false
     }
 
     this.dummyEditor = dummyEditor
-    this.targetImageElementWidth = targetImageElement.clientWidth
-    this.targetImageElementHeight = targetImageElement.clientHeight
 
     return true
   }
@@ -109,32 +99,34 @@ class ImageEditor {
     const cropButton = this.markup.querySelector<HTMLButtonElement>('#submitCrop')
     cropButton?.addEventListener('click', () => {
       this.cropImage()
-      this.showImageEditButton()
     })
   }
 
   protected cropImage(): void {
-    const form = this.targetPictureElement.closest('form')
-    const hiddenCropInput = form?.querySelector('#hiddenCropAreaInput') as HTMLInputElement
-    const previewImage = new Image()
-    previewImage.src = this.imageCropper.getCroppedCanvas().toDataURL()
-    previewImage.width = this.targetImageElementWidth
-    previewImage.height = this.targetImageElementHeight
+    let cropArea: cropArea | null = null
 
     if (this.image) {
-      hiddenCropInput.value = this.calculateRelativeDimensions(this.image)
+      cropArea = this.calculateRelativeDimensions(this.image)
     }
-    this.replaceOriginalImage(previewImage)
+
+    const imageCroppedEvent = new CustomEvent('imagecrop', {
+      detail: {
+        previewImage: this.imageCropper.getCroppedCanvas().toDataURL(),
+        cropArea: cropArea
+      }
+    })
+
+    document.dispatchEvent(imageCroppedEvent)
     app.lightbox.hideDialog()
   }
 
-  protected calculateRelativeDimensions(image: HTMLImageElement): string {
+  protected calculateRelativeDimensions(image: HTMLImageElement): cropArea {
     this.dataCropArea.default.cropArea.width = this.calculateRelativeUnit(image.width, this.imageCropper.getData(true).width)
     this.dataCropArea.default.cropArea.height = this.calculateRelativeUnit(image.height, this.imageCropper.getData(true).height)
     this.dataCropArea.default.cropArea.x = this.calculateRelativeUnit(image.width, this.imageCropper.getData(true).x)
     this.dataCropArea.default.cropArea.y = this.calculateRelativeUnit(image.height, this.imageCropper.getData(true).y)
 
-    return JSON.stringify(this.dataCropArea)
+    return this.dataCropArea
   }
 
   protected calculateAbsoluteDimensions(image: HTMLImageElement, cropArea: cropArea): cropArea | null {
@@ -152,17 +144,6 @@ class ImageEditor {
 
   protected calculateAbsoluteUnit(unit: number, dimension: number): number {
     return Math.round(Math.abs(dimension * unit))
-  }
-
-  protected replaceOriginalImage(previewImage: HTMLImageElement): void {
-    this.targetPictureElement?.querySelector('svg')?.remove()
-    this.targetPictureElement?.querySelector('img')?.remove()
-    this.targetPictureElement?.prepend(previewImage)
-  }
-
-  protected showImageEditButton(): void {
-    const imageEditButton = this.targetPictureElement.parentNode?.querySelector<HTMLButtonElement>('.userimage__edit-button')
-    imageEditButton?.classList.remove('userimage__edit-button--hidden')
   }
 
   protected setCropArea(cropArea: cropArea): void {

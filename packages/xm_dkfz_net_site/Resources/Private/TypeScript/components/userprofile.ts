@@ -66,18 +66,45 @@ class Userprofile {
   protected createImageEditor(logoUploadInput: any): void {
     const file: File | undefined = logoUploadInput.files?.[0]
     const userImagePicture: HTMLPictureElement | null = app.lightbox.content.querySelector('.userimage picture')
+    const cropAreaInput: HTMLInputElement | null = app.lightbox.content.querySelector<HTMLInputElement>(
+      'input[name="tx_bwguild_api[user][logo][crop]"]'
+    )
+    const cropArea = cropAreaInput?.value ? JSON.parse(cropAreaInput.value) : null
 
     if (!file || !userImagePicture) {
       return
     }
 
-    const cropAreaInput: HTMLInputElement | null = app.lightbox.content.querySelector<HTMLInputElement>(
-      'input[name="tx_bwguild_api[user][logo][crop]"]'
-    )
-    const cropArea = cropAreaInput?.value ? JSON.parse(cropAreaInput.value) : null
-    const imageEditor = new ImageEditor(userImagePicture, cropArea)
+    const imageEditor = new ImageEditor(cropArea)
 
     imageEditor.show(file)
+
+    document.addEventListener('imagecrop', (e: CustomEvent) => {
+      this.replaceOriginalImage(e.detail.previewImage, userImagePicture)
+      this.setImageCropArea(cropAreaInput, JSON.stringify(e.detail.cropArea))
+    })
+  }
+
+  protected setImageCropArea(cropAreaInput: HTMLInputElement | null, cropAreaValue: string): void {
+    if (cropAreaInput) {
+      cropAreaInput.value = JSON.stringify(cropAreaValue)
+    }
+  }
+
+  protected replaceOriginalImage(previewImageSource: string, previewImageTarget: HTMLPictureElement): void {
+    const previewImage = new Image()
+    previewImage.src = previewImageSource
+
+    const targetImageElement = previewImageTarget.querySelector<HTMLImageElement>('img')
+      ? previewImageTarget.querySelector<HTMLImageElement>('img')
+      : previewImageTarget.querySelector<HTMLImageElement>('svg')
+
+    previewImage.width = targetImageElement?.width ?? 0
+    previewImage.height = targetImageElement?.height ?? 0
+
+    previewImageTarget?.querySelector('svg')?.remove()
+    previewImageTarget?.querySelector('img')?.remove()
+    previewImageTarget?.prepend(previewImage)
   }
 
   protected onImageEditButtonClick(): void {
