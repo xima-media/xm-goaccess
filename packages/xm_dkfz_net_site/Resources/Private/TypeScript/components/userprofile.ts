@@ -64,18 +64,20 @@ class Userprofile {
   }
 
   protected createImageEditor(logoUploadInput: any): void {
-    const file: File = logoUploadInput.files[0]
+    const file: File | undefined = logoUploadInput.files?.[0]
     const userImagePicture: HTMLPictureElement | null = app.lightbox.content.querySelector('.userimage picture')
-    if (file && userImagePicture) {
-      const cropArea = app.lightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo][crop]"]')
-      let imageEditor: ImageEditor
-      if (cropArea?.value) {
-        imageEditor = new ImageEditor(userImagePicture, JSON.parse(cropArea.value))
-      } else {
-        imageEditor = new ImageEditor(userImagePicture)
-      }
-      imageEditor.show(file)
+
+    if (!file || !userImagePicture) {
+      return
     }
+
+    const cropAreaInput: HTMLInputElement | null = app.lightbox.content.querySelector<HTMLInputElement>(
+      'input[name="tx_bwguild_api[user][logo][crop]"]'
+    )
+    const cropArea = cropAreaInput?.value ? JSON.parse(cropAreaInput.value) : null
+    const imageEditor = new ImageEditor(userImagePicture, cropArea)
+
+    imageEditor.show(file)
   }
 
   protected onImageEditButtonClick(): void {

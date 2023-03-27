@@ -84,7 +84,7 @@ class ImageEditor {
   }
 
   protected bindImageReadyEvent(): void {
-    if (this.dataCropArea.default.cropArea.width === 0 && !this.image) {
+    if (this.dataCropArea.default.cropArea.width === 0) {
       return
     }
 
