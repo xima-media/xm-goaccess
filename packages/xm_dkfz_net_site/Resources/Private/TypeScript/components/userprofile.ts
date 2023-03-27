@@ -51,6 +51,7 @@ class Userprofile {
   protected bindUserEditFormEvents(): void {
     const form = app.lightbox.content.querySelector('form')
     const logoUploadInput = app.lightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
+    this.onImageEditButtonClick()
     this.initUserImageDeleteClick()
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocompleter()
@@ -59,15 +60,32 @@ class Userprofile {
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
 
-    logoUploadInput?.addEventListener('change', this.onLogoUploadInputChange.bind(this, logoUploadInput))
+    logoUploadInput?.addEventListener('change', this.createImageEditor.bind(this, logoUploadInput))
   }
 
-  protected onLogoUploadInputChange(logoUploadInput: any): void {
-    const [file] = logoUploadInput.files
+  protected createImageEditor(logoUploadInput: any): void {
+    const file: File = logoUploadInput.files[0]
     const userImagePicture: HTMLPictureElement | null = app.lightbox.content.querySelector('.userimage picture')
     if (file && userImagePicture) {
-      const imageEditor = new ImageEditor(userImagePicture)
+      const cropArea = app.lightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo][crop]"]')
+      let imageEditor: ImageEditor
+      if (cropArea?.value) {
+        imageEditor = new ImageEditor(userImagePicture, JSON.parse(cropArea.value))
+      } else {
+        imageEditor = new ImageEditor(userImagePicture)
+      }
       imageEditor.show(file)
+    }
+  }
+
+  protected onImageEditButtonClick(): void {
+    const userProfileImageEditButton = app.lightbox.content.querySelector('.userimage .userimage__edit-button')
+
+    if (userProfileImageEditButton) {
+      userProfileImageEditButton.addEventListener('click', () => {
+        const logoUploadInput = app.lightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
+        this.createImageEditor(logoUploadInput)
+      })
     }
   }
 
