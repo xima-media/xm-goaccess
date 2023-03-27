@@ -710,6 +710,78 @@
 			<trans-unit id="welcome.profile.link" space="preserve">
 				<target>Jetzt Profil bearbeiten</target>
 			</trans-unit>
+			<trans-unit id="marketplace.type" space="preserve">
+				<target>Anzeigeformat</target>
+			</trans-unit>
+			<trans-unit id="marketplace.type.placeholder" space="preserve">
+				<target>Bitte auswählen</target>
+			</trans-unit>
+				<trans-unit id="marketplace.type.4" space="preserve">
+				<target>Biete</target>
+			</trans-unit>
+			<trans-unit id="marketplace.type.5" space="preserve">
+				<target>Suche</target>
+			</trans-unit>
+			<trans-unit id="marketplace.type.6" space="preserve">
+				<target>Verschenke</target>
+			</trans-unit>
+			<trans-unit id="marketplace.title" space="preserve">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="marketplace.title.placeholder" space="preserve">
+				<target>Biete/Suche/Verschenke..</target>
+			</trans-unit>
+			<trans-unit id="marketplace.category" space="preserve">
+				<target>Rubrik</target>
+			</trans-unit>
+			<trans-unit id="marketplace.category.placeholder" space="preserve">
+				<target>Bitte auswählen</target>
+			</trans-unit>
+			<trans-unit id="marketplace.description" space="preserve">
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="marketplace.price" space="preserve">
+				<target>Preis</target>
+			</trans-unit>
+			<trans-unit id="marketplace.images" space="preserve">
+				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="marketplace.contact.headline" space="preserve">
+				<target>Kontaktinformationen</target>
+			</trans-unit>
+			<trans-unit id="marketplace.contact.phone" space="preserve">
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="marketplace.contact.email" space="preserve">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="marketplace.legal" space="preserve">
+				<target></target>
+			</trans-unit>
+			<trans-unit id="marketplace.button.new" space="preserve">
+				<target>Neue Anzeige</target>
+			</trans-unit>
+			<trans-unit id="marketplace.button.delete" space="preserve">
+				<target>Lösche Anzeige</target>
+			</trans-unit>
+			<trans-unit id="marketplace.button.edit" space="preserve">
+				<target>Bearbeite Anzeige</target>
+			</trans-unit>
+			<trans-unit id="marketplace.status.waiting" space="preserve">
+				<target>Wartet auf Freigabe</target>
+			</trans-unit>
+			<trans-unit id="marketplace.headline.new" space="preserve">
+				<target>Neue Anzeige</target>
+			</trans-unit>
+			<trans-unit id="marketplace.headline.edit" space="preserve">
+				<target>Anzeige bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="marketplace.navigation.all" space="preserve">
+				<target>Alle Anzeigen</target>
+			</trans-unit>
+			<trans-unit id="marketplace.navigation.my" space="preserve">
+				<target>Meine Anzeigen</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

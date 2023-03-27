@@ -88,6 +88,34 @@
 		</fieldset>
 
 		<fieldset>
+			<label>
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.images"/>
+			</label>
+			<div class="form-element form-element--images">
+
+				<f:for each="{0:0,1:1,2:2,3:3,4:4,5:5}" as="index">
+					<a href="#"
+					   class="image-uploader {f:if(condition: '{offer.images.{index}}', then: 'image-uploader--filled', else: 'image-uploader--empty')}">
+						<f:form.upload multiple="true"
+									   additionalAttributes="{accept: 'image/*'}"
+									   property="images"
+									   id="images.{index}}"/>
+						<f:form.checkbox value="0" name="deleteImage{index}" id="deleteLogo"/>
+
+						<div class="image-uploader__drop">
+							<f:if condition="{offer.images.{index}}">
+								<f:image width="100c" height="100c" image="{offer.images.{index}}"/>
+							</f:if>
+							<span class="image-uploader__placeholder"></span>
+							<f:render partial="Icon" arguments="{icon:'plus'}"/>
+							<f:render partial="Icon" arguments="{icon:'pencil'}"/>
+						</div>
+					</a>
+				</f:for>
+			</div>
+		</fieldset>
+
+		<fieldset>
 			<div class="button-group">
 				<button data-abort href="#" class="button button--primary fx--hover">
 					{f:translate(key: 'abort', extensionName: 'XmDkfzNetSite')}
