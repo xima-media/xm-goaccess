@@ -68,7 +68,7 @@
     }
 }
 
-figure.userimage {
+.userimage {
     display: grid;
     position: relative;
     --color-primary: #2662c3;
@@ -102,6 +102,27 @@ figure.userimage {
         background: var(--color-primary);
         align-self: flex-end;
         z-index: 0;
+    }
+
+    &__edit-button {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+        border: none;
+        padding: 0.2rem;
+        display: flex;
+        gap: var(--space-xs);
+        justify-content: center;
+        align-items: center;
+
+        &--hidden {
+            display: none;
+        }
     }
 }
 
