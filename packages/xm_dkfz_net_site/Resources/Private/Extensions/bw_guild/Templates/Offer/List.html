@@ -51,7 +51,11 @@
 						<div class="m-b-05">
 							<f:format.date format="%d. %B %Y">{offer.crdate}</f:format.date>
 						</div>
-						<h5>{offer.title}</h5>
+						<h5 data-record-type="{offer.recordType}"
+							data-record-type-4-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.4')}"
+							data-record-type-5-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.5')}"
+							data-record-type-6-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.6')}">
+							{offer.title}</h5>
 						<p class="text-small">
 							<f:if condition="{offer.categories.0}">
 								{offer.categories.0.title}
@@ -59,8 +63,8 @@
 						</p>
 					</f:link.action>
 					<div class="actions m-t-1 show-for-self" data-user-uid="{offer.feUser.uid}">
-						<div class="!{offer.isPublic}">
-							<span>Wartet auf Freigabe</span>
+						<div>
+							<span data-public="{f:if(offer.isPublic, then: 1: else: 0)}">Wartet auf Freigabe</span>
 						</div>
 						<div class="actions__buttons">
 							<button class="button button--icon-only button--transparent"
@@ -96,12 +100,16 @@
 			<div class="content">
 				<a class="orders__link" href="#" title="###TITLE###">
 					<div class="m-b-05 orders__date">###DATE###</div>
-					<h5>###TEXT###</h5>
+					<h5 data-record-type="###RECORD_TYPE###"
+						data-record-type-4-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.4')}"
+						data-record-type-5-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.5')}"
+						data-record-type-6-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.6')}">
+						###TEXT###</h5>
 					<p class="text-small">###CATEGORY###</p>
 				</a>
 				<div class="actions m-t-1">
 					<div>
-						<span>Wartet auf Freigabe</span>
+						<span data-public="0">Wartet auf Freigabe</span>
 					</div>
 					<div class="actions__buttons">
 						<button class="button button--icon-only button--transparent"

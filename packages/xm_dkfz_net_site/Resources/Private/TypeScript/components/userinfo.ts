@@ -1,6 +1,6 @@
 import app from './basic'
-import { LightboxStyle } from './lightbox'
-import { NoticeStyle } from './notice'
+import {LightboxStyle} from './lightbox'
+import {NoticeStyle} from './notice'
 
 export interface UserData {
   uid: number
@@ -28,6 +28,7 @@ export interface UserOffer {
   title: string
   crdate: number
   categories: Category[]
+  public: boolean
 }
 
 export interface UserBookmarks {
@@ -246,9 +247,17 @@ class Userinfo {
       // @ts-expect-error
       orderBox.querySelector('h5').innerHTML = order.title
       // @ts-expect-error
-      orderBox.querySelector('.orders__date').innerHTML = new Date(order.crdate * 1000).toDateString()
+      orderBox.querySelector('h5').setAttribute('data-record-type', order.record_type)
+      // @ts-expect-error
+      orderBox.querySelector('.orders__date').innerHTML = new Date(order.crdate * 1000).toLocaleDateString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      })
       // @ts-expect-error
       orderBox.querySelector('p').innerHTML = order.categories[0]?.title ?? ''
+      // @ts-expect-error
+      orderBox.querySelector('span[data-public]').setAttribute('data-public', order.public ? '1' : '0')
       // delete button
       const deleteUrl = orderBox.querySelector('button[data-offer-delete-link]')?.getAttribute('data-offer-delete-link') ?? ''
       const deleteLink = orderBox.querySelector('button[data-offer-delete-link]')
@@ -360,6 +369,7 @@ class Userinfo {
 
     app.lightbox.startLoading()
     app.lightbox.open()
+    app.lightbox.isCloseable = false
     app
       .apiRequest(url)
       .then(data => data.html)

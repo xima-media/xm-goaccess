@@ -48,19 +48,29 @@
     display: grid;
     gap: 2rem;
 
+    @include media-breakpoint-up(md) {
+        grid-template-columns: 1fr 1fr;
+    }
+
 
     @include media-breakpoint-up(lg) {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     &__item {
         position: relative;
         display: grid;
 
-        $offerColors: (1: "--color-primary", 2: "--color-magenta");
+        $offerColors: (1: "--color-magenta", 2: "--color-yellow", 3: "--color-cyan", 4: "--color-green-light", 5: "--color-purple", 6: "--color-orange", 7: "--color-green");
         @each $index, $value in $offerColors {
-            &:nth-child(2n+#{$index}) {
+            &:nth-child(n+#{$index}) {
                 --color-accent: var(#{$value});
+            }
+        }
+
+        @for $i from 4 through 6 {
+            h5[data-record-type="#{$i}"]:before {
+                content: attr(data-record-type-#{$i}-label) " ";
             }
         }
 
@@ -92,7 +102,7 @@
 
         .content {
             padding: 1rem;
-            background: rgba(#FFF, 0.95);
+            background: rgba(#FFF, 0.97);
             margin: 0 0 var(--pattern-size, 0.5rem) var(--pattern-size, 0.5rem);
             position: relative;
             z-index: 1;
@@ -114,8 +124,12 @@
             }
 
             span {
+                &[data-public="0"] {
+                    display: inline-block;
+                }
+
                 background: rgba(#000, 0.1);
-                display: inline-block;
+                display: none;
                 padding: 2px 6px;
                 font-size: 14px;
             }
