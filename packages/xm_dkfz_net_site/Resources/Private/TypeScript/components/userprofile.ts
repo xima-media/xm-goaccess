@@ -96,12 +96,8 @@ class Userprofile {
     const previewImage = new Image()
     previewImage.src = previewImageSource
 
-    const targetImageElement = previewImageTarget.querySelector<HTMLImageElement>('img')
-      ? previewImageTarget.querySelector<HTMLImageElement>('img')
-      : previewImageTarget.querySelector<HTMLImageElement>('svg')
-
-    previewImage.width = targetImageElement?.width ?? 0
-    previewImage.height = targetImageElement?.height ?? 0
+    previewImage.width = 150
+    previewImage.height = 150
 
     previewImageTarget?.querySelector('svg')?.remove()
     previewImageTarget?.querySelector('img')?.remove()
