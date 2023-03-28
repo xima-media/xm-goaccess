@@ -82,12 +82,11 @@ class ImageEditor {
         return
       }
 
-      this.setAbsoluteDimensions.bind(this, e)
+      this.setAbsoluteDimensions(e.target as HTMLImageElement)
     })
   }
 
-  protected setAbsoluteDimensions(e: Event): void {
-    const targetImage = e.target as HTMLImageElement
+  protected setAbsoluteDimensions(targetImage: HTMLImageElement): void {
     const absoluteDimensions = this.calculateAbsoluteDimensions(targetImage, this.dataCropArea)
 
     if (absoluteDimensions) {
