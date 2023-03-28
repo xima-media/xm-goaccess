@@ -105,20 +105,20 @@
     }
 
     &__edit-button {
+        width: 150px;
+        height: 150px;
         grid-column: 2/3;
         grid-row: 1/2;
-        position: absolute;
-        bottom: 0;
-        left: 0;
         z-index: 2;
         background-color: rgba(0, 0, 0, .5);
         color: white;
         border: none;
-        padding: 0.375rem;
-        display: flex;
-        gap: var(--space-xs);
-        justify-content: center;
-        align-items: center;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
 
         &--hidden {
             display: none;
