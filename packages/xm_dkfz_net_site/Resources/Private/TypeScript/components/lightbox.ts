@@ -127,10 +127,15 @@ class Lightbox {
 
   public startLoading() {
     this.box.classList.add('lightbox--loading')
+    this.box.classList.add('lightbox--loading-visual')
   }
 
   public stopLoading() {
     this.box.classList.remove('lightbox--loading')
+
+    setTimeout(() => {
+      this.box.classList.remove('lightbox--loading-visual')
+    }, 500)
   }
 
   public clear() {

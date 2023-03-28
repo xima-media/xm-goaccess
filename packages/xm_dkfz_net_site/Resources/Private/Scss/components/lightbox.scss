@@ -115,7 +115,13 @@ html.open-lightbox {
 
     &--loading {
         .lightbox__loader {
-            display: flex;
+            opacity: 1;
+        }
+
+        &-visual {
+            .lightbox__loader {
+                display: flex;
+            }
         }
     }
 
@@ -175,6 +181,8 @@ html.open-lightbox {
 
     &__dialog {
         display: none;
+        grid-column: 1/2;
+        grid-row: 1/2;
 
         &--show {
             display: block;
@@ -214,10 +222,12 @@ html.open-lightbox {
 
     &__loader {
         display: none;
+        transition: opacity .7s ease-in-out;
         justify-content: center;
         align-items: center;
         background-color: rgba(#FFF, 0.75);
         z-index: 2;
+        opacity: 0;
     }
 
 }

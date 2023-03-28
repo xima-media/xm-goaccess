@@ -67,6 +67,7 @@ class ImageEditor {
 
       this.bindImageReadyEvent()
       app.lightbox.appendDialogElement(this.markup)
+      app.lightbox.startLoading()
       app.lightbox.showDialog()
       this.bindCropButtonClickEvent()
       this.bindCancelCropButtonClickEvent()
@@ -74,18 +75,24 @@ class ImageEditor {
   }
 
   protected bindImageReadyEvent(): void {
-    if (this.dataCropArea.default.cropArea.width === 0) {
-      return
-    }
-
     this.image?.addEventListener('ready', e => {
-      const targetImage = e.target as HTMLImageElement
-      const absoluteDimensions = this.calculateAbsoluteDimensions(targetImage, this.dataCropArea)
+      app.lightbox.stopLoading()
 
-      if (absoluteDimensions) {
-        this.setCropArea(absoluteDimensions)
+      if (this.dataCropArea.default.cropArea.width === 0) {
+        return
       }
+
+      this.setAbsoluteDimensions.bind(this, e)
     })
+  }
+
+  protected setAbsoluteDimensions(e: Event): void {
+    const targetImage = e.target as HTMLImageElement
+    const absoluteDimensions = this.calculateAbsoluteDimensions(targetImage, this.dataCropArea)
+
+    if (absoluteDimensions) {
+      this.setCropArea(absoluteDimensions)
+    }
   }
 
   protected bindCancelCropButtonClickEvent(): void {
