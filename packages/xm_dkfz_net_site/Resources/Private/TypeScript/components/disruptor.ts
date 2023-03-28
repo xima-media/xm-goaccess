@@ -6,8 +6,9 @@ class Disruptor {
   protected disruptorModalFixed: Element
   protected disruptorTemplate: Element
   constructor() {
-    this.cacheDom()
-    this.bindDisruptorLoad()
+    if (this.cacheDom()) {
+      this.bindDisruptorLoad()
+    }
   }
 
   protected cacheDom(): boolean {
