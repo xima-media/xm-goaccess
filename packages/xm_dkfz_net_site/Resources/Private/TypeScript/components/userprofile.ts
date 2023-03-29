@@ -63,7 +63,7 @@ class Userprofile {
     logoUploadInput?.addEventListener('change', this.onLogoUploadChange.bind(this, logoUploadInput))
   }
 
-  protected onLogoUploadChange(logoUploadInput): void {
+  protected onLogoUploadChange(logoUploadInput: HTMLInputElement): void {
     const hiddenCropInput = document.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo][crop]"]')
     if (hiddenCropInput) {
       hiddenCropInput.value = ''

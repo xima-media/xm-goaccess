@@ -11,7 +11,7 @@ type crop = Record<
       height: number
     }
     selectedRatio: string | number
-    focusArea: Boolean
+    focusArea: Boolean | null
   }
 >
 
