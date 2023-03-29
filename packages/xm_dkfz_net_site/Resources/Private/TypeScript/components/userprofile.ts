@@ -75,7 +75,7 @@ class Userprofile {
       return
     }
 
-    const imageEditor = new ImageEditor(cropArea)
+    const imageEditor = new ImageEditor(cropArea, 'square')
 
     imageEditor.show(file)
 
