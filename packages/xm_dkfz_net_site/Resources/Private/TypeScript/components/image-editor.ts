@@ -1,5 +1,6 @@
 import app from './basic'
 import Cropper from 'cropperjs'
+import Lightbox from "./lightbox";
 
 type crop = Record<
   string,
@@ -22,6 +23,7 @@ class ImageEditor {
   private markup: HTMLElement
   private imageCropper: Cropper
   private dummyEditor: HTMLElement
+  public lightbox: Lightbox
 
   constructor(cropArea: crop | null = null, cropVariantName: string | null = null) {
     this.cacheDom()
@@ -37,7 +39,7 @@ class ImageEditor {
     if (!cropArea) {
       this.crop = {}
       this.crop[this.cropVariantName] = {
-        cropArea: { x: 0, y: 0, height: 0, width: 0 },
+        cropArea: {x: 0, y: 0, height: 0, width: 0},
         selectedRatio: '',
         focusArea: null
       }
@@ -71,10 +73,11 @@ class ImageEditor {
         scalable: false
       })
 
+      this.lightbox = new Lightbox()
       this.bindImageReadyEvent()
-      app.lightbox.appendDialogElement(this.markup)
-      app.lightbox.startLoading()
-      app.lightbox.showDialog()
+      this.lightbox.content.innerHTML = this.markup.outerHTML
+      this.lightbox.startLoading()
+      this.lightbox.open()
       this.bindCropButtonClickEvent()
       this.bindCancelCropButtonClickEvent()
     }
@@ -82,7 +85,7 @@ class ImageEditor {
 
   protected bindImageReadyEvent(): void {
     this.image?.addEventListener('ready', e => {
-      app.lightbox.stopLoading()
+      this.lightbox.stopLoading()
 
       if (this.crop[this.cropVariantName].cropArea.width === 0) {
         return
@@ -103,7 +106,7 @@ class ImageEditor {
   protected bindCancelCropButtonClickEvent(): void {
     const cancelCropButton = this.markup.querySelector<HTMLButtonElement>('#cancelCrop')
     cancelCropButton?.addEventListener('click', () => {
-      app.lightbox.hideDialog()
+      this.lightbox.close()
     })
   }
 
@@ -128,8 +131,8 @@ class ImageEditor {
       }
     })
 
-    document.dispatchEvent(imageCroppedEvent)
-    app.lightbox.hideDialog()
+    this.lightbox.box.dispatchEvent(imageCroppedEvent)
+    this.lightbox.close()
   }
 
   protected calculateRelativeDimensions(image: HTMLImageElement): crop {

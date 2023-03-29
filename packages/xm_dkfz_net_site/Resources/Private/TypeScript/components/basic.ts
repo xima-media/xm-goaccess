@@ -1,10 +1,9 @@
-import Lightbox from './lightbox'
 import Notice from './notice'
+import Lightbox from './lightbox'
 
 export default {
   scrollbarWidth: window.innerWidth - document.documentElement.clientWidth,
   transitionTime: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--transition-time')),
-  lightbox: new Lightbox(),
   notice: new Notice(),
 
   inViewport(checkEl: Element, targetForCssClassEl: Element = checkEl, cssClass = 'fx--visible', once = false) {
@@ -74,11 +73,12 @@ export default {
   },
 
   showLogin: function () {
+    const lightbox = new Lightbox()
     const loginFormEl = document.querySelector('#hiddenLogin')
     const loginFormHtml = loginFormEl ? loginFormEl.outerHTML : 'Login form not found'
 
-    this.lightbox.displayContent(loginFormHtml)
-    this.lightbox.stopLoading()
-    this.lightbox.open()
+    lightbox.displayContent(loginFormHtml)
+    lightbox.stopLoading()
+    lightbox.open()
   }
 }

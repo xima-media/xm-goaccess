@@ -5,13 +5,14 @@ export enum LightboxStyle {
 }
 
 class Lightbox {
-  protected box: Element
+  public box: Element
 
   public content: Element
 
   public dialog: Element
 
   public isCloseable = true
+  public preserveContent = false
 
   protected closeButton: Element
 
@@ -22,24 +23,28 @@ class Lightbox {
   protected root: HTMLHtmlElement
 
   constructor() {
+    this.createLightboxInstance()
     this.cacheDom()
     this.bindCloseButtonEvent()
   }
 
-  protected cacheDom() {
-    const content = document.querySelector('.lightbox__wrap')
-    const dialog = document.querySelector('.lightbox__dialog')
-    const closeButton = document.querySelector('.lightbox__close')
-    const root = document.querySelector('html')
-    const box = document.querySelector('.lightbox')
+  protected createLightboxInstance(): void {
+    const dummyLightbox = document.getElementById('dummyLightbox') as HTMLElement
+    this.box = dummyLightbox.cloneNode(true) as HTMLElement
+    this.box.id = `lightbox-${Date.now()}`
+    document.body.append(this.box)
+  }
 
-    if (!content || !closeButton || !root || !box || !dialog) {
+  protected cacheDom() {
+    const content = this.box.querySelector('.lightbox__wrap')
+    const closeButton = this.box.querySelector('.lightbox__close')
+    const root = document.querySelector('html')
+
+    if (!content || !closeButton || !root) {
       return false
     }
 
-    this.box = box
     this.content = content
-    this.dialog = dialog
     this.closeButton = closeButton
     this.root = root
 
@@ -85,44 +90,35 @@ class Lightbox {
   }
 
   public close() {
+    const lightboxCloseEvent = new Event('lightbox:close', {bubbles: true})
     this.box.classList.add('lightbox--closing')
     this.removeAllListener()
 
-    if (this.root.dataset.lightBoxType !== '') {
-      const lightBoxCloseEvent = new Event('lightboxClose')
-      document.dispatchEvent(lightBoxCloseEvent)
-    }
-
     setTimeout(() => {
+      this.box.dispatchEvent(lightboxCloseEvent)
       this.root.classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
-      this.root.dataset.lightBoxType = ''
+      this.box.classList.remove('lightbox--open')
       this.stopLoading()
-      this.clear()
+
+      if (!this.preserveContent) {
+        this.destroy()
+      }
     }, 400)
   }
 
-  public open(style: LightboxStyle = 0, type = '') {
+  public destroy() {
+    this.box.remove()
+  }
+
+  public open(style: LightboxStyle = 0) {
+    const lightboxOpenEvent = new Event('lightbox:open', {bubbles: true})
     this.setStyle(style)
     this.root.classList.add('open-lightbox')
-    this.root.dataset.lightBoxType = type
+    this.box.classList.add('lightbox--open')
+    this.box.dispatchEvent(lightboxOpenEvent)
     this.bindEscKeyPressEvent()
     this.bindBackgroundClickEvent()
-  }
-
-  public showDialog() {
-    this.content.classList.add('lightbox__wrap--hidden')
-    this.dialog.classList.add('lightbox__dialog--show')
-  }
-
-  public hideDialog() {
-    this.content.classList.remove('lightbox__wrap--hidden')
-    this.dialog.classList.remove('lightbox__dialog--show')
-    this.dialog.innerHTML = ''
-  }
-
-  public appendDialogElement(element: HTMLElement) {
-    this.dialog.append(element)
   }
 
   public startLoading() {
