@@ -1,6 +1,8 @@
 import app from './basic'
+import Lightbox from './lightbox'
 
 class Feedbackform {
+  protected feedbackFormLightbox: Lightbox
   constructor() {
     this.bindEvents()
   }
@@ -31,16 +33,17 @@ class Feedbackform {
         }
       }
 
-      app.lightbox.startLoading()
-      app.lightbox.open()
-      app.lightbox.displayContent(displayContent)
+      this.feedbackFormLightbox = new Lightbox()
+      this.feedbackFormLightbox.startLoading()
+      this.feedbackFormLightbox.open()
+      this.feedbackFormLightbox.displayContent(displayContent)
       this.bindFeedbackFormEvents()
-      app.lightbox.stopLoading()
+      this.feedbackFormLightbox.stopLoading()
     }
   }
 
   protected bindFeedbackFormEvents() {
-    const form = app.lightbox.content.querySelector('form')
+    const form = this.feedbackFormLightbox.content.querySelector('form')
     if (form) {
       form.addEventListener('submit', this.onFeedbackFormSubmit.bind(this))
 
@@ -101,8 +104,8 @@ class Feedbackform {
       body: formData
     }
 
-    app.lightbox.startLoading()
-    app.lightbox.clear()
+    this.feedbackFormLightbox.startLoading()
+    this.feedbackFormLightbox.clear()
     fetch(form.action, requestInit)
       .then(async response => {
         if (!response.ok) {
@@ -117,9 +120,9 @@ class Feedbackform {
           console.error('Could not find feedback form', 1672604140)
           return
         }
-        app.lightbox.displayContent(feedbackform.outerHTML)
+        this.feedbackFormLightbox.displayContent(feedbackform.outerHTML)
         this.bindFeedbackFormEvents()
-        app.lightbox.stopLoading()
+        this.feedbackFormLightbox.stopLoading()
       })
       .catch(error => {
         console.error('Submitting feedback failed', error)
