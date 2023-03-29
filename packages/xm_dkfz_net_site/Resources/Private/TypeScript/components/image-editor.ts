@@ -56,13 +56,14 @@ class ImageEditor {
     return true
   }
 
-  public show(file: Blob): void {
+  public show(file: Blob | string): void {
     this.markup = this.dummyEditor.cloneNode(true) as HTMLElement
     this.markup.setAttribute('id', `imageEditor-${Date.now()}`)
     this.image = this.markup.querySelector<HTMLImageElement>('#imageEditorImage')
 
     if (this.image) {
-      this.image.setAttribute('src', URL.createObjectURL(file))
+      const src = typeof file === 'string' ? file : URL.createObjectURL(file)
+      this.image.setAttribute('src', src)
       this.imageCropper = new Cropper(this.image, {
         aspectRatio: 1,
         zoomable: false,

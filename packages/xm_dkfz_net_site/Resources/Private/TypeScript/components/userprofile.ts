@@ -51,7 +51,7 @@ class Userprofile {
   protected bindUserEditFormEvents(): void {
     const form = app.lightbox.content.querySelector('form')
     const logoUploadInput = app.lightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
-    this.onImageEditButtonClick()
+    this.initImageEditButtonClick()
     this.initUserImageDeleteClick()
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocompleter()
@@ -60,16 +60,28 @@ class Userprofile {
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
 
-    logoUploadInput?.addEventListener('change', this.createImageEditor.bind(this, logoUploadInput))
+    logoUploadInput?.addEventListener('change', this.onLogoUploadChange.bind(this, logoUploadInput))
+  }
+
+  protected onLogoUploadChange(logoUploadInput): void {
+    const hiddenCropInput = document.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo][crop]"]')
+    if (hiddenCropInput) {
+      hiddenCropInput.value = ''
+    }
+    this.createImageEditor(logoUploadInput)
   }
 
   protected createImageEditor(logoUploadInput: any): void {
-    const file: File | undefined = logoUploadInput.files?.[0]
+    let file: File | undefined = logoUploadInput.files?.[0]
     const userImagePicture: HTMLPictureElement | null = app.lightbox.content.querySelector('.userimage picture')
     const cropAreaInput: HTMLInputElement | null = app.lightbox.content.querySelector<HTMLInputElement>(
       'input[name="tx_bwguild_api[user][logo][crop]"]'
     )
     const cropArea = cropAreaInput?.value ? JSON.parse(cropAreaInput.value) : null
+
+    if (!file) {
+      file = logoUploadInput.getAttribute('data-original')
+    }
 
     if (!file || !userImagePicture) {
       return
@@ -109,7 +121,7 @@ class Userprofile {
     imageEditButton?.classList.remove('userimage__edit-button--hidden')
   }
 
-  protected onImageEditButtonClick(): void {
+  protected initImageEditButtonClick(): void {
     const userProfileImageEditButton = app.lightbox.content.querySelector('.userimage .userimage__edit-button')
 
     if (userProfileImageEditButton) {
