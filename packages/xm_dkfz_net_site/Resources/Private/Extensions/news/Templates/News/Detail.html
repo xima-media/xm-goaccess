@@ -128,10 +128,12 @@
 		</div>
 	</div>
 
-	<f:if condition="{newsItem.contentElements}">
-		<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}
-		</f:cObject>
-	</f:if>
+	<div class="color-accent--{color}">
+		<f:if condition="{newsItem.contentElements}">
+			<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}
+			</f:cObject>
+		</f:if>
+	</div>
 
 </f:if>
 
