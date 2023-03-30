@@ -90,7 +90,7 @@ class Lightbox {
   }
 
   public close() {
-    const lightboxCloseEvent = new Event('lightbox:close', {bubbles: true})
+    const lightboxCloseEvent = new Event('lightbox:close', { bubbles: true })
     this.box.classList.add('lightbox--closing')
     this.removeAllListener()
 
@@ -112,7 +112,7 @@ class Lightbox {
   }
 
   public open(style: LightboxStyle = 0) {
-    const lightboxOpenEvent = new Event('lightbox:open', {bubbles: true})
+    const lightboxOpenEvent = new Event('lightbox:open', { bubbles: true })
     this.setStyle(style)
     this.root.classList.add('open-lightbox')
     this.box.classList.add('lightbox--open')

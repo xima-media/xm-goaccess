@@ -1,6 +1,5 @@
-import app from './basic'
 import Cropper from 'cropperjs'
-import Lightbox from "./lightbox";
+import Lightbox from './lightbox'
 
 type crop = Record<
   string,
@@ -39,7 +38,7 @@ class ImageEditor {
     if (!cropArea) {
       this.crop = {}
       this.crop[this.cropVariantName] = {
-        cropArea: {x: 0, y: 0, height: 0, width: 0},
+        cropArea: { x: 0, y: 0, height: 0, width: 0 },
         selectedRatio: '',
         focusArea: null
       }
@@ -61,26 +60,14 @@ class ImageEditor {
   public show(file: Blob | string): void {
     this.markup = this.dummyEditor.cloneNode(true) as HTMLElement
     this.markup.setAttribute('id', `imageEditor-${Date.now()}`)
-    this.image = this.markup.querySelector<HTMLImageElement>('#imageEditorImage')
-
-    if (this.image) {
-      const src = typeof file === 'string' ? file : URL.createObjectURL(file)
-      this.image.setAttribute('src', src)
-      this.imageCropper = new Cropper(this.image, {
-        aspectRatio: 1,
-        zoomable: false,
-        rotatable: false,
-        scalable: false
-      })
-
-      this.lightbox = new Lightbox()
-      this.bindImageReadyEvent()
-      this.lightbox.content.innerHTML = this.markup.outerHTML
-      this.lightbox.startLoading()
-      this.lightbox.open()
-      this.bindCropButtonClickEvent()
-      this.bindCancelCropButtonClickEvent()
-    }
+    this.lightbox = new Lightbox()
+    this.lightbox.content.innerHTML = this.markup.outerHTML
+    this.initializeCropper(file)
+    this.lightbox.startLoading()
+    this.lightbox.open()
+    this.bindImageReadyEvent()
+    this.bindCropButtonClickEvent()
+    this.bindCancelCropButtonClickEvent()
   }
 
   protected bindImageReadyEvent(): void {
@@ -95,6 +82,20 @@ class ImageEditor {
     })
   }
 
+  protected initializeCropper(file: string | Blob | MediaSource): void {
+    this.image = this.lightbox.content.querySelector<HTMLImageElement>('#imageEditorImage')
+    if (this.image) {
+      const src = typeof file === 'string' ? file : URL.createObjectURL(file)
+      this.image.setAttribute('src', src)
+      this.imageCropper = new Cropper(this.image, {
+        aspectRatio: 1,
+        zoomable: false,
+        rotatable: false,
+        scalable: false
+      })
+    }
+  }
+
   protected setAbsoluteDimensions(targetImage: HTMLImageElement): void {
     const absoluteDimensions = this.calculateAbsoluteDimensions(targetImage, this.crop)
 
@@ -104,14 +105,14 @@ class ImageEditor {
   }
 
   protected bindCancelCropButtonClickEvent(): void {
-    const cancelCropButton = this.markup.querySelector<HTMLButtonElement>('#cancelCrop')
+    const cancelCropButton = this.lightbox.content.querySelector<HTMLButtonElement>('#cancelCrop')
     cancelCropButton?.addEventListener('click', () => {
       this.lightbox.close()
     })
   }
 
   protected bindCropButtonClickEvent(): void {
-    const cropButton = this.markup.querySelector<HTMLButtonElement>('#submitCrop')
+    const cropButton = this.lightbox.content.querySelector<HTMLButtonElement>('#submitCrop')
     cropButton?.addEventListener('click', () => {
       this.cropImage()
     })

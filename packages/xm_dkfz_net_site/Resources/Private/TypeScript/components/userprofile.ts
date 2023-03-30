@@ -93,12 +93,18 @@ class Userprofile {
 
     const imageEditor = new ImageEditor(cropArea, 'square')
 
+    this.profileEditLightbox.close()
     imageEditor.show(file)
 
     imageEditor.lightbox.box.addEventListener('imagecrop', (e: CustomEvent) => {
+      this.profileEditLightbox.open()
       this.replaceOriginalImage(e.detail.previewImage, userImagePicture)
       this.showImageEditButton()
       this.setImageCropArea(cropAreaInput, JSON.stringify(e.detail.cropArea))
+    })
+
+    imageEditor.lightbox.box.addEventListener('lightbox:close', () => {
+      this.profileEditLightbox.open()
     })
   }
 
