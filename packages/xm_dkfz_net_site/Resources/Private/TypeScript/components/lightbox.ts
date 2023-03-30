@@ -96,10 +96,13 @@ class Lightbox {
 
     setTimeout(() => {
       this.box.dispatchEvent(lightboxCloseEvent)
-      this.root.classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
       this.box.classList.remove('lightbox--open')
       this.stopLoading()
+
+      if (document.querySelectorAll('.lightbox--open').length === 0) {
+        this.root.classList.remove('open-lightbox')
+      }
 
       if (!this.preserveContent) {
         this.destroy()
