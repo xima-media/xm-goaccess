@@ -11,10 +11,5 @@ interface CrawlerInterface
      * @return SitemapLink[]
      */
     public function convertXmlToLinks(string $xml, array $config): array;
-
-    /**
-     * @param SitemapLink[] $links
-     * @return SitemapLink[]
-     */
-    public function filterLinks(array $links): array;
+    
 }

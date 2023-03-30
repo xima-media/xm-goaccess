@@ -2,6 +2,7 @@
 
 namespace Xima\XmKesearchRemote\Command;
 
+use ArrayIterator;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
 use GuzzleHttp\Client;
@@ -16,6 +17,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmKesearchRemote\Crawler\CrawlerInterface;
 use Xima\XmKesearchRemote\Domain\Model\Dto\SitemapLink;
@@ -71,7 +73,6 @@ class FetchContentCommand extends Command
             $xml = $this->fetchRemoteSitemap($config['tx_xmkesearchremote_sitemap']);
 
             $links = $crawler->convertXmlToLinks($xml, $config);
-            $links = $crawler->filterLinks($links);
 
             $links = $this->filterLinksByCache($links);
             $this->fetchAndPersistLinks($links, $config['tx_xmkesearchremote_filter']);
@@ -158,8 +159,12 @@ class FetchContentCommand extends Command
         $client = new Client(['verify' => false]);
 
         try {
-            $url = str_starts_with($sitemapUrl, '/') ? 'https://' . $_SERVER['SERVER_NAME'] . $sitemapUrl : $sitemapUrl;
-            $response = $client->request('GET', $url);
+            if (str_starts_with($sitemapUrl, '/')) {
+                $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+                $sites = new ArrayIterator($siteFinder->getAllSites());
+                $sitemapUrl = $sites->current()->getBase() . $sitemapUrl;
+            }
+            $response = $client->request('GET', $sitemapUrl);
             $xml = $response->getBody()->getContents();
         } catch (GuzzleException $e) {
         }

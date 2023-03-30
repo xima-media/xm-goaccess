@@ -18,19 +18,20 @@ class SitemapCrawler implements CrawlerInterface
 
         $crawler = new Crawler($xml);
 
-        return $crawler->filter('url')->each(function (Crawler $parentCrawler) use ($sitemapUrl) {
+        $links = $crawler->filter('url')->each(function (Crawler $parentCrawler) use ($sitemapUrl, $config) {
             $link = new SitemapLink($sitemapUrl);
             $link->loc = (string)$parentCrawler->children('loc')->getNode(0)?->nodeValue ?: '';
             $link->lastmod = (int)($parentCrawler->children('lastmod')->getNode(0)?->nodeValue ?: 0);
-            return $link;
+
+            return self::isValidLink($link, $config) ? $link : null;
         });
+
+        return array_filter($links);
     }
 
-    public function filterLinks(array $links): array
+    protected static function isValidLink(SitemapLink $link, array $config): bool
     {
-        return array_filter($links, function ($link) {
-            $linkParts = explode('.', $link->loc);
-            return count($linkParts) === 1 || in_array(end($linkParts), ['html', 'php']);
-        });
+        $linkParts = explode('.', $link->loc);
+        return count($linkParts) === 1 || in_array(end($linkParts), ['html', 'php']);
     }
 }
