@@ -80,6 +80,8 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_groups',
+                'items' => [['', 0]],
+                'default' => 0,
             ],
         ],
         'dkfz_id' => [
