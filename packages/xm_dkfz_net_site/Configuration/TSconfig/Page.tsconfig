@@ -242,6 +242,8 @@ TCEFORM {
     www.disabled = 1
     image.disabled = 1
   }
+
+  tx_kesearch_indexerconfig.tx_xmkesearchremote_crawler.addItems.Xima\XmDkfzNetSite\Crawler\DkfzWikiCrawler = DKFZ WIKI
 }
 
 mod.wizards.newContentElement.wizardItems {
