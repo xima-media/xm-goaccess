@@ -457,6 +457,9 @@
 			<trans-unit id="place.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="place.first_name">
+				<source>First name</source>
+			</trans-unit>
 			<trans-unit id="place.function">
 				<source>Function</source>
 			</trans-unit>

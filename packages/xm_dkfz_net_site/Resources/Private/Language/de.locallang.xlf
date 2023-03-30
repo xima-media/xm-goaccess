@@ -362,6 +362,9 @@
 			<trans-unit id="place.name">
 				<target>Name</target>
 			</trans-unit>
+			<trans-unit id="place.first_name">
+				<source>Vorname</source>
+			</trans-unit>
 			<trans-unit id="place.function">
 				<target>Funktion</target>
 			</trans-unit>

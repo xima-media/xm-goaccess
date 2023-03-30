@@ -58,6 +58,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 $user->getHash(),
                 $user->getDisable(),
                 $user->id,
+                $user->vorname,
                 $user->nachname,
                 $user->funktion,
                 $user->getFeGroupForPlace(),
@@ -76,6 +77,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 'dkfz_hash',
                 'hidden',
                 'dkfz_id',
+                'first_name',
                 'name',
                 'function',
                 'fe_group',
@@ -88,6 +90,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 Connection::PARAM_STR,
                 Connection::PARAM_BOOL,
                 Connection::PARAM_INT,
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
@@ -109,6 +112,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                     'dkfz_hash' => $entry->getHash(),
                     'hidden' => $entry->getDisable(),
                     'name' => $entry->nachname,
+                    'first_name' => $entry->vorname,
                     'function' => $entry->funktion,
                     'fe_group' => $entry->getFeGroupForPlace(),
                     'room' => $entry->raum,
@@ -119,6 +123,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
                 [
                     Connection::PARAM_STR,
                     Connection::PARAM_BOOL,
+                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
@@ -198,6 +203,7 @@ class PlaceRepository extends Repository implements ImportableUserInterface
 
         if (isset($demand['search']) && $demand['search']) {
             $qb->where($qb->expr()->orX(
+                $qb->expr()->like('p.first_name', $qb->createNamedParameter($demand['search'] . '%')),
                 $qb->expr()->like('p.name', $qb->createNamedParameter($demand['search'] . '%')),
                 $qb->expr()->like('p.function', $qb->createNamedParameter($demand['search'] . '%'))
             ));

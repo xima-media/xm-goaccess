@@ -9,15 +9,29 @@ class Place extends AbstractEntity
 {
     protected string $name = '';
 
+    protected string $firstName = '';
+
     protected string $function = '';
 
     protected string $room = '';
 
     protected string $mail = '';
 
-    /**
-     * @return string
-     */
+    public function getDisplayName(): string
+    {
+        return trim($this->firstName . ' ' . $this->name);
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
     public function getMail(): string
     {
         return $this->mail;
@@ -38,25 +52,16 @@ class Place extends AbstractEntity
         $this->contacts = new ObjectStorage();
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getFunction(): string
     {
         return $this->function;
     }
 
-    /**
-     * @return string
-     */
     public function getRoom(): string
     {
         return $this->room;
