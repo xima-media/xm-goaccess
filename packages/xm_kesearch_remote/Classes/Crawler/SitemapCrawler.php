@@ -7,7 +7,6 @@ use Xima\XmKesearchRemote\Domain\Model\Dto\SitemapLink;
 
 class SitemapCrawler implements CrawlerInterface
 {
-
     public function convertXmlToLinks(string $xml, array $config): array
     {
         if (!$xml) {
@@ -29,6 +28,9 @@ class SitemapCrawler implements CrawlerInterface
         return array_filter($links);
     }
 
+    /**
+     * @param mixed[] $config
+     */
     protected static function isValidLink(SitemapLink $link, array $config): bool
     {
         $linkParts = explode('.', $link->loc);

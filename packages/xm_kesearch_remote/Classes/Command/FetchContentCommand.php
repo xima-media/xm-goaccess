@@ -89,7 +89,7 @@ class FetchContentCommand extends Command
         $crawler = GeneralUtility::makeInstance($crawlerClassName);
 
         if (!class_exists($crawlerClassName)) {
-            throw new \Exception('Could not find class "' . $crawlerClassName. '"', 1680163092);
+            throw new \Exception('Could not find class "' . $crawlerClassName . '"', 1680163092);
         }
 
         if (!$crawler instanceof CrawlerInterface) {

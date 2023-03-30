@@ -11,5 +11,4 @@ interface CrawlerInterface
      * @return SitemapLink[]
      */
     public function convertXmlToLinks(string $xml, array $config): array;
-    
 }
