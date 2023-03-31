@@ -96,11 +96,10 @@
 				<f:for each="{0:0,1:1,2:2,3:3,4:4,5:5}" as="index">
 					<a href="#"
 					   class="image-uploader {f:if(condition: '{offer.images.{index}}', then: 'image-uploader--filled', else: 'image-uploader--empty')}">
-						<f:form.upload multiple="true"
-									   additionalAttributes="{accept: 'image/*'}"
-									   property="images"
-									   id="images.{index}}"/>
-						<f:form.checkbox value="0" name="deleteImage{index}" id="deleteLogo"/>
+						<f:form.upload additionalAttributes="{accept: 'image/*'}"
+									   property="images.{index}"
+									   id="images.{index}"/>
+
 
 						<div class="image-uploader__drop">
 							<f:if condition="{offer.images.{index}}">

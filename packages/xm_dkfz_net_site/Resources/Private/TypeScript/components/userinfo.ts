@@ -417,6 +417,46 @@ class Userinfo {
     if (form) {
       form.addEventListener('submit', this.onOfferFormSubmit.bind(this))
       form.querySelector('button[data-abort]')?.addEventListener('click', this.onOfferFormAbort.bind(this))
+      form.querySelectorAll('.image-uploader--filled').forEach(link => {
+        link.addEventListener('click', this.onOfferImageEditClick.bind(this, link))
+      })
+      form.querySelectorAll('.image-uploader--empty').forEach(link => {
+        link.addEventListener('click', this.onOfferImageNewClick.bind(this, link))
+      })
+      form.querySelectorAll('.image-uploader input[type="file"]').forEach(input => {
+        input.addEventListener('change', this.onOfferImageChange.bind(this, input))
+      })
+    }
+  }
+
+  protected onOfferImageEditClick(link: HTMLLinkElement, e: PointerEvent): void {
+    e.preventDefault()
+    console.log(link)
+  }
+
+  protected onOfferImageNewClick(link: HTMLLinkElement, e: PointerEvent): void {
+    const element = e.target as HTMLLinkElement
+
+    if (element.nodeName !== 'INPUT') {
+      e.preventDefault()
+    }
+
+    link.querySelector<HTMLInputElement>('input[type="file"]').removeAttribute('disabled')
+    link.querySelector<HTMLInputElement>('input[type="file"]').click()
+  }
+
+  protected onOfferImageChange(input: HTMLInputElement, e: Event): void {
+    const files = input.files
+    if (files[0]) {
+      const imageBlob = URL.createObjectURL(files[0])
+      const image = new Image(100)
+      image.src = imageBlob
+      const uploaderElement = input.closest('.image-uploader')
+      uploaderElement.querySelector('.image-uploader__drop')?.prepend(image)
+      uploaderElement.classList.remove('image-uploader--empty')
+      uploaderElement.classList.add('image-uploader--filled')
+      uploaderElement.removeEventListener('click', this.onOfferImageNewClick.bind(this, uploaderElement))
+      uploaderElement.addEventListener('click', this.onOfferImageEditClick.bind(this, uploaderElement))
     }
   }
 
@@ -429,6 +469,12 @@ class Userinfo {
     e.preventDefault()
     const form = e.currentTarget as HTMLFormElement
     const url = form.getAttribute('action') ?? ''
+
+    form.querySelectorAll<HTMLInputElement>('input[type="file"]').forEach(input => {
+      if (!input.value) {
+        input.setAttribute('disabled', 'disabled')
+      }
+    })
 
     const isRecordUpdate = form.querySelector('input[name="tx_bwguild_api[offer][__identity]"]')
 

@@ -245,6 +245,11 @@ form.userprofile {
                 display: grid;
                 justify-items: center;
                 align-items: center;
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
             }
 
             .image-uploader__placeholder, img, svg {
@@ -288,6 +293,10 @@ form.userprofile {
                 border: 0;
             }
 
+            .image-uploader--filled .image-uploader__drop {
+                background-color: var(--color-gray-100);
+            }
+
             .image-uploader--filled:hover {
                 color: #FFF;
 
@@ -299,7 +308,6 @@ form.userprofile {
                     display: block;
                 }
             }
-
 
             input {
                 display: none;

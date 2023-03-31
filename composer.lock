@@ -253,16 +253,16 @@
         },
         {
             "name": "blueways/bw-focuspoint-images",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/blueways/bw_focuspoint_images.git",
-                "reference": "6bf9ab416106073eb5a5ff4affb16c775702ec8c"
+                "url": "https://github.com/maikschneider/bw_focuspoint_images.git",
+                "reference": "dc9ec10aec0965a30b8750e2edc2e9683b0612de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/blueways/bw_focuspoint_images/get/6bf9ab416106073eb5a5ff4affb16c775702ec8c.zip",
-                "reference": "6bf9ab416106073eb5a5ff4affb16c775702ec8c",
+                "url": "https://api.github.com/repos/maikschneider/bw_focuspoint_images/zipball/dc9ec10aec0965a30b8750e2edc2e9683b0612de",
+                "reference": "dc9ec10aec0965a30b8750e2edc2e9683b0612de",
                 "shasum": ""
             },
             "require": {
@@ -305,10 +305,10 @@
                 "TYPO3 CMS"
             ],
             "support": {
-                "issues": "https://bitbucket.org/blueways/bw_focuspoint_images/issues",
-                "source": "https://bitbucket.org/blueways/bw_focuspoint_images/src/6bf9ab416106073eb5a5ff4affb16c775702ec8c/?at=v3.0.3"
+                "issues": "https://github.com/maikschneider/bw_focuspoint_images/issues",
+                "source": "https://github.com/maikschneider/bw_focuspoint_images/tree/v3.0.4"
             },
-            "time": "2022-09-15T16:01:13+00:00"
+            "time": "2023-03-05T19:22:42+00:00"
         },
         {
             "name": "blueways/bw-guild",
@@ -316,7 +316,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
-                "reference": "205c5df85093a944fe56f83abfda042d2419eadd"
+                "reference": "4f6930a055e6b809f227b069a5516b381a6c0d94"
             },
             "require": {
                 "ext-gd": "*",
@@ -395,18 +395,16 @@
                 ]
             },
             "license": [
-                "proprietary"
+                "GPL-3.0-or-later"
             ],
             "authors": [
                 {
                     "name": "Maik Schneider",
-                    "homepage": "https://blueways.de",
-                    "email": "m.schneider@blueways.de",
+                    "email": "schneider.maik@me.com",
                     "role": "Developer"
                 }
             ],
-            "description": "Extends TYPO3 for the management of guilds",
-            "homepage": "https://blueways.de",
+            "description": "Extends TYPO3 for the management of frontend users and groups",
             "keywords": [
                 "TYPO3 CMS"
             ],
@@ -416,16 +414,16 @@
         },
         {
             "name": "blueways/bw-icons",
-            "version": "v2.1.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maikschneider/bw_icons.git",
-                "reference": "55fa143c0acc2683d52f0828936570ae38419f5b"
+                "reference": "74ca223b255c4cb541f72e571ec364a22f828d04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maikschneider/bw_icons/zipball/55fa143c0acc2683d52f0828936570ae38419f5b",
-                "reference": "55fa143c0acc2683d52f0828936570ae38419f5b",
+                "url": "https://api.github.com/repos/maikschneider/bw_icons/zipball/74ca223b255c4cb541f72e571ec364a22f828d04",
+                "reference": "74ca223b255c4cb541f72e571ec364a22f828d04",
                 "shasum": ""
             },
             "require": {
@@ -439,6 +437,7 @@
                 "bk2k/bootstrap-package": "dev-master",
                 "clue/phar-composer": "^1.0",
                 "friendsofphp/php-cs-fixer": "^3.12",
+                "phpmd/phpmd": "^2.13.0",
                 "saschaegerer/phpstan-typo3": "^1.8",
                 "typo3/cms-about": "^11.0",
                 "typo3/cms-backend": "^11.0",
@@ -501,9 +500,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maikschneider/bw_icons/issues",
-                "source": "https://github.com/maikschneider/bw_icons/tree/v2.1.1"
+                "source": "https://github.com/maikschneider/bw_icons/tree/v2.1.2"
             },
-            "time": "2023-03-05T21:12:17+00:00"
+            "time": "2023-03-21T16:49:33+00:00"
         },
         {
             "name": "blueways/bw-jsoneditor",
@@ -562,16 +561,16 @@
         },
         {
             "name": "blueways/bw-static-template",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maikschneider/bw_static_template.git",
-                "reference": "c44ba0d73a2fef8eb61c7ddb20743c18e22fdd67"
+                "reference": "2fcbcd5132f3444a3b7245ff5802a5ea5d4f14ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maikschneider/bw_static_template/zipball/c44ba0d73a2fef8eb61c7ddb20743c18e22fdd67",
-                "reference": "c44ba0d73a2fef8eb61c7ddb20743c18e22fdd67",
+                "url": "https://api.github.com/repos/maikschneider/bw_static_template/zipball/2fcbcd5132f3444a3b7245ff5802a5ea5d4f14ab",
+                "reference": "2fcbcd5132f3444a3b7245ff5802a5ea5d4f14ab",
                 "shasum": ""
             },
             "require": {
@@ -617,9 +616,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maikschneider/bw_static_template/issues",
-                "source": "https://github.com/maikschneider/bw_static_template/tree/v2.2.1"
+                "source": "https://github.com/maikschneider/bw_static_template/tree/v2.2.2"
             },
-            "time": "2023-03-06T10:53:31+00:00"
+            "time": "2023-03-23T09:15:11+00:00"
         },
         {
             "name": "causal/image_autoresize",
@@ -1004,16 +1003,16 @@
         },
         {
             "name": "deployer/deployer",
-            "version": "v7.2.1",
+            "version": "v7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/deployer.git",
-                "reference": "61314b16a776da3ba332ee0390e999a361431e52"
+                "reference": "de2367892e2475e4ad42b4d86d8cfef4f2387471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/deployer/zipball/61314b16a776da3ba332ee0390e999a361431e52",
-                "reference": "61314b16a776da3ba332ee0390e999a361431e52",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/de2367892e2475e4ad42b4d86d8cfef4f2387471",
+                "reference": "de2367892e2475e4ad42b4d86d8cfef4f2387471",
                 "shasum": ""
             },
             "bin": [
@@ -1043,7 +1042,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-01T20:16:58+00:00"
+            "time": "2023-03-24T10:50:39+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -4014,24 +4013,27 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.6.2",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "48f445a408c131e38cab1c235aa6d2bb7a0bb20d"
+                "reference": "dfc078e8af9c99210337325ff5aa152872c98714"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/48f445a408c131e38cab1c235aa6d2bb7a0bb20d",
-                "reference": "48f445a408c131e38cab1c235aa6d2bb7a0bb20d",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/dfc078e8af9c99210337325ff5aa152872c98714",
+                "reference": "dfc078e8af9c99210337325ff5aa152872c98714",
                 "shasum": ""
             },
             "require": {
+                "doctrine/deprecations": "^1.0",
                 "php": "^7.4 || ^8.0",
-                "phpdocumentor/reflection-common": "^2.0"
+                "phpdocumentor/reflection-common": "^2.0",
+                "phpstan/phpdoc-parser": "^1.13"
             },
             "require-dev": {
                 "ext-tokenizer": "*",
+                "phpbench/phpbench": "^1.2",
                 "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan": "^1.8",
                 "phpstan/phpstan-phpunit": "^1.1",
@@ -4063,9 +4065,54 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.2"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.1"
             },
-            "time": "2022-10-14T12:47:21+00:00"
+            "time": "2023-03-27T19:02:04+00:00"
+        },
+        {
+            "name": "phpstan/phpdoc-parser",
+            "version": "1.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpdoc-parser.git",
+                "reference": "e27e92d939e2e3636f0a1f0afaba59692c0bf571"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/e27e92d939e2e3636f0a1f0afaba59692c0bf571",
+                "reference": "e27e92d939e2e3636f0a1f0afaba59692c0bf571",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^1.5",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/process": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\PhpDocParser\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPDoc parser with support for nullable, intersection and generic types",
+            "support": {
+                "issues": "https://github.com/phpstan/phpdoc-parser/issues",
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.16.1"
+            },
+            "time": "2023-02-07T18:11:17+00:00"
         },
         {
             "name": "psr/cache",
@@ -10499,27 +10546,28 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "2.7.2",
+            "version": "2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/Fluid.git",
-                "reference": "50ee1ee19ee00947c92bcb554bbea4fb5463b468"
+                "reference": "24f4494083c8d304680e4c9c38667dff33720dd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/50ee1ee19ee00947c92bcb554bbea4fb5463b468",
-                "reference": "50ee1ee19ee00947c92bcb554bbea4fb5463b468",
+                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/24f4494083c8d304680e4c9c38667dff33720dd4",
+                "reference": "24f4494083c8d304680e4c9c38667dff33720dd4",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
+                "ext-json": "*",
                 "ext-mbstring": "*",
                 "friendsofphp/php-cs-fixer": "^3.4",
                 "phpstan/phpstan": "^1.7",
                 "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^8.5.26 || ^9.5"
+                "phpunit/phpunit": "^8.5.33 || ^9.5.28 || ^10.0.16"
             },
             "suggest": {
                 "ext-json": "PHP JSON is needed when using JSONVariableProvider: A relatively rare use case"
@@ -10544,7 +10592,7 @@
                 "issues": "https://github.com/TYPO3/Fluid/issues",
                 "source": "https://github.com/TYPO3/Fluid"
             },
-            "time": "2022-07-28T11:24:11+00:00"
+            "time": "2023-03-23T12:04:09+00:00"
         },
         {
             "name": "waldhacker/typo3-oauth2-client",
@@ -10695,12 +10743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "750489c4c2c12ed4f4fbd7a9df953566348087f8"
+                "reference": "0a88afade78aed7f0e76be22c7ea34657918544b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/750489c4c2c12ed4f4fbd7a9df953566348087f8",
-                "reference": "750489c4c2c12ed4f4fbd7a9df953566348087f8",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/0a88afade78aed7f0e76be22c7ea34657918544b",
+                "reference": "0a88afade78aed7f0e76be22c7ea34657918544b",
                 "shasum": ""
             },
             "require": {
@@ -10723,9 +10771,9 @@
             "description": "Common deployer configuration for TYPO3 projects",
             "support": {
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
-                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.1.0"
+                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.2.0"
             },
-            "time": "2023-01-25T18:19:53+00:00"
+            "time": "2023-03-19T15:37:34+00:00"
         },
         {
             "name": "xima/xima-twitter-client",
@@ -12233,16 +12281,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.6",
+            "version": "1.10.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "50d089a3e0904b0fe7e2cf2d4fd37d427d64235a"
+                "reference": "9b13dafe3d66693d20fe5729c3dde1d31bb64703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/50d089a3e0904b0fe7e2cf2d4fd37d427d64235a",
-                "reference": "50d089a3e0904b0fe7e2cf2d4fd37d427d64235a",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9b13dafe3d66693d20fe5729c3dde1d31bb64703",
+                "reference": "9b13dafe3d66693d20fe5729c3dde1d31bb64703",
                 "shasum": ""
             },
             "require": {
@@ -12271,8 +12319,11 @@
                 "static analysis"
             ],
             "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.10.6"
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
             },
             "funding": [
                 {
@@ -12288,7 +12339,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-09T16:55:12+00:00"
+            "time": "2023-03-30T08:58:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -12610,16 +12661,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.5",
+            "version": "9.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "86e761949019ae83f49240b2f2123fb5ab3b2fc5"
+                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/86e761949019ae83f49240b2f2123fb5ab3b2fc5",
-                "reference": "86e761949019ae83f49240b2f2123fb5ab3b2fc5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b65d59a059d3004a040c16a82e07bbdf6cfdd115",
+                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115",
                 "shasum": ""
             },
             "require": {
@@ -12692,7 +12743,8 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.5"
+                "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.6"
             },
             "funding": [
                 {
@@ -12708,20 +12760,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-09T06:34:10+00:00"
+            "time": "2023-03-27T11:43:46+00:00"
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.12",
+            "version": "v0.11.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "52cb7c47d403c31c0adc9bf7710fc355f93c20f7"
+                "reference": "8c2e264def7a8263a68ef6f0b55ce90b77d41e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/52cb7c47d403c31c0adc9bf7710fc355f93c20f7",
-                "reference": "52cb7c47d403c31c0adc9bf7710fc355f93c20f7",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/8c2e264def7a8263a68ef6f0b55ce90b77d41e17",
+                "reference": "8c2e264def7a8263a68ef6f0b55ce90b77d41e17",
                 "shasum": ""
             },
             "require": {
@@ -12782,22 +12834,22 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.12"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.14"
             },
-            "time": "2023-01-29T21:24:40+00:00"
+            "time": "2023-03-28T03:41:01+00:00"
         },
         {
             "name": "rector/rector",
-            "version": "0.15.20",
+            "version": "0.15.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "c3c4fb38255a671c4854846dce08a059c76f358a"
+                "reference": "5c499ec662a698d5042a3cdc936a4642ada35e19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/c3c4fb38255a671c4854846dce08a059c76f358a",
-                "reference": "c3c4fb38255a671c4854846dce08a059c76f358a",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/5c499ec662a698d5042a3cdc936a4642ada35e19",
+                "reference": "5c499ec662a698d5042a3cdc936a4642ada35e19",
                 "shasum": ""
             },
             "require": {
@@ -12837,7 +12889,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.15.20"
+                "source": "https://github.com/rectorphp/rector/tree/0.15.22"
             },
             "funding": [
                 {
@@ -12845,7 +12897,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-05T11:25:23+00:00"
+            "time": "2023-03-22T09:37:21+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -12853,12 +12905,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "b001be05b80bfa38fb266b30ec3108607af6ccd6"
+                "reference": "945aadf4c174c61973464b4000f4d7529aeb84a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/b001be05b80bfa38fb266b30ec3108607af6ccd6",
-                "reference": "b001be05b80bfa38fb266b30ec3108607af6ccd6",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/945aadf4c174c61973464b4000f4d7529aeb84a0",
+                "reference": "945aadf4c174c61973464b4000f4d7529aeb84a0",
                 "shasum": ""
             },
             "conflict": {
@@ -12892,7 +12944,7 @@
                 "barrelstrength/sprout-forms": "<3.9",
                 "barryvdh/laravel-translation-manager": "<0.6.2",
                 "barzahlen/barzahlen-php": "<2.0.1",
-                "baserproject/basercms": "<4.7.2",
+                "baserproject/basercms": "<4.7.5",
                 "bassjobsen/bootstrap-3-typeahead": ">4.0.2",
                 "billz/raspap-webgui": "<=2.6.6",
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
@@ -13070,6 +13122,7 @@
                 "kimai/kimai": "<1.1",
                 "kitodo/presentation": "<3.1.2",
                 "klaviyo/magento2-extension": ">=1,<3",
+                "knplabs/knp-snappy": "<=1.4.1",
                 "krayin/laravel-crm": "<1.2.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
@@ -13116,7 +13169,7 @@
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
                 "mojo42/jirafeau": "<4.4",
                 "monolog/monolog": ">=1.8,<1.12",
-                "moodle/moodle": "<4.0.6|= 3.11|>=4.1-beta,<4.1.1",
+                "moodle/moodle": "<4.0.7|>=4.1-beta,<4.1.2|= 3.11",
                 "mustache/mustache": ">=2,<2.14.1",
                 "namshi/jose": "<2.2",
                 "neoan3-apps/template": "<1.1.1",
@@ -13171,12 +13224,13 @@
                 "phpoffice/phpspreadsheet": "<1.16",
                 "phpseclib/phpseclib": "<2.0.31|>=3,<3.0.19",
                 "phpservermon/phpservermon": "<=3.5.2",
+                "phpsysinfo/phpsysinfo": "<3.2.5",
                 "phpunit/phpunit": ">=4.8.19,<4.8.28|>=5,<5.6.3",
                 "phpwhois/phpwhois": "<=4.2.5",
                 "phpxmlrpc/extras": "<0.6.1",
                 "phpxmlrpc/phpxmlrpc": "<4.9.2",
                 "pimcore/data-hub": "<1.2.4",
-                "pimcore/pimcore": "<11",
+                "pimcore/pimcore": "<10.5.20",
                 "pixelfed/pixelfed": "<=0.11.4",
                 "pocketmine/bedrock-protocol": "<8.0.2",
                 "pocketmine/pocketmine-mp": "<4.12.5|>= 4.0.0-BETA5, < 4.4.2",
@@ -13227,7 +13281,7 @@
                 "silverstripe/comments": ">=1.3,<1.9.99|>=2,<2.9.99|>=3,<3.1.1",
                 "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
                 "silverstripe/framework": "<4.11.14",
-                "silverstripe/graphql": "<3.5.2|>=4-alpha.1,<4-alpha.2|= 4.0.0-alpha1",
+                "silverstripe/graphql": "<3.5.2|>=4-alpha.1,<4-alpha.2|>=4.1.1,<4.1.2|>=4.2.2,<4.2.3|= 4.0.0-alpha1",
                 "silverstripe/hybridsessions": ">=1,<2.4.1|>=2.5,<2.5.1",
                 "silverstripe/registry": ">=2.1,<2.1.2|>=2.2,<2.2.1",
                 "silverstripe/restfulserver": ">=1,<1.0.9|>=2,<2.0.4",
@@ -13243,8 +13297,9 @@
                 "simplesamlphp/simplesamlphp-module-openid": "<1",
                 "simplesamlphp/simplesamlphp-module-openidprovider": "<0.9",
                 "simplito/elliptic-php": "<1.0.6",
+                "sitegeist/fluid-components": "<3.5",
                 "slim/slim": "<2.6",
-                "smarty/smarty": "<3.1.47|>=4,<4.2.1",
+                "smarty/smarty": "<3.1.48|>=4,<4.3.1",
                 "snipe/snipe-it": "<=6.0.14|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
@@ -13438,29 +13493,30 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-13T21:04:29+00:00"
+            "time": "2023-03-30T21:04:19+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "1.8.2",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "a5121d6e610ced02445a8ac7deb91cd31bb02b71"
+                "reference": "4f3a47b57d25ba50063d2288c558bd26934cbab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/a5121d6e610ced02445a8ac7deb91cd31bb02b71",
-                "reference": "a5121d6e610ced02445a8ac7deb91cd31bb02b71",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/4f3a47b57d25ba50063d2288c558bd26934cbab9",
+                "reference": "4f3a47b57d25ba50063d2288c558bd26934cbab9",
                 "shasum": ""
             },
             "require": {
                 "bnf/phpstan-psr-container": "^1.0",
+                "composer/semver": "^3.3",
                 "nikic/php-parser": "^4.15.1",
                 "php": "^7.2 || ^8.0",
                 "phpstan/phpstan": "^1.8.9",
-                "typo3/cms-core": "^10.4 || ^11.5 || ^12.0",
-                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.0"
+                "typo3/cms-core": "^10.4 || ^11.5 || ^12.2",
+                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.2"
             },
             "require-dev": {
                 "consistence-community/coding-standard": "^3.10.1",
@@ -13495,7 +13551,7 @@
             "description": "TYPO3 CMS class reflection extension for PHPStan",
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.2"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.3"
             },
             "funding": [
                 {
@@ -13507,7 +13563,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2022-11-06T09:11:41+00:00"
+            "time": "2023-03-19T20:25:37+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -14479,12 +14535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "96f77a0ed1d73226e4a8fccbac1fdeb975c92f40"
+                "reference": "2bb4e892a678cb392925effd68c67f7b50b90205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/96f77a0ed1d73226e4a8fccbac1fdeb975c92f40",
-                "reference": "96f77a0ed1d73226e4a8fccbac1fdeb975c92f40",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/2bb4e892a678cb392925effd68c67f7b50b90205",
+                "reference": "2bb4e892a678cb392925effd68c67f7b50b90205",
                 "shasum": ""
             },
             "require": {
@@ -14496,7 +14552,7 @@
                 "nikic/php-parser": "^4.14",
                 "php": "^7.4 || ^8.0",
                 "phpstan/phpstan": "^1.9.7",
-                "rector/rector": "0.15.20",
+                "rector/rector": "0.15.22",
                 "symfony/console": "^4.0 || ^5.0 || ^6.0",
                 "symfony/polyfill-php80": "^1.26",
                 "symfony/polyfill-php81": "^1.26",
@@ -14564,7 +14620,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-06T09:53:32+00:00"
+            "time": "2023-03-28T20:31:21+00:00"
         },
         {
             "name": "symfony/stopwatch",
