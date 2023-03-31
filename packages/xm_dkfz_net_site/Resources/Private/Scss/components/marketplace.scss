@@ -11,7 +11,11 @@
 }
 
 .marketplace-show {
-    display: grid;
+    display: none;
+
+    &.active {
+        display: grid;
+    }
 
     .hero {
         margin-bottom: var(--space-md);
@@ -41,6 +45,7 @@
     & > .button--white {
         color: inherit;
         justify-self: center;
+        margin-bottom: 3rem;
     }
 }
 

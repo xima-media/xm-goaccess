@@ -1,6 +1,6 @@
 import app from './basic'
-import { LightboxStyle } from './lightbox'
-import { NoticeStyle } from './notice'
+import {LightboxStyle} from './lightbox'
+import {NoticeStyle} from './notice'
 import Lightbox from './lightbox'
 
 export interface UserData {
@@ -241,6 +241,18 @@ class Userinfo {
     if (!marketPlace || !orderDummy || !this.userinfo || !this.userinfo.offers) {
       return
     }
+
+    // marketplace navigation @TODO: move to better location
+    document.querySelectorAll('a[data-marketplace]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault()
+        const currentLink = e.currentTarget as HTMLLinkElement
+        document.querySelectorAll('a[data-marketplace]').forEach(link => link.classList.remove('active'))
+        currentLink.classList.add('active')
+        document.querySelectorAll('.marketplace-show').forEach(div => div.classList.remove('active'))
+        document.querySelector(`.marketplace-show[data-marketplace="${link.getAttribute('data-marketplace')}"]`).classList.add('active')
+      })
+    })
 
     marketPlace.innerHTML = ''
 
