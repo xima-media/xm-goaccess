@@ -40,6 +40,8 @@ page {
       pidEmergency.value = {$pidEmergency}
       pidOfferShow = TEXT
       pidOfferShow.value = {$pidOfferShow}
+      pidOfferPreviewShow = TEXT
+      pidOfferPreviewShow.value = {$pidOfferPreviewShow}
     }
 
     dataProcessing {
