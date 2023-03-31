@@ -41,6 +41,16 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Controller/DkfzController.php
 
 		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Crawler/DkfzWikiCrawler.php
+
+		-
+			message: "#^Parameter \\#1 \\$sitemapUrl of class Xima\\\\XmKesearchRemote\\\\Domain\\\\Model\\\\Dto\\\\SitemapLink constructor expects string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Crawler/DkfzWikiCrawler.php
+
+		-
 			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on mixed\\.$#"
 			count: 3
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php

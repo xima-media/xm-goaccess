@@ -14,7 +14,7 @@
 // @todo aufräumen
 .carousel {
     position: relative;
-    width: $container-expand-widths -6rem;
+    display: grid;
 
     .content-wrapper & {
         @include media-breakpoint-up(md) {
@@ -51,6 +51,7 @@
         margin-right: auto;
         margin-left: auto;
         z-index: 1;
+        min-width: 100%;
 
         &-teaser {
             .carousel__button {

@@ -20,6 +20,10 @@
     includeJSFooter {
       terminal = EXT:xm_dkfz_net_site/Resources/Public/JavaScript/dist/terminal.min.js
     }
+
+    includeJSFooterlibs {
+      keSearchPremiumAutocompleteJs >
+    }
   }
 
 [end]

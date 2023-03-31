@@ -1,6 +1,7 @@
 import app from './basic'
-import {LightboxStyle} from './lightbox'
-import {NoticeStyle} from './notice'
+import { LightboxStyle } from './lightbox'
+import { NoticeStyle } from './notice'
+import Lightbox from './lightbox'
 
 export interface UserData {
   uid: number
@@ -58,6 +59,8 @@ export interface UserinfoResponse {
 
 class Userinfo {
   protected userinfo: UserinfoResponse
+  protected userInfoLightbox: Lightbox
+  protected offerLightbox: Lightbox
 
   constructor() {
     this.bindStorageResetAtLogin()
@@ -188,28 +191,29 @@ class Userinfo {
       return
     }
 
-    app.lightbox.displayContent(this.userinfo.html)
-    app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => {
+    this.userInfoLightbox = new Lightbox()
+    this.userInfoLightbox.displayContent(this.userinfo.html)
+    this.userInfoLightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => {
       link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this))
     })
-    app.lightbox.stopLoading()
-    app.lightbox.open(LightboxStyle.sidebar)
+    this.userInfoLightbox.stopLoading()
+    this.userInfoLightbox.open(LightboxStyle.sidebar)
   }
 
   protected onBookmarkSidebarLinkClick(e: Event): void {
     e.preventDefault()
     const link = e.currentTarget as HTMLLinkElement
     const url = link.getAttribute('data-bookmark-url') ?? ''
-    app.lightbox.startLoading()
+    this.userInfoLightbox.startLoading()
     void app.apiRequest(url, 'DELETE').then(userinfo => {
       this.userinfo = userinfo
       localStorage.setItem('userinfo', JSON.stringify(userinfo))
       this.modifyBookmarkLinks()
-      app.lightbox.displayContent(userinfo.html)
-      app.lightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => {
+      this.userInfoLightbox.displayContent(userinfo.html)
+      this.userInfoLightbox.content.querySelectorAll('a[data-bookmark-url]').forEach(link => {
         link.addEventListener('click', this.onBookmarkSidebarLinkClick.bind(this))
       })
-      app.lightbox.stopLoading()
+      this.userInfoLightbox.stopLoading()
     })
   }
 
@@ -367,16 +371,17 @@ class Userinfo {
     e.preventDefault()
     const url = button.getAttribute('data-offer-edit-link') ?? ''
 
-    app.lightbox.startLoading()
-    app.lightbox.open()
-    app.lightbox.isCloseable = false
+    this.offerLightbox = new Lightbox()
+    this.offerLightbox.startLoading()
+    this.offerLightbox.open()
+    this.offerLightbox.isCloseable = false
     app
       .apiRequest(url)
       .then(data => data.html)
       .then(formHtml => {
-        app.lightbox.displayContent(formHtml)
+        this.offerLightbox.displayContent(formHtml)
         this.onOfferFormLoaded()
-        app.lightbox.stopLoading()
+        this.offerLightbox.stopLoading()
       })
       .catch(() => {
         app.notice.open(NoticeStyle.error, 'Could not load form, please reload and try again.')
@@ -408,7 +413,7 @@ class Userinfo {
   }
 
   protected onOfferFormLoaded(): void {
-    const form = app.lightbox.content.querySelector('form')
+    const form = this.offerLightbox.content.querySelector('form')
     if (form) {
       form.addEventListener('submit', this.onOfferFormSubmit.bind(this))
       form.querySelector('button[data-abort]')?.addEventListener('click', this.onOfferFormAbort.bind(this))
@@ -417,7 +422,7 @@ class Userinfo {
 
   protected onOfferFormAbort(e: PointerEvent): void {
     e.preventDefault()
-    app.lightbox.close()
+    this.offerLightbox.close()
   }
 
   protected onOfferFormSubmit(e: SubmitEvent): void {
@@ -427,7 +432,7 @@ class Userinfo {
 
     const isRecordUpdate = form.querySelector('input[name="tx_bwguild_api[offer][__identity]"]')
 
-    app.lightbox.startLoading()
+    this.offerLightbox.startLoading()
     app
       .apiRequest(url, 'POST', form)
       .then(data => {
@@ -437,10 +442,10 @@ class Userinfo {
 
         if (isRecordUpdate) {
           // refresh login form
-          app.lightbox.displayContent(data.html)
+          this.offerLightbox.displayContent(data.html)
           this.onOfferFormLoaded()
           this.modifyMarketplace()
-          app.lightbox.stopLoading()
+          this.offerLightbox.stopLoading()
           app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
         } else {
           // redirect to newly created offer
@@ -449,7 +454,7 @@ class Userinfo {
       })
       .catch(() => {
         app.notice.open(NoticeStyle.error, 'Error saving data, please try again', 2000)
-        app.lightbox.stopLoading()
+        this.offerLightbox.stopLoading()
       })
   }
 }

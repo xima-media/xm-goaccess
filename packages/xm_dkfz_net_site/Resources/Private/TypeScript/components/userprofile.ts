@@ -1,8 +1,9 @@
 import app from './basic'
-
 import autocomplete, { AutocompleteItem } from 'autocompleter'
 import { AutocomleterItem } from './hero-form'
 import { NoticeStyle } from './notice'
+import ImageEditor from './image-editor'
+import Lightbox from './lightbox'
 
 interface FeatureItem extends AutocompleteItem {
   label: string
@@ -10,6 +11,7 @@ interface FeatureItem extends AutocompleteItem {
 }
 
 class Userprofile {
+  protected profileEditLightbox: Lightbox
   constructor() {
     this.bindEvents()
   }
@@ -28,14 +30,16 @@ class Userprofile {
     e.preventDefault()
     const link = e.currentTarget as Element
     const url = link.getAttribute('data-user-edit-link') ?? ''
+    this.profileEditLightbox = new Lightbox()
+    this.profileEditLightbox.preserveContent = true
 
-    app.lightbox.startLoading()
-    app.lightbox.open()
+    this.profileEditLightbox.startLoading()
+    this.profileEditLightbox.open()
     this.loadUserEditForm(url)
       .then(formHtml => {
-        app.lightbox.displayContent(formHtml)
+        this.profileEditLightbox.displayContent(formHtml)
         this.bindUserEditFormEvents()
-        app.lightbox.stopLoading()
+        this.profileEditLightbox.stopLoading()
       })
       .catch(() => {
         // app.notice.open(NoticeStyle.error, 'lorem')
@@ -49,7 +53,9 @@ class Userprofile {
   }
 
   protected bindUserEditFormEvents(): void {
-    const form = app.lightbox.content.querySelector('form')
+    const form = this.profileEditLightbox.content.querySelector('form')
+    const logoUploadInput = this.profileEditLightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
+    this.initImageEditButtonClick()
     this.initUserImageDeleteClick()
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocompleter()
@@ -57,10 +63,87 @@ class Userprofile {
     this.initClearLinks()
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
+
+    logoUploadInput?.addEventListener('change', this.onLogoUploadChange.bind(this, logoUploadInput))
+  }
+
+  protected onLogoUploadChange(logoUploadInput: HTMLInputElement): void {
+    const hiddenCropInput = document.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo][crop]"]')
+    if (hiddenCropInput) {
+      hiddenCropInput.value = ''
+    }
+    this.createImageEditor(logoUploadInput)
+  }
+
+  protected createImageEditor(logoUploadInput: any): void {
+    let file: File | undefined = logoUploadInput.files?.[0]
+    const userImagePicture: HTMLPictureElement | null = this.profileEditLightbox.content.querySelector('.userimage picture')
+    const cropAreaInput: HTMLInputElement | null = this.profileEditLightbox.content.querySelector<HTMLInputElement>(
+      'input[name="tx_bwguild_api[user][logo][crop]"]'
+    )
+    const cropArea = cropAreaInput?.value ? JSON.parse(cropAreaInput.value) : null
+
+    if (!file) {
+      file = logoUploadInput.getAttribute('data-original')
+    }
+
+    if (!file || !userImagePicture) {
+      return
+    }
+
+    const imageEditor = new ImageEditor(cropArea, 'square')
+
+    this.profileEditLightbox.close()
+    imageEditor.show(file)
+
+    imageEditor.lightbox.box.addEventListener('imagecrop', (e: CustomEvent) => {
+      this.profileEditLightbox.open()
+      this.replaceOriginalImage(e.detail.previewImage, userImagePicture)
+      this.showImageEditButton()
+      this.setImageCropArea(cropAreaInput, JSON.stringify(e.detail.cropArea))
+    })
+
+    imageEditor.lightbox.box.addEventListener('lightbox:close', () => {
+      this.profileEditLightbox.open()
+    })
+  }
+
+  protected setImageCropArea(cropAreaInput: HTMLInputElement | null, cropAreaValue: string): void {
+    if (cropAreaInput) {
+      cropAreaInput.value = cropAreaValue
+    }
+  }
+
+  protected replaceOriginalImage(previewImageSource: string, previewImageTarget: HTMLPictureElement): void {
+    const previewImage = new Image()
+    previewImage.src = previewImageSource
+
+    previewImage.width = 150
+    previewImage.height = 150
+
+    previewImageTarget?.querySelector('svg')?.remove()
+    previewImageTarget?.querySelector('img')?.remove()
+    previewImageTarget?.prepend(previewImage)
+  }
+
+  protected showImageEditButton(): void {
+    const imageEditButton = this.profileEditLightbox.content.querySelector('.userimage .userimage__edit-button')
+    imageEditButton?.classList.remove('userimage__edit-button--hidden')
+  }
+
+  protected initImageEditButtonClick(): void {
+    const userProfileImageEditButton = this.profileEditLightbox.content.querySelector('.userimage .userimage__edit-button')
+
+    if (userProfileImageEditButton) {
+      userProfileImageEditButton.addEventListener('click', () => {
+        const logoUploadInput = this.profileEditLightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
+        this.createImageEditor(logoUploadInput)
+      })
+    }
   }
 
   protected initUserImageDeleteClick(): void {
-    const checkboxElement = app.lightbox.content.querySelector<HTMLInputElement>('input#deleteLogo')
+    const checkboxElement = this.profileEditLightbox.content.querySelector<HTMLInputElement>('input#deleteLogo')
 
     if (!checkboxElement) {
       return
@@ -70,8 +153,8 @@ class Userprofile {
   }
 
   protected onUserImageDeleteChange(): void {
-    const formElement = app.lightbox.content.querySelector('form')
-    const uploadElement = app.lightbox.content.querySelector('form input[name="tx_bwguild_api[user][logo]"]')
+    const formElement = this.profileEditLightbox.content.querySelector('form')
+    const uploadElement = this.profileEditLightbox.content.querySelector('form input[name="tx_bwguild_api[user][logo]"]')
 
     if (!formElement || !uploadElement) {
       return
@@ -87,7 +170,7 @@ class Userprofile {
   }
 
   protected initUserRepresentativeSelect(): void {
-    const selectElement = app.lightbox.content.querySelector('#user-committee')
+    const selectElement = this.profileEditLightbox.content.querySelector('#user-committee')
 
     if (!selectElement) {
       return
@@ -115,8 +198,8 @@ class Userprofile {
     ]
 
     inputSelectors.forEach(selectors => {
-      const inputElement = app.lightbox.content.querySelector<HTMLInputElement>(selectors[0])
-      const hiddenElement = app.lightbox.content.querySelector<HTMLInputElement>(selectors[1])
+      const inputElement = this.profileEditLightbox.content.querySelector<HTMLInputElement>(selectors[0])
+      const hiddenElement = this.profileEditLightbox.content.querySelector<HTMLInputElement>(selectors[1])
 
       if (!inputElement || !hiddenElement) {
         return
@@ -136,7 +219,7 @@ class Userprofile {
   }
 
   protected initClearLinks(): void {
-    app.lightbox.content.querySelectorAll('a[data-clear-inputs]').forEach(link => {
+    this.profileEditLightbox.content.querySelectorAll('a[data-clear-inputs]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault()
         const link = e.currentTarget as HTMLLinkElement
@@ -144,7 +227,7 @@ class Userprofile {
         let newHiddenValue = ''
 
         if (link.hasAttribute('data-hide-onclear')) {
-          const element = app.lightbox.content.querySelector<HTMLDivElement>(link.getAttribute('data-hide-onclear') ?? '')
+          const element = this.profileEditLightbox.content.querySelector<HTMLDivElement>(link.getAttribute('data-hide-onclear') ?? '')
           newValue = element?.querySelector<HTMLInputElement>('input[type="text"]')?.value ?? ''
           newHiddenValue = element?.querySelector<HTMLInputElement>('input[type="hidden"]')?.value ?? ''
           element?.querySelector<HTMLAnchorElement>('a[data-clear-inputs]')?.click()
@@ -153,7 +236,7 @@ class Userprofile {
           }
         }
 
-        app.lightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs') ?? '').forEach(input => {
+        this.profileEditLightbox.content.querySelectorAll<HTMLInputElement>(link.getAttribute('data-clear-inputs') ?? '').forEach(input => {
           if (input.getAttribute('type') === 'hidden') {
             input.value = newHiddenValue
           } else {
@@ -188,7 +271,7 @@ class Userprofile {
     const featureBubbleTemplate = document.querySelector('a[data-feature="###JS_TEMPLATE###"]')
     const selectElement = document.querySelector('select[name="tx_bwguild_api[user][features][]"]')
 
-    app.lightbox.content.querySelectorAll('div[data-all-features]').forEach(container => {
+    this.profileEditLightbox.content.querySelectorAll('div[data-all-features]').forEach(container => {
       const inputElement = container.querySelector('input')
       const bubbleDropZoneElement = container.querySelector('ul.list')
       const recordType = container.getAttribute('data-record-type') ?? ''
@@ -370,14 +453,14 @@ class Userprofile {
     const url = form.getAttribute('action') ?? ''
     const profileUrl = form.getAttribute('data-profile-url') ?? ''
 
-    app.lightbox.startLoading()
+    this.profileEditLightbox.startLoading()
     app
       .apiRequest(url, 'POST', form)
       .then(data => {
         localStorage.removeItem('userinfo')
-        app.lightbox.displayContent(data.html)
+        this.profileEditLightbox.displayContent(data.html)
         this.bindUserEditFormEvents()
-        app.lightbox.stopLoading()
+        this.profileEditLightbox.stopLoading()
         // invalidate cache
         fetch(profileUrl, { cache: 'reload' }).then().catch()
         app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
@@ -387,7 +470,7 @@ class Userprofile {
 
   protected onAbortButtonClick(e: Event): void {
     e.preventDefault()
-    app.lightbox.close()
+    this.profileEditLightbox.close()
   }
 }
 

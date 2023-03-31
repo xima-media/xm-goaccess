@@ -9,6 +9,8 @@
 //   @section 1. Disruptor
 //
 .disruptor-wrapper {
+    display: none;
+
     &--fixed {
         position: fixed;
         top: 0;
@@ -20,6 +22,7 @@
         padding: .5rem;
         z-index: 99;
         animation: opacityIn 0.4s ease;
+        display: block;
     }
 
     &--content {
@@ -46,38 +49,6 @@
                 background: $color-secondary;
                 flex: 1;
                 max-width: max-content;
-            }
-        }
-    }
-}
-
-//
-//   @section 2. Lightbox warning
-//
-
-.lightbox {
-    &--warning {
-        .lightbox {
-            &__content {
-                padding-left: var(--space-unit);
-                padding-top: 0;
-                padding-bottom: 0;
-
-                .infobox {
-                    padding-top: var(--space-lg);
-                    padding-bottom: var(--space-xl);
-
-                    p {
-                        @include text-copy-standard;
-                        strong {
-                            letter-spacing: .3px;
-                        }
-                    }
-                }
-            }
-
-            &__close {
-                padding-top: calc(10px + var(--space-xxl));
             }
         }
     }

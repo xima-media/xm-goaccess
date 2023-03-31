@@ -2,26 +2,35 @@
 
 namespace Xima\XmKesearchRemote\Command;
 
+use ArrayIterator;
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DomCrawler\Crawler;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Xima\XmKesearchRemote\Crawler\CrawlerInterface;
 use Xima\XmKesearchRemote\Domain\Model\Dto\SitemapLink;
 
 class FetchContentCommand extends Command
 {
     protected string $cacheDir = '';
 
+    protected CrawlerInterface $crawler;
+
     /**
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException
-     * @throws \TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
      * @throws \Exception
      */
     public function __construct(
@@ -51,22 +60,43 @@ class FetchContentCommand extends Command
     }
 
     /**
-     * @throws \Doctrine\DBAL\Driver\Exception
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws Exception
+     * @throws DBALException
+     * @throws \Exception
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $sitemapConfigs = $this->getSitemapConfigurationFromIndexerConfigurations();
 
         foreach ($sitemapConfigs as $config) {
+            $crawler = $this->getCrawler($config['tx_xmkesearchremote_crawler'] ?? '');
             $xml = $this->fetchRemoteSitemap($config['tx_xmkesearchremote_sitemap']);
-            $links = $this->convertXmlToLinks($xml, $config['tx_xmkesearchremote_sitemap']);
-            $links = $this->filterLinksByFileTypes($links);
+
+            $links = $crawler->convertXmlToLinks($xml, $config);
+
             $links = $this->filterLinksByCache($links);
             $this->fetchAndPersistLinks($links, $config['tx_xmkesearchremote_filter']);
         }
 
         return Command::SUCCESS;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    protected function getCrawler(string $crawlerClassName): CrawlerInterface
+    {
+        $crawler = GeneralUtility::makeInstance($crawlerClassName);
+
+        if (!class_exists($crawlerClassName)) {
+            throw new \Exception('Could not find class "' . $crawlerClassName . '"', 1680163092);
+        }
+
+        if (!$crawler instanceof CrawlerInterface) {
+            throw new \Exception('Crawler musst implement "Xima\XmKesearchRemote\Crawler\CrawlerInterface".', 1680162954);
+        }
+
+        return $crawler;
     }
 
     /**
@@ -124,45 +154,17 @@ class FetchContentCommand extends Command
         return $links;
     }
 
-    /**
-     * @param SitemapLink[] $links
-     * @return SitemapLink[]
-     */
-    protected function filterLinksByFileTypes(array $links): array
-    {
-        return array_filter($links, function ($link) {
-            $linkParts = explode('.', $link->loc);
-            return count($linkParts) === 1 || in_array(end($linkParts), ['html', 'php']);
-        });
-    }
-
-    /**
-     * @param string $xml
-     * @return SitemapLink[]
-     */
-    protected function convertXmlToLinks(string $xml, string $sitemapUrl): array
-    {
-        if (!$xml) {
-            return [];
-        }
-
-        $crawler = new Crawler($xml);
-
-        return $crawler->filter('url')->each(function (Crawler $parentCrawler) use ($sitemapUrl) {
-            $link = new SitemapLink($sitemapUrl);
-            $link->loc = (string)$parentCrawler->children('loc')->getNode(0)?->nodeValue ?: '';
-            $link->lastmod = (int)($parentCrawler->children('lastmod')->getNode(0)?->nodeValue ?: 0);
-            return $link;
-        });
-    }
-
     protected function fetchRemoteSitemap(string $sitemapUrl): string
     {
         $client = new Client(['verify' => false]);
 
         try {
-            $url = str_starts_with($sitemapUrl, '/') ? 'https://' . $_SERVER['SERVER_NAME'] . $sitemapUrl : $sitemapUrl;
-            $response = $client->request('GET', $url);
+            if (str_starts_with($sitemapUrl, '/')) {
+                $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+                $sites = new ArrayIterator($siteFinder->getAllSites());
+                $sitemapUrl = $sites->current()->getBase() . $sitemapUrl;
+            }
+            $response = $client->request('GET', $sitemapUrl);
             $xml = $response->getBody()->getContents();
         } catch (GuzzleException $e) {
         }
@@ -172,14 +174,14 @@ class FetchContentCommand extends Command
 
     /**
      * @return array<int, array{tx_xmkesearchremote_sitemap: string, tx_xmkesearchremote_filter: string}>
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws DBALException
+     * @throws Exception
      */
     protected function getSitemapConfigurationFromIndexerConfigurations(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_kesearch_indexerconfig');
         $qb->setRestrictions($qb->getRestrictions()->removeAll()->add(new HiddenRestriction()));
-        $result = $qb->select('tx_xmkesearchremote_sitemap', 'tx_xmkesearchremote_filter')
+        $result = $qb->select('*')
             ->from('tx_kesearch_indexerconfig')
             ->where($qb->expr()->neq('tx_xmkesearchremote_sitemap', $qb->createNamedParameter('', \PDO::PARAM_STR)))
             ->execute();

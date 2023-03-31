@@ -218,6 +218,12 @@
 			<trans-unit id="button.next">
 				<target>Nächste</target>
 			</trans-unit>
+			<trans-unit id="button.apply">
+				<target>Übernehmen</target>
+			</trans-unit>
+			<trans-unit id="button.cancel">
+				<target>Abbrechen</target>
+			</trans-unit>
 			<trans-unit id="container.2cols">
 				<target>2 Spalter</target>
 			</trans-unit>
@@ -361,6 +367,9 @@
 			</trans-unit>
 			<trans-unit id="place.name">
 				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="place.first_name">
+				<source>Vorname</source>
 			</trans-unit>
 			<trans-unit id="place.function">
 				<target>Funktion</target>
@@ -781,6 +790,9 @@
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.my" space="preserve">
 				<target>Meine Anzeigen</target>
+			</trans-unit>
+			<trans-unit id="image.editor.headline" space="preserve">
+				<target>Bild bearbeiten</target>
 			</trans-unit>
 		</body>
 	</file>

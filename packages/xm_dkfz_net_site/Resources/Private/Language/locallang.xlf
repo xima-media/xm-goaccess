@@ -301,6 +301,12 @@
 			<trans-unit id="button.next">
 				<source>Next</source>
 			</trans-unit>
+			<trans-unit id="button.apply">
+				<source>Apply</source>
+			</trans-unit>
+			<trans-unit id="button.cancel">
+				<source>Cancel</source>
+			</trans-unit>
 			<trans-unit id="container.2cols">
 				<source>2 Columns</source>
 			</trans-unit>
@@ -456,6 +462,9 @@
 			</trans-unit>
 			<trans-unit id="place.name">
 				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="place.first_name">
+				<source>First name</source>
 			</trans-unit>
 			<trans-unit id="place.function">
 				<source>Function</source>
@@ -792,6 +801,9 @@
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.my" space="preserve">
 				<source>My offers</source>
+			</trans-unit>
+			<trans-unit id="image.editor.headline" space="preserve">
+				<source>Edit image</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -12,10 +12,18 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'dkfz_id,name,function,room,mail,fe_group,contacts',
+            'showitem' => 'dkfz_id,first_name,name,function,room,mail,fe_group,contacts',
         ],
     ],
     'columns' => [
+        'first_name' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.first_name',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'trim',
+                'max' => 255,
+            ],
+        ],
         'name' => [
             'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.name',
             'config' => [
@@ -72,6 +80,8 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_groups',
+                'items' => [['', 0]],
+                'default' => 0,
             ],
         ],
         'dkfz_id' => [

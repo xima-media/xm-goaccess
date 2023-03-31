@@ -10,6 +10,19 @@ $fields = [
             'eval' => 'trim,required',
         ],
     ],
+    'tx_xmkesearchremote_crawler' => [
+        'exclude' => 0,
+        'label' => 'Sitemap Crawler',
+        'displayCond' => 'FIELD:type:=:xmkesearchremote',
+        'config' => [
+            'type' => 'select',
+            'eval' => 'trim,required',
+            'renderType' => 'selectSingle',
+            'items' => [
+                ['Default Sitemap Crawler', \Xima\XmKesearchRemote\Crawler\SitemapCrawler::class],
+            ],
+        ],
+    ],
     'tx_xmkesearchremote_filter' => [
         'exclude' => 0,
         'label' => 'Filter',
@@ -32,7 +45,7 @@ $fields = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_kesearch_indexerconfig', $fields);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'tx_kesearch_indexerconfig',
-    'tx_xmkesearchremote_sitemap,tx_xmkesearchremote_filter,tx_xmkesearchremote_language',
+    'tx_xmkesearchremote_sitemap,tx_xmkesearchremote_crawler,tx_xmkesearchremote_filter,tx_xmkesearchremote_language',
     '',
     'after:storagepid'
 );

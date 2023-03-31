@@ -32,15 +32,7 @@
 							</picture>
 						</f:then>
 						<f:else>
-							<f:comment>
-								If image is not available on the local machine (for any reasons), load from instagram
-								directly
-							</f:comment>
-							<img src="{f:if(condition: image.thumbnail_url, then: image.thumbnail_url, else: image.media_url)}"
-								 title="{image.caption -> f:format.crop(maxCharacters: 120, append: ' ...')}"
-								 alt="{image.caption -> f:format.crop(maxCharacters: 120, append: ' ...')}"
-								 width="500"
-								 height="500"/>
+							<picture style="background-color: #CCC"></picture>
 						</f:else>
 					</instagram:isLocalImageExisting>
 
