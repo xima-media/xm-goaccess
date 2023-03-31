@@ -13,34 +13,25 @@ use Blueways\BwGuild\Service\AccessControlService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Database\RelationHandler;
+use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Utility\ClassNamingUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter;
 use TYPO3\CMS\Extbase\Service\ImageService;
 
 class ApiController extends ActionController
 {
-    protected AccessControlService $accessControlService;
-
-    protected UserRepository $userRepository;
-
-    protected AbstractUserFeatureRepository $featureRepository;
-
-    protected CacheManager $cacheManager;
-
     public function __construct(
-        AccessControlService $accessControlService,
-        UserRepository $userRepository,
-        AbstractUserFeatureRepository $featureRepository,
-        CacheManager $cacheManager
+        protected AccessControlService $accessControlService,
+        protected UserRepository $userRepository,
+        protected AbstractUserFeatureRepository $featureRepository,
+        protected CacheManager $cacheManager,
+        protected PersistenceManager $persistenceManager
     ) {
-        $this->accessControlService = $accessControlService;
-        $this->userRepository = $userRepository;
-        $this->featureRepository = $featureRepository;
-        $this->cacheManager = $cacheManager;
     }
 
     public function userinfoAction(): ResponseInterface
@@ -89,7 +80,19 @@ class ApiController extends ActionController
             try {
                 $imageService = GeneralUtility::makeInstance(ImageService::class);
                 $image = $imageService->getImage('', $user->getLogo(), true);
-                $processedImage = $imageService->applyProcessingInstructions($image, ['width' => '75c', 'height' => '75c']);
+                $cropString = $image->getProperty('crop');
+                $cropVariants = array_keys($GLOBALS['TCA']['fe_users']['columns']['logo']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants'] ?? []);
+
+                if ($cropString && count($cropVariants)) {
+                    $cropVariantCollection = CropVariantCollection::create($cropString);
+                    $cropArea = $cropVariantCollection->getCropArea($cropVariants[0]);
+                    $crop = $cropArea->isEmpty() ? null : $cropArea->makeAbsoluteBasedOnFile($image);
+                }
+
+                $processedImage = $imageService->applyProcessingInstructions(
+                    $image,
+                    ['width' => '75c', 'height' => '75c', 'crop' => $crop ?? null]
+                );
                 $userinfo->user['logo'] = $processedImage->getPublicUrl();
             } catch (\Exception) {
             }
@@ -206,8 +209,15 @@ class ApiController extends ActionController
             $this->userRepository->deleteAllUserLogos((int)$user->getUid());
         }
 
+        // update crop variant if changed
+        $body = $this->request->getParsedBody();
+        if ($user->getLogo() && isset($body['tx_bwguild_api']['user']['logo']['crop']) && $body['tx_bwguild_api']['user']['logo']['crop'] !== $user->getLogo()->getCrop()) {
+            $user->getLogo()->setCrop($body['tx_bwguild_api']['user']['logo']['crop']);
+        }
+
         $user->geoCodeAddress();
         $this->userRepository->update($user);
+        $this->persistenceManager->persistAll();
 
         // clear page cache by tag
         $this->cacheManager->flushCachesByTag('fe_users_' . $user->getUid());

@@ -218,6 +218,12 @@
 			<trans-unit id="button.next">
 				<target>Nächste</target>
 			</trans-unit>
+			<trans-unit id="button.apply">
+				<target>Übernehmen</target>
+			</trans-unit>
+			<trans-unit id="button.cancel">
+				<target>Abbrechen</target>
+			</trans-unit>
 			<trans-unit id="container.2cols">
 				<target>2 Spalter</target>
 			</trans-unit>
@@ -712,6 +718,9 @@
 			</trans-unit>
 			<trans-unit id="welcome.profile.link" space="preserve">
 				<target>Jetzt Profil bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="image.editor.headline" space="preserve">
+				<target>Bild bearbeiten</target>
 			</trans-unit>
 		</body>
 	</file>

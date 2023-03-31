@@ -9,6 +9,8 @@ class Lightbox {
 
   public content: Element
 
+  public dialog: Element
+
   public isCloseable = true
   public preserveContent = false
 
@@ -26,6 +28,13 @@ class Lightbox {
     this.bindCloseButtonEvent()
   }
 
+  protected createLightboxInstance(): void {
+    const dummyLightbox = document.getElementById('dummyLightbox') as HTMLElement
+    this.box = dummyLightbox.cloneNode(true) as HTMLElement
+    this.box.id = `lightbox-${Date.now()}`
+    document.body.append(this.box)
+  }
+
   protected cacheDom() {
     const content = this.box.querySelector('.lightbox__wrap')
     const closeButton = this.box.querySelector('.lightbox__close')
@@ -40,13 +49,6 @@ class Lightbox {
     this.root = root
 
     return true
-  }
-
-  protected createLightboxInstance(): void {
-    const dummyLightbox = document.getElementById('dummyLightbox') as HTMLElement
-    this.box = dummyLightbox.cloneNode(true) as HTMLElement
-    this.box.id = `lightbox-${Date.now()}`
-    document.body.append(this.box)
   }
 
   protected bindCloseButtonEvent() {
@@ -94,10 +96,13 @@ class Lightbox {
 
     setTimeout(() => {
       this.box.dispatchEvent(lightboxCloseEvent)
-      this.root.classList.remove('open-lightbox')
       this.box.classList.remove('lightbox--closing')
       this.box.classList.remove('lightbox--open')
       this.stopLoading()
+
+      if (document.querySelectorAll('.lightbox--open').length === 0) {
+        this.root.classList.remove('open-lightbox')
+      }
 
       if (!this.preserveContent) {
         this.destroy()
@@ -121,10 +126,15 @@ class Lightbox {
 
   public startLoading() {
     this.box.classList.add('lightbox--loading')
+    this.box.classList.add('lightbox--loading-visual')
   }
 
   public stopLoading() {
     this.box.classList.remove('lightbox--loading')
+
+    setTimeout(() => {
+      this.box.classList.remove('lightbox--loading-visual')
+    }, 500)
   }
 
   public clear() {

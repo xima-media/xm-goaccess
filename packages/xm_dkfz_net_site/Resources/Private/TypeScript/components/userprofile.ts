@@ -1,8 +1,8 @@
 import app from './basic'
-
 import autocomplete, { AutocompleteItem } from 'autocompleter'
 import { AutocomleterItem } from './hero-form'
 import { NoticeStyle } from './notice'
+import ImageEditor from './image-editor'
 import Lightbox from './lightbox'
 
 interface FeatureItem extends AutocompleteItem {
@@ -31,6 +31,7 @@ class Userprofile {
     const link = e.currentTarget as Element
     const url = link.getAttribute('data-user-edit-link') ?? ''
     this.profileEditLightbox = new Lightbox()
+    this.profileEditLightbox.preserveContent = true
 
     this.profileEditLightbox.startLoading()
     this.profileEditLightbox.open()
@@ -53,6 +54,8 @@ class Userprofile {
 
   protected bindUserEditFormEvents(): void {
     const form = this.profileEditLightbox.content.querySelector('form')
+    const logoUploadInput = this.profileEditLightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
+    this.initImageEditButtonClick()
     this.initUserImageDeleteClick()
     this.initUserRepresentativeSelect()
     this.initUserRepresentativeAutocompleter()
@@ -60,6 +63,83 @@ class Userprofile {
     this.initClearLinks()
     form?.addEventListener('submit', this.onUserEditFormSubmit.bind(this))
     form?.querySelector('button[data-abort]')?.addEventListener('click', this.onAbortButtonClick.bind(this))
+
+    logoUploadInput?.addEventListener('change', this.onLogoUploadChange.bind(this, logoUploadInput))
+  }
+
+  protected onLogoUploadChange(logoUploadInput: HTMLInputElement): void {
+    const hiddenCropInput = document.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo][crop]"]')
+    if (hiddenCropInput) {
+      hiddenCropInput.value = ''
+    }
+    this.createImageEditor(logoUploadInput)
+  }
+
+  protected createImageEditor(logoUploadInput: any): void {
+    let file: File | undefined = logoUploadInput.files?.[0]
+    const userImagePicture: HTMLPictureElement | null = this.profileEditLightbox.content.querySelector('.userimage picture')
+    const cropAreaInput: HTMLInputElement | null = this.profileEditLightbox.content.querySelector<HTMLInputElement>(
+      'input[name="tx_bwguild_api[user][logo][crop]"]'
+    )
+    const cropArea = cropAreaInput?.value ? JSON.parse(cropAreaInput.value) : null
+
+    if (!file) {
+      file = logoUploadInput.getAttribute('data-original')
+    }
+
+    if (!file || !userImagePicture) {
+      return
+    }
+
+    const imageEditor = new ImageEditor(cropArea, 'square')
+
+    this.profileEditLightbox.close()
+    imageEditor.show(file)
+
+    imageEditor.lightbox.box.addEventListener('imagecrop', (e: CustomEvent) => {
+      this.profileEditLightbox.open()
+      this.replaceOriginalImage(e.detail.previewImage, userImagePicture)
+      this.showImageEditButton()
+      this.setImageCropArea(cropAreaInput, JSON.stringify(e.detail.cropArea))
+    })
+
+    imageEditor.lightbox.box.addEventListener('lightbox:close', () => {
+      this.profileEditLightbox.open()
+    })
+  }
+
+  protected setImageCropArea(cropAreaInput: HTMLInputElement | null, cropAreaValue: string): void {
+    if (cropAreaInput) {
+      cropAreaInput.value = cropAreaValue
+    }
+  }
+
+  protected replaceOriginalImage(previewImageSource: string, previewImageTarget: HTMLPictureElement): void {
+    const previewImage = new Image()
+    previewImage.src = previewImageSource
+
+    previewImage.width = 150
+    previewImage.height = 150
+
+    previewImageTarget?.querySelector('svg')?.remove()
+    previewImageTarget?.querySelector('img')?.remove()
+    previewImageTarget?.prepend(previewImage)
+  }
+
+  protected showImageEditButton(): void {
+    const imageEditButton = this.profileEditLightbox.content.querySelector('.userimage .userimage__edit-button')
+    imageEditButton?.classList.remove('userimage__edit-button--hidden')
+  }
+
+  protected initImageEditButtonClick(): void {
+    const userProfileImageEditButton = this.profileEditLightbox.content.querySelector('.userimage .userimage__edit-button')
+
+    if (userProfileImageEditButton) {
+      userProfileImageEditButton.addEventListener('click', () => {
+        const logoUploadInput = this.profileEditLightbox.content.querySelector<HTMLInputElement>('input[name="tx_bwguild_api[user][logo]"]')
+        this.createImageEditor(logoUploadInput)
+      })
+    }
   }
 
   protected initUserImageDeleteClick(): void {

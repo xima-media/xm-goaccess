@@ -12,6 +12,15 @@ html.open-lightbox {
     }
 }
 
+@keyframes opacityOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes slideIn {
     0% {
         transform: translate3d(500px, 0, 0);
@@ -35,6 +44,23 @@ html.open-lightbox {
     100% {
         transform: translate3d(0, 0, 0);
         opacity: 1
+    }
+}
+
+@keyframes moveOut {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+    30% {
+        transform: translate3d(0, -100vh, 0);
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, -100vh, 0);
+        opacity: 0
     }
 }
 
@@ -68,7 +94,13 @@ html.open-lightbox {
 
     &--loading {
         .lightbox__loader {
-            display: flex;
+            opacity: 1;
+        }
+
+        &-visual {
+            .lightbox__loader {
+                display: flex;
+            }
         }
     }
 
@@ -115,8 +147,27 @@ html.open-lightbox {
         }
     }
 
-    &__wrap {
+    &__wrap,
+    &__dialog {
         transition: all 0.3s ease;
+
+        &--hidden {
+            display: none;
+        }
+
+        &--show {
+            display: block;
+        }
+    }
+
+    &__dialog {
+        display: none;
+        grid-column: 1/2;
+        grid-row: 1/2;
+
+        &--show {
+            display: block;
+        }
     }
 
     &__close, &__wrap, &__loader {
@@ -200,10 +251,12 @@ html.open-lightbox {
 
     &__loader {
         display: none;
+        transition: opacity .7s ease-in-out;
         justify-content: center;
         align-items: center;
         background-color: rgba(#FFF, 0.75);
         z-index: 2;
+        opacity: 0;
     }
 
 }
