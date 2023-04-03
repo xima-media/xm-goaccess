@@ -639,3 +639,13 @@ parameters:
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/SvgInlineViewHelper.php
+
+		-
+			message: "#^Parameter \\#1 \\$src of method TYPO3\\\\CMS\\\\Extbase\\\\Service\\\\ImageService\\:\\:getImage\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/SvgInlineViewHelper.php
