@@ -249,8 +249,8 @@ class Userinfo {
         const currentLink = e.currentTarget as HTMLLinkElement
         document.querySelectorAll('a[data-marketplace]').forEach(link => link.classList.remove('active'))
         currentLink.classList.add('active')
-        document.querySelectorAll('.marketplace-show').forEach(div => div.classList.remove('active'))
-        document.querySelector(`.marketplace-show[data-marketplace="${link.getAttribute('data-marketplace')}"]`).classList.add('active')
+        document.querySelectorAll('.marketplace-list').forEach(div => div.classList.remove('active'))
+        document.querySelector(`.marketplace-list[data-marketplace="${link.getAttribute('data-marketplace')}"]`).classList.add('active')
       })
     })
 
