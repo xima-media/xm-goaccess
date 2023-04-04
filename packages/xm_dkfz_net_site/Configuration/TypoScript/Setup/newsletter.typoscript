@@ -21,4 +21,24 @@
       keSearchPremiumAutocompleteJs >
     }
   }
+
+  lib {
+    contentElement {
+      templateRootPaths {
+        100 = EXT:luxletter/Resources/Private/FluidStyledMailContent/Templates/
+        101 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/Elements/
+      }
+
+      partialRootPaths {
+        100 = EXT:luxletter/Resources/Private/FluidStyledMailContent/Partials/
+        101 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Partials/Elements/
+      }
+
+      layoutRootPaths {
+        100 = EXT:luxletter/Resources/Private/FluidStyledMailContent/Layouts/
+        101 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Layouts/
+      }
+    }
+
+  }
 [end]

@@ -397,5 +397,10 @@ tx_news.templateLayouts {
       }
     }
   }
+
   mod.wizards.newContentElement.wizardItems.common.show = textmedia,newsletter-news
+
+  TCEFORM.tt_content.header_layout.removeItems = 2,3,4,5
+  TCEFORM.tt_content.imageorient.disabled = 1
+
 [GLOBAL]
