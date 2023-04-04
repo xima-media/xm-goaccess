@@ -68,7 +68,7 @@
 
     .users__item {
         display: grid;
-        gap: 5px;
+        gap: 1rem;
         padding: 2px 0;
 
         @include media-breakpoint-up(md) {
