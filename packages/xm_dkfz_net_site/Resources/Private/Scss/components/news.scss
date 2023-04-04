@@ -74,6 +74,7 @@
     @for $i from 1 through 10 {
         &[data-count="#{$i}"] .image-slider__wrapper {
             width: $i * 100%;
+            grid-template-columns: repeat(#{$i}, 1fr);
         }
 
         @for $j from 1 through 10 {
@@ -86,23 +87,11 @@
     }
 
     &__wrapper {
-
-
-
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
         transition: transform 0.3s ease;
 
         .no-animation & {
             transition: none;
-        }
-
-        .go-next & {
-            transform: translate3d(-66.666%, 0, 0);
-        }
-
-        .go-prev & {
-            transform: translate3d(0, 0, 0);
         }
     }
 
@@ -111,18 +100,6 @@
         display: grid;
         justify-items: center;
         align-items: center;
-
-        //&.current {
-        //    grid-column: 2 / 3;
-        //}
-        //
-        //&.go-next {
-        //    grid-column: 3 / 4;
-        //}
-        //
-        //&.go-prev {
-        //    grid-column: 1 / 2;
-        //}
     }
 }
 
