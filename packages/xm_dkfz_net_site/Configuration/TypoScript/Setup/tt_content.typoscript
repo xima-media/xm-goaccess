@@ -269,6 +269,7 @@ tt_content {
         if.isTrue.field = news
         pidInList = {$pidNewsStorage}
         as = news
+        languageField = 0
         orderBy = reclist_sortby
         selectFields.dataWrap = *,FIND_IN_SET(`uid`,'{field:news}') AS reclist_sortby
 
