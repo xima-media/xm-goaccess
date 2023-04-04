@@ -11,10 +11,10 @@
 <f:if condition="{user.logo}">
 	<f:if condition="{user.logo.0}">
 		<f:then>
-			<f:render section="Image" arguments="{logo: user.logo.0, width: width}"/>
+			<f:render section="Image" arguments="{logo: user.logo.0, width: width, editable: editable}"/>
 		</f:then>
 		<f:else>
-			<f:render section="Image" arguments="{logo: user.logo, width: width}"/>
+			<f:render section="Image" arguments="{logo: user.logo, width: width, editable: editable}"/>
 		</f:else>
 
 	</f:if>
@@ -27,10 +27,11 @@
 						  height="{width}"
 						  src="EXT:xm_dkfz_net_site/Resources/Public/Images/frontend_user_default_alt{invert}.svg"/>
 		</picture>
-		<button type="button" class="userimage__edit-button userimage__edit-button--hidden">
-			<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
-		</button>
-		<span />
+		<f:if condition="{editable}">
+			<button type="button" class="userimage__edit-button userimage__edit-button--hidden">
+				<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+			</button>
+		</f:if>
 	</figure>
 </f:if>
 
@@ -40,12 +41,16 @@
 	</f:if>
 
 	<figure class="userimage {widthClass}">
-		<button type="button" class="userimage__edit-button">
-			<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
-		</button>
+		<f:if condition="{editable}">
+			<button type="button" class="userimage__edit-button">
+				<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+			</button>
+		</f:if>
 		<picture>
-			<source srcset="{f:uri.image(image:logo, width:'{width}c', height:'{width}c', cropVariant:'square', fileExtension: 'webp')}" type="image/webp">
-			<source srcset="{f:uri.image(image:logo, width:'{width}c', height:'{width}c', cropVariant:'square', fileExtension: 'jpg')}" type="image/jpeg">
+			<source srcset="{f:uri.image(image:logo, width:'{width}c', height:'{width}c', cropVariant:'square', fileExtension: 'webp')}"
+					type="image/webp">
+			<source srcset="{f:uri.image(image:logo, width:'{width}c', height:'{width}c', cropVariant:'square', fileExtension: 'jpg')}"
+					type="image/jpeg">
 			<img src="{f:uri.image(image:logo, cropVariant:'square', fileExtension: 'jpg', width: '{width}c', height: '{width}c')}"
 				 alt="{user.logo.0.alternative}"
 				 width="{width}"
