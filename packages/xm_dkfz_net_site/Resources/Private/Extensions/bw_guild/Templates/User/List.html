@@ -3,11 +3,29 @@
 
 		<f:if condition="{pagination.numberOfResults}">
 			<f:then>
-				<h2 class="results__title h6">
-					<f:translate extensionName="XmDkfzNetSite"
-								 key="usersearch.found"
-								 arguments="{0: pagination.numberOfResults}"/>
-				</h2>
+				<div class="results__topbar">
+					<h2 class="results__title h6">
+						<f:translate extensionName="XmDkfzNetSite"
+									 key="usersearch.found"
+									 arguments="{0: pagination.numberOfResults}"/>
+					</h2>
+					<span class="results__switcher">
+						<a href="#"
+						   class="results__switcher__item results__switcher__item--cards active"
+						   data-state="grid"
+						   aria-label="{f:translate(key: 'usersearch.gridView', extensionName: 'XmDkfzNetSite')}"
+						   data-tooltip="{f:translate(key: 'usersearch.gridView', extensionName: 'XmDkfzNetSite')}">
+							<f:render partial="Icon" arguments="{icon: 'grid', width: 24, height: 24}"/>
+						</a>
+						<a href="#"
+						   class="results__switcher__item results__switcher__item--cards"
+						   data-state="list"
+						   aria-label="{f:translate(key: 'usersearch.listView', extensionName: 'XmDkfzNetSite')}"
+						   data-tooltip="{f:translate(key: 'usersearch.listView', extensionName: 'XmDkfzNetSite')}">
+							<f:render partial="Icon" arguments="{icon: 'list', width: 24, height: 24}"/>
+						</a>
+					</span>
+				</div>
 			</f:then>
 			<f:else>
 				<div class="callout">
@@ -42,26 +60,27 @@
 							<h3 class="h6">{user.displayName}</h3>
 						</f:link.action>
 
-						<f:if condition="{user.contactFunction}">
-							<p class="text-small m-b-0">{user.contactFunction}</p>
-						</f:if>
+						<div>
+							<f:if condition="{user.contactFunction}">
+								<p class="text-small m-b-0">{user.contactFunction}</p>
+							</f:if>
 
-						<f:if condition="{user.groups}">
-							<p class="text-small"><strong>
-								<f:for each="{user.groups}" as="group" iteration="i">
-									<f:link.action action="list"
-												   class=""
-												   pluginName="Userlist"
-												   section="c381"
-												   title="{group.title}"
-												   controller="User"
-												   arguments="{demand: {feGroup: group.fakeSlug}}">{group.dkfzNumber}
-										- {group.title}{f:if(condition: i.isLast, else: ', ')}
-									</f:link.action>
-								</f:for>
-							</strong></p>
-						</f:if>
-
+							<f:if condition="{user.groups}">
+								<p class="text-small"><strong>
+									<f:for each="{user.groups}" as="group" iteration="i">
+										<f:link.action action="list"
+													   class=""
+													   pluginName="Userlist"
+													   section="c381"
+													   title="{group.title}"
+													   controller="User"
+													   arguments="{demand: {feGroup: group.fakeSlug}}">
+											{group.dkfzNumber} - {group.title}{f:if(condition: i.isLast, else: ', ')}
+										</f:link.action>
+									</f:for>
+								</strong></p>
+							</f:if>
+						</div>
 
 						<ul class="list contacts text-small m-b-0">
 
@@ -73,7 +92,8 @@
 												   pluginName="Userlist"
 												   section="c381"
 												   controller="User"
-												   arguments="{demand: {room: user.contactRoomFakeSlug}}">{user.contactRoom}
+												   arguments="{demand: {room: user.contactRoomFakeSlug}}">
+										{user.contactRoom}
 									</f:link.action>
 								</li>
 							</f:if>
@@ -106,6 +126,29 @@
 		</ul>
 
 	</div>
+
+	<f:if condition="{pagination.pagination.nextPageNumber}">
+		<div class="text-center">
+			<a href="#" class="button button--primary" id="userResultList-more">
+				<f:render partial="Icon" arguments="{icon: 'arrow-down', size: 'sm'}"/>
+				<div class="sk-fading-circle">
+					<div class="sk-circle1 sk-circle"></div>
+					<div class="sk-circle2 sk-circle"></div>
+					<div class="sk-circle3 sk-circle"></div>
+					<div class="sk-circle4 sk-circle"></div>
+					<div class="sk-circle5 sk-circle"></div>
+					<div class="sk-circle6 sk-circle"></div>
+					<div class="sk-circle7 sk-circle"></div>
+					<div class="sk-circle8 sk-circle"></div>
+					<div class="sk-circle9 sk-circle"></div>
+					<div class="sk-circle10 sk-circle"></div>
+					<div class="sk-circle11 sk-circle"></div>
+					<div class="sk-circle12 sk-circle"></div>
+				</div>
+				Weitere laden
+			</a>
+		</div>
+	</f:if>
 
 	<f:render partial="Pagination"
 			  arguments="{pagination: pagination.pagination, paginator: pagination.paginator, actionName: 'list', demand: demand}"/>

@@ -706,6 +706,12 @@
 			<trans-unit id="homepage.usersearch" space="preserve">
 				<source>Staff search</source>
 			</trans-unit>
+			<trans-unit id="usersearch.gridView" space="preserve">
+				<source>Grid view</source>
+			</trans-unit>
+			<trans-unit id="usersearch.listView" space="preserve">
+				<source>List view</source>
+			</trans-unit>
 			<trans-unit id="twitter.headline" space="preserve">
 				<source>DKFZ on Twitter</source>
 			</trans-unit>

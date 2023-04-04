@@ -608,6 +608,12 @@
 			<trans-unit id="usersearch.button" space="preserve">
 				<target>Suchen</target>
 			</trans-unit>
+			<trans-unit id="usersearch.gridView" space="preserve">
+				<target>Kachelansicht</target>
+			</trans-unit>
+			<trans-unit id="usersearch.listView" space="preserve">
+				<target>Listenansicht</target>
+			</trans-unit>
 			<trans-unit id="placesearch.found" space="preserve">
 				<target>Es wurden %s Kontaktstellen gefunden</target>
 			</trans-unit>

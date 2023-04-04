@@ -1,0 +1,107 @@
+.results__topbar {
+    display: flex;
+    margin-bottom: 1rem;
+
+    label {
+        margin-top: -1rem;
+        display: flex;
+        gap: 10px;
+
+        & > span {
+            margin-top: 6px;
+        }
+    }
+}
+
+.results__switcher {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+    gap: 0.5rem;
+
+    &__item {
+        padding: 8px;
+        border-radius: 100%;
+        line-height: 0;
+
+        &.active {
+            color: var(--color-primary);
+        }
+
+        &:hover {
+            background: var(--color-gray-900);
+            color: #FFF;
+        }
+    }
+
+    &--cards {
+        .icon--grid {
+            color: var(--color-primary);
+        }
+    }
+
+    &--list {
+        .icon--list {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.users.list.list--list {
+    grid-template-columns: 1fr;
+    gap: 5px;
+
+    & > li {
+        margin: 0;
+        border: 0;
+        border-bottom: 1px solid var(--color-gray-200);
+    }
+
+    .userimage {
+        display: none;
+    }
+
+    .users__item {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+        padding: 2px 0;
+    }
+}
+
+#userResultList-more {
+    justify-self: center;
+    justify-content: center;
+
+    .sk-fading-circle {
+        display: none;
+    }
+
+    &.loading {
+        .sk-fading-circle {
+            display: block;
+            --color-primary: #FFF;
+            width: 1rem;
+            height: 1rem;
+            margin: 0;
+        }
+
+        &:hover .sk-fading-circle {
+            --color-primary: var(--color-gray-900);
+        }
+
+        .icon {
+            display: none;
+        }
+    }
+
+}
+
+.frame-bwguild_userlist.view-cards #userResultList-more {
+    display: none;
+}
+
+.frame-bwguild_userlist.view-list .list.f3-widget-paginator {
+    display: none;
+}
