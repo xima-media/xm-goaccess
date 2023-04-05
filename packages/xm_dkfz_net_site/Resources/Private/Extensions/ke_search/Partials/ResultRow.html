@@ -4,17 +4,14 @@
 			<div class="card__content">
 				<div class="card__header">
 					<h3 class="h4 card__title">
-						<f:switch expression="{resultrow.type}">
-							<f:case value="news">
-								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">news</span>
-							</f:case>
-							<f:case value="file">
-								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">{resultrow.orig_row.extension}</span>
-							</f:case>
-							<f:case value="xmkesearchremote">
-								<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">dkfz.de <f:render partial="Icon" arguments="{icon: 'external-link'}" /></span>
-							</f:case>
-						</f:switch>
+						<f:if condition="{resultrow.badgeLabel}">
+							<span class="tab-item__type" style="background-color: rgb(238, 238, 238);">
+								{resultrow.badgeLabel}
+								<f:if condition="{resultrow.type} == xmkesearchremote">
+									<f:render partial="Icon" arguments="{icon: 'external-link'}" />
+								</f:if>
+							</span>
+						</f:if>
 						<span class="tab__item__title"><f:format.htmlentitiesDecode>{resultrow.title -> f:format.stripTags(allowedTags: '<mark>')}</f:format.htmlentitiesDecode></span>
 					</h3>
 					<f:if condition="{resultrow.date_timestamp} > 0">
