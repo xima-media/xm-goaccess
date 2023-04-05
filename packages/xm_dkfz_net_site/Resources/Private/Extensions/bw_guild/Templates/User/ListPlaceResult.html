@@ -1,21 +1,21 @@
 <h2 class="results__title h6">
-	<f:translate extensionName="XmDkfzNetSite"
-				 key="placesearch.found"
-				 arguments="{0: '{places->f:count()}'}"/>
+	<f:translate extensionName="XmDkfzNetSite" key="placesearch.found" arguments="{0: '{places->f:count()}'}"/>
 </h2>
 
 <ul class="list users places">
 	<f:for each="{places}" as="user">
 		<li>
-			<div class="users__item">
+			<div class="users__item users__item--place">
 				<h3 class="h6">{user.displayName}</h3>
 
-				<f:if condition="{user.function}">
-					<p class="text-small m-b-0">{user.function}</p>
-				</f:if>
+				<div>
 
-				<f:if condition="{user.feGroup} && {user.feGroup.uid}!=1">
-					<p class="text-small"><strong>
+					<f:if condition="{user.function}">
+						<p class="text-small m-b-0">{user.function}</p>
+					</f:if>
+
+					<f:if condition="{user.feGroup} && {user.feGroup.uid}!=1">
+						<p class="text-small"><strong>
 
 							<f:link.action action="list"
 										   class=""
@@ -24,12 +24,14 @@
 										   extensionName="BwGuild"
 										   title="{user.feGroup.title}"
 										   controller="User"
-										   arguments="{demand: {feGroup: user.feGroup.fakeSlug}}">{user.feGroup.dkfzNumber}
-								- {user.feGroup.title}
+										   arguments="{demand: {feGroup: user.feGroup.fakeSlug}}">
+								{user.feGroup.dkfzNumber} - {user.feGroup.title}
 							</f:link.action>
 
-					</strong></p>
-				</f:if>
+						</strong></p>
+					</f:if>
+
+				</div>
 
 				<ul class="list contacts text-small m-b-0">
 
