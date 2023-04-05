@@ -271,6 +271,11 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:getBadgeLabelForRow\\(\\) has parameter \\$row with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
+
+		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:getRootlineArrayForPage\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
