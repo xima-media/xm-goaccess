@@ -93,6 +93,7 @@
 }
 
 #userResultList-more {
+    display: none;
     justify-self: center;
     justify-content: center;
 
@@ -120,10 +121,13 @@
 
 }
 
-.frame-bwguild_userlist.view-grid #userResultList-more {
-    display: none;
-}
+.frame-bwguild_userlist.view-list {
 
-.frame-bwguild_userlist.view-list .list.f3-widget-paginator {
-    display: none;
+    #userResultList-more {
+        display: inline-block;
+    }
+
+    .list.f3-widget-paginator {
+        display: none;
+    }
 }
