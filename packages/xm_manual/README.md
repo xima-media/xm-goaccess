@@ -17,10 +17,9 @@ This extension provides a new page type for creating an editor manual right in t
 2. Create a new page in the page tree
    1. Select doctype "Manual page"
    2. Check "Use as Root Page"
-   3. Include static PageTS template
-3. Create new TypoScript template
-   1. Include static TypoScript template
-
+   3. Create a site config for this page
+3. Include PageTS template
+4. Create new TypoScript template + include TypoScript of this extension
 
 ## Transferring the manual
 

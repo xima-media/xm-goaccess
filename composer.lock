@@ -1005,16 +1005,16 @@
         },
         {
             "name": "deployer/deployer",
-            "version": "v7.3.0",
+            "version": "v7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/deployer.git",
-                "reference": "de2367892e2475e4ad42b4d86d8cfef4f2387471"
+                "reference": "c5c5e79d4e57445918ed24a9cdd3d85b0f261de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/deployer/zipball/de2367892e2475e4ad42b4d86d8cfef4f2387471",
-                "reference": "de2367892e2475e4ad42b4d86d8cfef4f2387471",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/c5c5e79d4e57445918ed24a9cdd3d85b0f261de3",
+                "reference": "c5c5e79d4e57445918ed24a9cdd3d85b0f261de3",
                 "shasum": ""
             },
             "bin": [
@@ -1044,7 +1044,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-24T10:50:39+00:00"
+            "time": "2023-04-05T09:24:30+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -4073,16 +4073,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.16.1",
+            "version": "1.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "e27e92d939e2e3636f0a1f0afaba59692c0bf571"
+                "reference": "d3753fcb3abc6f78f5de6f72153d4b9c99c72dee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/e27e92d939e2e3636f0a1f0afaba59692c0bf571",
-                "reference": "e27e92d939e2e3636f0a1f0afaba59692c0bf571",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/d3753fcb3abc6f78f5de6f72153d4b9c99c72dee",
+                "reference": "d3753fcb3abc6f78f5de6f72153d4b9c99c72dee",
                 "shasum": ""
             },
             "require": {
@@ -4112,9 +4112,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.16.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.17.1"
             },
-            "time": "2023-02-07T18:11:17+00:00"
+            "time": "2023-04-04T11:11:22+00:00"
         },
         {
             "name": "psr/cache",
@@ -4372,25 +4372,25 @@
         },
         {
             "name": "psr/http-message",
-            "version": "1.0.1",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": "^7.2 || ^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -4419,9 +4419,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-message/tree/master"
+                "source": "https://github.com/php-fig/http-message/tree/1.1"
             },
-            "time": "2016-08-06T14:39:51+00:00"
+            "time": "2023-04-04T09:50:52+00:00"
         },
         {
             "name": "psr/http-server-handler",
@@ -11008,13 +11008,14 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
-                "reference": "71700ef83ab5932baec03e0b420dd58bc0c25f7b"
+                "reference": "33c24a69e6f076b0869e81594ba26c6afd9f0aba"
             },
             "require": {
                 "blueways/bw-focuspoint-images": "^3.0",
                 "blueways/bw-icons": "^2.0",
                 "dompdf/dompdf": "^2.0",
                 "ext-fileinfo": "*",
+                "typo3/cms-core": "^11.0 || ^12.0",
                 "typo3/cms-rte-ckeditor": "^11.5"
             },
             "type": "typo3-cms-extension",
@@ -12283,16 +12284,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.10",
+            "version": "1.10.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "f1e22c9b17a879987f8743d81533250a5fff47f9"
+                "reference": "8aa62e6ea8b58ffb650e02940e55a788cbc3fe21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f1e22c9b17a879987f8743d81533250a5fff47f9",
-                "reference": "f1e22c9b17a879987f8743d81533250a5fff47f9",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8aa62e6ea8b58ffb650e02940e55a788cbc3fe21",
+                "reference": "8aa62e6ea8b58ffb650e02940e55a788cbc3fe21",
                 "shasum": ""
             },
             "require": {
@@ -12341,7 +12342,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-01T17:06:15+00:00"
+            "time": "2023-04-04T19:17:42+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -12842,16 +12843,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.15.22",
+            "version": "0.15.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "5c499ec662a698d5042a3cdc936a4642ada35e19"
+                "reference": "f4984ebd62b3613002869b0ddd6868261d62819e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/5c499ec662a698d5042a3cdc936a4642ada35e19",
-                "reference": "5c499ec662a698d5042a3cdc936a4642ada35e19",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/f4984ebd62b3613002869b0ddd6868261d62819e",
+                "reference": "f4984ebd62b3613002869b0ddd6868261d62819e",
                 "shasum": ""
             },
             "require": {
@@ -12891,7 +12892,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.15.22"
+                "source": "https://github.com/rectorphp/rector/tree/0.15.23"
             },
             "funding": [
                 {
@@ -12899,7 +12900,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-22T09:37:21+00:00"
+            "time": "2023-03-22T15:22:45+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -12907,12 +12908,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "49bcdfcfebe63a59d1b19b1eb12737868011e2c7"
+                "reference": "4bc7e4217fbc96c8f18283eb6425b6068fa5f8a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/49bcdfcfebe63a59d1b19b1eb12737868011e2c7",
-                "reference": "49bcdfcfebe63a59d1b19b1eb12737868011e2c7",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4bc7e4217fbc96c8f18283eb6425b6068fa5f8a0",
+                "reference": "4bc7e4217fbc96c8f18283eb6425b6068fa5f8a0",
                 "shasum": ""
             },
             "conflict": {
@@ -13126,7 +13127,7 @@
                 "kimai/kimai": "<1.1",
                 "kitodo/presentation": "<3.1.2",
                 "klaviyo/magento2-extension": ">=1,<3",
-                "knplabs/knp-snappy": "<=1.4.1",
+                "knplabs/knp-snappy": "<1.4.2",
                 "krayin/laravel-crm": "<1.2.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
@@ -13499,7 +13500,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-03T22:04:05+00:00"
+            "time": "2023-04-05T21:04:16+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -14541,12 +14542,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "2bb4e892a678cb392925effd68c67f7b50b90205"
+                "reference": "ff61ca1e6d454564e3e3302ab6a481a46ba0b716"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/2bb4e892a678cb392925effd68c67f7b50b90205",
-                "reference": "2bb4e892a678cb392925effd68c67f7b50b90205",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/ff61ca1e6d454564e3e3302ab6a481a46ba0b716",
+                "reference": "ff61ca1e6d454564e3e3302ab6a481a46ba0b716",
                 "shasum": ""
             },
             "require": {
@@ -14558,7 +14559,7 @@
                 "nikic/php-parser": "^4.14",
                 "php": "^7.4 || ^8.0",
                 "phpstan/phpstan": "^1.9.7",
-                "rector/rector": "0.15.22",
+                "rector/rector": "0.15.23",
                 "symfony/console": "^4.0 || ^5.0 || ^6.0",
                 "symfony/polyfill-php80": "^1.26",
                 "symfony/polyfill-php81": "^1.26",
@@ -14626,7 +14627,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-28T20:31:21+00:00"
+            "time": "2023-04-05T16:39:10+00:00"
         },
         {
             "name": "symfony/stopwatch",

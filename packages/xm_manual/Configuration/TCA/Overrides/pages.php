@@ -1,6 +1,15 @@
 <?php
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+ExtensionManagementUtility::registerPageTSConfigFile(
+    'xm_manual',
+    'Configuration/TsConfig/Page.tsconfig',
+    'Xm Manual'
+);
+
+ExtensionManagementUtility::addTcaSelectItem(
     'pages',
     'doktype',
     [
@@ -12,7 +21,7 @@
     'after'
 );
 
-\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
+ArrayUtility::mergeRecursiveWithOverrule(
     $GLOBALS['TCA']['pages'],
     [
         'ctrl' => [
