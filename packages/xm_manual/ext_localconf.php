@@ -11,10 +11,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Backend\Controller\Page
     'options.pageTree.doktypesToShowInNewPageDragArea := addToList(701)'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-    '@import \'EXT:xm_manual/Configuration/TSconfig/Page.tsconfig\''
-);
-
 $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 $pageRenderer->loadRequireJsModule('TYPO3/CMS/XmManual/ManualGlobal');
 
