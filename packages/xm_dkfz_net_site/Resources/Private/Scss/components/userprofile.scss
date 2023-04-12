@@ -311,7 +311,9 @@ form.userprofile {
                 }
             }
 
-            .image-uploader--filled + .image-uploader--filled + .image-uploader--filled + .image-uploader--filled + .image-uploader--filled ~ .image-uploader--empty { display: none; }
+            .image-uploader--filled:not(.image-uploader--hidden) ~ .image-uploader--filled:not(.image-uploader--hidden) ~ .image-uploader--filled:not(.image-uploader--hidden) ~ .image-uploader--filled:not(.image-uploader--hidden) ~ .image-uploader--filled ~ .image-uploader--empty {
+                display: none;
+            }
         }
     }
 
