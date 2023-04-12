@@ -268,7 +268,7 @@ class Userinfo {
 
     marketPlace.innerHTML = ''
 
-    this.userinfo.offers.forEach(order => {
+    this.userinfo.offers.reverse().forEach(order => {
       const orderBox = orderDummy.cloneNode(true) as HTMLLinkElement
       orderBox.querySelector('.orders__link')?.setAttribute('href', order.url)
       orderBox.querySelector('.orders__link')?.setAttribute('title', order.title)
