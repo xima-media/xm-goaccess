@@ -238,7 +238,19 @@ class Userinfo {
   protected modifyMarketplace(): void {
     const marketPlace = document.querySelector('#my-marketplace')
     const orderDummy = document.querySelector('#my-marketplace-dummy')
-    if (!marketPlace || !orderDummy || !this.userinfo || !this.userinfo.offers) {
+    if (!marketPlace || !orderDummy) {
+      return
+    }
+
+    if (!this.userinfo) {
+      document.querySelector('a[data-marketplace="my"]').addEventListener('click', e => {
+        e.preventDefault()
+        app.showLogin()
+      })
+      return
+    }
+
+    if (!this.userinfo.offers) {
       return
     }
 
@@ -474,7 +486,7 @@ class Userinfo {
       uploaderElement.querySelector('.image-uploader__drop')?.prepend(image)
       uploaderElement.classList.remove('image-uploader--hidden')
       uploaderElement.classList.add('image-uploader--filled')
-      uploaderElement.addEventListener('click', this.onOfferImageDeleteClick.bind(this, uploaderElement), { once: true })
+      uploaderElement.addEventListener('click', this.onOfferImageDeleteClick.bind(this, uploaderElement), {once: true})
     }
   }
 
