@@ -1,4 +1,4 @@
-.frame-bwguild_offerlist {
+.frame-bwguild_offerlist, .frame-bwguild_offerlatest {
     --content-width: 1200px;
     background-size: cover;
     background-image: url('../../Images/blackboard.jpg');
@@ -7,6 +7,17 @@
 
     &:last-child {
         margin-bottom: calc(var(--footer-margin) * -1);
+    }
+}
+
+.frame-bwguild_offerlatest {
+    margin-top: 0;
+
+    h2 {
+        color: #FFF;
+    }
+    .color-accent--gray-900 {
+        --color-accent: #FFF;
     }
 }
 

@@ -429,46 +429,50 @@ class Userinfo {
     if (form) {
       form.addEventListener('submit', this.onOfferFormSubmit.bind(this))
       form.querySelector('button[data-abort]')?.addEventListener('click', this.onOfferFormAbort.bind(this))
-      form.querySelectorAll('.image-uploader--filled').forEach(link => {
-        link.addEventListener('click', this.onOfferImageEditClick.bind(this, link))
+      form.querySelectorAll('.image-uploader--persisted').forEach(link => {
+        link.addEventListener('click', this.onOfferImageDeleteClick.bind(this, link))
       })
-      form.querySelectorAll('.image-uploader--empty').forEach(link => {
-        link.addEventListener('click', this.onOfferImageNewClick.bind(this, link))
-      })
+      const addImageButton = form.querySelector('#image-uploader-add-button') as HTMLLinkElement
+      addImageButton.addEventListener('click', this.onOfferImageNewClick.bind(this, addImageButton))
+
       form.querySelectorAll('.image-uploader input[type="file"]').forEach(input => {
         input.addEventListener('change', this.onOfferImageChange.bind(this, input))
       })
     }
   }
 
-  protected onOfferImageEditClick(link: HTMLLinkElement, e: PointerEvent): void {
+  protected onOfferImageDeleteClick(link: HTMLLinkElement, e: PointerEvent): void {
     e.preventDefault()
-    console.log(link)
+    // remove saved image
+    if (link.classList.contains('image-uploader--persisted')) {
+      link.remove()
+    } else {
+      link.querySelector('img').remove()
+      link.querySelector('input').value = ''
+      link.classList.remove('image-uploader--filled')
+      link.classList.add('image-uploader--hidden')
+    }
   }
 
   protected onOfferImageNewClick(link: HTMLLinkElement, e: PointerEvent): void {
-    const element = e.target as HTMLLinkElement
+    e.preventDefault()
 
-    if (element.nodeName !== 'INPUT') {
-      e.preventDefault()
-    }
-
-    link.querySelector<HTMLInputElement>('input[type="file"]').removeAttribute('disabled')
-    link.querySelector<HTMLInputElement>('input[type="file"]').click()
+    const firstElement = document.querySelector('.image-uploader.image-uploader--hidden input') as HTMLInputElement
+    firstElement.click()
   }
 
   protected onOfferImageChange(input: HTMLInputElement, e: Event): void {
     const files = input.files
+
     if (files[0]) {
       const imageBlob = URL.createObjectURL(files[0])
       const image = new Image(100)
       image.src = imageBlob
       const uploaderElement = input.closest('.image-uploader')
       uploaderElement.querySelector('.image-uploader__drop')?.prepend(image)
-      uploaderElement.classList.remove('image-uploader--empty')
+      uploaderElement.classList.remove('image-uploader--hidden')
       uploaderElement.classList.add('image-uploader--filled')
-      uploaderElement.removeEventListener('click', this.onOfferImageNewClick.bind(this, uploaderElement))
-      uploaderElement.addEventListener('click', this.onOfferImageEditClick.bind(this, uploaderElement))
+      uploaderElement.addEventListener('click', this.onOfferImageDeleteClick.bind(this, uploaderElement), { once: true })
     }
   }
 

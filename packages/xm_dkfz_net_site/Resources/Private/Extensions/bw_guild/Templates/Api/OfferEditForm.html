@@ -93,24 +93,36 @@
 			</label>
 			<div class="form-element form-element--images">
 
-				<f:for each="{0:0,1:1,2:2,3:3,4:4,5:5}" as="index">
-					<a href="#"
-					   class="image-uploader {f:if(condition: '{offer.images.{index}}', then: 'image-uploader--filled', else: 'image-uploader--empty')}">
-						<f:form.upload additionalAttributes="{accept: 'image/*'}"
-									   property="images.{index}"
-									   id="images.{index}"/>
-
-
+				<f:for each="{offer.images}" as="image" iteration="i">
+					<a href="#" class="image-uploader image-uploader--filled image-uploader--persisted">
+						<f:form.hidden property="images.{i.index}" value="{image.uid}" />
 						<div class="image-uploader__drop">
-							<f:if condition="{offer.images.{index}}">
-								<f:image width="100c" height="100c" image="{offer.images.{index}}"/>
-							</f:if>
+							<f:image maxWidth="100" maxHeight="100" image="{image}"/>
 							<span class="image-uploader__placeholder"></span>
-							<f:render partial="Icon" arguments="{icon:'plus'}"/>
-							<f:render partial="Icon" arguments="{icon:'pencil'}"/>
+							<f:render partial="Icon" arguments="{icon:'delete-bin'}"/>
 						</div>
 					</a>
 				</f:for>
+
+				<f:for each="{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" as="index">
+					<f:if condition="{index}>{offer.images->f:count()}">
+						<a href="#" id="image-uploader-new-template" class="image-uploader image-uploader--hidden">
+							<f:form.upload additionalAttributes="{accept: 'image/*'}" property="images.{index}"/>
+							<div class="image-uploader__drop">
+								<span class="image-uploader__placeholder"></span>
+								<f:render partial="Icon" arguments="{icon:'delete-bin'}"/>
+							</div>
+						</a>
+					</f:if>
+				</f:for>
+
+				<a href="#" id="image-uploader-add-button" class="image-uploader image-uploader--empty">
+					<div class="image-uploader__drop">
+						<span class="image-uploader__placeholder"></span>
+						<f:render partial="Icon" arguments="{icon:'plus'}"/>
+					</div>
+				</a>
+
 			</div>
 		</fieldset>
 
