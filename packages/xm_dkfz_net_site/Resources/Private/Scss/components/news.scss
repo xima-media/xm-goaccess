@@ -37,6 +37,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 1rem 0;
+    background-color: var(--color-gray-100);
 
     img {
         max-width: 100%;
@@ -54,13 +55,13 @@
         background: #FFF;
 
         @include media-breakpoint-up(xl) {
-            transform: translate3d(var(--direction, -5rem), 0, 0) scale(2);
+            transform: translate3d(var(--direction, -5.1rem), 0, 0) scale(2);
         }
 
         &.next {
             grid-column: 2 / 3;
             justify-self: flex-end;
-            --direction: 5rem;
+            --direction: 5.1rem;
         }
     }
 
@@ -71,40 +72,35 @@
         overflow: hidden;
     }
 
+    @for $i from 1 through 10 {
+        &[data-count="#{$i}"] .image-slider__wrapper {
+            width: $i * 100%;
+            grid-template-columns: repeat(#{$i}, 1fr);
+        }
+
+        @for $j from 1 through 10 {
+            &[data-count="#{$i}"][data-current="#{$j}"] .image-slider__wrapper {
+                $factor: math.div(($j - 1), $i);
+                transform: translate3d(-100% * $factor, 0, 0);
+            }
+        }
+
+    }
+
     &__wrapper {
-        width: 300%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        transform: translate3d(-33.333%, 0, 0);
         transition: transform 0.3s ease;
 
         .no-animation & {
             transition: none;
         }
-
-        .go-next & {
-            transform: translate3d(-66.666%, 0, 0);
-        }
-
-        .go-prev & {
-            transform: translate3d(0, 0, 0);
-        }
     }
 
     &__item {
         grid-row: 1 / 2;
-
-        &.current {
-            grid-column: 2 / 3;
-        }
-
-        &.go-next {
-            grid-column: 3 / 4;
-        }
-
-        &.go-prev {
-            grid-column: 1 / 2;
-        }
+        display: grid;
+        justify-items: center;
+        align-items: center;
     }
 }
 

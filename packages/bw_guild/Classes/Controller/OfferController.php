@@ -4,15 +4,20 @@ namespace Blueways\BwGuild\Controller;
 
 use Blueways\BwGuild\Domain\Model\Dto\OfferDemand;
 use Blueways\BwGuild\Domain\Model\Offer;
+use Blueways\BwGuild\Domain\Model\User;
+use Blueways\BwGuild\Domain\Repository\CategoryRepository;
 use Blueways\BwGuild\Domain\Repository\OfferRepository;
 use Blueways\BwGuild\Domain\Repository\UserRepository;
 use Blueways\BwGuild\Service\AccessControlService;
+use GeorgRinger\NumberedPagination\NumberedPagination as NumberedPaginationAlias;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Exception\Page\PageNotFoundException;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
-use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Page\AssetCollector;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
@@ -24,23 +29,40 @@ class OfferController extends ActionController
     public function __construct(
         protected OfferRepository $offerRepository,
         protected UserRepository $userRepository,
-        protected AccessControlService $accessControlService
+        protected AccessControlService $accessControlService,
+        protected CategoryRepository $categoryRepository
     ) {
     }
 
-    public function listAction(): ResponseInterface
+    public function listAction(?OfferDemand $demand = null): ResponseInterface
     {
-        $demand = $this->offerRepository->createDemandObjectFromSettings($this->settings, OfferDemand::class);
+        $demand = $demand ?? OfferDemand::createFromSettings($this->settings);
 
         // override filter from form
         if ($this->request->hasArgument('demand')) {
-            $demand->overrideFromRequest($this->request->getArgument('demand'));
+            $demand->overrideFromRequest($this->request);
         }
 
-        /** @var OfferRepository $repository */
-        $repository = GeneralUtility::makeInstance($this->settings['record_type']);
+        // get categories by category settings in plugin
+        $catConjunction = $this->settings['categoryConjunction'];
+        if ($catConjunction === 'or' || $catConjunction === 'and') {
+            $categories = $this->categoryRepository->findFromUidList($this->settings['categories']);
+        } elseif ($catConjunction === 'notor' || $catConjunction === 'notand') {
+            $categories = $this->categoryRepository->findFromUidListNot($this->settings['categories']);
+        } else {
+            $categories = $this->categoryRepository->findAll();
+        }
+        $offers = $this->offerRepository->findDemanded($demand);
 
-        $offers = $repository->findDemanded($demand);
+        // create pagination
+        $itemsPerPage = (int)$this->settings['maxItems'];
+        $maximumLinks = (int)$this->settings['maximumLinks'];
+        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+        $paginator = new ArrayPaginator($offers, $currentPage, $itemsPerPage);
+        $pagination = new NumberedPaginationAlias($paginator, $maximumLinks);
+
+        $numberOfResults = count($offers);
+        $offers = $this->offerRepository->mapResultToObjects($paginator->getPaginatedItems());
 
         // disbale indexing of list view
         $metaTagManager = GeneralUtility::makeInstance(MetaTagManagerRegistry::class);
@@ -48,33 +70,40 @@ class OfferController extends ActionController
 
         $this->view->setTemplate($this->settings['template'] ?? 'List');
         $this->view->assign('offers', $offers);
+        $this->view->assign('demand', $demand);
+        $this->view->assign('categories', $categories);
+        $this->view->assign('pagination', [
+            'currentPage' => $currentPage,
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'numberOfResults' => $numberOfResults,
+        ]);
 
         return $this->htmlResponse($this->view->render());
     }
 
-    public function latestAction(): void
+    public function latestAction(): ResponseInterface
     {
-        $demand = $this->offerRepository->createDemandObjectFromSettings($this->settings, OfferDemand::class);
+        $demand = $demand ?? OfferDemand::createFromSettings($this->settings);
 
-        /** @var OfferRepository $repository */
-        $repository = $this->objectManager->get($this->settings['record_type']);
-
-        $offers = $repository->findDemanded($demand);
+        $offers = $this->offerRepository->findDemanded($demand);
         $this->view->setTemplate($this->settings['template'] ?? 'Latest');
         $this->view->assign('offers', $offers);
+        return $this->htmlResponse();
     }
 
-    public function showAction(Offer $offer): ResponseInterface
+    public function showAction(?Offer $offer = null): ResponseInterface
     {
-        $configurationManager = $this->objectManager->get(ConfigurationManager::class);
-        $typoscript = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        if (!$offer || !$offer->isPublic()) {
+            throw new PageNotFoundException('Offer not found', 1678267226);
+        }
 
-        $schema = $offer->getJsonSchema($typoscript);
+        $schema = $offer->getJsonSchema($this->settings);
 
-        if ((int)$typoscript['plugin.']['tx_bwguild_offerlist.']['settings.']['schema.']['enable']) {
+        if (isset($this->settings['schema.']['enable']) && $this->settings['schema.']['enable']) {
             $json = json_encode($schema);
-            $jsCode = '<script type="application/ld+json">' . $json . '</script>';
-            //$this->response->addAdditionalHeaderData($jsCode);
+            $assetCollector = GeneralUtility::makeInstance(AssetCollector::class);
+            $assetCollector->addInlineJavaScript('bwguild_json', $json, ['type' => 'application/ld+json']);
         }
 
         $GLOBALS['TSFE']->page['title'] = $schema['title'];
@@ -88,13 +117,30 @@ class OfferController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function editAction(Offer $offer = null)
+    public function showPreviewAction(?Offer $offer = null): ResponseInterface
+    {
+        if (!$offer || !$this->accessControlService->hasLoggedInFrontendUser()) {
+            throw new PageNotFoundException('Offer not found', 1679915676);
+        }
+
+        $userId = $this->accessControlService->getFrontendUserUid();
+        $isAccessible = $offer->getFeUser()?->getUid() === $userId;
+
+        if (!$isAccessible) {
+            throw new PageNotFoundException('No access', 1679915674);
+        }
+
+        $this->view->assign('offer', $offer);
+        return $this->htmlResponse();
+    }
+
+    public function editAction(Offer $offer = null): ResponseInterface
     {
         if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->throwStatus(403, 'Not logged in');
         }
 
-        /** @var \Blueways\BwGuild\Domain\Model\User $user */
+        /** @var User $user */
         $user = $this->userRepository->findByUid($this->accessControlService->getFrontendUserUid());
 
         if ($offer && $offer->getFeUser()->getUid() !== $user->getUid()) {
@@ -107,6 +153,7 @@ class OfferController extends ActionController
         } else {
             $this->view->assign('offer', $offer);
         }
+        return $this->htmlResponse();
     }
 
     public function updateAction(Offer $offer)
@@ -116,7 +163,7 @@ class OfferController extends ActionController
         }
 
         $userId = $this->accessControlService->getFrontendUserUid();
-        /** @var \Blueways\BwGuild\Domain\Model\User $user */
+        /** @var User $user */
         $user = $this->userRepository->findByUid($userId);
 
         // update: check access
@@ -143,7 +190,7 @@ class OfferController extends ActionController
         $this->addFlashMessage(
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.update.success.message'),
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:user.update.success.title'),
-            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+            AbstractMessage::OK
         );
 
         $this->redirect('edit');
@@ -160,7 +207,7 @@ class OfferController extends ActionController
             $this->throwStatus(403, 'Not logged in');
         }
 
-        /** @var \Blueways\BwGuild\Domain\Model\User $user */
+        /** @var User $user */
         $user = $this->userRepository->findByUid($this->accessControlService->getFrontendUserUid());
 
         if ($offer && $offer->getFeUser()->getUid() !== $user->getUid()) {
@@ -172,48 +219,25 @@ class OfferController extends ActionController
         $this->addFlashMessage(
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:offer.delete.success.message'),
             $this->getLanguageService()->sL('LLL:EXT:bw_guild/Resources/Private/Language/locallang_fe.xlf:offer.delete.success.title'),
-            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+            AbstractMessage::OK
         );
 
         $this->redirect('edit');
     }
 
-    public function newAction()
+    public function newAction(): ResponseInterface
     {
         if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->throwStatus(403, 'Not logged in');
         }
 
-        /** @var \Blueways\BwGuild\Domain\Model\User $user */
+        /** @var User $user */
         $user = $this->userRepository->findByUid($this->accessControlService->getFrontendUserUid());
 
         $offer = new Offer();
         $offer->setFeUser($user);
 
         $this->view->assign('offer', $offer);
-    }
-
-    protected function initializeAction()
-    {
-        parent::initializeAction();
-
-        $this->mergeTyposcriptSettings();
-    }
-
-    private function mergeTyposcriptSettings()
-    {
-        $configurationManager = $this->objectManager->get(ConfigurationManager::class);
-        try {
-            $typoscript = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-            ArrayUtility::mergeRecursiveWithOverrule(
-                $typoscript['plugin.']['tx_bwguild_offerlist.']['settings.'],
-                $this->settings,
-                true,
-                false,
-                false
-            );
-            $this->settings = $typoscript['plugin.']['tx_bwguild_offerlist.']['settings.'];
-        } catch (\TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException $exception) {
-        }
+        return $this->htmlResponse();
     }
 }

@@ -3,6 +3,9 @@
 namespace Blueways\BwGuild\Domain\Model;
 
 use Blueways\BwGuild\Service\GeoService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -11,74 +14,43 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class User extends FrontendUser
 {
-    /**
-     * @var string
-     */
-    protected $shortName = '';
+    protected string $shortName = '';
+
+    protected string $passwordRepeat = '';
+
+    protected string $mobile = '';
+
+    protected string $memberNr = '';
 
     /**
-     * @var string
+     * @var ObjectStorage<Offer>|null
+     * @Lazy
      */
-    protected $passwordRepeat = '';
+    protected ?ObjectStorage $offers = null;
 
     /**
-     * @var string
+     * @var ObjectStorage<AbstractUserFeature>|null
+     * @Lazy
      */
-    protected $mobile = '';
+    protected ?ObjectStorage $features = null;
 
     /**
-     * @var string
+     * @var ObjectStorage<Category>|null
+     * @Lazy
      */
-    protected $memberNr = '';
+    protected ?ObjectStorage $categories = null;
+
+    protected float $latitude = 0.0;
+
+    protected float $longitude = 0.0;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blueways\BwGuild\Domain\Model\Offer>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @var ObjectStorage<Offer>|null
+     * @Lazy
      */
-    protected $offers;
+    protected ?ObjectStorage $sharedOffers = null;
 
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blueways\BwGuild\Domain\Model\AbstractUserFeature>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     */
-    protected $features;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     */
-    protected $categories;
-
-    /**
-     * @var float
-     */
-    protected $latitude;
-
-    /**
-     * @var float
-     */
-    protected $longitude;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blueways\BwGuild\Domain\Model\Offer>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     */
-    protected $sharedOffers;
-
-    /**
-     * @var string
-     */
-    protected $sortingText;
-
-    /**
-     * @var string
-     */
-    protected $sortingField;
-
-    /**
-     * @var bool
-     */
-    protected $publicProfile;
+    protected bool $publicProfile = true;
 
     protected string $bookmarks = '';
 
@@ -103,7 +75,6 @@ class User extends FrontendUser
         $this->categories = new ObjectStorage();
         $this->offers = new ObjectStorage();
         $this->sharedOffers = new ObjectStorage();
-        $this->sortingField = 'company';
         $this->features = new ObjectStorage();
     }
 
@@ -117,106 +88,47 @@ class User extends FrontendUser
         $this->logo = $logo;
     }
 
-    /**
-     * @return bool
-     */
     public function isPublicProfile(): bool
     {
-        return (bool)$this->publicProfile;
+        return $this->publicProfile;
     }
 
-    /**
-     * @param bool $publicProfile
-     */
     public function setPublicProfile(bool $publicProfile): void
     {
         $this->publicProfile = $publicProfile;
     }
 
-    /**
-     * @return string
-     */
-    public function getSortingText()
-    {
-        return $this->sortingText;
-    }
-
-    /**
-     * @param string $sortingText
-     */
-    public function setSortingText(string $sortingText)
-    {
-        $this->sortingText = $sortingText;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSortingField()
-    {
-        return $this->sortingField;
-    }
-
-    /**
-     * @param string $sortingField
-     */
-    public function setSortingField(string $sortingField)
-    {
-        $this->sortingField = $sortingField;
-    }
-
-    /**
-     * @return string
-     */
     public function getPasswordRepeat(): string
     {
         return $this->passwordRepeat;
     }
 
-    /**
-     * @param string $passwordRepeat
-     */
     public function setPasswordRepeat(string $passwordRepeat): void
     {
         $this->passwordRepeat = $passwordRepeat;
     }
 
-    /**
-     * @return float
-     */
     public function getLatitude(): float
     {
         return $this->latitude;
     }
 
-    /**
-     * @param float $latitude
-     */
     public function setLatitude(float $latitude): void
     {
         $this->latitude = $latitude;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage|null
-     */
-    public function getSharedOffers()
+    public function getSharedOffers(): ?ObjectStorage
     {
         return $this->sharedOffers;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $sharedOffers
-     */
-    public function setSharedOffers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $sharedOffers): void
+    public function setSharedOffers(ObjectStorage $sharedOffers): void
     {
         $this->sharedOffers = $sharedOffers;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blueways\BwGuild\Domain\Model\Offer>
-     */
-    public function getAllOffers()
+    public function getAllOffers(): ?ObjectStorage
     {
         $offers = $this->offers;
         if ($this->sharedOffers) {
@@ -226,97 +138,61 @@ class User extends FrontendUser
         return $offers;
     }
 
-    /**
-     * @return float
-     */
     public function getLongitude(): float
     {
         return $this->longitude;
     }
 
-    /**
-     * @param float $longitude
-     */
     public function setLongitude(float $longitude): void
     {
         $this->longitude = $longitude;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-     */
-    public function getCategories(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getCategories(): ObjectStorage
     {
         return $this->categories;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
-     */
-    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories): void
+    public function setCategories(ObjectStorage $categories): void
     {
         $this->categories = $categories;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-     */
-    public function getOffers(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getOffers(): ?ObjectStorage
     {
         return $this->offers;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $offers
-     */
-    public function setOffers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $offers): void
+    public function setOffers(ObjectStorage $offers): void
     {
         $this->offers = $offers;
     }
 
-    /**
-     * @return string
-     */
     public function getShortName(): string
     {
         return $this->shortName;
     }
 
-    /**
-     * @param string $shortName
-     */
     public function setShortName(string $shortName): void
     {
         $this->shortName = $shortName;
     }
 
-    /**
-     * @return string
-     */
     public function getMobile(): string
     {
         return $this->mobile;
     }
 
-    /**
-     * @param string $mobile
-     */
     public function setMobile(string $mobile): void
     {
         $this->mobile = $mobile;
     }
 
-    /**
-     * @return string
-     */
     public function getMemberNr(): string
     {
         return $this->memberNr;
     }
 
-    /**
-     * @param string $memberNr
-     */
     public function setMemberNr(string $memberNr): void
     {
         $this->memberNr = $memberNr;
@@ -324,7 +200,7 @@ class User extends FrontendUser
 
     public function geoCodeAddress()
     {
-        $geocodingService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(GeoService::class);
+        $geocodingService = GeneralUtility::makeInstance(GeoService::class);
         $coords = $geocodingService->getCoordinatesForAddress(
             $this->getAddress(),
             $this->getZip(),
@@ -338,9 +214,9 @@ class User extends FrontendUser
         }
     }
 
-    public function getJsonSchema($settings)
+    public function getJsonSchema(array $settings)
     {
-        $image = $settings['schema.']['defaultImage'] ?: '';
+        $image = $settings['schema']['defaultImage'] ?: '';
 
         $schema = [
             '@context' => 'http://schema.org/',
@@ -374,7 +250,7 @@ class User extends FrontendUser
         return $schema;
     }
 
-    public function getFeatures(): ObjectStorage
+    public function getFeatures(): ?ObjectStorage
     {
         return $this->features;
     }
@@ -382,7 +258,7 @@ class User extends FrontendUser
     public function getFeaturesGroupedByRecordType(): array
     {
         $groupedFeatures = [];
-        /** @var \Blueways\BwGuild\Domain\Model\AbstractUserFeature $feature */
+        /** @var AbstractUserFeature $feature */
         foreach ($this->features as $feature) {
             $groupedFeatures[(int)$feature->getRecordType()] ??= new ObjectStorage();
             $groupedFeatures[(int)$feature->getRecordType()]->attach($feature);

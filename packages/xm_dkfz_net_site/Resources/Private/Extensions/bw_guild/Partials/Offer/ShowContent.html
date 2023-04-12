@@ -1,0 +1,71 @@
+<f:if condition="{offer.images}">
+	<div class="image-slider no-animation" data-current="1" data-count="{offer.images->f:count()}">
+
+		<f:if condition="{offer.images->f:count()} > 1">
+			<button class="prev" aria-label="zurück">
+				<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
+			</button>
+
+			<button class="next" aria-label="Vor">
+				<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
+			</button>
+		</f:if>
+
+		<div class="image-slider__images">
+			<div class="image-slider__wrapper">
+				<f:for as="image" iteration="i" each="{offer.images}">
+					<div class="image-slider__item {f:if(condition: '{i.index} === 0', then: 'current')}"
+						 data-item="{i.cycle}">
+						<picture>
+							<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'webp')}"
+									type="image/webp">
+							<source srcset="{f:uri.image(image:image, width:970, cropVariant: cropVariant, fileExtension: 'jpg')}"
+									type="image/jpeg">
+							<f:image image="{image}"
+									 width="970"
+									 maxHeight="500"
+									 cropVariant="{cropVariant}"
+									 fileExtension="jpg"
+									 class=""
+									 loading="lazy"/>
+						</picture>
+					</div>
+				</f:for>
+			</div>
+		</div>
+	</div>
+</f:if>
+
+<div class="marketplace-show__text">
+	<f:if condition="{offer.description}">
+		<p>{offer.description->f:format.nl2br()}</p>
+	</f:if>
+</div>
+
+<h4><f:translate extensionName="XmDkfzNetSite" key="marketplace.contact.headline"/></h4>
+
+<f:if condition="{offer.feUser}">
+	<f:link.action action="show"
+				   class="content-wrapper__link"
+				   pageUid="{settings.showPid}"
+				   pluginName="Usershow"
+				   title="{offer.feUser.displayName}"
+				   controller="User"
+				   arguments="{user: offer.feUser.uid}">
+		{offer.feUser.displayName}
+	</f:link.action>
+</f:if>
+<ul class="list contacts text-small">
+	<f:if condition="{offer.contactPhone}">
+		<li class="contact__item">
+			<f:render partial="Icon" arguments="{icon: 'phone', width: 14, height: 14}"/>
+			{offer.contactPhone}
+		</li>
+	</f:if>
+	<f:if condition="{offer.contactMail}">
+		<li class="contact__item">
+			<f:render partial="Icon" arguments="{icon: 'mail', width: 14, height: 14}"/>
+			<f:link.email email="offer.contactMail" title="{offer.contactMail}" />
+		</li>
+	</f:if>
+</ul>

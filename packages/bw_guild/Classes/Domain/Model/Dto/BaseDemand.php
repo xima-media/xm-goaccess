@@ -19,6 +19,8 @@ class BaseDemand
 
     public string $categoryConjunction = '';
 
+    public string $category = '';
+
     public string $search = '';
 
     public string $excludeSearchFields = '';
@@ -40,6 +42,8 @@ class BaseDemand
     public float $longitude = 0.0;
 
     public int $limit = -1;
+
+    public string $recordType = '';
 
     /**
      * @return int
@@ -287,7 +291,7 @@ class BaseDemand
      */
     public function geoCodeSearchString(): bool
     {
-        $geocodingService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(GeoService::class);
+        $geocodingService = GeneralUtility::makeInstance(GeoService::class);
         $coords = $geocodingService->getCoordinatesForAddress($this->searchDistanceAddress);
 
         if (!count($coords)) {
@@ -306,20 +310,20 @@ class BaseDemand
      */
     public static function createFromSettings($settings): static
     {
-        $demand = GeneralUtility::makeInstance(static::class);
+        $demand = new static();
 
-        $demand->setCategories(GeneralUtility::trimExplode(',', $settings['categories'], true));
+        $demand->setCategories(GeneralUtility::trimExplode(',', $settings['categories'] ?? '', true));
         $demand->setCategoryConjunction($settings['categoryConjunction'] ?? '');
         $demand->setIncludeSubCategories($settings['includeSubCategories'] ?? false);
         $demand->setOrder($settings['order'] ?? '');
         $demand->setOrderDirection($settings['orderDirection'] ?? '');
         $demand->setItemsPerPage((int)$settings['itemsPerPage']);
 
-        if ($settings['limit']) {
+        if ($settings['limit'] ?? '') {
             $demand->setLimit((int)$settings['limit']);
         }
 
-        if ($settings['maxItems']) {
+        if ($settings['maxItems'] ?? '') {
             $demand->setLimit((int)$settings['maxItems']);
         }
 

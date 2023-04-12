@@ -22,13 +22,9 @@
 				<source>Offers</source>
 				<target>Angebote</target>
 			</trans-unit>
-			<trans-unit id="user.sorting_field">
-				<source>Sorting field</source>
-				<target>Sortierfeld</target>
-			</trans-unit>
 			<trans-unit id="user.slug">
 				<source>Slug</source>
-				<target>URL</target>
+				<target>Slug</target>
 			</trans-unit>
 			<trans-unit id="tx_bwguild_domain_model_offer">
 				<source>Offer</source>
@@ -54,9 +50,21 @@
 				<source>Help</source>
 				<target>Hilfe</target>
 			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_offer.record_type.4">
+				<source>Product offer</source>
+				<target>Produkt Angebot</target>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_offer.record_type.5">
+				<source>Product search</source>
+				<target>Produkt Gesuch</target>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_offer.record_type.6">
+				<source>Product give-away</source>
+				<target>Produkt Geschenk</target>
+			</trans-unit>
 			<trans-unit id="tx_bwguild_domain_model_offer.description">
-				<source>Job description</source>
-				<target>Jobbeschreibung</target>
+				<source>Description</source>
+				<target>Beschreibung</target>
 			</trans-unit>
 			<trans-unit id="tx_bwguild_domain_model_offer.start_date">
 				<source>Available from</source>
@@ -97,7 +105,19 @@
 				<source>Slug</source>
 				<target>Slug</target>
 			</trans-unit>
-			<trans-unit id="tx_bwguild_domain_model_offer.publicProfile">
+			<trans-unit id="tx_bwguild_domain_model_offer.images">
+				<source>Images</source>
+				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_offer.price">
+				<source>Price</source>
+				<target>Preis</target>
+			</trans-unit>
+			<trans-unit id="tx_bwguild_domain_model_offer.public">
+				<source>Is public</source>
+				<target>Ist veröffentlicht</target>
+			</trans-unit>
+			<trans-unit id="user.publicProfile">
 				<source>Public profile</source>
 				<target>Öffentliches Profil</target>
 			</trans-unit>

@@ -3,8 +3,9 @@
 namespace Blueways\BwGuild\Validation\Validator;
 
 use Blueways\BwGuild\Domain\Model\User;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
-class PasswordRepeatValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+class PasswordRepeatValidator extends AbstractValidator
 {
     protected function isValid($value)
     {

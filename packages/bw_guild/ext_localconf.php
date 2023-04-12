@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3_MODE') || die();
+defined('TYPO3') || die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'BwGuild',
@@ -37,12 +37,21 @@ defined('TYPO3_MODE') || die();
     'BwGuild',
     'Offerlist',
     [
-        \Blueways\BwGuild\Controller\OfferController::class => 'list, show, edit, update, new, delete',
+        \Blueways\BwGuild\Controller\OfferController::class => 'list, edit, update, new, delete',
     ],
     // non-cacheable actions
     [
         \Blueways\BwGuild\Controller\OfferController::class => 'edit, update, delete, new',
     ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'BwGuild',
+    'Offershow',
+    [
+        \Blueways\BwGuild\Controller\OfferController::class => 'show,showPreview',
+    ],
+    []
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -59,10 +68,10 @@ defined('TYPO3_MODE') || die();
     'BwGuild',
     'Api',
     [
-        \Blueways\BwGuild\Controller\ApiController::class => 'userinfo,bookmark,userEditForm,userEditUpdate',
+        \Blueways\BwGuild\Controller\ApiController::class => 'userinfo,bookmark,userEditForm,userEditUpdate,offerEditForm,offerEditUpdate,offerDelete',
     ],
     [
-        \Blueways\BwGuild\Controller\ApiController::class => 'userinfo,bookmark,userEditForm,userEditUpdate',
+        \Blueways\BwGuild\Controller\ApiController::class => 'userinfo,bookmark,userEditForm,userEditUpdate,offerEditForm,offerEditUpdate,offerDelete',
     ]
 );
 
@@ -73,17 +82,6 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
         'backend' => \TYPO3\CMS\Core\Cache\Backend\Typo3DatabaseBackend::class,
     ];
 }
-
-// Register geo coding task
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Blueways\BwGuild\Task\GeocodingTask::class] = [
-    'extension' => 'bw_guild',
-    'title' => 'Geocoding of fe_user & offer records',
-    'description' => 'Check all fe_user and offer records for geocoding information and write them into the fields',
-];
-
-// Register hook to set sorting field
-$GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['bw_guild'] = 'Blueways\\BwGuild\\Hooks\\TCEmainHook';
-$GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass']['bw_guild'] = 'Blueways\\BwGuild\\Hooks\\TCEmainHook';
 
 // Register SlugUpdate Wizard
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['bwGuildSlugUpdater'] = Blueways\BwGuild\Updates\SlugUpdater::class;

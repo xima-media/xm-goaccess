@@ -3,15 +3,17 @@
 namespace Blueways\BwGuild\Validation\Validator;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
-class UserLogoValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+class UserLogoValidator extends AbstractValidator
 {
     /**
      * @param mixed $value
      */
     protected function isValid($value)
     {
-        /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $file */
+        /** @var FileReference $file */
         $file = $value;
         $original = $file->getOriginalResource();
 

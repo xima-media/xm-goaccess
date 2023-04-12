@@ -6,8 +6,10 @@ use Blueways\BwGuild\Domain\Model\User;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
-class CustomUsernameValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+class CustomUsernameValidator extends AbstractValidator
 {
     protected function isValid($value)
     {
@@ -53,7 +55,7 @@ class CustomUsernameValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
             );
             $settings = $typoscript['plugin.']['tx_bwguild_userlist.']['settings.'];
             return $settings;
-        } catch (\TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException $exception) {
+        } catch (InvalidConfigurationTypeException $exception) {
         }
     }
 }

@@ -6,15 +6,12 @@ CREATE TABLE fe_users (
 	features varchar(11) DEFAULT 0 NOT NULL,
 	logo varchar(11) DEFAULT 0,
 	shared_offers int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting_field varchar(255) DEFAULT '' NOT NULL,
-	sorting_text varchar(255) DEFAULT '' NOT NULL,
 	slug varchar(255) DEFAULT '' NOT NULL,
 	public_profile tinyint(4) DEFAULT 1 NOT NULL,
 
 	bookmarks varchar(255) DEFAULT '' NOT NULL,
 	company varchar(255) DEFAULT '' NOT NULL,
 	name varchar(255) DEFAULT '' NOT NULL,
-	categories int(11) DEFAULT 0 NOT NULL,
 	latitude decimal(10, 8) DEFAULT 0 NOT NULL,
 	longitude decimal(11, 8) DEFAULT 0 NOT NULL
 );
@@ -52,7 +49,9 @@ CREATE TABLE tx_bwguild_domain_model_offer (
 	contact_person varchar(255) DEFAULT '' NOT NULL,
 	contact_mail varchar(255) DEFAULT '' NOT NULL,
 	contact_phone varchar(255) DEFAULT '' NOT NULL,
-	categories int(11) DEFAULT 0 NOT NULL,
+	images varchar(11) DEFAULT 0,
+	price decimal(10, 2) DEFAULT 0 NOT NULL,
+	public tinyint(4) DEFAULT 1 NOT NULL,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),

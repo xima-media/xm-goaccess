@@ -1,0 +1,130 @@
+<div class="marketplace-list active" data-marketplace="all">
+
+	<f:form extensionName="BwGuild"
+			action="list"
+			pluginName="Offerlist"
+			name="demand"
+			controller="Offer"
+			object="{demand}"
+			class="hero-form">
+		<f:for each="{demand.categories}" as="category" iteration="i">
+			<f:form.hidden property="categories.{i.index}"/>
+		</f:for>
+		<f:form.hidden property="categoryConjunction"/>
+
+		<div class="hero-form__header">
+			<h2 class="hero-form__title h4">Anzeige filtern</h2>
+		</div>
+
+		<div class="hero-form__content">
+			<div class="field field--text field--select {f:if(condition: demand.category, then: 'fx--filled')}">
+				<label class="field__label" for="category"> Alle Rubriken </label>
+				<f:form.select id="category"
+							   class="field__input"
+							   property="category"
+							   options="{categories}"
+							   optionValueField="uid"
+							   optionLabelField="title"
+							   prependOptionLabel=""/>
+			</div>
+		</div>
+
+		<div class="hero-form__footer">
+			<button type="submit" class="button button--white">
+				<f:render partial="Icon" arguments="{icon:'search'}"/>
+				<f:translate extensionName="XmDkfzNetSite" key="usersearch.button"/>
+			</button>
+		</div>
+	</f:form>
+
+	<h4 class="h6 text-center">{offers->f:count()} Anzeigen</h4>
+
+	<div class="orders">
+		<f:for each="{offers}" as="offer">
+			<div class="orders__item">
+				<span class="square"></span>
+				<div class="content">
+					<f:link.action pageUid="{settings.showOfferPid}"
+								   action="show"
+								   pluginName="Offershow"
+								   arguments="{offer: offer.uid}">
+						<div class="m-b-05">
+							<f:format.date format="%d. %B %Y">{offer.crdate}</f:format.date>
+						</div>
+						<h5 data-record-type="{offer.recordType}"
+							data-record-type-4-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.4')}"
+							data-record-type-5-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.5')}"
+							data-record-type-6-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.6')}">
+							{offer.title}</h5>
+						<p class="text-small">
+							<f:if condition="{offer.categories.0}">
+								{offer.categories.0.title}
+							</f:if>
+						</p>
+					</f:link.action>
+					<div class="actions m-t-1 show-for-self" data-user-uid="{offer.feUser.uid}">
+						<div>
+							<span data-public="{f:if(offer.isPublic, then: 1: else: 0)}">Wartet auf Freigabe</span>
+						</div>
+						<div class="actions__buttons">
+							<button class="button button--icon-only button--transparent"
+									href="#"
+									data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: offer.uid})}">
+								<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+							</button>
+							<button class="button button--icon-only button--transparent"
+									href="#"
+									data-offer-edit-link="{f:uri.action(action: 'offerDelete', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: offer.uid})}">
+								<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</f:for>
+	</div>
+</div>
+<div class="marketplace-list" data-marketplace="my">
+	<h4 class="h6 text-center">Meine Anzeigen</h4>
+
+	<button type="button"
+			class="button button--white"
+			data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
+		<f:render partial="Icon" arguments="{icon: 'plus', size: 'sm'}"/>
+		<f:translate key="LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:marketplace.button.new"/>
+	</button>
+
+	<div class="orders" id="my-marketplace">
+		<div class="orders__item d-none" id="my-marketplace-dummy">
+			<span class="square"></span>
+			<div class="content">
+				<a class="orders__link" href="#" title="###TITLE###">
+					<div class="m-b-05 orders__date">###DATE###</div>
+					<h5 data-record-type="###RECORD_TYPE###"
+						data-record-type-4-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.4')}"
+						data-record-type-5-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.5')}"
+						data-record-type-6-label="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.type.6')}">
+						###TEXT###</h5>
+					<p class="text-small">###CATEGORY###</p>
+				</a>
+				<div class="actions m-t-1">
+					<div>
+						<span data-public="0">Wartet auf Freigabe</span>
+					</div>
+					<div class="actions__buttons">
+						<button class="button button--icon-only button--transparent"
+								href="#"
+								data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: '_uid_'})}">
+							<f:render partial="Icon" arguments="{icon: 'pencil'}"/>
+						</button>
+						<button class="button button--icon-only button--transparent"
+								href="#"
+								data-offer-delete-link="{f:uri.action(action: 'offerDelete', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: '_uid_'})}">
+							<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

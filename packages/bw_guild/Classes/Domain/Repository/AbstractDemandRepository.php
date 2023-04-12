@@ -5,6 +5,7 @@ namespace Blueways\BwGuild\Domain\Repository;
 use Blueways\BwGuild\Domain\Model\Dto\BaseDemand;
 use Blueways\BwGuild\Event\ModifyQueryBuilderEvent;
 use Doctrine\DBAL\Connection as ConnectionAlias;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
@@ -14,7 +15,9 @@ use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendGroupRestriction;
 use TYPO3\CMS\Core\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\Exception;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -29,7 +32,7 @@ class AbstractDemandRepository extends Repository
     protected DataMapper $dataMapper;
 
     /**
-     * @param \TYPO3\CMS\Core\EventDispatcher\EventDispatcher $eventDispatcher
+     * @param EventDispatcher $eventDispatcher
      */
     public function __construct(
         ObjectManagerInterface $objectManager,
@@ -42,9 +45,9 @@ class AbstractDemandRepository extends Repository
     }
 
     /**
-     * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
+     * @throws Exception
      * @throws \Doctrine\DBAL\Driver\Exception
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function countDemanded(BaseDemand $demand): int
     {
@@ -54,7 +57,7 @@ class AbstractDemandRepository extends Repository
     /**
      * @param array<mixed> $resultArray
      * @return array<mixed>
-     * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
+     * @throws Exception
      */
     public function mapResultToObjects(array $resultArray): array
     {
@@ -65,9 +68,9 @@ class AbstractDemandRepository extends Repository
     }
 
     /**
-     * @param \Blueways\BwGuild\Domain\Model\Dto\BaseDemand $demand
-     * @return array<mixed>|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\TYPO3\CMS\Extbase\DomainObject\AbstractEntity>
-     * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception|\Doctrine\DBAL\DBALException
+     * @param BaseDemand $demand
+     * @return array<mixed>|QueryResultInterface<AbstractEntity>
+     * @throws Exception|DBALException
      * @throws \Doctrine\DBAL\Driver\Exception
      */
     public function findDemanded(BaseDemand $demand): QueryResultInterface|array
@@ -101,7 +104,7 @@ class AbstractDemandRepository extends Repository
     /**
      * Create queryBuilder for current repository table + add filter for correct subclass (record_type)
      *
-     * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
+     * @throws Exception
      * @see https://gist.github.com/Nemo64/d6bf6561fc4b32d490b1b39966107ff5
      */
     private function createQueryBuilder(): void
@@ -334,38 +337,5 @@ class AbstractDemandRepository extends Repository
                 $this->queryBuilder->createNamedParameter($sysLanguageUid, \PDO::PARAM_INT)
             )
         );
-    }
-
-    /**
-     * @param array<mixed> $settings
-     * @param string $class
-     * @return \Blueways\BwGuild\Domain\Model\Dto\BaseDemand
-     */
-    public function createDemandObjectFromSettings(
-        array $settings,
-        string $class = BaseDemand::class
-    ): BaseDemand {
-        // @TODO: check if this typoscript demandClass setting makes sense
-        $class = isset($settings['demandClass']) && !empty($settings['demandClass']) ? $settings['demandClass'] : $class;
-
-        /** @var \Blueways\BwGuild\Domain\Model\Dto\BaseDemand $demand */
-        $demand = new $class();
-
-        $demand->setCategories(GeneralUtility::trimExplode(',', $settings['categories'] ?? '', true));
-        $demand->setCategoryConjunction($settings['categoryConjunction'] ?? '');
-        $demand->setIncludeSubCategories($settings['includeSubCategories'] ?? false);
-        $demand->setOrder($settings['order'] ?? '');
-        $demand->setOrderDirection($settings['orderDirection'] ?? '');
-        $demand->setItemsPerPage((int)$settings['itemsPerPage']);
-
-        if ($settings['limit'] ?? 0) {
-            $demand->setLimit((int)$settings['limit']);
-        }
-
-        if ($settings['maxItems']) {
-            $demand->setLimit((int)$settings['maxItems']);
-        }
-
-        return $demand;
     }
 }

@@ -7,8 +7,8 @@
 		</header>
 		<body>
 			<trans-unit id="tx_bwguild_admin">
-				<source>Guild administration</source>
-				<target>Innung Verwaltung</target>
+				<source>Administration</source>
+				<target>Verwaltung</target>
 			</trans-unit>
 			<trans-unit id="module.administration.index">
 				<source>Overview</source>
@@ -49,6 +49,10 @@
 			<trans-unit id="module.administration.passwordRefresh">
 				<source>Password refresh</source>
 				<target>Passwort aktualisieren</target>
+			</trans-unit>
+			<trans-unit id="module.administration.offer.all">
+				<source>All offers</source>
+				<target>Alle Angebote</target>
 			</trans-unit>
 			<trans-unit id="userlist">
 				<source>User list</source>
@@ -206,7 +210,15 @@
 				<source>User Suche</source>
 			</trans-unit>
 			<trans-unit id="usersearch.wizard.description">
-				<source>Zeigt ein Suchformular für die Benutzesuche an</source>
+				<source>Zeigt ein Suchformular für die Benutzersuche an</source>
+			</trans-unit>
+			<trans-unit id="offershow.wizard.title">
+				<source>Offer show</source>
+				<target>Angebot Detail</target>
+			</trans-unit>
+			<trans-unit id="offershow.wizard.description">
+				<source>Single view for offers</source>
+				<target>Detailseite für verschiedenste Angebote von Benutzern</target>
 			</trans-unit>
 		</body>
 	</file>

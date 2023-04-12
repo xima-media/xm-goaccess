@@ -1,0 +1,166 @@
+<h3>
+	<f:translate extensionName="XmDkfzNetSite"
+				 key="{f:if(condition:offer.uid, then: 'marketplace.headline.edit', else: 'marketplace.headline.new')}"/>
+</h3>
+
+<f:flashMessages/>
+
+<f:spaceless>
+
+	<f:form class="userprofile"
+			controller="Api"
+			action="offerEditUpdate"
+			object="{offer}"
+			name="offer"
+			method="POST"
+			enctype="multipart/form-data"
+			pageType="1657523819">
+
+		<f:form.hidden property="feUser"/>
+
+		<fieldset>
+			<label for="recordType">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.type"/>
+			</label>
+			<div class="form-element">
+				<f:form.select id="recordType" property="recordType">
+					<f:form.select.option value="4">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.4"/>
+					</f:form.select.option>
+					<f:form.select.option value="5">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.5"/>
+					</f:form.select.option>
+					<f:form.select.option value="6">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.6"/>
+					</f:form.select.option>
+				</f:form.select>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="title">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.title"/>
+			</label>
+			<div class="form-element">
+				<f:form.textfield id="title"
+								  property="title"
+								  additionalAttributes="{required:''}"
+								  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.title.placeholder')}"/>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="category">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.category"/>
+			</label>
+			<div class="form-element">
+				<f:form.select id="category"
+							   property="categories.0"
+							   options="{categories}"
+							   optionValueField="uid"
+							   optionLabelField="title"
+							   prependOptionValue=""
+							   prependOptionLabel="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.category.placeholder')}"
+							   additionalAttributes="{required:''}"/>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="description">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.description"/>
+			</label>
+			<div class="form-element">
+				<f:form.textarea id="description" property="description"/>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label for="price">
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.price"/>
+			</label>
+			<div class="form-element form-element--price">
+				<f:form.textfield id="price"
+								  property="price"
+								  value="{offer.price->f:format.number(decimals:2, decimalSeparator:',')}"
+								  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.price.placeholder')}"/>
+				<p><strong>&#8364;</strong></p>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label>
+				<f:translate extensionName="XmDkfzNetSite" key="marketplace.images"/>
+			</label>
+			<div class="form-element form-element--images">
+
+				<f:for each="{offer.images}" as="image" iteration="i">
+					<f:if condition="{image.uid}">
+						<a href="#" class="image-uploader image-uploader--filled image-uploader--persisted">
+							<f:form.hidden class="hidden-image-input" property="images.{i.index}" value="{image.uid}" respectSubmittedDataValue="false"/>
+							<f:form.hidden class="hidden-delete-input" name="deleteImages[{image.uid}]" value="0" />
+							<div class="image-uploader__drop">
+								<f:image maxWidth="100" maxHeight="100" image="{image}"/>
+								<span class="image-uploader__placeholder"></span>
+								<f:render partial="Icon" arguments="{icon:'delete-bin'}"/>
+							</div>
+						</a>
+					</f:if>
+				</f:for>
+
+				<f:for each="{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" as="index">
+					<f:if condition="{index}>{offer.images->f:count()}">
+						<a href="#" id="image-uploader-new-template" class="image-uploader image-uploader--hidden">
+							<f:form.upload additionalAttributes="{accept: '.jpg, .jpeg, .png'}"
+										   property="images.{index}"/>
+							<div class="image-uploader__drop">
+								<span class="image-uploader__placeholder"></span>
+								<f:render partial="Icon" arguments="{icon:'delete-bin'}"/>
+							</div>
+						</a>
+					</f:if>
+				</f:for>
+
+				<a href="#" id="image-uploader-add-button" class="image-uploader image-uploader--empty">
+					<div class="image-uploader__drop">
+						<span class="image-uploader__placeholder"></span>
+						<f:render partial="Icon" arguments="{icon:'plus'}"/>
+					</div>
+				</a>
+
+			</div>
+		</fieldset>
+
+		<h5><f:translate extensionName="XmDkfzNetSite" key="marketplace.contact.headline"/></h5>
+
+		<fieldset class="two-columns">
+			<div>
+				<label for="contactPhone">
+					<f:translate extensionName="XmDkfzNetSite" key="marketplace.contact.phone"/>
+				</label>
+				<div class="form-element">
+					<f:form.textfield id="contactPhone" property="contactPhone"/>
+				</div>
+			</div>
+			<div>
+				<label for="contactMail">
+					<f:translate extensionName="XmDkfzNetSite" key="marketplace.contact.email"/>
+				</label>
+				<div class="form-element">
+					<f:form.textfield type="email" id="contactMail" property="contactMail"/>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<div class="button-group">
+				<button data-abort href="#" class="button button--primary fx--hover">
+					{f:translate(key: 'abort', extensionName: 'XmDkfzNetSite')}
+				</button>
+				<button type="submit" class="button button--primary">
+					{f:translate(key: 'save', extensionName: 'XmDkfzNetSite')}
+				</button>
+			</div>
+		</fieldset>
+	</f:form>
+
+</f:spaceless>

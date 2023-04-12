@@ -39,6 +39,9 @@
 			<trans-unit id="module.administration.passwordRefresh">
 				<source>Password refresh</source>
 			</trans-unit>
+			<trans-unit id="module.administration.offer.all">
+				<source>All offers</source>
+			</trans-unit>
 			<trans-unit id="userlist">
 				<source>User list</source>
 			</trans-unit>
@@ -183,6 +186,12 @@
 			</trans-unit>
 			<trans-unit id="usersearch.wizard.description">
 				<source>Displays a form to search for user</source>
+			</trans-unit>
+			<trans-unit id="offershow.wizard.title">
+				<source>Offer show</source>
+			</trans-unit>
+			<trans-unit id="offershow.wizard.description">
+				<source>Single view for offers</source>
 			</trans-unit>
 		</body>
 	</file>

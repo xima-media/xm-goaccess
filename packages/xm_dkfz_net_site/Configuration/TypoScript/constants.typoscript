@@ -33,6 +33,10 @@ pidDisruptorStorage = 101
 pidSearch = 111
 pidsFooterNav = 304,305
 pidEmergency = 222
+pidOfferShow = 1029
+pidOfferPreviewShow = 1035
+uidCategoryNews = 16
+uidCategoryMarketplace = 13
 
 ##############################
 #### FLUID STYLED CONTENT ####
@@ -99,6 +103,8 @@ plugin {
 
     settings {
       showPid = {$pidUserDetail}
+      showOfferPid = {$pidOfferShow}
+      showOfferPreviewPid = {$pidOfferPreviewShow}
     }
 
     persistence.storagePid = {$pidFeUserStorage}

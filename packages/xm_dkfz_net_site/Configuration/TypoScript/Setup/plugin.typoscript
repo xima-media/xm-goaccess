@@ -16,6 +16,9 @@ plugin {
     }
     settings {
       pidUserList = {$pidUserList}
+      categoryConjunction = or
+      categories = {$uidCategoryMarketplace}
+      includeSubCategories = 1
     }
   }
 

@@ -13,9 +13,12 @@ class News {
   }
 
   onSliderButtonClick(isPrev: boolean, slider: HTMLElement) {
-    const current = parseInt(slider.getAttribute('data-current') ?? '')
+    const current = parseInt(slider.getAttribute('data-current') ?? '1')
     const count = slider.querySelectorAll('img').length
-    const next = isPrev ? ((current + count + 1) % count) + 1 : (current % count) + 1
+    let next = isPrev ? current - 1 : (current % count) + 1
+    next = next === 0 ? count : next
+
+    console.log(next)
 
     this.goSlide(slider, next, isPrev)
   }
