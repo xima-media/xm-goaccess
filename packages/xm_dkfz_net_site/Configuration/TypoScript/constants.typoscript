@@ -33,8 +33,8 @@ pidDisruptorStorage = 101
 pidSearch = 111
 pidsFooterNav = 304,305
 pidEmergency = 222
-pidOfferShow = 1029
-pidOfferPreviewShow = 1035
+pidOfferShow = 1057
+pidOfferPreviewShow = 1058
 uidCategoryNews = 16
 uidCategoryMarketplace = 13
 
