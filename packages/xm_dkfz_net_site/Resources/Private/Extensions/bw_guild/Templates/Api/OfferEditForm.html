@@ -94,17 +94,15 @@
 			<div class="form-element form-element--images">
 
 				<f:for each="{offer.images}" as="image" iteration="i">
-					<f:if condition="{image.uid}">
-						<a href="#" class="image-uploader image-uploader--filled image-uploader--persisted">
-							<f:form.hidden class="hidden-image-input" property="images.{i.index}" value="{image.uid}" respectSubmittedDataValue="false"/>
-							<f:form.hidden class="hidden-delete-input" name="deleteImages[{image.uid}]" value="0" />
-							<div class="image-uploader__drop">
-								<f:image maxWidth="100" maxHeight="100" image="{image}"/>
-								<span class="image-uploader__placeholder"></span>
-								<f:render partial="Icon" arguments="{icon:'delete-bin'}"/>
-							</div>
-						</a>
-					</f:if>
+					<a href="#" class="image-uploader image-uploader--filled image-uploader--persisted">
+						<f:form.hidden class="hidden-image-input" property="images.{i.index}" value="{image.uid}" respectSubmittedDataValue="false"/>
+						<f:form.hidden class="hidden-delete-input" name="deleteImages[{image.uid}]" value="0" />
+						<div class="image-uploader__drop">
+							<f:image maxWidth="100" maxHeight="100" image="{image}"/>
+							<span class="image-uploader__placeholder"></span>
+							<f:render partial="Icon" arguments="{icon:'delete-bin'}"/>
+						</div>
+					</a>
 				</f:for>
 
 				<f:for each="{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" as="index">
