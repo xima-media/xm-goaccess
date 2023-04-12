@@ -37,6 +37,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 1rem 0;
+    background-color: var(--color-gray-100);
 
     img {
         max-width: 100%;
