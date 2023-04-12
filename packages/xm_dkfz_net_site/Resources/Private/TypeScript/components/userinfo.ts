@@ -445,7 +445,9 @@ class Userinfo {
     e.preventDefault()
     // remove saved image
     if (link.classList.contains('image-uploader--persisted')) {
-      link.remove()
+      link.querySelector<HTMLInputElement>('input.hidden-delete-input').value = '1'
+      link.classList.remove('image-uploader--filled')
+      link.classList.add('image-uploader--hidden')
     } else {
       link.querySelector('img').remove()
       link.querySelector('input').value = ''
