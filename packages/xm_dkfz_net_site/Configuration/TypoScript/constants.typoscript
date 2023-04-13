@@ -118,6 +118,10 @@ plugin {
       hideFullResultList = 1
     }
   }
+
+  tx_bwguild_offerlatest.settings {
+    maxItems = 4
+  }
 }
 
 ##########################

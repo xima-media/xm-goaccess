@@ -169,10 +169,18 @@ Homepage structure:
     --content-width: 1170px;
     background-color: #FFE140;
     padding-top: calc(2 * var(--overlap-size));
-    padding-bottom: calc(1 * var(--overlap-size));
+    padding-bottom: calc(0.5 * var(--overlap-size));
+    background-position: 0% calc(160px - 100%);
+    background-image: url('../../Images/blackboard.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    & > .content-wrapper__content {
+        padding: 0;
+    }
 
     .frame {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.95);
         padding-left: 1rem;
         padding-right: 1rem;
         display: grid;
@@ -191,19 +199,6 @@ Homepage structure:
         position: absolute;
         z-index: 9;
     }
-
-    //&:after {
-    //    content: '';
-    //    width: 1580px;
-    //    height: var(--overlap-size);
-    //    background: #FFF;
-    //    top: auto;
-    //    bottom: 0;
-    //    left: 50vw;
-    //    margin-left: -790px;
-    //    position: absolute;
-    //    z-index: 9;
-    //}
 }
 
 .pages-latest {
@@ -272,10 +267,25 @@ Homepage structure:
     }
 }
 
+// 9. Offer
+#c4872 {
+    .content-wrapper__header {
+        color: #FFF;
+        margin-bottom: 2rem;
+
+        .pattern {
+            background-image: linear-gradient(-45deg, var(--color, #FFF) 10%, transparent 10%, transparent 50%, var(--color, #FFF) 50%, var(--color, #FFF) 60%, transparent 60%, transparent 100%);
+            background-size: 6px 6px;
+            opacity: 0.8;
+        }
+    }
+}
+
 // 10. Social Media
 #c2899, #c3220 {
     --content-width: 1170px;
     background-color: var(--color-gray-100);
+    padding-top: 0;
 
     .frame {
         background: #FFF;
