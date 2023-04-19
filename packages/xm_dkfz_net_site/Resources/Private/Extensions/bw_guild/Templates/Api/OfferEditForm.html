@@ -81,7 +81,7 @@
 			<div class="form-element form-element--price">
 				<f:form.textfield id="price"
 								  property="price"
-								  value="{offer.price->f:format.number(decimals:2, decimalSeparator:',')}"
+								  value="{offer.price->f:format.number(decimals:2, decimalSeparator:',', thousandsSeparator:'')}"
 								  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.price.placeholder')}"/>
 				<p><strong>&#8364;</strong></p>
 			</div>
