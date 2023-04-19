@@ -203,6 +203,15 @@
 			<trans-unit id="user.bookmark.remove">
 				<target>Bookmark entfernen</target>
 			</trans-unit>
+			<trans-unit id="offer.bookmark">
+				<target>Anzeige merken</target>
+			</trans-unit>
+			<trans-unit id="bookmarks.tx_bwguild_domain_model_offer" space="preserve">
+				<target>Anzeigen</target>
+			</trans-unit>
+			<trans-unit id="offer.bookmark.remove">
+				<target>Bookmark entfernen</target>
+			</trans-unit>
 			<trans-unit id="categories">
 				<target>Kategorien</target>
 			</trans-unit>

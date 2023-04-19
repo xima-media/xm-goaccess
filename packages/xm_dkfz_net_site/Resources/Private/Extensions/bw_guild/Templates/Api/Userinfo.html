@@ -145,6 +145,33 @@
 	</ul>
 </f:if>
 
+<f:if condition="{userinfo.bookmarks.tx_bwguild_domain_model_offer}">
+	<h5 class="m-b-0">{f:translate(key: 'bookmarks.tx_bwguild_domain_model_offer', extensionName: 'XmDkfzNetSite')}</h5>
+	<ul class="list bookmarks-sidebar bookmarks-sidebar--tx_bwguild_domain_model_offer">
+		<f:for each="{userinfo.bookmarks.tx_bwguild_domain_model_offer}" as="offer">
+			<li>
+				<div class="content">
+					<f:link.action extensionName="BwGuild"
+								   pluginName="Offershow"
+								   controller="Offer"
+								   action="show"
+								   pageUid="1057"
+								   class="h6"
+								   arguments="{offer: offer.uid}">
+						<f:render partial="Icon" arguments="{icon: 'arrow-right', size: 'sm'}"/>
+						{offer.title}
+					</f:link.action>
+				</div>
+				<a href="#"
+				   class="tab-item__link"
+				   data-bookmark-url="{f:uri.action(action: 'bookmark', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {tableName: 'tx_bwguild_domain_model_offer', recordUid: offer.uid})}">
+					<f:render partial="Icon" arguments="{icon: 'delete-bin'}"/>
+				</a>
+			</li>
+		</f:for>
+	</ul>
+</f:if>
+
 <div class="bookmarks-sidebar__infobox infobox infobox--pattern color-accent--cyan">
 	<div class="infobox--wrapper">
 		<p class="infobox__text">{f:translate(key: 'bookmarks.empty', extensionName: 'XmDkfzNetSite')}</p>

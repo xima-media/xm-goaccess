@@ -11,7 +11,7 @@ $GLOBALS['TCA']['fe_users']['columns']['slug']['config']['generatorOptions']['fi
     'last_name',
     'name',
 ];
-$GLOBALS['TCA']['fe_users']['columns']['bookmarks']['config']['allowed'] = 'pages,fe_users,sys_file,tx_news_domain_model_news';
+$GLOBALS['TCA']['fe_users']['columns']['bookmarks']['config']['allowed'] = 'pages,fe_users,sys_file,tx_bwguild_domain_model_offer,tx_news_domain_model_news';
 
 // crop variant
 $GLOBALS['TCA']['fe_users']['columns']['logo']['config']['overrideChildTca']['columns']['crop']['config']['cropVariants'] = [
