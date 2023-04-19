@@ -37,6 +37,7 @@ pidOfferShow = 1057
 pidOfferPreviewShow = 1058
 uidCategoryNews = 16
 uidCategoryMarketplace = 13
+pidMarketplace = 26
 
 ##############################
 #### FLUID STYLED CONTENT ####

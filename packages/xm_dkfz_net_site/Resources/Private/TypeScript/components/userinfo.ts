@@ -2,6 +2,7 @@ import app from './basic'
 import {LightboxStyle} from './lightbox'
 import {NoticeStyle} from './notice'
 import Lightbox from './lightbox'
+import {v} from "npm-check-updates/build/src/lib/version-util";
 
 export interface UserData {
   uid: number
@@ -98,6 +99,10 @@ class Userinfo {
     // delete offer
     document.querySelectorAll('button[data-offer-delete-link]').forEach(btn => {
       btn.addEventListener('click', this.onDeleteOfferClick.bind(this, btn))
+    })
+    // my offer link
+    document.querySelectorAll('a[data-marketplace-link]').forEach(link => {
+      link.addEventListener('click', this.onMarketplaceLinkClick.bind(this, link))
     })
   }
 
@@ -263,6 +268,10 @@ class Userinfo {
         currentLink.classList.add('active')
         document.querySelectorAll('.marketplace-list').forEach(div => div.classList.remove('active'))
         document.querySelector(`.marketplace-list[data-marketplace="${link.getAttribute('data-marketplace')}"]`).classList.add('active')
+
+        // persist view
+        const currentView = currentLink.getAttribute('data-marketplace') ?? ''
+        localStorage.setItem('marketplace-view', currentView)
       })
     })
 
@@ -300,6 +309,17 @@ class Userinfo {
       orderBox.classList.remove('d-none')
       marketPlace.append(orderBox)
     })
+
+    // onload: change view
+    const view = localStorage.getItem('marketplace-view') ?? ''
+    if (view) {
+      document.querySelector<HTMLLinkElement>('a[data-marketplace="' + view + '"]')?.click()
+    }
+  }
+
+  protected onMarketplaceLinkClick(link: HTMLLinkElement): void {
+    const targetView = link.getAttribute('data-marketplace-link') ?? ''
+    localStorage.setItem('marketplace-view', targetView)
   }
 
   protected modifyBookmarkLinks(): void {

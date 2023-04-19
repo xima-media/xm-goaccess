@@ -42,6 +42,8 @@ page {
       pidOfferShow.value = {$pidOfferShow}
       pidOfferPreviewShow = TEXT
       pidOfferPreviewShow.value = {$pidOfferPreviewShow}
+      pidMarketplace = TEXT
+      pidMarketplace.value = {$pidMarketplace}
     }
 
     dataProcessing {
