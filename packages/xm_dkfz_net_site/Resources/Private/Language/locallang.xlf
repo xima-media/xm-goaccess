@@ -821,6 +821,12 @@
 				<source>Edit image</source>
 			</trans-unit>
 			<trans-unit id="marketplace.agb" space="preserve">
+				<source>Rules of use</source>
+			</trans-unit>
+			<trans-unit id="marketplace.agb.link" space="preserve">
+				<source><![CDATA[By publishing this advertisement you confirm that you have read and understood our <a href="#" data-agb="%s" data-agb-text="%s">rules of use</a>.]]></source>
+			</trans-unit>
+			<trans-unit id="marketplace.agb.text" space="preserve">
 				<source><![CDATA[<p>Your advertisement will be published in your name for a period of 14 days after review by the intranet editorial team. As the author, you are responsible for the content. You may edit your advertisement at any time or delete it yourself before the 14 days have expired.</p><p>Please keep the headline and your advertisement short and to the point and select the appropriate category. You can also post one or more meaningful pictures and, if necessary, provide external contact information.</p><p>The bulletin board serves exclusively as a platform for private classified ads by DKFZ employees. Commercial, political or religious content will not be published, nor will ads whose text or images violate legal regulations, the rights of third parties or common decency.</p>]]></source>
 			</trans-unit>
 		</body>

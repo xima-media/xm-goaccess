@@ -17,7 +17,7 @@
 			pageType="1657523819">
 
 		<f:form.hidden property="feUser"/>
-		<f:form.hidden property="public" value="0" />
+		<f:form.hidden property="public" value="0"/>
 
 		<f:if condition="{offer.uid} && {offer.public}">
 			<div class="infobox color-accent--magenta infobox--pattern m-b-15">
@@ -26,7 +26,8 @@
 						<f:translate extensionName="XmDkfzNetSite" key="marketplace.edit.warning.headline"/>
 					</h5>
 					<p class="m-b-0">
-						<strong>{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.edit.warning.text')}</strong>
+						<strong>{f:translate(extensionName:'XmDkfzNetSite',
+							key:'marketplace.edit.warning.text')}</strong>
 					</p>
 				</div>
 			</div>
@@ -166,6 +167,14 @@
 					<f:form.textfield type="email" id="contactMail" property="contactMail"/>
 				</div>
 			</div>
+		</fieldset>
+
+		<h5>{f:translate(key: 'marketplace.agb', extensionName: 'XmDkfzNetSite')}</h5>
+
+		<fieldset>
+			<f:variable name="agbHeadline">{f:translate(key: 'marketplace.agb', extensionName: 'XmDkfzNetSite')}</f:variable>
+			<f:variable name="agbText">{f:translate(key: 'marketplace.agb.text', extensionName: 'XmDkfzNetSite')}</f:variable>
+			<p><f:format.raw><f:translate key="marketplace.agb.link" extensionName="XmDkfzNetSite" arguments="{0: agbHeadline, 1: agbText}"/></f:format.raw></p>
 		</fieldset>
 
 		<fieldset class="two-columns">

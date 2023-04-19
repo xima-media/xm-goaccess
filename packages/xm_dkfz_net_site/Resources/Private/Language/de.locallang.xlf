@@ -810,6 +810,12 @@
 				<target>Bild bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="marketplace.agb" space="preserve">
+				<target>Nutzungsbedingungen</target>
+			</trans-unit>
+			<trans-unit id="marketplace.agb.link" space="preserve">
+				<target><![CDATA[Mit Veröffentlichung dieser Anzeige bestätigen Sie, dass Sie unsere <a href="#" data-agb="%s" data-agb-text="%s">Nutzungsbedingungen</a> gelesen und verstanden haben.]]></target>
+			</trans-unit>
+			<trans-unit id="marketplace.agb.text" space="preserve">
 				<target><![CDATA[<p>Ihre Anzeige wird nach Prüfung durch die Intranetredaktion in Ihrem Namen für die Dauer von 14 Tagen veröffentlicht. Sie sind als Autor:in für den Inhalt verantwortlich. Sie können Ihre Anzeige jederzeit editieren oder vor Ablauf der 14 Tage selbst löschen.</p><p>Bitte formulieren Sie die Überschrift und Ihre Anzeige kurz und treffend und wählen Sie die passende Rubrik aus. Sie können zudem ein oder mehrere aussagekräftige Bilder einstellen und ggf. externe Kontaktdaten angeben.</p><p>Das Schwarze Brett dient ausschließlich als Plattform für private Kleinanzeigen von DKFZ-Mitarbeitenden. Gewerbliche, politische oder religiöse Inhalte werden nicht freigeschaltet, ebenso Anzeigen, deren Text oder Bilder gegen gesetzliche Bestimmungen, Rechte Dritter oder gegen die guten Sitten verstoßen.</p>]]></target>
 			</trans-unit>
 		</body>

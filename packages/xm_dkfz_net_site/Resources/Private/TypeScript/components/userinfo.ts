@@ -461,6 +461,11 @@ class Userinfo {
       if (deleteButton) {
         deleteButton.addEventListener('click', this.onDeleteOfferClick.bind(this, deleteButton))
       }
+
+      const agbLink = form.querySelector('a[data-agb]')
+      if (agbLink) {
+        agbLink.addEventListener('click', this.onAgbLinkClick.bind(this, agbLink))
+      }
     }
   }
 
@@ -543,6 +548,22 @@ class Userinfo {
         app.notice.open(NoticeStyle.error, 'Error saving data, please try again', 2000)
         this.offerLightbox.stopLoading()
       })
+  }
+
+  protected onAgbLinkClick(link: HTMLLinkElement, e: Event): void {
+    e.preventDefault()
+    const headline = link.getAttribute('data-agb') ?? ''
+    const text = link.getAttribute('data-agb-text') ?? '[]'
+    const content = `<h3>${headline}</h3>${text}`
+
+    this.offerLightbox.isCloseable = false
+
+    const agbLightbox = new Lightbox()
+    agbLightbox.displayContent(content)
+    agbLightbox.box.addEventListener('lightbox:close', () => {
+      this.offerLightbox.isCloseable = true
+    })
+    agbLightbox.open()
   }
 }
 
