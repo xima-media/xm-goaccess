@@ -17,6 +17,20 @@
 			pageType="1657523819">
 
 		<f:form.hidden property="feUser"/>
+		<f:form.hidden property="public" value="0" />
+
+		<f:if condition="{offer.uid} && {offer.public}">
+			<div class="infobox color-accent--magenta infobox--pattern m-b-15">
+				<div class="infobox--wrapper">
+					<h5 class="infobox__title">
+						<f:translate extensionName="XmDkfzNetSite" key="marketplace.edit.warning.headline"/>
+					</h5>
+					<p class="m-b-0">
+						<strong>{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.edit.warning.text')}</strong>
+					</p>
+				</div>
+			</div>
+		</f:if>
 
 		<fieldset>
 			<label for="recordType">

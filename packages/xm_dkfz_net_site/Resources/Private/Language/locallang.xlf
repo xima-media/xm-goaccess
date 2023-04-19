@@ -811,6 +811,12 @@
 			<trans-unit id="marketplace.navigation.my" space="preserve">
 				<source>My offers</source>
 			</trans-unit>
+			<trans-unit id="marketplace.edit.warning.headline" space="preserve">
+				<source>Attention</source>
+			</trans-unit>
+			<trans-unit id="marketplace.edit.warning.text" space="preserve">
+				<source>After editing an offer, your offer becomes private and needs to be reviewed form an administrator</source>
+			</trans-unit>
 			<trans-unit id="image.editor.headline" space="preserve">
 				<source>Edit image</source>
 			</trans-unit>
