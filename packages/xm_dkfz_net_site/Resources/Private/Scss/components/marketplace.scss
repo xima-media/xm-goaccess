@@ -49,6 +49,13 @@
         margin-bottom: var(--space-lg);
     }
 
+    &__agb {
+        p {
+            color: #FFF;
+            text-align: center;
+        }
+    }
+
     form {
         margin: -5rem 0 3rem;
         justify-self: center;
@@ -57,7 +64,6 @@
 
     h4 {
         color: #FFF;
-        margin-bottom: 3rem;
     }
 
     & > .button--white {

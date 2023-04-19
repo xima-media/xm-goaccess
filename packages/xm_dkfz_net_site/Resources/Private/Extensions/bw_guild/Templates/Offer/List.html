@@ -86,6 +86,10 @@
 <div class="marketplace-list" data-marketplace="my">
 	<h4 class="h6 text-center">{f:translate(key: 'marketplace.navigation.my', extensionName: 'XmDkfzNetSite')}</h4>
 
+	<div class="marketplace-list__agb m-b-15">
+		{f:translate(key: 'marketplace.agb', extensionName: 'XmDkfzNetSite')->f:format.raw()}
+	</div>
+
 	<button type="button"
 			class="button button--white"
 			data-offer-edit-link="{f:uri.action(action: 'offerEditForm', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2)}">
