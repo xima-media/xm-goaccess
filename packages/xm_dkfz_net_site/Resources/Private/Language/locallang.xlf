@@ -790,6 +790,9 @@
 			<trans-unit id="marketplace.button.delete" space="preserve">
 				<source>Delete offer</source>
 			</trans-unit>
+			<trans-unit id="marketplace.button.delete.text" space="preserve">
+				<source>Are you sure you want to delete this offer?</source>
+			</trans-unit>
 			<trans-unit id="marketplace.button.edit" space="preserve">
 				<source>Edit offer</source>
 			</trans-unit>

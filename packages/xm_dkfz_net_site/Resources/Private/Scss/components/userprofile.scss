@@ -353,6 +353,10 @@ form.userprofile {
         display: flex;
         justify-content: flex-end;
         gap: 1rem;
+
+        &--left {
+            justify-content: flex-start;
+        }
     }
 }
 

@@ -777,7 +777,10 @@
 				<target>Neue Anzeige</target>
 			</trans-unit>
 			<trans-unit id="marketplace.button.delete" space="preserve">
-				<target>Lösche Anzeige</target>
+				<target>Anzeige löschen</target>
+			</trans-unit>
+			<trans-unit id="marketplace.button.delete.text" space="preserve">
+				<target>Sind Sie sich sicher, dass Sie die Anzeige löschen möchten?</target>
 			</trans-unit>
 			<trans-unit id="marketplace.button.edit" space="preserve">
 				<target>Bearbeite Anzeige</target>

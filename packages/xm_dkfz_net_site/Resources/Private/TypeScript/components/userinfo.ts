@@ -398,7 +398,6 @@ class Userinfo {
     this.offerLightbox = new Lightbox()
     this.offerLightbox.startLoading()
     this.offerLightbox.open()
-    this.offerLightbox.isCloseable = false
     app
       .apiRequest(url)
       .then(data => data.html)
@@ -415,8 +414,11 @@ class Userinfo {
   protected onDeleteOfferClick(button: HTMLButtonElement, e: Event): void {
     e.preventDefault()
     const url = button.getAttribute('data-offer-delete-link') ?? ''
+    const text = button.getAttribute('data-offer-delete-confirmation') ?? ''
 
-    // @TODO: ask for confirmation
+    if (!confirm(text)) {
+      return
+    }
 
     button.closest('.orders__item')?.classList.add('orders__item--loading')
 
@@ -429,7 +431,11 @@ class Userinfo {
         // modify list
         this.modifyMarketplace()
         // message
-        app.notice.open(NoticeStyle.success, 'Offer deleted', 1000)
+        app.notice.open(NoticeStyle.success, 'Anzeige gelöscht', 2000)
+        // close lightbox
+        if (this.offerLightbox) {
+          this.offerLightbox.close()
+        }
       })
       .catch(() => {
         app.notice.open(NoticeStyle.error, 'Could not delete item, please reload and try again.')
@@ -450,6 +456,11 @@ class Userinfo {
       form.querySelectorAll('.image-uploader input[type="file"]').forEach(input => {
         input.addEventListener('change', this.onOfferImageChange.bind(this, input))
       })
+
+      const deleteButton = form.querySelector('button[data-offer-delete-link]')
+      if (deleteButton) {
+        deleteButton.addEventListener('click', this.onDeleteOfferClick.bind(this, deleteButton))
+      }
     }
   }
 

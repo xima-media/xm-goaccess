@@ -95,8 +95,11 @@
 
 				<f:for each="{offer.images}" as="image" iteration="i">
 					<a href="#" class="image-uploader image-uploader--filled image-uploader--persisted">
-						<f:form.hidden class="hidden-image-input" property="images.{i.index}" value="{image.uid}" respectSubmittedDataValue="false"/>
-						<f:form.hidden class="hidden-delete-input" name="deleteImages[{image.uid}]" value="0" />
+						<f:form.hidden class="hidden-image-input"
+									   property="images.{i.index}"
+									   value="{image.uid}"
+									   respectSubmittedDataValue="false"/>
+						<f:form.hidden class="hidden-delete-input" name="deleteImages[{image.uid}]" value="0"/>
 						<div class="image-uploader__drop">
 							<f:image maxWidth="100" maxHeight="100" image="{image}"/>
 							<span class="image-uploader__placeholder"></span>
@@ -128,7 +131,9 @@
 			</div>
 		</fieldset>
 
-		<h5><f:translate extensionName="XmDkfzNetSite" key="marketplace.contact.headline"/></h5>
+		<h5>
+			<f:translate extensionName="XmDkfzNetSite" key="marketplace.contact.headline"/>
+		</h5>
 
 		<fieldset class="two-columns">
 			<div>
@@ -149,9 +154,19 @@
 			</div>
 		</fieldset>
 
-		<fieldset>
+		<fieldset class="two-columns">
+			<div class="button-group button-group--left">
+				<f:if condition="{offer.uid}">
+					<button class="button button--primary fx--hover"
+							data-offer-delete-confirmation="{f:translate(key: 'marketplace.button.delete.text', extensionName: 'XmDkfzNetSite')}"
+							data-offer-delete-link="{f:uri.action(action: 'offerDelete', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {offer: offer})}">
+						<f:render partial="Icon" arguments="{icon:'delete-bin',size:'sm'}"/>
+						{f:translate(key: 'marketplace.button.delete', extensionName: 'XmDkfzNetSite')}
+					</button>
+				</f:if>
+			</div>
 			<div class="button-group">
-				<button data-abort href="#" class="button button--primary fx--hover">
+				<button data-abort class="button button--primary fx--hover">
 					{f:translate(key: 'abort', extensionName: 'XmDkfzNetSite')}
 				</button>
 				<button type="submit" class="button button--primary">
