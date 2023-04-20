@@ -827,6 +827,27 @@
 			<trans-unit id="marketplace.agb.text" space="preserve">
 				<target><![CDATA[<p>Ihre Anzeige wird nach Prüfung durch die Intranetredaktion in Ihrem Namen für die Dauer von 14 Tagen veröffentlicht. Sie sind als Autor:in für den Inhalt verantwortlich. Sie können Ihre Anzeige jederzeit editieren oder vor Ablauf der 14 Tage selbst löschen.</p><p>Bitte formulieren Sie die Überschrift und Ihre Anzeige kurz und treffend und wählen Sie die passende Rubrik aus. Sie können zudem ein oder mehrere aussagekräftige Bilder einstellen und ggf. externe Kontaktdaten angeben.</p><p>Das Schwarze Brett dient ausschließlich als Plattform für private Kleinanzeigen von DKFZ-Mitarbeitenden. Gewerbliche, politische oder religiöse Inhalte werden nicht freigeschaltet, ebenso Anzeigen, deren Text oder Bilder gegen gesetzliche Bestimmungen, Rechte Dritter oder gegen die guten Sitten verstoßen.</p>]]></target>
 			</trans-unit>
+			<trans-unit id="notice.warning.userdata" space="preserve">
+				<target>Benutzerdaten konnten nicht geladen werden</target>
+			</trans-unit>
+			<trans-unit id="notice.error.bookmarkSave" space="preserve">
+				<target>Fehler beim Speichern des Lesezeichens</target>
+			</trans-unit>
+			<trans-unit id="notice.error.offerFormLoad" space="preserve">
+				<target>Formular konnte nicht geladen werden, bitte versuchen Sie es später erneut</target>
+			</trans-unit>
+			<trans-unit id="notice.success.offerDeleted" space="preserve">
+				<target>Anzeige gelöscht</target>
+			</trans-unit>
+			<trans-unit id="notice.error.offerDeleted" space="preserve">
+				<target>Anzeige konnte nicht gelöscht werden, bitte versuchen Sie es später erneut</target>
+			</trans-unit>
+			<trans-unit id="notice.save.success" space="preserve">
+				<target>Speichern erfolgreichen</target>
+			</trans-unit>
+			<trans-unit id="notice.save.error" space="preserve">
+				<target>Fehler beim Speichern, bitte versuchen Sie später erneut</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -838,6 +838,27 @@
 			<trans-unit id="marketplace.agb.text" space="preserve">
 				<source><![CDATA[<p>Your advertisement will be published in your name for a period of 14 days after review by the intranet editorial team. As the author, you are responsible for the content. You may edit your advertisement at any time or delete it yourself before the 14 days have expired.</p><p>Please keep the headline and your advertisement short and to the point and select the appropriate category. You can also post one or more meaningful pictures and, if necessary, provide external contact information.</p><p>The bulletin board serves exclusively as a platform for private classified ads by DKFZ employees. Commercial, political or religious content will not be published, nor will ads whose text or images violate legal regulations, the rights of third parties or common decency.</p>]]></source>
 			</trans-unit>
+			<trans-unit id="notice.warning.userdata" space="preserve">
+				<source>Could not load user data</source>
+			</trans-unit>
+			<trans-unit id="notice.error.bookmarkSave" space="preserve">
+				<source>Error saving bookmark</source>
+			</trans-unit>
+			<trans-unit id="notice.error.offerFormLoad" space="preserve">
+				<source>Could not load form, please reload and try again.</source>
+			</trans-unit>
+			<trans-unit id="notice.success.offerDeleted" space="preserve">
+				<source>Offer deleted</source>
+			</trans-unit>
+			<trans-unit id="notice.error.offerDeleted" space="preserve">
+				<source>Could not delete item, please reload and try again</source>
+			</trans-unit>
+			<trans-unit id="notice.save.success" space="preserve">
+				<source>Successfully saved</source>
+			</trans-unit>
+			<trans-unit id="notice.save.error" space="preserve">
+				<source>Error saving data, please try again</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

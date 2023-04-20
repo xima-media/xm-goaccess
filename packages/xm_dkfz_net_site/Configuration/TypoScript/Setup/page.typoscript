@@ -173,6 +173,10 @@ page {
     1637328467 >
   }
 
+  inlineLanguageLabelFiles {
+    dkfz = EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf
+  }
+
   meta {
     viewport = width=device-width, initial-scale=1.0
     robots = index,follow

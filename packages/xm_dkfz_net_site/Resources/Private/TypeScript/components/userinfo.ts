@@ -2,7 +2,11 @@ import app from './basic'
 import {LightboxStyle} from './lightbox'
 import {NoticeStyle} from './notice'
 import Lightbox from './lightbox'
-import {v} from "npm-check-updates/build/src/lib/version-util";
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace TYPO3 {
+  export let lang: any
+}
 
 export interface UserData {
   uid: number
@@ -75,7 +79,7 @@ class Userinfo {
     this.loadUserinfo()
       .then(() => document.dispatchEvent(new CustomEvent('userinfo-update')))
       .catch(() => {
-        app.notice.open(NoticeStyle.warning, 'Could not load user data', 2000)
+        app.notice.open(NoticeStyle.warning, TYPO3.lang['notice.warning.userdata'], 2000)
       })
 
     this.bindEvents()
@@ -172,7 +176,7 @@ class Userinfo {
         button.classList.toggle('js--checked')
       })
       .catch(() => {
-        app.notice.open(NoticeStyle.error, 'Error saving bookmark', 2000)
+        app.notice.open(NoticeStyle.error, TYPO3.lang['notice.error.bookmarkSave'], 2000)
       })
 
     if (method === 'POST') {
@@ -427,7 +431,7 @@ class Userinfo {
         this.offerLightbox.stopLoading()
       })
       .catch(() => {
-        app.notice.open(NoticeStyle.error, 'Could not load form, please reload and try again.')
+        app.notice.open(NoticeStyle.error, TYPO3.lang['notice.error.offerFormLoad'])
       })
   }
 
@@ -451,14 +455,14 @@ class Userinfo {
         // modify list
         this.modifyMarketplace()
         // message
-        app.notice.open(NoticeStyle.success, 'Anzeige gelöscht', 2000)
+        app.notice.open(NoticeStyle.success, TYPO3.lang['notice.success.offerDeleted'], 2000)
         // close lightbox
         if (this.offerLightbox) {
           this.offerLightbox.close()
         }
       })
       .catch(() => {
-        app.notice.open(NoticeStyle.error, 'Could not delete item, please reload and try again.')
+        app.notice.open(NoticeStyle.error, TYPO3.lang['notice.error.offerDeleted'])
       })
   }
 
@@ -558,14 +562,14 @@ class Userinfo {
           this.onOfferFormLoaded()
           this.modifyMarketplace()
           this.offerLightbox.stopLoading()
-          app.notice.open(NoticeStyle.success, 'Speichern erfolgreich', 2000)
+          app.notice.open(NoticeStyle.success, TYPO3.lang['notice.save.success'], 2000)
         } else {
           // redirect to newly created offer
           window.location.href = `${this.userinfo.offers.at(-1)?.url ?? ''}#action-offer-created`
         }
       })
       .catch(() => {
-        app.notice.open(NoticeStyle.error, 'Error saving data, please try again', 2000)
+        app.notice.open(NoticeStyle.error, TYPO3.lang['notice.save.error'], 2000)
         this.offerLightbox.stopLoading()
       })
   }
