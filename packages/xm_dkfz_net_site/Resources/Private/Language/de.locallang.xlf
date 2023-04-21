@@ -846,7 +846,7 @@
 				<target>Anzeige konnte nicht gelöscht werden, bitte versuchen Sie es später erneut</target>
 			</trans-unit>
 			<trans-unit id="notice.save.success" space="preserve">
-				<target>Speichern erfolgreichen</target>
+				<target>Speichern erfolgreich</target>
 			</trans-unit>
 			<trans-unit id="notice.save.error" space="preserve">
 				<target>Fehler beim Speichern, bitte versuchen Sie später erneut</target>
