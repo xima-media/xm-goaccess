@@ -37,7 +37,7 @@
 		</div>
 	</f:form>
 
-	<h4 class="h6 text-center">{offers->f:count()} Anzeigen</h4>
+	<h4 class="h6 text-center m-b-15">{offers->f:count()} <f:translate extensionName="XmDkfzNetSite" key="bookmarks.tx_bwguild_domain_model_offer"/></h4>
 
 	<div class="orders">
 		<f:for each="{offers}" as="offer">
@@ -84,7 +84,7 @@
 	</div>
 </div>
 <div class="marketplace-list" data-marketplace="my">
-	<h4 class="h6 text-center">{f:translate(key: 'marketplace.navigation.my', extensionName: 'XmDkfzNetSite')}</h4>
+	<h4 class="h6 text-center m-b-15">{f:translate(key: 'marketplace.agb', extensionName: 'XmDkfzNetSite')}</h4>
 
 	<div class="marketplace-list__agb m-b-15">
 		{f:translate(key: 'marketplace.agb.text', extensionName: 'XmDkfzNetSite')->f:format.raw()}
