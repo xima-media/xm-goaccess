@@ -35,6 +35,7 @@ export interface UserOffer {
   crdate: number
   categories: Category[]
   public: boolean
+  expireDays: number
 }
 
 export interface UserBookmarks {
@@ -298,7 +299,13 @@ class Userinfo {
       // @ts-expect-error
       orderBox.querySelector('p').innerHTML = order.categories[0]?.title ?? ''
       // @ts-expect-error
-      orderBox.querySelector('span[data-public]').setAttribute('data-public', order.public ? '1' : '0')
+      orderBox.querySelector('span[data-public][data-status]').setAttribute('data-public', order.public ? '1' : '0')
+      orderBox.querySelector('span[data-public][data-status]').innerHTML = TYPO3.lang['marketplace.status.waiting']
+      orderBox.querySelector('span[data-public][data-expiration]').setAttribute('data-public', order.public ? '0' : '1')
+      orderBox.querySelector('span[data-public][data-expiration]').innerHTML = TYPO3.lang['marketplace.expires'].replace(
+        '%s',
+        order.expireDays.toString()
+      )
       // delete button
       const deleteUrl = orderBox.querySelector('button[data-offer-delete-link]')?.getAttribute('data-offer-delete-link') ?? ''
       const deleteLink = orderBox.querySelector('button[data-offer-delete-link]')

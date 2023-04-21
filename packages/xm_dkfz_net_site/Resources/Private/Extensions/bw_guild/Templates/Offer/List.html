@@ -63,7 +63,8 @@
 					</f:link.action>
 					<div class="actions m-t-1 show-for-self" data-user-uid="{offer.feUser.uid}">
 						<div>
-							<span data-public="{f:if(offer.isPublic, then: 1: else: 0)}">Wartet auf Freigabe</span>
+							<span data-status data-public="{f:if(condition:'{offer.public}', then: 1, else: 0)}"><f:translate extensionName="XmDkfzNetSite" key="marketplace.status.waiting"/></span>
+							<span data-expiration data-public="{f:if(condition:'{offer.public}', then: 0, else: 1)}"><f:translate extensionName="XmDkfzNetSite" key="marketplace.expires" arguments="{0: offer.expirationDays}"/></span>
 						</div>
 						<div class="actions__buttons">
 							<button class="button button--icon-only button--transparent"
@@ -111,7 +112,8 @@
 				</a>
 				<div class="actions m-t-1">
 					<div>
-						<span data-public="0">Wartet auf Freigabe</span>
+						<span data-status data-public="0">Wartet auf Freigabe</span>
+						<span data-expiration="" data-public="1">Läuft in x Tagen ab</span>
 					</div>
 					<div class="actions__buttons">
 						<button class="button button--icon-only button--transparent"

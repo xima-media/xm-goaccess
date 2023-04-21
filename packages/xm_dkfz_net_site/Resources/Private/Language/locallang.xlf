@@ -832,6 +832,9 @@
 			<trans-unit id="marketplace.agb" space="preserve">
 				<source>Rules of use</source>
 			</trans-unit>
+			<trans-unit id="marketplace.expires" space="preserve">
+				<source>Expires in %s days</source>
+			</trans-unit>
 			<trans-unit id="marketplace.agb.link" space="preserve">
 				<source><![CDATA[By publishing this advertisement you confirm that you have read and understood our <a href="#" data-agb="%s" data-agb-text="%s">rules of use</a>.]]></source>
 			</trans-unit>
