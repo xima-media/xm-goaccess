@@ -315,6 +315,34 @@ form.userprofile {
                 display: none;
             }
         }
+
+        &--with-prefix {
+            position: relative;
+
+            & > span {
+                position: absolute;
+                left: 1rem;
+                top: 0;
+                z-index: 1;
+                line-height: 3rem;
+
+                &:after {
+                    content: ':';
+                }
+            }
+
+            .title-prefix[data-type="4"] + input {
+                padding-left: 4.2em;
+            }
+
+            .title-prefix[data-type="5"] + input {
+                padding-left: 4.4em;
+            }
+
+            .title-prefix[data-type="6"] + input {
+                padding-left: 6.8em;
+            }
+        }
     }
 
     .form-element.hide-siblings:not(.active) ~ .form-element {

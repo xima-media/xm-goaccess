@@ -56,11 +56,13 @@
 			<label for="title">
 				<f:translate extensionName="XmDkfzNetSite" key="marketplace.title"/>
 			</label>
-			<div class="form-element">
+			<div class="form-element form-element--with-prefix">
+				<span id="title-prefix" class="title-prefix" data-type="{f:if(condition: offer.recordType, then: offer.recordType, else: 4)}">
+					<f:translate extensionName="XmDkfzNetSite" key="marketplace.type.{f:if(condition: offer.recordType, then: offer.recordType, else: 4)}"/>
+				</span>
 				<f:form.textfield id="title"
 								  property="title"
-								  additionalAttributes="{required:''}"
-								  placeholder="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.title.placeholder')}"/>
+								  additionalAttributes="{required:''}"/>
 			</div>
 		</fieldset>
 

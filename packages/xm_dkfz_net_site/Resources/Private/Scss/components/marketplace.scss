@@ -23,6 +23,13 @@
 }
 
 .marketplace-show {
+
+    @for $i from 4 through 6 {
+        h1[data-record-type="#{$i}"]:before {
+            content: attr(data-record-type-#{$i}-label) ": ";
+        }
+    }
+
     &__text {
         margin: var(--space-lg) 0;
     }
@@ -104,7 +111,7 @@
 
         @for $i from 4 through 6 {
             h5[data-record-type="#{$i}"]:before {
-                content: attr(data-record-type-#{$i}-label) " ";
+                content: attr(data-record-type-#{$i}-label) ": ";
             }
         }
 

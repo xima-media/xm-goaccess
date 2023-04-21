@@ -490,6 +490,16 @@ class Userinfo {
       if (agbLink) {
         agbLink.addEventListener('click', this.onAgbLinkClick.bind(this, agbLink))
       }
+
+      const recordTypeSelect = form.querySelector('#recordType')
+      if (recordTypeSelect) {
+        recordTypeSelect.addEventListener('change', this.onOfferRecordTypeChange.bind(this, recordTypeSelect))
+      }
+
+      const prefixElement = form.querySelector('#title-prefix')
+      if (prefixElement) {
+        prefixElement.addEventListener('click', this.onOfferTitlePrefixClick.bind(this, prefixElement))
+      }
     }
   }
 
@@ -588,6 +598,19 @@ class Userinfo {
       this.offerLightbox.isCloseable = true
     })
     agbLightbox.open()
+  }
+
+  protected onOfferRecordTypeChange(select: HTMLSelectElement): void {
+    const prefixElement = select.closest('form').querySelector('#title-prefix')
+    if (prefixElement) {
+      prefixElement.innerHTML = select.options[select.selectedIndex].text
+      prefixElement.setAttribute('data-type', select.value)
+    }
+  }
+
+  protected onOfferTitlePrefixClick(span: HTMLSpanElement): void {
+    const input = span.nextSibling as HTMLInputElement
+    input.focus()
   }
 }
 
