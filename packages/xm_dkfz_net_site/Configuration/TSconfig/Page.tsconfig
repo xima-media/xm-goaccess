@@ -387,6 +387,7 @@ tx_news.templateLayouts {
   mod.wizards.newContentElement.wizardItems.luxletter >
   mod.wizards.newContentElement.wizardItems.plugins >
   mod.wizards.newContentElement.wizardItems.special >
+  mod.wizards.newContentElement.wizardItems.menu >
   mod.wizards.newContentElement.wizardItems.common.elements {
     newsletter-news {
       iconIdentifier = content-listgroup
@@ -398,9 +399,10 @@ tx_news.templateLayouts {
     }
   }
 
-  mod.wizards.newContentElement.wizardItems.common.show = textmedia,newsletter-news
+  mod.wizards.newContentElement.wizardItems.common.show = textmedia,text,newsletter-news
 
   TCEFORM.tt_content.header_layout.removeItems = 2,3,4,5
   TCEFORM.tt_content.imageorient.disabled = 1
+  TCEFORM.tt_content.CType.removeItems >
 
 [GLOBAL]

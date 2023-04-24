@@ -14,12 +14,9 @@ p {
 }
 
 .container.header {
-	background: #f3f3f3;
+	background: #FFFFFF;
 }
 
-.body-drip {
-	border-top: 8px solid #0047b9;
-}
 
 img:not(.small) {
 	height: auto;
@@ -97,4 +94,21 @@ hr {
 	height: 2px;
 	border: 0;
 	background: #d2d2d2;
+}
+
+.small150 {
+	width: 150px;
+	display: inline;
+}
+
+h2 {
+	font-weight: bold;
+	text-align: center;
+	font-size: 26px;
+	margin-bottom: 30px;
+}
+
+td.large-8.last, th.large-8.last {
+	padding-left: 48px;
+	padding-right: 48px;
 }
