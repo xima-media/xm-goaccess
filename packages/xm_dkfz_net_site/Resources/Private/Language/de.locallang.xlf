@@ -851,6 +851,15 @@
 			<trans-unit id="notice.save.error" space="preserve">
 				<target>Fehler beim Speichern, bitte versuchen Sie später erneut</target>
 			</trans-unit>
+			<trans-unit id="marketplace.filter" space="preserve">
+				<target>Anzeige filtern</target>
+			</trans-unit>
+			<trans-unit id="marketplace.filter.categories" space="preserve">
+				<target>Rubriken</target>
+			</trans-unit>
+			<trans-unit id="marketplace.filter.all" space="preserve">
+				<target>Alle Rubriken</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

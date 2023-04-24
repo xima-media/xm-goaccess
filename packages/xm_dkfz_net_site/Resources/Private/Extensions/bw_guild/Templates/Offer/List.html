@@ -11,21 +11,23 @@
 			<f:form.hidden property="categories.{i.index}"/>
 		</f:for>
 		<f:form.hidden property="categoryConjunction"/>
+		<f:form.hidden property="includeSubCategories" />
 
 		<div class="hero-form__header">
-			<h2 class="hero-form__title h4">Anzeige filtern</h2>
+			<h2 class="hero-form__title h4"><f:translate extensionName="XmDkfzNetSite" key="marketplace.filter"/></h2>
 		</div>
 
 		<div class="hero-form__content">
-			<div class="field field--text field--select {f:if(condition: demand.category, then: 'fx--filled')}">
-				<label class="field__label" for="category"> Alle Rubriken </label>
+			<div class="field field--text fx--filled">
+				<label class="field__label" for="category"><f:translate extensionName="XmDkfzNetSite" key="marketplace.filter.categories"/></label>
 				<f:form.select id="category"
 							   class="field__input"
 							   property="category"
 							   options="{categories}"
 							   optionValueField="uid"
 							   optionLabelField="title"
-							   prependOptionLabel=""/>
+							   prependOptionValue="{settings.categories}"
+							   prependOptionLabel="{f:translate(extensionName:'XmDkfzNetSite', key:'marketplace.filter.all')}"/>
 			</div>
 		</div>
 

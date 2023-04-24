@@ -862,6 +862,15 @@
 			<trans-unit id="notice.save.error" space="preserve">
 				<source>Error saving data, please try again</source>
 			</trans-unit>
+			<trans-unit id="marketplace.filter" space="preserve">
+				<source>Filter items</source>
+			</trans-unit>
+			<trans-unit id="marketplace.filter.categories" space="preserve">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="marketplace.filter.all" space="preserve">
+				<source>All categories</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
