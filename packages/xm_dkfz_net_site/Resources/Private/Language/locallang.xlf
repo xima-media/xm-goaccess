@@ -866,7 +866,7 @@
 				<source>Filter items</source>
 			</trans-unit>
 			<trans-unit id="marketplace.filter.categories" space="preserve">
-				<source>Categories</source>
+				<source>Category</source>
 			</trans-unit>
 			<trans-unit id="marketplace.filter.all" space="preserve">
 				<source>All categories</source>

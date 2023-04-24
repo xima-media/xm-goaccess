@@ -855,7 +855,7 @@
 				<target>Anzeige filtern</target>
 			</trans-unit>
 			<trans-unit id="marketplace.filter.categories" space="preserve">
-				<target>Rubriken</target>
+				<target>Rubrik</target>
 			</trans-unit>
 			<trans-unit id="marketplace.filter.all" space="preserve">
 				<target>Alle Rubriken</target>
