@@ -76,7 +76,8 @@
 		"ichhabrecht/filefill": "^4.1",
 		"lochmueller/staticfilecache": "^12.5",
 		"in2code/instagram": "dev-master",
-		"xima/xima-twitter-client": "*@dev"
+		"xima/xima-twitter-client": "*@dev",
+		"xima-media/xm-mail-catcher": "^11.1"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
