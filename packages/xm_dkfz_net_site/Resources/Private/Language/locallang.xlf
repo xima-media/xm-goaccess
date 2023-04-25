@@ -752,7 +752,7 @@
 				<source>Please select</source>
 			</trans-unit>
 			<trans-unit id="marketplace.type.4" space="preserve">
-				<source>Ad</source>
+				<source>Offer</source>
 			</trans-unit>
 			<trans-unit id="marketplace.type.5" space="preserve">
 				<source>Wanted</source>
