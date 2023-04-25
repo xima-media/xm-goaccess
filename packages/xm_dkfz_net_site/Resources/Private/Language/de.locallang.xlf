@@ -810,7 +810,7 @@
 				<target>Achtung</target>
 			</trans-unit>
 			<trans-unit id="marketplace.edit.warning.text" space="preserve">
-				<target>Wenn Sie das Angebot bearbeiten, ist es nicht mehr öffentlich und muss erneut von einem Administrator freigegeben werden</target>
+				<target>Wenn Sie die Anzeige bearbeiten, ist es nicht mehr öffentlich und muss erneut von einem Administrator freigegeben werden.</target>
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.my" space="preserve">
 				<target>Meine Anzeigen</target>

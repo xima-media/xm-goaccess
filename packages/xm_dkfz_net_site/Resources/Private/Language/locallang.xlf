@@ -287,7 +287,7 @@
 				<source>Remove bookmark</source>
 			</trans-unit>
 			<trans-unit id="offer.bookmark">
-				<source>Bookmark offer</source>
+				<source>Bookmark ad</source>
 			</trans-unit>
 			<trans-unit id="offer.bookmark.remove">
 				<source>Remove bookmark</source>
@@ -668,7 +668,7 @@
 				<source>News</source>
 			</trans-unit>
 			<trans-unit id="bookmarks.tx_bwguild_domain_model_offer" space="preserve">
-				<source>Offers</source>
+				<source>Ads</source>
 			</trans-unit>
 			<trans-unit id="tt_content.newsletter-news.title" space="preserve">
 				<source>News list</source>
@@ -746,13 +746,13 @@
 				<source>Edit profile now</source>
 			</trans-unit>
 			<trans-unit id="marketplace.type" space="preserve">
-				<source>Offer type</source>
+				<source>Advertisement type</source>
 			</trans-unit>
 			<trans-unit id="marketplace.type.placeholder" space="preserve">
 				<source>Please select</source>
 			</trans-unit>
 			<trans-unit id="marketplace.type.4" space="preserve">
-				<source>Offer</source>
+				<source>Ad</source>
 			</trans-unit>
 			<trans-unit id="marketplace.type.5" space="preserve">
 				<source>Wanted</source>
@@ -764,7 +764,7 @@
 				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="marketplace.title.placeholder" space="preserve">
-				<source>Offer / wanted / give-away..</source>
+				<source>Ad / wanted / give-away..</source>
 			</trans-unit>
 			<trans-unit id="marketplace.category" space="preserve">
 				<source>Category</source>
@@ -794,37 +794,37 @@
 				<source>E-Mail</source>
 			</trans-unit>
 			<trans-unit id="marketplace.button.new" space="preserve">
-				<source>Create offer</source>
+				<source>Create ad</source>
 			</trans-unit>
 			<trans-unit id="marketplace.button.delete" space="preserve">
-				<source>Delete offer</source>
+				<source>Delete ad</source>
 			</trans-unit>
 			<trans-unit id="marketplace.button.delete.text" space="preserve">
-				<source>Are you sure you want to delete this offer?</source>
+				<source>Are you sure you want to delete this ad?</source>
 			</trans-unit>
 			<trans-unit id="marketplace.button.edit" space="preserve">
-				<source>Edit offer</source>
+				<source>Edit ad</source>
 			</trans-unit>
 			<trans-unit id="marketplace.status.waiting" space="preserve">
 				<source>Waiting for approval</source>
 			</trans-unit>
 			<trans-unit id="marketplace.headline.new" space="preserve">
-				<source>New offer</source>
+				<source>New ad</source>
 			</trans-unit>
 			<trans-unit id="marketplace.headline.edit" space="preserve">
-				<source>Edit offer</source>
+				<source>Edit ad</source>
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.all" space="preserve">
-				<source>All offers</source>
+				<source>All ads</source>
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.my" space="preserve">
-				<source>My offers</source>
+				<source>My ads</source>
 			</trans-unit>
 			<trans-unit id="marketplace.edit.warning.headline" space="preserve">
 				<source>Attention</source>
 			</trans-unit>
 			<trans-unit id="marketplace.edit.warning.text" space="preserve">
-				<source>After editing an offer, your offer becomes private and needs to be reviewed form an administrator</source>
+				<source>After editing, your ad has to be reviewed and published by the intranet editorial team again.</source>
 			</trans-unit>
 			<trans-unit id="image.editor.headline" space="preserve">
 				<source>Edit image</source>
@@ -839,7 +839,7 @@
 				<source><![CDATA[By publishing this advertisement you confirm that you have read and understood our <a href="#" data-agb="%s" data-agb-text="%s">rules of use</a>.]]></source>
 			</trans-unit>
 			<trans-unit id="marketplace.agb.text" space="preserve">
-				<source><![CDATA[<p>Your advertisement will be published in your name for a period of 14 days after review by the intranet editorial team. As the author, you are responsible for the content. You may edit your advertisement at any time or delete it yourself before the 14 days have expired.</p><p>Please keep the headline and your advertisement short and to the point and select the appropriate category. You can also post one or more meaningful pictures and, if necessary, provide external contact information.</p><p>The bulletin board serves exclusively as a platform for private classified ads by DKFZ employees. Commercial, political or religious content will not be published, nor will ads whose text or images violate legal regulations, the rights of third parties or common decency.</p>]]></source>
+				<source><![CDATA[<p>Your advertisement will be published in your name for a period of 14 days after review by the intranet editorial team. As the author, you are responsible for the content. You may edit your advertisement at any time or delete it yourself before the 14 days have expired.</p><p>Please keep the headline and your advertisement short and to the point and select the appropriate category. You can also post one or more meaningful pictures and, if necessary, provide external contact information.</p><p>The bill-board serves exclusively as a platform for private classified ads by DKFZ employees. Commercial, political or religious content will not be published, nor will ads whose text or images violate legal regulations, the rights of third parties or common decency.</p>]]></source>
 			</trans-unit>
 			<trans-unit id="notice.warning.userdata" space="preserve">
 				<source>Could not load user data</source>
@@ -851,7 +851,7 @@
 				<source>Could not load form, please reload and try again.</source>
 			</trans-unit>
 			<trans-unit id="notice.success.offerDeleted" space="preserve">
-				<source>Offer deleted</source>
+				<source>Ad deleted</source>
 			</trans-unit>
 			<trans-unit id="notice.error.offerDeleted" space="preserve">
 				<source>Could not delete item, please reload and try again</source>
