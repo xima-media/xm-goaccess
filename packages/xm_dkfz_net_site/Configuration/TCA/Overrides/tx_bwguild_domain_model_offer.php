@@ -5,3 +5,5 @@ $GLOBALS['TCA']['tx_bwguild_domain_model_offer']['columns']['is_public']['defaul
 
 // disable translation for offers
 unset($GLOBALS['TCA']['tx_bwguild_domain_model_offer']['ctrl']['languageField']);
+unset($GLOBALS['TCA']['tx_bwguild_domain_model_offer']['ctrl']['transOrigPointerField']);
+unset($GLOBALS['TCA']['tx_bwguild_domain_model_offer']['ctrl']['transOrigDiffSourceField']);
