@@ -4,8 +4,6 @@ image:
 cache:
   paths:
     - .composer-cache/
-before_script:
-  - composer config -g cache-dir "$(pwd)/.composer-cache"
 
 stages:
   - build
@@ -23,6 +21,7 @@ build-php:
     - php composer-setup.php
     - php -r "unlink('composer-setup.php');"
     - mv composer.phar /usr/local/bin/composer
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
     - composer install --optimize-autoloader --no-ansi --no-interaction --no-progress
   artifacts:
     paths:
@@ -68,7 +67,7 @@ test-php-stan:
   needs: [ "build-php" ]
   before_script:
     - export no_proxy=localhost && export noproxy=localhost
-    - apt install rsync gzip -yqq
+    - apt install ssh rsync gzip -yqq
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
