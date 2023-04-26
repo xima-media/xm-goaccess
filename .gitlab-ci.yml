@@ -22,7 +22,7 @@ build-php:
     - php -r "unlink('composer-setup.php');"
     - mv composer.phar /usr/local/bin/composer
     - composer config -g cache-dir "$(pwd)/.composer-cache"
-    - composer install --optimize-autoloader --no-ansi --no-interaction --no-progress
+    - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
   artifacts:
     paths:
       - vendor/
