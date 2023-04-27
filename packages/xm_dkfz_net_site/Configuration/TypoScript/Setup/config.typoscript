@@ -19,6 +19,7 @@ config {
     1 = tx_news_domain_model_news:141
     5 = tx_news_domain_model_news:141
     20 = tx_news_domain_model_news:141
+    1 = tx_bwguild_domain_model_offer:91
     26 = tx_bwguild_domain_model_offer:91
     1058 = tx_bwguild_domain_model_offer:91
     1057 = tx_bwguild_domain_model_offer:91
