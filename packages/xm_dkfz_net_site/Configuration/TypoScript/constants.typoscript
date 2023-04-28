@@ -117,6 +117,7 @@ plugin {
       maximumLinks = 6
       maxItems = 21
       hideFullResultList = 1
+      showPid = {$pidUserDetail}
     }
   }
 
