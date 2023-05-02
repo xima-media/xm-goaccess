@@ -8,17 +8,17 @@ class DkfzResourceResolver extends AbstractResourceResolver
 {
     public function getIntendedUsername(): ?string
     {
-        return $this->resourceOwner->toArray()['email'] ?? null;
+        return $this->getRemoteUser()->toArray()['email'] ?? null;
     }
 
     public function getIntendedEmail(): ?string
     {
-        return $this->resourceOwner->toArray()['email'] ?? null;
+        return $this->getRemoteUser()->toArray()['email'] ?? null;
     }
 
     public function updateBackendUser(array &$beUser): void
     {
-        $remoteUser = $this->getResourceOwner()->toArray();
+        $remoteUser = $this->getRemoteUser()->toArray();
 
         if (!$beUser['username'] && $remoteUser['email']) {
             $beUser['username'] = $remoteUser['email'];
@@ -38,7 +38,7 @@ class DkfzResourceResolver extends AbstractResourceResolver
 
     public function updateFrontendUser(array &$feUser): void
     {
-        $remoteUser = $this->getResourceOwner()->toArray();
+        $remoteUser = $this->getRemoteUser()->toArray();
 
         if (!$feUser['username'] && $remoteUser['email']) {
             $feUser['username'] = $remoteUser['email'];
@@ -53,7 +53,5 @@ class DkfzResourceResolver extends AbstractResourceResolver
         if (!$feUser['name']) {
             $feUser['name'] = $remoteUser['unique_name'];
         }
-
-        // @TODO: usergroups
     }
 }
