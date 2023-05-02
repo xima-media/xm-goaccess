@@ -312,7 +312,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -4129,16 +4129,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.20.3",
+            "version": "1.20.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "6c04009f6cae6eda2f040745b6b846080ef069c2"
+                "reference": "7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/6c04009f6cae6eda2f040745b6b846080ef069c2",
-                "reference": "6c04009f6cae6eda2f040745b6b846080ef069c2",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd",
+                "reference": "7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd",
                 "shasum": ""
             },
             "require": {
@@ -4168,9 +4168,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.20.3"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.20.4"
             },
-            "time": "2023-04-25T09:01:03+00:00"
+            "time": "2023-05-02T09:19:37+00:00"
         },
         {
             "name": "psr/cache",
@@ -8386,7 +8386,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10906,11 +10906,11 @@
         },
         {
             "name": "xima/xima-oauth2-extended",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima-oauth2-extended",
-                "reference": "63095d070388d0f7c362345dbc8da527664879f5"
+                "reference": "3084b7798cb821af47fdab863cc4e4ffefcb9fcc"
             },
             "require": {
                 "league/oauth2-client": "^2.7",
@@ -10934,14 +10934,14 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Adds additional OAuth2 provider and enabled on-the-fly user creation for TYPO3",
+            "description": "Adds additional OAuth2 provider and enables on-the-fly user creation",
             "transport-options": {
                 "relative": true
             }
         },
         {
             "name": "xima/xima-twitter-client",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -10975,7 +10975,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -11010,7 +11010,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11044,7 +11044,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11131,7 +11131,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11166,7 +11166,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
