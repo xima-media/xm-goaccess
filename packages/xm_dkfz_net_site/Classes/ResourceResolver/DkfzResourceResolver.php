@@ -2,7 +2,9 @@
 
 namespace Xima\XmDkfzNetSite\ResourceResolver;
 
-class DkfzResolver extends AbstractResolver
+use Xima\XimaOauth2Extended\ResourceResolver\AbstractResourceResolver;
+
+class DkfzResourceResolver extends AbstractResourceResolver
 {
     public function getIntendedUsername(): ?string
     {

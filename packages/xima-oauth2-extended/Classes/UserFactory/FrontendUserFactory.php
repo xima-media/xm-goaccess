@@ -1,6 +1,6 @@
 <?php
 
-namespace Xima\XmDkfzNetSite\UserFactory;
+namespace Xima\XimaOauth2Extended\UserFactory;
 
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver\Exception;
@@ -10,18 +10,21 @@ use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Core\DataHandling\Model\RecordStateFactory;
+use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2BeUserProviderConfigurationRestriction;
-use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
+use Waldhacker\Oauth2Client\Database\Query\Restriction\Oauth2FeUserProviderConfigurationRestriction;
+use Xima\XimaOauth2Extended\ResourceResolver\AbstractResourceResolver;
 
-class BackendUserFactory
+class FrontendUserFactory
 {
-    protected AbstractResolver $resolver;
+    protected AbstractResourceResolver $resolver;
 
     /**
-     * @param AbstractResolver $resolver
+     * @param AbstractResourceResolver $resolver
      */
-    public function setResolver(AbstractResolver $resolver): void
+    public function setResolver(AbstractResourceResolver $resolver): void
     {
         $this->resolver = $resolver;
     }
@@ -31,7 +34,7 @@ class BackendUserFactory
         $constraints = [];
         $username = $this->resolver->getIntendedUsername();
         $email = $this->resolver->getIntendedEmail();
-        $qb = $this->getQueryBuilder();
+        $qb = $this->getQueryBuilder('fe_users');
 
         if ($username) {
             $constraints[] = $qb->expr()->eq(
@@ -53,7 +56,7 @@ class BackendUserFactory
 
         $user = $qb
             ->select('*')
-            ->from('be_users')
+            ->from('fe_users')
             ->where($qb->expr()->orX(...$constraints))
             ->execute()
             ->fetchAssociative();
@@ -61,16 +64,16 @@ class BackendUserFactory
         return $user ?: null;
     }
 
-    public function registerRemoteUser(): ?array
+    public function registerRemoteUser(int $targetPid): ?array
     {
         // find or create
         $userRecord = $this->findUserByUsernameOrEmail();
         if (!is_array($userRecord)) {
-            $userRecord = $this->createBasicBackendUser();
+            $userRecord = $this->createBasicFrontendUser($targetPid);
         }
 
         // update
-        $this->resolver->updateBackendUser($userRecord);
+        $this->resolver->updateFrontendUser($userRecord);
 
         // test for username
         if (!$userRecord['username']) {
@@ -82,6 +85,9 @@ class BackendUserFactory
             $userRecord = $this->persistAndRetrieveUser($userRecord);
         }
 
+        // update user slug
+        $this->updateFrontendUserSlug($userRecord);
+
         try {
             if ($this->persistIdentityForUser($userRecord)) {
                 return $userRecord;
@@ -92,6 +98,37 @@ class BackendUserFactory
         return null;
     }
 
+    protected function updateFrontendUserSlug(&$userRecord): void
+    {
+        // init SlugHelper for this table
+        $fieldConfig = $GLOBALS['TCA']['fe_users']['columns']['slug']['config'];
+        /** @var SlugHelper $slugHelper */
+        $slugHelper = GeneralUtility::makeInstance(
+            SlugHelper::class,
+            'fe_users',
+            'slug',
+            $fieldConfig
+        );
+
+        // generate unique slug for user
+        $value = $slugHelper->generate($userRecord, $userRecord['pid']);
+        $state = RecordStateFactory::forName('fe_users')
+            ->fromArray($userRecord, $userRecord['pid'], $userRecord['uid']);
+        $slug = $slugHelper->buildSlugForUniqueInPid($value, $state);
+
+        // update slug field of user
+        $qb = $this->getQueryBuilder('fe_users');
+        $qb->update('fe_users')
+            ->where(
+                $qb->expr()->eq(
+                    'uid',
+                    $qb->createNamedParameter($userRecord['uid'], \PDO::PARAM_INT)
+                )
+            )
+            ->set('slug', $slug);
+        $qb->execute();
+    }
+
     /**
      * @throws DBALException
      * @throws Exception
@@ -99,8 +136,8 @@ class BackendUserFactory
     public function persistIdentityForUser($userRecord): bool
     {
         // create identity
-        $qb = $this->getQueryBuilder('tx_oauth2_beuser_provider_configuration');
-        $qb->insert('tx_oauth2_beuser_provider_configuration')
+        $qb = $this->getQueryBuilder('tx_oauth2_feuser_provider_configuration');
+        $qb->insert('tx_oauth2_feuser_provider_configuration')
             ->values([
                 'identifier' => $this->resolver->getResourceOwner()->getId(),
                 'provider' => $this->resolver->getProviderId(),
@@ -112,10 +149,11 @@ class BackendUserFactory
             ->execute();
 
         // get newly created identity
-        $qb = $this->getQueryBuilder('tx_oauth2_beuser_provider_configuration');
+        $qb = $this->getQueryBuilder('tx_oauth2_feuser_provider_configuration');
         $qb->getRestrictions()->removeByType(Oauth2BeUserProviderConfigurationRestriction::class);
+        $qb->getRestrictions()->removeByType(Oauth2FeUserProviderConfigurationRestriction::class);
         $identityCount = $qb->count('uid')
-            ->from('tx_oauth2_beuser_provider_configuration')
+            ->from('tx_oauth2_feuser_provider_configuration')
             ->where($qb->expr()->eq('parentid', (int)$userRecord['uid']))
             ->executeQuery()
             ->fetchOne();
@@ -124,9 +162,9 @@ class BackendUserFactory
             return false;
         }
 
-        // update backend user
-        $qb = $this->getQueryBuilder();
-        $qb->update('be_users')
+        // update frontend user
+        $qb = $this->getQueryBuilder('fe_users');
+        $qb->update('fe_users')
             ->where(
                 $qb->expr()->eq('uid', (int)$userRecord['uid'])
             )
@@ -144,7 +182,7 @@ class BackendUserFactory
     {
         $password = $userRecord['password'];
 
-        $user = $this->getQueryBuilder()->insert('be_users')
+        $user = $this->getQueryBuilder('fe_users')->insert('fe_users')
             ->values($userRecord)
             ->execute();
 
@@ -152,9 +190,9 @@ class BackendUserFactory
             return null;
         }
 
-        $qb = $this->getQueryBuilder();
+        $qb = $this->getQueryBuilder('fe_users');
         return $qb->select('*')
-            ->from('be_users')
+            ->from('fe_users')
             ->where(
                 $qb->expr()->eq('password', $qb->createNamedParameter($password, \PDO::PARAM_STR))
             )
@@ -169,6 +207,7 @@ class BackendUserFactory
      * @throws InvalidPasswordHashException
      */
     #[ArrayShape([
+        'pid' => 'int',
         'username' => 'string',
         'realName' => 'string',
         'disable' => 'int',
@@ -178,19 +217,19 @@ class BackendUserFactory
         'starttime' => 'int',
         'endtime' => 'int',
         'password' => 'string',
-    ])] public function createBasicBackendUser(): array
+    ])] public function createBasicFrontendUser(int $targetPid): array
     {
-        $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('BE');
+        $saltingInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
 
         return [
+            'pid' => $targetPid,
             'crdate' => time(),
             'tstamp' => time(),
-            'admin' => 0,
             'disable' => 1,
             'starttime' => 0,
             'endtime' => 0,
             'password' => $saltingInstance->getHashedPassword(md5(uniqid())),
-            'realName' => '',
+            'name' => '',
             'username' => '',
         ];
     }

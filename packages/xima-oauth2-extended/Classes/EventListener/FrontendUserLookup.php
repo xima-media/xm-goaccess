@@ -1,32 +1,33 @@
 <?php
 
-namespace Xima\XmDkfzNetSite\EventListener;
+namespace Xima\XimaOauth2Extended\EventListener;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use Psr\Log\LoggerInterface;
+use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Waldhacker\Oauth2Client\Events\BackendUserLookupEvent;
+use Waldhacker\Oauth2Client\Events\FrontendUserLookupEvent;
 use Xima\XmDkfzNetSite\ResourceResolver\AbstractResolver;
-use Xima\XmDkfzNetSite\ResourceResolver\DkfzResolver;
+use Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver;
 use Xima\XmDkfzNetSite\ResourceResolver\GitlabResolver;
 use Xima\XmDkfzNetSite\ResourceResolver\XimaResolver;
-use Xima\XmDkfzNetSite\UserFactory\BackendUserFactory;
+use Xima\XmDkfzNetSite\UserFactory\FrontendUserFactory;
 
-class BackendUserLookup
+class FrontendUserLookup
 {
     private LoggerInterface $logger;
 
-    protected BackendUserFactory $backendUserFactory;
+    protected FrontendUserFactory $frontendUserFactory;
 
     protected ?array $typo3User = null;
 
-    public function __construct(LoggerInterface $logger, BackendUserFactory $backendUserFactory)
+    public function __construct(LoggerInterface $logger, FrontendUserFactory $frontendUserFactory)
     {
         $this->logger = $logger;
-        $this->backendUserFactory = $backendUserFactory;
+        $this->frontendUserFactory = $frontendUserFactory;
     }
 
-    public function __invoke(BackendUserLookupEvent $event): void
+    public function __invoke(FrontendUserLookupEvent $event): void
     {
         if ($event->getTypo3User() !== null || !($event->getRemoteUser() instanceof ResourceOwnerInterface)) {
             return;
@@ -35,28 +36,35 @@ class BackendUserLookup
 
         $resolver = $this->createResolver($event);
 
-        $this->backendUserFactory->setResolver($resolver);
+        $this->frontendUserFactory->setResolver($resolver);
 
-        $this->typo3User = $this->backendUserFactory->registerRemoteUser();
+        /** @var Site|null $site */
+        $site = $event->getSite();
+        $language = $event->getLanguage();
+        if ($site === null || $language === null) {
+            return;
+        }
+        $siteConfiguration = $site->getConfiguration();
+        $languageConfiguration = $language->toArray();
+        $storagePid = empty($languageConfiguration['oauth2_storage_pid'])
+            ? ($siteConfiguration['oauth2_storage_pid'] ?? null)
+            : $languageConfiguration['oauth2_storage_pid'];
+
+        $this->typo3User = $this->frontendUserFactory->registerRemoteUser($storagePid);
 
         if ($this->typo3User) {
             $event->setTypo3User($this->typo3User);
         }
     }
 
-    public function getTypo3User(): ?array
-    {
-        return $this->typo3User;
-    }
-
     /**
      * @throws \Exception
      */
-    public function createResolver(BackendUserLookupEvent $event): AbstractResolver
+    public function createResolver(FrontendUserLookupEvent $event): AbstractResolver
     {
         $resolverClasses = [
             'gitlab' => GitlabResolver::class,
-            'dkfz' => DkfzResolver::class,
+            'dkfz' => DkfzResourceResolver::class,
             'xima' => XimaResolver::class,
         ];
         $resolverClass = $resolverClasses[$event->getProviderId()] ?? false;

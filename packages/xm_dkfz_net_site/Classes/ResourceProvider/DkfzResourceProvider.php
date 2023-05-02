@@ -1,11 +1,11 @@
 <?php
 
-namespace Xima\XmDkfzNetSite\Client\Provider;
+namespace Xima\XmDkfzNetSite\ResourceProvider;
 
 use League\OAuth2\Client\Provider\GenericProvider;
 use League\OAuth2\Client\Token\AccessToken;
 
-class Dkfz extends GenericProvider
+class DkfzResourceProvider extends GenericProvider
 {
     /**
      * @return string[]

@@ -151,7 +151,7 @@ return [
                     'description' => 'DKFZ OAuth Login',
                     'iconIdentifier' => 'dkfz-d',
                     'label' => 'Im Backend anmelden',
-                    'implementationClassName' => \Xima\XmDkfzNetSite\Client\Provider\Dkfz::class,
+                    'implementationClassName' => \Xima\XmDkfzNetSite\ResourceProvider\DkfzResourceProvider::class,
                     'options' => [
                         'clientId' => '',
                         'clientSecret' => '',
@@ -223,6 +223,18 @@ return [
             'access_key' => '64132999-1zns9EPrKi0WuC1pu0jddx1qdEn1CLLfHtILfQA0F',
             'access_secret' => '',
             'image_storage' => '1:Twitter',
+        ],
+        'xima-oauth2-extended' => [
+            'dkfz' => [
+                'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
+                'createBackendUser' => false,
+                'createFrontendUser' => false,
+            ],
+            'xima' => [
+                'resolverClassName' => \Xima\XimaOauth2Extended\ResourceResolver\MicrosoftResourceResolver::class,
+                'createBackendUser' => true,
+                'createFrontendUser' => true,
+            ],
         ],
         'xm_dkfz_net_events' => [
             'api_url_override' => '',

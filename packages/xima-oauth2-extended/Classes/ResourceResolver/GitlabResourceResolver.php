@@ -1,22 +1,14 @@
 <?php
 
-namespace Xima\XmDkfzNetSite\ResourceResolver;
+namespace Xima\XimaOauth2Extended\ResourceResolver;
 
-class GitlabResolver extends AbstractResolver
+class GitlabResourceResolver extends GenericResourceResolver
 {
-    public function getIntendedUsername(): ?string
-    {
-        return $this->resourceOwner->toArray()['username'] ?? null;
-    }
 
-    public function getIntendedEmail(): ?string
-    {
-        return $this->resourceOwner->toArray()['email'] ?? null;
-    }
 
     public function updateBackendUser(array &$beUser): void
     {
-        $remoteUser = $this->getResourceOwner()->toArray();
+        $remoteUser = $this->getRemoteUser()->toArray();
 
         if (!$beUser['username'] && $remoteUser['username']) {
             $beUser['username'] = $remoteUser['username'];
@@ -41,7 +33,7 @@ class GitlabResolver extends AbstractResolver
 
     public function updateFrontendUser(array &$feUser): void
     {
-        $remoteUser = $this->getResourceOwner()->toArray();
+        $remoteUser = $this->getRemoteUser()->toArray();
 
         if (!$feUser['username'] && $remoteUser['username']) {
             $feUser['username'] = $remoteUser['username'];
