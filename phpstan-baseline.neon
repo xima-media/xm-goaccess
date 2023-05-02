@@ -441,16 +441,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Preview/UsertablePreviewRenderer.php
 
 		-
-			message: "#^Access to an undefined property Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:\\$resourceOwner\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
-
-		-
-			message: "#^Call to an undefined method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:getResourceOwner\\(\\)\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
-
-		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
