@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6844013ce10d972d14744bd148a634f",
+    "content-hash": "f7bbd7127c5d7b85ad753d42da0f1e2c",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10906,16 +10906,23 @@
         },
         {
             "name": "xima/xima-oauth2-extended",
-            "version": "dev-DIS-74",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xima-media/xima-oauth2-extended.git",
+                "reference": "328447780bffd6a70cdf896627299ac5dcdf8f8c"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/xima-oauth2-extended",
-                "reference": "3084b7798cb821af47fdab863cc4e4ffefcb9fcc"
+                "type": "zip",
+                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/328447780bffd6a70cdf896627299ac5dcdf8f8c",
+                "reference": "328447780bffd6a70cdf896627299ac5dcdf8f8c",
+                "shasum": ""
             },
             "require": {
-                "league/oauth2-client": "^2.7",
-                "typo3/cms-core": "^11.0"
+                "league/oauth2-client": ">=2.7",
+                "php": ">=8.1"
             },
+            "default-branch": true,
             "type": "typo3-cms-extension",
             "extra": {
                 "typo3/cms": {
@@ -10927,6 +10934,10 @@
                     "Xima\\XimaOauth2Extended\\": "Classes"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
             "authors": [
                 {
                     "name": "Maik Schneider",
@@ -10934,10 +10945,12 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Adds additional OAuth2 provider and enables on-the-fly user creation",
-            "transport-options": {
-                "relative": true
-            }
+            "description": "Additional OAuth2 provider + on-the-fly user creation",
+            "support": {
+                "issues": "https://github.com/xima-media/xima-oauth2-extended/issues",
+                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/main"
+            },
+            "time": "2023-05-02T14:38:08+00:00"
         },
         {
             "name": "xima/xima-twitter-client",

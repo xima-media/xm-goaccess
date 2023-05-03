@@ -228,12 +228,14 @@ return [
             'dkfz' => [
                 'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
                 'createBackendUser' => false,
-                'createFrontendUser' => false,
+                'createFrontendUser' => true,
+                'defaultFrontendUsergroup' => '1'
             ],
             'xima' => [
                 'resolverClassName' => \Xima\XimaOauth2Extended\ResourceResolver\MicrosoftResourceResolver::class,
                 'createBackendUser' => true,
                 'createFrontendUser' => true,
+                'defaultFrontendUsergroup' => '1'
             ],
         ],
         'xm_dkfz_net_events' => [
