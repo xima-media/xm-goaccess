@@ -169,6 +169,28 @@ return [
                         'frontend',
                     ],
                 ],
+                'xima' => [
+                    'description' => 'Login with XIMA',
+                    'iconIdentifier' => 'xima-x',
+                    'label' => 'XIMA',
+                    'implementationClassName' => \Xima\XimaOauth2Extended\ResourceProvider\MicrosoftResourceProvider::class,
+                    'options' => [
+                        'clientId' => '14b07207-5728-4453-a6a6-5539803724cb',
+                        'clientSecret' => '',
+                        'scopeSeparator' => ' ',
+                        'scopes' => [
+                            'openid',
+                            'profile',
+                        ],
+                        'urlAccessToken' => 'https://login.microsoftonline.com/890938ce-3232-42b7-981d-9a7cbe37a475/oauth2/v2.0/token',
+                        'urlAuthorize' => 'https://login.microsoftonline.com/890938ce-3232-42b7-981d-9a7cbe37a475/oauth2/v2.0/authorize',
+                        'urlResourceOwnerDetails' => 'https://graph.microsoft.com/oidc/userinfo',
+                    ],
+                    'scopes' => [
+                        'backend',
+                        'frontend',
+                    ],
+                ],
             ],
             'view' => [
                 'templateRootPaths' => [
@@ -229,13 +251,13 @@ return [
                 'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
                 'createBackendUser' => false,
                 'createFrontendUser' => true,
-                'defaultFrontendUsergroup' => '1'
+                'defaultFrontendUsergroup' => '1',
             ],
             'xima' => [
                 'resolverClassName' => \Xima\XimaOauth2Extended\ResourceResolver\MicrosoftResourceResolver::class,
                 'createBackendUser' => true,
                 'createFrontendUser' => true,
-                'defaultFrontendUsergroup' => '1'
+                'defaultFrontendUsergroup' => '1',
             ],
         ],
         'xm_dkfz_net_events' => [
