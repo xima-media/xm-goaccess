@@ -241,7 +241,7 @@ return [
             'access_secret' => '',
             'image_storage' => '1:Twitter',
         ],
-        'xima-oauth2-extended' => [
+        'xima_oauth2_extended' => [
             'dkfz' => [
                 'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
                 'createBackendUser' => false,
