@@ -77,8 +77,8 @@
 		"lochmueller/staticfilecache": "^12.5",
 		"in2code/instagram": "dev-master",
 		"xima/xima-twitter-client": "*@dev",
-		"xima-media/xm-mail-catcher": "^11.1",
-		"xima/xima-oauth2-extended": "^1.0.0"
+		"xima/xima-oauth2-extended": "^1.0.0",
+		"xima/xima-typo3-mailcatcher": "^1.0.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

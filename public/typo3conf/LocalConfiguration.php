@@ -150,8 +150,8 @@ return [
                 'dkfz' => [
                     'description' => 'DKFZ OAuth Login',
                     'iconIdentifier' => 'dkfz-d',
+                    'implementationClassName' => 'Xima\\XmDkfzNetSite\\Client\\Provider\\Dkfz',
                     'label' => 'Im Backend anmelden',
-                    'implementationClassName' => \Xima\XmDkfzNetSite\ResourceProvider\DkfzResourceProvider::class,
                     'options' => [
                         'clientId' => '',
                         'clientSecret' => '',
@@ -197,11 +197,6 @@ return [
                     'EXT:xm_dkfz_net_site/Resources/Private/Extensions/oauth2_client/Templates/',
                 ],
             ],
-        ],
-        'pxa_social_feed' => [
-            'editorRestriction' => '0',
-            'editorRestrictionIsRequired' => '0',
-            'excludeBackendUserGroups' => '',
         ],
         'scheduler' => [
             'maxLifetime' => '1440',
@@ -260,6 +255,9 @@ return [
                 'defaultFrontendUsergroup' => '1',
             ],
         ],
+        'xima_typo3_mailcatcher' => [
+            'logPath' => '/var/log/mail.log',
+        ],
         'xm_dkfz_net_events' => [
             'api_url_override' => '',
         ],
@@ -269,10 +267,10 @@ return [
         'xm_dkfz_net_site' => [
             'default_be_user_group' => '1',
             'default_fe_user_group' => '1',
-            'phone_book_api_url' => '../var/phonebook/db.json',
-            'storage_identifier_for_imported_groups' => '1:Gruppen',
-            'pid_for_short_news_creation' => '479',
             'logout_redirect_url' => '',
+            'phone_book_api_url' => '../var/phonebook/db.json',
+            'pid_for_short_news_creation' => '479',
+            'storage_identifier_for_imported_groups' => '1:Gruppen',
         ],
         'xm_goaccess' => [
             'html_path' => '../var/goaccess/goaccess.html',
@@ -287,12 +285,12 @@ return [
         'cookieSameSite' => 'lax',
         'debug' => false,
         'disableNoCacheParameter' => false,
+        'lifetime' => 604800,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
         'permalogin' => 2,
-        'lifetime' => 604800,
     ],
     'GFX' => [
         'imagefile_ext' => 'gif,png,jpeg,jpg,webp',
@@ -320,16 +318,16 @@ return [
         ],
     ],
     'MAIL' => [
+        'defaultMailFromAddress' => 'noreply@intracmsprod.inet.dkfz-heidelberg.de',
+        'defaultMailFromName' => 'DKFZ Intranet',
+        'defaultMailReplyToAddress' => 'intranet@dkfz.de',
+        'defaultMailReplyToName' => 'DKFZ Intranet',
         'transport' => 'sendmail',
+        'transport_sendmail_command' => '/usr/sbin/sendmail -bs',
         'transport_smtp_encrypt' => '',
         'transport_smtp_password' => '',
-        'transport_smtp_username' => '',
-        'transport_sendmail_command' => '/usr/sbin/sendmail -bs',
         'transport_smtp_server' => '127.0.0.1:25',
-        'defaultMailFromName' => 'DKFZ Intranet',
-        'defaultMailFromAddress' => 'noreply@intracmsprod.inet.dkfz-heidelberg.de',
-        'defaultMailReplyToName' => 'DKFZ Intranet',
-        'defaultMailReplyToAddress' => 'intranet@dkfz.de',
+        'transport_smtp_username' => '',
     ],
     'SYS' => [
         'caching' => [
@@ -344,9 +342,9 @@ return [
         'encryptionKey' => 'c8485f56f13ae2690459c8bf7fc2c5dfa9f49d6ae5cf54ad0c66bf1f1a2f752f1c86269e1bfca18ef4fd69dbe5ec21bf',
         'exceptionalErrors' => 4096,
         'features' => [
+            'oauth2.frontend.login.afterOauth2RedirectUriFromQuery' => true,
             'unifiedPageTranslationHandling' => true,
             'yamlImportsFollowDeclarationOrder' => true,
-            'oauth2.frontend.login.afterOauth2RedirectUriFromQuery' => true,
         ],
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
