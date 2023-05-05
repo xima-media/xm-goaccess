@@ -150,7 +150,7 @@ return [
                 'dkfz' => [
                     'description' => 'DKFZ OAuth Login',
                     'iconIdentifier' => 'dkfz-d',
-                    'implementationClassName' => 'Xima\\XmDkfzNetSite\\Client\\Provider\\Dkfz',
+                    'implementationClassName' => \Xima\XmDkfzNetSite\ResourceProvider\DkfzResourceProvider::class,
                     'label' => 'Im Backend anmelden',
                     'options' => [
                         'clientId' => '',
@@ -242,17 +242,19 @@ return [
             'image_storage' => '1:Twitter',
         ],
         'xima_oauth2_extended' => [
-            'dkfz' => [
-                'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
-                'createBackendUser' => false,
-                'createFrontendUser' => true,
-                'defaultFrontendUsergroup' => '1',
-            ],
-            'xima' => [
-                'resolverClassName' => \Xima\XimaOauth2Extended\ResourceResolver\MicrosoftResourceResolver::class,
-                'createBackendUser' => true,
-                'createFrontendUser' => true,
-                'defaultFrontendUsergroup' => '1',
+            'oauth2_client_providers' => [
+                'dkfz' => [
+                    'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
+                    'createBackendUser' => false,
+                    'createFrontendUser' => true,
+                    'defaultFrontendUsergroup' => '1',
+                ],
+                'xima' => [
+                    'resolverClassName' => \Xima\XimaOauth2Extended\ResourceResolver\MicrosoftResourceResolver::class,
+                    'createBackendUser' => true,
+                    'createFrontendUser' => true,
+                    'defaultFrontendUsergroup' => '1',
+                ],
             ],
         ],
         'xima_typo3_mailcatcher' => [
