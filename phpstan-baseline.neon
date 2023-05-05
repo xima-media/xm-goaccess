@@ -206,21 +206,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:getTypo3User\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
-
-		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\BackendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/BackendUserLookup.php
-
-		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\EventListener\\\\FrontendUserLookup\\:\\:\\$typo3User type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/FrontendUserLookup.php
-
-		-
 			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/EventListener/UserEditFormEvent.php
@@ -456,44 +441,14 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Preview/UsertablePreviewRenderer.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\AbstractResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$feUser with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/AbstractResolver.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResolver.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$feUser with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResolver.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\GitlabResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\GitlabResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$feUser with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/GitlabResolver.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\XimaResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/XimaResolver.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\XimaResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$feUser with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/XimaResolver.php
+			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
@@ -519,121 +474,6 @@ parameters:
 			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:\\$colors type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
-
-		-
-			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:createBasicBackendUser\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:findUserByUsernameOrEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:getQueryBuilder\\(\\) has parameter \\$tableName with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistAndRetrieveUser\\(\\) has parameter \\$userRecord with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistAndRetrieveUser\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistAndRetrieveUser\\(\\) should return array\\|null but returns array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:persistIdentityForUser\\(\\) has parameter \\$userRecord with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\BackendUserFactory\\:\\:registerRemoteUser\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/BackendUserFactory.php
-
-		-
-			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:createBasicFrontendUser\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:findUserByUsernameOrEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:getQueryBuilder\\(\\) has parameter \\$tableName with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:persistAndRetrieveUser\\(\\) has parameter \\$userRecord with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:persistAndRetrieveUser\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:persistAndRetrieveUser\\(\\) should return array\\|null but returns array\\<string, mixed\\>\\|false\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:persistIdentityForUser\\(\\) has parameter \\$userRecord with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:registerRemoteUser\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\UserFactory\\\\FrontendUserFactory\\:\\:updateFrontendUserSlug\\(\\) has parameter \\$userRecord with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/UserFactory/FrontendUserFactory.php
 
 		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:initializeArguments\\(\\) has no return type specified\\.$#"

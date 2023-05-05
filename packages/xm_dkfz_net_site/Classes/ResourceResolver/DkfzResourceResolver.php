@@ -2,21 +2,23 @@
 
 namespace Xima\XmDkfzNetSite\ResourceResolver;
 
-class XimaResolver extends AbstractResolver
+use Xima\XimaOauth2Extended\ResourceResolver\AbstractResourceResolver;
+
+class DkfzResourceResolver extends AbstractResourceResolver
 {
     public function getIntendedUsername(): ?string
     {
-        return $this->resourceOwner->toArray()['email'] ?? null;
+        return $this->getRemoteUser()->toArray()['email'] ?? null;
     }
 
     public function getIntendedEmail(): ?string
     {
-        return $this->resourceOwner->toArray()['email'] ?? null;
+        return $this->getRemoteUser()->toArray()['email'] ?? null;
     }
 
     public function updateBackendUser(array &$beUser): void
     {
-        $remoteUser = $this->getResourceOwner()->toArray();
+        $remoteUser = $this->getRemoteUser()->toArray();
 
         if (!$beUser['username'] && $remoteUser['email']) {
             $beUser['username'] = $remoteUser['email'];
@@ -27,16 +29,16 @@ class XimaResolver extends AbstractResolver
         }
 
         $beUser['disable'] =  0;
-        $beUser['admin'] = 1;
+        $beUser['admin'] = 0;
 
         if (!$beUser['realName']) {
-            $beUser['realName'] = $remoteUser['name'];
+            $beUser['realName'] = $remoteUser['unique_name'];
         }
     }
 
     public function updateFrontendUser(array &$feUser): void
     {
-        $remoteUser = $this->getResourceOwner()->toArray();
+        $remoteUser = $this->getRemoteUser()->toArray();
 
         if (!$feUser['username'] && $remoteUser['email']) {
             $feUser['username'] = $remoteUser['email'];
@@ -49,9 +51,7 @@ class XimaResolver extends AbstractResolver
         $feUser['disable'] =  0;
 
         if (!$feUser['name']) {
-            $feUser['name'] = $remoteUser['name'];
+            $feUser['name'] = $remoteUser['unique_name'];
         }
-
-        // @TODO: usergroups
     }
 }

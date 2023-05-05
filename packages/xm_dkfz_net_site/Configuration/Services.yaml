@@ -8,16 +8,6 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
 
-  Xima\XmDkfzNetSite\EventListener\BackendUserLookup:
-    tags:
-      - name: event.listener
-        identifier: 'oauthBeUserRegistration'
-
-  Xima\XmDkfzNetSite\EventListener\FrontendUserLookup:
-    tags:
-      - name: event.listener
-        identifier: 'oauthFeUserRegistration'
-
   Xima\XmDkfzNetSite\EventListener\UserSearchEvent:
     tags:
       - name: event.listener
@@ -42,19 +32,6 @@ services:
     tags:
       - name: event.listener
         identifier: 'newsDetailAction'
-
-  querybuilder.beUsers:
-    class: 'TYPO3\CMS\Core\Database\Query\QueryBuilder'
-    factory:
-      - '@TYPO3\CMS\Core\Database\ConnectionPool'
-      - 'getQueryBuilderForTable'
-    arguments:
-      - 'be_users'
-
-  Xima\XmDkfzNetSite\UserFactory\BackendUserFactory:
-    public: true
-    arguments:
-      - '@querybuilder.beUsers'
 
   Xima\XmDkfzNetSite\Hook\DrawHeaderHook:
     public: true

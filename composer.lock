@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4a1f07f6db6df17a9eba9bd1abfa45e",
+    "content-hash": "a9922f70e40771b3810c3fc66f29672b",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -312,7 +312,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -8386,7 +8386,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10838,8 +10838,61 @@
             "time": "2023-04-16T20:11:47+00:00"
         },
         {
+            "name": "xima/xima-oauth2-extended",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xima-media/xima-oauth2-extended.git",
+                "reference": "01f9fb114c038e7db3d6dd5f66686217e251209a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/01f9fb114c038e7db3d6dd5f66686217e251209a",
+                "reference": "01f9fb114c038e7db3d6dd5f66686217e251209a",
+                "shasum": ""
+            },
+            "require": {
+                "league/oauth2-client": ">=2.7",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.6",
+                "phpstan/extension-installer": "^1.3",
+                "saschaegerer/phpstan-typo3": "^1.8",
+                "waldhacker/typo3-oauth2-client": "^2.1"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "xima_oauth2_extended"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Xima\\XimaOauth2Extended\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maik Schneider",
+                    "email": "maik.schneider@xima.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Additional OAuth2 provider + on-the-fly user creation",
+            "support": {
+                "issues": "https://github.com/xima-media/xima-oauth2-extended/issues",
+                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v1.0.0"
+            },
+            "time": "2023-05-05T13:03:53+00:00"
+        },
+        {
             "name": "xima/xima-twitter-client",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -10942,7 +10995,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -10977,7 +11030,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11011,7 +11064,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11098,7 +11151,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11133,7 +11186,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-master",
+            "version": "dev-DIS-74",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
