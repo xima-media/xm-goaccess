@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9922f70e40771b3810c3fc66f29672b",
+    "content-hash": "ed7d2ab3e2807e8a68de95b25da70636",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -312,7 +312,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -8386,7 +8386,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10796,23 +10796,22 @@
         },
         {
             "name": "xima/xima-deployer-extended-typo3",
-            "version": "dev-main",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "2b18177290b8107e4aedff16e9fca5c5fd5663c2"
+                "reference": "b974adca40fdd6048b874b48baffb6a2a5d2690c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/2b18177290b8107e4aedff16e9fca5c5fd5663c2",
-                "reference": "2b18177290b8107e4aedff16e9fca5c5fd5663c2",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/b974adca40fdd6048b874b48baffb6a2a5d2690c",
+                "reference": "b974adca40fdd6048b874b48baffb6a2a5d2690c",
                 "shasum": ""
             },
             "require": {
                 "sourcebroker/deployer-extended-typo3": "20.0.0",
                 "spooner/deployer-information": "1.3.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -10833,22 +10832,22 @@
             "description": "Common deployer configuration for TYPO3 projects",
             "support": {
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
-                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/main"
+                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.4.0"
             },
-            "time": "2023-04-16T20:11:47+00:00"
+            "time": "2023-05-05T14:45:22+00:00"
         },
         {
             "name": "xima/xima-oauth2-extended",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-oauth2-extended.git",
-                "reference": "01f9fb114c038e7db3d6dd5f66686217e251209a"
+                "reference": "ed8c6527ac9f5c1297519d659b055d0948af45b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/01f9fb114c038e7db3d6dd5f66686217e251209a",
-                "reference": "01f9fb114c038e7db3d6dd5f66686217e251209a",
+                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/ed8c6527ac9f5c1297519d659b055d0948af45b3",
+                "reference": "ed8c6527ac9f5c1297519d659b055d0948af45b3",
                 "shasum": ""
             },
             "require": {
@@ -10886,13 +10885,13 @@
             "description": "Additional OAuth2 provider + on-the-fly user creation",
             "support": {
                 "issues": "https://github.com/xima-media/xima-oauth2-extended/issues",
-                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v1.0.0"
+                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v1.0.1"
             },
-            "time": "2023-05-05T13:03:53+00:00"
+            "time": "2023-05-05T14:38:53+00:00"
         },
         {
             "name": "xima/xima-twitter-client",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -10995,7 +10994,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -11030,7 +11029,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11064,7 +11063,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11151,7 +11150,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11186,7 +11185,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-DIS-74",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
@@ -15144,7 +15143,6 @@
     "stability-flags": {
         "xima/xm-dkfz-net-site": 20,
         "xima/xm-dkfz-net-jobs": 20,
-        "xima/xima-deployer-extended-typo3": 20,
         "xima/xm-dkfz-net-events": 20,
         "blueways/bw-guild": 20,
         "xima/xm-kesearch-remote": 20,
