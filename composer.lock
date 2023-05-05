@@ -10838,16 +10838,16 @@
         },
         {
             "name": "xima/xima-oauth2-extended",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-oauth2-extended.git",
-                "reference": "ed8c6527ac9f5c1297519d659b055d0948af45b3"
+                "reference": "a7fb3f784ea904803dda726e23bb2eb97e098c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/ed8c6527ac9f5c1297519d659b055d0948af45b3",
-                "reference": "ed8c6527ac9f5c1297519d659b055d0948af45b3",
+                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/a7fb3f784ea904803dda726e23bb2eb97e098c8c",
+                "reference": "a7fb3f784ea904803dda726e23bb2eb97e098c8c",
                 "shasum": ""
             },
             "require": {
@@ -10885,9 +10885,9 @@
             "description": "Additional OAuth2 provider + on-the-fly user creation",
             "support": {
                 "issues": "https://github.com/xima-media/xima-oauth2-extended/issues",
-                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v1.0.1"
+                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v1.0.2"
             },
-            "time": "2023-05-05T14:38:53+00:00"
+            "time": "2023-05-05T16:02:27+00:00"
         },
         {
             "name": "xima/xima-twitter-client",
