@@ -1,15 +1,6 @@
 [161 in tree.rootLineIds]
   page >
-  newsletter = PAGE
-  newsletter.typeNum = 0
-  newsletter {
-    10 = FLUIDTEMPLATE
-    10 {
-      templateName = Newsletter
-      layoutRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Layouts
-      partialRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Partials
-      templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/Page
-    }
+  fluidStyledMailContent {
 
     includeCSS {
       keSearchPremiumAutocompleteCss >
@@ -42,3 +33,19 @@
 
   }
 [end]
+
+
+[161 in tree.rootLineIds && getTSFE().type == 0]
+  fluidStyledMailContent = PAGE
+  fluidStyledMailContent.typeNum = 0
+  fluidStyledMailContent {
+    10 = FLUIDTEMPLATE
+    10 {
+      templateName = Newsletter
+      layoutRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Layouts
+      partialRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Partials
+      templateRootPaths.10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/luxletter/Templates/Page
+    }
+  }
+[end]
+
