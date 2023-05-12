@@ -25,40 +25,19 @@
 		<td class="float-center" align="center" valign="top">
 			<center data-parsed="">
 				<f:render partial="PageHeader" arguments="{prefix: '{luxletter:configuration.getDomain(site:site)}'}" />
+				<table align="center" class="">
+					<tbody>
+					<tr>
+						<td>
+							<f:format.raw>{content}</f:format.raw>
+						</td>
+					</tr>
+					</tbody>
+				</table>
 				<table align="center" class="container body-drip float-center">
 					<tbody>
 					<tr>
 						<td>
-							<table class="spacer">
-								<tbody>
-								<tr>
-									<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
-								</tr>
-								</tbody>
-							</table>
-							<table class="spacer">
-								<tbody>
-								<tr>
-									<td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
-								</tr>
-								</tbody>
-							</table>
-							<table class="row">
-								<tbody>
-								<tr>
-									<th class="small-12 large-12 columns first last">
-										<table>
-											<tr>
-												<th>
-													<f:format.raw>{content}</f:format.raw>
-												</th>
-												<th class="expander"></th>
-											</tr>
-										</table>
-									</th>
-								</tr>
-								</tbody>
-							</table>
 							<f:render partial="PageFooter" arguments="{prefix: '{luxletter:configuration.getDomain(site:site)}'}" />
 						</td>
 					</tr>
