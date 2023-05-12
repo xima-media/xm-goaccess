@@ -171,7 +171,7 @@ tt_content {
         table = pages
         pidInList = 1
         recursive = 99
-        where = doktype=1 and sys_language_uid=
+        where = doktype=1 and nav_hide=0 and sys_language_uid=
         where.dataWrap = |{sitelanguage:languageId}
         languageField = 0
         orderBy = crdate DESC
