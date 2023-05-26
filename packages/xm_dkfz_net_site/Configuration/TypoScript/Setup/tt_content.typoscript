@@ -62,7 +62,8 @@ tt_content {
           20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
           20 {
             table = tx_xmdkfznetsite_domain_model_external_link
-            pidInList = 1123
+            pidInList = 1
+            recursive = 2
             where = uid=###link###
             markers.link.field = link
             as = externalLink
