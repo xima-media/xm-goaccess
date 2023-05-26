@@ -74,6 +74,19 @@ a:visited {
 	background: #393939;
 }
 
+.footer p {
+	font-size: 13px;
+}
+
+.footer p strong {
+	font-size: 14px;
+}
+
+.footer a {
+	color: #fff;
+	text-decoration: underline;
+}
+
 table.button table td a {
 	border-color: #0047b9;
 	color: #fff;
