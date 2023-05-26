@@ -26,5 +26,4 @@ class ExternalLink extends AbstractEntity
     {
         return $this->description;
     }
-
 }
