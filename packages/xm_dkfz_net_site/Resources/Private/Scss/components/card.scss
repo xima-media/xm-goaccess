@@ -348,10 +348,15 @@
             justify-self: flex-end;
             .button {
                 padding: .5rem;
+                text-align: center;
             }
             a[href^='http'] {
                 transform: rotate(-45deg);
             }
+        }
+
+        &__footer__left .button {
+            width: 44px;
         }
 
         &__footer__left .button:hover {

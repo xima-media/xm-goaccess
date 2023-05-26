@@ -197,6 +197,12 @@
 			<trans-unit id="page.bookmark.remove">
 				<target>Bookmark entfernen</target>
 			</trans-unit>
+			<trans-unit id="link.bookmark">
+				<target>Link merken</target>
+			</trans-unit>
+			<trans-unit id="link.bookmark.remove">
+				<target>Bookmark entfernen</target>
+			</trans-unit>
 			<trans-unit id="user.bookmark">
 				<target>Mitarbeiter merken</target>
 			</trans-unit>
