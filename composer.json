@@ -78,7 +78,7 @@
 		"in2code/instagram": "dev-master",
 		"xima/xima-twitter-client": "*@dev",
 		"xima/xima-oauth2-extended": "^1.0.0",
-		"xima/xima-typo3-mailcatcher": "^1.0.0"
+		"xima/xima-typo3-mailcatcher": "^1.1.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
