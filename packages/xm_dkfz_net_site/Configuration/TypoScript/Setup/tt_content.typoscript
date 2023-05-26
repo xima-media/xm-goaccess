@@ -59,6 +59,16 @@ tt_content {
         as = serviceSlider
         dataProcessing {
           10 = Xima\XmDkfzNetSite\DataProcessing\TeaserProcessor
+          20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+          20 {
+            table = tx_xmdkfznetsite_domain_model_external_link
+            pidInList = 1123
+            where = uid=###link###
+            markers.link.field = link
+            as = externalLink
+            if.equals = teaser-link
+            if.value.field = record_type
+          }
         }
       }
     }

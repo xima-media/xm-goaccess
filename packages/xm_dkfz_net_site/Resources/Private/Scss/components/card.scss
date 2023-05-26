@@ -309,13 +309,17 @@
 //
 
 .card--service {
-    padding: 2rem 3rem 4rem 2rem;
+    padding: 2rem;
+
+    a:hover {
+        text-decoration: none;
+    }
 
     .card {
+
         &__title {
             min-height: 3.5rem;
             margin-bottom: .5rem;
-            // @todo line-clamp hinzufügen
         }
 
         &__link {
@@ -325,9 +329,37 @@
         }
 
         &__content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
             .card__header {
                 margin-bottom: 0 !important;
             }
+        }
+
+        &__body {
+            margin-bottom: 1rem;
+        }
+
+        &__footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-self: flex-end;
+            .button {
+                padding: .5rem;
+            }
+            a[href^='http'] {
+                transform: rotate(-45deg);
+            }
+        }
+
+        &__footer__left .button:hover {
+            border-color: #000;
+        }
+
+        &__footer__right {
+            text-align: right;
         }
     }
 }

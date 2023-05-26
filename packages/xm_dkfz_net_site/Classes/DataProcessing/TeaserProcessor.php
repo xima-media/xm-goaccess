@@ -24,9 +24,16 @@ class TeaserProcessor implements DataProcessorInterface
         array $processorConfiguration,
         array $processedData
     ) {
-        $pageUid = $processedData['data']['link'] ?? '';
-        $pageUid = substr($pageUid, 14);
+        $link = $processedData['data']['link'] ?? '';
 
+        // mark as email for different icon
+        if (str_starts_with($link, 'mailto:')) {
+            $processedData['data']['email'] = true;
+            return $processedData;
+        }
+
+        // check for internal link
+        $pageUid = substr($link, 14);
         if (!MathUtility::canBeInterpretedAsInteger($pageUid)) {
             return $processedData;
         }
@@ -53,6 +60,9 @@ class TeaserProcessor implements DataProcessorInterface
         if (!$pageUid) {
             return $processedData;
         }
+
+        // inject $pageUid for bookmarks
+        $processedData['data']['pageUid'] = $pageUid;
 
         // set texts from page if no override exists
         $processedData['data']['title'] = $processedData['data']['title'] ?: $page['title'] ?? '';

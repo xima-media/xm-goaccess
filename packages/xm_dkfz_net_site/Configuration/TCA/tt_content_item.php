@@ -23,6 +23,7 @@ return [
             'accordion-item' => 'content-accordion',
             'user-contact' => 'content-user',
             'related-page' => 'content-menu-sitemap-pages',
+            'teaser-link' => 'content-thumbtack',
         ],
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l18n_parent',
@@ -42,6 +43,27 @@ return [
                                 'teaser-item',
                             ],
                         ],
+                    ],
+                ],
+            ],
+        ],
+        'teaser-link' => [
+            'showitem' => 'sys_language_uid, record_type, link',
+            'columnsOverrides' => [
+                'record_type' => [
+                    'config' => [
+                        'items' => [
+                            ['Teaser item', 'teaser-item'],
+                            ['Teaser link', 'teaser-link'],
+                        ],
+                    ],
+                ],
+                'link' => [
+                    'label' => 'External link',
+                    'config' => [
+                        'type' => 'select',
+                        'renderType' => 'selectSingle',
+                        'foreign_table' => 'tx_xmdkfznetsite_domain_model_external_link',
                     ],
                 ],
             ],

@@ -156,3 +156,9 @@ create table sys_file_reference (
 create table tx_xmdkfznetsite_domain_model_committee (
 	name varchar(255) default '' not null,
 );
+
+create table tx_xmdkfznetsite_domain_model_external_link (
+	title       varchar(255) default '' not null,
+	url        varchar(255) default '' not null,
+	description text         default '' not null,
+);

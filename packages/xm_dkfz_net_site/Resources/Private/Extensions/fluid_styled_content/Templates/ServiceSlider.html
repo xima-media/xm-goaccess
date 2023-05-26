@@ -1,4 +1,4 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 
 <f:section name="Main">
@@ -14,23 +14,95 @@
 					<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 						<div class="card card--image-top card--md card--image-size-md card--service">
 
-							<f:link.typolink parameter="{service.data.link}" class="card__link card__link--hidden" parts-as="parts" 
-											 additionalAttributes="{aria-label: '{service.data.title}'}">
-								<div class="card__link--background">
-									<f:render partial="Icon" arguments="{icon: 'arrow-right'}" />
-								</div>
-							</f:link.typolink>
+							<f:if condition="{service.data.record_type}=='teaser-item'">
 
-							<div class="card__content">
-								<div class="card__header">
-									<h3 class="h5 card__title">{service.data.title}</h3>
-								</div>
-								<div class="card__body">
-									<div class="card__text">
-										<p class="text-small">{service.data.text}</p>
+								<div class="card__content">
+									<f:link.typolink parameter="{service.data.link}"
+													 parts-as="parts"
+													 additionalAttributes="{aria-label: '{service.data.title}'}">
+										<div class="card__header">
+											<h3 class="h5 card__title">{service.data.title}</h3>
+										</div>
+										<div class="card__body">
+											<div class="card__text">
+												<p class="text-small">{service.data.text}</p>
+											</div>
+										</div>
+									</f:link.typolink>
+									<div class="card__footer">
+										<div class="card__footer__left">
+											<f:if condition="{service.data.pageUid}">
+												<button type="button"
+														class="button button--transparent"
+														aria-label="{f:translate(key:'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark')}"
+														data-tooltip="{f:translate(key:'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark')}"
+														data-bookmark-url="{f:uri.action(action: 'bookmark', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {tableName: 'pages', recordUid: service.data.pageUid})}">
+													<span data-onload>
+														<f:render partial="Icon" arguments="{icon: 'bookmark-add'}"/>
+													</span>
+													<span data-checked>
+														<f:render partial="Icon" arguments="{icon: 'bookmark-delete'}"/>
+													</span>
+												</button>
+											</f:if>
+										</div>
+										<div class="card__footer__right">
+											<f:link.typolink parameter="{service.data.link}"
+															 class="button button--primary button--small"
+															 parts-as="parts"
+															 additionalAttributes="{aria-label: '{service.data.title}'}">
+												<f:render partial="Icon"
+														  arguments="{icon: '{f:if(condition: service.data.email, then: \'mail\', else: \'arrow-right\')}'}"/>
+											</f:link.typolink>
+										</div>
 									</div>
 								</div>
-							</div>
+							</f:if>
+
+							<f:if condition="{service.data.record_type}=='teaser-link' && {service.externalLink.0}">
+								<div class="card__content">
+									<div class="card__header">
+										<f:link.typolink parameter="{service.externalLink.0.data.url}"
+														 parts-as="parts"
+														 additionalAttributes="{aria-label: '{service.externalLink.0.data.title}'}">
+											<h3 class="h5 card__title">{service.externalLink.0.data.title}</h3>
+										</f:link.typolink>
+									</div>
+									<div class="card__body">
+										<f:link.typolink parameter="{service.externalLink.0.data.url}"
+														 parts-as="parts"
+														 additionalAttributes="{aria-label: '{service.externalLink.0.data.title}'}">
+											<div class="card__text">
+												<p class="text-small">{service.externalLink.0.data.description}</p>
+											</div>
+										</f:link.typolink>
+									</div>
+									<div class="card__footer">
+										<div class="card__footer__left">
+											<button type="button"
+													class="button button--transparent"
+													aria-label="{f:translate(key:'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark')}"
+													data-tooltip="{f:translate(key:'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:page.bookmark')}"
+													data-bookmark-url="{f:uri.action(action: 'bookmark', controller: 'Api', extensionName: 'BwGuild', pluginName: 'Api', pageType: 1657523819, pageUid: 2, arguments: {tableName: 'tx_xmdkfznetsite_domain_model_external_link', recordUid: service.externalLink.0.data.uid})}">
+												<span data-onload>
+													<f:render partial="Icon" arguments="{icon: 'bookmark-add'}"/>
+												</span>
+												<span data-checked>
+													<f:render partial="Icon" arguments="{icon: 'bookmark-delete'}"/>
+												</span>
+											</button>
+										</div>
+										<div class="card__footer__right">
+											<f:link.typolink parameter="{service.externalLink.0.data.url}"
+															 class="button button--primary button--small"
+															 parts-as="parts"
+															 additionalAttributes="{aria-label: '{service.externalLink.0.data.title}'}">
+												<f:render partial="Icon" arguments="{icon: 'arrow-right'}"/>
+											</f:link.typolink>
+										</div>
+									</div>
+								</div>
+							</f:if>
 						</div>
 					</div>
 				</f:for>
@@ -39,10 +111,10 @@
 		<div class="carousel__pagination swiper-pagination"></div>
 
 		<button class="carousel__button swiper-button-prev" aria-label="Zurück">
-			<f:render partial="Icon" arguments="{icon: 'chevron-left'}" />
+			<f:render partial="Icon" arguments="{icon: 'chevron-left'}"/>
 		</button>
 		<button class="carousel__button swiper-button-next" aria-label="Vor">
-			<f:render partial="Icon" arguments="{icon: 'chevron-right'}" />
+			<f:render partial="Icon" arguments="{icon: 'chevron-right'}"/>
 		</button>
 	</div>
 </f:section>
