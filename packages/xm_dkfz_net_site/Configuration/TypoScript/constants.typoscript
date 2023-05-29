@@ -121,6 +121,12 @@ plugin {
     }
   }
 
+  tx_bwguild_offerlist {
+    settings {
+      maxItems = 999
+    }
+  }
+
   tx_bwguild_offerlatest.settings {
     maxItems = 4
   }
