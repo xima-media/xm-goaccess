@@ -368,6 +368,12 @@ tx_news.templateLayouts {
   }
 [GLOBAL]
 
+[traverse(page, "uid") == "1126"]
+  mod.web_list {
+    allowedNewTables = tx_xmdkfznetsite_domain_model_external_link
+  }
+[GLOBAL]
+
 # Remove content element section for short news
 [479 in tree.rootLineIds]
   TCEFORM.tx_news_domain_model_news.content_elements.disabled = 1
