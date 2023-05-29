@@ -25,7 +25,7 @@ return [
             ],
         ],
         'url' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:place.name',
+            'label' => 'URL',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',

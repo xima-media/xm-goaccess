@@ -470,6 +470,9 @@
 			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
 				<target>Teaser</target>
 			</trans-unit>
+			<trans-unit id="tt_content_item.record_type.teaser-link" space="preserve">
+				<target>Externer Link</target>
+			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser-item.override2" space="preserve">
 				<target>Bild ausblenden</target>
 			</trans-unit>

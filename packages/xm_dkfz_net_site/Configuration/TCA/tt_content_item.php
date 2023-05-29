@@ -38,10 +38,8 @@ return [
                 'record_type' => [
                     'config' => [
                         'items' => [
-                            [
-                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
-                                'teaser-item',
-                            ],
+                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item', 'teaser-item'],
+                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-link', 'teaser-link'],
                         ],
                     ],
                 ],
@@ -53,8 +51,8 @@ return [
                 'record_type' => [
                     'config' => [
                         'items' => [
-                            ['Teaser item', 'teaser-item'],
-                            ['Teaser link', 'teaser-link'],
+                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item', 'teaser-item'],
+                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-link', 'teaser-link'],
                         ],
                     ],
                 ],
