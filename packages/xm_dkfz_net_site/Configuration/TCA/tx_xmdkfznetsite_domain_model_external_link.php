@@ -9,13 +9,21 @@ return [
         'cruser_id' => 'cruser_id',
         'searchFields' => 'title,link,description',
         'iconfile' => 'EXT:xm_dkfz_net_site/Resources/Public/Icons/pin.svg',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
     ],
     'types' => [
         0 => [
-            'showitem' => 'title,url,description',
+            'showitem' => 'sys_language_uid,title,url,description',
         ],
     ],
     'columns' => [
+        'sys_language_uid' => [
+            'label' => 'Language',
+            'config' => [
+                'type' => 'language',
+            ],
+        ],
         'title' => [
             'label' => 'Title',
             'config' => [

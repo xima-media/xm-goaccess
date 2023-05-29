@@ -38,8 +38,14 @@ return [
                 'record_type' => [
                     'config' => [
                         'items' => [
-                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item', 'teaser-item'],
-                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-link', 'teaser-link'],
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
+                                'teaser-item',
+                            ],
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-link',
+                                'teaser-link',
+                            ],
                         ],
                     ],
                 ],
@@ -51,8 +57,14 @@ return [
                 'record_type' => [
                     'config' => [
                         'items' => [
-                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item', 'teaser-item'],
-                            ['LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-link', 'teaser-link'],
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-item',
+                                'teaser-item',
+                            ],
+                            [
+                                'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:tt_content_item.record_type.teaser-link',
+                                'teaser-link',
+                            ],
                         ],
                     ],
                 ],
@@ -62,6 +74,7 @@ return [
                         'type' => 'select',
                         'renderType' => 'selectSingle',
                         'foreign_table' => 'tx_xmdkfznetsite_domain_model_external_link',
+                        'foreign_table_where' => 'AND tx_xmdkfznetsite_domain_model_external_link.sys_language_uid = ###REC_FIELD_sys_language_uid###',
                     ],
                 ],
             ],
