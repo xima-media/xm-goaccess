@@ -126,6 +126,16 @@ $GLOBALS['TCA']['pages']['columns']['media']['config']['overrideChildTca']['colu
             'eval' => 'int',
         ],
     ],
+    'slider_reload' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.sliderReload',
+        'description' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:pages.sliderReload.description',
+        'config' => [
+            'type' => 'input',
+            'eval' => 'int',
+            'default' => 0,
+        ],
+    ],
 ]);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
@@ -187,7 +197,7 @@ $GLOBALS['TCA']['pages']['types'][702]['showitem'] = $GLOBALS['TCA']['pages']['t
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
-    'slider_duration',
+    'slider_duration,slider_reload',
     '702',
     'after:nav_title'
 );

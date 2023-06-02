@@ -3,6 +3,7 @@ create table pages (
 	tx_xmdkfznetsite_contacts varchar(255) not null default '',
 	tt_content_items          int(11) unsigned default '0' not null,
 	slider_duration           int(11) unsigned default '0' not null,
+	slider_reload             int(11) unsigned default '0' not null,
 );
 
 create table tt_content (
@@ -159,6 +160,6 @@ create table tx_xmdkfznetsite_domain_model_committee (
 
 create table tx_xmdkfznetsite_domain_model_external_link (
 	title       varchar(255) default '' not null,
-	url        varchar(255) default '' not null,
+	url         varchar(255) default '' not null,
 	description text         default '' not null,
 );

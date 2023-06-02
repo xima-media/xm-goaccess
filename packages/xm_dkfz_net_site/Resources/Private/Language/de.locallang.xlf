@@ -95,6 +95,12 @@
 			<trans-unit id="pages.sliderDuration.description" space="preserve">
 				<target>Zeit in Sekunden</target>
 			</trans-unit>
+			<trans-unit id="pages.sliderReload" space="preserve">
+				<target>Slider Reload</target>
+			</trans-unit>
+			<trans-unit id="pages.sliderReload.description" space="preserve">
+				<target>Anzahl der kompletten Durchläufe bis ein Reload ausgeführt wird</target>
+			</trans-unit>
 			<trans-unit id="container.accordion">
 				<target>Akkordeon</target>
 			</trans-unit>

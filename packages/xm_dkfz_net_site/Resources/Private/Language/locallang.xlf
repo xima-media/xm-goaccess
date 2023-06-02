@@ -94,6 +94,12 @@
 			<trans-unit id="pages.sliderDuration.description" space="preserve">
 				<source>Time in seconds</source>
 			</trans-unit>
+			<trans-unit id="pages.sliderReload" space="preserve">
+				<source>Slider Reload</source>
+			</trans-unit>
+			<trans-unit id="pages.sliderReload.description" space="preserve">
+				<source>Amount of complete runs before a reload is triggert</source>
+			</trans-unit>
 			<trans-unit id="container.accordion">
 				<source>Accordion</source>
 			</trans-unit>

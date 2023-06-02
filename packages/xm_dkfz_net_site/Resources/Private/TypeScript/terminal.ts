@@ -24,8 +24,16 @@ if (slider) {
   document.querySelector('button.prev')?.addEventListener('click', onSliderButtonClick.bind(null, true))
   document.querySelector('button.next')?.addEventListener('click', onSliderButtonClick.bind(null, false))
 
-  const seconds = document.getElementById('slider-duration')!.style.getPropertyValue('--timer')!
+  const seconds = document.getElementById('slider-duration').style.getPropertyValue('--timer')
   const duration = parseInt(seconds.replace('s', '')) * 1000
 
   setInterval(onSliderButtonClick.bind(null, false), duration)
+
+  const reloadCount = parseInt(document.getElementById('slider-duration').getAttribute('data-slider-reload-runs'))
+  if (reloadCount) {
+    const count = parseInt(getComputedStyle(slider).getPropertyValue('--count'))
+    setTimeout(() => {
+      window.location.reload()
+    }, duration * count * reloadCount + count * 400 - 400)
+  }
 }
