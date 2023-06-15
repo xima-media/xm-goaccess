@@ -17,12 +17,12 @@
 	<table class="row">
 		<tbody>
 		<tr>
-			<th class="small-12 large-8 columns last">
+			<th class="small-12 large-12 columns last">
 				<table>
 					<tbody>
 					<tr>
 						<th>
-							<h4>{data.header}</h4>
+							<h4><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h4>
 						</th>
 					</tr>
 					</tbody>
@@ -44,7 +44,7 @@
 						<th class="text-center">
 							<f:media file="{files.0}"
 									 style="display:inline-block;"
-									 width="200"
+									 width="125"
 									 alt="{files.0.alternative}"
 									 title="{files.0.title}"/>
 						</th>
@@ -53,7 +53,7 @@
 				</table>
 			</th>
 		</f:if>
-		<th class="small-12 large-8 columns last">
+		<th class="small-12 large-{f:if(condition:files.0, then:'8', else:'12')} columns last">
 			<table>
 				<tbody>
 				<tr>
@@ -64,6 +64,31 @@
 						<f:render partial="Bodytext" arguments="{_all}"/>
 					</th>
 				</tr>
+				<f:if condition="{data.header_link}">
+					<tr>
+						<th class="">
+							<table class="button small">
+								<tbody>
+								<tr>
+									<td>
+										<table>
+											<tbody>
+											<tr>
+												<td>
+													<f:link.typolink parameter="{data.header_link}">
+														{f:if(condition:item.data.sys_language_uid, then: 'Read more', else: 'Weiterlesen')}
+													</f:link.typolink>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+						</th>
+					</tr>
+				</f:if>
 				</tbody>
 			</table>
 		</th>

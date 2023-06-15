@@ -413,6 +413,7 @@ tx_news.templateLayouts {
   TCEFORM.tt_content.header_layout.removeItems = 2,3,4,5
   TCEFORM.tt_content.imageorient.disabled = 1
   TCEFORM.tt_content.CType.removeItems >
+  TCEFORM.tt_content.header_link.disabled = 0
 
   mod {
     web_layout {
