@@ -65,6 +65,7 @@ tt_content {
             pidInList = 1
             recursive = 2
             where = uid=###link###
+            languageField = 0
             markers.link.field = link
             as = externalLink
             if.equals = teaser-link
