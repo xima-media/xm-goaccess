@@ -301,6 +301,12 @@
 			<trans-unit id="offer.bookmark.remove">
 				<source>Remove bookmark</source>
 			</trans-unit>
+			<trans-unit id="link.bookmark">
+				<source>Bookmark link</source>
+			</trans-unit>
+			<trans-unit id="link.bookmark.remove">
+				<source>Remove bookmark</source>
+			</trans-unit>
 			<trans-unit id="categories">
 				<source>Categories</source>
 			</trans-unit>
