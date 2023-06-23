@@ -54,17 +54,19 @@
 					<tbody>
 					<tr>
 						<th>
-							<f:link.action extensionName="News"
-										   pluginName="Pi1"
-										   controller="News"
-										   action="detail"
-										   lang="{item.data.sys_language_uid}"
-										   pageUid="{f:if(condition:item.data.sys_language_uid, then: 887, else: 142)}"
-										   absolute="true"
-										   arguments="{news: item.data.uid}">
-								<h5 class="small-text-center">
-									{item.data.title}</h5>
-							</f:link.action>
+							<h5 class="small-text-center">
+								<f:link.action extensionName="News"
+											   pluginName="Pi1"
+											   controller="News"
+											   action="detail"
+											   lang="{item.data.sys_language_uid}"
+											   pageUid="{f:if(condition:item.data.sys_language_uid, then: 887, else: 142)}"
+											   absolute="true"
+											   arguments="{news: item.data.uid}">
+
+									{item.data.title}
+								</f:link.action>
+							</h5>
 							<p class="small-text-center">
 								<f:if condition="{item.data.teaser}">
 									<f:then>
