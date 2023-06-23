@@ -28,6 +28,7 @@ img.small.small30 {
 	max-width: 30px;
 	max-height: 30px;
 	margin: 0 5px;
+	Margin: 0 5px;
 }
 
 img.small.small200 {
@@ -87,10 +88,15 @@ a:visited {
 	text-decoration: underline;
 }
 
+table.button td {
+	line-height: 16px;
+}
+
 table.button table td {
 	background-color: #0047b9;
 	border-color: #0047b9;
 	color: #fff;
+	line-height: 16px;
 }
 
 table.button table td a {
@@ -120,6 +126,7 @@ h2 {
 	text-align: center;
 	font-size: 26px;
 	margin-bottom: 30px;
+	Margin-bottom: 30px;
 }
 
 td.large-8.last, th.large-8.last {
