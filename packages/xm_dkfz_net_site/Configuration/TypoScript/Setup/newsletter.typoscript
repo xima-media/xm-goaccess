@@ -43,7 +43,7 @@ fluidStyledMailContent {
   10.stdWrap.wrap = <table align="center" class="container body-drip float-center"><tbody><tr><td><table class="row"><tbody><tr><th class="small-12 large-8 columns first last"><table><tr><th>|</th><th class="expander"></th></tr></table></th></tr></tbody></table></td></tr></tbody></table>
 
   15 = TEXT
-  15.value = <table class="spacer float-center"><tbody><tr><td height="32px" style="font-size:32px;line-height:32px;">&#xA0;</td></tr></tbody></table>
+  15.value = <table class="spacer float-center"><tbody><tr><td height="32px" style="font-size:32px;line-height:32px;">&#xA0;</td></tr></tbody></table><table class="spacer float-center"><tbody><tr><td height="2px" style="font-size:2px;line-height:2px;"><hr/></td></tr></tbody></table><table class="spacer float-center"><tbody><tr><td height="32px" style="font-size:32px;line-height:32px;">&#xA0;</td></tr></tbody></table>
 
   20 = CONTENT
   20 {
