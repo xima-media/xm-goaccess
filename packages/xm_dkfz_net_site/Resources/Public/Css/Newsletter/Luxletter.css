@@ -17,7 +17,6 @@ p {
 	background: #FFFFFF;
 }
 
-
 img:not(.small) {
 	height: auto;
 	max-height: 100%;
@@ -43,7 +42,7 @@ img.small.small200 {
 table.button.success table td {
 	color: #fefefe;
 	background: #0047b9;
-	border: 2px solid white;
+	border-color: #0047b9;
 }
 
 table.button.success:hover table td {
@@ -52,6 +51,7 @@ table.button.success:hover table td {
 
 table.button.success table td a {
 	color: white;
+	border-color: #0047b9;
 }
 
 a {
@@ -87,15 +87,16 @@ a:visited {
 	text-decoration: underline;
 }
 
-table.button table td a {
-	border-color: #0047b9;
-	color: #fff;
-}
-
 table.button table td {
 	background-color: #0047b9;
 	border-color: #0047b9;
 	color: #fff;
+}
+
+table.button table td a {
+	border-color: #0047b9;
+	color: #fff;
+	line-height: 16px;
 }
 
 table.button:hover table td, table.button:visited table td, table.button:active table td {
