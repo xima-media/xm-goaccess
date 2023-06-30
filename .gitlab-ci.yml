@@ -70,6 +70,8 @@ test-php-stan:
     - cp "$SSH_KNOWN_HOSTS" ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking yes\n\tUserKnownHostsFile=~/.ssh/known_hosts\n\n" > ~/.ssh/config
+    - BRANCH_ID=${CI_COMMIT_BRANCH%%_*}
+    - BASE_BRANCH_ID=${BASE_BRANCH%%_*}
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
@@ -192,7 +194,7 @@ teardown-environment:
 deploy-xima-staging:
   environment:
     name: $CI_COMMIT_BRANCH
-    url: https://$CI_COMMIT_BRANCH.dev.$CI_PROJECT_NAME.xima.dev
+    url: https://${CI_COMMIT_BRANCH}.dev.${CI_PROJECT_NAME}.xima.dev
     on_stop: teardown-environment
   stage: deploy
   extends: .deploy-prepare
@@ -205,5 +207,5 @@ deploy-xima-staging:
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
-    - vendor/bin/dep deploy:unlock dev-t3-debian11-01-${CI_COMMIT_BRANCH,,}
-    - vendor/bin/dep deploy-fast dev-t3-debian11-01-${CI_COMMIT_BRANCH,,} --options=base_branch:$BASE_BRANCH -vvv
+    - vendor/bin/dep deploy:unlock dev-t3-debian11-01-${BRANCH_ID,,}
+    - vendor/bin/dep deploy-fast dev-t3-debian11-01-${BRANCH_ID,,} --options=base_branch:${BASE_BRANCH_ID,,} -vvv
