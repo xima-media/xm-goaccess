@@ -33,7 +33,7 @@ if (slider) {
   if (reloadCount) {
     const count = parseInt(getComputedStyle(slider).getPropertyValue('--count'))
     setTimeout(() => {
-      window.location.reload()
+      location.reload()
     }, duration * count * reloadCount + count * 400 - 400)
   }
 }
