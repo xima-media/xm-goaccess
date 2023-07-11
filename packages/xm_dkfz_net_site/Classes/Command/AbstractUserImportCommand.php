@@ -110,6 +110,10 @@ abstract class AbstractUserImportCommand extends Command
 
         $this->io->write('Creating contacts for entries..');
         $phoneBookEntriesToAdd = $this->phoneBookUtility->getPhoneBookEntriesByIds($this->compareResult->dkfzIdsToCreate);
+        if (!count($phoneBookEntriesToAdd)) {
+            $this->io->write('<success>nothing to do.</success>');
+        }
+
         $pid = $this->phoneBookUtility->getUserStoragePid($this);
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
         $this->contactRepository->bulkInsertPhoneBookEntries($phoneBookEntriesToAdd, $pid, $dbUsers);
