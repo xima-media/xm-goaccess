@@ -25,15 +25,16 @@ if (slider) {
   document.querySelector('button.next')?.addEventListener('click', onSliderButtonClick.bind(null, false))
 
   const seconds = document.getElementById('slider-duration').style.getPropertyValue('--timer')
-  const duration = parseInt(seconds.replace('s', '')) * 1000
+  const duration = parseInt(seconds.replace('s', ''))
 
-  setInterval(onSliderButtonClick.bind(null, false), duration)
+  setInterval(onSliderButtonClick.bind(null, false), duration * 1000)
 
   const reloadCount = parseInt(document.getElementById('slider-duration').getAttribute('data-slider-reload-runs'))
   if (reloadCount) {
     const count = parseInt(getComputedStyle(slider).getPropertyValue('--count'))
-    setTimeout(() => {
-      location.reload()
-    }, duration * count * reloadCount + count * 400 - 400)
+    const meta = document.createElement('meta')
+    meta.httpEquiv = 'refresh'
+    meta.content = (duration * count * reloadCount + count * 0.4 - 0.4).toString()
+    document.getElementsByTagName('head')[0].appendChild(meta)
   }
 }
