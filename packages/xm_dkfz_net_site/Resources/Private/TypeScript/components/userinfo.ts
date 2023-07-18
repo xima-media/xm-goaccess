@@ -117,7 +117,6 @@ class Userinfo {
     this.modifyUserNav()
     this.modifyBookmarkLinks()
     this.modifyUserImagePreview()
-    this.modifyWelcomeMessage()
     this.modifyMarketplace()
     this.modifyFeedbackForm()
   }
@@ -233,16 +232,6 @@ class Userinfo {
       return
     }
     userLinkElement.setAttribute('href', this.userinfo.user.url)
-  }
-
-  protected modifyWelcomeMessage(): void {
-    const welcomeMessageBox = document.querySelector('.employee-welcome')
-    const usernameElement = document.querySelector('.employee-welcome span[data-username]')
-    if (!welcomeMessageBox || !usernameElement || !this.userinfo) {
-      return
-    }
-    usernameElement.innerHTML = this.userinfo.user.first_name + ' ' + this.userinfo.user.last_name
-    welcomeMessageBox.classList.remove('employee-welcome--onload-hidden')
   }
 
   protected modifyMarketplace(): void {

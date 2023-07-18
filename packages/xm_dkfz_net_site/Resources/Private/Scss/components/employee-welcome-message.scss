@@ -44,10 +44,6 @@
         max-width: 460px;
     }
 
-    @include media-breakpoint-up(xl) {
-        margin-top: -5rem;
-    }
-
     &__title {
         margin-bottom: -1rem;
     }
