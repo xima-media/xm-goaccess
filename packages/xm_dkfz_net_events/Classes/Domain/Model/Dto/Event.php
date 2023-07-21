@@ -2,6 +2,8 @@
 
 namespace Xima\XmDkfzNetEvents\Domain\Model\Dto;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 class Event
 {
     public string $title = '';
@@ -32,5 +34,24 @@ class Event
             return str_replace('http://info/', 'https://info.dkfz-heidelberg.de/', $this->link);
         }
         return $this->link;
+    }
+
+    public function getDescription(): string
+    {
+        if (str_contains($this->description, 'http')) {
+            preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $this->description, $matches);
+            foreach ($matches as $match) {
+                if (isset($match[0]) && GeneralUtility::isValidUrl($match[0])) {
+                    $urlParts = parse_url($match[0]);
+                    $this->description = str_replace(
+                        $match[0],
+                        '<a href="' . $match[0] . '">' . $urlParts['host'] . '</a>',
+                        $this->description
+                    );
+                }
+            }
+        }
+
+        return $this->description;
     }
 }

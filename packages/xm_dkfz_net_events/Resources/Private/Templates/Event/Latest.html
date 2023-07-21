@@ -10,23 +10,24 @@
 				<div class="swiper-slide {f:if(condition: i.isFirst, then: 'swiper-slide-active')} {f:if(condition: '{i.cycle} == 2', then: 'swiper-slide-next')}">
 					<div class="card card--image-top card--md card--image-size-md card--event">
 
-						<a href="{event.link}"
-						   aria-label="{event.eventdate->f:format.date(format: 'd. M')}"
-						   title="{event.title}">
-
-
-							<p class="color">
-								<span class="h3 m-b-0"><f:format.date format="%d. %B">{event.eventdate}</f:format.date></span>
-								<span class="h3 m-b-0 text-intro">{event.eventtime}</span>
-							</p>
-
-							<h3 class="h5">{event.title}</h3>
+						<div class="item">
+							<a href="{event.link}"
+							   title="{event.title}"
+							   aria-label="{event.eventdate->f:format.date(format: 'd. M')}">
+								<p class="color">
+									<span class="h3 m-b-0">
+										<f:format.date format="%d. %B">{event.eventdate}</f:format.date>
+									</span>
+									<span class="h3 m-b-0 text-intro">{event.eventtime}</span>
+								</p>
+								<h3 class="h5">{event.title}</h3>
+							</a>
 							<ul class="list card__tags text-small">
 								<li class="card__tag">{event.eventlanguage}</li>
-								<li class="card__tag">{event.description}</li>
+								<li class="card__tag">{event.description->f:format.raw()}</li>
 							</ul>
 
-						</a>
+						</div>
 					</div>
 
 				</div>

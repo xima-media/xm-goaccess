@@ -21,6 +21,10 @@
         }
     }
 
+    ul li a, ul li a:hover {
+        text-decoration: underline;
+    }
+
     p span:first-child {
         margin-right: 0.5rem;
     }
@@ -55,17 +59,22 @@
         line-height: 1;
     }
 
-    a {
+    .item {
         display: flex;
         flex-direction: column;
     }
 
     ul {
         margin-top: auto;
+
+        a, a:hover {
+            text-decoration: underline;
+        }
     }
 
     a:hover {
         text-decoration: none;
+        cursor: pointer;
 
         h3 {
             text-decoration: underline;

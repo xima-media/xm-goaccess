@@ -6,18 +6,21 @@
 
 		<f:for each="{events}" as="event" iteration="i">
 			<div class="event">
-				<a href="{event.link}" title="{event.title}">
-					<p class="color m-b-0">
-						<span class="h3"><f:format.date format="%d. %B">{event.eventdate}</f:format.date></span>
-						<span class="h3 text-intro">{event.eventtime}</span>
-					</p>
-
-					<h5 class="m-b-05">{event.title}</h5>
+				<div title="{event.title}">
+					<a href="{event.link}" title="{event.title}">
+						<p class="color m-b-0">
+							<span class="h3">
+								<f:format.date format="%d. %B">{event.eventdate}</f:format.date>
+							</span>
+							<span class="h3 text-intro">{event.eventtime}</span>
+						</p>
+						<h5 class="m-b-05">{event.title}</h5>
+					</a>
 					<ul class="list text-small card__tags">
 						<li class="card__tag">{event.eventlanguage}</li>
-						<li class="card__tag">{event.description}</li>
+						<li class="card__tag">{event.description->f:format.raw()}</li>
 					</ul>
-				</a>
+				</div>
 			</div>
 		</f:for>
 
