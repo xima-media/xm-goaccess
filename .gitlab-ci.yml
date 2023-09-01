@@ -180,6 +180,8 @@ provision-environment:
 teardown-environment:
   extends: .provision-variables
   stage: provision
+  variables:
+    GIT_STRATEGY: none
   environment:
     name: $CI_COMMIT_BRANCH
     action: stop
@@ -188,7 +190,7 @@ teardown-environment:
     variables:
       - $GITLAB_LOCATION == "XIMA-INTERN"
   script:
-    - 'curl --request POST --form token=$CI_JOB_TOKEN --form ref="$downstream_pipeline_branch" --form variables[project_redis]="$project_redis" --form variables[project_scheduler_frequency_minutes]="$project_scheduler_frequency_minutes" --form variables[project_goaccess]="$project_goaccess" --form variables[project_php_version]="$project_php_version" --form variables[project_aliases]="$project_aliases" --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
+    - 'curl --insecure --request POST --form token=$CI_JOB_TOKEN --form ref="$downstream_pipeline_branch" --form variables[project_redis]="$project_redis" --form variables[project_scheduler_frequency_minutes]="$project_scheduler_frequency_minutes" --form variables[project_goaccess]="$project_goaccess" --form variables[project_php_version]="$project_php_version" --form variables[project_aliases]="$project_aliases" --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
 
 deploy-xima-staging:
   environment:
