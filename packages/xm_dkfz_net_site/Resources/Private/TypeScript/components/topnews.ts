@@ -117,6 +117,8 @@ class Topnews {
     setTimeout(() => {
       this.writeSliderState(next)
     }, 400)
+
+    this.stopTimer()
   }
 }
 
