@@ -332,6 +332,12 @@
 			<trans-unit id="label.addBookmark">
 				<target>Zur Merkliste hinzufügen</target>
 			</trans-unit>
+			<trans-unit id="label.resume">
+				<target>Abspielen</target>
+			</trans-unit>
+			<trans-unit id="label.pause">
+				<target>Anhalten</target>
+			</trans-unit>
 			<trans-unit id="new">
 				<target>Neu</target>
 			</trans-unit>

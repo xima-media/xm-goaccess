@@ -75,6 +75,9 @@ class Topnews {
     const timerDivs = document.querySelectorAll('.topnews__timer')
     timerDivs.forEach(div => {
       div.classList.add('topnews__timer--playing')
+      const a = div.querySelector('a')
+      a.setAttribute('title', a.getAttribute('data-title-pause'))
+      a._tippy.setContent(a.getAttribute('data-title-pause'))
     })
     this.startNewsTimer()
   }
@@ -83,6 +86,9 @@ class Topnews {
     const timerDivs = document.querySelectorAll('.topnews__timer')
     timerDivs.forEach(div => {
       div.classList.remove('topnews__timer--playing')
+      const a = div.querySelector('a')
+      a.setAttribute('title', a.getAttribute('data-title-resume'))
+      a._tippy.setContent(a.getAttribute('data-title-resume'))
     })
     clearInterval(this.newsTimer)
   }

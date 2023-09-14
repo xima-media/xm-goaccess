@@ -466,6 +466,12 @@
 			<trans-unit id="label.addBookmark">
 				<source>Add to bookmarks</source>
 			</trans-unit>
+			<trans-unit id="label.resume">
+				<source>Resume</source>
+			</trans-unit>
+			<trans-unit id="label.pause">
+				<source>Stop</source>
+			</trans-unit>
 			<trans-unit id="new">
 				<source>New</source>
 			</trans-unit>
