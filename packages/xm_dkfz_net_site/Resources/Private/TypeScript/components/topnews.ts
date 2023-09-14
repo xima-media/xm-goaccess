@@ -45,6 +45,7 @@ class Topnews {
     this.newsTimer = setInterval((): void => {
       const nextBtn = document.querySelector('.topnews button.next') as HTMLButtonElement
       nextBtn.click()
+      this.resumeTimer()
     }, this.timerDuration * 1000)
   }
 
@@ -63,18 +64,27 @@ class Topnews {
   protected onPauseButtonClick(e: Event): void {
     e.preventDefault()
     const button = e.currentTarget as HTMLAnchorElement
-    const timerDivs = document.querySelectorAll('.topnews__timer')
     if (button.parentElement.classList.contains('topnews__timer--playing')) {
-      timerDivs.forEach(div => {
-        div.classList.remove('topnews__timer--playing')
-      })
-      clearInterval(this.newsTimer)
+      this.stopTimer()
     } else {
-      timerDivs.forEach(div => {
-        div.classList.add('topnews__timer--playing')
-      })
-      this.startNewsTimer()
+      this.resumeTimer()
     }
+  }
+
+  protected resumeTimer(): void {
+    const timerDivs = document.querySelectorAll('.topnews__timer')
+    timerDivs.forEach(div => {
+      div.classList.add('topnews__timer--playing')
+    })
+    this.startNewsTimer()
+  }
+
+  protected stopTimer(): void {
+    const timerDivs = document.querySelectorAll('.topnews__timer')
+    timerDivs.forEach(div => {
+      div.classList.remove('topnews__timer--playing')
+    })
+    clearInterval(this.newsTimer)
   }
 
   protected onButtonClick(e: Event): void {
@@ -87,6 +97,8 @@ class Topnews {
     setTimeout(() => {
       this.writeSliderState(next)
     }, 400)
+
+    this.stopTimer()
   }
 
   protected onBulletClick(e: Event): void {

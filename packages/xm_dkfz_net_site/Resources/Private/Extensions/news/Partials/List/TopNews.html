@@ -28,6 +28,7 @@
 <f:section name="NewsItem">
 	<div class="topnews__item color-accent--{newsItem.txXmdkfznetsiteColor}">
 
+		<div class="topnews__image">
 		<f:for each="{newsItem.falMedia}" as="file" iteration="i">
 			<f:if condition="{i.isFirst}">
 				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
@@ -40,16 +41,18 @@
 			<f:render partial="Image" arguments=""/>
 		</f:if>
 
-		<div class="topnews__timer topnews__timer--playing">
-			<a href="#" aria-label="Pause" role="button" title="Pause">
-				<div class="circle"></div>
-				<div class="pie"></div>
-				<div class="pie2"></div>
-				<div class="dot">
-					<f:render partial="Icon" arguments="{icon: 'play'}"/>
-					<f:render partial="Icon" arguments="{icon: 'pause'}"/>
-				</div>
-			</a>
+			<div class="topnews__timer topnews__timer--playing">
+				<a href="#" aria-label="Pause" role="button" title="Pause">
+					<div class="circle"></div>
+					<div class="pie"></div>
+					<div class="pie2"></div>
+					<div class="dot">
+						<f:render partial="Icon" arguments="{icon: 'play', width: 18, height: 18}"/>
+						<f:render partial="Icon" arguments="{icon: 'pause', width: 18, height: 18}"/>
+					</div>
+				</a>
+			</div>
+
 		</div>
 
 		<div class="topnews__bullets">
