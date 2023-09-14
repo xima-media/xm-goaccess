@@ -76,7 +76,8 @@
 											<tr>
 												<td>
 													<f:link.typolink parameter="{data.header_link}">
-														{f:if(condition:item.data.sys_language_uid, then: 'Read more', else: 'Weiterlesen')}
+														<strong>{f:if(condition:item.data.sys_language_uid, then: 'Read
+															more', else: 'Weiterlesen')}</strong>
 													</f:link.typolink>
 												</td>
 											</tr>

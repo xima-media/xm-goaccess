@@ -99,10 +99,16 @@ table.button table td {
 	line-height: 16px;
 }
 
-table.button table td a {
+table.button table td a, table.button table td a:visited, table.button table td a:active {
 	border-color: #0047b9;
 	color: #fff;
 	line-height: 16px;
+	text-decoration: none;
+}
+
+table.button table td strong {
+	color: #FFF;
+	text-decoration: none;
 }
 
 table.button:hover table td, table.button:visited table td, table.button:active table td {
