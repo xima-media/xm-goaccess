@@ -153,10 +153,14 @@ TCEFORM {
     rowDescription.disabled = 1
 
     media.config.maxitems = 1
+    slider_duration.disabled = 1
+    slider_reload.disabled = 1
 
     # Infoterminal
     tx_xmdkfznetsite_color.types.702.disabled = 1
     tt_content_items.types.702.disabled = 1
+    slider_duration.types.702.disabled = 0
+    slider_reload.types.702.disabled = 0
   }
 
   tx_news_domain_model_news {
@@ -343,6 +347,7 @@ mod.web_layout {
 
 [traverse(page, "is_siteroot") == 1]
   TCEFORM.pages.media.config.maxitems >
+  TCEFORM.pages.slider_duration.disabled = 0
 [GLOBAL]
 
 [traverse(page, "uid") == 2]

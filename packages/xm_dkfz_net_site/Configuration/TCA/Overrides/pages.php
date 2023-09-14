@@ -198,6 +198,6 @@ $GLOBALS['TCA']['pages']['types'][702]['showitem'] = $GLOBALS['TCA']['pages']['t
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
     'slider_duration,slider_reload',
-    '702',
+    '1,702',
     'after:nav_title'
 );

@@ -209,10 +209,10 @@
                 display: block;
             }
             .pie:before {
-                animation: pie1 linear infinite 4s;
+                animation: pie1 linear infinite var(--timer);
             }
             .pie2:before {
-                animation: pie2 linear infinite 4s;
+                animation: pie2 linear infinite var(--timer);
             }
         }
 

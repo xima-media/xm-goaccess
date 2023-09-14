@@ -5,21 +5,21 @@ class Topnews {
 
   protected slideCount = 0
 
-  protected newsChange: number = 0
+  protected newsTimer: number = 0
+
+  protected timerDuration: number = 0
 
   constructor() {
     const slider = document.querySelector<HTMLDivElement>('.topnews')
     const buttons = document.querySelectorAll('.topnews button')
     const bullets = document.querySelectorAll('.topnews__bullets a')
-    const pauseButton = document.querySelectorAll('.topnews__timer a')
 
-    if (!buttons || !slider || !bullets || !pauseButton) {
+    if (!buttons || !slider || !bullets) {
       return
     }
 
     this.slider = slider
     this.readSliderState()
-    this.startNewsTimer()
 
     buttons.forEach(btn => {
       btn.addEventListener('click', this.onButtonClick.bind(this))
@@ -29,21 +29,29 @@ class Topnews {
       bullet.addEventListener('click', this.onBulletClick.bind(this))
     })
 
-    pauseButton.forEach(btn => {
-      btn.addEventListener('click', this.onPauseButtonClick.bind(this))
-    })
+    if (this.timerDuration) {
+      this.startNewsTimer()
+      document.querySelectorAll('.topnews__timer a').forEach(btn => {
+        btn.addEventListener('click', this.onPauseButtonClick.bind(this))
+      })
+    } else {
+      document.querySelectorAll('.topnews__timer').forEach(div => {
+        div.remove()
+      })
+    }
   }
 
   protected startNewsTimer(): void {
-    this.newsChange = setInterval((): void => {
+    this.newsTimer = setInterval((): void => {
       const nextBtn = document.querySelector('.topnews button.next') as HTMLButtonElement
       nextBtn.click()
-    }, 4000)
+    }, this.timerDuration * 1000)
   }
 
   protected readSliderState(): void {
     this.currentSlideNr = parseInt(getComputedStyle(this.slider).getPropertyValue('--current'))
     this.slideCount = parseInt(getComputedStyle(this.slider).getPropertyValue('--count'))
+    this.timerDuration = parseInt(getComputedStyle(document.querySelector('main')).getPropertyValue('--timer').replace('s', ''))
   }
 
   protected writeSliderState(currentSlide: number): void {
@@ -60,7 +68,7 @@ class Topnews {
       timerDivs.forEach(div => {
         div.classList.remove('topnews__timer--playing')
       })
-      clearInterval(this.newsChange)
+      clearInterval(this.newsTimer)
     } else {
       timerDivs.forEach(div => {
         div.classList.add('topnews__timer--playing')
