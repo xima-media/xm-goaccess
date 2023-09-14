@@ -193,8 +193,31 @@
             left: 1.5rem;
         }
 
-        &--playing svg:first-child {
+        svg:first-child {
+            transform: scaleX(.8) translate(3px, 0px);
+        }
+
+        svg:last-child {
             display: none;
+        }
+
+        &--playing {
+            svg:first-child {
+                display: none;
+            }
+            svg:last-child {
+                display: block;
+            }
+            .pie:before {
+                animation: pie1 linear infinite 4s;
+            }
+            .pie2:before {
+                animation: pie2 linear infinite 4s;
+            }
+        }
+
+        &--stop {
+
         }
 
         a {
@@ -260,12 +283,10 @@
             border-radius: 50%;
             inset: 0;
             background: conic-gradient(var(--c) 50%, #0000 0);
-            animation: pie1 linear infinite 5s;
             z-index: 1;
         }
 
         .pie2:before {
-            animation-name: pie2;
             transform: rotate(180deg);
         }
 
