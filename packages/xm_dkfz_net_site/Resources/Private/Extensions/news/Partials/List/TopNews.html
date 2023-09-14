@@ -40,6 +40,18 @@
 			<f:render partial="Image" arguments=""/>
 		</f:if>
 
+		<div class="topnews__timer topnews__timer--playing">
+			<a href="#" aria-label="Pause" role="button" title="Pause">
+				<div class="circle"></div>
+				<div class="pie"></div>
+				<div class="pie2"></div>
+				<div class="dot">
+					<f:render partial="Icon" arguments="{icon: 'play'}"/>
+					<f:render partial="Icon" arguments="{icon: 'pause'}"/>
+				</div>
+			</a>
+		</div>
+
 		<div class="topnews__bullets">
 			<f:variable name="numbers" value="{0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7}"/>
 			<f:for each="{numbers}" as="nr" iteration="j">

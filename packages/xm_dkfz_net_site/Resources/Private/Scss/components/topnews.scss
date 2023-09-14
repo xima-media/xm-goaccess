@@ -151,6 +151,11 @@
             gap: 4rem;
             align-content: stretch;
 
+            & > a {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+            }
+
             h3 {
                 margin: 3rem 0;
                 margin-left: -15rem;
@@ -165,6 +170,123 @@
                 margin-top: 12rem;
                 text-align: left;
                 margin-bottom: 5rem;
+            }
+        }
+    }
+
+    &__timer {
+        display: grid;
+        justify-content: flex-end;
+        grid-column: 1 / 4;
+        margin-top: -2.5rem;
+        z-index: 3;
+
+        @include media-breakpoint-up(md) {
+            margin: 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            align-self: center;
+            position: relative;
+            left: 1.5rem;
+        }
+
+        &--playing svg:first-child {
+            display: none;
+        }
+
+        a {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            width: 3rem;
+            height: 3rem;
+            color: #FFF;
+        }
+
+        svg, .pie, .pie2, .circle, .dot {
+            grid-column: 1/ 2;
+            grid-row: 1/ 2;
+        }
+
+        .circle {
+            display: grid;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 100%;
+            background: var(--color-primary);
+        }
+
+        .dot {
+            display: grid;
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 100%;
+            background: var(--color-primary);
+            z-index: 3;
+            align-items: center;
+            justify-items: center;
+            border: 2px solid #FFF;
+        }
+
+        .pie, .pie2 {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            --w: 3rem;
+            --p: 60;
+            --c: white;
+            width: var(--w);
+            aspect-ratio: 1;
+            display: inline-grid;
+            place-content: center;
+            font-weight: bold;
+            font-family: sans-serif;
+            position: relative;
+        }
+
+        .pie {
+            clip-path: inset(0 0 0 50%);
+        }
+
+        .pie2 {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .pie:before, .pie2:before {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            inset: 0;
+            background: conic-gradient(var(--c) 50%, #0000 0);
+            animation: pie1 linear infinite 5s;
+            z-index: 1;
+        }
+
+        .pie2:before {
+            animation-name: pie2;
+            transform: rotate(180deg);
+        }
+
+        @keyframes pie2 {
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pie1 {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(180deg);
             }
         }
     }
