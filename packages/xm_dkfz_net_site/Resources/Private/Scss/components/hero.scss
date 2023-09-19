@@ -26,6 +26,9 @@
 
     & + .navigation--anchor {
         margin-top: var(--space-lg);
+        @media screen and (max-width: 1800px ) {
+            margin-top: .5rem;
+        }
     }
 
     &--with-image {
