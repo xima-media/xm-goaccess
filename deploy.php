@@ -29,6 +29,7 @@ for ($i = 1; $i <= 999; $i++) {
 }
 
 defineTestHost('master', 'staging');
+defineTestHost('development', 'staging');
 
 host('staging-dkfz')
     ->setHostname('intracmsstage')
