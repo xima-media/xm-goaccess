@@ -114,6 +114,12 @@ services:
         command: 'dkfz:import'
         schedulable: true
 
+  Xima\XmDkfzNetSite\Command\ResetImportHashCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dkfz:resetHash'
+        schedulable: false
+
   Xima\XmDkfzNetSite\Utility\PhoneBookUtility:
     public: true
 
