@@ -698,6 +698,12 @@
 			<trans-unit id="group.managers" space="preserve">
 				<target>Leitung</target>
 			</trans-unit>
+			<trans-unit id="group.assistants" space="preserve">
+				<target>Assistenz</target>
+			</trans-unit>
+			<trans-unit id="group.coordinators" space="preserve">
+				<target>Koordination</target>
+			</trans-unit>
 			<trans-unit id="page.login" space="preserve">
 				<target>Anmelden</target>
 			</trans-unit>

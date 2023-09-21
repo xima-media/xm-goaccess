@@ -703,6 +703,12 @@
 			<trans-unit id="group.managers" space="preserve">
 				<source>Head</source>
 			</trans-unit>
+			<trans-unit id="group.assistants" space="preserve">
+				<source>Assistants</source>
+			</trans-unit>
+			<trans-unit id="group.coordinators" space="preserve">
+				<source>Coordinators</source>
+			</trans-unit>
 			<trans-unit id="page.login" space="preserve">
 				<source>Login</source>
 			</trans-unit>
