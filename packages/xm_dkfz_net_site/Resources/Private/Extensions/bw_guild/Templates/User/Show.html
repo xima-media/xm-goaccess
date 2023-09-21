@@ -110,6 +110,22 @@
 							<f:render section="GroupUser" arguments="{groupUser: groupUser}"/>
 						</f:for>
 					</f:if>
+					<f:if condition="{group.coordinators}">
+						<h6 class="m-b-0">
+							<f:translate extensionName="XmDkfzNetSite" key="group.coordinators"/>
+						</h6>
+						<f:for each="{group.coordinators}" as="groupUser">
+							<f:render section="GroupUser" arguments="{groupUser: groupUser}"/>
+						</f:for>
+					</f:if>
+					<f:if condition="{group.assistants}">
+						<h6 class="m-b-0">
+							<f:translate extensionName="XmDkfzNetSite" key="group.assistants"/>
+						</h6>
+						<f:for each="{group.assistants}" as="groupUser">
+							<f:render section="GroupUser" arguments="{groupUser: groupUser}"/>
+						</f:for>
+					</f:if>
 				</f:for>
 			</div>
 		</f:if>

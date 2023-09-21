@@ -17,7 +17,32 @@ class FeGroup extends AbstractEntity
      */
     protected ?ObjectStorage $managers = null;
 
+    /**
+     * @var ObjectStorage<User>|null
+     */
+    protected ?ObjectStorage $assistants = null;
+
+    /**
+     * @var ObjectStorage<User>|null
+     */
+    protected ?ObjectStorage $coordinators = null;
+
     protected string $dkfzNumber = '';
+
+    protected string $title = '';
+
+    protected string $description = '';
+
+    /**
+     * @var ObjectStorage<FeGroup>|null
+     */
+    protected ?ObjectStorage $subgroup = null;
+
+    public function __construct(string $title = '')
+    {
+        $this->setTitle($title);
+        $this->subgroup = new ObjectStorage();
+    }
 
     public function getDkfzNumber(): string
     {
@@ -56,24 +81,24 @@ class FeGroup extends AbstractEntity
         $this->managers = $managers;
     }
 
-    protected string $title = '';
-
-    protected string $description = '';
-
-    /**
-     * @var ObjectStorage<FeGroup>|null
-     */
-    protected ?ObjectStorage $subgroup = null;
-
-    public function __construct(string $title = '')
+    public function getAssistants(): ?ObjectStorage
     {
-        $this->setTitle($title);
-        $this->subgroup = new ObjectStorage();
+        return $this->assistants;
     }
 
-    public function setTitle(string $title): void
+    public function setAssistants(?ObjectStorage $assistants): void
     {
-        $this->title = $title;
+        $this->assistants = $assistants;
+    }
+
+    public function getCoordinators(): ?ObjectStorage
+    {
+        return $this->coordinators;
+    }
+
+    public function setCoordinators(?ObjectStorage $coordinators): void
+    {
+        $this->coordinators = $coordinators;
     }
 
     public function getTitle(): string
@@ -81,9 +106,9 @@ class FeGroup extends AbstractEntity
         return $this->title;
     }
 
-    public function setDescription(string $description): void
+    public function setTitle(string $title): void
     {
-        $this->description = $description;
+        $this->title = $title;
     }
 
     public function getDescription(): string
@@ -91,12 +116,9 @@ class FeGroup extends AbstractEntity
         return $this->description;
     }
 
-    /**
-     * @param ObjectStorage<FeGroup>|null $subgroup
-     */
-    public function setSubgroup(?ObjectStorage $subgroup): void
+    public function setDescription(string $description): void
     {
-        $this->subgroup = $subgroup;
+        $this->description = $description;
     }
 
     /**
@@ -121,6 +143,14 @@ class FeGroup extends AbstractEntity
     public function getSubgroup(): ?ObjectStorage
     {
         return $this->subgroup;
+    }
+
+    /**
+     * @param ObjectStorage<FeGroup>|null $subgroup
+     */
+    public function setSubgroup(?ObjectStorage $subgroup): void
+    {
+        $this->subgroup = $subgroup;
     }
 
     public function getFakeSlug(): string

@@ -22,9 +22,23 @@ class PhoneBookAbteilung
      */
     public array $sekretariat = [];
 
+    /**
+     * @var PhoneBookAbteilungPerson[]
+     */
+    public array $koordination = [];
+
+    /**
+     * @var PhoneBookAbteilungPerson[]
+     */
+    public array $assistenz = [];
+
     public string $secretaries = '';
 
     public string $managers = '';
+
+    public string $coordinators = '';
+
+    public string $assistants = '';
 
     public function __construct(string $dkfzId)
     {

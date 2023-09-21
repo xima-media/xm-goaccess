@@ -48,6 +48,40 @@ call_user_func(function () {
                 ],
             ],
         ],
+        'assistants' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:group.assistants',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
+        'coordinators' => [
+            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:group.coordinators',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'fe_users',
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldWizard' => [
+                    'recordsOverview' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
         'dkfz_hash' => [
             'label' => 'Hash',
             'config' => [
@@ -59,7 +93,7 @@ call_user_func(function () {
     ExtensionManagementUtility::addTCAcolumns('fe_groups', $tempColumns);
     ExtensionManagementUtility::addToAllTCAtypes(
         'fe_groups',
-        'dkfz_number,secretaries,managers',
+        'dkfz_number,secretaries,managers,assistants,coordinators',
         '',
         'after:title'
     );
