@@ -352,6 +352,22 @@ class PhoneBookUtility
                 }
             }
             $bookAbteilung->secretaries = implode(',', $sekretariatUsers);
+
+            $koordinationUsers = [];
+            foreach ($bookAbteilung->koordination as $phoneBookAbteilungPerson) {
+                if (isset($dbUserUidsById[$phoneBookAbteilungPerson->id])) {
+                    $koordinationUsers[] = $dbUserUidsById[$phoneBookAbteilungPerson->id];
+                }
+            }
+            $bookAbteilung->coordinators = implode(',', $koordinationUsers);
+
+            $assistenzUsers = [];
+            foreach ($bookAbteilung->koordination as $phoneBookAbteilungPerson) {
+                if (isset($dbUserUidsById[$phoneBookAbteilungPerson->id])) {
+                    $assistenzUsers[] = $dbUserUidsById[$phoneBookAbteilungPerson->id];
+                }
+            }
+            $bookAbteilung->assistants = implode(',', $assistenzUsers);
         }
     }
 

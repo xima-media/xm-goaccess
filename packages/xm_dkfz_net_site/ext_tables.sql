@@ -88,6 +88,8 @@ create table be_groups (
 	title       varchar(255) default '' not null,
 	secretaries varchar(255) default '' not null,
 	managers    varchar(255) default '' not null,
+	assistants   varchar(255) default '' not null,
+	coordinators varchar(255) default '' not null,
 	dkfz_hash   varchar(255) default '' not null,
 );
 
