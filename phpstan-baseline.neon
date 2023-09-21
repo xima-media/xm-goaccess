@@ -126,6 +126,26 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
 
 		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:getAssistants\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: TEntity$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:getCoordinators\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: TEntity$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:setAssistants\\(\\) has parameter \\$assistants with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: TEntity$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
+
+		-
+			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:setCoordinators\\(\\) has parameter \\$coordinators with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: TEntity$#"
+			count: 1
+			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
+
+		-
 			message: "#^Cannot call method detach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Contact\\>\\|null\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
