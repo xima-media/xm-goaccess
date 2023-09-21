@@ -362,7 +362,7 @@ class PhoneBookUtility
             $bookAbteilung->coordinators = implode(',', $koordinationUsers);
 
             $assistenzUsers = [];
-            foreach ($bookAbteilung->koordination as $phoneBookAbteilungPerson) {
+            foreach ($bookAbteilung->assistenz as $phoneBookAbteilungPerson) {
                 if (isset($dbUserUidsById[$phoneBookAbteilungPerson->id])) {
                     $assistenzUsers[] = $dbUserUidsById[$phoneBookAbteilungPerson->id];
                 }
