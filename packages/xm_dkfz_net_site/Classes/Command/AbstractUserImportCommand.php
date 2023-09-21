@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Cache\CacheManager;
 use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookCompareResult;
 use Xima\XmDkfzNetSite\Domain\Repository\ContactRepository;
 use Xima\XmDkfzNetSite\Domain\Repository\ImportableGroupInterface;
@@ -27,11 +28,17 @@ abstract class AbstractUserImportCommand extends Command
 
     protected PhoneBookUtility $phoneBookUtility;
 
+    protected CacheManager $cacheManager;
+
+    protected string $tableName;
+
     public function __construct(
         ImportableUserInterface $userRepository,
         ImportableGroupInterface $groupRepository,
         PhoneBookUtility $phoneBookUtility,
         ContactRepository $contactRepository,
+        CacheManager $cacheManager,
+        string $tableName,
         string $name = null
     ) {
         parent::__construct($name);
@@ -39,6 +46,8 @@ abstract class AbstractUserImportCommand extends Command
         $this->groupRepository = $groupRepository;
         $this->phoneBookUtility = $phoneBookUtility;
         $this->contactRepository = $contactRepository;
+        $this->cacheManager = $cacheManager;
+        $this->tableName = $tableName;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -132,6 +141,11 @@ abstract class AbstractUserImportCommand extends Command
         foreach ($phoneBookEntriesToUpdate as $phoneBookEntry) {
             $this->userRepository->updateUserFromPhoneBookEntry($phoneBookEntry);
         }
+
+        $dbUsers = $this->userRepository->findByDkfzIds($this->compareResult->dkfzIdsToUpdate);
+        $cacheTags = array_map(function ($dbUser) { return $this->tableName . '_' . $dbUser['uid']; }, $dbUsers);
+        $this->cacheManager->flushCachesByTags($cacheTags);
+
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
@@ -159,8 +173,14 @@ abstract class AbstractUserImportCommand extends Command
             return;
         }
 
+        $dbUsers = $this->userRepository->findByDkfzIds($this->compareResult->dkfzIdsToDelete);
+        $cacheTags = array_map(function ($dbUser) { return $this->tableName . '_' . $dbUser['uid']; }, $dbUsers);
+
         $this->io->write('Deleting entries..');
         $this->userRepository->deleteUsersByDkfzIds($this->compareResult->dkfzIdsToDelete);
+
+        $this->cacheManager->flushCachesByTags($cacheTags);
+
         $this->io->write('<success>done</success>');
         $this->io->newLine();
     }
