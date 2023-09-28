@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "030592d8303ac1aab367e8b875352b4d",
+    "content-hash": "ee705d0cd868c4326494e5e085e5fbe6",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -312,7 +312,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -1324,16 +1324,16 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "v1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3"
+                "reference": "4f2d4f2836e7ec4e7a8625e75c6aa916004db931"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
-                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/4f2d4f2836e7ec4e7a8625e75c6aa916004db931",
+                "reference": "4f2d4f2836e7ec4e7a8625e75c6aa916004db931",
                 "shasum": ""
             },
             "require": {
@@ -1365,9 +1365,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/v1.1.1"
+                "source": "https://github.com/doctrine/deprecations/tree/1.1.2"
             },
-            "time": "2023-06-03T09:27:29+00:00"
+            "time": "2023-09-27T20:04:15+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -2916,6 +2916,73 @@
             "time": "2022-08-26T13:35:21+00:00"
         },
         {
+            "name": "lolli/dbdoctor",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lolli42/dbdoctor.git",
+                "reference": "b5aca0cf744a8026c61ea8c5e24f2222a62acbe3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lolli42/dbdoctor/zipball/b5aca0cf744a8026c61ea8c5e24f2222a62acbe3",
+                "reference": "b5aca0cf744a8026c61ea8c5e24f2222a62acbe3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0",
+                "typo3/cms-core": "^11.5 || ^12.4"
+            },
+            "require-dev": {
+                "bnf/phpstan-psr-container": "^1.0",
+                "codeception/codeception": "^4.1 || ^5.0.0",
+                "codeception/module-asserts": "^2.0 || ^3.0.0",
+                "codeception/module-cli": "^1.1 || ^2.0.0",
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "friendsoftypo3/phpstan-typo3": "^0.9.0",
+                "phpstan/phpstan": "^1.4.6",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9",
+                "typo3/cms-impexp": "^11.5 || ^12.4",
+                "typo3/cms-redirects": "^11.5 || ^12.4",
+                "typo3/cms-workspaces": "^11.5 || ^12.4",
+                "typo3/testing-framework": "^7.0.2"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "0.x-dev"
+                },
+                "typo3/cms": {
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/Web",
+                    "extension-key": "dbdoctor"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lolli\\Dbdoctor\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Kuhn",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 Database doctor - Find and fix TYPO3 database inconsistencies",
+            "homepage": "https://github.com/lolli42/dbdoctor",
+            "support": {
+                "issues": "https://github.com/lolli42/dbdoctor/issues",
+                "source": "https://github.com/lolli42/dbdoctor/tree/0.5.0"
+            },
+            "time": "2023-07-13T08:31:47+00:00"
+        },
+        {
             "name": "lolli42/finediff",
             "version": "1.0.2",
             "source": {
@@ -4045,16 +4112,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.24.1",
+            "version": "1.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "9f854d275c2dbf84915a5c0ec9a2d17d2cd86b01"
+                "reference": "bcad8d995980440892759db0c32acae7c8e79442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/9f854d275c2dbf84915a5c0ec9a2d17d2cd86b01",
-                "reference": "9f854d275c2dbf84915a5c0ec9a2d17d2cd86b01",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/bcad8d995980440892759db0c32acae7c8e79442",
+                "reference": "bcad8d995980440892759db0c32acae7c8e79442",
                 "shasum": ""
             },
             "require": {
@@ -4086,9 +4153,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.2"
             },
-            "time": "2023-09-18T12:18:02+00:00"
+            "time": "2023-09-26T12:28:12+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -4292,16 +4359,16 @@
         },
         {
             "name": "psr/http-client",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "shasum": ""
             },
             "require": {
@@ -4338,9 +4405,9 @@
                 "psr-18"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-client/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-client"
             },
-            "time": "2023-04-10T20:12:12+00:00"
+            "time": "2023-09-23T14:17:50+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -8434,7 +8501,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -10940,7 +11007,7 @@
         },
         {
             "name": "xima/xima-twitter-client",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -11043,7 +11110,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -11078,7 +11145,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11112,7 +11179,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11199,7 +11266,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11234,7 +11301,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-DIS-112_Import-Cache",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
@@ -12196,16 +12263,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.27.0",
+            "version": "v3.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "e73ccaae1208f017bb7860986eebb3da48bd25d6"
+                "reference": "95c64693b2f149966a2bc05a7a4981b0343ea52f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/e73ccaae1208f017bb7860986eebb3da48bd25d6",
-                "reference": "e73ccaae1208f017bb7860986eebb3da48bd25d6",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/95c64693b2f149966a2bc05a7a4981b0343ea52f",
+                "reference": "95c64693b2f149966a2bc05a7a4981b0343ea52f",
                 "shasum": ""
             },
             "require": {
@@ -12279,7 +12346,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.27.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.30.0"
             },
             "funding": [
                 {
@@ -12287,7 +12354,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-17T14:37:54+00:00"
+            "time": "2023-09-26T22:10:43+00:00"
         },
         {
             "name": "helmich/typo3-typoscript-parser",

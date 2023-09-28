@@ -21,7 +21,7 @@ hooks:
         - exec: /var/www/html/.ddev/import-database.sh
         - exec: vendor/bin/typo3cms database:updateschema
         - exec: if [ ! -d /var/www/html/node_modules ]; then npm install && echo "Want assets? Run npm run start."; fi
-webimage_extra_packages: [poppler-utils, catdoc, php8.1-mailparse]
+webimage_extra_packages: [poppler-utils, catdoc]
 use_dns_when_possible: true
 timezone: Europe/Berlin
 composer_version: "2"
