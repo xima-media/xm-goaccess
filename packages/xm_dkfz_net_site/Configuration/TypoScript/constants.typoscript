@@ -27,6 +27,7 @@ pidLogin = 2
 pidFeUserStorage = 91
 pidNewsDetail = 142
 pidNewsStorage = 141
+pidNewstickerStorage = 479
 pidUserDetail = 159
 pidUserList = 8
 pidDisruptorStorage = 101

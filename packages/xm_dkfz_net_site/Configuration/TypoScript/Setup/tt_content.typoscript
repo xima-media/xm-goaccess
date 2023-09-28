@@ -286,7 +286,7 @@ tt_content {
         where =
         where.dataWrap = uid IN ({field:news})
         if.isTrue.field = news
-        pidInList = {$pidNewsStorage}
+        pidInList = {$pidNewsStorage},{$pidNewstickerStorage}
         as = news
         languageField = 0
         orderBy = reclist_sortby
