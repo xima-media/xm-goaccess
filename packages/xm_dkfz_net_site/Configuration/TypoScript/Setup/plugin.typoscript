@@ -124,3 +124,76 @@ plugin.tx_xmdkfznetsite_placelist {
     layoutRootPaths.0 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/bw_guild/Layouts/
   }
 }
+
+// sitemap
+plugin.tx_seo {
+  config {
+    xmlSitemap {
+      sitemaps {
+        news {
+          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+          config {
+            table = tx_news_domain_model_news
+            additionalWhere =
+            sortField = sorting
+            lastModifiedField = tstamp
+            changeFreqField = sitemap_changefreq
+            priorityField = sitemap_priority
+            pid = 141,479
+            recursive = 1
+            url {
+              pageId = 142
+              fieldToParameterMap {
+                uid = tx_news_pi1[news]
+              }
+              additionalGetParameters {
+                tx_news_pi1.controller = News
+                tx_news_pi1.action = detail
+              }
+            }
+          }
+        }
+        fe_users {
+          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+          config {
+            table = fe_users
+            lastModifiedField = tstamp
+            sortField = uid
+            pid = 91
+            recursive = 0
+            url {
+              pageId = 159
+              fieldToParameterMap {
+                uid = tx_bwguild_usershow[user]
+              }
+              additionalGetParameters {
+                tx_bwguild_usershow.controller = User
+                tx_bwguild_usershow.action = show
+              }
+            }
+          }
+        }
+        offer {
+          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+          config {
+            table = tx_bwguild_domain_model_offer
+            lastModifiedField = tstamp
+            sortField = uid
+            pid = 91
+            recursive = 0
+            url {
+              pageId = 1057
+              fieldToParameterMap {
+                uid = tx_bwguild_offershow[offer]
+              }
+              additionalGetParameters {
+                tx_bwguild_offershow.controller = Offer
+                tx_bwguild_offershow.action = show
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

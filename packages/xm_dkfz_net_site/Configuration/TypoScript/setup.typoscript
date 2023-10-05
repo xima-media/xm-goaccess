@@ -5,12 +5,11 @@
 @import 'EXT:oauth2_client/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:bw_guild/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:news/Configuration/TypoScript/setup.typoscript'
-#@import 'EXT:luxletter/Configuration/TypoScript/Basic/setup.typoscript'
-#@import 'EXT:luxletter/Configuration/TypoScript/FluidStyledMailContent/setup.typoscript'
 @import 'EXT:bw_static_template/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:ke_search/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:form/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:xima_twitter_client/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:seo/Configuration/TypoScript/XmlSitemap/setup.typoscript'
 
 // own
 @import 'EXT:xm_dkfz_net_site/Configuration/TypoScript/Setup/config.typoscript'
