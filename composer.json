@@ -66,7 +66,6 @@
 		"blueways/bw-static-template": "^2.0",
 		"tpwd/ke_search": "4.5.1",
 		"xima/xm-kesearch-remote": "*@dev",
-		"tomasnorre/crawler": "^11.0",
 		"xima/xm-manual": "*@dev",
 		"cweagans/composer-patches": "^1.7",
 		"tpwd/ke_search_premium": "*@dev",
@@ -77,7 +76,8 @@
 		"in2code/instagram": "dev-master",
 		"xima/xima-twitter-client": "*@dev",
 		"xima/xima-oauth2-extended": "^1.1",
-		"xima/xima-typo3-mailcatcher": "^1.1.0"
+		"xima/xima-typo3-mailcatcher": "^1.1.0",
+		"eliashaeussler/typo3-warming": "^0.5"
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "^3.6.0",
@@ -99,9 +99,6 @@
 		"patches": {
 			"in2code/instagram": [
 				"patches/in2code-instagram-classes-middleware-getauthenticationcode-php.patch"
-			],
-			"tomasnorre/crawler": [
-				"patches/tomasnorre-crawler-classes-service-urlservice-php.patch"
 			],
 			"tpwd/ke_search": [
 				"patches/tpwd-ke-search-classes-indexer-types-page-php.patch"

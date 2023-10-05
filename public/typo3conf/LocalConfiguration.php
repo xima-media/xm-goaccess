@@ -42,26 +42,6 @@ return [
             'sys_category' => '0',
             'tt_content' => '0',
         ],
-        'crawler' => [
-            'cleanUpOldQueueEntries' => '1',
-            'cleanUpProcessedAge' => '2',
-            'cleanUpScheduledAge' => '7',
-            'countInARun' => '100',
-            'crawlHiddenPages' => '0',
-            'enableTimeslot' => '1',
-            'frontendBasePath' => '/',
-            'makeDirectRequests' => '0',
-            'maxCompileUrls' => '10000',
-            'phpBinary' => 'php',
-            'phpPath' => '',
-            'processDebug' => '0',
-            'processLimit' => '1',
-            'processMaxRunTime' => '300',
-            'processVerbose' => '0',
-            'purgeQueueDays' => '14',
-            'sleepAfterFinish' => '10',
-            'sleepTime' => '1000',
-        ],
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
@@ -234,12 +214,15 @@ return [
             'useReverseUriLengthInPriority' => '1',
             'validHtaccessHeaders' => 'Content-Type,Content-Language,Link,X-SFC-Tags',
         ],
-        'xima_twitter_client' => [
-            'api_key' => 'Bn7ayOiifE3NBAEtFRV7lmubL',
-            'api_secret' => '',
-            'access_key' => '64132999-1zns9EPrKi0WuC1pu0jddx1qdEn1CLLfHtILfQA0F',
-            'access_secret' => '',
-            'image_storage' => '1:Twitter',
+        'warming' => [
+            'crawler' => 'EliasHaeussler\\Typo3Warming\\Crawler\\ConcurrentUserAgentCrawler',
+            'crawlerOptions' => '',
+            'enablePageTree' => '1',
+            'enableToolbar' => '1',
+            'limit' => '250',
+            'supportedDoktypes' => '1',
+            'verboseCrawler' => 'EliasHaeussler\\Typo3Warming\\Crawler\\OutputtingUserAgentCrawler',
+            'verboseCrawlerOptions' => '',
         ],
         'xima_oauth2_extended' => [
             'oauth2_client_providers' => [
@@ -257,8 +240,12 @@ return [
                 ],
             ],
         ],
-        'xima_typo3_mailcatcher' => [
-            'logPath' => '/var/log/mail.log',
+        'xima_twitter_client' => [
+            'access_key' => '64132999-1zns9EPrKi0WuC1pu0jddx1qdEn1CLLfHtILfQA0F',
+            'access_secret' => '',
+            'api_key' => 'Bn7ayOiifE3NBAEtFRV7lmubL',
+            'api_secret' => '',
+            'image_storage' => '1:Twitter',
         ],
         'xm_dkfz_net_events' => [
             'api_url_override' => '',
