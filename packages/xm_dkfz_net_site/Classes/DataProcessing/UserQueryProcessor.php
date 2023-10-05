@@ -48,11 +48,11 @@ class UserQueryProcessor implements DataProcessorInterface
                 ->execute()
                 ->fetchAllAssociative();
 
-            if ($processedData['data']['overrides2']) {
+            if (count($userResults) && $processedData['data']['overrides2']) {
                 $userResults[0]['responsibilities'] = $processedData['data']['text'];
             }
 
-            if ($processedData['data']['overrides3']) {
+            if (count($userResults) && $processedData['data']['overrides3']) {
                 $userUids = GeneralUtility::trimExplode(',', $processedData['data']['fe_users'], true);
                 $userResults[0]['representative'] = $userUids[0] ?? '';
                 $userResults[0]['representative2'] = $userUids[1] ?? '';
