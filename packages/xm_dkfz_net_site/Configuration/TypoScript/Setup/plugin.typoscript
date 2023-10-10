@@ -153,26 +153,6 @@ plugin.tx_seo {
             }
           }
         }
-        fe_users {
-          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
-          config {
-            table = fe_users
-            lastModifiedField = tstamp
-            sortField = uid
-            pid = 91
-            recursive = 0
-            url {
-              pageId = 159
-              fieldToParameterMap {
-                uid = tx_bwguild_usershow[user]
-              }
-              additionalGetParameters {
-                tx_bwguild_usershow.controller = User
-                tx_bwguild_usershow.action = show
-              }
-            }
-          }
-        }
         offer {
           provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
           config {
