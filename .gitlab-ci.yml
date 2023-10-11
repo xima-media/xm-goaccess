@@ -26,7 +26,7 @@ build-php:
 build-node:
   stage: build
   image:
-    name: node:16
+    name: node:16@sha256:c94b82f9827cab6e421b350965a9ef11b25b13ffbd1030536203d541f55dcbe2
     pull_policy: if-not-present
   cache:
     paths: []
