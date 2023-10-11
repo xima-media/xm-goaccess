@@ -1,5 +1,5 @@
 image:
-  name: composer@sha256:70b95f76894063a4499a05505283272e13bb35aa16ad34bfa5b9791deb4dbcfa
+  name: composer:2.6.5@sha256:e4b813199694949b2d9edb4873056af647fa3e45b58439f525db428282ba2c4d
   pull_policy: if-not-present
 cache:
   paths:
