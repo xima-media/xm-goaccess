@@ -81,7 +81,7 @@ create table fe_groups (
 	assistants            varchar(255) default '' not null,
 	coordinators          varchar(255) default '' not null,
 	dkfz_hash             varchar(255) default '' not null,
-	dkfz_group_identifier varchar(255) default '' not null,
+	dkfz_group_identifier varchar(255) default '' not null
 );
 
 create table be_groups (
@@ -92,7 +92,7 @@ create table be_groups (
 	assistants            varchar(255) default '' not null,
 	coordinators          varchar(255) default '' not null,
 	dkfz_hash             varchar(255) default '' not null,
-	dkfz_group_identifier varchar(255) default '' not null,
+	dkfz_group_identifier varchar(255) default '' not null
 );
 
 create table tx_xmdkfznetsite_domain_model_contact (

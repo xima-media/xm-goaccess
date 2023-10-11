@@ -73,7 +73,7 @@
 										{item.data.teaser}
 									</f:then>
 									<f:else>
-										{item.bodytext}
+										{item.data.bodytext->f:format.stripTags()->f:format.crop(maxCharacters:250)}
 									</f:else>
 								</f:if>
 							</p>
