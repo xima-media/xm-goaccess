@@ -14,4 +14,10 @@ ExtensionManagementUtility::addTCAcolumns('be_groups', [
             'type' => 'input',
         ],
     ],
+    'dkfz_group_identifier' => [
+        'label' => 'DKFZ group identifier',
+        'config' => [
+            'type' => 'input',
+        ],
+    ],
 ]);

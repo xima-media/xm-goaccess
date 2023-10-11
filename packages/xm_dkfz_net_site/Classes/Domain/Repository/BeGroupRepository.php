@@ -64,6 +64,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
 
             return [
                 $abteilung->nummer,
+                $abteilung->getUniqueIdentifier(),
                 $abteilung->bezeichnung,
                 $abteilung->managers,
                 $abteilung->secretaries,
@@ -82,6 +83,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
             $rows,
             [
                 'dkfz_number',
+                'dkfz_group_identifier',
                 'title',
                 'managers',
                 'secretaries',
@@ -93,6 +95,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 'tstamp',
             ],
             [
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
@@ -188,6 +191,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 'be_groups',
                 [
                     'dkfz_hash' => $entry->getHash(),
+                    'dkfz_group_identifier' => $entry->getUniqueIdentifier(),
                     'title' => $entry->bezeichnung,
                     'managers' => $entry->managers,
                     'secretaries' => $entry->secretaries,
@@ -199,6 +203,7 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 ],
                 ['dkfz_number' => $entry->nummer],
                 [
+                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
