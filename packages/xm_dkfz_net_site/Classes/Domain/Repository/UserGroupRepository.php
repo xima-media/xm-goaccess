@@ -48,6 +48,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         $rows = array_map(function ($abteilung) use ($pid, $currentDate) {
             return [
                 $abteilung->nummer,
+                $abteilung->getUniqueIdentifier(),
                 $abteilung->bezeichnung,
                 $pid,
                 $abteilung->getHash(),
@@ -64,6 +65,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
             $rows,
             [
                 'dkfz_number',
+                'dkfz_group_identifier',
                 'title',
                 'pid',
                 'dkfz_hash',
@@ -73,6 +75,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'tstamp',
             ],
             [
+                Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
                 Connection::PARAM_INT,
@@ -124,6 +127,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'fe_groups',
                 [
                     'dkfz_hash' => $entry->getHash(),
+                    'dkfz_group_identifier' => $entry->getUniqueIdentifier(),
                     'secretaries' => $entry->secretaries,
                     'managers' => $entry->managers,
                     'title' => $entry->bezeichnung,
@@ -133,6 +137,7 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 ],
                 ['dkfz_number' => $entry->nummer],
                 [
+                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,

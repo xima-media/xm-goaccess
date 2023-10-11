@@ -39,4 +39,9 @@ class PhoneBookAbteilung
 
         return $this->cachedHash;
     }
+
+    public function getUniqueIdentifier(): string
+    {
+        return md5($this->nummer . '_' . $this->bezeichnung);
+    }
 }

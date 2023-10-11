@@ -433,6 +433,9 @@
 			<trans-unit id="user.dkfz_id">
 				<source>DKFZ ID</source>
 			</trans-unit>
+			<trans-unit id="user.dkfz_group_identifier">
+				<source>DKFZ group identifier</source>
+			</trans-unit>
 			<trans-unit id="user.ad_account_name">
 				<source>Active Directory ID</source>
 			</trans-unit>
