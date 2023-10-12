@@ -42,9 +42,17 @@
     }
 }
 
+.users.list:not(.places) .place {
+    display: none;
+}
+
 .users.list.list--list {
     grid-template-columns: 1fr;
     gap: 0;
+
+    .place {
+        display: block;
+    }
 
     & > li {
         margin: 0;

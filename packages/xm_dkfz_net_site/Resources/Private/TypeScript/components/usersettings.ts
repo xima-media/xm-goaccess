@@ -12,6 +12,15 @@ class Usersettings {
     // click event
     switcher.forEach(link => link.addEventListener('click', this.onSwitcherClick.bind(this, link)))
 
+    // copy places result list to user result list (because of infinity scroll in list view)
+    const places = document.querySelectorAll('.list.users.places > li')
+    const userList = document.querySelector('.frame-bwguild_userlist .list.users')
+    if (places && userList) {
+      places.forEach(place => {
+        userList.append(place.cloneNode(true))
+      })
+    }
+
     // onload siwtch
     const listViewSetting = localStorage.getItem('userResultList') ?? ''
     if (listViewSetting === 'list') {
@@ -80,7 +89,7 @@ class Usersettings {
       const html = parser.parseFromString(text, 'text/html')
 
       // add items
-      const items = html.querySelectorAll('.list.users > li')
+      const items = html.querySelectorAll('.frame-bwguild_userlist .list.users > li')
       items.forEach(item => {
         document.querySelector('.list.users').append(item)
       })
