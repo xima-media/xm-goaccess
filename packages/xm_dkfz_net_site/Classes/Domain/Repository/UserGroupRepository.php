@@ -133,7 +133,6 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                 'fe_groups',
                 [
                     'dkfz_hash' => $entry->getHash(),
-                    'dkfz_group_identifier' => $entry->getUniqueIdentifier(),
                     'secretaries' => $entry->secretaries,
                     'coordinators' => $entry->coordinators,
                     'assistants' => $entry->assistants,
@@ -143,9 +142,8 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
                     'hidden' => 0,
                     'tstamp' => $currentDate,
                 ],
-                ['dkfz_number' => $entry->nummer],
+                ['dkfz_group_identifier' => $entry->getUniqueIdentifier()],
                 [
-                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
