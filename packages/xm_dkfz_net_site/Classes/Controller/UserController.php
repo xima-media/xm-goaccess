@@ -4,6 +4,7 @@ namespace Xima\XmDkfzNetSite\Controller;
 
 use Doctrine\DBAL\DBALException;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Xima\XmDkfzNetSite\Domain\Repository\PlaceRepository;
 
@@ -27,7 +28,8 @@ class UserController extends ActionController
         }
 
         // check for demand
-        $demand = array_merge($body['tx_bwguild_userlist']['demand'] ?? [], $parameter['tx_bwguild_userlist']['demand'] ?? []);
+        $demand = $body['tx_bwguild_userlist']['demand'] ?? [];
+        ArrayUtility::mergeRecursiveWithOverrule($demand, $parameter['tx_bwguild_userlist']['demand'] ?? [], true, false);
         $demand = array_filter($demand);
         if (empty($demand)) {
             return $this->htmlResponse('');
