@@ -16,7 +16,7 @@ class ImportBeGroupCommand extends AbstractImportGroupCommand
      */
     protected function getAndCreateFileMountsForGroups(): array
     {
-        $numbersToCreate = $this->compareResult->dkfzNumbersToCreate;
+        $numbersToCreate = $this->compareResult->dkfzGroupIdentifierToCreate;
         if (!count($numbersToCreate)) {
             return [];
         }

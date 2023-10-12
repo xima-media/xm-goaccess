@@ -19,19 +19,19 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 class BeGroupRepository extends Repository implements ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_id: string, uid: int, dkfz_hash: string}>
+     * @return array<int, array{dkfz_unique_identifier: string, uid: int, dkfz_hash: string}>
      * @throws DBALException
      * @throws Exception
      */
-    public function findAllGroupsWithDkfzNumber(): array
+    public function findAllGroupsWithDkfzGroupIdentifier(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_number', 'uid', 'dkfz_hash')
+        $result = $qb->select('dkfz_unique_identifier', 'uid', 'dkfz_hash')
             ->from('be_groups')
             ->where(
-                $qb->expr()->neq('dkfz_number', $qb->createNamedParameter(''))
+                $qb->expr()->neq('dkfz_unique_identifier', $qb->createNamedParameter(''))
             )
             ->execute();
 
@@ -109,22 +109,22 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
     }
 
     /**
-     * @param array<string> $dkfzNumbers
+     * @param array<string> $identifiers
      * @return int
      * @throws DBALException
      */
-    public function deleteByDkfzNumbers(array $dkfzNumbers): int
+    public function deleteByDkfzGroupIdentifiers(array $identifiers): int
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
         $idStringList = array_map(function ($id) use ($qb) {
             return $qb->createNamedParameter($id);
-        }, $dkfzNumbers);
+        }, $identifiers);
 
         return $qb->delete('be_groups')
             ->where(
-                $qb->expr()->in('dkfz_number', $idStringList)
+                $qb->expr()->in('dkfz_group_identifier', $idStringList)
             )
             ->executeStatement();
     }
@@ -191,8 +191,6 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                 'be_groups',
                 [
                     'dkfz_hash' => $entry->getHash(),
-                    'dkfz_group_identifier' => $entry->getUniqueIdentifier(),
-                    'title' => $entry->bezeichnung,
                     'managers' => $entry->managers,
                     'secretaries' => $entry->secretaries,
                     'coordinators' => $entry->coordinators,
@@ -201,10 +199,8 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
                     'hidden' => 0,
                     'tstamp' => $currentDate,
                 ],
-                ['dkfz_number' => $entry->nummer],
+                ['dkfz_group_identifier' => $entry->getUniqueIdentifier()],
                 [
-                    Connection::PARAM_STR,
-                    Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,
                     Connection::PARAM_STR,

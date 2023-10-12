@@ -16,8 +16,6 @@ class Contact extends AbstractEntity
 
     protected string $number = '';
 
-    protected ?FeGroup $feGroup = null;
-
     /**
      * @return string
      */
@@ -56,14 +54,6 @@ class Contact extends AbstractEntity
     public function getNumber(): string
     {
         return $this->number;
-    }
-
-    /**
-     * @return FeGroup|null
-     */
-    public function getFeGroup(): ?FeGroup
-    {
-        return $this->feGroup;
     }
 
     public function getCleanNumber(): string

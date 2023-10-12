@@ -53,7 +53,7 @@ abstract class AbstractImportGroupCommand extends Command
         $this->phoneBookUtility->loadJson();
 
         $apiGroups = $this->phoneBookUtility->getGroupIdentifierInJson();
-        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
+        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzGroupIdentifier();
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
         $this->phoneBookUtility->setGroupUserRelations($dbUsers);
 
@@ -66,25 +66,25 @@ abstract class AbstractImportGroupCommand extends Command
         $this->compareResult = $this->phoneBookUtility->compareDbGroupsWithJson($dbGroups);
 
         $io->listing([
-            '<success>' . count($this->compareResult->dkfzNumbersToCreate) . '</success> to create',
-            '<warning>' . count($this->compareResult->dkfzNumbersToUpdate) . '</warning> to update',
-            '<error>' . count($this->compareResult->dkfzNumbersToDelete) . '</error> to delete',
-            '' . count($this->compareResult->dkfzNumbersToSkip) . ' to skip',
+            '<success>' . count($this->compareResult->dkfzGroupIdentifierToCreate) . '</success> to create',
+            '<warning>' . count($this->compareResult->dkfzGroupIdentifiersToUpdate) . '</warning> to update',
+            '<error>' . count($this->compareResult->dkfzGroupIdentifiersToDelete) . '</error> to delete',
+            '' . count($this->compareResult->dkfzGroupIdentifiersToSkip) . ' to skip',
         ]);
 
-        if (count($this->compareResult->dkfzNumbersToCreate)) {
+        if (count($this->compareResult->dkfzGroupIdentifierToCreate)) {
             $io->write('Creating groups..');
             $fileMounts = $this->getAndCreateFileMountsForGroups();
-            $phoneBookAbteilungenToCreate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToCreate);
+            $phoneBookAbteilungenToCreate = $this->phoneBookUtility->getPhoneBookAbteilungenByIdentifiers($this->compareResult->dkfzGroupIdentifierToCreate);
             $pid = $this->phoneBookUtility->getUserStoragePid($this);
             $this->groupRepository->bulkInsertPhoneBookAbteilungen($phoneBookAbteilungenToCreate, $pid, $fileMounts);
             $io->write('<success>done</success>');
             $io->newLine();
         }
 
-        if (count($this->compareResult->dkfzNumbersToUpdate)) {
+        if (count($this->compareResult->dkfzGroupIdentifiersToUpdate)) {
             $io->write('Updating groups..');
-            $phoneBookAbteilungenToUpdate = $this->phoneBookUtility->getPhoneBookAbteilungenByNumbers($this->compareResult->dkfzNumbersToUpdate);
+            $phoneBookAbteilungenToUpdate = $this->phoneBookUtility->getPhoneBookAbteilungenByIdentifiers($this->compareResult->dkfzGroupIdentifiersToUpdate);
             foreach ($phoneBookAbteilungenToUpdate as $bookAbteilung) {
                 $this->groupRepository->updateFromPhoneBookEntry($bookAbteilung);
             }
@@ -92,9 +92,9 @@ abstract class AbstractImportGroupCommand extends Command
             $io->newLine();
         }
 
-        if (count($this->compareResult->dkfzNumbersToDelete)) {
+        if (count($this->compareResult->dkfzGroupIdentifiersToDelete)) {
             $io->write('Deleting groups..');
-            $this->groupRepository->deleteByDkfzNumbers($this->compareResult->dkfzNumbersToDelete);
+            $this->groupRepository->deleteByDkfzGroupIdentifiers($this->compareResult->dkfzGroupIdentifiersToDelete);
             $io->write('<success>done</success>');
             $io->newLine();
         }

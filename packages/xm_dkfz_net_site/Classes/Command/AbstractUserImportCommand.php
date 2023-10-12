@@ -63,7 +63,7 @@ abstract class AbstractUserImportCommand extends Command
         $this->phoneBookUtility->loadJson();
 
         $dbUsers = $this->userRepository->findAllUsersWithDkfzId();
-        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzNumber();
+        $dbGroups = $this->groupRepository->findAllGroupsWithDkfzGroupIdentifier();
         $defaultGroups = $this->getDefaultUserGroupUids();
         $this->phoneBookUtility->setUserGroupRelations($dbGroups, $defaultGroups);
 

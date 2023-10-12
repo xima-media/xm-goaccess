@@ -84,11 +84,11 @@ class PhoneBookEntry
     /**
      * @return array<int, string>
      */
-    public function getNumbersOfAbteilungen(): array
+    public function getDkfzGroupIdentifierOfAbteilungen(): array
     {
         $abteilungen = [];
         foreach ($this->abteilung as $abteilung) {
-            $abteilungen[] = $abteilung->nummer;
+            $abteilungen[] = $abteilung->getUniqueIdentifier();
         }
         return $abteilungen;
     }

@@ -54,8 +54,12 @@ class PhoneBookAbteilung
         return $this->cachedHash;
     }
 
-    public function getUniqueIdentifier(): string
+    public function getUniqueIdentifier(): ?string
     {
+        if (!$this->nummer || !$this->bezeichnung) {
+            return null;
+        }
         return md5($this->nummer . '_' . $this->bezeichnung);
     }
+
 }

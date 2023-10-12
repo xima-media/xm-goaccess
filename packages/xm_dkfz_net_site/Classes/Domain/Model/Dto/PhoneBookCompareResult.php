@@ -27,20 +27,20 @@ class PhoneBookCompareResult
     /**
      * @var string[]
      */
-    public array $dkfzNumbersToCreate = [];
+    public array $dkfzGroupIdentifierToCreate = [];
 
     /**
      * @var string[]
      */
-    public array $dkfzNumbersToUpdate = [];
+    public array $dkfzGroupIdentifiersToUpdate = [];
 
     /**
      * @var string[]
      */
-    public array $dkfzNumbersToDelete = [];
+    public array $dkfzGroupIdentifiersToDelete = [];
 
     /**
      * @var string[]
      */
-    public array $dkfzNumbersToSkip = [];
+    public array $dkfzGroupIdentifiersToSkip = [];
 }

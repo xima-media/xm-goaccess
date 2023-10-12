@@ -128,7 +128,11 @@ class PhoneBookUtility
     {
         foreach ($entries as $entry) {
             foreach ($entry->abteilung as $abteilung) {
-                $this->phoneBookAbteilungen[$abteilung->nummer] = $abteilung;
+                $identifier = $abteilung->getUniqueIdentifier();
+                if (!$identifier) {
+                    $this->logger->error('Could not set Abteilung because of missing identifier', [$abteilung]);
+                }
+                $this->phoneBookAbteilungen[$identifier] = $abteilung;
             }
         }
     }
@@ -221,29 +225,30 @@ class PhoneBookUtility
         $result = new PhoneBookCompareResult();
 
         foreach ($dbGroups as $dbGroup) {
-            $abteilung = $this->phoneBookAbteilungen[$dbGroup['dkfz_number']] ?? false;
+            $groupIdentifier = $dbGroup['dkfz_unique_identifier'];
+            $abteilung = $this->phoneBookAbteilungen[$groupIdentifier] ?? false;
 
             // delete group from database if group not found
             if (!$abteilung) {
-                $result->dkfzNumbersToDelete[] = $dbGroup['dkfz_number'];
+                $result->dkfzGroupIdentifiersToDelete[] = $groupIdentifier;
                 continue;
             }
 
             // search for group number in xml and mark for update if changed (as skipped otherwise)
             if ($dbGroup['dkfz_hash'] !== $abteilung->getHash()) {
-                $result->dkfzNumbersToUpdate[] = $dbGroup['dkfz_number'];
+                $result->dkfzGroupIdentifiersToUpdate[] = $groupIdentifier;
             } else {
-                $result->dkfzNumbersToSkip[] = $dbGroup['dkfz_number'];
+                $result->dkfzGroupIdentifiersToSkip[] = $groupIdentifier;
             }
         }
 
         // skip creation if already marked to update or to skip
-        $numbersToIgnore = array_merge($result->dkfzNumbersToUpdate, $result->dkfzNumbersToSkip);
-        foreach ($this->phoneBookAbteilungen as $number => $phoneBookAbteilung) {
-            if (in_array($number, $numbersToIgnore, true)) {
+        $identifiersToIgnore = array_merge($result->dkfzGroupIdentifiersToUpdate, $result->dkfzGroupIdentifiersToSkip);
+        foreach ($this->phoneBookAbteilungen as $identifier => $phoneBookAbteilung) {
+            if (in_array($identifier, $identifiersToIgnore, true)) {
                 continue;
             }
-            $result->dkfzNumbersToCreate[] = $number;
+            $result->dkfzGroupIdentifierToCreate[] = $identifier;
         }
 
         return $result;
@@ -274,13 +279,13 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<string> $numbers
+     * @param array<string> $identifiers
      * @return array<PhoneBookAbteilung>
      */
-    public function getPhoneBookAbteilungenByNumbers(array $numbers): array
+    public function getPhoneBookAbteilungenByIdentifiers(array $identifiers): array
     {
-        return array_filter($this->phoneBookAbteilungen, function ($number) use ($numbers) {
-            return in_array($number, $numbers);
+        return array_filter($this->phoneBookAbteilungen, function ($groupIdentifier) use ($identifiers) {
+            return in_array($groupIdentifier, $identifiers);
         }, ARRAY_FILTER_USE_KEY);
     }
 
@@ -299,30 +304,24 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<int, array{dkfz_number: string, uid: int}> $dbGroups
+     * @param array<int, array{dkfz_unique_identifier: string, uid: int, dkfz_hash: string}> $dbGroups
      * @param int[] $defaultUserGroups
      */
     public function setUserGroupRelations(array $dbGroups, array $defaultUserGroups): void
     {
-        $dbGroupUidsById = [];
+        $dbGroupUidsByGroupIdentifier = [];
         foreach ($dbGroups as $dbGroup) {
-            $dbGroupUidsById[$dbGroup['dkfz_number']] = $dbGroup['uid'];
+            $dbGroupUidsByGroupIdentifier[$dbGroup['dkfz_unique_identifier']] = $dbGroup['uid'];
         }
 
         foreach ($this->phoneBookEntries as $entry) {
             $dbGroupsOfUser = $defaultUserGroups;
-            foreach ($entry->getNumbersOfAbteilungen() as $abteilungsId) {
-                if (isset($dbGroupUidsById[$abteilungsId])) {
-                    $dbGroupsOfUser[] = $dbGroupUidsById[$abteilungsId];
+            foreach ($entry->getDkfzGroupIdentifierOfAbteilungen() as $abteilungsGroupIdentifier) {
+                if (isset($dbGroupUidsByGroupIdentifier[$abteilungsGroupIdentifier])) {
+                    $dbGroupsOfUser[] = $dbGroupUidsByGroupIdentifier[$abteilungsGroupIdentifier];
                 }
             }
             $entry->usergroup = implode(',', $dbGroupsOfUser);
-
-            foreach ($entry->rufnummern as $rufnummer) {
-                if (isset($dbGroupUidsById[$rufnummer->abteilung])) {
-                    $rufnummer->feGroup = $dbGroupUidsById[$rufnummer->abteilung];
-                }
-            }
         }
     }
 
