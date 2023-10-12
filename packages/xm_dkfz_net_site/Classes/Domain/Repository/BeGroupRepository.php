@@ -19,7 +19,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 class BeGroupRepository extends Repository implements ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_unique_identifier: string, uid: int, dkfz_hash: string}>
+     * @return array<int, array{dkfz_group_identifier: string, uid: int, dkfz_hash: string}>
      * @throws DBALException
      * @throws Exception
      */
@@ -28,10 +28,10 @@ class BeGroupRepository extends Repository implements ImportableGroupInterface
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('be_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_unique_identifier', 'uid', 'dkfz_hash')
+        $result = $qb->select('dkfz_group_identifier', 'uid', 'dkfz_hash')
             ->from('be_groups')
             ->where(
-                $qb->expr()->neq('dkfz_unique_identifier', $qb->createNamedParameter(''))
+                $qb->expr()->neq('dkfz_group_identifier', $qb->createNamedParameter(''))
             )
             ->execute();
 

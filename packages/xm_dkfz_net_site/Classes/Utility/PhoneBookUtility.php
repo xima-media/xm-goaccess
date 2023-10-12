@@ -225,7 +225,7 @@ class PhoneBookUtility
         $result = new PhoneBookCompareResult();
 
         foreach ($dbGroups as $dbGroup) {
-            $groupIdentifier = $dbGroup['dkfz_unique_identifier'];
+            $groupIdentifier = $dbGroup['dkfz_group_identifier'];
             $abteilung = $this->phoneBookAbteilungen[$groupIdentifier] ?? false;
 
             // delete group from database if group not found
@@ -304,14 +304,14 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<int, array{dkfz_unique_identifier: string, uid: int, dkfz_hash: string}> $dbGroups
+     * @param array<int, array{dkfz_group_identifier: string, uid: int, dkfz_hash: string}> $dbGroups
      * @param int[] $defaultUserGroups
      */
     public function setUserGroupRelations(array $dbGroups, array $defaultUserGroups): void
     {
         $dbGroupUidsByGroupIdentifier = [];
         foreach ($dbGroups as $dbGroup) {
-            $dbGroupUidsByGroupIdentifier[$dbGroup['dkfz_unique_identifier']] = $dbGroup['uid'];
+            $dbGroupUidsByGroupIdentifier[$dbGroup['dkfz_group_identifier']] = $dbGroup['uid'];
         }
 
         foreach ($this->phoneBookEntries as $entry) {

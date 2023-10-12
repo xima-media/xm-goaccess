@@ -7,7 +7,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 interface ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_unique_identifier: string, uid: int, dkfz_hash: string}>
+     * @return array<int, array{dkfz_group_identifier: string, uid: int, dkfz_hash: string}>
      **/
     public function findAllGroupsWithDkfzGroupIdentifier(): array;
 

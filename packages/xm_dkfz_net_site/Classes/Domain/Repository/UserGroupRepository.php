@@ -14,7 +14,7 @@ use Xima\XmDkfzNetSite\Domain\Model\Dto\PhoneBookAbteilung;
 class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupRepository implements ImportableGroupInterface
 {
     /**
-     * @return array<int, array{dkfz_unique_identifier: string, uid: int, dkfz_hash: string}>
+     * @return array<int, array{dkfz_group_identifier: string, uid: int, dkfz_hash: string}>
      * @throws DBALException
      * @throws Exception
      */
@@ -23,10 +23,10 @@ class UserGroupRepository extends \Blueways\BwGuild\Domain\Repository\UserGroupR
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
         $qb->getRestrictions()->removeAll();
 
-        $result = $qb->select('dkfz_unique_identifier', 'uid', 'dkfz_hash')
+        $result = $qb->select('dkfz_group_identifier', 'uid', 'dkfz_hash')
             ->from('fe_groups')
             ->where(
-                $qb->expr()->neq('dkfz_unique_identifier', $qb->createNamedParameter('', \PDO::PARAM_STR))
+                $qb->expr()->neq('dkfz_group_identifier', $qb->createNamedParameter('', \PDO::PARAM_STR))
             )
             ->execute();
 
