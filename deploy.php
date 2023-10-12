@@ -75,12 +75,12 @@ task('deploy:upload-dist', function () {
 task('typo3cms:cache:warmup', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
-    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup --depth=1 --mode=exec');
+    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} warming:cachewarmup -p 1,4,5,6,7,8');
 });
 task('typo3cms:cache:warmup-live', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
-    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup-live --depth=3 --mode=exec');
+    run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} warming:cachewarmup --sites=1');
 });
 before('buffer:start', 'typo3cms:cache:warmup');
 after('buffer:stop', 'typo3cms:cache:warmup-live');
@@ -106,7 +106,7 @@ task('reset:from_production_artifact', function () {
         runLocally('cd ' . $activeDir . ' && rm -f artifacts.zip');
         runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} cache:flush');
         runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} cache:warmup');
-        runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 cachewarmup-live --depth=1 --mode=exec');
+        runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 warming:cachewarmup --sites=1');
     } else {
         $verbosity = (new ConsoleUtility())->getVerbosityAsParameter();
         run('cd {{release_or_current_path}} && {{bin/php}} {{bin/deployer}} reset:from_production_artifact {{argument_host}} -o DKFZ_ACCESS_TOKEN="{{DKFZ_ACCESS_TOKEN}}" ' . $verbosity);

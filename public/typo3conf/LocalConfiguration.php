@@ -217,9 +217,9 @@ return [
         'warming' => [
             'crawler' => 'EliasHaeussler\\Typo3Warming\\Crawler\\ConcurrentUserAgentCrawler',
             'crawlerOptions' => '',
-            'enablePageTree' => '1',
-            'enableToolbar' => '1',
-            'limit' => '250',
+            'enablePageTree' => '0',
+            'enableToolbar' => '0',
+            'limit' => '0',
             'supportedDoktypes' => '1',
             'verboseCrawler' => 'EliasHaeussler\\Typo3Warming\\Crawler\\OutputtingUserAgentCrawler',
             'verboseCrawlerOptions' => '',
