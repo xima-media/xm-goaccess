@@ -8,7 +8,7 @@ require_once(__DIR__ . '/vendor/xima/xima-deployer-extended-typo3/autoload.php')
 
 set('repository', 'git@git.xima.de:typo3/dkfz/dkfz-intranet-typo3.git');
 
-function defineTestHost($branchName, $stage)
+function defineTestHost($branchName, $stage): void
 {
     host('dev-t3-debian11-01-' . strtolower($branchName))
         ->setHostname('10.19.8.4')
@@ -106,7 +106,7 @@ task('reset:from_production_artifact', function () {
         runLocally('cd ' . $activeDir . ' && rm -f artifacts.zip');
         runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} cache:flush');
         runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} cache:warmup');
-        runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} crawler:buildQueue 1 warming:cachewarmup --sites=1');
+        runLocally('cd ' . $activeDir . ' && {{local/bin/php}} {{bin/typo3cms}} warming:cachewarmup --sites=1');
     } else {
         $verbosity = (new ConsoleUtility())->getVerbosityAsParameter();
         run('cd {{release_or_current_path}} && {{bin/php}} {{bin/deployer}} reset:from_production_artifact {{argument_host}} -o DKFZ_ACCESS_TOKEN="{{DKFZ_ACCESS_TOKEN}}" ' . $verbosity);
