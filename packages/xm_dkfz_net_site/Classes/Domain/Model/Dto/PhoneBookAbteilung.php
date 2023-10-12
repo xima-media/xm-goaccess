@@ -61,5 +61,4 @@ class PhoneBookAbteilung
         }
         return md5($this->nummer . '_' . $this->bezeichnung);
     }
-
 }

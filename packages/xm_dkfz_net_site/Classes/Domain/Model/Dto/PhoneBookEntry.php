@@ -82,13 +82,16 @@ class PhoneBookEntry
     }
 
     /**
-     * @return array<int, string>
+     * @return array<int<0,max>, string>
      */
     public function getDkfzGroupIdentifierOfAbteilungen(): array
     {
         $abteilungen = [];
         foreach ($this->abteilung as $abteilung) {
-            $abteilungen[] = $abteilung->getUniqueIdentifier();
+            $identifier = $abteilung->getUniqueIdentifier();
+            if ($identifier) {
+                $abteilungen[] = $identifier;
+            }
         }
         return $abteilungen;
     }

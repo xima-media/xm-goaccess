@@ -217,7 +217,7 @@ class PhoneBookUtility
     }
 
     /**
-     * @param array<int, array{dkfz_number: string, uid: int, dkfz_hash: string}> $dbGroups
+     * @param array<int, array{dkfz_group_identifier: string, uid: int, dkfz_hash: string}> $dbGroups
      * @return PhoneBookCompareResult
      */
     public function compareDbGroupsWithJson(array $dbGroups): PhoneBookCompareResult
