@@ -12,7 +12,7 @@ class UserDemand extends \Blueways\BwGuild\Domain\Model\Dto\UserDemand
 
     public const SEARCH_FIELDS = 'first_name,last_name';
 
-    public const FEGROUP_SEARCH_FIELDS = 'title,dkfz_number';
+    public const FEGROUP_SEARCH_FIELDS = 'title,dkfz_number,dkfz_group_identifier';
 
     public function __construct(
         ?string $feature = null,

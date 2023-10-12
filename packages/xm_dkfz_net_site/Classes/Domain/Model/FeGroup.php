@@ -33,6 +33,8 @@ class FeGroup extends AbstractEntity
 
     protected string $description = '';
 
+    protected string $dkfzGroupIdentifier = '';
+
     /**
      * @var ObjectStorage<FeGroup>|null
      */
@@ -42,6 +44,11 @@ class FeGroup extends AbstractEntity
     {
         $this->setTitle($title);
         $this->subgroup = new ObjectStorage();
+    }
+
+    public function getDkfzGroupIdentifier(): string
+    {
+        return $this->dkfzGroupIdentifier;
     }
 
     public function getDkfzNumber(): string
@@ -151,11 +158,5 @@ class FeGroup extends AbstractEntity
     public function setSubgroup(?ObjectStorage $subgroup): void
     {
         $this->subgroup = $subgroup;
-    }
-
-    public function getFakeSlug(): string
-    {
-        $identifier = $this->dkfzNumber ?: $this->title;
-        return urlencode($identifier);
     }
 }

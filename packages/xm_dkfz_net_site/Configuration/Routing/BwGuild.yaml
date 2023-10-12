@@ -4,19 +4,19 @@ routeEnhancers:
     extension: BwGuild
     plugin: Userlist
     routes:
-      - routePath: '/{localized_unit}/{dkfzNumber}'
+      - routePath: '/{localized_unit}/{dkfzGroupIdentifier}'
         _controller: 'User::list'
         _arguments:
-          dkfzNumber: 'demand/feGroup'
+          dkfzGroupIdentifier: 'demand/feGroup'
       - routePath: '/{localized_room}/{room}'
         _controller: 'User::list'
         _arguments:
           room: 'demand/room'
     requirements:
-      dkfzNumber: '.+'
+      dkfzGroupIdentifier: '.+'
       room: '.+'
     defaults:
-      dkfzNumber: ''
+      dkfzGroupIdentifier: ''
       room: ''
     aspects:
       localized_unit:
