@@ -67,7 +67,6 @@ class ContactRepository extends Repository
                 'number',
                 'room',
                 'sorting',
-                'fe_group',
                 'function',
                 'primary_number',
                 'pid',
