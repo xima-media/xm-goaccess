@@ -105,7 +105,6 @@ create table tx_xmdkfznetsite_domain_model_contact (
 	foreign_table  varchar(255) default '' not null,
 
 	record_type    varchar(255) default '' not null,
-	fe_group       int(11) default '0' not null,
 	function       varchar(255) default '' not null,
 	primary_number tinyint(4) unsigned default '0' not null,
 	room           varchar(255)            not null default '',

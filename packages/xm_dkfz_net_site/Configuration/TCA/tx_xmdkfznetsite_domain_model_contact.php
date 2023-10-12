@@ -15,10 +15,10 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'record_type,number,fe_group,room,function,primary_number',
+            'showitem' => 'record_type,number,room,function,primary_number',
         ],
         2 => [
-            'showitem' => 'record_type,number,fe_group,room,function,primary_number',
+            'showitem' => 'record_type,number,room,function,primary_number',
             'columnsOverrides' => [
                 'number' => [
                     'label' => 'E-Mail',
@@ -75,19 +75,6 @@ return [
                 'type' => 'input',
                 'eval' => 'trim,required',
                 'max' => 255,
-            ],
-        ],
-        'fe_group' => [
-            'label' => 'LLL:EXT:xm_dkfz_net_site/Resources/Private/Language/locallang.xlf:contact.fe_group',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'fe_groups',
-                'items' => [
-                    ['', 0],
-                ],
-                'eval' => 'int',
-                'default' => 0,
             ],
         ],
         'primary_number' => [

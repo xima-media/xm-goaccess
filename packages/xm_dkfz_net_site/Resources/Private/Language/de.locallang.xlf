@@ -368,9 +368,6 @@
 			<trans-unit id="contact.number">
 				<target>Nummer</target>
 			</trans-unit>
-			<trans-unit id="contact.fe_group">
-				<target>Benutzergruppe</target>
-			</trans-unit>
 			<trans-unit id="contact.function">
 				<target>Funktion / Zuständigkeit</target>
 			</trans-unit>
