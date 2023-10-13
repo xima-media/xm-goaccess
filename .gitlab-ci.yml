@@ -42,9 +42,13 @@ build-node:
 
 test-php-lint:
   stage: test
-  needs: [ "build-php" ]
   script:
     - composer run ci:php:lint
+
+test-yaml-lint:
+  stage: test
+  script:
+    - composer run ci:yaml:lint
 
 test-php-cs-fixer:
   stage: test
@@ -66,12 +70,7 @@ test-xml-lint:
   before_script: [ ]
   script:
     - apk add --update --no-cache libxml2-utils
-    - find ./packages -name '*.xlf' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout
-
-test-yaml-lint:
-  stage: test
-  script:
-    - composer run ci:yaml:lint
+    - composer run ci:xml:lint
 
 .deploy-prepare:
   stage: deploy
