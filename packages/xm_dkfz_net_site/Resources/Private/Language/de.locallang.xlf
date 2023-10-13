@@ -1,887 +1,1180 @@
-<?xml version="1.2" encoding="UTF-8" ?>
-<xliff version="1.2">
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z"
 		  product-name="xm_dkfz_net_site">
-		<header>
-			<generator>XLIFF Editor</generator>
-			<authorName>Maik Schneider</authorName>
-			<authorEmail>maik.schneider@xima.de</authorEmail>
-		</header>
 		<body>
 			<trans-unit id="tt_content.header_layout.0">
+				<source/>
 				<target><![CDATA[Standard <h2>]]></target>
 			</trans-unit>
 			<trans-unit id="tt_content.header_layout.1">
+				<source/>
 				<target><![CDATA[Überschrift 1 <h1>]]></target>
 			</trans-unit>
 			<trans-unit id="tt_content.header_layout.2">
+				<source/>
 				<target><![CDATA[Überschrift 2 <h2>]]></target>
 			</trans-unit>
 			<trans-unit id="tt_content.header_layout.3">
+				<source/>
 				<target><![CDATA[Überschrift 3 <h3>]]></target>
 			</trans-unit>
 			<trans-unit id="tt_content.header_layout.4">
+				<source/>
 				<target><![CDATA[Überschrift 4 <h4>]]></target>
 			</trans-unit>
 			<trans-unit id="tt_content.header_layout.5">
+				<source/>
 				<target><![CDATA[Überschrift 5 <h5>]]></target>
 			</trans-unit>
 			<trans-unit id="tt_content.header_layout.description" space="preserve">
+				<source/>
 				<target>Aufbau der Überschriftenstruktur. Auf eine H1 folgt eine H2 und dann eine H3 etc.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.sectionIndex.description" space="preserve">
+				<source/>
 				<target>Legt fest, ob das Inhaltselement in der Ankernavigation angezeigt wird.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.frame_class.color">
+				<source/>
 				<target>Farbig</target>
 			</trans-unit>
 			<trans-unit id="tt_content.color">
+				<source/>
 				<target>Farbe</target>
 			</trans-unit>
 			<trans-unit id="tt_content.color.description">
+				<source/>
 				<target>Individuelle Farbe für dieses Inhaltselement. Standard: Farbe der Seite wird verwendet.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.color.0">
+				<source/>
 				<target>Von Seite übernehmen</target>
 			</trans-unit>
 			<trans-unit id="tt_content.color.transparent">
+				<source/>
 				<target>Keine Farbe anzeigen</target>
 			</trans-unit>
 			<trans-unit id="tt_content.layout.1">
+				<source/>
 				<target>Breit</target>
 			</trans-unit>
 			<trans-unit id="tt_content.layout.2">
+				<source/>
 				<target>Volle Breite</target>
 			</trans-unit>
 			<trans-unit id="pages.color" space="preserve">
+				<source/>
 				<target>Farbe</target>
 			</trans-unit>
 			<trans-unit id="pages.color.description" space="preserve">
+				<source/>
 				<target>Schmuckfarbe für die Inhaltselemente der Seite. Wird per Zufall ausgewählt, falls leer.</target>
 			</trans-unit>
 			<trans-unit id="pages.color.primary" space="preserve">
+				<source/>
 				<target>DKFZ Blau</target>
 			</trans-unit>
 			<trans-unit id="pages.color.blue-900" space="preserve">
+				<source/>
 				<target>Dunkelblau</target>
 			</trans-unit>
 			<trans-unit id="pages.color.cyan" space="preserve">
+				<source/>
 				<target>Cyan</target>
 			</trans-unit>
 			<trans-unit id="pages.color.green" space="preserve">
+				<source/>
 				<target>Grün</target>
 			</trans-unit>
 			<trans-unit id="pages.color.green-light" space="preserve">
+				<source/>
 				<target>Hellgrün</target>
 			</trans-unit>
 			<trans-unit id="pages.color.orange" space="preserve">
+				<source/>
 				<target>Orange</target>
 			</trans-unit>
 			<trans-unit id="pages.color.magenta" space="preserve">
+				<source/>
 				<target>Magenta</target>
 			</trans-unit>
 			<trans-unit id="pages.color.gray-500" space="preserve">
+				<source/>
 				<target>Dunkelgrau</target>
 			</trans-unit>
 			<trans-unit id="pages.media.label" space="preserve">
+				<source/>
 				<target>Teaserbild</target>
 			</trans-unit>
 			<trans-unit id="pages.media.description" space="preserve">
-				<target>Dieses Bild wird in der Einleitung der Seite und für das Inhaltselement "Teaser" verwendet.</target>
+				<source/>
+				<target>Dieses Bild wird in der Einleitung der Seite und für das Inhaltselement "Teaser" verwendet.
+				</target>
 			</trans-unit>
 			<trans-unit id="pages.sliderDuration" space="preserve">
+				<source/>
 				<target>Slider Dauer</target>
 			</trans-unit>
 			<trans-unit id="pages.sliderDuration.description" space="preserve">
+				<source/>
 				<target>Zeit in Sekunden</target>
 			</trans-unit>
 			<trans-unit id="pages.sliderReload" space="preserve">
+				<source/>
 				<target>Slider Reload</target>
 			</trans-unit>
 			<trans-unit id="pages.sliderReload.description" space="preserve">
+				<source/>
 				<target>Anzahl der kompletten Durchläufe bis ein Reload ausgeführt wird</target>
 			</trans-unit>
 			<trans-unit id="container.accordion">
+				<source/>
 				<target>Akkordeon</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.description">
+				<source/>
 				<target>Kann mehrere Content-Elemente beinhalten, die zusammengeklappt werden können</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.content">
+				<source/>
 				<target>Inhalt</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.palette">
+				<source/>
 				<target>Akkordeon-Einstellungen</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.title">
+				<source/>
 				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.title.description">
+				<source/>
 				<target>Die klickbare Überschrift, die dieses Akkordeon-Element öffnet</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.group">
+				<source/>
 				<target>Abschnitt-Überschrift</target>
 			</trans-unit>
 			<trans-unit id="container.accordion.group.description">
+				<source/>
 				<target>Eine Überschrift, die die Akkordeon-Elemente zu einer neuen Gruppe abgrenzt</target>
 			</trans-unit>
 			<trans-unit id="container.tabs">
+				<source/>
 				<target>Tabelement</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.description">
+				<source/>
 				<target>Gruppierung von Inhalten in 2-3 Registern (Tabs)</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.title1">
+				<source/>
 				<target>Titel Tab 1</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.title2">
+				<source/>
 				<target>Titel Tab 2</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.title3">
+				<source/>
 				<target>Titel Tab 3</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.tab1">
+				<source/>
 				<target>Inhalt Tab 1</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.tab2">
+				<source/>
 				<target>Inhalt Tab 2</target>
 			</trans-unit>
 			<trans-unit id="container.tabs.tab3">
+				<source/>
 				<target>Inhalt Tab 3 (optional)</target>
 			</trans-unit>
 			<trans-unit id="container.linklist.title">
+				<source/>
 				<target>Linkliste</target>
 			</trans-unit>
 			<trans-unit id="container.linklist.description">
+				<source/>
 				<target>Eine Sammlung von Hyperlinks zu externen und internen Webseiten.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.video.description" space="preserve">
+				<source/>
 				<target>Einbindung eines MP4-, Vimeo- oder YouTube-Videos.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.infobox.description" space="preserve">
+				<source/>
 				<target>Hervorhebung textueller Inhalte als Hinweise, Warnungen oder wichtige Meldungen.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.quote.description" space="preserve">
+				<source/>
 				<target>Verstärkte optische Hervorhebung eines kurzen Zitats.</target>
 			</trans-unit>
 			<trans-unit id="pages.palettes.teaser" space="preserve">
+				<source/>
 				<target>Teaser-Einstellungen</target>
 			</trans-unit>
 			<trans-unit id="tt_content_page_teaser" space="preserve">
+				<source/>
 				<target>Teaser</target>
 			</trans-unit>
 			<trans-unit id="tt_content_page_teaser.description" space="preserve">
+				<source/>
 				<target>Eine Vorschau von Seiten des DKFZ-Intranets inklusive einer Linkliste.</target>
 			</trans-unit>
 			<trans-unit id="tt_content_employeeSlider" space="preserve">
+				<source/>
 				<target>Mitarbeiter-Slider</target>
 			</trans-unit>
 			<trans-unit id="tt_content_employeeSlider.description" space="preserve">
+				<source/>
 				<target>Darstellung mehrerer Mitarbeiter, nebeneinander in einem Slider.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.employee" space="preserve">
+				<source/>
 				<target>Mitarbeiter</target>
 			</trans-unit>
 			<trans-unit id="tt_content_serviceSlider" space="preserve">
+				<source/>
 				<target>Service-Slider</target>
 			</trans-unit>
 			<trans-unit id="tt_content_serviceSlider.description" space="preserve">
+				<source/>
 				<target>Teaser-Slider zum Servicebereich und zu wichtigen Tools</target>
 			</trans-unit>
 			<trans-unit id="pages.contacts" space="preserve">
+				<source/>
 				<target>Kontaktpersonen</target>
 			</trans-unit>
 			<trans-unit id="linktext.readMore">
+				<source/>
 				<target>Mehr erfahren</target>
 			</trans-unit>
 			<trans-unit id="page.lastEdit">
+				<source/>
 				<target>zuletzt aktualisiert</target>
 			</trans-unit>
 			<trans-unit id="page.bookmark">
+				<source/>
 				<target>Seite merken</target>
 			</trans-unit>
 			<trans-unit id="page.bookmark.remove">
+				<source/>
 				<target>Bookmark entfernen</target>
 			</trans-unit>
 			<trans-unit id="link.bookmark">
+				<source/>
 				<target>Link merken</target>
 			</trans-unit>
 			<trans-unit id="link.bookmark.remove">
+				<source/>
 				<target>Bookmark entfernen</target>
 			</trans-unit>
 			<trans-unit id="user.bookmark">
+				<source/>
 				<target>Mitarbeiter merken</target>
 			</trans-unit>
 			<trans-unit id="user.bookmark.remove">
+				<source/>
 				<target>Bookmark entfernen</target>
 			</trans-unit>
 			<trans-unit id="offer.bookmark">
+				<source/>
 				<target>Anzeige merken</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.tx_bwguild_domain_model_offer" space="preserve">
+				<source/>
 				<target>Anzeigen</target>
 			</trans-unit>
 			<trans-unit id="offer.bookmark.remove">
+				<source/>
 				<target>Bookmark entfernen</target>
 			</trans-unit>
 			<trans-unit id="categories">
+				<source/>
 				<target>Kategorien</target>
 			</trans-unit>
 			<trans-unit id="anchorNav.label">
+				<source/>
 				<target>Ankernavigation</target>
 			</trans-unit>
 			<trans-unit id="link.more">
+				<source/>
 				<target>Mehr erfahren</target>
 			</trans-unit>
 			<trans-unit id="button.back">
+				<source/>
 				<target>Zurück</target>
 			</trans-unit>
 			<trans-unit id="button.next">
+				<source/>
 				<target>Nächste</target>
 			</trans-unit>
 			<trans-unit id="button.apply">
+				<source/>
 				<target>Übernehmen</target>
 			</trans-unit>
 			<trans-unit id="button.cancel">
+				<source/>
 				<target>Abbrechen</target>
 			</trans-unit>
 			<trans-unit id="container.2cols">
+				<source/>
 				<target>2 Spalter</target>
 			</trans-unit>
 			<trans-unit id="container.2cols.description">
+				<source/>
 				<target>Container, der Content-Elemente nebeneinander darstellt</target>
 			</trans-unit>
 			<trans-unit id="container.2cols.left">
+				<source/>
 				<target>Links</target>
 			</trans-unit>
 			<trans-unit id="container.2cols.right">
+				<source/>
 				<target>Rechts</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.profileEdit">
+				<source/>
 				<target>Profil bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.profilePicture">
+				<source/>
 				<target>Profilbild</target>
 			</trans-unit>
 			<trans-unit id="noProfilePicture">
+				<source/>
 				<target>Kein Profilbild</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-0-headline">
+				<source/>
 				<target>Meine Kompetenzen</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-0-placeholder">
+				<source/>
 				<target>Kompetenz hinzufügen</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-1-headline">
+				<source/>
 				<target>Fachliche Themen, die mich interessieren:</target>
 			</trans-unit>
-			<trans-unit id="userEditForm.feature-0-placeholder">
-				<target>Thema hinzufügen</target>
-			</trans-unit>
 			<trans-unit id="userEditForm.feature-2-headline">
+				<source/>
 				<target>Meine Hobbys</target>
 			</trans-unit>
-			<trans-unit id="userEditForm.feature-0-placeholder">
+			<trans-unit id="userEditForm.feature-2-placeholder">
+				<source/>
 				<target>Hobby hinzufügen</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.yourSelection">
+				<source/>
 				<target>Ihre Auswahl</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.logo.aspectRatio">
+				<source/>
 				<target>Bildformat</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.logo.aspectRatio.square">
+				<source/>
 				<target>Quadratisch</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.logo.minSize">
+				<source/>
 				<target>Mindestgröße</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.logo.encoding">
+				<source/>
 				<target>Dateiformat</target>
 			</trans-unit>
 			<trans-unit id="userEditForm.logo.delete">
+				<source/>
 				<target>Bild löschen</target>
 			</trans-unit>
 			<trans-unit id="abort">
+				<source/>
 				<target>Abbruch</target>
 			</trans-unit>
 			<trans-unit id="save">
+				<source/>
 				<target>Speichern</target>
 			</trans-unit>
 			<trans-unit id="user.gender">
+				<source/>
 				<target>Anrede</target>
 			</trans-unit>
 			<trans-unit id="user.gender.0">
+				<source/>
 				<target></target>
 			</trans-unit>
 			<trans-unit id="user.gender.1">
+				<source/>
 				<target>Herr</target>
 			</trans-unit>
 			<trans-unit id="user.gender.2">
+				<source/>
 				<target>Frau</target>
 			</trans-unit>
 			<trans-unit id="user.committee">
+				<source/>
 				<target>Gremium</target>
 			</trans-unit>
 			<trans-unit id="user.committee.member_in">
+				<source/>
 				<target>Mitglied in</target>
 			</trans-unit>
 			<trans-unit id="label.download">
+				<source/>
 				<target>Herunterladen</target>
 			</trans-unit>
 			<trans-unit id="label.addBookmark">
+				<source/>
 				<target>Zur Merkliste hinzufügen</target>
 			</trans-unit>
 			<trans-unit id="label.resume">
+				<source/>
 				<target>Abspielen</target>
 			</trans-unit>
 			<trans-unit id="label.pause">
+				<source/>
 				<target>Anhalten</target>
 			</trans-unit>
 			<trans-unit id="new">
+				<source/>
 				<target>Neu</target>
 			</trans-unit>
 			<trans-unit id="image.slider.title">
-                <target>Bilder-Slider</target>
-            </trans-unit>
-            <trans-unit id="image.slider.description">
-                 <target>Eine Galerie mit bis zu 15 Bildern in der Darstellung eines Sliders</target>
-            </trans-unit>
-            <trans-unit id="image.slider.notification">
-                 <target>Ein Bilder-Slider muss mindestens 2 Bilder enthalten. Maximal können 15 Bilder hinzugefügt werden</target>
-            </trans-unit>
+				<source/>
+				<target>Bilder-Slider</target>
+			</trans-unit>
+			<trans-unit id="image.slider.description">
+				<source/>
+				<target>Eine Galerie mit bis zu 15 Bildern in der Darstellung eines Sliders</target>
+			</trans-unit>
+			<trans-unit id="image.slider.notification">
+				<source/>
+				<target>Ein Bilder-Slider muss mindestens 2 Bilder enthalten. Maximal können 15 Bilder hinzugefügt
+					werden
+				</target>
+			</trans-unit>
 			<trans-unit id="contact">
+				<source/>
 				<target>Kontakt</target>
 			</trans-unit>
 			<trans-unit id="contact.record_type">
+				<source/>
 				<target>Typ</target>
 			</trans-unit>
 			<trans-unit id="contact.record_type.0">
+				<source/>
 				<target>Telefonnummer</target>
 			</trans-unit>
 			<trans-unit id="contact.record_type.1">
+				<source/>
 				<target>Faxnummer</target>
 			</trans-unit>
 			<trans-unit id="contact.room">
+				<source/>
 				<target>Raum</target>
 			</trans-unit>
 			<trans-unit id="contact.number">
+				<source/>
 				<target>Nummer</target>
 			</trans-unit>
 			<trans-unit id="contact.function">
+				<source/>
 				<target>Funktion / Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="contact.fe_group">
+				<source/>
 				<target>Abteilung</target>
 			</trans-unit>
 			<trans-unit id="contact.primary_number">
+				<source/>
 				<target>Ist Primärnummer</target>
 			</trans-unit>
 			<trans-unit id="user.location">
+				<source/>
 				<target>Standard</target>
 			</trans-unit>
 			<trans-unit id="user.member_since">
+				<source/>
 				<target>Im DKFZ seit</target>
 			</trans-unit>
 			<trans-unit id="user.birthday">
+				<source/>
 				<target>Geburtstag</target>
 			</trans-unit>
 			<trans-unit id="place">
+				<source/>
 				<target>Kontaktstelle</target>
 			</trans-unit>
 			<trans-unit id="place.name">
+				<source/>
 				<target>Name</target>
 			</trans-unit>
 			<trans-unit id="place.first_name">
 				<source>Vorname</source>
 			</trans-unit>
 			<trans-unit id="place.function">
+				<source/>
 				<target>Funktion</target>
 			</trans-unit>
 			<trans-unit id="place.room">
+				<source/>
 				<target>Raum</target>
 			</trans-unit>
 			<trans-unit id="place.contacts">
+				<source/>
 				<target>Kontakte</target>
 			</trans-unit>
 			<trans-unit id="user.contacts">
+				<source/>
 				<target>Kontakte</target>
 			</trans-unit>
 			<trans-unit id="place.fe_group">
+				<source/>
 				<target>Abteilung</target>
 			</trans-unit>
 			<trans-unit id="quote">
+				<source/>
 				<target>Zitat</target>
 			</trans-unit>
 			<trans-unit id="quote.author">
+				<source/>
 				<target>Autor</target>
 			</trans-unit>
 			<trans-unit id="quote.author.description">
+				<source/>
 				<target>Bitte geben Sie den Namen des Autors des Zitats ein</target>
 			</trans-unit>
 			<trans-unit id="quote.author.function">
+				<source/>
 				<target>Funktion</target>
 			</trans-unit>
 			<trans-unit id="quote.author.function.description">
-				<target>Bitte geben Sie die Berufsbezeichnung oder den akademischen Rang des Autors des Zitats an</target>
+				<source/>
+				<target>Bitte geben Sie die Berufsbezeichnung oder den akademischen Rang des Autors des Zitats an
+				</target>
 			</trans-unit>
 			<trans-unit id="quote.palette">
+				<source/>
 				<target>Informationen über den Autor</target>
 			</trans-unit>
 			<trans-unit id="disruptor">
+				<source/>
 				<target>Störer</target>
 			</trans-unit>
 			<trans-unit id="disruptor.headline">
+				<source/>
 				<target>Überschrift</target>
 			</trans-unit>
 			<trans-unit id="disruptor.headline.description">
+				<source/>
 				<target>Wichtiger Hinweis</target>
 			</trans-unit>
 			<trans-unit id="disruptor.text">
+				<source/>
 				<target>Text</target>
 			</trans-unit>
 			<trans-unit id="disruptor.starttime">
+				<source/>
 				<target>Startzeit</target>
 			</trans-unit>
 			<trans-unit id="disruptor.endtime">
+				<source/>
 				<target>Endzeit</target>
 			</trans-unit>
 			<trans-unit id="disruptor.palette.general">
+				<source/>
 				<target>Allgemein</target>
 			</trans-unit>
 			<trans-unit id="disruptor.palette.date">
+				<source/>
 				<target>Datum</target>
 			</trans-unit>
 			<trans-unit id="sys_file_reference.video_preview_image">
+				<source/>
 				<target>Vorschaubild für MP4-Videos.</target>
 			</trans-unit>
 
 			<trans-unit id="tt_content.slider.description" space="preserve">
+				<source/>
 				<target>Das ist ein Slider</target>
 			</trans-unit>
 			<trans-unit id="tt_content.orientation" space="preserve">
+				<source/>
 				<target>Ausrichtung</target>
 			</trans-unit>
 			<trans-unit id="tt_content.orientation.description" space="preserve">
+				<source/>
 				<target>Wählen Sie in welcher Proportion den Container-Element dargestellt ist.</target>
 			</trans-unit>
 
 
 			<trans-unit id="tt_content_teaser.palette.override" space="preserve">
+				<source/>
 				<target>Seiteneigenschaften überschreiben</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item" space="preserve">
+				<source/>
 				<target>Inhaltselement</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type" space="preserve">
+				<source/>
 				<target>Typ</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser-item" space="preserve">
+				<source/>
 				<target>Teaser</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser-link" space="preserve">
+				<source/>
 				<target>Externer Link</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser-item.override2" space="preserve">
+				<source/>
 				<target>Bild ausblenden</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.link" space="preserve">
+				<source/>
 				<target>Link</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.link.title" space="preserve">
+				<source/>
 				<target>Linktext</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.teaser" space="preserve">
+				<source/>
 				<target>Teaser</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.accordion-title" space="preserve">
+				<source/>
 				<target>Akkordeon-Element</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.accordion-title.description" space="preserve">
+				<source/>
 				<target>Titel des aufklappbaren Akkordeon-Elements</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.accordion-item" space="preserve">
+				<source/>
 				<target>Akkordeon</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.related-page" space="preserve">
+				<source/>
 				<target>Verwandte Seite</target>
 			</trans-unit>
 			<trans-unit id="pages.palette.related-page-override" space="preserve">
+				<source/>
 				<target>Felder überschreiben</target>
 			</trans-unit>
 			<trans-unit id="page" space="preserve">
+				<source/>
 				<target>Seite</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.title" space="preserve">
+				<source/>
 				<target>Seite</target>
 			</trans-unit>
 			<trans-unit id="pages.palette.related-page-override.title" space="preserve">
+				<source/>
 				<target>Dachzeile</target>
 			</trans-unit>
 			<trans-unit id="related-pages-headline" space="preserve">
+				<source/>
 				<target>Folgende Themen könnten Sie auch interessieren</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.text" space="preserve">
+				<source/>
 				<target>Text</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.link" space="preserve">
+				<source/>
 				<target>Link</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.link-title" space="preserve">
+				<source/>
 				<target>Alternativer Linktitel</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.link-title.description" space="preserve">
+				<source/>
 				<target>Standard: Mehr erfahren</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.image" space="preserve">
+				<source/>
 				<target>Bild</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.color" space="preserve">
+				<source/>
 				<target>Farbe</target>
 			</trans-unit>
 			<trans-unit id="tt_content_teaser.items" space="preserve">
+				<source/>
 				<target>Teaser-Kacheln</target>
 			</trans-unit>
 			<trans-unit id="tt_content_teaser.items.description" space="preserve">
+				<source/>
 				<target>Über "Neu anlegen" kann eine unbegrenzte Anzahl an Seiten-Teasern angelegt werden.</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.overrides" space="preserve">
+				<source/>
 				<target>Alternative Metadaten</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.overrides.description" space="preserve">
-				<target>Aktivieren Sie diese Option um die Teaser-Eigenschaften (Metadaten) der verlinkten Seite zu überschreiben.</target>
+				<source/>
+				<target>Aktivieren Sie diese Option um die Teaser-Eigenschaften (Metadaten) der verlinkten Seite zu
+					überschreiben.
+				</target>
 			</trans-unit>
 			<trans-unit id="sys_file.description.description" space="preserve">
+				<source/>
 				<target>Diese Beschreibung kann unterhalb des Bildes angezeigt werden.</target>
 			</trans-unit>
 			<trans-unit id="searchForm.sword.label" space="preserve">
+				<source/>
 				<target>Suchbegriff</target>
 			</trans-unit>
 			<trans-unit id="quickSearch.button.arialabel" space="preserve">
+				<source/>
 				<target>Volltextsuche öffnen</target>
 			</trans-unit>
 			<trans-unit id="quickSearch.sword.label" space="preserve">
+				<source/>
 				<target>Suche</target>
 			</trans-unit>
 			<trans-unit id="searchResults" space="preserve">
+				<source/>
 				<target>Suchergebnisse</target>
 			</trans-unit>
 			<trans-unit id="searchFilter.header" space="preserve">
+				<source/>
 				<target>Ergebnisse filtern</target>
 			</trans-unit>
 			<trans-unit id="searchFilter.reset" space="preserve">
+				<source/>
 				<target>Filter zurücksetzen</target>
 			</trans-unit>
 			<trans-unit id="tt_content_usertable.title" space="preserve">
+				<source/>
 				<target>Mitarbeiter-Tabelle</target>
 			</trans-unit>
 			<trans-unit id="tt_content_usertable.description" space="preserve">
+				<source/>
 				<target>Zeigt Kontaktdaten ausgewählter Mitarbeiter</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact" space="preserve">
+				<source/>
 				<target>Mitarbeiter</target>
 			</trans-unit>
 			<trans-unit id="user.responsibilities" space="preserve">
+				<source/>
 				<target>Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="user.representative" space="preserve">
+				<source/>
 				<target>Vertretung</target>
 			</trans-unit>
 			<trans-unit id="user.representative2" space="preserve">
+				<source/>
 				<target>Vertretung 2</target>
 			</trans-unit>
 			<trans-unit id="user.committee_responsibilities" space="preserve">
+				<source/>
 				<target>Zuständigkeit</target>
 			</trans-unit>
 			<trans-unit id="user.committee_representative" space="preserve">
+				<source/>
 				<target>Vertretung</target>
 			</trans-unit>
 			<trans-unit id="user.committee_representative2" space="preserve">
+				<source/>
 				<target>Vertretung 2</target>
 			</trans-unit>
 			<trans-unit id="user.about" space="preserve">
+				<source/>
 				<target>Über mich</target>
 			</trans-unit>
 			<trans-unit id="user.about.description" space="preserve">
+				<source/>
 				<target>Schreiben Sie etwas über sich, um sich Ihren Kollegen vorzustellen!</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override" space="preserve">
+				<source/>
 				<target>Kontaktdaten überschreiben</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override2" space="preserve">
+				<source/>
 				<target>Verantwortlichkeiten überschreiben</target>
 			</trans-unit>
 			<trans-unit id="tt_content_item.record_type.user-contact.override3" space="preserve">
+				<source/>
 				<target>Vertretungen überschreiben</target>
 			</trans-unit>
 			<trans-unit id="contactData" space="preserve">
+				<source/>
 				<target>Kontaktdaten</target>
 			</trans-unit>
 			<trans-unit id="usersearch.notfound" space="preserve">
+				<source/>
 				<target>Keine Benutzer gefunden</target>
 			</trans-unit>
 			<trans-unit id="usersearch.notfound.description" space="preserve">
+				<source/>
 				<target>Zu den gewählten Suchfiltern wurden keine Benutzer gefunden</target>
 			</trans-unit>
 			<trans-unit id="usersearch.found" space="preserve">
+				<source/>
 				<target>Es wurden %s Mitarbeiter:innen gefunden</target>
 			</trans-unit>
 			<trans-unit id="usersearch.demand.search" space="preserve">
+				<source/>
 				<target>Suche nach Name, Vorname, Telefonnummer</target>
 			</trans-unit>
 			<trans-unit id="usersearch.demand.feature" space="preserve">
+				<source/>
 				<target>Suche nach Kompetenz, Thema, Interesse</target>
 			</trans-unit>
 			<trans-unit id="usersearch.button" space="preserve">
+				<source/>
 				<target>Suchen</target>
 			</trans-unit>
 			<trans-unit id="usersearch.gridView" space="preserve">
+				<source/>
 				<target>Kachelansicht</target>
 			</trans-unit>
 			<trans-unit id="usersearch.listView" space="preserve">
+				<source/>
 				<target>Listenansicht</target>
 			</trans-unit>
 			<trans-unit id="placesearch.found" space="preserve">
+				<source/>
 				<target>Es wurden %s Kontaktstellen gefunden</target>
 			</trans-unit>
 			<trans-unit id="committee" space="preserve">
+				<source/>
 				<target>Gremium</target>
 			</trans-unit>
 			<trans-unit id="committee.palette.general" space="preserve">
+				<source/>
 				<target>Allgemein</target>
 			</trans-unit>
 			<trans-unit id="committee.name" space="preserve">
+				<source/>
 				<target>Name</target>
 			</trans-unit>
 			<trans-unit id="pages.tt_content_items" space="preserve">
+				<source/>
 				<target>Seiten für Related Content Teaser</target>
 			</trans-unit>
 			<trans-unit id="ke_search.option.sorting.Relevance" space="preserve">
+				<source/>
 				<target>Relevanz</target>
 			</trans-unit>
 			<trans-unit id="ke_search.option.sorting.Date" space="preserve">
+				<source/>
 				<target>Datum</target>
 			</trans-unit>
 			<trans-unit id="lightbox.close.title" space="preserve">
+				<source/>
 				<target>Schließen</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.headline" space="preserve">
+				<source/>
 				<target>Merkliste</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.empty" space="preserve">
+				<source/>
 				<target>Ihre Merkliste ist leer</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.users" space="preserve">
+				<source/>
 				<target>Mitarbeiter:innen</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.pages" space="preserve">
+				<source/>
 				<target>Seiten</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.sys_file" space="preserve">
+				<source/>
 				<target>Dokumente</target>
 			</trans-unit>
 			<trans-unit id="bookmarks.news" space="preserve">
+				<source/>
 				<target>News</target>
 			</trans-unit>
 			<trans-unit id="tt_content.newsletter-news.title" space="preserve">
+				<source/>
 				<target>Newsbeiträge</target>
 			</trans-unit>
 			<trans-unit id="tt_content.newsletter-news.description" space="preserve">
+				<source/>
 				<target>Ausgewählte Liste an Newsbeiträgen</target>
 			</trans-unit>
 			<trans-unit id="group.secretaries" space="preserve">
+				<source/>
 				<target>Sekretariat</target>
 			</trans-unit>
 			<trans-unit id="group.managers" space="preserve">
+				<source/>
 				<target>Leitung</target>
 			</trans-unit>
 			<trans-unit id="group.assistants" space="preserve">
+				<source/>
 				<target>Assistenz</target>
 			</trans-unit>
 			<trans-unit id="group.coordinators" space="preserve">
+				<source/>
 				<target>Koordination</target>
 			</trans-unit>
 			<trans-unit id="page.login" space="preserve">
+				<source/>
 				<target>Anmelden</target>
 			</trans-unit>
 			<trans-unit id="page.logout" space="preserve">
+				<source/>
 				<target>Abmelden</target>
 			</trans-unit>
 			<trans-unit id="page.profileEdit" space="preserve">
+				<source/>
 				<target>Profil bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="page.profileMy" space="preserve">
+				<source/>
 				<target>Mein Profil</target>
 			</trans-unit>
 			<trans-unit id="page.bookmarkMenu" space="preserve">
+				<source/>
 				<target>Merkliste aufrufen</target>
 			</trans-unit>
 			<trans-unit id="page.feedbackMenu" space="preserve">
+				<source/>
 				<target>Feedback geben</target>
 			</trans-unit>
 			<trans-unit id="page.emergency" space="preserve">
+				<source/>
 				<target>Notfall</target>
 			</trans-unit>
 			<trans-unit id="login.headline" space="preserve">
+				<source/>
 				<target>Willkommen beim DKFZ Intranet</target>
 			</trans-unit>
 			<trans-unit id="login.text" space="preserve">
+				<source/>
 				<target>Bitte melden Sie sich an, um alle Funktionen im Intranet nutzen zu können.</target>
 			</trans-unit>
 			<trans-unit id="login.button" space="preserve">
+				<source/>
 				<target>Anmelden</target>
 			</trans-unit>
 			<trans-unit id="homepage.usersearch" space="preserve">
+				<source/>
 				<target>Mitarbeiter:innen suchen</target>
 			</trans-unit>
 			<trans-unit id="twitter.headline" space="preserve">
+				<source/>
 				<target>DKFZ auf Twitter</target>
 			</trans-unit>
 			<trans-unit id="instagram.headline" space="preserve">
+				<source/>
 				<target>DKFZ auf Instagram</target>
 			</trans-unit>
 			<trans-unit id="news.allCategories" space="preserve">
+				<source/>
 				<target>Alle Kategorien</target>
 			</trans-unit>
 			<trans-unit id="welcome.headline" space="preserve">
+				<source/>
 				<target>Guten Tag</target>
 			</trans-unit>
 			<trans-unit id="welcome.text" space="preserve">
+				<source/>
 				<target>Herzlich Willkommen im Intranet</target>
 			</trans-unit>
 			<trans-unit id="welcome.profile.headline" space="preserve">
+				<source/>
 				<target>Ihr Mitarbeiterprofil</target>
 			</trans-unit>
 			<trans-unit id="welcome.profile.text" space="preserve">
-				<target>Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr Profil, um besser gefunden zu werden.</target>
+				<source/>
+				<target>Nutzen Sie die Gelegenheit, sich Ihren Kollegen vorzustellen und vervollständigen Sie Ihr
+					Profil, um besser gefunden zu werden.
+				</target>
 			</trans-unit>
 			<trans-unit id="welcome.profile.link" space="preserve">
+				<source/>
 				<target>Jetzt Profil bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="marketplace.type" space="preserve">
+				<source/>
 				<target>Anzeigeformat</target>
 			</trans-unit>
 			<trans-unit id="marketplace.type.placeholder" space="preserve">
+				<source/>
 				<target>Bitte auswählen</target>
 			</trans-unit>
-				<trans-unit id="marketplace.type.4" space="preserve">
+			<trans-unit id="marketplace.type.4" space="preserve">
+				<source/>
 				<target>Biete</target>
 			</trans-unit>
 			<trans-unit id="marketplace.type.5" space="preserve">
+				<source/>
 				<target>Suche</target>
 			</trans-unit>
 			<trans-unit id="marketplace.type.6" space="preserve">
+				<source/>
 				<target>Verschenke</target>
 			</trans-unit>
 			<trans-unit id="marketplace.title" space="preserve">
+				<source/>
 				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="marketplace.title.placeholder" space="preserve">
+				<source/>
 				<target>Biete/Suche/Verschenke..</target>
 			</trans-unit>
 			<trans-unit id="marketplace.category" space="preserve">
+				<source/>
 				<target>Rubrik</target>
 			</trans-unit>
 			<trans-unit id="marketplace.category.placeholder" space="preserve">
+				<source/>
 				<target>Bitte auswählen</target>
 			</trans-unit>
 			<trans-unit id="marketplace.description" space="preserve">
+				<source/>
 				<target>Beschreibung</target>
 			</trans-unit>
 			<trans-unit id="marketplace.price" space="preserve">
+				<source/>
 				<target>Preis</target>
 			</trans-unit>
 			<trans-unit id="marketplace.images" space="preserve">
+				<source/>
 				<target>Bilder</target>
 			</trans-unit>
 			<trans-unit id="marketplace.contact.headline" space="preserve">
+				<source/>
 				<target>Kontaktinformationen</target>
 			</trans-unit>
 			<trans-unit id="marketplace.contact.phone" space="preserve">
+				<source/>
 				<target>Telefon</target>
 			</trans-unit>
 			<trans-unit id="marketplace.contact.email" space="preserve">
+				<source/>
 				<target>E-Mail</target>
 			</trans-unit>
 			<trans-unit id="marketplace.legal" space="preserve">
+				<source/>
 				<target></target>
 			</trans-unit>
 			<trans-unit id="marketplace.button.new" space="preserve">
+				<source/>
 				<target>Neue Anzeige</target>
 			</trans-unit>
 			<trans-unit id="marketplace.button.delete" space="preserve">
+				<source/>
 				<target>Anzeige löschen</target>
 			</trans-unit>
 			<trans-unit id="marketplace.button.delete.text" space="preserve">
+				<source/>
 				<target>Sind Sie sich sicher, dass Sie die Anzeige löschen möchten?</target>
 			</trans-unit>
 			<trans-unit id="marketplace.button.edit" space="preserve">
+				<source/>
 				<target>Bearbeite Anzeige</target>
 			</trans-unit>
 			<trans-unit id="marketplace.status.waiting" space="preserve">
+				<source/>
 				<target>Wartet auf Freigabe</target>
 			</trans-unit>
 			<trans-unit id="marketplace.headline.new" space="preserve">
+				<source/>
 				<target>Neue Anzeige</target>
 			</trans-unit>
 			<trans-unit id="marketplace.headline.edit" space="preserve">
+				<source/>
 				<target>Anzeige bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.all" space="preserve">
+				<source/>
 				<target>Alle Anzeigen</target>
 			</trans-unit>
 			<trans-unit id="marketplace.edit.warning.headline" space="preserve">
+				<source/>
 				<target>Achtung</target>
 			</trans-unit>
 			<trans-unit id="marketplace.edit.warning.text" space="preserve">
-				<target>Wenn Sie die Anzeige bearbeiten, ist es nicht mehr öffentlich und muss erneut von einem Administrator freigegeben werden.</target>
+				<source/>
+				<target>Wenn Sie die Anzeige bearbeiten, ist es nicht mehr öffentlich und muss erneut von einem
+					Administrator freigegeben werden.
+				</target>
 			</trans-unit>
 			<trans-unit id="marketplace.navigation.my" space="preserve">
+				<source/>
 				<target>Meine Anzeigen</target>
 			</trans-unit>
 			<trans-unit id="image.editor.headline" space="preserve">
+				<source/>
 				<target>Bild bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="marketplace.agb" space="preserve">
+				<source/>
 				<target>Nutzungsbedingungen</target>
 			</trans-unit>
 			<trans-unit id="marketplace.agb.link" space="preserve">
-				<target><![CDATA[Mit Veröffentlichung dieser Anzeige bestätigen Sie, dass Sie unsere <a href="#" data-agb="%s" data-agb-text="%s">Nutzungsbedingungen</a> gelesen und verstanden haben.]]></target>
+				<source/>
+				<target>
+					<![CDATA[Mit Veröffentlichung dieser Anzeige bestätigen Sie, dass Sie unsere <a href="#" data-agb="%s" data-agb-text="%s">Nutzungsbedingungen</a> gelesen und verstanden haben.]]></target>
 			</trans-unit>
 			<trans-unit id="marketplace.agb.text" space="preserve">
-				<target><![CDATA[<p>Ihre Anzeige wird nach Prüfung durch die Intranetredaktion in Ihrem Namen für die Dauer von 14 Tagen veröffentlicht. Sie sind als Autor:in für den Inhalt verantwortlich. Sie können Ihre Anzeige jederzeit editieren oder vor Ablauf der 14 Tage selbst löschen.</p><p>Bitte formulieren Sie die Überschrift und Ihre Anzeige kurz und treffend und wählen Sie die passende Rubrik aus. Sie können zudem ein oder mehrere aussagekräftige Bilder einstellen und ggf. externe Kontaktdaten angeben.</p><p>Das Schwarze Brett dient ausschließlich als Plattform für private Kleinanzeigen von DKFZ-Mitarbeitenden. Gewerbliche, politische oder religiöse Inhalte werden nicht freigeschaltet, ebenso Anzeigen, deren Text oder Bilder gegen gesetzliche Bestimmungen, Rechte Dritter oder gegen die guten Sitten verstoßen.</p>]]></target>
+				<source/>
+				<target>
+					<![CDATA[<p>Ihre Anzeige wird nach Prüfung durch die Intranetredaktion in Ihrem Namen für die Dauer von 14 Tagen veröffentlicht. Sie sind als Autor:in für den Inhalt verantwortlich. Sie können Ihre Anzeige jederzeit editieren oder vor Ablauf der 14 Tage selbst löschen.</p><p>Bitte formulieren Sie die Überschrift und Ihre Anzeige kurz und treffend und wählen Sie die passende Rubrik aus. Sie können zudem ein oder mehrere aussagekräftige Bilder einstellen und ggf. externe Kontaktdaten angeben.</p><p>Das Schwarze Brett dient ausschließlich als Plattform für private Kleinanzeigen von DKFZ-Mitarbeitenden. Gewerbliche, politische oder religiöse Inhalte werden nicht freigeschaltet, ebenso Anzeigen, deren Text oder Bilder gegen gesetzliche Bestimmungen, Rechte Dritter oder gegen die guten Sitten verstoßen.</p>]]></target>
 			</trans-unit>
 			<trans-unit id="marketplace.expires" space="preserve">
+				<source/>
 				<target>Läuft in %s Tagen ab</target>
 			</trans-unit>
 			<trans-unit id="notice.warning.userdata" space="preserve">
+				<source/>
 				<target>Benutzerdaten konnten nicht geladen werden</target>
 			</trans-unit>
 			<trans-unit id="notice.error.bookmarkSave" space="preserve">
+				<source/>
 				<target>Fehler beim Speichern des Lesezeichens</target>
 			</trans-unit>
 			<trans-unit id="notice.error.offerFormLoad" space="preserve">
+				<source/>
 				<target>Formular konnte nicht geladen werden, bitte versuchen Sie es später erneut</target>
 			</trans-unit>
 			<trans-unit id="notice.success.offerDeleted" space="preserve">
+				<source/>
 				<target>Anzeige gelöscht</target>
 			</trans-unit>
 			<trans-unit id="notice.error.offerDeleted" space="preserve">
+				<source/>
 				<target>Anzeige konnte nicht gelöscht werden, bitte versuchen Sie es später erneut</target>
 			</trans-unit>
 			<trans-unit id="notice.save.success" space="preserve">
+				<source/>
 				<target>Speichern erfolgreich</target>
 			</trans-unit>
 			<trans-unit id="notice.save.error" space="preserve">
+				<source/>
 				<target>Fehler beim Speichern, bitte versuchen Sie später erneut</target>
 			</trans-unit>
 			<trans-unit id="marketplace.filter" space="preserve">
+				<source/>
 				<target>Anzeige filtern</target>
 			</trans-unit>
 			<trans-unit id="marketplace.filter.categories" space="preserve">
+				<source/>
 				<target>Rubrik</target>
 			</trans-unit>
 			<trans-unit id="marketplace.filter.all" space="preserve">
+				<source/>
 				<target>Alle Rubriken</target>
 			</trans-unit>
 		</body>

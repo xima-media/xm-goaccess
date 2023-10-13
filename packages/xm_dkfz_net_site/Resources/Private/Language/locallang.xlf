@@ -1,11 +1,6 @@
-<?xml version="1.2" encoding="UTF-8" ?>
-<xliff version="1.2">
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z" product-name="xm_dkfz_net_site">
-		<header>
-			<generator>XLIFF Editor</generator>
-			<authorName>Maik Schneider</authorName>
-			<authorEmail>maik.schneider@xima.de</authorEmail>
-		</header>
 		<body>
 			<trans-unit id="tt_content.header_layout.0">
 				<source><![CDATA[Default <h2>]]></source>
@@ -358,13 +353,13 @@
 			<trans-unit id="userEditForm.feature-1-headline">
 				<source>Technical topics I am interested in</source>
 			</trans-unit>
-			<trans-unit id="userEditForm.feature-0-placeholder">
+			<trans-unit id="userEditForm.feature-1-placeholder">
 				<source>Add topic</source>
 			</trans-unit>
 			<trans-unit id="userEditForm.feature-2-headline">
 				<source>Hobbys</source>
 			</trans-unit>
-			<trans-unit id="userEditForm.feature-0-placeholder">
+			<trans-unit id="userEditForm.feature-2-placeholder">
 				<source>Add hobby</source>
 			</trans-unit>
 			<trans-unit id="userEditForm.yourSelection">
@@ -435,9 +430,6 @@
 			</trans-unit>
 			<trans-unit id="user.dkfz_group_identifier">
 				<source>DKFZ group identifier</source>
-			</trans-unit>
-			<trans-unit id="user.ad_account_name">
-				<source>Active Directory ID</source>
 			</trans-unit>
 			<trans-unit id="user.ad_account_name">
 				<source>Active Directory ID</source>
@@ -575,6 +567,7 @@
 				<source>Open fulltext search</source>
 			</trans-unit>
 			<trans-unit id="quickSearch.sword.label" space="preserve">
+				<source />
 				<target>Search</target>
 			</trans-unit>
 			<trans-unit id="searchResults" space="preserve">
