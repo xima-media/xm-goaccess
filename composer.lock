@@ -245,7 +245,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -8553,7 +8553,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -11059,7 +11059,7 @@
         },
         {
             "name": "xima/xima-twitter-client",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -11162,7 +11162,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -11197,7 +11197,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11231,7 +11231,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11318,7 +11318,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11353,7 +11353,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-DIS-111_Erweiterung-Schnittstelle",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
@@ -12315,16 +12315,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.34.1",
+            "version": "v3.35.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "98bf1b1068b4ceddbbc2a2b70b67a5e380add9e3"
+                "reference": "ec1ccc264994b6764882669973ca435cf05bab08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/98bf1b1068b4ceddbbc2a2b70b67a5e380add9e3",
-                "reference": "98bf1b1068b4ceddbbc2a2b70b67a5e380add9e3",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/ec1ccc264994b6764882669973ca435cf05bab08",
+                "reference": "ec1ccc264994b6764882669973ca435cf05bab08",
                 "shasum": ""
             },
             "require": {
@@ -12357,8 +12357,6 @@
                 "phpspec/prophecy": "^1.16",
                 "phpspec/prophecy-phpunit": "^2.0",
                 "phpunit/phpunit": "^9.5",
-                "phpunitgoodpractices/polyfill": "^1.6",
-                "phpunitgoodpractices/traits": "^1.9.2",
                 "symfony/phpunit-bridge": "^6.2.3",
                 "symfony/yaml": "^5.4 || ^6.0"
             },
@@ -12398,7 +12396,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.34.1"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.35.1"
             },
             "funding": [
                 {
@@ -12406,7 +12404,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-03T23:51:05+00:00"
+            "time": "2023-10-12T13:47:26+00:00"
         },
         {
             "name": "helmich/typo3-typoscript-parser",
