@@ -140,6 +140,8 @@
 		"php:stan": "php vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
 		"ci:php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*' -print0 | xargs -0 -n 1 -P 4 php -l",
 		"ci:php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots",
-		"ci:php:stan": "php vendor/bin/phpstan --no-progress"
+		"ci:php:stan": "php vendor/bin/phpstan --no-progress",
+		"ci:xml:lint": "find ./packages -name '*.xlf' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout",
+		"ci:yaml:lint": "find ./packages ! -path '*node_modules/*' -regextype egrep -regex '.*.ya?ml$' | xargs -r yaml-lint"
 	}
 }
