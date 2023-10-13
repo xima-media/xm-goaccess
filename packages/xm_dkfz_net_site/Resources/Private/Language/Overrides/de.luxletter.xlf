@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-06-16T12:00:00Z" product-name="luxletter">
 		<header/>
 		<body>
 			<trans-unit id="module.newsletter.new.field.origin.description">
+				<source />
 				<target state="translated">Bitte füge die Page ID einer beliebigen TYPO3 Seite als Newsletter-Quelle hinzu.</target>
 			</trans-unit>
 		</body>

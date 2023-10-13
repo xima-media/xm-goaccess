@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.0">
+<xliff version="1.0" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-17T12:43:45Z" product-name="xm_dkfz_net_jobs">
-		<header>
-			<generator>XLIFF Editor</generator>
-			<authorName>Maik Schneider</authorName>
-			<authorEmail>maik.schneider@xima.de</authorEmail>
-		</header>
 		<body>
 			<trans-unit id="latestJobs.title">
 				<source>Latest Jobs</source>

@@ -45,6 +45,11 @@ test-php-lint:
   script:
     - composer run ci:php:lint
 
+test-yaml-lint:
+  stage: test
+  script:
+    - composer run ci:yaml:lint
+
 test-php-cs-fixer:
   stage: test
   needs: [ "build-php" ]
@@ -56,6 +61,16 @@ test-php-stan:
   needs: [ "build-php" ]
   script:
     - composer run ci:php:stan
+
+test-xml-lint:
+  stage: test
+  needs: [ "build-php" ]
+  cache:
+    paths: [ ]
+  before_script: [ ]
+  script:
+    - apk add --update --no-cache libxml2-utils
+    - composer run ci:xml:lint
 
 .deploy-prepare:
   stage: deploy

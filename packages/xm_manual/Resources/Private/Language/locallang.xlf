@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="en" datatype="plaintext" original="messages" date="2022-06-23T11:36:30Z">
-		<header>
-			<authorName>Maik Schneider</authorName>
-			<authorEmail>mas@xima.de</authorEmail>
-		</header>
 		<body>
 			<trans-unit id="manual_page_type">
 				<source>Manual page</source>
@@ -26,9 +22,6 @@
 			</trans-unit>
 			<trans-unit id="focus_point.marking">
 				<source>Marking</source>
-			</trans-unit>
-			<trans-unit id="focus_point.default">
-				<source>Default</source>
 			</trans-unit>
 			<trans-unit id="focus_point.default">
 				<source>Default</source>
