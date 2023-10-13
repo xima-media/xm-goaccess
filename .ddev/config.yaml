@@ -17,11 +17,8 @@ hooks:
     post-start:
         - exec: if [ ! -d /var/www/html/vendor ]; then composer install; fi
         - exec: vendor/bin/typo3cms database:updateschema
-        - exec: chmod +x /var/www/html/.ddev/import-database.sh
-        - exec: /var/www/html/.ddev/import-database.sh
-        - exec: vendor/bin/typo3cms database:updateschema
         - exec: if [ ! -d /var/www/html/node_modules ]; then npm install && echo "Want assets? Run npm run start."; fi
-webimage_extra_packages: [poppler-utils, catdoc]
+webimage_extra_packages: [poppler-utils, catdoc, libxml2-utils]
 use_dns_when_possible: true
 timezone: Europe/Berlin
 composer_version: "2"
