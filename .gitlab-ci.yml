@@ -42,6 +42,7 @@ build-node:
 
 test-php-lint:
   stage: test
+  needs: [ "build-php" ]
   script:
     - composer run ci:php:lint
 
@@ -56,6 +57,21 @@ test-php-stan:
   needs: [ "build-php" ]
   script:
     - composer run ci:php:stan
+
+test-xml-lint:
+  stage: test
+  needs: [ "build-php" ]
+  cache:
+    paths: [ ]
+  before_script: [ ]
+  script:
+    - apk add --update --no-cache libxml2-utils
+    - find ./packages -name '*.xlf' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout
+
+test-yaml-lint:
+  stage: test
+  script:
+    - composer run ci:yaml:lint
 
 .deploy-prepare:
   stage: deploy
@@ -75,7 +91,7 @@ test-php-stan:
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
-  needs: [ "build-php", "build-node" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "test-xml-lint", "test-yaml-lint" ]
   stage: deploy
   environment:
     name: DKFZ Stage
@@ -90,7 +106,7 @@ deploy-dkfz-staging:
 
 deploy-dkfz-production:
   extends: .deploy-prepare
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "test-xml-lint", "test-yaml-lint" ]
   stage: deploy
   when: manual
   environment:
@@ -200,7 +216,7 @@ deploy-xima-staging:
     on_stop: teardown-environment
   stage: deploy
   extends: .deploy-prepare
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "test-xml-lint", "test-yaml-lint", "provision-environment" ]
   only:
     refs:
       - "master"
