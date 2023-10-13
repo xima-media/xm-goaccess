@@ -88,7 +88,8 @@
 		"codeception/module-asserts": "^3.0",
 		"codeception/module-webdriver": "^3.1",
 		"symplify/vendor-patches": "^11.0",
-		"ssch/typo3-rector": "dev-main"
+		"ssch/typo3-rector": "dev-main",
+		"symfony/translation": "^6.3"
 	},
 	"autoload-dev": {
 		"psr-4": {
