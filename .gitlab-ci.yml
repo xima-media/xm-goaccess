@@ -14,39 +14,23 @@ stages:
   - deploy
   - sync
 
-build-php:
-  stage: build
-  script:
-    - composer install --ignore-platform-reqs --optimize-autoloader --no-ansi --no-interaction --no-progress
-  artifacts:
-    paths:
-      - vendor/
-    expire_in: 1 day
-
-build-node:
-  stage: build
-  image:
-    name: node:16
-    pull_policy: if-not-present
-  cache:
-    paths: []
-  before_script: [ ]
-  script:
-    - npm ci --unsafe-perm
-    - npm run build
-  artifacts:
-    paths:
-      - packages/xm_dkfz_net_site/Resources/Public/Css/dist
-      - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
-    expire_in: 1 day
-
 include:
   - project: 'typo3/intern/devops/gitlab-templates'
     file:
+      - build-php.yml
+      - build-node.yml
       - test-php-lint.yml
       - test-php-cs-fixer.yml
       - test-php-stan.yml
       - test-xml-lint.yml
+
+build-node:
+  image:
+    name: node:16
+  artifacts:
+    paths:
+      - packages/xm_dkfz_net_site/Resources/Public/Css/dist
+      - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
 
 .deploy-prepare:
   stage: deploy
