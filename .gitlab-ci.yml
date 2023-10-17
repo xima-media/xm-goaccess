@@ -26,15 +26,13 @@ stages:
   - sync
 
 include:
-  - project: 'typo3/intern/devops/gitlab-templates'
-    file:
-      - build-php.yml
-      - build-node.yml
-      - test-php-lint.yml
-      - test-php-cs-fixer.yml
-      - test-php-stan.yml
-      - test-xml-lint.yml
-      - .deploy-prepare.yml
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/build-php.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/build-node.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-php-lint.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-php-cs-fixer.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-php-stan.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-xml-lint.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/.deploy-prepare.yml'
   - project: 'typo3/intern/devops/sys-t3-ansible-management'
     file:
       - 'gitlab-templates/manage-environment.yml'
