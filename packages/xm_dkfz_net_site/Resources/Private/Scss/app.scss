@@ -1,3 +1,6 @@
+// Disable darkmode to prevent build-error: https://github.com/twbs/bootstrap/issues/38683#issuecomment-1623102632
+$enable-dark-mode: false;
+
 @use "sass:math";
 @import "bootstrap/scss/mixins/banner";
 
