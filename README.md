@@ -117,6 +117,7 @@ The pipelines are configured to run tests before deploying to master and product
 * phpstan
 * phpfixer
 * phplint
+* xmllint
 * Codeception (currently disabled in pipeline)
 
 To run the tests locally, run `ddev composer run php:stan` and `ddev composer run php:fixer`.
