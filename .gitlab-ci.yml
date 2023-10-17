@@ -60,7 +60,7 @@ build-node:
       - packages/xm_dkfz_net_site/Resources/Public/Css/dist
       - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
 
-deploy-xima-staging:
+deploy-xima-testing:
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
 
 deploy-dkfz-staging:
