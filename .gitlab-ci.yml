@@ -40,37 +40,13 @@ build-node:
       - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
     expire_in: 1 day
 
-test-php-lint:
-  stage: test
-  script:
-    - composer run ci:php:lint
-
-test-yaml-lint:
-  stage: test
-  script:
-    - composer run ci:yaml:lint
-
-test-php-cs-fixer:
-  stage: test
-  needs: [ "build-php" ]
-  script:
-    - composer run ci:php:fixer
-
-test-php-stan:
-  stage: test
-  needs: [ "build-php" ]
-  script:
-    - composer run ci:php:stan
-
-test-xml-lint:
-  stage: test
-  needs: [ "build-php" ]
-  cache:
-    paths: [ ]
-  before_script: [ ]
-  script:
-    - apk add --update --no-cache libxml2-utils
-    - composer run ci:xml:lint
+include:
+  - project: 'typo3/intern/devops/gitlab-templates'
+    file:
+      - test-php-lint.yml
+      - test-php-cs-fixer.yml
+      - test-php-stan.yml
+      - test-xml-lint.yml
 
 .deploy-prepare:
   stage: deploy
