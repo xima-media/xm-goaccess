@@ -61,11 +61,11 @@ build-node:
       - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
 
 deploy-xima-testing:
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "test-xml-lint", "provision-environment" ]
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
-  needs: [ "build-php", "build-node" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-xml-lint", "test-php-stan" ]
   stage: deploy
   environment:
     name: DKFZ Stage
@@ -80,7 +80,7 @@ deploy-dkfz-staging:
 
 deploy-dkfz-production:
   extends: .deploy-prepare
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan" ]
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-xml-lint", "test-php-stan" ]
   stage: deploy
   when: manual
   environment:
