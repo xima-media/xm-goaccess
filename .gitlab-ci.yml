@@ -87,9 +87,8 @@ reset-staging-dkfz:
   extends: .deploy-prepare
   needs: [ "build-php", "backup-production-dkfz" ]
   stage: sync
-  only:
-    variables:
-      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  rules:
+    - if: $GITLAB_LOCATION == 'DKFZ-INTERN'
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging-dkfz --no-interaction
   when: manual
@@ -97,9 +96,8 @@ reset-staging-dkfz:
 backup-production-dkfz:
   extends: .deploy-prepare
   stage: sync
-  only:
-    variables:
-      - $GITLAB_LOCATION == "DKFZ-INTERN"
+  rules:
+    - if: $GITLAB_LOCATION == 'DKFZ-INTERN'
   script:
     - vendor/bin/dep db:export production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
     - vendor/bin/dep db:process production-dkfz --options=dumpcode:BackupProductionDkfz --no-interaction -vvv
@@ -113,12 +111,16 @@ backup-production-dkfz:
       - public/uploads
     expire_in: 1 day
 
-reset:xima-staging:
+reset:xima-testing:
   extends: .deploy-prepare
   stage: sync
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
   when: manual
+  rules:
+      - if: $GITLAB_LOCATION != 'XIMA-INTERN'
+        when: never
+      - if: $CI_COMMIT_BRANCH == "master"
+      - if: $CI_COMMIT_BRANCH == "development"
+      - if: $CI_COMMIT_BRANCH =~ /^DKFZ-.*$/
+      - if: $CI_COMMIT_BRANCH =~ /^DIS-.*$/
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01-${BRANCH_ID,,} --no-interaction
