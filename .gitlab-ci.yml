@@ -37,7 +37,8 @@ include:
     file:
       - 'gitlab-templates/manage-environment.yml'
     rules:
-      - if: $GITLAB_LOCATION == 'XIMA-INTERN'
+      - if: $GITLAB_LOCATION != 'XIMA-INTERN'
+        when: never
       - if: $CI_COMMIT_BRANCH == "master"
       - if: $CI_COMMIT_BRANCH == "development"
       - if: $CI_COMMIT_BRANCH =~ /^DKFZ-.*$/
