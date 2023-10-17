@@ -1,11 +1,29 @@
-image:
-  name: composer:2.6.5@sha256:e4b813199694949b2d9edb4873056af647fa3e45b58439f525db428282ba2c4d
-  pull_policy: if-not-present
-cache:
-  paths:
-    - .composer-cache/
-before_script:
-  - composer config -g cache-dir "$(pwd)/.composer-cache"
+variables:
+  BASE_BRANCH: "master"
+  project_webserver: "t3-debian11-01"
+  project_database: "t3-mariadb10-5-01"
+  project_name: $CI_PROJECT_NAME
+  project_branch: $CI_COMMIT_BRANCH
+  project_base_branch: $BASE_BRANCH
+  project_aliases: "handbuch"
+  project_php_version: "8.1"
+  project_goaccess: "true"
+  project_redis: "false"
+  project_scheduler_frequency_minutes: "15"
+  project_delete: "false"
+  downstream_pipeline_branch: major-1.x.x
+
+default:
+  image:
+    name: composer:2.6.5@sha256:e4b813199694949b2d9edb4873056af647fa3e45b58439f525db428282ba2c4d
+    pull_policy: if-not-present
+  cache:
+    paths:
+      - .composer-cache/
+  before_script:
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
+    - BRANCH_ID=${CI_COMMIT_BRANCH%%_*}
+    - BASE_BRANCH_ID=${BASE_BRANCH%%_*}
 
 stages:
   - build
@@ -23,6 +41,16 @@ include:
       - test-php-cs-fixer.yml
       - test-php-stan.yml
       - test-xml-lint.yml
+      - .deploy-prepare.yml
+  - project: 'typo3/intern/devops/sys-t3-ansible-management'
+    file:
+      - 'gitlab-templates/manage-environment.yml'
+    rules:
+      - if: $GITLAB_LOCATION == 'XIMA-INTERN'
+      - if: $CI_COMMIT_BRANCH == "master"
+      - if: $CI_COMMIT_BRANCH == "development"
+      - if: $CI_COMMIT_BRANCH =~ /^DKFZ-.*$/
+      - if: $CI_COMMIT_BRANCH =~ /^DIS-.*$/
 
 build-node:
   image:
@@ -32,21 +60,8 @@ build-node:
       - packages/xm_dkfz_net_site/Resources/Public/Css/dist
       - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
 
-.deploy-prepare:
-  stage: deploy
-  needs: [ "build-php" ]
-  before_script:
-    - export no_proxy=localhost && export noproxy=localhost
-    - apk add --update --quiet rsync gzip
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - cp "$SSH_KNOWN_HOSTS" ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - echo -e "Host *\n\tStrictHostKeyChecking yes\n\tUserKnownHostsFile=~/.ssh/known_hosts\n\n" > ~/.ssh/config
-    - BRANCH_ID=${CI_COMMIT_BRANCH%%_*}
-    - BASE_BRANCH_ID=${BASE_BRANCH%%_*}
+deploy-xima-staging:
+  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
 
 deploy-dkfz-staging:
   extends: .deploy-prepare
@@ -118,72 +133,3 @@ reset:xima-staging:
   when: manual
   script:
     - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01-${BRANCH_ID,,} --no-interaction
-
-variables:
-  BASE_BRANCH: "master"
-
-.provision-variables:
-  variables:
-    project_webserver: "t3-debian11-01"
-    project_database: "t3-mariadb10-5-01"
-    project_name: $CI_PROJECT_NAME
-    project_branch: $CI_COMMIT_BRANCH
-    project_base_branch: $BASE_BRANCH
-    project_aliases: "handbuch"
-    project_php_version: "8.1"
-    project_goaccess: "true"
-    project_redis: "false"
-    project_scheduler_frequency_minutes: "15"
-    project_delete: "false"
-    downstream_pipeline_branch: major-1.x.x
-
-provision-environment:
-  extends: .provision-variables
-  trigger:
-    project: typo3/intern/devops/sys-t3-ansible-management
-    branch: $downstream_pipeline_branch
-    strategy: depend
-  stage: provision
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-    refs:
-      - "master"
-      - "development"
-      - "/^DKFZ-.*$/"
-      - "/^DIS-.*$/"
-
-teardown-environment:
-  extends: .provision-variables
-  stage: provision
-  variables:
-    GIT_STRATEGY: none
-  environment:
-    name: $CI_COMMIT_BRANCH
-    action: stop
-  when: manual
-  only:
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-  script:
-    - 'curl --insecure --request POST --form token=$CI_JOB_TOKEN --form ref="$downstream_pipeline_branch" --form variables[project_redis]="$project_redis" --form variables[project_scheduler_frequency_minutes]="$project_scheduler_frequency_minutes" --form variables[project_goaccess]="$project_goaccess" --form variables[project_php_version]="$project_php_version" --form variables[project_aliases]="$project_aliases" --form variables[project_database]="$project_database" --form variables[project_webserver]="$project_webserver" --form variables[project_delete]="true" --form variables[project_name]="$project_name" --form variables[project_branch]="$project_branch" --form variables[project_base_branch]="$project_base_branch" $CI_API_V4_URL/projects/1092/trigger/pipeline'
-
-deploy-xima-staging:
-  environment:
-    name: $CI_COMMIT_BRANCH
-    url: https://${CI_COMMIT_BRANCH}.dev.${CI_PROJECT_NAME}.xima.dev
-    on_stop: teardown-environment
-  stage: deploy
-  extends: .deploy-prepare
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "provision-environment" ]
-  only:
-    refs:
-      - "master"
-      - "development"
-      - "/^DKFZ-.*$/"
-      - "/^DIS-.*$/"
-    variables:
-      - $GITLAB_LOCATION == "XIMA-INTERN"
-  script:
-    - vendor/bin/dep deploy:unlock dev-t3-debian11-01-${BRANCH_ID,,}
-    - vendor/bin/dep deploy-fast dev-t3-debian11-01-${BRANCH_ID,,} --options=base_branch:${BASE_BRANCH_ID,,} -vvv
