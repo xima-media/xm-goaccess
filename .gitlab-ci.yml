@@ -17,13 +17,6 @@ default:
   image:
     name: composer:2.6.5@sha256:e4b813199694949b2d9edb4873056af647fa3e45b58439f525db428282ba2c4d
     pull_policy: if-not-present
-  cache:
-    paths:
-      - .composer-cache/
-  before_script:
-    - composer config -g cache-dir "$(pwd)/.composer-cache"
-    - BRANCH_ID=${CI_COMMIT_BRANCH%%_*}
-    - BASE_BRANCH_ID=${BASE_BRANCH%%_*}
 
 stages:
   - build
