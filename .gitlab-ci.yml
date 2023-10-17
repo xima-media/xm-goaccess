@@ -180,7 +180,7 @@ variables:
 provision-environment:
   extends: .provision-variables
   trigger:
-    project: systemadministration/sys-t3-ansible-management
+    project: typo3/intern/devops/sys-t3-ansible-management
     branch: $downstream_pipeline_branch
     strategy: depend
   stage: provision
