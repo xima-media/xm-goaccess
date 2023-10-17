@@ -87,7 +87,7 @@
 		"codeception/codeception": "5.0.11",
 		"codeception/module-asserts": "^3.0",
 		"codeception/module-webdriver": "^3.1",
-		"symplify/vendor-patches": "^11.0",
+		"symplify/vendor-patches": "11.2.3",
 		"ssch/typo3-rector": "dev-main",
 		"symfony/translation": "^6.3"
 	},
