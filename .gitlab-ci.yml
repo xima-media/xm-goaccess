@@ -51,9 +51,6 @@ build-node:
       - packages/xm_dkfz_net_site/Resources/Public/Css/dist
       - packages/xm_dkfz_net_site/Resources/Public/JavaScript/dist
 
-deploy-xima-testing:
-  needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-php-stan", "test-xml-lint", "provision-environment" ]
-
 deploy-dkfz-staging:
   extends: .deploy-prepare
   needs: [ "build-php", "build-node", "test-php-lint", "test-php-cs-fixer", "test-xml-lint", "test-php-stan" ]
