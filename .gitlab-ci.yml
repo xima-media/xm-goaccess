@@ -1,16 +1,17 @@
+workflow:
+  rules:
+    # do not run on merge request creation
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_BEFORE_SHA == '0000000000000000000000000000000000000000'
+      when: never
+    - when: always
+
 variables:
   BASE_BRANCH: "master"
   project_webserver: "t3-debian11-01"
   project_database: "t3-mariadb10-5-01"
-  project_name: $CI_PROJECT_NAME
-  project_branch: $CI_COMMIT_BRANCH
-  project_base_branch: $BASE_BRANCH
   project_aliases: "handbuch"
   project_php_version: "8.1"
   project_goaccess: "true"
-  project_redis: "false"
-  project_scheduler_frequency_minutes: "15"
-  project_delete: "false"
   downstream_pipeline_branch: major-1.x.x
 
 default:
