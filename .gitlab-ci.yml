@@ -33,6 +33,7 @@ include:
   - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-php-cs-fixer.yml'
   - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-php-stan.yml'
   - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-xml-lint.yml'
+  - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/test-yaml-lint.yml'
   - 'https://raw.githubusercontent.com/xima-media/gitlab-templates/main/.deploy-prepare.yml'
   - project: 'typo3/intern/devops/sys-t3-ansible-management'
     file:
