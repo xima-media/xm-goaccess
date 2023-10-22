@@ -555,16 +555,16 @@
         },
         {
             "name": "causal/image_autoresize",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xperseguers/t3ext-image_autoresize.git",
-                "reference": "e6231d9afdd46c643f806037015271654c900395"
+                "reference": "2da41305c8b10cb33fc67cc3a0430c98e42adb1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xperseguers/t3ext-image_autoresize/zipball/e6231d9afdd46c643f806037015271654c900395",
-                "reference": "e6231d9afdd46c643f806037015271654c900395",
+                "url": "https://api.github.com/repos/xperseguers/t3ext-image_autoresize/zipball/2da41305c8b10cb33fc67cc3a0430c98e42adb1b",
+                "reference": "2da41305c8b10cb33fc67cc3a0430c98e42adb1b",
                 "shasum": ""
             },
             "require": {
@@ -621,7 +621,7 @@
             ],
             "support": {
                 "issues": "https://github.com/xperseguers/t3ext-image_autoresize/issues",
-                "source": "https://github.com/xperseguers/t3ext-image_autoresize/tree/2.2.1"
+                "source": "https://github.com/xperseguers/t3ext-image_autoresize/tree/2.2.2"
             },
             "funding": [
                 {
@@ -633,7 +633,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-28T11:14:48+00:00"
+            "time": "2023-10-21T16:28:52+00:00"
         },
         {
             "name": "christian-riesen/base32",
