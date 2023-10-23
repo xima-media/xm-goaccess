@@ -47,7 +47,7 @@
 		<div>
 
 			<f:if condition="{newsItem.teaser}">
-				<p class="h4 news-intro text-intro" itemprop="description">{newsItem.teaser}</p>
+				<p class="h4 news-intro text-intro" itemprop="description">{newsItem.teaser->f:format.nl2br()}</p>
 			</f:if>
 
 			<div class="news-text-wrap" itemprop="articleBody">
