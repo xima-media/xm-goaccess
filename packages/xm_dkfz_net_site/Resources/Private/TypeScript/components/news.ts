@@ -18,8 +18,6 @@ class News {
     let next = isPrev ? current - 1 : (current % count) + 1
     next = next === 0 ? count : next
 
-    console.log(next)
-
     this.goSlide(slider, next, isPrev)
   }
 

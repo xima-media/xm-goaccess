@@ -44,7 +44,7 @@ class Topnews {
   protected startNewsTimer(): void {
     this.newsTimer = setInterval((): void => {
       const nextBtn = document.querySelector('.topnews button.next') as HTMLButtonElement
-      nextBtn.click()
+      nextBtn.dispatchEvent(new PointerEvent('click'))
       this.resumeTimer()
     }, this.timerDuration * 1000)
   }
