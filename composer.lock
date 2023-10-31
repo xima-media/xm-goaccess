@@ -11093,16 +11093,16 @@
         },
         {
             "name": "xima/xima-typo3-mailcatcher",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-typo3-mailcatcher.git",
-                "reference": "302bf5548b21656cc495e9ffedf52be954103cdf"
+                "reference": "0d262f66df9be7f9d33f7d1906d8bcc598955600"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-typo3-mailcatcher/zipball/302bf5548b21656cc495e9ffedf52be954103cdf",
-                "reference": "302bf5548b21656cc495e9ffedf52be954103cdf",
+                "url": "https://api.github.com/repos/xima-media/xima-typo3-mailcatcher/zipball/0d262f66df9be7f9d33f7d1906d8bcc598955600",
+                "reference": "0d262f66df9be7f9d33f7d1906d8bcc598955600",
                 "shasum": ""
             },
             "require": {
@@ -11156,9 +11156,9 @@
             ],
             "support": {
                 "issues": "https://github.com/xima-media/xima-typo3-mailcatcher/issues",
-                "source": "https://github.com/xima-media/xima-typo3-mailcatcher/tree/v1.3.1"
+                "source": "https://github.com/xima-media/xima-typo3-mailcatcher/tree/v1.3.2"
             },
-            "time": "2023-09-03T14:03:02+00:00"
+            "time": "2023-10-31T18:58:23+00:00"
         },
         {
             "name": "xima/xm-dkfz-net-events",
