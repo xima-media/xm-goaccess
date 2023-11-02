@@ -5,8 +5,16 @@ return [
     \Xima\XmDkfzNetSite\Domain\Model\News::class => [
         'tableName' => 'tx_news_domain_model_news',
     ],
+    \Xima\XmDkfzNetSite\Domain\Model\NewsWelcomeUser::class => [
+        'tableName' => 'tx_news_domain_model_news',
+    ],
     \Xima\XmDkfzNetSite\Domain\Model\User::class => [
         'tableName' => 'fe_users',
+        'properties' => [
+            'crdate' => [
+                'fieldName' => 'crdate',
+            ],
+        ],
     ],
     \Xima\XmDkfzNetSite\Domain\Model\BeUser::class => [
         'tableName' => 'be_users',

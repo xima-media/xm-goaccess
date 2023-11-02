@@ -232,11 +232,10 @@ tt_content {
   employeeSlider {
     templateName = EmployeeSlider
     dataProcessing {
-      30 = Xima\XmDkfzNetSite\DataProcessing\UserQueryProcessor
+      30 = Xima\XmDkfzNetSite\DataProcessing\LatestUserProcessor
       30 {
-        type = latest
         max = 12
-        as = users
+        as = welcomes
       }
     }
 

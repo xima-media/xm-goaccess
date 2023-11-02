@@ -38,6 +38,28 @@ class User extends \Blueways\BwGuild\Domain\Model\User
 
     protected ?User $committeeRepresentative2 = null;
 
+    protected int $crdate = 0;
+
+    protected string $committeeResponsibilities = '';
+
+    protected string $about = '';
+
+    /**
+     * @var ObjectStorage<Contact>|null
+     * @Lazy
+     */
+    protected ?ObjectStorage $contacts = null;
+
+    public function getCrdate(): int
+    {
+        return $this->crdate;
+    }
+
+    public function setCrdate(int $crdate): void
+    {
+        $this->crdate = $crdate;
+    }
+
     public function getCommitteeRepresentative(): ?User
     {
         return $this->committeeRepresentative;
@@ -78,18 +100,9 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         $this->committeeResponsibilities = $committeeResponsibilities;
     }
 
-    protected string $committeeResponsibilities = '';
-
-    protected string $about = '';
-
     public function getResponsibilities(): string
     {
         return $this->responsibilities;
-    }
-
-    public function setRepresentative(?User $representative): void
-    {
-        $this->representative = $representative;
     }
 
     public function setResponsibilities(string $responsibilities): void
@@ -102,9 +115,9 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return $this->gender;
     }
 
-    public function setCommittee(?Committee $committee): void
+    public function setGender(int $gender): void
     {
-        $this->committee = $committee;
+        $this->gender = $gender;
     }
 
     public function getCommittee(): ?Committee
@@ -112,9 +125,9 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return $this->committee;
     }
 
-    public function setGender(int $gender): void
+    public function setCommittee(?Committee $committee): void
     {
-        $this->gender = $gender;
+        $this->committee = $committee;
     }
 
     public function isDisable(): bool
@@ -127,9 +140,9 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         $this->disable = $disable;
     }
 
-    public function setRoom(string $room): void
+    public function getLocation(): string
     {
-        $this->room = $room;
+        return $this->location;
     }
 
     public function setLocation(string $location): void
@@ -137,52 +150,14 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         $this->location = $location;
     }
 
-    public function setMemberSince(?\DateTime $memberSince): void
-    {
-        $this->memberSince = $memberSince;
-    }
-
-    public function setBirthday(?\DateTime $birthday): void
-    {
-        $this->birthday = $birthday;
-    }
-
-    public function setDkfzId(string $dkfzId): void
-    {
-        $this->dkfzId = $dkfzId;
-    }
-
-    public function setAdAccountName(string $adAccountName): void
-    {
-        $this->adAccountName = $adAccountName;
-    }
-
-    public function setDkfzHash(string $dkfzHash): void
-    {
-        $this->dkfzHash = $dkfzHash;
-    }
-
-    /**
-     * @param ObjectStorage<Contact>|null $contacts
-     */
-    public function setContacts(?ObjectStorage $contacts): void
-    {
-        $this->contacts = $contacts;
-    }
-
-    public function getRoom(): string
-    {
-        return $this->room;
-    }
-
-    public function getLocation(): string
-    {
-        return $this->location;
-    }
-
     public function getMemberSince(): ?\DateTime
     {
         return $this->memberSince;
+    }
+
+    public function setMemberSince(?\DateTime $memberSince): void
+    {
+        $this->memberSince = $memberSince;
     }
 
     public function getBirthday(): ?\DateTime
@@ -190,9 +165,19 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return $this->birthday;
     }
 
+    public function setBirthday(?\DateTime $birthday): void
+    {
+        $this->birthday = $birthday;
+    }
+
     public function getDkfzId(): string
     {
         return $this->dkfzId;
+    }
+
+    public function setDkfzId(string $dkfzId): void
+    {
+        $this->dkfzId = $dkfzId;
     }
 
     public function getAdAccountName(): string
@@ -200,9 +185,19 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return $this->adAccountName;
     }
 
+    public function setAdAccountName(string $adAccountName): void
+    {
+        $this->adAccountName = $adAccountName;
+    }
+
     public function getDkfzHash(): string
     {
         return $this->dkfzHash;
+    }
+
+    public function setDkfzHash(string $dkfzHash): void
+    {
+        $this->dkfzHash = $dkfzHash;
     }
 
     /**
@@ -214,10 +209,12 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     }
 
     /**
-     * @var ObjectStorage<Contact>|null
-     * @Lazy
+     * @param ObjectStorage<Contact>|null $contacts
      */
-    protected ?ObjectStorage $contacts = null;
+    public function setContacts(?ObjectStorage $contacts): void
+    {
+        $this->contacts = $contacts;
+    }
 
     public function removeContact(Contact $contact): void
     {
@@ -238,6 +235,12 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return $name;
     }
 
+    public function getContactRoomFakeSlug(): string
+    {
+        $identifier = $this->getContactRoom();
+        return urlencode($identifier);
+    }
+
     public function getContactRoom(): string
     {
         foreach ($this->contacts ?? [] as $contact) {
@@ -248,10 +251,14 @@ class User extends \Blueways\BwGuild\Domain\Model\User
         return '';
     }
 
-    public function getContactRoomFakeSlug(): string
+    public function getRoom(): string
     {
-        $identifier = $this->getContactRoom();
-        return urlencode($identifier);
+        return $this->room;
+    }
+
+    public function setRoom(string $room): void
+    {
+        $this->room = $room;
     }
 
     public function getContactFunction(): string
@@ -309,6 +316,11 @@ class User extends \Blueways\BwGuild\Domain\Model\User
     public function getRepresentative(): ?User
     {
         return $this->representative;
+    }
+
+    public function setRepresentative(?User $representative): void
+    {
+        $this->representative = $representative;
     }
 
     public function getAbout(): string
