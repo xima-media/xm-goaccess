@@ -208,8 +208,10 @@ tt_content {
       50 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
       50 {
         as = newsCategories
-        pidInList = {$uidCategoryNews}
+        pidInList = 918
+        where = parent={$uidCategoryNews}
         table = sys_category
+        orderBy = sorting
       }
 
       60 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
