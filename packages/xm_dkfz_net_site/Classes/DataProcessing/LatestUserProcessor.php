@@ -75,7 +75,7 @@ class LatestUserProcessor implements DataProcessorInterface
 
         // sort by timestamp + apply cut
         ksort($welcomes);
-        $welcomes = array_slice($welcomes, 0, $maxItems);
+        $welcomes = array_slice(array_reverse($welcomes), 0, $maxItems);
 
         $processedData[$processorConfiguration['as']] = $welcomes;
         return $processedData;
