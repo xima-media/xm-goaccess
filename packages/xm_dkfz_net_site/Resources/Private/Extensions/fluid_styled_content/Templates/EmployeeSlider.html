@@ -47,7 +47,27 @@
 								</f:link.action>
 							</f:if>
 							<f:if condition="{welcome.type} == 'news'">
-								news
+								<f:link.action extensionName="News"
+											   pluginName="Pi1"
+											   controller="News"
+											   action="detail"
+											   pageUid="142"
+											   class="content"
+											   arguments="{news: welcome.object.uid}">
+									<f:if condition="{welcome.object.falMedia.0}">
+										<figure class="userimage">
+											<picture>
+												<f:image class="picture__image" image="{welcome.object.falMedia.0}" cropVariant="preview" width="80c" height="80c"/>
+											</picture>
+											<span></span>
+										</figure>
+									</f:if>
+									<f:if condition="!{welcome.object.falMedia.0}">
+										<f:render partial="UserImage" arguments="{user: '', width: 80, invert: 1}"/>
+									</f:if>
+									<h3 class="card__title h5">{welcome.object.title}</h3>
+									<p class="text-small m-b-0">{welcome.object.bodytext->f:format.stripTags()->f:format.crop(maxCharacters: 50)}</p>
+								</f:link.action>
 							</f:if>
 						</div>
 					</div>
