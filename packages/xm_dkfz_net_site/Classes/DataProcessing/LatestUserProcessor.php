@@ -3,17 +3,17 @@
 namespace Xima\XmDkfzNetSite\DataProcessing;
 
 use PDO;
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
-use Xima\XmDkfzNetSite\Domain\Model\User;
 use Xima\XmDkfzNetSite\Domain\Model\NewsWelcomeUser;
+use Xima\XmDkfzNetSite\Domain\Model\User;
 
 class LatestUserProcessor implements DataProcessorInterface
 {
-
     public function process(
         ContentObjectRenderer $cObj,
         array $contentObjectConfiguration,
@@ -45,11 +45,17 @@ class LatestUserProcessor implements DataProcessorInterface
         }
 
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_news_domain_model_news');
+        $languageId = GeneralUtility::makeInstance(Context::class)->getAspect('language')->getId();
         $newsResults = $qb->select('*')
             ->from('tx_news_domain_model_news', 'n')
-            ->innerJoin('n', 'sys_category_record_mm', 'mm',
-                $qb->expr()->eq('mm.uid_foreign', $qb->quoteIdentifier('n.uid')))
+            ->innerJoin(
+                'n',
+                'sys_category_record_mm',
+                'mm',
+                $qb->expr()->eq('mm.uid_foreign', $qb->quoteIdentifier('n.uid'))
+            )
             ->where($qb->expr()->eq('mm.uid_local', $qb->createNamedParameter(27, PDO::PARAM_INT)))
+            ->andWhere($qb->expr()->eq('sys_language_uid', $languageId))
             ->orderBy('n.datetime', 'DESC')
             ->setMaxResults($maxItems)
             ->execute()
@@ -58,9 +64,9 @@ class LatestUserProcessor implements DataProcessorInterface
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         $news = $dataMapper->map(NewsWelcomeUser::class, $newsResults);
 
-        /** @var NewsWelcomeUser $user */
+        /** @var NewsWelcomeUser $newsItem */
         foreach ($news as $newsItem) {
-            $crdate = self::getUniqueTimestamp($newsItem->getDatetime()->getTimestamp(), $welcomes);
+            $crdate = self::getUniqueTimestamp($newsItem->getDatetime()?->getTimestamp() ?? 0, $welcomes);
             $welcomes[$crdate] = [
                 'type' => 'news',
                 'object' => $newsItem,
