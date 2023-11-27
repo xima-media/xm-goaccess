@@ -13474,16 +13474,16 @@
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "ebfc11409ec6f6e2a524982b6591090cf5214f43"
+                "reference": "b3f4ca1666d498758988acc5f74fd233b9acdb33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/ebfc11409ec6f6e2a524982b6591090cf5214f43",
-                "reference": "ebfc11409ec6f6e2a524982b6591090cf5214f43",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/b3f4ca1666d498758988acc5f74fd233b9acdb33",
+                "reference": "b3f4ca1666d498758988acc5f74fd233b9acdb33",
                 "shasum": ""
             },
             "require": {
@@ -13528,7 +13528,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.9.0"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.9.1"
             },
             "funding": [
                 {
@@ -13540,7 +13540,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2023-09-05T21:36:56+00:00"
+            "time": "2023-11-27T06:54:30+00:00"
         },
         {
             "name": "sebastian/cli-parser",
