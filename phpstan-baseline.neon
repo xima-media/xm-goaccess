@@ -66,11 +66,6 @@ parameters:
 			path: Classes/Widgets/Provider/BrowsersChartDataProvider.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$type$#"
-			count: 1
-			path: Classes/Widgets/Provider/LineChartDataProvider.php
-
-		-
 			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\OsChartDataProvider\\:\\:getChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/Widgets/Provider/OsChartDataProvider.php
