@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Xima\XmGoaccess\Widgets;
 
 use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Dashboard\Widgets\AdditionalCssInterface;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
@@ -59,6 +60,11 @@ class LineChartWidget implements WidgetInterface, EventDataInterface, Additional
      */
     private $options;
 
+    /**
+     * @var int
+     */
+    private $typo3Version;
+
     public function __construct(
         WidgetConfigurationInterface $configuration,
         LineChartDataProvider $dataProvider,
@@ -69,11 +75,13 @@ class LineChartWidget implements WidgetInterface, EventDataInterface, Additional
         $this->dataProvider = $dataProvider;
         $this->view = $view;
         $this->options = $options;
+
+        $this->dataProvider->setGoaccessType($this->options['goaccessType']);
+        $this->typo3Version = (int)VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version())['version_main'];
     }
 
     public function renderWidgetContent(): string
     {
-        $this->dataProvider->setGoaccessType($this->options['goaccessType']);
         $this->view->setTemplate('Widget/ChartWidget');
         $this->view->assignMultiple([
             'options' => $this->options,
@@ -84,7 +92,7 @@ class LineChartWidget implements WidgetInterface, EventDataInterface, Additional
 
     public function getEventData(): array
     {
-        return [
+        $data = [
             'graphConfig' => [
                 'type' => 'line',
                 'options' => [
@@ -123,15 +131,41 @@ class LineChartWidget implements WidgetInterface, EventDataInterface, Additional
                 'data' => $this->dataProvider->getChartData(),
             ],
         ];
+
+        if ($this->typo3Version >= 12) {
+            $data['graphConfig']['options']['scales'] = [
+                'y' => [
+                    'id' => 'right',
+                    'position' => 'right',
+                    'display' => 'auto',
+                    'ticks' => [
+                        'beginAtZero' => true,
+                        'sampleSize' => 4,
+                        'autoSkip' => true,
+                    ],
+                ],
+            ];
+        }
+
+        return $data;
     }
 
     public function getCssFiles(): array
     {
+        if ($this->typo3Version >= 12) {
+            return [];
+        }
         return ['EXT:dashboard/Resources/Public/Css/Contrib/chart.css'];
     }
 
     public function getJavaScriptModuleInstructions(): array
     {
+        if ($this->typo3Version >= 12) {
+            return [
+                JavaScriptModuleInstruction::create('@typo3/dashboard/contrib/chartjs.js'),
+                JavaScriptModuleInstruction::create('@typo3/dashboard/chart-initializer.js'),
+            ];
+        }
         return [
             JavaScriptModuleInstruction::forRequireJS('TYPO3/CMS/Dashboard/Contrib/chartjs'),
             JavaScriptModuleInstruction::forRequireJS('TYPO3/CMS/Dashboard/ChartInitializer'),
