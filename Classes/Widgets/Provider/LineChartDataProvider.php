@@ -2,13 +2,13 @@
 
 namespace Xima\XmGoaccess\Widgets\Provider;
 
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Dashboard\WidgetApi;
 use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 
 class LineChartDataProvider extends AbstractGoaccessDataProvider implements ChartDataProviderInterface
 {
     /**
-     * @param string $type
      * @param int $days
      * @return array{labels: string[], hits: int[], visitors: int[], bytes: int[]}
      * @throws \Exception
@@ -65,7 +65,7 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
     {
         $data = $this->getGoaccessChartData();
 
-        return [
+        $data = [
             'labels' => $data['labels'],
             'datasets' => [
                 [
@@ -86,5 +86,13 @@ class LineChartDataProvider extends AbstractGoaccessDataProvider implements Char
                 ],
             ],
         ];
+
+        $typo3Version = (int)VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version())['version_main'];
+        if ($typo3Version >= 12) {
+            $data['datasets'][0]['fill'] = 'origin';
+            $data['datasets'][1]['fill'] = 'origin';
+        }
+
+        return $data;
     }
 }
