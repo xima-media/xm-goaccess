@@ -11262,16 +11262,16 @@
         },
         {
             "name": "xima/xm-goaccess",
-            "version": "v11.0.3",
+            "version": "v11.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xm-goaccess.git",
-                "reference": "406b3afff578c57de2823cdb370da7acc0639f10"
+                "reference": "6f1133e085b31019aa9ff6445d5bf13562a2ffc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xm-goaccess/zipball/406b3afff578c57de2823cdb370da7acc0639f10",
-                "reference": "406b3afff578c57de2823cdb370da7acc0639f10",
+                "url": "https://api.github.com/repos/xima-media/xm-goaccess/zipball/6f1133e085b31019aa9ff6445d5bf13562a2ffc7",
+                "reference": "6f1133e085b31019aa9ff6445d5bf13562a2ffc7",
                 "shasum": ""
             },
             "require": {
@@ -11281,6 +11281,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.3",
+                "helhum/typo3-console": "^8.1",
                 "phpmd/phpmd": "^2.6.0",
                 "phpstan/phpstan": "^1.6",
                 "squizlabs/php_codesniffer": "^3.4",
@@ -11312,9 +11313,9 @@
             "description": "Integrates goaccess.io into TYPO3",
             "support": {
                 "issues": "https://github.com/xima-media/xm-goaccess/issues",
-                "source": "https://github.com/xima-media/xm-goaccess/tree/v11.0.3"
+                "source": "https://github.com/xima-media/xm-goaccess/tree/v11.0.4"
             },
-            "time": "2022-11-16T23:09:55+00:00"
+            "time": "2023-12-03T17:56:04+00:00"
         },
         {
             "name": "xima/xm-kesearch-remote",
