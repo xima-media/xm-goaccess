@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2baa3006f85eeb9a8cd8d7d8b65cec6b",
+    "content-hash": "9b37467ba6ed0aef7dc3ca928f431515",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -8487,16 +8487,16 @@
         },
         {
             "name": "tpwd/ke_search",
-            "version": "v4.5.1",
+            "version": "v4.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tpwd/ke_search.git",
-                "reference": "6920d09e051236031cad96d05e269b126bf9ef89"
+                "reference": "b0f05d7e7e207bc0d5051bd96f3ff43c5c3658c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tpwd/ke_search/zipball/6920d09e051236031cad96d05e269b126bf9ef89",
-                "reference": "6920d09e051236031cad96d05e269b126bf9ef89",
+                "url": "https://api.github.com/repos/tpwd/ke_search/zipball/b0f05d7e7e207bc0d5051bd96f3ff43c5c3658c6",
+                "reference": "b0f05d7e7e207bc0d5051bd96f3ff43c5c3658c6",
                 "shasum": ""
             },
             "require": {
@@ -8510,8 +8510,15 @@
                 "typo3-ter/ke_search": "self.version"
             },
             "require-dev": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-zip": "*",
+                "phpstan/phpstan": "^1.8",
                 "phpunit/phpunit": "^8.5 || ^9.5",
-                "typo3/cms-dashboard": "^10.4.11 || ^11.0"
+                "typo3/cms-dashboard": "^10.4.11 || ^11.0",
+                "typo3/cms-install": "^10.4.11 || ^11.0",
+                "typo3/coding-standards": "^0.5.5"
             },
             "suggest": {
                 "typo3/cms-dashboard": "Use widgets in dashboard"
@@ -8547,9 +8554,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tpwd/ke_search/issues",
-                "source": "https://github.com/tpwd/ke_search/tree/v4.5.1"
+                "source": "https://github.com/tpwd/ke_search/tree/v4.6.6"
             },
-            "time": "2022-09-30T09:48:34+00:00"
+            "time": "2023-06-09T08:40:45+00:00"
         },
         {
             "name": "tpwd/ke_search_premium",

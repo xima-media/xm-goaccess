@@ -64,7 +64,7 @@
 		"ext-dom": "*",
 		"in2code/luxletter": "^14.0.0",
 		"blueways/bw-static-template": "^2.0",
-		"tpwd/ke_search": "4.5.1",
+		"tpwd/ke_search": "4.6.6",
 		"xima/xm-kesearch-remote": "@dev",
 		"xima/xm-manual": "@dev",
 		"cweagans/composer-patches": "^1.7",
