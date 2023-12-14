@@ -13,7 +13,7 @@ variables:
 
 default:
   image:
-    name: composer:2.6.5@sha256:e4b813199694949b2d9edb4873056af647fa3e45b58439f525db428282ba2c4d
+    name: composer:2.6.6@sha256:ea36c4cb064eb5d9ec04dd38a9c6480791ec64c9cfc9e1fd22b2fa0b00b5ce81
     pull_policy: if-not-present
 
 stages:
