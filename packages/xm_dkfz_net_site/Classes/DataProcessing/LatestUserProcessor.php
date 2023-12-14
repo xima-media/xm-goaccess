@@ -2,8 +2,12 @@
 
 namespace Xima\XmDkfzNetSite\DataProcessing;
 
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\Exception;
+use Doctrine\DBAL\Result;
 use PDO;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
@@ -21,32 +25,32 @@ class LatestUserProcessor implements DataProcessorInterface
         array $processedData
     ) {
         $welcomes = [];
+
         $maxItems = (int)$processorConfiguration['max'];
 
-        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
-        $userResults = $qb->select('*')
-            ->from('fe_users')
-            ->where($qb->expr()->neq('fe_users.last_name', $qb->createNamedParameter('')))
-            ->orderBy('crdate', 'DESC')
-            ->setMaxResults($maxItems)
-            ->execute()
-            ->fetchAllAssociative();
+        self::addSpecialNewsItems($welcomes, $maxItems);
+        $maxItems -= count($welcomes);
+        self::addLatestUsers($welcomes, $maxItems);
 
-        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        $users = $dataMapper->map(User::class, $userResults);
+        $processedData[$processorConfiguration['as']] = $welcomes;
 
-        /** @var User $user */
-        foreach ($users as $user) {
-            $crdate = self::getUniqueTimestamp($user->getCrdate(), $welcomes);
-            $welcomes[$crdate] = [
-                'type' => 'user',
-                'object' => $user,
-            ];
-        }
+        return $processedData;
+    }
+
+    /**
+     * @param array<int, mixed> $welcomes
+     * @param int $maxItems
+     * @throws DBALException
+     * @throws Exception
+     * @throws AspectNotFoundException
+     */
+    private static function addSpecialNewsItems(array &$welcomes, int $maxItems): void
+    {
+        $maxAgeTimestamp = (new \DateTime())->modify('-7 days')->setTime(0, 0)->getTimestamp();
 
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_news_domain_model_news');
         $languageId = GeneralUtility::makeInstance(Context::class)->getAspect('language')->getId();
-        $newsResults = $qb->select('*')
+        $query = $qb->select('*')
             ->from('tx_news_domain_model_news', 'n')
             ->innerJoin(
                 'n',
@@ -56,39 +60,61 @@ class LatestUserProcessor implements DataProcessorInterface
             )
             ->where($qb->expr()->eq('mm.uid_local', $qb->createNamedParameter(27, PDO::PARAM_INT)))
             ->andWhere($qb->expr()->eq('sys_language_uid', $languageId))
+            ->andWhere($qb->expr()->eq('sys_language_uid', $languageId))
+            ->andWhere($qb->expr()->gte('datetime', $qb->createNamedParameter($maxAgeTimestamp, PDO::PARAM_INT)))
             ->orderBy('n.datetime', 'DESC')
             ->setMaxResults($maxItems)
-            ->execute()
-            ->fetchAllAssociative();
+            ->execute();
+
+        if (!$query instanceof Result) {
+            return;
+        }
+
+        $newsResults = $query->fetchAllAssociative();
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         $news = $dataMapper->map(NewsWelcomeUser::class, $newsResults);
 
         /** @var NewsWelcomeUser $newsItem */
         foreach ($news as $newsItem) {
-            $crdate = self::getUniqueTimestamp($newsItem->getDatetime()?->getTimestamp() ?? 0, $welcomes);
-            $welcomes[$crdate] = [
+            $welcomes[] = [
                 'type' => 'news',
                 'object' => $newsItem,
             ];
         }
-
-        // sort by timestamp + apply cut
-        ksort($welcomes);
-        $welcomes = array_slice(array_reverse($welcomes), 0, $maxItems);
-
-        $processedData[$processorConfiguration['as']] = $welcomes;
-        return $processedData;
     }
 
     /**
-     * @param mixed[] $welcomes
+     * @param array<int, mixed> $welcomes
+     * @param int $maxItems
+     * @throws DBALException
+     * @throws Exception
      */
-    private static function getUniqueTimestamp(int $crdate, array $welcomes): int
+    private static function addLatestUsers(array &$welcomes, int $maxItems): void
     {
-        if (!isset($welcomes[$crdate])) {
-            return $crdate;
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $query = $qb->select('*')
+            ->from('fe_users')
+            ->where($qb->expr()->neq('fe_users.last_name', $qb->createNamedParameter('')))
+            ->orderBy('crdate', 'DESC')
+            ->setMaxResults($maxItems)
+            ->execute();
+
+        if (!$query instanceof Result) {
+            return;
         }
-        return self::getUniqueTimestamp($crdate + 1, $welcomes);
+
+        $userResults = $query->fetchAllAssociative();
+
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+        $users = $dataMapper->map(User::class, $userResults);
+
+        /** @var User $user */
+        foreach ($users as $user) {
+            $welcomes[] = [
+                'type' => 'user',
+                'object' => $user,
+            ];
+        }
     }
 }

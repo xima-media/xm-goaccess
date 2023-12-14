@@ -56,11 +56,6 @@ parameters:
 			path: packages/xm_dkfz_net_site/Classes/Crawler/DkfzWikiCrawler.php
 
 		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/LatestUserProcessor.php
-
-		-
 			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\LatestUserProcessor\\:\\:process\\(\\) has parameter \\$contentObjectConfiguration with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: packages/xm_dkfz_net_site/Classes/DataProcessing/LatestUserProcessor.php
