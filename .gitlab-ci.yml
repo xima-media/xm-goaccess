@@ -63,7 +63,7 @@ deploy-dkfz-staging:
       when: never
     - if: $CI_COMMIT_BRANCH == "development" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - vendor/bin/dep deploy:unlock staging-dkfz
+    - vendor/bin/dep deploy:unlock staging-dkfz -vvv
     - vendor/bin/dep deploy-fast staging-dkfz -vvv
 
 deploy-dkfz-production:
@@ -79,7 +79,7 @@ deploy-dkfz-production:
       when: never
     - if: $CI_COMMIT_BRANCH == "master" && $GITLAB_LOCATION == "DKFZ-INTERN"
   script:
-    - vendor/bin/dep deploy:unlock production-dkfz
+    - vendor/bin/dep deploy:unlock production-dkfz -vvv
     - vendor/bin/dep deploy production-dkfz -vvv
 
 reset-staging-dkfz:
@@ -89,7 +89,7 @@ reset-staging-dkfz:
   rules:
     - if: $GITLAB_LOCATION == 'DKFZ-INTERN'
   script:
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging-dkfz --no-interaction
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN staging-dkfz -vvv --no-interaction
   when: manual
 
 backup-production-dkfz:
@@ -122,4 +122,4 @@ reset:xima-testing:
       - if: $CI_COMMIT_BRANCH =~ /^DKFZ-.*$/
       - if: $CI_COMMIT_BRANCH =~ /^DIS-.*$/
   script:
-    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01-${BRANCH_ID,,} --no-interaction
+    - vendor/bin/dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN=$DKFZ_ACCESS_TOKEN dev-t3-debian11-01-${BRANCH_ID,,} -vvv --no-interaction
