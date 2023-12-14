@@ -101,12 +101,6 @@
 		"patches": {
 			"in2code/instagram": [
 				"patches/in2code-instagram-classes-middleware-getauthenticationcode-php.patch"
-			],
-			"tpwd/ke_search": [
-				"patches/tpwd-ke-search-classes-indexer-types-page-php.patch"
-			],
-			"m4tthumphrey/php-gitlab-api": [
-				"patches/m4tthumphrey-php-gitlab-api-src-client-php.patch"
 			]
 		},
 		"helhum/dotenv-connector": {
