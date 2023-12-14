@@ -64,7 +64,7 @@
 		"ext-dom": "*",
 		"in2code/luxletter": "^14.0.0",
 		"blueways/bw-static-template": "^2.0",
-		"tpwd/ke_search": "4.5.1",
+		"tpwd/ke_search": "4.6.6",
 		"xima/xm-kesearch-remote": "@dev",
 		"xima/xm-manual": "@dev",
 		"cweagans/composer-patches": "^1.7",
@@ -101,12 +101,6 @@
 		"patches": {
 			"in2code/instagram": [
 				"patches/in2code-instagram-classes-middleware-getauthenticationcode-php.patch"
-			],
-			"tpwd/ke_search": [
-				"patches/tpwd-ke-search-classes-indexer-types-page-php.patch"
-			],
-			"m4tthumphrey/php-gitlab-api": [
-				"patches/m4tthumphrey-php-gitlab-api-src-client-php.patch"
 			]
 		},
 		"helhum/dotenv-connector": {
