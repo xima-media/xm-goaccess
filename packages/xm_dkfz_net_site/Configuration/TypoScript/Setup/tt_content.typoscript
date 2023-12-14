@@ -209,7 +209,7 @@ tt_content {
       50 {
         as = newsCategories
         pidInList = 918
-        where = parent={$uidCategoryNews}
+        where = parent={$uidCategoryNews} AND uid!=27
         table = sys_category
         orderBy = sorting
       }
