@@ -196,6 +196,7 @@ call_user_func(function () {
                         'disabled' => true,
                     ],
                 ],
+                'default' => 0,
             ],
         ],
         'committee_representative2' => [
@@ -215,6 +216,7 @@ call_user_func(function () {
                         'disabled' => true,
                     ],
                 ],
+                'default' => 0,
             ],
         ],
         'about' => [
