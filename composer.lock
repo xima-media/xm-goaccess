@@ -12329,16 +12329,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.41.1",
+            "version": "v3.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "8b6ae8dcbaf23f09680643ab832a4a3a260265f6"
+                "reference": "632ef1be3447a9b890bef06147475facee535d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/8b6ae8dcbaf23f09680643ab832a4a3a260265f6",
-                "reference": "8b6ae8dcbaf23f09680643ab832a4a3a260265f6",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/632ef1be3447a9b890bef06147475facee535d0f",
+                "reference": "632ef1be3447a9b890bef06147475facee535d0f",
                 "shasum": ""
             },
             "require": {
@@ -12369,7 +12369,6 @@
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.4",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.4",
                 "phpunit/phpunit": "^9.6",
-                "symfony/phpunit-bridge": "^6.3.8 || ^7.0",
                 "symfony/yaml": "^5.4 || ^6.0 || ^7.0"
             },
             "suggest": {
@@ -12408,7 +12407,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.41.1"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.42.0"
             },
             "funding": [
                 {
@@ -12416,7 +12415,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-10T19:59:27+00:00"
+            "time": "2023-12-24T14:38:51+00:00"
         },
         {
             "name": "helmich/typo3-typoscript-parser",
@@ -14612,20 +14611,20 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v6.4.0",
+            "version": "v7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "fc47f1015ec80927ff64ba9094dfe8b9d48fe9f2"
+                "reference": "7bbfa3dd564a0ce12eb4acaaa46823c740f9cb7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/fc47f1015ec80927ff64ba9094dfe8b9d48fe9f2",
-                "reference": "fc47f1015ec80927ff64ba9094dfe8b9d48fe9f2",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/7bbfa3dd564a0ce12eb4acaaa46823c740f9cb7a",
+                "reference": "7bbfa3dd564a0ce12eb4acaaa46823c740f9cb7a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "symfony/service-contracts": "^2.5|^3"
             },
             "type": "library",
@@ -14654,7 +14653,7 @@
             "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/stopwatch/tree/v6.4.0"
+                "source": "https://github.com/symfony/stopwatch/tree/v7.0.0"
             },
             "funding": [
                 {
@@ -14670,7 +14669,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-16T10:14:28+00:00"
+            "time": "2023-07-05T13:06:06+00:00"
         },
         {
             "name": "symfony/translation",
