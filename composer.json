@@ -137,6 +137,6 @@
 		"ci:php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots",
 		"ci:php:stan": "php vendor/bin/phpstan --no-progress",
 		"ci:xml:lint": "find ./packages -name '*.xlf' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout",
-		"ci:yaml:lint": "find ./packages ! -path '*node_modules/*' -regextype egrep -regex '.*.ya?ml$' | xargs -r yaml-lint"
+		"ci:yaml:lint": "find ./packages ! -path '*node_modules/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint"
 	}
 }
