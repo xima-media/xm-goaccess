@@ -96,7 +96,7 @@ class LatestUserProcessor implements DataProcessorInterface
         $query = $qb->select('*')
             ->from('fe_users')
             ->where($qb->expr()->neq('fe_users.last_name', $qb->createNamedParameter('')))
-            ->orderBy('crdate', 'DESC')
+            ->orderBy('registration_date', 'DESC')
             ->setMaxResults($maxItems)
             ->execute();
 

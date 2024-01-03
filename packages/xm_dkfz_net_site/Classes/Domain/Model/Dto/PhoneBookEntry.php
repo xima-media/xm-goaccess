@@ -40,6 +40,8 @@ class PhoneBookEntry
 
     public string $cachedHash = '';
 
+    public string $eingabedatum = '';
+
     public function isUser(): bool
     {
         return $this->adAccountName !== '';
@@ -104,5 +106,14 @@ class PhoneBookEntry
     public function isIntranetRedakteur(): bool
     {
         return $this->gruppen === 'Intranet-Redakteure';
+    }
+
+    public function getRegistrationDate(): int
+    {
+        if (!$this->eingabedatum) {
+            return 0;
+        }
+        $date = date_create_from_format('d.m.Y', $this->eingabedatum);
+        return $date ? $date->getTimestamp() : 0;
     }
 }

@@ -75,6 +75,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 $pid,
                 $currentDate,
                 $currentDate,
+                $user->getRegistrationDate(),
             ];
         }, $entries);
 
@@ -116,6 +117,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 'pid',
                 'crdate',
                 'tstamp',
+                'registration_date',
             ],
             [
                 Connection::PARAM_STR,
@@ -131,6 +133,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                 Connection::PARAM_INT,
                 Connection::PARAM_STR,
                 Connection::PARAM_STR,
+                Connection::PARAM_INT,
                 Connection::PARAM_INT,
                 Connection::PARAM_INT,
                 Connection::PARAM_INT,
@@ -160,6 +163,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     'usergroup' => $entry->usergroup,
                     'contacts' => count($entry->rufnummern),
                     'tstamp' => $currentDate,
+                    'registration_date' => $entry->getRegistrationDate(),
                 ],
                 ['dkfz_id' => $entry->id],
                 [
@@ -174,6 +178,7 @@ class UserRepository extends \Blueways\BwGuild\Domain\Repository\UserRepository 
                     Connection::PARAM_STR,
                     Connection::PARAM_INT,
                     Connection::PARAM_STR,
+                    Connection::PARAM_INT,
                     Connection::PARAM_INT,
                     Connection::PARAM_INT,
                 ]

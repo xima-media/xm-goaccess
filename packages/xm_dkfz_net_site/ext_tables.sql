@@ -52,6 +52,7 @@ create table fe_users (
 	location                   varchar(255) default '' not null,
 	member_since               int(11) unsigned default '0',
 	birthday                   int(11) unsigned default '0' not null,
+	registration_date          int(11) unsigned default '0' not null,
 	dkfz_id                    int(11) unsigned default '0' not null,
 	ad_account_name            varchar(255) default '' not null,
 	contacts                   int(11) unsigned default '0' not null,
