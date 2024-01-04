@@ -78,7 +78,8 @@
 		"xima/xima-oauth2-extended": "^1.1",
 		"xima/xima-typo3-mailcatcher": "^1.1.0",
 		"eliashaeussler/typo3-warming": "^0.5",
-		"lolli/dbdoctor": "^0.5.0"
+		"lolli/dbdoctor": "^0.5.0",
+		"apen/additional_reports": "^3.4"
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "^3.6.0",

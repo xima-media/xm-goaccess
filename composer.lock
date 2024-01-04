@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fef161b503ebf8aac770181444f468b",
+    "content-hash": "47f729ac1e0f6c80b8e0abb9774aa133",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -67,6 +67,77 @@
                 "source": "https://github.com/abraham/twitteroauth"
             },
             "time": "2022-08-18T23:30:33+00:00"
+        },
+        {
+            "name": "apen/additional_reports",
+            "version": "3.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Apen/additional_reports.git",
+                "reference": "ccd30b5171ccbe385605dabadee80c21aebf7f6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Apen/additional_reports/zipball/ccd30b5171ccbe385605dabadee80c21aebf7f6c",
+                "reference": "ccd30b5171ccbe385605dabadee80c21aebf7f6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "typo3/cms-core": "^11||^12",
+                "typo3/cms-reports": "^11||^12"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "helmich/typo3-typoscript-lint": "^3",
+                "nikic/php-parser": "^4",
+                "saschaegerer/phpstan-typo3": "^1",
+                "ssch/typo3-rector": "^1",
+                "symplify/easy-coding-standard": "^11",
+                "typo3/testing-framework": "dev-main"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "additional_reports",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/public"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sng\\AdditionalReports\\": "Classes",
+                    "Sng\\AdditionalReports\\Tests\\": "Tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Yohann Cerdan",
+                    "email": "yohann@site-ngo.fr",
+                    "homepage": "https://www.site-ngo.fr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Useful information in the reports module : xclass, ajax, cliKeys, eID, general status of the system (encoding, DB, php vars...), hooks, compare local and TER extension (diff), used content type, used plugins, ExtDirect... It can really help you during migration or new existing project (to have a global reports of the system).",
+            "keywords": [
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/Apen/additional_reports/issues",
+                "source": "https://github.com/Apen/additional_reports/tree/3.4.6"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/cerdanyohann",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-08-31T14:09:49+00:00"
         },
         {
             "name": "b13/container",
@@ -245,7 +316,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -8560,7 +8631,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -11066,7 +11137,7 @@
         },
         {
             "name": "xima/xima-twitter-client",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -11169,7 +11240,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -11204,7 +11275,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11238,7 +11309,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11326,7 +11397,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11361,7 +11432,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-development",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
