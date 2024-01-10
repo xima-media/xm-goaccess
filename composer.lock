@@ -316,7 +316,7 @@
         },
         {
             "name": "blueways/bw-guild",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/bw_guild",
@@ -8631,7 +8631,7 @@
         },
         {
             "name": "tpwd/ke_search_premium",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/ke_search_premium",
@@ -11041,16 +11041,16 @@
         },
         {
             "name": "xima/xima-deployer-extended-typo3",
-            "version": "v1.5.1",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "ab4e382b18e0acd8212d3033a0c8c428d96147a6"
+                "reference": "ffa366910e7ee24838705218da3e430a147dbc06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/ab4e382b18e0acd8212d3033a0c8c428d96147a6",
-                "reference": "ab4e382b18e0acd8212d3033a0c8c428d96147a6",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/ffa366910e7ee24838705218da3e430a147dbc06",
+                "reference": "ffa366910e7ee24838705218da3e430a147dbc06",
                 "shasum": ""
             },
             "require": {
@@ -11077,9 +11077,9 @@
             "description": "Common deployer configuration for TYPO3 projects",
             "support": {
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
-                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.5.1"
+                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.5.2"
             },
-            "time": "2023-10-02T09:14:32+00:00"
+            "time": "2024-01-10T10:27:24+00:00"
         },
         {
             "name": "xima/xima-oauth2-extended",
@@ -11137,7 +11137,7 @@
         },
         {
             "name": "xima/xima-twitter-client",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xima_twitter_client",
@@ -11240,7 +11240,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-events",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_events",
@@ -11275,7 +11275,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-jobs",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_jobs",
@@ -11309,7 +11309,7 @@
         },
         {
             "name": "xima/xm-dkfz-net-site",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_dkfz_net_site",
@@ -11397,7 +11397,7 @@
         },
         {
             "name": "xima/xm-kesearch-remote",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_kesearch_remote",
@@ -11432,7 +11432,7 @@
         },
         {
             "name": "xima/xm-manual",
-            "version": "dev-master",
+            "version": "dev-development",
             "dist": {
                 "type": "path",
                 "url": "./packages/xm_manual",
