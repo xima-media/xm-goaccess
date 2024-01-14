@@ -11041,16 +11041,16 @@
         },
         {
             "name": "xima/xima-deployer-extended-typo3",
-            "version": "v1.5.2",
+            "version": "v1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "ffa366910e7ee24838705218da3e430a147dbc06"
+                "reference": "480131c050852e66dcb121d0dde93f8723b96cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/ffa366910e7ee24838705218da3e430a147dbc06",
-                "reference": "ffa366910e7ee24838705218da3e430a147dbc06",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/480131c050852e66dcb121d0dde93f8723b96cae",
+                "reference": "480131c050852e66dcb121d0dde93f8723b96cae",
                 "shasum": ""
             },
             "require": {
@@ -11077,9 +11077,9 @@
             "description": "Common deployer configuration for TYPO3 projects",
             "support": {
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
-                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.5.2"
+                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.5.3"
             },
-            "time": "2024-01-10T10:27:24+00:00"
+            "time": "2024-01-14T22:12:37+00:00"
         },
         {
             "name": "xima/xima-oauth2-extended",
