@@ -13,7 +13,7 @@ variables:
 
 default:
   image:
-    name: ghcr.io/xima-media/php8.1-composer:2.6.6@sha256:ca37b3e3647a57e6a2f4f729041ce2c4c904d691dd02651e481514240c79de6e
+    name: ghcr.io/xima-media/php8.1-composer:2.6.6@sha256:98b0710da6db0e127ad8ac9b17b28c2326963ed9942de38bc590af6680fda9a9
     pull_policy: if-not-present
 
 stages:
