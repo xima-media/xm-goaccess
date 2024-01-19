@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47f729ac1e0f6c80b8e0abb9774aa133",
+    "content-hash": "cd331195e0d09c6c2225d0f1a86258d6",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -2599,61 +2599,65 @@
         },
         {
             "name": "helhum/typo3-console",
-            "version": "v7.1.6",
+            "version": "v8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-Console/TYPO3-Console.git",
-                "reference": "c7575554b9d2162814093e14ec0820838207307d"
+                "reference": "65751edf3d6a096e5448c58684bc5652ea3ba919"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/c7575554b9d2162814093e14ec0820838207307d",
-                "reference": "c7575554b9d2162814093e14ec0820838207307d",
+                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/65751edf3d6a096e5448c58684bc5652ea3ba919",
+                "reference": "65751edf3d6a096e5448c58684bc5652ea3ba919",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.1",
                 "helhum/config-loader": ">=0.9 <0.13",
                 "helhum/php-error-reporting": "^1.0",
-                "php": ">=7.4.1",
-                "symfony/console": "^5.0 || ^6.0",
-                "symfony/process": "^5.0 || ^6.0",
-                "typo3/cms-backend": "^11.5.3 || dev-main",
-                "typo3/cms-core": "^11.5.3 || dev-main",
-                "typo3/cms-extbase": "^11.5.3 || dev-main",
-                "typo3/cms-extensionmanager": "^11.5.3 || dev-main",
-                "typo3/cms-fluid": "^11.5.3 || dev-main",
-                "typo3/cms-frontend": "^11.5.3 || dev-main",
-                "typo3/cms-install": "^11.5.3 || dev-main"
+                "php": ">=8.1",
+                "symfony/console": "^5.4 || ^6.1",
+                "symfony/process": "^5.4 || ^6.1",
+                "typo3/cms-backend": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-composer-installers": "^4.0@rc || >=5.0",
+                "typo3/cms-core": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-extbase": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-extensionmanager": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-fluid": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-frontend": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-install": "^11.5.26 || ^12.4 || dev-main"
             },
             "replace": {
                 "typo3-ter/typo3-console": "self.version"
             },
             "require-dev": {
-                "nimut/testing-framework": "^6.0.1",
+                "dg/bypass-finals": "^1.4",
+                "friendsofphp/php-cs-fixer": "^3.2",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpspec/prophecy": "^1.15",
-                "phpunit/phpunit": "^8.5.18",
-                "symfony/expression-language": "^5.0 || ^6.0",
-                "symfony/filesystem": "^5.0 || ^6.0",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.5.25",
+                "symfony/expression-language": "^5.4 || ^6.1",
+                "symfony/filesystem": "^5.4 || ^6.1",
                 "typo3-console/create-reference-command": "@dev",
                 "typo3-console/sql-command": "@dev",
-                "typo3/cms-filemetadata": "^11.5.3 || dev-main",
-                "typo3/cms-recordlist": "^11.5.3 || dev-main",
-                "typo3/cms-reports": "^11.5.3 || dev-main"
+                "typo3/cms-filemetadata": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-recordlist": "^11.5.26 || ^12.4 || dev-main",
+                "typo3/cms-reports": "^11.5.26 || ^12.4 || dev-main"
             },
-            "bin": [
-                "typo3cms"
-            ],
-            "type": "library",
+            "type": "typo3-cms-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "7.1.x-dev"
+                    "dev-main": "8.1.x-dev"
                 },
                 "typo3/cms": {
-                    "ignore-as-root": false,
-                    "app-dir": ".Build",
-                    "web-dir": ".Build/public"
+                    "Package": {
+                        "serviceProvider": "Helhum\\Typo3Console\\ServiceProvider",
+                        "protected": true,
+                        "partOfMinimalUsableSystem": true
+                    },
+                    "extension-key": "typo3_console",
+                    "ignore-as-root": false
                 }
             },
             "autoload": {
@@ -2700,7 +2704,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-12T14:26:00+00:00"
+            "time": "2023-11-29T15:16:44+00:00"
         },
         {
             "name": "ichhabrecht/filefill",
@@ -11083,28 +11087,29 @@
         },
         {
             "name": "xima/xima-oauth2-extended",
-            "version": "v1.1.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-oauth2-extended.git",
-                "reference": "b0c64736c9e60a3f58c03a0b149f562a4d0114a3"
+                "reference": "c3fe2f5df387df11eaf8eccd10a3afd7d1e0fd09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/b0c64736c9e60a3f58c03a0b149f562a4d0114a3",
-                "reference": "b0c64736c9e60a3f58c03a0b149f562a4d0114a3",
+                "url": "https://api.github.com/repos/xima-media/xima-oauth2-extended/zipball/c3fe2f5df387df11eaf8eccd10a3afd7d1e0fd09",
+                "reference": "c3fe2f5df387df11eaf8eccd10a3afd7d1e0fd09",
                 "shasum": ""
             },
             "require": {
+                "ext-pdo": "*",
                 "league/oauth2-client": ">=2.7",
                 "php": ">=8.1",
+                "typo3/cms-core": "^11.0 || ^12.0",
                 "waldhacker/typo3-oauth2-client": ">=2.1.1 || dev-feature/v12-compatibility-1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.6",
                 "phpstan/extension-installer": "^1.3",
-                "saschaegerer/phpstan-typo3": "^1.8",
-                "waldhacker/typo3-oauth2-client": "^2.1"
+                "saschaegerer/phpstan-typo3": "^1.8"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -11131,9 +11136,9 @@
             "description": "Additional OAuth2 provider + on-the-fly user creation",
             "support": {
                 "issues": "https://github.com/xima-media/xima-oauth2-extended/issues",
-                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v1.1.0"
+                "source": "https://github.com/xima-media/xima-oauth2-extended/tree/v2.0.1"
             },
-            "time": "2023-09-13T07:36:44+00:00"
+            "time": "2024-01-18T09:42:04+00:00"
         },
         {
             "name": "xima/xima-twitter-client",
@@ -11970,16 +11975,16 @@
         },
         {
             "name": "codeception/lib-web",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-web.git",
-                "reference": "28cb2ed1169de18e720bec758015aadc37d8344c"
+                "reference": "cea9d53c9cd665498632acc417c9a96bff7eb2b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-web/zipball/28cb2ed1169de18e720bec758015aadc37d8344c",
-                "reference": "28cb2ed1169de18e720bec758015aadc37d8344c",
+                "url": "https://api.github.com/repos/Codeception/lib-web/zipball/cea9d53c9cd665498632acc417c9a96bff7eb2b0",
+                "reference": "cea9d53c9cd665498632acc417c9a96bff7eb2b0",
                 "shasum": ""
             },
             "require": {
@@ -12017,9 +12022,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-web/issues",
-                "source": "https://github.com/Codeception/lib-web/tree/1.0.4"
+                "source": "https://github.com/Codeception/lib-web/tree/1.0.5"
             },
-            "time": "2023-12-01T11:38:22+00:00"
+            "time": "2024-01-13T11:54:18+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -12663,16 +12668,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "a9d127dd6a203ce6d255b2e2db49759f7506e015"
+                "reference": "d3ad0aa3b9f934602cb3e3902ebccf10be34d218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/a9d127dd6a203ce6d255b2e2db49759f7506e015",
-                "reference": "a9d127dd6a203ce6d255b2e2db49759f7506e015",
+                "url": "https://api.github.com/repos/nette/utils/zipball/d3ad0aa3b9f934602cb3e3902ebccf10be34d218",
+                "reference": "d3ad0aa3b9f934602cb3e3902ebccf10be34d218",
                 "shasum": ""
             },
             "require": {
@@ -12743,9 +12748,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.3"
+                "source": "https://github.com/nette/utils/tree/v4.0.4"
             },
-            "time": "2023-10-29T21:02:13+00:00"
+            "time": "2024-01-17T16:50:36+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -13307,16 +13312,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.15",
+            "version": "9.6.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "05017b80304e0eb3f31d90194a563fd53a6021f1"
+                "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/05017b80304e0eb3f31d90194a563fd53a6021f1",
-                "reference": "05017b80304e0eb3f31d90194a563fd53a6021f1",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3767b2c56ce02d01e3491046f33466a1ae60a37f",
+                "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f",
                 "shasum": ""
             },
             "require": {
@@ -13390,7 +13395,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.15"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.16"
             },
             "funding": [
                 {
@@ -13406,7 +13411,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-01T16:55:19+00:00"
+            "time": "2024-01-19T07:03:14+00:00"
         },
         {
             "name": "psy/psysh",
@@ -14588,12 +14593,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "4cb4099eed487715fb36e3c07ca6910fed55b557"
+                "reference": "212545a56cba1dfa1297758cdb32c4b9b086e349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/4cb4099eed487715fb36e3c07ca6910fed55b557",
-                "reference": "4cb4099eed487715fb36e3c07ca6910fed55b557",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/212545a56cba1dfa1297758cdb32c4b9b086e349",
+                "reference": "212545a56cba1dfa1297758cdb32c4b9b086e349",
                 "shasum": ""
             },
             "require": {
@@ -14679,24 +14684,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-09T21:55:28+00:00"
+            "time": "2024-01-17T13:25:40+00:00"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v7.0.0",
+            "version": "v6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "7bbfa3dd564a0ce12eb4acaaa46823c740f9cb7a"
+                "reference": "fc47f1015ec80927ff64ba9094dfe8b9d48fe9f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/7bbfa3dd564a0ce12eb4acaaa46823c740f9cb7a",
-                "reference": "7bbfa3dd564a0ce12eb4acaaa46823c740f9cb7a",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/fc47f1015ec80927ff64ba9094dfe8b9d48fe9f2",
+                "reference": "fc47f1015ec80927ff64ba9094dfe8b9d48fe9f2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "symfony/service-contracts": "^2.5|^3"
             },
             "type": "library",
@@ -14725,7 +14730,7 @@
             "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/stopwatch/tree/v7.0.0"
+                "source": "https://github.com/symfony/stopwatch/tree/v6.4.0"
             },
             "funding": [
                 {
@@ -14741,7 +14746,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-05T13:06:06+00:00"
+            "time": "2023-02-16T10:14:28+00:00"
         },
         {
             "name": "symfony/translation",
@@ -15110,6 +15115,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "php": "8.1.*",
         "ext-pdo": "*",
         "ext-dom": "*",
         "ext-simplexml": "*"

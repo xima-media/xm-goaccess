@@ -82,8 +82,8 @@ task('typo3cms:cache:warmup-live', function () {
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} warming:cachewarmup --sites=1');
 });
-before('buffer:start', 'typo3cms:cache:warmup');
-after('buffer:stop', 'typo3cms:cache:warmup-live');
+before('buffer:start', 'typo3:cache:warmup');
+after('buffer:stop', 'typo3:cache:warmup-live');
 
 // Reset xima intern staging in pipeline
 option(
