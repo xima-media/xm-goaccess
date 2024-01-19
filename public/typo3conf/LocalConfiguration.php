@@ -127,6 +127,30 @@ return [
         ],
         'oauth2_client' => [
             'providers' => [
+                'authentik' => [
+                    'description' => 'Login with XIMA',
+                    'iconIdentifier' => 'xima-x',
+                    'implementationClassName' => 'Xima\\XimaOauth2Extended\\ResourceProvider\\AuthentikResourceProvider',
+                    'label' => 'Authentik',
+                    'options' => [
+                        'clientId' => 'EGBGHTNZcEu8w4w8Ld6veFwnIDUK5PjABh996VNW',
+                        'clientSecret' => 'AougHjWRqxrPuTQPDb2wQnS4TpEZGEU1WtZBWrsjDedv1XMmJGgKLfXs2WgwOU9vH7GN8SeptqGmu2XwxV7OTt5IkDyTcBzB4wSLmplpM6NZadmqGAYSkNHHMyA4HKlj',
+                        'scopeSeparator' => ' ',
+                        'scopes' => [
+                            'openid',
+                            'profile',
+                            'email',
+                            'avatar',
+                        ],
+                        'urlAccessToken' => 'https://auth.t3.xima.dev/application/o/token/',
+                        'urlAuthorize' => 'https://auth.t3.xima.dev/application/o/authorize/',
+                        'urlResourceOwnerDetails' => 'https://auth.t3.xima.dev/application/o/userinfo/',
+                    ],
+                    'scopes' => [
+                        'backend',
+                        'frontend',
+                    ],
+                ],
                 'dkfz' => [
                     'description' => 'DKFZ OAuth Login',
                     'iconIdentifier' => 'dkfz-d',
@@ -143,28 +167,6 @@ return [
                         ],
                         'urlAccessToken' => '',
                         'urlAuthorize' => '',
-                    ],
-                    'scopes' => [
-                        'backend',
-                        'frontend',
-                    ],
-                ],
-                'xima' => [
-                    'description' => 'Login with XIMA',
-                    'iconIdentifier' => 'xima-x',
-                    'label' => 'XIMA',
-                    'implementationClassName' => \Xima\XimaOauth2Extended\ResourceProvider\MicrosoftResourceProvider::class,
-                    'options' => [
-                        'clientId' => '14b07207-5728-4453-a6a6-5539803724cb',
-                        'clientSecret' => '',
-                        'scopeSeparator' => ' ',
-                        'scopes' => [
-                            'openid',
-                            'profile',
-                        ],
-                        'urlAccessToken' => 'https://login.microsoftonline.com/890938ce-3232-42b7-981d-9a7cbe37a475/oauth2/v2.0/token',
-                        'urlAuthorize' => 'https://login.microsoftonline.com/890938ce-3232-42b7-981d-9a7cbe37a475/oauth2/v2.0/authorize',
-                        'urlResourceOwnerDetails' => 'https://graph.microsoft.com/oidc/userinfo',
                     ],
                     'scopes' => [
                         'backend',
@@ -226,15 +228,18 @@ return [
         ],
         'xima_oauth2_extended' => [
             'oauth2_client_providers' => [
+                'authentik' => [
+                    'createBackendUser' => true,
+                    'createFrontendUser' => true,
+                    'defaultBackendAdminGroups' => 'all',
+                    'defaultBackendLanguage' => 'de',
+                    'defaultFrontendUsergroup' => '1',
+                    'imageStorageBackendIdentifier' => '1:/user_upload/oauth',
+                    'resolverClassName' => 'Xima\\XimaOauth2Extended\\ResourceResolver\\AuthentikResourceResolver',
+                ],
                 'dkfz' => [
                     'resolverClassName' => \Xima\XmDkfzNetSite\ResourceResolver\DkfzResourceResolver::class,
                     'createBackendUser' => false,
-                    'createFrontendUser' => true,
-                    'defaultFrontendUsergroup' => '1',
-                ],
-                'xima' => [
-                    'resolverClassName' => \Xima\XimaOauth2Extended\ResourceResolver\MicrosoftResourceResolver::class,
-                    'createBackendUser' => true,
                     'createFrontendUser' => true,
                     'defaultFrontendUsergroup' => '1',
                 ],
