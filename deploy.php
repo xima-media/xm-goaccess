@@ -56,8 +56,12 @@ host('production-dkfz')
     ->set('fetch_method', 'curl')
     ->set('media_rsync_flags', '-rz --perms');
 
+// rsync all needed files for non-git deployment
+task('deploy:update_code')->disable();
+after('deploy:update_code', 'deploy:upload_code');
+
 // Upload of dist files
-after('deploy:update_code', 'deploy:upload-dist');
+after('deploy:upload_code', 'deploy:upload-dist');
 task('deploy:upload-dist', function () {
     upload(
         'packages/xm_dkfz_net_site/Resources/Public/Css/dist/',
