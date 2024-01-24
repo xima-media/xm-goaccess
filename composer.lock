@@ -11045,16 +11045,16 @@
         },
         {
             "name": "xima/xima-deployer-extended-typo3",
-            "version": "v1.5.3",
+            "version": "v1.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xima-media/xima-deployer-extended-typo3.git",
-                "reference": "480131c050852e66dcb121d0dde93f8723b96cae"
+                "reference": "2f6685facf7655a287fabe77841daf8a2bb7c51b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/480131c050852e66dcb121d0dde93f8723b96cae",
-                "reference": "480131c050852e66dcb121d0dde93f8723b96cae",
+                "url": "https://api.github.com/repos/xima-media/xima-deployer-extended-typo3/zipball/2f6685facf7655a287fabe77841daf8a2bb7c51b",
+                "reference": "2f6685facf7655a287fabe77841daf8a2bb7c51b",
                 "shasum": ""
             },
             "require": {
@@ -11081,9 +11081,9 @@
             "description": "Common deployer configuration for TYPO3 projects",
             "support": {
                 "issues": "https://github.com/xima-media/xima-deployer-extended-typo3/issues",
-                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.5.3"
+                "source": "https://github.com/xima-media/xima-deployer-extended-typo3/tree/v1.5.4"
             },
-            "time": "2024-01-14T22:12:37+00:00"
+            "time": "2024-01-24T13:31:22+00:00"
         },
         {
             "name": "xima/xima-oauth2-extended",
@@ -14593,12 +14593,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "212545a56cba1dfa1297758cdb32c4b9b086e349"
+                "reference": "36c7bf31fcea43c6f4c938b02389cb3aab264645"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/212545a56cba1dfa1297758cdb32c4b9b086e349",
-                "reference": "212545a56cba1dfa1297758cdb32c4b9b086e349",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/36c7bf31fcea43c6f4c938b02389cb3aab264645",
+                "reference": "36c7bf31fcea43c6f4c938b02389cb3aab264645",
                 "shasum": ""
             },
             "require": {
@@ -14609,28 +14609,28 @@
                 "nette/utils": "^3.0 || ^4.0",
                 "nikic/php-parser": "^4.17",
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^1.9.7",
+                "phpstan/phpstan": "^1.10.27",
                 "rector/rector": "0.17.0",
-                "symfony/console": "^4.0 || ^5.0 || ^6.0",
-                "symfony/filesystem": "^5.4 || ^6.0",
-                "symfony/finder": "^5.4 || ^6.0",
+                "symfony/console": "^5.4 || ^6.4 || ^7.0",
+                "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
+                "symfony/finder": "^5.4 || ^6.4 || ^7.0",
                 "symfony/polyfill-php80": "^1.26",
                 "symfony/polyfill-php81": "^1.26",
-                "symfony/string": "^5.0 || ^6.0",
-                "symfony/yaml": "^5.0 || ^6.0",
+                "symfony/string": "^5.4 || ^6.4 || ^7.0",
+                "symfony/yaml": "^5.4 || ^6.4 || ^7.0",
                 "webmozart/assert": "^1.0"
             },
             "conflict": {
                 "phpstan/phpstan": ">= 1.10.28"
             },
             "require-dev": {
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^9.5",
-                "symfony/dependency-injection": "^5.0 || ^6.0",
-                "symfony/http-kernel": "^5.0 || ^6.0",
-                "symplify/easy-coding-standard": "^12.0"
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpstan/extension-installer": "^1.3.1",
+                "phpstan/phpstan-phpunit": "^1.3.15",
+                "phpunit/phpunit": "^9.6.16",
+                "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.0",
+                "symfony/http-kernel": "^5.4 || ^6.4 || ^7.0",
+                "symplify/easy-coding-standard": "^12.1.8"
             },
             "default-branch": true,
             "type": "rector-extension",
@@ -14684,7 +14684,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-17T13:25:40+00:00"
+            "time": "2024-01-24T12:32:27+00:00"
         },
         {
             "name": "symfony/stopwatch",
