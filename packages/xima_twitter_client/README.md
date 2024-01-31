@@ -40,7 +40,7 @@ The configuration `image_storage` is the combined identifier for the downloaded 
 To start the download, run this command:
 
 ```bash
-vendor/bin/typo3cms twitter:fetchTweets
+vendor/bin/typo3 twitter:fetchTweets
 ```
 
 To output a Twitter feed, add the new custom content element "Twitter" to any page:

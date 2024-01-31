@@ -30,11 +30,11 @@ An initial transfer can be done with the TYPO3 integrated [ImpExp extension](htt
 To export the pagetree of the manual, you could use the following command:
 
 ```
-typo3cms impexp:export --type t3d_compressed --levels 999 --table _ALL --include-related --include-static sys_file_storage _ALL --pid <UID>
+typo3 impexp:export --type t3d_compressed --levels 999 --table _ALL --include-related --include-static sys_file_storage _ALL --pid <UID>
 ```
 
 ## Import
 
 ```
-typo3cms impexp:import --update-records  fileadmin/user_upload/_temp_/importexport/<FILENAME>.t3d
+typo3 impexp:import --update-records  fileadmin/user_upload/_temp_/importexport/<FILENAME>.t3d
 ```
