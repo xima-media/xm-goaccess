@@ -76,12 +76,12 @@ task('deploy:upload-dist', function () {
 });
 
 // Cache warmup
-task('typo3cms:cache:warmup', function () {
+task('typo3:cache:warmup', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} warming:cachewarmup -p 1,4,5,6,7,8');
 });
-task('typo3cms:cache:warmup-live', function () {
+task('typo3:cache:warmup-live', function () {
     $activePath = get('deploy_path') . '/' . (test('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} cache:warmup');
     run('cd ' . $activePath . ' && {{bin/php}} {{bin/typo3cms}} warming:cachewarmup --sites=1');
