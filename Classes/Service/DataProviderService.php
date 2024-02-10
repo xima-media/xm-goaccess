@@ -11,6 +11,7 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\WidgetApi;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use Xima\XmGoaccess\Domain\Model\Dto\Demand;
@@ -35,50 +36,23 @@ class DataProviderService
     ) {
     }
 
-    /**
-     * @throws ExtensionConfigurationExtensionNotConfiguredException
-     * @throws ExtensionConfigurationPathDoesNotExistException
-     */
-    public function readJsonData(): array
-    {
-        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
-
-        if (!isset($extConf['json_path']) || !$extConf['json_path']) {
-            throw new \Exception('Goaccess json_path is not configured', 1662881054);
-        }
-
-        $filePath = str_starts_with($extConf['json_path'],
-            '/') ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
-        if (!file_exists($filePath)) {
-            throw new \Exception('File "' . $filePath . '" not found', 1662881054);
-        }
-
-        $content = file_get_contents($filePath);
-
-        return $content ? (array)json_decode($content) : [];
-    }
-
     public function getDailyJsonLogs(): array
     {
-        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
+        $logPath = $this->extensionConfiguration->get('xm_goaccess', 'daily_log_path');
 
-        if (!isset($extConf['daily_log_path']) || !$extConf['daily_log_path']) {
-            throw new \Exception('Goaccess daily_log_path is not configured', 1679592902);
+        if (!$logPath || !is_string($logPath)) {
+            throw new \RuntimeException('Goaccess "daily_log_path" is not configured', 1679592902);
         }
 
-        $filePath = str_starts_with($extConf['daily_log_path'],
-            '/') ? $extConf['daily_log_path'] : Environment::getPublicPath() . '/' . $extConf['daily_log_path'];
-        if (!file_exists($filePath)) {
-            throw new \Exception('Folder "' . $filePath . '" not found', 1679592906);
-        }
+        $filePath = GeneralUtility::getFileAbsFileName($logPath);
+        $logFiles = GeneralUtility::getFilesInDir($filePath, 'json');
 
         $jsonLogs = [];
-        $logFiles = glob($filePath . '*.json');
         $dates = $this->requestRepository->getAllDates();
 
-        foreach ($logFiles ?: [] as $file) {
+        foreach ($logFiles as $file) {
             // decode content
-            $fileContent = file_get_contents($file) ?: '';
+            $fileContent = file_get_contents($filePath . '/' . $file) ?: '';
             $jsonContent = (array)json_decode($fileContent);
 
             // compare with saved dates
@@ -137,10 +111,34 @@ class DataProviderService
         return $items;
     }
 
+    /**
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
+     */
+    public function readJsonData(): array
+    {
+        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
+
+        if (!isset($extConf['json_path']) || !$extConf['json_path']) {
+            throw new \Exception('Goaccess json_path is not configured', 1662881054);
+        }
+
+        $filePath = str_starts_with(
+            $extConf['json_path'],
+            '/'
+        ) ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
+        if (!file_exists($filePath)) {
+            throw new \Exception('File "' . $filePath . '" not found', 1662881054);
+        }
+
+        $content = file_get_contents($filePath);
+
+        return $content ? (array)json_decode($content) : [];
+    }
+
     private function resolvePathMapping(string $path): ?Mapping
     {
         foreach ($this->mappings as $mapping) {
-
             if ($mapping->isRegex()) {
                 preg_match('/' . $mapping->getPath() . '/', $path, $matches);
                 if ($matches) {
@@ -185,8 +183,10 @@ class DataProviderService
                 [
                     'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors'),
                     'borderColor' => WidgetApi::getDefaultChartColors()[0],
-                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(WidgetApi::getDefaultChartColors()[0],
-                        0.1),
+                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(
+                        WidgetApi::getDefaultChartColors()[0],
+                        0.1
+                    ),
                     'parsing' => ['yAxisKey' => 'A'],
                     'borderWidth' => 1,
                     'data' => array_column($chartData, 'visitors'),
@@ -194,8 +194,10 @@ class DataProviderService
                 [
                     'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits'),
                     'borderColor' => WidgetApi::getDefaultChartColors()[1],
-                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(WidgetApi::getDefaultChartColors()[1],
-                        0.1),
+                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(
+                        WidgetApi::getDefaultChartColors()[1],
+                        0.1
+                    ),
                     'yAxisID' => 'right',
                     'borderWidth' => 1,
                     'data' => array_column($chartData, 'hits'),
@@ -203,5 +205,4 @@ class DataProviderService
             ],
         ];
     }
-
 }
