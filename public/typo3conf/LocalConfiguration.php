@@ -133,8 +133,8 @@ return [
                     'implementationClassName' => 'Xima\\XimaOauth2Extended\\ResourceProvider\\AuthentikResourceProvider',
                     'label' => 'Authentik',
                     'options' => [
-                        'clientId' => 'EGBGHTNZcEu8w4w8Ld6veFwnIDUK5PjABh996VNW',
-                        'clientSecret' => 'AougHjWRqxrPuTQPDb2wQnS4TpEZGEU1WtZBWrsjDedv1XMmJGgKLfXs2WgwOU9vH7GN8SeptqGmu2XwxV7OTt5IkDyTcBzB4wSLmplpM6NZadmqGAYSkNHHMyA4HKlj',
+                        'clientId' => 'LxF5rzdfaViMIVirBqOTzjjNQL8EQonuU5mLinzE',
+                        'clientSecret' => 'MwiUe7mvDQnq10a9wmHyf07jb2Jnh62HPn8IV5vfk170sv1go3yWYXKz015T1zit2M3puJE2QhEsGPJhlvjpHZeS3R4dR7DWG4LMpbZNCIHLcDsDLqhQDeojb8sj6BHt',
                         'scopeSeparator' => ' ',
                         'scopes' => [
                             'openid',
