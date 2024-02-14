@@ -1,6 +1,8 @@
 {
-	"name": "xima/xm-dkfz-net",
-	"description": "DKFZ Intranet TYPO3 project",
+	"name": "xima/xm-goaccess",
+	"description": "Integrates goaccess.io into TYPO3",
+	"type": "typo3-cms-extension",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Maik Schneider",
@@ -8,137 +10,40 @@
 			"role": "Developer"
 		}
 	],
-	"repositories": [
-		{
-			"type": "github",
-			"url": "https://github.com/maikschneider/instagram.git"
-		},
-		{
-			"type": "path",
-			"url": "./packages/*"
-		}
-	],
 	"require": {
-		"php": "8.1.*",
-		"typo3/cms-backend": "^11.5",
-		"typo3/cms-belog": "^11.5",
-		"typo3/cms-beuser": "^11.5",
-		"typo3/cms-core": "^11.5",
-		"typo3/cms-dashboard": "^11.5",
-		"typo3/cms-extbase": "^11.5",
-		"typo3/cms-extensionmanager": "^11.5",
-		"typo3/cms-filelist": "^11.5",
-		"typo3/cms-fluid": "^11.5",
-		"typo3/cms-fluid-styled-content": "^11.5",
-		"typo3/cms-form": "^11.5",
-		"typo3/cms-frontend": "^11.5",
-		"typo3/cms-impexp": "^11.5",
-		"typo3/cms-info": "^11.5",
-		"typo3/cms-install": "^11.5",
-		"typo3/cms-lowlevel": "^11.5",
-		"typo3/cms-opendocs": "^11.5",
-		"typo3/cms-recordlist": "^11.5",
-		"typo3/cms-recycler": "^11.5",
-		"typo3/cms-redirects": "^11.5",
-		"typo3/cms-reports": "^11.5",
-		"typo3/cms-rte-ckeditor": "^11.5",
-		"typo3/cms-scheduler": "^11.5",
-		"typo3/cms-seo": "^11.5",
-		"typo3/cms-setup": "^11.5",
-		"typo3/cms-tstemplate": "^11.5",
-		"typo3/cms-viewpage": "^11.5",
-		"typo3/cms-composer-installers": "5.0.0 as 4.0.1",
-		"typo3/cms-adminpanel": "^11.5",
-		"helhum/dotenv-connector": "^3.0",
-		"helhum/typo3-console": "^8.0",
-		"xima/xm-dkfz-net-site": "@dev",
-		"xima/xm-dkfz-net-jobs": "@dev",
-		"xima/xima-deployer-extended-typo3": "^1.4.0",
-		"georgringer/news": "^10.0",
-		"m4tthumphrey/php-gitlab-api": "10.4.0",
-		"ext-pdo": "*",
-		"xima/xm-dkfz-net-events": "@dev",
-		"typo3/cms-filemetadata": "^11.5",
-		"b13/container": "^1.6.1",
-		"blueways/bw-guild": "@dev",
-		"xima/xm-goaccess": "^11.0",
-		"ext-dom": "*",
-		"in2code/luxletter": "^14.0.0",
-		"blueways/bw-static-template": "^2.0",
-		"tpwd/ke_search": "4.6.6",
-		"xima/xm-kesearch-remote": "@dev",
-		"xima/xm-manual": "@dev",
-		"cweagans/composer-patches": "^1.7",
-		"tpwd/ke_search_premium": "@dev",
-		"causal/image_autoresize": "^2.2",
-		"ext-simplexml": "*",
-		"ichhabrecht/filefill": "^4.1",
-		"lochmueller/staticfilecache": "^12.5",
-		"in2code/instagram": "dev-master",
-		"xima/xima-twitter-client": "@dev",
-		"xima/xima-oauth2-extended": "^2.0",
-		"xima/xima-typo3-mailcatcher": "^1.1.0",
-		"eliashaeussler/typo3-warming": "^0.5",
-		"lolli/dbdoctor": "^0.5.0",
-		"apen/additional_reports": "^3.4"
+		"php": "^8.0",
+		"typo3/cms-core": "^11.5 || ^12.0",
+		"typo3/cms-dashboard": "^11.5 || ^12.0"
 	},
 	"require-dev": {
-		"friendsofphp/php-cs-fixer": "^3.6.0",
-		"typo3/testing-framework": "^6.16",
-		"saschaegerer/phpstan-typo3": "^1.8",
-		"codeception/codeception": "5.0.13",
-		"codeception/module-asserts": "^3.0",
-		"codeception/module-webdriver": "^3.1",
-		"symplify/vendor-patches": "11.2.3",
-		"ssch/typo3-rector": "dev-main",
-		"symfony/translation": "^6.3"
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Xima\\XmDkfzNet\\Tests\\": "Tests"
-		}
+		"typo3/cms-base-distribution": "^12.0",
+		"phpmd/phpmd": "^2.6.0",
+		"squizlabs/php_codesniffer": "^3.4",
+		"friendsofphp/php-cs-fixer": "^3.3",
+		"vimeo/psalm": "^4.0",
+		"phpstan/phpstan": "^1.6"
 	},
 	"extra": {
-		"composer-exit-on-patch-failure": true,
-		"patches": {
-			"in2code/instagram": [
-				"patches/in2code-instagram-classes-middleware-getauthenticationcode-php.patch"
-			]
-		},
-		"helhum/dotenv-connector": {
-			"env-file": ".env",
-			"adapter": "Helhum\\DotEnvConnector\\Adapter\\SymfonyDotEnv"
+		"typo3/cms": {
+			"extension-key": "xm_goaccess"
 		}
 	},
-	"config": {
-		"allow-plugins": {
-			"helhum/dotenv-connector": true,
-			"typo3/cms-composer-installers": true,
-			"typo3/class-alias-loader": true,
-			"cweagans/composer-patches": true,
-			"php-http/discovery": true
+	"autoload": {
+		"psr-4": {
+			"Xima\\XmGoaccess\\": "Classes"
 		}
 	},
 	"scripts": {
-		"typo3-cms-scripts": [
-			"mkdir -p var/goaccess",
-			"mkdir -p var/debug",
-			"mkdir -p var/phonebook",
-			"mkdir -p var/xm_kesearch_remote",
-			"php vendor/bin/typo3 install:fixfolderstructure"
-		],
-		"post-autoload-dump": [
-			"@typo3-cms-scripts"
-		],
-		"tests": [
-			"php vendor/bin/codecept run acceptance -d -c Tests/codeception.yml"
-		],
-		"php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
+		"php:fixer": "vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
 		"php:stan": "php vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
-		"ci:php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"ci:php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots",
-		"ci:php:stan": "php vendor/bin/phpstan --no-progress",
-		"ci:xml:lint": "find ./packages -name '*.xlf' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout",
-		"ci:yaml:lint": "find ./packages ! -path '*node_modules/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint"
+		"ci:php:lint": "find *.php Classes Configuration -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+		"ci:php:fixer": "vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run -v --show-progress=dots Classes Configuration",
+		"ci:php:stan": "vendor/bin/phpstan --no-progress"
+	},
+	"config": {
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		}
 	}
 }

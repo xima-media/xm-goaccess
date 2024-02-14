@@ -1,7 +1,0 @@
-module.tx_xmdkfznetsite {
-  view {
-    templateRootPaths {
-      10 = EXT:xm_dkfz_net_site/Resources/Private/Extensions/Backend
-    }
-  }
-}

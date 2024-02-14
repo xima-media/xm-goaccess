@@ -1,0 +1,48 @@
+{namespace be=TYPO3\CMS\Backend\ViewHelpers}
+<f:layout name="Widget/Widget"/>
+<f:section name="main">
+
+	<f:if condition="{items}">
+		<table class="widget-table">
+			<tr>
+				<th>
+					<f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits"/>
+				</th>
+				<th>
+					<f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors"/>
+				</th>
+				<th>
+					<f:translate key="LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:path"/>
+				</th>
+				<th></th>
+			</tr>
+			<f:for each="{items}" as="item">
+				<tr>
+					<td>{item.hits}</td>
+					<td>{item.visitors}</td>
+					<td>{item.path}</td>
+					<td>
+						<div class="btn-group btn-group-sm">
+							<be:link.newRecord class="btn btn-sm btn-link"
+											   defaultValues="{tx_xmgoaccess_domain_model_mapping: {path: item.path}}"
+											   table="tx_xmgoaccess_domain_model_mapping"
+											   returnUrl="{f:be.uri(route: 'dashboard')}">
+								<core:icon identifier="actions-link" size="small"/>
+							</be:link.newRecord>
+							<be:link.newRecord class="btn btn-sm btn-link"
+											   defaultValues="{tx_xmgoaccess_domain_model_mapping: {path: item.path, record_type: 2}}"
+											   table="tx_xmgoaccess_domain_model_mapping"
+											   returnUrl="{f:be.uri(route: 'dashboard')}">
+								<core:icon identifier="actions-close" size="small"/>
+							</be:link.newRecord>
+						</div>
+					</td>
+				</tr>
+			</f:for>
+		</table>
+	</f:if>
+
+</f:section>
+<f:section name="footer">
+	<f:render partial="Widget/Button" arguments="{button: button}"/>
+</f:section>

@@ -1,124 +1,73 @@
-# DKFZ Intranet TYPO3
+# TYPO3 goaccess.io integration
 
-This is the main repository for the DKFZ TYPO3 project.
+Goaccess is an open source log analyzer which extracts metrics from a multitude
+of web log formats and visualizes them in your terminal or as html. Metrics can
+be exported to json and csv.
+This TYPO3 extensions ships Dashboard widgets and a backend module to display
+various [goaccess.io](https://goaccess.io) metrics.
 
-* Repository: [GitLab XIMA](https://git.xima.de/typo3/dkfz/dkfz-intranet-typo3) → [GitLab DKFZ](https://git.dkfz.de/dkfz/dkfz-t3-intranet) (Mirror)
-* Staging-Instance: [master.dev.dkfz-intranet-typo3.xima.dev](https://master.dev.dkfz-intranet-typo3.xima.dev/)
-* Feature-Branches overview: [GitLab Deployments](https://git.xima.de/typo3/dkfz/dkfz-intranet-typo3/-/environments)
+![backend_dashboard](Documentation/Images/backend-goaccess.jpg)
 
-## 1. Local setup
+![backend_module](Documentation/Images/goaccess-module.jpg)
 
-1. Clone repository (see 2. Git-Server)
-2. Run `ddev start`
-3. Done.
-
-### 1.1. Asset-Building
-
-All TypeScript and SCSS source files are located inside the `packages/xm_dkfz_net_site/Resources/Private` directory and are compiled via webpack.
-
-* `npm run start` (watch task, used in *Development/Local* context)
-* `npm run build` (build task, used in *Production* context)
-
-## 2. Git-Server
-
-There are currently two Gitlab installations where you can checkout the source code:
-
-* [XIMA-Intern](https://git.xima.de/typo3/dkfz/dkfz-intranet-typo3) (**PRIMARY**)
-* [DKFZ-Intern](https://git.dkfz.de/dkfz/dkfz-t3-intranet.git) (Mirror)
-
-To connect to the primary DKFZ-Repository via SSH, you need to adjust your SSH configuration (`~/.ssh/config`), since it does not use the default port 22:
+## Installation
 
 ```
-Host git.dkfz.de
-HostName git.dkfz.de
-User git
-Port 22022
-IdentityFile ~/.ssh/id_rsa
+composer require xima/xm-goaccess
 ```
 
-## 3. Database
+* [Install and configure goaccess](https://goaccess.io/get-started) to generate
+  json and/or html output to a directory
+* Make sure the webserver user has read access to the generated files
 
-### 3.1. Starter database
+## Configuration
 
-When starting the project for the first time, an example database is imported that includes a page structure, some content elements and users.
-
-* Backend user:
-  * Username: admin
-  * Password: changeme
-
-### 3.2. Staging database
-
-To download the staging database, you can use deployer. These commands download the database and media files:
+To enable the backend module, set the path to the generated html via extension
+configuration:
 
 ```
-dep db:pull dev-t3-debian11-01-master
-dep media:pull dev-t3-debian11-01-master
+$GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['xm_goaccess']['html_path] = '/tmp/goaccess/goaccess.html';
 ```
 
-(Make sure you have authenticated your ddev container and added the `dep` command alias, see 5. Commands)
-
-### 3.3. Production Artifacts
-
-There is a deployer task to download the production database and files from the DKFZ GitLab via API:
+To make the new dasboard widgets work, you need to pass the path to the
+generated json file:
 
 ```
-dep reset:from_production_artifact -o DKFZ_ACCESS_TOKEN="<SEE KEEPASS>"
+$GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['xm_goaccess']['json_path] = '/tmp/goaccess/goaccess.json';
 ```
 
-### 4. TYPO3 Styleguide
+## Usage
 
-* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite](https://master.dev.dkfz-intranet-typo3.xima.dev/styleguide/themenseite)
-* [master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten](https://master.dev.dkfz-intranet-typo3.xima.dev/styleguide/komponenten)
+You can add single widgets to your custom dashboard or use the preset that
+creates a new dashboard with all available goaccess integrations.
 
-## 5. Project structure
+![backend_widgets](Documentation/Images/backend-dashboard.jpg)
 
-All configurations are made for the production context. Configurations can be overridden via `.env` oder `dev.typoscript` files to fit your local ddev installation.
+### Goaccess installation on Debian/Ubuntu:
 
-```
-├── Tests
-├── config
-├── packages
-│   ├── xm_dkfz_net_jobs
-│   └── xm_dkfz_net_site
-│   └── ...
-├── public (Web root)
-│   ├── typo3conf
-│   │   ├── AdditionalConfiguration.php
-│   │   └── LocalConfiguration.php
-│   └── .htaccess
-├── .env
-├── composer.json
-├── deploy.php
-└── package.json
-```
-
-## 6. Commands
-
-* `ddev` commands:
-  * ```ddev ...```
-  * ```ddev composer ...```
-  * ```ddev typo3cms ...```
-* `deployer` commands:
-  * ```dep```
-  * ```dep deploy-fast``` → select instance (e.g. master) deployment
-  * ```dep db:pull``` → Download database
-  * ```dep media:pull``` → Download fileadmin & co.
-
-To add the `dep` alias, add this to your `~/.bashrc`:
+The application is written in go and available from the standard repositories of
+multiple Linux distributions. A repository for Debian/Ubuntu is also provided.
+See the [official goaccess.io documentation[(https://goaccess.io/get-started)
+for a complete guide.
 
 ```
-alias dep="ddev exec vendor/bin/dep"
+apt install goaccess
 ```
 
-## 7. Tests
+HTML and JSON exports for the TYPO3 extension can be generated from Apache logs
+as follows:
 
-The pipelines are configured to run tests before deploying to master and production.
+```
+usr/bin/zcat --force /var/log/apache2/access_example.org.log* | \ # You usually want to parse rotated and gzipped logs as well.
+    /usr/bin/goaccess -
+    -o goaccess.html -o goaccess.json                           \ # Export processed metrics as html and json.
+    --log-format=COMBINED                                       \ # Apache Combined Log Format. Custom log formats are supported, too.
+    --ignore-crawlers                                           \ # Ignore web crawlers.
+    --exclude-ip ::1 --exclude-ip 127.0.0.1                     \ # Exclude status checks originating from local ip addresses.
+```
 
-* phpstan
-* phpfixer
-* phplint
-* xmllint
-* Codeception (currently disabled in pipeline)
+To refresh these files periodically, you might use a cronjob, e.g.:
 
-To run the tests locally, run `ddev composer run php:stan` and `ddev composer run php:fixer`.
-
+```
+*/15 * * * /usr/bin/mkdir -p /tmp/goaccess; chmod 750 /tmp/goaccess; /home/user/goaccess-generation.sh
+```

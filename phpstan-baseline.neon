@@ -1,536 +1,86 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method object\\:\\:addCacheTags\\(\\)\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\LineChartWidget\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Controller/EventController.php
+			path: Classes/Widgets/LineChartWidget.php
 
 		-
-			message: "#^Cannot access offset 'host' on array\\{scheme\\?\\: string, host\\?\\: string, port\\?\\: int\\<0, 65535\\>, user\\?\\: string, pass\\?\\: string, path\\?\\: string, query\\?\\: string, fragment\\?\\: string\\}\\|false\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\LineChartWidget\\:\\:getCssFiles\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Domain/Model/Dto/Event.php
+			path: Classes/Widgets/LineChartWidget.php
 
 		-
-			message: "#^Access to an undefined property DOMNode\\:\\:\\$tagName\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\LineChartWidget\\:\\:getEventData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
+			path: Classes/Widgets/LineChartWidget.php
 
 		-
-			message: "#^Cannot call method getName\\(\\) on ReflectionType\\|null\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetEvents\\\\Utility\\\\EventLoaderUtility\\:\\:getEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
-
-		-
-			message: "#^Parameter \\#1 \\$datetime of class DateTime constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_events/Classes/Utility/EventLoaderUtility.php
-
-		-
-			message: "#^Call to an undefined method object\\:\\:addCacheTags\\(\\)\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_jobs/Classes/Controller/JobController.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetJobs\\\\Utility\\\\JobLoaderUtility\\:\\:getJobCategories\\(\\) should return array\\<string\\> but returns array\\<string, array\\<string, int\\|string\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_jobs/Classes/Utility/JobLoaderUtility.php
-
-		-
-			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Controller/DkfzController.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Crawler/DkfzWikiCrawler.php
-
-		-
-			message: "#^Parameter \\#1 \\$sitemapUrl of class Xima\\\\XmKesearchRemote\\\\Domain\\\\Model\\\\Dto\\\\SitemapLink constructor expects string, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Crawler/DkfzWikiCrawler.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\LatestUserProcessor\\:\\:process\\(\\) has parameter \\$contentObjectConfiguration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/LatestUserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\LatestUserProcessor\\:\\:process\\(\\) has parameter \\$processedData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/LatestUserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\LatestUserProcessor\\:\\:process\\(\\) has parameter \\$processorConfiguration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/LatestUserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\LatestUserProcessor\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/LatestUserProcessor.php
-
-		-
-			message: "#^Cannot access offset 'tx_xmdkfznetsite…' on mixed\\.$#"
-			count: 3
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
-
-		-
-			message: "#^Parameter \\#1 \\$itemlist of method TYPO3\\\\CMS\\\\Core\\\\Database\\\\RelationHandler\\:\\:start\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/PageContactsProcessor.php
-
-		-
-			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) has parameter \\$contentObjectConfiguration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) has parameter \\$processedData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) has parameter \\$processorConfiguration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\TeaserProcessor\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/TeaserProcessor.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) has parameter \\$contentObjectConfiguration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) has parameter \\$processedData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) has parameter \\$processorConfiguration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\DataProcessing\\\\UserQueryProcessor\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/DataProcessing/UserQueryProcessor.php
-
-		-
-			message: "#^Cannot call method attach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\>\\|null\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
-
-		-
-			message: "#^Cannot call method detach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\>\\|null\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:getAssistants\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: TEntity$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:getCoordinators\\(\\) return type with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage does not specify its types\\: TEntity$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:setAssistants\\(\\) has parameter \\$assistants with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: TEntity$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\FeGroup\\:\\:setCoordinators\\(\\) has parameter \\$coordinators with generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage but does not specify its types\\: TEntity$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/FeGroup.php
-
-		-
-			message: "#^Cannot call method detach\\(\\) on TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<Xima\\\\XmDkfzNetSite\\\\Domain\\\\Model\\\\Contact\\>\\|null\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Model/User.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllFileMounts\\(\\) should return array\\<int, array\\{title\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithDkfzGroupIdentifier\\(\\) should return array\\<int, array\\{dkfz_group_identifier\\: string, uid\\: int, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeGroupRepository\\:\\:findAllGroupsWithoutShortNewsMountPoint\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\BeUserRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/BeUserRepository.php
-
-		-
-			message: "#^Cannot call method fetchAllKeyValue\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/NewsRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\NewsRepository\\:\\:getPreviewSysFileReferences\\(\\) has parameter \\$newsUids with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/NewsRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\NewsRepository\\:\\:getPreviewSysFileReferences\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/NewsRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findByDemandArray\\(\\) has parameter \\$demand with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\PlaceRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
-
-		-
-			message: "#^PHPDoc tag @param for parameter \\$demand with type mixed is not subtype of native type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/PlaceRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserGroupRepository\\:\\:findAllGroupsWithDkfzGroupIdentifier\\(\\) should return array\\<int, array\\{dkfz_group_identifier\\: string, uid\\: int, dkfz_hash\\: string\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserGroupRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findAllUsersWithDkfzId\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Domain\\\\Repository\\\\UserRepository\\:\\:findByDkfzIds\\(\\) should return array\\<int, array\\{dkfz_id\\: int, dkfz_hash\\: string, uid\\: int\\}\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Domain/Repository/UserRepository.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/UserEditFormEvent.php
-
-		-
-			message: "#^Cannot call method fetchAllKeyValue\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/UserEditFormEvent.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\UserEditFormEvent\\:\\:getCommittees\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/UserEditFormEvent.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\UserEditFormEvent\\:\\:getUserRepresentativeAutocompleteData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/UserEditFormEvent.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\EventListener\\\\UserSearchEvent\\:\\:addConstraintForRoom\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/EventListener/UserSearchEvent.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Form\\\\Element\\\\OverrideToggleElement\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Form/Element/OverrideToggleElement.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
-
-		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/DataHandlerHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:additionalResultMarker\\(\\) has parameter \\$row with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:additionalResultMarker\\(\\) has parameter \\$tempMarkerArray with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:getBadgeLabelForRow\\(\\) has parameter \\$row with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\AdditionalResultMarkerHook\\:\\:getRootlineArrayForPage\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/AdditionalResultMarkerHook.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:isValidTtContentRow\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:modifyContentFromContentElement\\(\\) has parameter \\$ttContentRow with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
-
-		-
-			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:addTtContentItemContent\\(\\) expects int, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
-
-		-
-			message: "#^Parameter \\#1 \\$uid of method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyContentFromContentElementHook\\:\\:ttContentItemHasChildren\\(\\) expects int, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyContentFromContentElementHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyExtNewsIndexEntryHook\\:\\:modifyExtNewsIndexEntry\\(\\) has parameter \\$additionalFields with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyExtNewsIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyExtNewsIndexEntryHook\\:\\:modifyExtNewsIndexEntry\\(\\) has parameter \\$categoryData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyExtNewsIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyExtNewsIndexEntryHook\\:\\:modifyExtNewsIndexEntry\\(\\) has parameter \\$indexerConfig with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyExtNewsIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyExtNewsIndexEntryHook\\:\\:modifyExtNewsIndexEntry\\(\\) has parameter \\$newsRecord with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyExtNewsIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$abstract with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$additionalFields with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$content with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$feGroups with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$fileIndexerObject with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$fileObject with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$storagePid with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$tags with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$title with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyFileIndexEntryHook\\:\\:modifyFileIndexEntryFromContentIndexer\\(\\) has parameter \\$ttContentRow with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyFileIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyPagesIndexEntryHook\\:\\:modifyPagesIndexEntry\\(\\) has parameter \\$additionalFields with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyPagesIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyPagesIndexEntryHook\\:\\:modifyPagesIndexEntry\\(\\) has parameter \\$cachedPageRecords with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyPagesIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyPagesIndexEntryHook\\:\\:modifyPagesIndexEntry\\(\\) has parameter \\$indexEntryDefaultValues with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyPagesIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyPagesIndexEntryHook\\:\\:modifyPagesIndexEntry\\(\\) has parameter \\$indexerConfig with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyPagesIndexEntryHook.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Hook\\\\KeSearch\\\\ModifyPagesIndexEntryHook\\:\\:modifyPagesIndexEntry\\(\\) has parameter \\$pageContent with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Hook/KeSearch/ModifyPagesIndexEntryHook.php
-
-		-
-			message: "#^Parameter \\#1 \\$uri of class TYPO3\\\\CMS\\\\Core\\\\Http\\\\RedirectResponse constructor expects Psr\\\\Http\\\\Message\\\\UriInterface\\|string, mixed given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Middleware/RedirectAfterLogout.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/AccordionContainerPreviewRenderer.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function htmlspecialchars expects string, string\\|false given\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/AccordionContainerPreviewRenderer.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/InfoboxPreviewRenderer.php
-
-		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 2
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
-
-		-
-			message: "#^Cannot call method fetchAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:fillChildFromLink\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:fillChildFromLink\\(\\) has parameter \\$item with no type specified\\.$#"
-			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
-
-		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:resolveChildLinkItems\\(\\) has no return type specified\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\LineChartWidget\\:\\:getOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+			path: Classes/Widgets/LineChartWidget.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Preview\\\\TeaserPreviewRenderer\\:\\:resolveChildLinkItems\\(\\) has parameter \\$item with no type specified\\.$#"
+			message: "#^Property Xima\\\\XmGoaccess\\\\Widgets\\\\LineChartWidget\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/TeaserPreviewRenderer.php
+			path: Classes/Widgets/LineChartWidget.php
 
 		-
-			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\ListWidget\\:\\:__construct\\(\\) has parameter \\$buttonProvider with no type specified\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Preview/UsertablePreviewRenderer.php
+			path: Classes/Widgets/ListWidget.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:updateBackendUser\\(\\) has parameter \\$beUser with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\ListWidget\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
+			path: Classes/Widgets/ListWidget.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ResourceResolver\\\\DkfzResourceResolver\\:\\:updateFrontendUser\\(\\) has parameter \\$feUser with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\ListWidget\\:\\:getItems\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ResourceResolver/DkfzResourceResolver.php
+			path: Classes/Widgets/ListWidget.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\ListWidget\\:\\:getOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Service/SvgService.php
+			path: Classes/Widgets/ListWidget.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) has parameter \\$items with no value type specified in iterable type array\\.$#"
+			message: "#^Property Xima\\\\XmGoaccess\\\\Widgets\\\\ListWidget\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+			path: Classes/Widgets/ListWidget.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getItemsForColorField\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\AbstractGoaccessDataProvider\\:\\:readJsonData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+			path: Classes/Widgets/Provider/AbstractGoaccessDataProvider.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:getRandomColor\\(\\) has no return type specified\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\BrowsersChartDataProvider\\:\\:getChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+			path: Classes/Widgets/Provider/BrowsersChartDataProvider.php
 
 		-
-			message: "#^Property Xima\\\\XmDkfzNetSite\\\\Tca\\\\TcaUtility\\:\\:\\$colors type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\BrowsersChartDataProvider\\:\\:getGoaccessChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/Tca/TcaUtility.php
+			path: Classes/Widgets/Provider/BrowsersChartDataProvider.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:initializeArguments\\(\\) has no return type specified\\.$#"
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$type$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
+			path: Classes/Widgets/Provider/LineChartDataProvider.php
 
 		-
-			message: "#^Method Xima\\\\XmDkfzNetSite\\\\ViewHelpers\\\\Format\\\\Json\\\\DecodeViewHelper\\:\\:renderStatic\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\OsChartDataProvider\\:\\:getChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/Format/Json/DecodeViewHelper.php
+			path: Classes/Widgets/Provider/OsChartDataProvider.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\OsChartDataProvider\\:\\:getGoaccessChartData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/SvgInlineViewHelper.php
+			path: Classes/Widgets/Provider/OsChartDataProvider.php
 
 		-
-			message: "#^Parameter \\#1 \\$src of method TYPO3\\\\CMS\\\\Extbase\\\\Service\\\\ImageService\\:\\:getImage\\(\\) expects string, mixed given\\.$#"
+			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\Provider\\\\RequestsListDataProvider\\:\\:getItems\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: packages/xm_dkfz_net_site/Classes/ViewHelpers/SvgInlineViewHelper.php
+			path: Classes/Widgets/Provider/RequestsListDataProvider.php

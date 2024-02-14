@@ -1,4 +1,0 @@
-@import 'EXT:bw_guild/Configuration/TypoScript/Setup/module.typoscript'
-@import 'EXT:bw_guild/Configuration/TypoScript/Setup/plugin.typoscript'
-@import 'EXT:bw_guild/Configuration/TypoScript/Setup/sitemap.typoscript'
-@import 'EXT:bw_guild/Configuration/TypoScript/Setup/page.typoscript'

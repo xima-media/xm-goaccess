@@ -1,0 +1,112 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Xima\XmGoaccess\:
+    resource: '../Classes/*'
+
+  Xima\XmGoaccess\Controller\BackendController:
+    tags: [ 'backend.controller' ]
+
+  dashboard.widget.xm_goaccess_uniqueVisitors:
+    class: 'Xima\XmGoaccess\Widgets\LineChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $options:
+        refreshAvailable: true
+        goaccessType: 'visitors'
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessUniqueVisitors'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.uniqueVisitors.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.uniqueVisitors.description'
+        iconIdentifier: 'content-widget-chart'
+        height: 'medium'
+        width: 'medium'
+
+  dashboard.widget.xm_goaccess_visitTime:
+    class: 'Xima\XmGoaccess\Widgets\LineChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $options:
+        refreshAvailable: true
+        goaccessType: 'visit_time'
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessVisitTime'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.visitTime.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.visitTime.description'
+        iconIdentifier: 'content-widget-chart'
+        height: 'medium'
+        width: 'medium'
+
+  dashboard.widget.xm_goaccess_browsers:
+    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\BrowsersChartDataProvider'
+      $options:
+        refreshAvailable: true
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessBrowsers'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.browsers.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.browsers.description'
+        iconIdentifier: 'content-widget-chart-pie'
+        height: 'medium'
+        width: 'small'
+
+  dashboard.widget.xm_goaccess_os:
+    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\OsChartDataProvider'
+      $options:
+        refreshAvailable: true
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessOs'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.os.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.os.description'
+        iconIdentifier: 'content-widget-chart-pie'
+        height: 'medium'
+        width: 'small'
+
+  dashboard.widget.xm_goaccess_requests:
+    class: 'Xima\XmGoaccess\Widgets\ListWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Xima\XmGoaccess\Widgets\Provider\RequestsListDataProvider'
+      $options:
+        refreshAvailable: true
+        goaccessType: 'requests'
+    tags:
+      - name: dashboard.widget
+        identifier: 'goaccessRequests'
+        groupNames: 'goaccess'
+        title: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.requests.title'
+        description: 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:widgets.requests.description'
+        iconIdentifier: 'content-widget-list'
+        height: 'medium'
+        width: 'medium'
+
+  Xima\XmGoaccess\Command\CreateMappingsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'goaccess:createMappings'
+        schedulable: true
+
+  Xima\XmGoaccess\Command\UpdatePageStatsCommand:
+    tags:
+      - name: 'console.command'
+        command: 'goaccess:updatePageStats'
+        schedulable: true
+
+  Xima\XmGoaccess\Hook\DrawPageHeaderHook:
+    public: true

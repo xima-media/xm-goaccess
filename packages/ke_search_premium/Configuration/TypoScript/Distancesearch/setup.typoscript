@@ -1,7 +1,0 @@
-plugin.tx_kesearchpremium {
-	distancesearch {
-		templatepath = EXT:ke_search_premium/Resources/Private/Templates/
-		radiusoptions = 10,20,50,100,200
-		radiuslabel = km
-	}
-}
