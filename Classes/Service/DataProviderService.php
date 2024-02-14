@@ -36,7 +36,7 @@ class DataProviderService
     ) {
     }
 
-    public function getDailyJsonLogs(): array
+    public function getUnparsedDailyJsonLogs(): array
     {
         $logPath = $this->extensionConfiguration->get('xm_goaccess', 'daily_log_path');
 

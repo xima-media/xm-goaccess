@@ -36,30 +36,41 @@ class UpdatePageStatsCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $dailyLogs = $this->dataProviderService->getDailyJsonLogs();
-        $mappings = $this->mappingRepository->getAllPageMappings();
+        $dailyLogs = $this->dataProviderService->getUnparsedDailyJsonLogs();
+        $mappings = $this->mappingRepository->getAllPageAndActionMappings();
 
         foreach ($dailyLogs as $log) {
 
             $data = ['tx_xmgoaccess_domain_model_request' => []];
             $timestamp = $this->dataProviderService::getTimestampFromLogDate($log['general']->start_date);
 
-            foreach ($log['requests']->data as $key => $pathData) {
-                foreach ($mappings as $key2 => $mapping) {
-                    if ($mapping['path'] === $pathData->data) {
-                        $data['tx_xmgoaccess_domain_model_request']['NEW' . $key .'-' . $key2] = [
-                            'pid' => 0,
-                            'date' => $timestamp,
-                            'page' => $mapping['page'],
-                            'hits' => $pathData->hits->count,
-                            'visitors' => $pathData->visitors->count,
-                        ];
-                    }
-                }
-            }
+            foreach ($mappings as $key => $mapping) {
 
-            if (!count($data['tx_xmgoaccess_domain_model_request'])) {
-                continue;
+                $data['tx_xmgoaccess_domain_model_request']['NEW-' . $key] = [
+                    'pid' => 0,
+                    'date' => $timestamp,
+                    'mapping' => $mapping['uid'],
+                    'hits' => 0,
+                    'visitors' => 0,
+                ];
+
+                foreach ($log['requests']->data as $key2 => $pathData) {
+                    // check regex
+                    if ($mapping['regex'] === 1) {
+                        preg_match('/' . $mapping['path'] . '/', $pathData->data, $matches);
+                        if (!count($matches)) {
+                            continue;
+                        }
+                    }
+
+                    // check path 1:1
+                    if ($mapping['regex'] === 0 && $mapping['path'] !== $pathData->data) {
+                        continue;
+                    }
+
+                    $data['tx_xmgoaccess_domain_model_request']['NEW-' . $key]['hits'] += $pathData->hits->count;
+                    $data['tx_xmgoaccess_domain_model_request']['NEW-' . $key]['visitors'] += $pathData->visitors->count;
+                }
             }
 
             // persist data
