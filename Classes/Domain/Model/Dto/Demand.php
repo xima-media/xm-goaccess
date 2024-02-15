@@ -11,6 +11,7 @@ class Demand
     public bool $showPages = true;
 
     public bool $showActions = true;
+    public bool $showRedirects = false;
 
     public static function createFromRequest(Request $request): self
     {
@@ -29,6 +30,10 @@ class Demand
 
         if (isset($postData['showActions']) && !(int)$postData['showActions']) {
             $demand->showActions = false;
+        }
+
+        if (isset($postData['showRedirects']) && (int)$postData['showRedirects']) {
+            $demand->showRedirects = true;
         }
 
         return $demand;

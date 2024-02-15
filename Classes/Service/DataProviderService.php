@@ -79,8 +79,6 @@ class DataProviderService
     {
         $goaccessData = $this->readJsonData();
 
-        $this->mappings = $this->mappingRepository->findAll();
-
         $items = [];
 
         foreach ($goaccessData['requests']->data as $pathData) {
@@ -90,18 +88,26 @@ class DataProviderService
                 'hits' => $pathData->hits->count,
                 'visitors' => $pathData->visitors->count,
                 'path' => $path,
-                'mapping' => $this->resolvePathMapping($path),
+                'mappings' => $this->resolvePathMapping($path),
             ];
 
-            if ($demand && $item['mapping']) {
-                if (!$demand->showPages && $item['mapping']->getRecordType() === 0) {
-                    continue;
+            if (!$demand || empty($item['mappings'])) {
+                $items[] = $item;
+                continue;
+            }
+
+            foreach ($item['mappings'] as $mapping) {
+                if (!$demand->showPages && $mapping->getRecordType() === 0) {
+                    continue 2;
                 }
-                if (!$demand->showActions && $item['mapping']->getRecordType() === 1) {
-                    continue;
+                if (!$demand->showActions && $mapping->getRecordType() === 1) {
+                    continue 2;
                 }
-                if (!$demand->showIgnored && $item['mapping']->getRecordType() === 2) {
-                    continue;
+                if (!$demand->showIgnored && $mapping->getRecordType() === 2) {
+                    continue 2;
+                }
+                if (!$demand->showRedirects && $mapping->getRecordType() === 3) {
+                    continue 2;
                 }
             }
 
@@ -136,27 +142,31 @@ class DataProviderService
         return $content ? (array)json_decode($content) : [];
     }
 
-    private function resolvePathMapping(string $path): ?Mapping
+    /**
+     * @return Mapping[]
+     */
+    private function resolvePathMapping(string $path): array
     {
-        foreach ($this->mappings as $mapping) {
+        $mappings = [];
+        foreach ($this->mappingRepository->findAll() as $mapping) {
             if ($mapping->isRegex()) {
                 preg_match('/' . $mapping->getPath() . '/', $path, $matches);
                 if ($matches) {
                     $this->enrichMapping($mapping);
-                    return $mapping;
+                    $mappings[] = $mapping;
                 }
             }
 
             if (!$mapping->isRegex() && $path === $mapping->getPath()) {
                 $this->enrichMapping($mapping);
-                return $mapping;
+                $mappings[] = $mapping;
             }
         }
 
-        return null;
+        return $mappings;
     }
 
-    private function enrichMapping(Mapping &$mapping): void
+    private function enrichMapping(Mapping $mapping): void
     {
         if ($mapping->getRecordType() === 0 && $mapping->getPage()) {
             $pageRecord = BackendUtility::readPageAccess($mapping->getPage(), '1=1');

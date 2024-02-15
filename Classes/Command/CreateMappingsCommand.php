@@ -38,11 +38,18 @@ class CreateMappingsCommand extends Command
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
         $qb->getRestrictions()->removeAll();
-        $result = $qb->select('uid', 'slug')
+        $result = $qb->select('uid', 'slug', 'sys_language_uid')
             ->from('pages')
             ->execute();
-
         $pages = $result->fetchAllAssociative();
+
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_redirect');
+        $qb->getRestrictions()->removeAll();
+        $result = $qb->select('uid', 'source_path', 'is_regexp')
+            ->from('sys_redirect')
+            ->execute();
+        $redirects = $result->fetchAllAssociative();
+
         $mappingPaths = $this->mappingRepository->getAllNonRegexPaths();
         $paths = $this->dataProviderService->readJsonData();
 
@@ -56,18 +63,46 @@ class CreateMappingsCommand extends Command
                 continue;
             }
 
-            foreach ($pages as $page) {
+            foreach ($pages as $key2 => $page) {
                 // no match
                 if ($page['slug'] !== $pathData->data) {
                     continue;
                 }
 
                 // create mapping
-                $data['tx_xmgoaccess_domain_model_mapping']['NEW' . $key] = [
+                $data['tx_xmgoaccess_domain_model_mapping']['NEW' . $key . $key2] = [
                     'pid' => 0,
                     'path' => $page['slug'],
                     'record_type' => 0,
                     'page' => $page['uid'],
+                ];
+            }
+
+            foreach ($redirects as $key2 => $redirect) {
+                if (!$redirect['source_path'] || !is_string($redirect['source_path'])) {
+                    continue;
+                }
+
+                // check regex
+                if ($redirect['is_regexp']) {
+                    $matchResult = preg_match($redirect['source_path'], $pathData->data, $matches);
+                    if ($matchResult === 0) {
+                        continue;
+                    }
+                }
+
+                // no match
+                if (!$redirect['is_regexp'] && $redirect['source_path'] !== $pathData->data) {
+                    continue;
+                }
+
+                // create mapping
+                $data['tx_xmgoaccess_domain_model_mapping']['NEW' . $key . $key2] = [
+                    'pid' => 0,
+                    'path' => $pathData->data,
+                    'record_type' => 3,
+                    'foreign_uid' => $redirect['uid'],
+                    'foreign_table' => 'sys_redirect',
                 ];
             }
         }
