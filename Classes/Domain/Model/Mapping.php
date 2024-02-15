@@ -6,7 +6,6 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Mapping extends AbstractEntity
 {
-
     protected string $path = '';
 
     protected int $recordType = 0;
@@ -65,5 +64,4 @@ class Mapping extends AbstractEntity
     {
         return $this->title;
     }
-
 }

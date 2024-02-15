@@ -39,8 +39,10 @@ class BackendController extends ActionController
             return $this->htmlResponse($content);
         }
 
-        $filePath = str_starts_with($extConf['html_path'],
-            '/') ? $extConf['html_path'] : Environment::getPublicPath() . '/' . $extConf['html_path'];
+        $filePath = str_starts_with(
+            $extConf['html_path'],
+            '/'
+        ) ? $extConf['html_path'] : Environment::getPublicPath() . '/' . $extConf['html_path'];
         if (!file_exists($filePath)) {
             $content = 'File "' . $filePath . '" not found';
             return $this->htmlResponse($content);
@@ -91,13 +93,13 @@ class BackendController extends ActionController
 
     public function pageChartAction(ServerRequestInterface $request): ResponseInterface
     {
-        $pid = (int)$request->getQueryParams()['pid'] ?? 0;
+        $pid = $request->getQueryParams()['pid'] ?? 0;
 
         if (!$pid) {
             return new JsonResponse([], 404);
         }
 
-        $chartData = $this->dataProvider->getPageChartData($pid);
+        $chartData = $this->dataProvider->getPageChartData((int)$pid);
 
         return new JsonResponse($chartData);
     }

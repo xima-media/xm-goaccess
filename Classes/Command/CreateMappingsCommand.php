@@ -49,7 +49,6 @@ class CreateMappingsCommand extends Command
         $data = ['tx_xmgoaccess_domain_model_mapping' => []];
 
         foreach ($paths['requests']?->data as $key => $pathData) {
-
             $path = $pathData->data;
 
             // mapping already present

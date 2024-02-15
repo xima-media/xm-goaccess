@@ -95,7 +95,7 @@ return [
                         'disabled' => true,
                     ],
                 ],
-                'default' => 0
+                'default' => 0,
             ],
         ],
     ],

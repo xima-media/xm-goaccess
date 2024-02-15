@@ -3,7 +3,6 @@
 namespace Xima\XmGoaccess\Domain\Model\Dto;
 
 use TYPO3\CMS\Extbase\Mvc\Request;
-use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 
 class Demand
 {

@@ -26,8 +26,12 @@ class RequestRepository extends Repository
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmgoaccess_domain_model_request');
         $query = $qb->select('r.date', 'r.hits', 'r.visitors')
             ->from('tx_xmgoaccess_domain_model_request', 'r')
-            ->innerJoin('r', 'tx_xmgoaccess_domain_model_mapping', 'm',
-                $qb->expr()->eq('m.uid', $qb->quoteIdentifier('r.mapping')))
+            ->innerJoin(
+                'r',
+                'tx_xmgoaccess_domain_model_mapping',
+                'm',
+                $qb->expr()->eq('m.uid', $qb->quoteIdentifier('r.mapping'))
+            )
             ->where(
                 $qb->expr()->and(
                     $qb->expr()->eq('m.page', $qb->createNamedParameter($pageUid, \PDO::PARAM_INT)),

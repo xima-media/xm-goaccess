@@ -6,7 +6,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Core\Bootstrap;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Xima\XmGoaccess\Domain\Repository\MappingRepository;
@@ -40,12 +39,10 @@ class UpdatePageStatsCommand extends Command
         $mappings = $this->mappingRepository->getAllPageAndActionMappings();
 
         foreach ($dailyLogs as $log) {
-
             $data = ['tx_xmgoaccess_domain_model_request' => []];
             $timestamp = $this->dataProviderService::getTimestampFromLogDate($log['general']->start_date);
 
             foreach ($mappings as $key => $mapping) {
-
                 $data['tx_xmgoaccess_domain_model_request']['NEW-' . $key] = [
                     'pid' => 0,
                     'date' => $timestamp,
@@ -54,7 +51,7 @@ class UpdatePageStatsCommand extends Command
                     'visitors' => 0,
                 ];
 
-                foreach ($log['requests']->data as $key2 => $pathData) {
+                foreach ($log['requests']->data as $pathData) {
                     // check regex
                     if ($mapping['regex'] === 1) {
                         preg_match('/' . $mapping['path'] . '/', $pathData->data, $matches);
