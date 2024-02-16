@@ -36,8 +36,10 @@ abstract class AbstractGoaccessDataProvider
             throw new \Exception('Goaccess json_path is not configured', 1662881054);
         }
 
-        $filePath = str_starts_with($extConf['json_path'],
-            '/') ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
+        $filePath = str_starts_with(
+            $extConf['json_path'],
+            '/'
+        ) ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
         if (!file_exists($filePath)) {
             throw new \Exception('File "' . $filePath . '" not found', 1662881054);
         }

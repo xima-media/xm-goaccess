@@ -24,10 +24,21 @@ class RequestRepository extends Repository
     public function getChartDataForPage(int $pageUid): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmgoaccess_domain_model_request');
-        $query = $qb->select('date', 'hits', 'visitors')
-            ->from('tx_xmgoaccess_domain_model_request')
-            ->where($qb->expr()->eq('page', $qb->createNamedParameter($pageUid, \PDO::PARAM_INT)))
-            ->groupBy('page', 'date')
+        $query = $qb->select('r.date', 'r.hits', 'r.visitors')
+            ->from('tx_xmgoaccess_domain_model_request', 'r')
+            ->innerJoin(
+                'r',
+                'tx_xmgoaccess_domain_model_mapping',
+                'm',
+                $qb->expr()->eq('m.uid', $qb->quoteIdentifier('r.mapping'))
+            )
+            ->where(
+                $qb->expr()->and(
+                    $qb->expr()->eq('m.page', $qb->createNamedParameter($pageUid, \PDO::PARAM_INT)),
+                    $qb->expr()->eq('m.record_type', $qb->createNamedParameter(0, \PDO::PARAM_INT))
+                )
+            )
+            ->groupBy('m.page', 'r.date')
             ->execute();
 
         return $query->fetchAllAssociative();

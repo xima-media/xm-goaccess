@@ -11,6 +11,7 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\WidgetApi;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use Xima\XmGoaccess\Domain\Model\Dto\Demand;
@@ -35,50 +36,23 @@ class DataProviderService
     ) {
     }
 
-    /**
-     * @throws ExtensionConfigurationExtensionNotConfiguredException
-     * @throws ExtensionConfigurationPathDoesNotExistException
-     */
-    public function readJsonData(): array
+    public function getUnparsedDailyJsonLogs(): array
     {
-        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
+        $logPath = $this->extensionConfiguration->get('xm_goaccess', 'daily_log_path');
 
-        if (!isset($extConf['json_path']) || !$extConf['json_path']) {
-            throw new \Exception('Goaccess json_path is not configured', 1662881054);
+        if (!$logPath || !is_string($logPath)) {
+            throw new \RuntimeException('Goaccess "daily_log_path" is not configured', 1679592902);
         }
 
-        $filePath = str_starts_with($extConf['json_path'],
-            '/') ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
-        if (!file_exists($filePath)) {
-            throw new \Exception('File "' . $filePath . '" not found', 1662881054);
-        }
-
-        $content = file_get_contents($filePath);
-
-        return $content ? (array)json_decode($content) : [];
-    }
-
-    public function getDailyJsonLogs(): array
-    {
-        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
-
-        if (!isset($extConf['daily_log_path']) || !$extConf['daily_log_path']) {
-            throw new \Exception('Goaccess daily_log_path is not configured', 1679592902);
-        }
-
-        $filePath = str_starts_with($extConf['daily_log_path'],
-            '/') ? $extConf['daily_log_path'] : Environment::getPublicPath() . '/' . $extConf['daily_log_path'];
-        if (!file_exists($filePath)) {
-            throw new \Exception('Folder "' . $filePath . '" not found', 1679592906);
-        }
+        $filePath = GeneralUtility::getFileAbsFileName($logPath);
+        $logFiles = GeneralUtility::getFilesInDir($filePath, 'json');
 
         $jsonLogs = [];
-        $logFiles = glob($filePath . '*.json');
         $dates = $this->requestRepository->getAllDates();
 
-        foreach ($logFiles ?: [] as $file) {
+        foreach ($logFiles as $file) {
             // decode content
-            $fileContent = file_get_contents($file) ?: '';
+            $fileContent = file_get_contents($filePath . '/' . $file) ?: '';
             $jsonContent = (array)json_decode($fileContent);
 
             // compare with saved dates
@@ -105,8 +79,6 @@ class DataProviderService
     {
         $goaccessData = $this->readJsonData();
 
-        $this->mappings = $this->mappingRepository->findAll();
-
         $items = [];
 
         foreach ($goaccessData['requests']->data as $pathData) {
@@ -116,18 +88,26 @@ class DataProviderService
                 'hits' => $pathData->hits->count,
                 'visitors' => $pathData->visitors->count,
                 'path' => $path,
-                'mapping' => $this->resolvePathMapping($path),
+                'mappings' => $this->resolvePathMapping($path),
             ];
 
-            if ($demand && $item['mapping']) {
-                if (!$demand->showPages && $item['mapping']->getRecordType() === 0) {
-                    continue;
+            if (!$demand || empty($item['mappings'])) {
+                $items[] = $item;
+                continue;
+            }
+
+            foreach ($item['mappings'] as $mapping) {
+                if (!$demand->showPages && $mapping->getRecordType() === 0) {
+                    continue 2;
                 }
-                if (!$demand->showActions && $item['mapping']->getRecordType() === 1) {
-                    continue;
+                if (!$demand->showActions && $mapping->getRecordType() === 1) {
+                    continue 2;
                 }
-                if (!$demand->showIgnored && $item['mapping']->getRecordType() === 2) {
-                    continue;
+                if (!$demand->showIgnored && $mapping->getRecordType() === 2) {
+                    continue 2;
+                }
+                if (!$demand->showRedirects && $mapping->getRecordType() === 3) {
+                    continue 2;
                 }
             }
 
@@ -137,28 +117,56 @@ class DataProviderService
         return $items;
     }
 
-    private function resolvePathMapping(string $path): ?Mapping
+    /**
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
+     */
+    public function readJsonData(): array
     {
-        foreach ($this->mappings as $mapping) {
+        $extConf = (array)$this->extensionConfiguration->get('xm_goaccess');
 
+        if (!isset($extConf['json_path']) || !$extConf['json_path']) {
+            throw new \Exception('Goaccess json_path is not configured', 1662881054);
+        }
+
+        $filePath = str_starts_with(
+            $extConf['json_path'],
+            '/'
+        ) ? $extConf['json_path'] : Environment::getPublicPath() . '/' . $extConf['json_path'];
+        if (!file_exists($filePath)) {
+            throw new \Exception('File "' . $filePath . '" not found', 1662881054);
+        }
+
+        $content = file_get_contents($filePath);
+
+        return $content ? (array)json_decode($content) : [];
+    }
+
+    /**
+     * @return Mapping[]
+     */
+    private function resolvePathMapping(string $path): array
+    {
+        $mappings = [];
+        foreach ($this->mappingRepository->findAll() as $mapping) {
             if ($mapping->isRegex()) {
                 preg_match('/' . $mapping->getPath() . '/', $path, $matches);
                 if ($matches) {
                     $this->enrichMapping($mapping);
-                    return $mapping;
+                    $mappings[] = $mapping;
                 }
             }
 
             if (!$mapping->isRegex() && $path === $mapping->getPath()) {
                 $this->enrichMapping($mapping);
-                return $mapping;
+                $mappings[] = $mapping;
             }
         }
 
-        return null;
+        return $mappings;
     }
 
-    private function enrichMapping(Mapping &$mapping): void
+    private function enrichMapping(Mapping $mapping): void
     {
         if ($mapping->getRecordType() === 0 && $mapping->getPage()) {
             $pageRecord = BackendUtility::readPageAccess($mapping->getPage(), '1=1');
@@ -185,8 +193,10 @@ class DataProviderService
                 [
                     'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:visitors'),
                     'borderColor' => WidgetApi::getDefaultChartColors()[0],
-                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(WidgetApi::getDefaultChartColors()[0],
-                        0.1),
+                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(
+                        WidgetApi::getDefaultChartColors()[0],
+                        0.1
+                    ),
                     'parsing' => ['yAxisKey' => 'A'],
                     'borderWidth' => 1,
                     'data' => array_column($chartData, 'visitors'),
@@ -194,8 +204,10 @@ class DataProviderService
                 [
                     'label' => $this->languageService->sL('LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:hits'),
                     'borderColor' => WidgetApi::getDefaultChartColors()[1],
-                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(WidgetApi::getDefaultChartColors()[1],
-                        0.1),
+                    'backgroundColor' => AbstractGoaccessDataProvider::hex2rgba(
+                        WidgetApi::getDefaultChartColors()[1],
+                        0.1
+                    ),
                     'yAxisID' => 'right',
                     'borderWidth' => 1,
                     'data' => array_column($chartData, 'hits'),
@@ -203,5 +215,4 @@ class DataProviderService
             ],
         ];
     }
-
 }

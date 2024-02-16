@@ -39,15 +39,19 @@ class MappingRepository extends Repository
         return array_column($mappings, 'path');
     }
 
-    public function getAllPageMappings(): array
+    public function getAllPageAndActionMappings(): array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_xmgoaccess_domain_model_mapping');
-        $result = $qb->select('page', 'path')
+        $result = $qb->select('*')
             ->from('tx_xmgoaccess_domain_model_mapping')
-            ->where($qb->expr()->eq('record_type', $qb->createNamedParameter(0, \PDO::PARAM_INT)))
+            ->where(
+                $qb->expr()->or(
+                    $qb->expr()->eq('record_type', $qb->createNamedParameter(0, \PDO::PARAM_INT)),
+                    $qb->expr()->eq('record_type', $qb->createNamedParameter(1, \PDO::PARAM_INT))
+                )
+            )
             ->execute();
 
         return $result->fetchAllAssociative();
     }
-
 }

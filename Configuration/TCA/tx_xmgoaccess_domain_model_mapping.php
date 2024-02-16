@@ -22,6 +22,9 @@ return [
         2 => [
             'showitem' => '--palette--;;pathSettings, record_type',
         ],
+        3 => [
+            'showitem' => '--palette--;;pathSettings, record_type, foreign_table, foreign_uid',
+        ],
     ],
     'palettes' => [
         'pathSettings' => [
@@ -95,7 +98,19 @@ return [
                         'disabled' => true,
                     ],
                 ],
-                'default' => 0
+                'default' => 0,
+            ],
+        ],
+        'foreign_uid' => [
+            'label' => 'Foreign UID',
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
+        'foreign_table' => [
+            'label' => 'Foreign table',
+            'config' => [
+                'type' => 'input',
             ],
         ],
     ],

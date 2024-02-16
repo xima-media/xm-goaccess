@@ -12,7 +12,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'date,page,hits,visitors',
+            'showitem' => 'date,page,hits,visitors,mapping',
         ],
     ],
     'columns' => [
@@ -45,26 +45,11 @@ return [
                 'max' => 255,
             ],
         ],
-        'page' => [
+        'mapping' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:xm_goaccess/Resources/Private/Language/locallang.xlf:request.page',
+            'label' => 'Mapping',
             'config' => [
-                'type' => 'group',
-                'allowed' => 'pages',
-                'size' => 1,
-                'minitems' => 1,
-                'maxitems' => 1,
-                'fieldControl' => [
-                    'addRecord' => [
-                        'disabled' => true,
-                    ],
-                ],
-                'fieldWizard' => [
-                    'recordsOverview' => [
-                        'disabled' => true,
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'input',
             ],
         ],
     ],

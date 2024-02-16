@@ -10,6 +10,9 @@ services:
   Xima\XmGoaccess\Controller\BackendController:
     tags: [ 'backend.controller' ]
 
+  Xima\XmGoaccess\Hook\ChartButtonHook:
+    public: true
+
   dashboard.widget.xm_goaccess_uniqueVisitors:
     class: 'Xima\XmGoaccess\Widgets\LineChartWidget'
     arguments:
