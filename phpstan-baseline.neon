@@ -1,6 +1,106 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 2
+			path: Classes/Command/CreateMappingsCommand.php
+
+		-
+			message: "#^Parameter \\#1 \\$request of static method Xima\\\\XmGoaccess\\\\Domain\\\\Model\\\\Dto\\\\Demand\\:\\:createFromRequest\\(\\) expects TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Request, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\RequestInterface given\\.$#"
+			count: 1
+			path: Classes/Controller/BackendController.php
+
+		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 3
+			path: Classes/Domain/Repository/MappingRepository.php
+
+		-
+			message: "#^Class Xima\\\\XmGoaccess\\\\Domain\\\\Repository\\\\MappingRepository extends generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\Repository but does not specify its types\\: T$#"
+			count: 1
+			path: Classes/Domain/Repository/MappingRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Domain\\\\Repository\\\\MappingRepository\\:\\:getAllPageAndActionMappings\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/MappingRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Domain\\\\Repository\\\\MappingRepository\\:\\:getIgnoredPaths\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/MappingRepository.php
+
+		-
+			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\DBALException\\|Doctrine\\\\DBAL\\\\Driver\\\\Exception is not subtype of Throwable$#"
+			count: 1
+			path: Classes/Domain/Repository/MappingRepository.php
+
+		-
+			message: "#^Cannot call method fetchAllAssociative\\(\\) on Doctrine\\\\DBAL\\\\Result\\|int\\.$#"
+			count: 2
+			path: Classes/Domain/Repository/RequestRepository.php
+
+		-
+			message: "#^Class Xima\\\\XmGoaccess\\\\Domain\\\\Repository\\\\RequestRepository extends generic class TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\Repository but does not specify its types\\: T$#"
+			count: 1
+			path: Classes/Domain/Repository/RequestRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Domain\\\\Repository\\\\RequestRepository\\:\\:getAllDates\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/RequestRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Domain\\\\Repository\\\\RequestRepository\\:\\:getChartDataForPage\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Domain/Repository/RequestRepository.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Hook\\\\ChartButtonHook\\:\\:addChartButton\\(\\) has parameter \\$params with no type specified\\.$#"
+			count: 1
+			path: Classes/Hook/ChartButtonHook.php
+
+		-
+			message: "#^Access to protected property TYPO3\\\\CMS\\\\Backend\\\\Controller\\\\PageLayoutController\\:\\:\\$pageinfo\\.$#"
+			count: 1
+			path: Classes/Hook/DrawPageHeaderHook.php
+
+		-
+			message: "#^Argument of an invalid type array\\<string, string\\>\\|string supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
+			message: "#^Cannot call method setTime\\(\\) on DateTime\\|false\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Service\\\\DataProviderService\\:\\:getPageChartData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Service\\\\DataProviderService\\:\\:getRequestList\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Service\\\\DataProviderService\\:\\:getUnparsedDailyJsonLogs\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
+			message: "#^Method Xima\\\\XmGoaccess\\\\Service\\\\DataProviderService\\:\\:readJsonData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
+			message: "#^Property Xima\\\\XmGoaccess\\\\Service\\\\DataProviderService\\:\\:\\$mappings is never read, only written\\.$#"
+			count: 1
+			path: Classes/Service/DataProviderService.php
+
+		-
 			message: "#^Method Xima\\\\XmGoaccess\\\\Widgets\\\\LineChartWidget\\:\\:__construct\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Classes/Widgets/LineChartWidget.php
